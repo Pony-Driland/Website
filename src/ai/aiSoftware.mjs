@@ -1,5 +1,11 @@
 import { EventEmitter } from 'events';
 import { Loader } from 'circle-loader';
+import moment from 'moment';
+import { marked } from 'marked';
+import clone from 'clone';
+import objHash from 'object-hash';
+import { saveAs } from 'file-saver';
+import $ from 'jquery';
 
 import { setTinyGoogleAi, TinyAiInstance } from 'tiny-ai-api';
 import { objType, countObj, toTitleCase, TinyTextRangeEditor } from 'tiny-essentials';

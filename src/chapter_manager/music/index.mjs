@@ -1,12 +1,16 @@
 import Pizzicato from 'pizzicato';
+import objHash from 'object-hash';
+import $ from 'jquery';
 import { shuffleArray, ruleOfThree } from 'tiny-essentials';
+import SeamlessLoop from '../../../build/bundle/SeamlessLoop.mjs';
+import BuffAudio from '../../../build/bundle/buffaudio.mjs';
+import gtag from '../../gtag.mjs';
 
 import tinyLib from '../../files/tinyLib.mjs';
 import { appData, tinyLs } from '../../start.mjs';
 import { storyData } from '../../files/chapters.mjs';
 import storyCfg from '../../chapters/config.mjs';
 import ttsManager from '../tts/tts.mjs';
-import gtag from '../../gtag.mjs';
 
 // Base
 storyData.music = {
@@ -594,7 +598,7 @@ window.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady() {
     startSeconds: 0,
     events: storyData.youtube.events,
   });
-}
+};
 
 // Music Updater
 musicManager.updatePlayer = function () {

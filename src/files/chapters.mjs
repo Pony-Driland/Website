@@ -1,4 +1,5 @@
 import { Loader } from 'circle-loader';
+import objHash from 'object-hash';
 
 import * as JsStore from 'jsstore';
 import { toTitleCase, fetchJson, isJsonObject } from 'tiny-essentials';

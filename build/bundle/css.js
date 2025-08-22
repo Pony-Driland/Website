@@ -20,7 +20,7 @@ const bundleCSS = async (files, outputFile) => {
   // Iterate over the CSS files to read and concatenate
   for (let file of files) {
     const filePath = path.join(__dirname, `../../node_modules/${file}`);
-    
+
     try {
       const cssContent = await readFile(filePath, 'utf-8');
       bundledCSS += `\n/* === ${file} === */\n${cssContent}\n`;
@@ -43,11 +43,11 @@ const outputFolder = '../../docs/';
 const outputBundle = path.join(__dirname, `${outputFolder}bundle.css`);
 
 const startNow = async () => {
-    // Create the target directory if it doesn't exist
-    await mkdir(path.join(__dirname, outputFolder), { recursive: true });
+  // Create the target directory if it doesn't exist
+  await mkdir(path.join(__dirname, outputFolder), { recursive: true });
 
-    // Run the CSS bundling process
-    await bundleCSS(cssFiles, outputBundle);
+  // Run the CSS bundling process
+  await bundleCSS(cssFiles, outputBundle);
 };
 
 startNow();

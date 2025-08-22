@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { TinyHtml, TinyAfterScrollWatcher } from 'tiny-essentials';
 
 import tinyLib from '../files/tinyLib.mjs';
