@@ -3,8 +3,9 @@
         "node": ">=20.0.0"
     },
     "scripts": {
-        "start": "npm run build && node ./build/",
-        "build": "browserify src/start.mjs -p esmify --ignore fs --ignore fs/promises > dist/public/bundle.js && npx babel-node build/bundle/css && npx babel-node build/bundle/files && npm run update-chapter && npm run update-characters && npm run update-sitemap && prettier --write ./src/*",
+        "start": "npm run build:files && node ./build/index.js",
+        "build": "npm run build:files && node ./build/merge-website.mjs",
+        "build:files": "node ./build/builder.mjs",
         "start:tiny-chat": "npx babel-node server/tiny-chat/index.js",
         "build:tiny-chat": "node build/pkg/tiny-chat.js",
         "build:tiny-chat:all": "node build/pkg/tiny-chat.js --os=all",
