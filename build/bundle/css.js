@@ -39,7 +39,7 @@ const bundleCSS = async (files, outputFile) => {
 };
 
 // Path of the output file (where the combined CSS will be saved)
-const outputFolder = '../../docs/';
+const outputFolder = '../../dist/public/';
 const outputBundle = path.join(__dirname, `${outputFolder}bundle.css`);
 
 const startNow = async () => {

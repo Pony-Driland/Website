@@ -2,15 +2,16 @@
 const path = require('path');
 const fs = require('fs');
 const { SitemapStream } = require('sitemap');
+const { ensureDirectory } = require('tiny-essentials');
 
 // Get Fic Data
 const ficData = require('../publicFolder')();
-const chapterMap = fs.createWriteStream(path.join(ficData.path, './sitemap/chapter.xml'));
-const charactersMap = fs.createWriteStream(path.join(ficData.path, './sitemap/characters.xml'));
-console.log(ficData);
+ensureDirectory(path.join(ficData.dist, './sitemap'));
+const chapterMap = fs.createWriteStream(path.join(ficData.dist, './sitemap/chapter.xml'));
+const charactersMap = fs.createWriteStream(path.join(ficData.dist, './sitemap/characters.xml'));
 
 // Read Data
-const folderPath = path.join(ficData.path, './chapters/' + ficData.config.defaultLang);
+const folderPath = path.join(ficData.public, './chapters/' + ficData.config.defaultLang);
 fs.readdir(folderPath, (err, files) => {
     if (!err) {
 
@@ -30,7 +31,8 @@ fs.readdir(folderPath, (err, files) => {
         smChapter.pipe(chapterMap);
         smChapter.end();
 
-        const folderPath = path.join(ficData.path, './characters');
+        ensureDirectory(path.join(ficData.dist, './characters'));
+        const folderPath = path.join(ficData.dist, './characters');
         fs.readdir(folderPath, (err, files) => {
             if (!err) {
 

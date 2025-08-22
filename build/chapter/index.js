@@ -1,14 +1,13 @@
 // Get Path
 const path = require('path');
 const fs = require('fs');
-const { writeJsonFile } = require('tiny-essentials');
+const { writeJsonFile, ensureDirectory } = require('tiny-essentials');
 
 // Get Fic Data
 const ficData = require('../publicFolder')();
-console.log(ficData);
 
 // Read Data
-const folderPath = path.join(ficData.path, './chapters/' + ficData.config.defaultLang);
+const folderPath = path.join(ficData.public, './chapters/' + ficData.config.defaultLang);
 fs.readdir(folderPath, (err, files) => {
     if (!err) {
 
@@ -29,7 +28,9 @@ fs.readdir(folderPath, (err, files) => {
 
             // Create oEmbed File
             console.log('Creating JSON oEmbed...');
-            writeJsonFile(path.join(ficData.path, './oEmbed/chapter/' + data.count + '.json'), {
+            ensureDirectory(path.join(ficData.dist, './oEmbed'));
+            ensureDirectory(path.join(ficData.dist, './oEmbed/chapter'));
+            writeJsonFile(path.join(ficData.dist, './oEmbed/chapter/' + data.count + '.json'), {
                 author_name: ficData.config.creator,
                 cache_age: 7200,
                 tags: ficData.config.chapterName[data.count].tags,
@@ -44,7 +45,8 @@ fs.readdir(folderPath, (err, files) => {
 
             // Create HTML File
             console.log('Creating HTML...');
-            fs.writeFileSync(path.join(ficData.path, './chapter/' + data.count + '.html'), `
+            ensureDirectory(path.join(ficData.dist, './chapter'));
+            fs.writeFileSync(path.join(ficData.dist, './chapter/' + data.count + '.html'), `
 <!doctype html>
 <html lang="en">
     <head>
@@ -116,7 +118,7 @@ fs.readdir(folderPath, (err, files) => {
 
         // Create JS File
         console.log('Creating JS...');
-        fs.writeFileSync(path.join(ficData.path, './chapters/counter.js'), `storyCfg.chapters = ${String(data.count)};`);
+        fs.writeFileSync(path.join(ficData.src, './chapters/counter.mjs'), `import storyCfg from './config.mjs';\n\nstoryCfg.chapters = ${String(data.count)};`);
         console.log('Done!');
 
     } else {
