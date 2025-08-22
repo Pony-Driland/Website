@@ -10,7 +10,7 @@ const modulesToCopy = [
 
 // Default reference path for modules (you can change this)
 const nodeModulesPath = path.join(__dirname, '../../node_modules');
-const destinationPath = path.join(__dirname, '../../docs');
+const destinationPath = path.join(__dirname, '../../dist/public');
 
 // Recursive function to copy files and directories
 function copyRecursive(src, dest) {

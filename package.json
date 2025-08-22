@@ -3,7 +3,8 @@
         "node": ">=20.0.0"
     },
     "scripts": {
-        "start": "node ./build/",
+        "start": "npm run build && node ./build/",
+        "build": "browserify src/start.mjs -p esmify --ignore fs --ignore fs/promises > dist/public/bundle.js && npx babel-node build/bundle/css && npx babel-node build/bundle/files && npm run update-chapter && npm run update-characters && npm run update-sitemap && prettier --write ./src/*",
         "start:tiny-chat": "npx babel-node server/tiny-chat/index.js",
         "build:tiny-chat": "node build/pkg/tiny-chat.js",
         "build:tiny-chat:all": "node build/pkg/tiny-chat.js --os=all",
@@ -11,8 +12,6 @@
         "build:tiny-chat:linux": "node build/pkg/tiny-chat.js --os=linux",
         "build:tiny-chat:darwin": "node build/pkg/tiny-chat.js --os=darwin",
         "example:tiny-chat-timedmap": "npx babel-node server/tiny-chat/old/examples/TimedMap.js",
-        "install": "yarn build-bundle",
-        "build-bundle": "browserify src/start.mjs -p esmify --ignore fs --ignore fs/promises > docs/bundle.js && npx babel-node build/bundle/css && npx babel-node build/bundle/files",
         "fix:prettier": "prettier --write ./src/* && prettier --write ./build/bundle/* && prettier --write ./server/tiny-chat/* && prettier --write ./temp/*",
         "update-base64": "node ./build/base64",
         "update-chapter": "node ./build/chapter",

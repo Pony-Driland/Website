@@ -31,9 +31,9 @@ charTable_7_0: 'Occupation'
 charTable_7_1: 'Pony Driland Goddess'
 
 charTable_8_0: 'Pets'
-charTable_8_1: '[Amy](https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/amy/README.md)'
+charTable_8_1: '[Amy](https://github.com/Pony-Driland/Website/blob/main/public/data/characters/amy/README.md)'
 charTable_9_0: ''
-charTable_9_1: '[Layla](https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/layla/README.md)'
+charTable_9_1: '[Layla](https://github.com/Pony-Driland/Website/blob/main/public/data/characters/layla/README.md)'
 
 charTable_10_0: 'Credits'
 charTable_10_1: ''

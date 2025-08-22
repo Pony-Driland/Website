@@ -1,5 +1,6 @@
 import { EventEmitter } from 'events';
 
+import { Loader } from 'circle-loader';
 import {
   formatDayTimer,
   TinyHtml,
@@ -364,8 +365,8 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
   }
 
   data = data
-    .replace(tinyLib.getGitUrlPath(`href\=\"{url}docs\\/`), 'href="javascript:void(0)" file="../')
-    .replace(tinyLib.getGitUrlPath(`src\=\"{url}docs\\/`), 'src="../')
+    .replace(tinyLib.getGitUrlPath(`href\=\"{url}public\\/`), 'href="javascript:void(0)" file="../')
+    .replace(tinyLib.getGitUrlPath(`src\=\"{url}public\\/`), 'src="../')
     .replace(
       new RegExp(`src\=\"https\:\/\/ipfs\.io\/ipfs\/`, 'g'),
       'src="https://cloudflare-ipfs.com/ipfs/',
@@ -716,7 +717,7 @@ const openMDFile = async (url, isMain = false) => {
     if (url !== 'MAIN') {
       // Read Data Base
       console.log(`Opening MD file "${url}"...`);
-      circleLoader.start();
+      Loader.start();
 
       // Load ajax
       const fileData = await fetch(`${url.startsWith('/') ? url : `/${url}`}${fileVersion}`, {
@@ -725,7 +726,7 @@ const openMDFile = async (url, isMain = false) => {
       })
         .then((res) => res.text())
         .catch((err) => {
-          circleLoader.close();
+          Loader.close();
           console.error(err);
           alert(err.message);
         });
@@ -739,7 +740,7 @@ const openMDFile = async (url, isMain = false) => {
 
         // Prepare metadata (script created by ChatGPT)
         const metadata = {};
-        const githubRegex = tinyLib.getGitUrlPath('{url}docs\\/');
+        const githubRegex = tinyLib.getGitUrlPath('{url}public\\/');
         for (const key in md) {
           const match = key.match(/^([^_]+)(?:_(\d+))+/);
           if (match) {
@@ -778,11 +779,11 @@ const openMDFile = async (url, isMain = false) => {
         insertMarkdownFile(fileLines, metadata, isMain, url.endsWith('.md') ? false : true);
 
         TinyHtml.setWinScrollTop(0);
-        circleLoader.close();
+        Loader.close();
         urlUpdate(url, title);
       } catch (err) {
         // Error!
-        circleLoader.close();
+        Loader.close();
         console.error(err);
         alert(err.message);
       }
