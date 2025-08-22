@@ -4886,6 +4886,11 @@ js-base64@^2.1.9:
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.6.4.tgz#f4e686c5de1ea1f867dbcad3d46d969428df98c4"
   integrity sha512-pZe//GGmwJndub7ZghVHz7vjb2LgC1m8B07Au3eYqeqv9emhESByMXxaEgkUkEqJe87oBbSniGYoQNIBklc7IQ==
 
+js-base64@^3.7.8:
+  version "3.7.8"
+  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-3.7.8.tgz#af44496bc09fa178ed9c4adf67eb2b46f5c6d2a4"
+  integrity sha512-hNngCeKxIUQiEUN3GPJOkz4wF/YvdUdbNL9hsBcMQTkKzboD7T/q3OYOuuPZLUE6dBxSGpwhk5mwuDud7JVAow==
+
 js-loading-overlay@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/js-loading-overlay/-/js-loading-overlay-1.2.0.tgz#9dfa8e815969fa67049af798cb9b65afc7d33549"
@@ -7603,14 +7608,15 @@ timers-browserify@^1.0.1:
   dependencies:
     process "~0.11.0"
 
-tiny-ai-api@^1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/tiny-ai-api/-/tiny-ai-api-1.1.6.tgz#4ca60d85481817c527d50b7482ba5096aab54297"
-  integrity sha512-s8HdN3Ot1PrYZZE0LOkw8mud/FnKLoyKb7nH/VApr703aGNHjV/udACC5e41TS7+zW9fM9gXqrbVbOMA1gL5XA==
+tiny-ai-api@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/tiny-ai-api/-/tiny-ai-api-1.1.7.tgz#185ac91193b3c1c63d275822f7c932a5ac34c12a"
+  integrity sha512-xKzk2QfJlSCsIZcAduYBm5/vZCrQyJ1JvKrBMjV1cpjOexOrwvHSEA0XeQuLP4EZOC5mMKchvJuTE68mV/PiNw==
   dependencies:
+    js-base64 "^3.7.8"
     jsonrepair "^3.12.0"
     object-hash "^3.0.0"
-    tiny-essentials "^1.11.0"
+    tiny-essentials "^1.20.0"
 
 tiny-dices@^1.0.6:
   version "1.0.6"
@@ -7619,11 +7625,6 @@ tiny-dices@^1.0.6:
   dependencies:
     tiny-essentials "^1.3.0"
     validate-color "^2.2.4"
-
-tiny-essentials@^1.11.0:
-  version "1.13.1"
-  resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.13.1.tgz#94da802574aa6b5f66f540ef401932ccb1de7276"
-  integrity sha512-Rk4PT7oIOMHNvZyLDu0gqBLI028Z5BynMLFFXuQLMc4/0tPBCYJAvnRnke4y6gozu4Dh24wQPdHJ7tDnL73Iwg==
 
 tiny-essentials@^1.12.2:
   version "1.12.2"
@@ -7635,7 +7636,7 @@ tiny-essentials@^1.13.0:
   resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.13.0.tgz#d307a7d6899ac33fa1c6fae8a88dea92684a958e"
   integrity sha512-wrTa6h++9K7FLbpd/oyFvee8TF1HuU/x8P0ycys5CBW93HI81FQcBhWej4AuJqL2oGnqHVHt7IpiLIaxoNMtNg==
 
-tiny-essentials@^1.20.3:
+tiny-essentials@^1.20.0, tiny-essentials@^1.20.3:
   version "1.20.3"
   resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.20.3.tgz#739b60dc5f00e9e13a99b6643c847403042a0f0c"
   integrity sha512-kM+tp68vVit9wuMLMmeY3cuENYnCLF10mcZ33ZtxVoDPQSbVXflUn/6akPLbFGd65+tYrjWLgMIykB5l1xNdMA==
