@@ -46,6 +46,7 @@ async function main() {
 
   // Step 2: Run commands in sequence
   await run('browserify src/start.mjs -p esmify --ignore fs --ignore fs/promises > dist/public/bundle.js');
+  await run('browserify src/redirect.mjs -p esmify --ignore fs --ignore fs/promises > dist/public/redirect.js');
   await run('npx babel-node build/bundle/css');
   await run('npx babel-node build/bundle/files');
   await run('npm run update-chapter');

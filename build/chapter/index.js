@@ -99,7 +99,7 @@ fs.readdir(folderPath, (err, files) => {
         <!-- Script -->
         <script src="../bundle.js"></script>
         <script src="../bundle2.js"></script>
-        <script src="../js/files/redirect.js"></script>
+        <script src="../redirect.js"></script>
     
     </head>
     <body><div id="newURL" href="/?path=read-fic&chapter=${data.count}"></div></body>
