@@ -1,4 +1,6 @@
+import $ from 'jquery';
 import tippy from 'tippy.js';
+import { Modal, Tooltip } from 'bootstrap';
 import { objType, readJsonBlob, readBase64Blob } from 'tiny-essentials';
 import storyCfg from '../chapters/config.mjs';
 
@@ -8,11 +10,11 @@ const enableQuery = function () {
     this.each(function () {
       if (!$(this).data('bs-modal')) {
         if (configObject) {
-          $(this).data('bs-modal', new bootstrap.Modal(this, configObject));
+          $(this).data('bs-modal', new Modal(this, configObject));
         } else if (typeof type !== 'string') {
-          $(this).data('bs-modal', new bootstrap.Modal(this, type));
+          $(this).data('bs-modal', new Modal(this, type));
         } else {
-          $(this).data('bs-modal', new bootstrap.Modal(this));
+          $(this).data('bs-modal', new Modal(this));
         }
       }
 
@@ -30,9 +32,9 @@ const enableQuery = function () {
     let tooltip = null;
     this.each(function () {
       if (!$(this).data('bs-tooltip')) {
-        if (objType(configObject, 'object')) tooltip = new bootstrap.Tooltip(this, configObject);
-        else if (typeof type !== 'string') tooltip = new bootstrap.Tooltip(this, type);
-        else tooltip = new bootstrap.Tooltip(this);
+        if (objType(configObject, 'object')) tooltip = new Tooltip(this, configObject);
+        else if (typeof type !== 'string') tooltip = new Tooltip(this, type);
+        else tooltip = new Tooltip(this);
         $(this).data('bs-tooltip', tooltip);
       }
     });

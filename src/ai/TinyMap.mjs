@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 /*
  * TinyMap - A lightweight map generator and handler
  *

@@ -1,4 +1,5 @@
 import { EventEmitter } from 'events';
+
 import {
   formatDayTimer,
   TinyHtml,
@@ -9,7 +10,16 @@ import {
   TinyLocalStorage,
 } from 'tiny-essentials';
 import PhotoSwipeLightbox from 'photoswipe';
+import QRCode from 'qrcode';
+import moment from 'moment';
+import { marked } from 'marked';
+import { saveAs } from 'file-saver';
+import $ from 'jquery';
+import { Offcanvas } from 'bootstrap';
+
 import gtag from './gtag.mjs';
+
+import '../build/bundle/bootstrap-paginator.mjs';
 
 import './pwa/installer.mjs';
 import './chapters/sound.mjs';
@@ -1403,7 +1413,7 @@ rootApp.onReady(() => {
       storyData.nc = { base: {}, item: {} };
       storyData.nc.item.left = tinyCollapse1.find('> ul');
       storyData.nc.item.right = tinyCollapse2.find('> ul');
-      const offCanvasNavCfg = new bootstrap.Offcanvas(navbarOffCanvas.get(0));
+      const offCanvasNavCfg = new Offcanvas(navbarOffCanvas.get(0));
       addDropdown(navbarData);
       navbarData.setOffCanvas(offCanvasNavCfg);
 

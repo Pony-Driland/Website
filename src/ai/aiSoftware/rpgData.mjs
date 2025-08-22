@@ -1,4 +1,7 @@
 import { objType } from 'tiny-essentials';
+import $ from 'jquery';
+import { Offcanvas } from 'bootstrap';
+import JSONEditor from '../../../build/bundle/JSONEditor.mjs';
 
 import tinyLib from '../../files/tinyLib.mjs';
 import aiTemplates from '../templates.mjs';
@@ -82,8 +85,8 @@ class RpgData {
     this.html.public = tinyLib.bs.offcanvas('start', 'rpg_ai_base_1', '', this.base.public, true);
     this.html.private = tinyLib.bs.offcanvas('end', 'rpg_ai_base_2', '', this.base.private, false);
     container.prepend(this.html.public, this.html.private);
-    this.offcanvas.public = new bootstrap.Offcanvas(this.html.public.get(0));
-    this.offcanvas.private = new bootstrap.Offcanvas(this.html.private.get(0));
+    this.offcanvas.public = new Offcanvas(this.html.public.get(0));
+    this.offcanvas.private = new Offcanvas(this.html.private.get(0));
   }
 
   init(forceRestart = false) {

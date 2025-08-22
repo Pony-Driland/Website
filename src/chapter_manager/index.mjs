@@ -1,5 +1,8 @@
 import { Loader } from 'circle-loader';
+import objHash from 'object-hash';
 import { countObj, toTitleCase, TinyHtml } from 'tiny-essentials';
+import $ from 'jquery';
+import paginateArray from 'paginate-array';
 
 import tinyLib from '../files/tinyLib.mjs';
 import { clearFicData, urlUpdate, tinyLs } from '../start.mjs';

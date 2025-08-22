@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import tinyLib from '../../files/tinyLib.mjs';
 import { storyData } from '../../files/chapters.mjs';
 import cacheChapterUpdater from '../updater.mjs';
