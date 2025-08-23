@@ -6,9 +6,7 @@ import {
   TinyHtml,
   TinyDomReadyManager,
   installWindowHiddenScript,
-  TinyNotifications,
   addAiMarkerShortcut,
-  TinyLocalStorage,
 } from 'tiny-essentials';
 import PhotoSwipeLightbox from 'photoswipe';
 import QRCode from 'qrcode';
@@ -17,8 +15,6 @@ import { marked } from 'marked';
 import { saveAs } from 'file-saver';
 import $ from 'jquery';
 import { Offcanvas } from 'bootstrap';
-
-import gtag from './gtag.mjs';
 
 import '../build/bundle/bootstrap-paginator.mjs';
 
@@ -32,15 +28,13 @@ import { storyData } from './files/chapters.mjs';
 import storyCfg from './chapters/config.mjs';
 import { openChapterMenu } from './chapter_manager/index.mjs';
 import { AiScriptStart } from './ai/aiSoftware.mjs';
+import { tinyLs, gtag, fa } from './important.mjs';
+
+import TinyIcon from './modules/template/TinyIcon.mjs';
+import TinyButton from './modules/template/TinyButton.mjs';
+import { Tooltip } from './modules/TinyBootstrap.mjs';
 
 addAiMarkerShortcut();
-
-export const tinyNotification = new TinyNotifications({
-  audio: '/audio/notification.ogg',
-  defaultIcon: '/img/icon/192.png',
-});
-
-export const tinyLs = new TinyLocalStorage('pony-driland');
 
 // Start Load
 export const appData = {
@@ -1252,6 +1246,48 @@ rootApp.onReady(() => {
           return false;
         });
 
+        // Login Account
+        const loginAccount = {
+          base: TinyHtml.createFrom('li', { className: 'nav-item font-weight-bold' }),
+          link: new TinyButton({ label: '', tags: 'disabled', mainClass: 'nav-link' })
+            .setAttr('id', 'login-start')
+            .setAttr('title', 'Login Google Account'),
+          icon: new TinyIcon(['fa-solid', 'fa-right-to-bracket']),
+        };
+
+        Tooltip(loginAccount.link);
+        loginAccount.base.append(loginAccount.link);
+        loginAccount.link.append(loginAccount.icon);
+
+        loginAccount.link.on('click', async () => {
+          if (fa.currentUser) {
+            Loader.start(`Logging out...`);
+            await fa.logout();
+          } else {
+            Loader.start(`Signing in...`);
+            await fa.login();
+          }
+          Loader.close();
+        });
+
+        const checkStatus = /** @type {import('./account/firebase.mjs').OnAuthStateChanged} */ (
+          user,
+        ) => {
+          loginAccount.link.removeClass('disabled');
+          if (user) {
+            loginAccount.link.setAttr('data-bs-original-title', 'Logout');
+            loginAccount.icon.iconTags = ['fa-solid', 'fa-right-to-bracket'];
+          } else {
+            loginAccount.link.setAttr('data-bs-original-title', 'Login Google Account');
+            loginAccount.icon.iconTags = ['fa-solid', 'fa-right-from-bracket'];
+          }
+        };
+
+        fa.on('logout', () => checkStatus(null));
+        fa.on('login', checkStatus);
+        fa.on('authStateChanged', checkStatus);
+        fa.init();
+
         // Nav Items
         newItem.dropdowns = {};
 
@@ -1347,6 +1383,9 @@ rootApp.onReady(() => {
 
           // Login
           aiLogin.base,
+
+          // Login
+          $(loginAccount.base.get(0)),
 
           // Read Fic
           $('<li>', {

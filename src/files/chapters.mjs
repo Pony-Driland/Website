@@ -6,7 +6,7 @@ import { toTitleCase, fetchJson, isJsonObject } from 'tiny-essentials';
 
 import tinyLib from './tinyLib.mjs';
 import storyCfg from '../chapters/config.mjs';
-import { tinyLs } from '../start.mjs';
+import { tinyLs } from '../important.mjs';
 
 // Prepare Data
 export const storyData = {

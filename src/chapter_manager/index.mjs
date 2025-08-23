@@ -4,8 +4,9 @@ import { countObj, toTitleCase, TinyHtml } from 'tiny-essentials';
 import $ from 'jquery';
 import paginateArray from 'paginate-array';
 
+import { tinyLs } from '../important.mjs';
 import tinyLib from '../files/tinyLib.mjs';
-import { clearFicData, urlUpdate, tinyLs } from '../start.mjs';
+import { clearFicData, urlUpdate } from '../start.mjs';
 import { storyData } from '../files/chapters.mjs';
 import cacheChapterUpdater from './updater.mjs';
 import musicManager from './music/index.mjs';
