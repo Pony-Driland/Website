@@ -19,8 +19,8 @@ import TinyMap from './TinyMap.mjs';
 import aiTemplates from './templates.mjs';
 import TinyClientIo from './socketClient.mjs';
 import UserRoomManager from './RoomUserManagerUI.mjs';
-import RpgData from './aiSoftware/rpgData.mjs';
-import EnablerAiContent from './aiSoftware/enablerContent.mjs';
+import RpgData from './rpgData.mjs';
+import EnablerAiContent from './enablerContent.mjs';
 
 import './jsonTemplate.mjs';
 
