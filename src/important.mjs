@@ -1,4 +1,4 @@
-import { TinyLocalStorage, TinyNotifications } from 'tiny-essentials';
+import { getAge, TinyLocalStorage, TinyNotifications } from 'tiny-essentials';
 import storyCfg from './chapters/config.mjs';
 import FirebaseAccount from './account/firebase.mjs';
 
@@ -35,3 +35,32 @@ export const fa = new FirebaseAccount({
   messagingSenderId: '1006395655918',
   appId: '1:1006395655918:web:4a8cf2722d68c3ea4a55ff',
 });
+
+/** @returns {boolean} */
+export function needsAgeVerification() {
+  return tinyLs.getString('user-country') &&
+    storyCfg.noNsfw.includes(tinyLs.getString('user-country') ?? '')
+    ? true
+    : false;
+}
+
+/**
+ * No NSFW Detector
+ * @param {number} [biggerAge=18]
+ * @returns {boolean}
+ */
+export function isNoNsfw(biggerAge = 18) {
+  /** @type {boolean} */
+  let isNoNsfw = needsAgeVerification();
+
+  if (isNoNsfw) {
+    const birthday = fa.birthday;
+    const date = birthday.find((item) => item.metadata.primary)?.date;
+    if (date && date.year) {
+      const data = new Date(date.year, date.month - 1, date.day, 0, 0, 0);
+      const age = getAge(data.valueOf());
+      if (age && age >= biggerAge) return false;
+    }
+  }
+  return isNoNsfw;
+}
