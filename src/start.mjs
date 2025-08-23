@@ -1251,7 +1251,7 @@ rootApp.onReady(() => {
           base: TinyHtml.createFrom('li', { className: 'nav-item font-weight-bold' }),
           link: new TinyButton({ label: '', tags: 'disabled', mainClass: 'nav-link' })
             .setAttr('id', 'login-start')
-            .setAttr('title', 'Login Google Account'),
+            .setAttr('title', 'Sign in with Google'),
           icon: new TinyIcon(['fa-solid', 'fa-right-to-bracket']),
         };
 
@@ -1278,7 +1278,7 @@ rootApp.onReady(() => {
             loginAccount.link.setAttr('data-bs-original-title', 'Logout');
             loginAccount.icon.iconTags = ['fa-solid', 'fa-right-to-bracket'];
           } else {
-            loginAccount.link.setAttr('data-bs-original-title', 'Login Google Account');
+            loginAccount.link.setAttr('data-bs-original-title', 'Sign in with Google');
             loginAccount.icon.iconTags = ['fa-solid', 'fa-right-from-bracket'];
           }
         };
