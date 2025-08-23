@@ -1,4 +1,4 @@
-import { objType } from "tiny-essentials";
+import { isJsonObject } from "tiny-essentials";
 import { tinyLs } from "../important.mjs";
 
 // Localstorage Manager
@@ -29,7 +29,7 @@ class TinyAiStorage extends EventEmitter {
       (typeof this.storage[this._selected] !== 'string' ||
         this.storage[this._selected].length < 1) &&
       typeof this.storage[this._selected] !== 'number' &&
-      !objType(this.storage[this._selected], 'object')
+      !isJsonObject(this.storage[this._selected])
     ) {
       this._selected = null;
       tinyLs.removeItem('tiny-ai-storage-selected');
@@ -41,7 +41,7 @@ class TinyAiStorage extends EventEmitter {
       typeof value === 'string' &&
       ((typeof this.storage[value] === 'string' && this.storage[value].length > 0) ||
         typeof this.storage[value] === 'number' ||
-        objType(this.storage[value], 'object'))
+        isJsonObject(this.storage[value]))
         ? value
         : null;
 
@@ -54,7 +54,7 @@ class TinyAiStorage extends EventEmitter {
   }
 
   setApiKey(name, key) {
-    if (typeof key === 'string' || typeof key === 'number' || objType(key, 'object')) {
+    if (typeof key === 'string' || typeof key === 'number' || isJsonObject(key)) {
       this.storage[name] = key;
       this._saveApiStorage();
       this._updateExistsAi();
