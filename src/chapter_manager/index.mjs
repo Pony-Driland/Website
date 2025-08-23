@@ -755,7 +755,11 @@ export const openChapterMenu = (params = {}) => {
         .append(
           tinyLib.bs
             .button(`${!cantNsfw ? 'info' : 'danger'} btn-sm ms-3`)
-            .text(!cantNsfw ? 'Choose Optional Mature Content' : 'Disabled in your region')
+            .text(
+              !cantNsfw
+                ? 'Choose Optional Mature Content'
+                : 'Unavailable in your region (Login with an 18+ account)',
+            )
             .prop('disabled', cantNsfw)
             .on('click', () => {
               // Nothing NSFW
