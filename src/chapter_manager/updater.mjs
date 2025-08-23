@@ -1,13 +1,12 @@
 import $ from 'jquery';
 import { TinyHtml, TinyAfterScrollWatcher } from 'tiny-essentials';
 
+import { tinyLs, gtag } from '../important.mjs';
 import tinyLib from '../files/tinyLib.mjs';
 import { storyData } from '../files/chapters.mjs';
 import storyCfg from '../chapters/config.mjs';
-import { tinyLs } from '../start.mjs';
 import ttsManager from './tts/tts.mjs';
 import musicManager from './music/index.mjs';
-import gtag from '../gtag.mjs';
 
 // Prepare Cache
 const cacheChapterUpdater = { soundCache: {} };

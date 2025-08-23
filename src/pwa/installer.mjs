@@ -1,7 +1,6 @@
 import { EventEmitter } from 'events';
 import forPromise from 'for-promise';
 import { TinyDomReadyManager, TinyHtml } from 'tiny-essentials';
-import storyCfg from '../chapters/config.mjs';
 
 const postMessage = (data) => {
   if (
