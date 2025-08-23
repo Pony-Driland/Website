@@ -28,7 +28,7 @@ import { storyData } from './files/chapters.mjs';
 import storyCfg from './chapters/config.mjs';
 import { openChapterMenu } from './chapter_manager/index.mjs';
 import { AiScriptStart } from './ai/aiSoftware.mjs';
-import { tinyLs, gtag, fa } from './important.mjs';
+import { tinyLs, gtag, fa, needsAgeVerification } from './important.mjs';
 
 import TinyIcon from './modules/template/TinyIcon.mjs';
 import TinyButton from './modules/template/TinyButton.mjs';
@@ -1247,46 +1247,47 @@ rootApp.onReady(() => {
         });
 
         // Login Account
-        const loginAccount = {
-          base: TinyHtml.createFrom('li', { className: 'nav-item font-weight-bold' }),
-          link: new TinyButton({ label: '', tags: 'disabled', mainClass: 'nav-link' })
+        const loginAccount = {};
+        if (needsAgeVerification()) {
+          loginAccount.base = TinyHtml.createFrom('li', { className: 'nav-item font-weight-bold' });
+          loginAccount.link = new TinyButton({ label: '', tags: 'disabled', mainClass: 'nav-link' })
             .setAttr('id', 'login-start')
-            .setAttr('title', 'Sign in with Google'),
-          icon: new TinyIcon(['fa-solid', 'fa-right-to-bracket']),
-        };
+            .setAttr('title', 'Sign in with Google');
+          loginAccount.icon = new TinyIcon(['fa-solid', 'fa-right-to-bracket']);
 
-        Tooltip(loginAccount.link);
-        loginAccount.base.append(loginAccount.link);
-        loginAccount.link.append(loginAccount.icon);
+          Tooltip(loginAccount.link);
+          loginAccount.base.append(loginAccount.link);
+          loginAccount.link.append(loginAccount.icon);
 
-        loginAccount.link.on('click', async () => {
-          if (fa.currentUser) {
-            Loader.start(`Logging out...`);
-            await fa.logout();
-          } else {
-            Loader.start(`Signing in...`);
-            await fa.login();
-          }
-          Loader.close();
-        });
+          loginAccount.link.on('click', async () => {
+            if (fa.currentUser) {
+              Loader.start(`Logging out...`);
+              await fa.logout();
+            } else {
+              Loader.start(`Signing in...`);
+              await fa.login();
+            }
+            Loader.close();
+          });
 
-        const checkStatus = /** @type {import('./account/firebase.mjs').OnAuthStateChanged} */ (
-          user,
-        ) => {
-          loginAccount.link.removeClass('disabled');
-          if (user) {
-            loginAccount.link.setAttr('data-bs-original-title', 'Logout');
-            loginAccount.icon.iconTags = ['fa-solid', 'fa-right-to-bracket'];
-          } else {
-            loginAccount.link.setAttr('data-bs-original-title', 'Sign in with Google');
-            loginAccount.icon.iconTags = ['fa-solid', 'fa-right-from-bracket'];
-          }
-        };
+          const checkStatus = /** @type {import('./account/firebase.mjs').OnAuthStateChanged} */ (
+            user,
+          ) => {
+            loginAccount.link.removeClass('disabled');
+            if (user) {
+              loginAccount.link.setAttr('data-bs-original-title', 'Logout');
+              loginAccount.icon.iconTags = ['fa-solid', 'fa-right-to-bracket'];
+            } else {
+              loginAccount.link.setAttr('data-bs-original-title', 'Sign in with Google');
+              loginAccount.icon.iconTags = ['fa-solid', 'fa-right-from-bracket'];
+            }
+          };
 
-        fa.on('logout', () => checkStatus(null));
-        fa.on('login', checkStatus);
-        fa.on('authStateChanged', checkStatus);
-        fa.init();
+          fa.on('logout', () => checkStatus(null));
+          fa.on('login', checkStatus);
+          fa.on('authStateChanged', checkStatus);
+          fa.init();
+        }
 
         // Nav Items
         newItem.dropdowns = {};
@@ -1385,7 +1386,7 @@ rootApp.onReady(() => {
           aiLogin.base,
 
           // Login
-          $(loginAccount.base.get(0)),
+          loginAccount.base ? $(loginAccount.base.get(0)) : null,
 
           // Read Fic
           $('<li>', {
