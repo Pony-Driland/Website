@@ -4,7 +4,7 @@ import { countObj, toTitleCase, TinyHtml } from 'tiny-essentials';
 import $ from 'jquery';
 import paginateArray from 'paginate-array';
 
-import { tinyLs } from '../important.mjs';
+import { isNoNsfw, tinyLs } from '../important.mjs';
 import tinyLib from '../files/tinyLib.mjs';
 import { clearFicData, urlUpdate } from '../start.mjs';
 import { storyData } from '../files/chapters.mjs';
@@ -546,11 +546,8 @@ export const openChapterMenu = (params = {}) => {
   // Nope. Choose One
   else {
     const markdownRead = $('#markdown-read');
-    const isNoNsfw =
-      tinyLs.getString('user-country') &&
-      storyCfg.noNsfw.includes(tinyLs.getString('user-country'));
-
-    if (isNoNsfw) {
+    const cantNsfw = isNoNsfw();
+    if (cantNsfw) {
       for (const item in storyCfg.nsfw) {
         if (tinyLs.getItem('NSFW' + item)) tinyLs.removeItem('NSFW' + item);
       }
@@ -757,9 +754,9 @@ export const openChapterMenu = (params = {}) => {
         .prepend(tinyLib.icon('fas fa-book-open me-3'))
         .append(
           tinyLib.bs
-            .button(`${!isNoNsfw ? 'info' : 'danger'} btn-sm ms-3`)
-            .text(!isNoNsfw ? 'Choose Optional Mature Content' : 'Disabled in your region')
-            .prop('disabled', isNoNsfw)
+            .button(`${!cantNsfw ? 'info' : 'danger'} btn-sm ms-3`)
+            .text(!cantNsfw ? 'Choose Optional Mature Content' : 'Disabled in your region')
+            .prop('disabled', cantNsfw)
             .on('click', () => {
               // Nothing NSFW
               let existNSFW = false;
