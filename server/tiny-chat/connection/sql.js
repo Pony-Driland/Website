@@ -209,6 +209,31 @@ export const startDatabase = async (appStorage) => {
     // Debug mode
     db.setIsDebug(isDebug());
 
+    // await db.getTable('users').find({ perPage: 30, q: { userId: { value: 1, operator: '>' } } });
+    await db.getTable('users').search({
+      q: {
+        group: 'AND',
+        conditions: [
+          { column: 'userId', value: 'jasmindreasond' },
+          {
+            group: 'OR',
+            conditions: [
+              { column: 'password', operator: '!==', value: 'admin' },
+              { column: 'password', operator: 'LIKE', value: 'admin' },
+              { column: 'password', operator: 'LOWER', value: 'admin', funcName: null },
+              { column: 'password', value: 'mod' },
+            ],
+          },
+        ],
+      },
+    });
+    /* .search(
+        { q: { nickname: { value: 'Tiny Jasmini' }, userId: { value: 'jasmindreasond' } } },
+        '*',
+        2,
+        1,
+      ); */
+
     // Complete
     console.log(`[APP] [${config.database.type}] Database connection opened.`);
     return true;
