@@ -4,7 +4,7 @@ import { Offcanvas } from 'bootstrap';
 import JSONEditor from '../../build/bundle/JSONEditor.mjs';
 
 import tinyLib from '../files/tinyLib.mjs';
-import aiTemplates from './templates.mjs';
+import aiTemplates from './values/templates.mjs';
 
 class RpgData {
   constructor() {

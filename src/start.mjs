@@ -31,6 +31,7 @@ import TinyIcon from './modules/template/TinyIcon.mjs';
 import TinyButton from './modules/template/TinyButton.mjs';
 import { Tooltip } from './modules/TinyBootstrap.mjs';
 import { AiScriptStart } from './ai/aiSoftware.mjs';
+import { tinyAiScript } from './ai/software/tinyAiScript.mjs';
 
 addAiMarkerShortcut();
 
@@ -656,7 +657,7 @@ export const clearFicData = function () {
     appData.ai.interval = null;
     appData.ai.secondsUsed = 0;
   }
-  appData.ai.killIo();
+  tinyAiScript.killIo();
 
   for (const item in storyData.sfx) {
     if (typeof storyData.sfx[item].hide === 'function') {
@@ -803,9 +804,6 @@ rootApp.onReady(() => {
        * @param {string} readme
        */
       (connStore, fn, readme) => {
-        const tinyAiScript = AiScriptStart(connStore);
-        appData.ai.killIo = () => tinyAiScript.killIo();
-
         // Custom Colors
         $('head').append(
           $('<style>', { id: 'custom_color' }).text(`
@@ -1218,27 +1216,26 @@ rootApp.onReady(() => {
           });
 
           // AI Login
-          const aiLogin = {
+          tinyAiScript.aiLogin = {
             base: $('<li>', { class: 'nav-item font-weight-bold' }),
             secondsUsed: 0,
             title: '',
             updateTitle: () => {
-              if (aiLogin.button) {
-                const title = `${aiLogin.title}${aiLogin.secondsUsed > 0 ? ` - ${formatDayTimer(aiLogin.secondsUsed)}` : ''}`;
-                aiLogin.button.removeAttr('title');
-                aiLogin.button.attr('data-bs-original-title', title);
+              if (tinyAiScript.aiLogin.button) {
+                const title = `${tinyAiScript.aiLogin.title}${tinyAiScript.aiLogin.secondsUsed > 0 ? ` - ${formatDayTimer(tinyAiScript.aiLogin.secondsUsed)}` : ''}`;
+                tinyAiScript.aiLogin.button.removeAttr('title');
+                tinyAiScript.aiLogin.button.attr('data-bs-original-title', title);
               }
             },
           };
-          tinyAiScript.setAiLogin(aiLogin);
 
-          aiLogin.button = tinyLib.bs
+          tinyAiScript.aiLogin.button = tinyLib.bs
             .button({ id: 'ai-login', dsBtn: true, class: 'nav-link' })
             .prepend(tinyLib.icon('fa-solid fa-robot me-2'));
 
           tinyAiScript.checkTitle();
-          aiLogin.base.prepend(aiLogin.button);
-          aiLogin.button.on('click', function () {
+          tinyAiScript.aiLogin.base.prepend(tinyAiScript.aiLogin.button);
+          tinyAiScript.aiLogin.button.on('click', function () {
             tinyAiScript.login(this);
             return false;
           });
@@ -1372,7 +1369,7 @@ rootApp.onReady(() => {
                 .text('AI Page')
                 .prepend(tinyLib.icon('fa-solid fa-server me-2'))
                 .on('click', () => {
-                  tinyAiScript.open();
+                  AiScriptStart(connStore);
                   if (offCanvasEl) offCanvasEl.hide();
                   return false;
                 }),
@@ -1390,7 +1387,7 @@ rootApp.onReady(() => {
             $('<li>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
 
             // Login
-            aiLogin.base,
+            tinyAiScript.aiLogin.base,
 
             // Login
             loginAccount.base ? $(loginAccount.base.get(0)) : null,
@@ -1417,7 +1414,7 @@ rootApp.onReady(() => {
               }),
           ];
 
-          aiLogin.button.tooltip();
+          tinyAiScript.aiLogin.button.tooltip();
           return newItem;
         };
 
@@ -1712,7 +1709,7 @@ rootApp.onReady(() => {
         // Start Readme
         const params = getParams();
         if (params.path === 'read-fic') openChapterMenu(params);
-        else if (params.path === 'ai') tinyAiScript.open();
+        else if (params.path === 'ai') AiScriptStart(connStore);
         else openNewAddress(params, true, true);
 
         // Final part
