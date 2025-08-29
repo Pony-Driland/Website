@@ -1,7 +1,11 @@
 import { EventEmitter } from 'events';
+import * as JsStore from 'jsstore';
 import { getAge, TinyLocalStorage, TinyNotifications } from 'tiny-essentials';
 import storyCfg from './chapters/config.mjs';
 import FirebaseAccount from './account/firebase.mjs';
+
+// Start jsStore
+export const connStore = new JsStore.Connection(new Worker('jsstore.worker.min.js'));
 
 // Localstorage
 export const tinyLs = new TinyLocalStorage('pony-driland');

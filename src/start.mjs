@@ -799,11 +799,10 @@ rootApp.onReady(() => {
     console.log('Starting App...');
     storyData.start(
       /**
-       * @param {JsStore.Connection} connStore
        * @param {Function} fn
        * @param {string} readme
        */
-      (connStore, fn, readme) => {
+      (fn, readme) => {
         // Custom Colors
         $('head').append(
           $('<style>', { id: 'custom_color' }).text(`
@@ -1369,7 +1368,7 @@ rootApp.onReady(() => {
                 .text('AI Page')
                 .prepend(tinyLib.icon('fa-solid fa-server me-2'))
                 .on('click', () => {
-                  AiScriptStart(connStore);
+                  AiScriptStart();
                   if (offCanvasEl) offCanvasEl.hide();
                   return false;
                 }),
@@ -1709,7 +1708,7 @@ rootApp.onReady(() => {
         // Start Readme
         const params = getParams();
         if (params.path === 'read-fic') openChapterMenu(params);
-        else if (params.path === 'ai') AiScriptStart(connStore);
+        else if (params.path === 'ai') AiScriptStart();
         else openNewAddress(params, true, true);
 
         // Final part
