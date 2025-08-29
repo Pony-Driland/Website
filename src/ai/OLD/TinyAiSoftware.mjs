@@ -11,9 +11,9 @@ import { setTinyGoogleAi, TinyAiInstance } from 'tiny-ai-api';
 import { objType, countObj, toTitleCase, TinyTextRangeEditor } from 'tiny-essentials';
 import TinyDices from 'tiny-dices';
 
-import { isNoNsfw, tinyLs, tinyNotification, appData } from '../important.mjs';
+import { isNoNsfw, tinyLs, tinyNotification } from '../important.mjs';
 import tinyLib from '../files/tinyLib.mjs';
-import { clearFicData, saveRoleplayFormat, urlUpdate } from '../start.mjs';
+import { appData, clearFicData, saveRoleplayFormat, urlUpdate } from '../start.mjs';
 import storyCfg from '../chapters/config.mjs';
 import TinyMap from './TinyMap.mjs';
 import aiTemplates from './templates.mjs';

@@ -2,12 +2,11 @@ import Pizzicato from 'pizzicato';
 import objHash from 'object-hash';
 import $ from 'jquery';
 import { shuffleArray, ruleOfThree } from 'tiny-essentials';
-import { tinyLs, gtag } from '../../important.mjs';
+import { tinyLs, gtag, appData } from '../../important.mjs';
 import SeamlessLoop from '../../../build/bundle/SeamlessLoop.mjs';
 import BuffAudio from '../../../build/bundle/buffaudio.mjs';
 
 import tinyLib from '../../files/tinyLib.mjs';
-import { appData } from '../../start.mjs';
 import { storyData } from '../../files/chapters.mjs';
 import storyCfg from '../../chapters/config.mjs';
 import ttsManager from '../tts/tts.mjs';
