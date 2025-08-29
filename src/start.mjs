@@ -1,5 +1,3 @@
-import { EventEmitter } from 'events';
-
 import { Loader } from 'circle-loader';
 import {
   formatDayTimer,
@@ -27,21 +25,14 @@ import tinyLib from './files/tinyLib.mjs';
 import { storyData } from './files/chapters.mjs';
 import storyCfg from './chapters/config.mjs';
 import { openChapterMenu } from './chapter_manager/index.mjs';
-import { AiScriptStart } from './ai/aiSoftware.mjs';
-import { tinyLs, gtag, fa, needsAgeVerification } from './important.mjs';
+import { tinyLs, gtag, fa, needsAgeVerification, appData } from './important.mjs';
 
 import TinyIcon from './modules/template/TinyIcon.mjs';
 import TinyButton from './modules/template/TinyButton.mjs';
 import { Tooltip } from './modules/TinyBootstrap.mjs';
+import { AiScriptStart } from './ai/aiSoftware.mjs';
 
 addAiMarkerShortcut();
-
-// Start Load
-export const appData = {
-  youtube: {},
-  ai: { using: false, interval: null, secondsUsed: 0 },
-};
-appData.emitter = new EventEmitter();
 
 // Start Document
 console.groupCollapsed('App Information');
@@ -805,13 +796,19 @@ rootApp.onReady(() => {
 
   const startApp = () => {
     console.log('Starting App...');
-    storyData.start((connStore, fn, readme) => {
-      const tinyAiScript = AiScriptStart(connStore);
-      appData.ai.killIo = tinyAiScript.killIo;
+    storyData.start(
+      /**
+       * @param {JsStore.Connection} connStore
+       * @param {Function} fn
+       * @param {string} readme
+       */
+      (connStore, fn, readme) => {
+        const tinyAiScript = AiScriptStart(connStore);
+        appData.ai.killIo = () => tinyAiScript.killIo();
 
-      // Custom Colors
-      $('head').append(
-        $('<style>', { id: 'custom_color' }).text(`
+        // Custom Colors
+        $('head').append(
+          $('<style>', { id: 'custom_color' }).text(`
 
             .alert .close span{
                 color: ${storyCfg.theme.color4} !important;
@@ -917,812 +914,823 @@ rootApp.onReady(() => {
             }
             
             `),
-      );
+        );
 
-      // Readme
-      storyData.readme = readme;
+        // Readme
+        storyData.readme = readme;
 
-      // Read Updater
-      let isNewValue = '';
-      storyData.globalIsNew = 0;
-      for (const chapter in storyData.isNew) {
-        if (storyData.isNew[chapter] === 2 && storyData.isNew[chapter] > storyData.globalIsNew) {
-          storyData.globalIsNew = 2;
-          isNewValue = $('<span>', { class: 'badge badge-primary ms-2' }).text('NEW');
-        } else if (
-          storyData.isNew[chapter] === 1 &&
-          storyData.isNew[chapter] > storyData.globalIsNew
-        ) {
-          storyData.globalIsNew = 1;
-          isNewValue = $('<span>', {
-            class: 'badge badge-secondary ms-2',
-          }).text('UPDATE');
+        // Read Updater
+        let isNewValue = '';
+        storyData.globalIsNew = 0;
+        for (const chapter in storyData.isNew) {
+          if (storyData.isNew[chapter] === 2 && storyData.isNew[chapter] > storyData.globalIsNew) {
+            storyData.globalIsNew = 2;
+            isNewValue = $('<span>', { class: 'badge badge-primary ms-2' }).text('NEW');
+          } else if (
+            storyData.isNew[chapter] === 1 &&
+            storyData.isNew[chapter] > storyData.globalIsNew
+          ) {
+            storyData.globalIsNew = 1;
+            isNewValue = $('<span>', {
+              class: 'badge badge-secondary ms-2',
+            }).text('UPDATE');
+          }
         }
-      }
 
-      // Year
-      const yearNow = moment().year();
-      let copyrightText = null;
-      if (yearNow === storyCfg.year) {
-        copyrightText = `© ${storyCfg.year} ${storyCfg.title} | `;
-      } else {
-        copyrightText = `© ${storyCfg.year} - ${yearNow} ${storyCfg.title} | `;
-      }
-
-      // Dropdown
-      const addDropdown = (newItem) => {
-        for (const valueName in newItem.dropdowns) {
-          const dataList = newItem.dbBase[valueName];
-          const tinyHtml = newItem.dropdowns[valueName];
-          tinyLib.bs.dropdownClick(tinyHtml, dataList, (li, element, item) => {
-            // Create Dropdown
-            const aItem = $('<a>', { class: 'dropdown-item', id: item.id, href: item.href });
-            li.append(aItem);
-
-            // Add text
-            aItem.text(item.text);
-            if (item.icon) aItem.prepend(tinyLib.icon(`${item.icon} me-2`));
-
-            // File
-            if (typeof item.file === 'string') {
-              aItem.attr('href', 'javascript:void(0)');
-              aItem.attr('file', item.file);
-            }
-
-            // Target
-            if (item.href && item.href !== 'javascript:void(0)') aItem.attr('target', '_blank');
-
-            // Is web3
-            if (item.web3Element) li.addClass('web3-element');
-
-            // Click
-            if (typeof item.file === 'string')
-              li.on('click', function () {
-                openMDFile(aItem.attr('file'));
-              });
-            if (item.click) li.on('click', item.click);
-            li.on('click', () => {
-              element.hide();
-              offCanvasNavCfg.hide();
-            });
-          });
+        // Year
+        const yearNow = moment().year();
+        let copyrightText = null;
+        if (yearNow === storyCfg.year) {
+          copyrightText = `© ${storyCfg.year} ${storyCfg.title} | `;
+        } else {
+          copyrightText = `© ${storyCfg.year} - ${yearNow} ${storyCfg.title} | `;
         }
-      };
 
-      // Insert Navbars
-      const navbarItems = function () {
-        // Base Crypto Modal
-        let offCanvasEl = null;
-        const baseCryptoModal = function (crypto_value, title) {
-          return function () {
-            const qrcodeCanvas = $('<canvas>');
-            QRCode.toCanvas(qrcodeCanvas[0], storyCfg[crypto_value].address, function (error) {
-              if (error) {
-                alert(error);
-              } else {
-                // Prepare Text
-                tinyLib.modal({
-                  title: title + ' Network Donation',
+        // Dropdown
+        const addDropdown = (newItem) => {
+          for (const valueName in newItem.dropdowns) {
+            const dataList = newItem.dbBase[valueName];
+            const tinyHtml = newItem.dropdowns[valueName];
+            tinyLib.bs.dropdownClick(tinyHtml, dataList, (li, element, item) => {
+              // Create Dropdown
+              const aItem = $('<a>', { class: 'dropdown-item', id: item.id, href: item.href });
+              li.append(aItem);
 
-                  id: 'busd_request',
-                  dialog: 'modal-lg',
+              // Add text
+              aItem.text(item.text);
+              if (item.icon) aItem.prepend(tinyLib.icon(`${item.icon} me-2`));
 
-                  body: $('<center>').append(
-                    $('<h4>', { class: 'mb-5' }).text(
-                      'Please enter the address correctly! Any type issue will be permanent loss of your funds!',
-                    ),
-                    $('<a>', {
-                      target: '_blank',
-                      href: storyCfg[crypto_value].explorer + storyCfg[crypto_value].address,
-                    }).text('Blockchain Explorer'),
-                    $('<br>'),
-                    $('<span>').text(storyCfg[crypto_value].address),
-                    $('<div>', { class: 'mt-3' }).append(qrcodeCanvas),
-                  ),
-
-                  footer: [],
-                });
+              // File
+              if (typeof item.file === 'string') {
+                aItem.attr('href', 'javascript:void(0)');
+                aItem.attr('file', item.file);
               }
+
+              // Target
+              if (item.href && item.href !== 'javascript:void(0)') aItem.attr('target', '_blank');
+
+              // Is web3
+              if (item.web3Element) li.addClass('web3-element');
+
+              // Click
+              if (typeof item.file === 'string')
+                li.on('click', function () {
+                  openMDFile(aItem.attr('file'));
+                });
+              if (item.click) li.on('click', item.click);
+              li.on('click', () => {
+                element.hide();
+                offCanvasNavCfg.hide();
+              });
+            });
+          }
+        };
+
+        // Insert Navbars
+        const navbarItems = function () {
+          // Base Crypto Modal
+          let offCanvasEl = null;
+          const baseCryptoModal = function (crypto_value, title) {
+            return function () {
+              const qrcodeCanvas = $('<canvas>');
+              QRCode.toCanvas(qrcodeCanvas[0], storyCfg[crypto_value].address, function (error) {
+                if (error) {
+                  alert(error);
+                } else {
+                  // Prepare Text
+                  tinyLib.modal({
+                    title: title + ' Network Donation',
+
+                    id: 'busd_request',
+                    dialog: 'modal-lg',
+
+                    body: $('<center>').append(
+                      $('<h4>', { class: 'mb-5' }).text(
+                        'Please enter the address correctly! Any type issue will be permanent loss of your funds!',
+                      ),
+                      $('<a>', {
+                        target: '_blank',
+                        href: storyCfg[crypto_value].explorer + storyCfg[crypto_value].address,
+                      }).text('Blockchain Explorer'),
+                      $('<br>'),
+                      $('<span>').text(storyCfg[crypto_value].address),
+                      $('<div>', { class: 'mt-3' }).append(qrcodeCanvas),
+                    ),
+
+                    footer: [],
+                  });
+                }
+              });
+
+              // Complete
+              return false;
+            };
+          };
+
+          // Base
+          const newItem = { dbBase: {} };
+          newItem.dbBase.donations = [];
+          newItem.dbBase.information = [];
+          newItem.dbBase.characters = [];
+          newItem.setOffCanvas = (newOffCanvas) => {
+            offCanvasEl = newOffCanvas;
+          };
+
+          // Derpibooru
+          newItem.dbBase.information.push({
+            href: `https://derpibooru.org/tags/${storyCfg.derpibooru_tag}`,
+            id: 'derpibooru-page',
+            text: 'Derpibooru',
+            icon: 'fa-solid fa-paintbrush',
+          });
+
+          // Tantabus
+          newItem.dbBase.information.push({
+            href: `https://tantabus.ai/tags/${storyCfg.derpibooru_tag}`,
+            id: 'tantabus-page',
+            text: 'Tantabus',
+            icon: 'fa-solid fa-paintbrush',
+          });
+
+          // Tiny Tips
+          newItem.dbBase.information.push({
+            href: `javascript:void(0)`,
+            id: 'information-menu',
+            text: 'Museum',
+            icon: 'fa-solid fa-building-columns',
+            click: () => openMDFile('pages/museum.md'),
+          });
+
+          newItem.dbBase.information.push({
+            href: `javascript:void(0)`,
+            id: 'tiny-ai-writer-tips',
+            text: 'AI Tips for human artists',
+            icon: 'fa-solid fa-circle-info',
+            click: () => openMDFile('pages/artistTips.md'),
+          });
+
+          newItem.dbBase.information.push({
+            href: `javascript:void(0)`,
+            id: 'ai-fic-template',
+            text: 'Official AI Models',
+            icon: 'fa-solid fa-toolbox',
+            click: () => openMDFile('pages/ai-templates/ai-models.md'),
+          });
+
+          // Patreon
+          if (storyCfg.patreon) {
+            newItem.dbBase.donations.push({
+              href: `https://patreon.com/${storyCfg.patreon}`,
+              id: 'patreon-url',
+              text: 'Patreon',
+              icon: 'fa-brands fa-patreon',
+            });
+          }
+
+          // Kofi
+          if (storyCfg.kofi) {
+            newItem.dbBase.donations.push({
+              href: `https://ko-fi.com/${storyCfg.kofi}`,
+              id: 'kofi-url',
+              text: 'Ko-Fi',
+              icon: 'fa-solid fa-mug-hot',
+            });
+          }
+
+          // Bitcoin
+          if (storyCfg.bitcoin && storyCfg.bitcoin.address && storyCfg.bitcoin.explorer) {
+            newItem.dbBase.donations.push({
+              href: storyCfg.bitcoin.explorer + storyCfg.bitcoin.address,
+              id: 'bitcoin-wallet',
+              text: 'Bitcoin',
+              icon: 'fa-brands fa-bitcoin',
+              click: baseCryptoModal('bitcoin', 'Bitcoin'),
+            });
+          }
+
+          // Dogecoin
+          if (storyCfg.dogecoin && storyCfg.dogecoin.address && storyCfg.dogecoin.explorer) {
+            newItem.dbBase.donations.push({
+              href: storyCfg.dogecoin.explorer + storyCfg.dogecoin.address,
+              id: 'dogecoin-wallet',
+              text: 'Dogecoin',
+              icon: 'cf cf-doge',
+              click: baseCryptoModal('dogecoin', 'Dogecoin'),
+            });
+          }
+
+          // Ethereum
+          if (storyCfg.ethereum && storyCfg.ethereum.address && storyCfg.ethereum.explorer) {
+            newItem.dbBase.donations.push({
+              href: storyCfg.ethereum.explorer + storyCfg.ethereum.address,
+              id: 'ethereum-wallet',
+              text: 'Ethereum',
+              icon: 'fa-brands fa-ethereum',
+              web3Element: true,
+              click: baseCryptoModal('ethereum', 'Ethereum'),
+            });
+          }
+
+          // Polygon
+          if (storyCfg.polygon && storyCfg.polygon.address && storyCfg.polygon.explorer) {
+            newItem.dbBase.donations.push({
+              href: storyCfg.polygon.explorer + storyCfg.polygon.address,
+              id: 'polygon-wallet',
+              text: 'Polygon',
+              icon: 'cf cf-matic',
+              web3Element: true,
+              click: baseCryptoModal('polygon', 'Polygon'),
+            });
+          }
+
+          // BNB
+          if (storyCfg.bnb && storyCfg.bnb.address && storyCfg.bnb.explorer) {
+            newItem.dbBase.donations.push({
+              href: storyCfg.bnb.explorer + storyCfg.bnb.address,
+              id: 'bnb-wallet',
+              text: 'BNB',
+              icon: 'cf cf-bnb',
+              web3Element: true,
+              click: baseCryptoModal('bnb', 'BNB'),
+            });
+          }
+
+          // Crypto Wallet
+          if (storyCfg.nftDomain && storyCfg.nftDomain.url) {
+            newItem.dbBase.donations.push({
+              href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet),
+              id: 'crypto-wallet',
+              text: 'More crypto wallets',
+              web3Element: true,
+              icon: 'fas fa-wallet',
+            });
+          }
+
+          // Characters
+          newItem.dbBase.characters.push({
+            file: '/data/characters/rayane/README.md',
+            text: 'Rayane (Page WIP)',
+          });
+
+          newItem.dbBase.characters.push({
+            file: '/data/characters/james/README.md',
+            text: 'James (Character WIP)',
+          });
+
+          newItem.dbBase.characters.push({
+            file: '/data/characters/rainbow-queen/README.md',
+            text: 'Rainbow Queen',
+          });
+
+          newItem.dbBase.characters.push({
+            file: '/data/characters/princess-ariella/README.md',
+            text: 'Princess Ariella (Page WIP)',
+          });
+
+          newItem.dbBase.characters.push({
+            file: '/data/characters/amy/README.md',
+            text: 'Amy (Page WIP)',
+          });
+
+          newItem.dbBase.characters.push({
+            file: '/data/characters/layla/README.md',
+            text: 'Layla (Page WIP)',
+          });
+
+          newItem.dbBase.characters.push({
+            file: '/data/characters/prisma/README.md',
+            text: 'Prisma (Character WIP)',
+          });
+
+          newItem.dbBase.characters.push({
+            file: '/data/characters/aniya/README.md',
+            text: 'Aniya (Character WIP)',
+          });
+
+          newItem.dbBase.characters.push({
+            file: '/data/characters/blue-screen/README.md',
+            text: 'Blue Screen (Page WIP)',
+          });
+
+          newItem.dbBase.characters.push({
+            file: '/data/characters/whistler/README.md',
+            text: 'Whistler (Character WIP)',
+          });
+
+          // AI Login
+          const aiLogin = {
+            base: $('<li>', { class: 'nav-item font-weight-bold' }),
+            secondsUsed: 0,
+            title: '',
+            updateTitle: () => {
+              if (aiLogin.button) {
+                const title = `${aiLogin.title}${aiLogin.secondsUsed > 0 ? ` - ${formatDayTimer(aiLogin.secondsUsed)}` : ''}`;
+                aiLogin.button.removeAttr('title');
+                aiLogin.button.attr('data-bs-original-title', title);
+              }
+            },
+          };
+          tinyAiScript.setAiLogin(aiLogin);
+
+          aiLogin.button = tinyLib.bs
+            .button({ id: 'ai-login', dsBtn: true, class: 'nav-link' })
+            .prepend(tinyLib.icon('fa-solid fa-robot me-2'));
+
+          tinyAiScript.checkTitle();
+          aiLogin.base.prepend(aiLogin.button);
+          aiLogin.button.on('click', function () {
+            tinyAiScript.login(this);
+            return false;
+          });
+
+          // Login Account
+          const loginAccount = {};
+          if (needsAgeVerification()) {
+            loginAccount.base = TinyHtml.createFrom('li', {
+              className: 'nav-item font-weight-bold',
+            });
+            loginAccount.link = new TinyButton({
+              label: '',
+              tags: 'disabled',
+              mainClass: 'nav-link',
+            })
+              .setAttr('id', 'login-start')
+              .setAttr('title', 'Sign in with Google');
+            loginAccount.icon = new TinyIcon(['fa-solid', 'fa-right-to-bracket']);
+
+            Tooltip(loginAccount.link);
+            loginAccount.base.append(loginAccount.link);
+            loginAccount.link.append(loginAccount.icon);
+
+            loginAccount.link.on('click', async () => {
+              if (fa.currentUser) {
+                Loader.start(`Logging out...`);
+                await fa.logout();
+              } else {
+                Loader.start(`Signing in...`);
+                await fa.login();
+              }
+              Loader.close();
             });
 
-            // Complete
-            return false;
-          };
-        };
+            const checkStatus = /** @type {import('./account/firebase.mjs').OnAuthStateChanged} */ (
+              user,
+            ) => {
+              loginAccount.link.removeClass('disabled');
+              if (user) {
+                loginAccount.link.setAttr('data-bs-original-title', 'Logout');
+                loginAccount.icon.iconTags = ['fa-solid', 'fa-right-to-bracket'];
+              } else {
+                loginAccount.link.setAttr('data-bs-original-title', 'Sign in with Google');
+                loginAccount.icon.iconTags = ['fa-solid', 'fa-right-from-bracket'];
+              }
+            };
 
-        // Base
-        const newItem = { dbBase: {} };
-        newItem.dbBase.donations = [];
-        newItem.dbBase.information = [];
-        newItem.dbBase.characters = [];
-        newItem.setOffCanvas = (newOffCanvas) => {
-          offCanvasEl = newOffCanvas;
-        };
+            fa.on('logout', () => checkStatus(null));
+            fa.on('login', checkStatus);
+            fa.on('authStateChanged', checkStatus);
+            fa.init();
+          }
 
-        // Derpibooru
-        newItem.dbBase.information.push({
-          href: `https://derpibooru.org/tags/${storyCfg.derpibooru_tag}`,
-          id: 'derpibooru-page',
-          text: 'Derpibooru',
-          icon: 'fa-solid fa-paintbrush',
-        });
+          // Nav Items
+          newItem.dropdowns = {};
 
-        // Tantabus
-        newItem.dbBase.information.push({
-          href: `https://tantabus.ai/tags/${storyCfg.derpibooru_tag}`,
-          id: 'tantabus-page',
-          text: 'Tantabus',
-          icon: 'fa-solid fa-paintbrush',
-        });
+          newItem.dropdowns.information = $('<li>', {
+            class: 'nav-item dropdown',
+            id: 'information-menu',
+          }).prepend(
+            tinyLib.bs
+              .button({ dsBtn: true, class: 'nav-link dropdown-toggle' })
+              .text('Information'),
+          );
+          // Donations Button
+          newItem.dropdowns.donations = $('<li>', {
+            class: 'nav-item dropdown',
+            id: 'donations-menu',
+          }).prepend(
+            tinyLib.bs.button({ dsBtn: true, class: 'nav-link dropdown-toggle' }).text('Donations'),
+          );
+          // Characters
+          newItem.dropdowns.characters = $('<li>', {
+            class: 'nav-item dropdown',
+            id: 'characters-menu',
+          }).prepend(
+            tinyLib.bs
+              .button({ dsBtn: true, class: 'nav-link dropdown-toggle' })
+              .text('Characters'),
+          );
+          newItem.left = [
+            // Homepage
+            $('<li>', { class: 'nav-item' }).prepend(
+              $('<a>', { class: 'nav-link', href: '/', id: 'homepage' })
+                .text('Home')
+                .prepend(tinyLib.icon('fas fa-home me-2'))
+                .on('click', () => {
+                  openMDFile('MAIN', true);
+                  if (offCanvasEl) offCanvasEl.hide();
+                  return false;
+                }),
+            ),
 
-        // Tiny Tips
-        newItem.dbBase.information.push({
-          href: `javascript:void(0)`,
-          id: 'information-menu',
-          text: 'Museum',
-          icon: 'fa-solid fa-building-columns',
-          click: () => openMDFile('pages/museum.md'),
-        });
-
-        newItem.dbBase.information.push({
-          href: `javascript:void(0)`,
-          id: 'tiny-ai-writer-tips',
-          text: 'AI Tips for human artists',
-          icon: 'fa-solid fa-circle-info',
-          click: () => openMDFile('pages/artistTips.md'),
-        });
-
-        newItem.dbBase.information.push({
-          href: `javascript:void(0)`,
-          id: 'ai-fic-template',
-          text: 'Official AI Models',
-          icon: 'fa-solid fa-toolbox',
-          click: () => openMDFile('pages/ai-templates/ai-models.md'),
-        });
-
-        // Patreon
-        if (storyCfg.patreon) {
-          newItem.dbBase.donations.push({
-            href: `https://patreon.com/${storyCfg.patreon}`,
-            id: 'patreon-url',
-            text: 'Patreon',
-            icon: 'fa-brands fa-patreon',
-          });
-        }
-
-        // Kofi
-        if (storyCfg.kofi) {
-          newItem.dbBase.donations.push({
-            href: `https://ko-fi.com/${storyCfg.kofi}`,
-            id: 'kofi-url',
-            text: 'Ko-Fi',
-            icon: 'fa-solid fa-mug-hot',
-          });
-        }
-
-        // Bitcoin
-        if (storyCfg.bitcoin && storyCfg.bitcoin.address && storyCfg.bitcoin.explorer) {
-          newItem.dbBase.donations.push({
-            href: storyCfg.bitcoin.explorer + storyCfg.bitcoin.address,
-            id: 'bitcoin-wallet',
-            text: 'Bitcoin',
-            icon: 'fa-brands fa-bitcoin',
-            click: baseCryptoModal('bitcoin', 'Bitcoin'),
-          });
-        }
-
-        // Dogecoin
-        if (storyCfg.dogecoin && storyCfg.dogecoin.address && storyCfg.dogecoin.explorer) {
-          newItem.dbBase.donations.push({
-            href: storyCfg.dogecoin.explorer + storyCfg.dogecoin.address,
-            id: 'dogecoin-wallet',
-            text: 'Dogecoin',
-            icon: 'cf cf-doge',
-            click: baseCryptoModal('dogecoin', 'Dogecoin'),
-          });
-        }
-
-        // Ethereum
-        if (storyCfg.ethereum && storyCfg.ethereum.address && storyCfg.ethereum.explorer) {
-          newItem.dbBase.donations.push({
-            href: storyCfg.ethereum.explorer + storyCfg.ethereum.address,
-            id: 'ethereum-wallet',
-            text: 'Ethereum',
-            icon: 'fa-brands fa-ethereum',
-            web3Element: true,
-            click: baseCryptoModal('ethereum', 'Ethereum'),
-          });
-        }
-
-        // Polygon
-        if (storyCfg.polygon && storyCfg.polygon.address && storyCfg.polygon.explorer) {
-          newItem.dbBase.donations.push({
-            href: storyCfg.polygon.explorer + storyCfg.polygon.address,
-            id: 'polygon-wallet',
-            text: 'Polygon',
-            icon: 'cf cf-matic',
-            web3Element: true,
-            click: baseCryptoModal('polygon', 'Polygon'),
-          });
-        }
-
-        // BNB
-        if (storyCfg.bnb && storyCfg.bnb.address && storyCfg.bnb.explorer) {
-          newItem.dbBase.donations.push({
-            href: storyCfg.bnb.explorer + storyCfg.bnb.address,
-            id: 'bnb-wallet',
-            text: 'BNB',
-            icon: 'cf cf-bnb',
-            web3Element: true,
-            click: baseCryptoModal('bnb', 'BNB'),
-          });
-        }
-
-        // Crypto Wallet
-        if (storyCfg.nftDomain && storyCfg.nftDomain.url) {
-          newItem.dbBase.donations.push({
-            href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet),
-            id: 'crypto-wallet',
-            text: 'More crypto wallets',
-            web3Element: true,
-            icon: 'fas fa-wallet',
-          });
-        }
-
-        // Characters
-        newItem.dbBase.characters.push({
-          file: '/data/characters/rayane/README.md',
-          text: 'Rayane (Page WIP)',
-        });
-
-        newItem.dbBase.characters.push({
-          file: '/data/characters/james/README.md',
-          text: 'James (Character WIP)',
-        });
-
-        newItem.dbBase.characters.push({
-          file: '/data/characters/rainbow-queen/README.md',
-          text: 'Rainbow Queen',
-        });
-
-        newItem.dbBase.characters.push({
-          file: '/data/characters/princess-ariella/README.md',
-          text: 'Princess Ariella (Page WIP)',
-        });
-
-        newItem.dbBase.characters.push({
-          file: '/data/characters/amy/README.md',
-          text: 'Amy (Page WIP)',
-        });
-
-        newItem.dbBase.characters.push({
-          file: '/data/characters/layla/README.md',
-          text: 'Layla (Page WIP)',
-        });
-
-        newItem.dbBase.characters.push({
-          file: '/data/characters/prisma/README.md',
-          text: 'Prisma (Character WIP)',
-        });
-
-        newItem.dbBase.characters.push({
-          file: '/data/characters/aniya/README.md',
-          text: 'Aniya (Character WIP)',
-        });
-
-        newItem.dbBase.characters.push({
-          file: '/data/characters/blue-screen/README.md',
-          text: 'Blue Screen (Page WIP)',
-        });
-
-        newItem.dbBase.characters.push({
-          file: '/data/characters/whistler/README.md',
-          text: 'Whistler (Character WIP)',
-        });
-
-        // AI Login
-        const aiLogin = {
-          base: $('<li>', { class: 'nav-item font-weight-bold' }),
-          secondsUsed: 0,
-          title: '',
-          updateTitle: () => {
-            if (aiLogin.button) {
-              const title = `${aiLogin.title}${aiLogin.secondsUsed > 0 ? ` - ${formatDayTimer(aiLogin.secondsUsed)}` : ''}`;
-              aiLogin.button.removeAttr('title');
-              aiLogin.button.attr('data-bs-original-title', title);
-            }
-          },
-        };
-        tinyAiScript.setAiLogin(aiLogin);
-
-        aiLogin.button = tinyLib.bs
-          .button({ id: 'ai-login', dsBtn: true, class: 'nav-link' })
-          .prepend(tinyLib.icon('fa-solid fa-robot me-2'));
-
-        tinyAiScript.checkTitle();
-        aiLogin.base.prepend(aiLogin.button);
-        aiLogin.button.on('click', function () {
-          tinyAiScript.login(this);
-          return false;
-        });
-
-        // Login Account
-        const loginAccount = {};
-        if (needsAgeVerification()) {
-          loginAccount.base = TinyHtml.createFrom('li', { className: 'nav-item font-weight-bold' });
-          loginAccount.link = new TinyButton({ label: '', tags: 'disabled', mainClass: 'nav-link' })
-            .setAttr('id', 'login-start')
-            .setAttr('title', 'Sign in with Google');
-          loginAccount.icon = new TinyIcon(['fa-solid', 'fa-right-to-bracket']);
-
-          Tooltip(loginAccount.link);
-          loginAccount.base.append(loginAccount.link);
-          loginAccount.link.append(loginAccount.icon);
-
-          loginAccount.link.on('click', async () => {
-            if (fa.currentUser) {
-              Loader.start(`Logging out...`);
-              await fa.logout();
-            } else {
-              Loader.start(`Signing in...`);
-              await fa.login();
-            }
-            Loader.close();
-          });
-
-          const checkStatus = /** @type {import('./account/firebase.mjs').OnAuthStateChanged} */ (
-            user,
-          ) => {
-            loginAccount.link.removeClass('disabled');
-            if (user) {
-              loginAccount.link.setAttr('data-bs-original-title', 'Logout');
-              loginAccount.icon.iconTags = ['fa-solid', 'fa-right-to-bracket'];
-            } else {
-              loginAccount.link.setAttr('data-bs-original-title', 'Sign in with Google');
-              loginAccount.icon.iconTags = ['fa-solid', 'fa-right-from-bracket'];
-            }
-          };
-
-          fa.on('logout', () => checkStatus(null));
-          fa.on('login', checkStatus);
-          fa.on('authStateChanged', checkStatus);
-          fa.init();
-        }
-
-        // Nav Items
-        newItem.dropdowns = {};
-
-        newItem.dropdowns.information = $('<li>', {
-          class: 'nav-item dropdown',
-          id: 'information-menu',
-        }).prepend(
-          tinyLib.bs.button({ dsBtn: true, class: 'nav-link dropdown-toggle' }).text('Information'),
-        );
-        // Donations Button
-        newItem.dropdowns.donations = $('<li>', {
-          class: 'nav-item dropdown',
-          id: 'donations-menu',
-        }).prepend(
-          tinyLib.bs.button({ dsBtn: true, class: 'nav-link dropdown-toggle' }).text('Donations'),
-        );
-        // Characters
-        newItem.dropdowns.characters = $('<li>', {
-          class: 'nav-item dropdown',
-          id: 'characters-menu',
-        }).prepend(
-          tinyLib.bs.button({ dsBtn: true, class: 'nav-link dropdown-toggle' }).text('Characters'),
-        );
-        newItem.left = [
-          // Homepage
-          $('<li>', { class: 'nav-item' }).prepend(
-            $('<a>', { class: 'nav-link', href: '/', id: 'homepage' })
-              .text('Home')
-              .prepend(tinyLib.icon('fas fa-home me-2'))
-              .on('click', () => {
-                openMDFile('MAIN', true);
-                if (offCanvasEl) offCanvasEl.hide();
-                return false;
-              }),
-          ),
-
-          // Discord Server
-          $('<li>', { class: 'nav-item' }).prepend(
-            $('<a>', {
-              class: 'nav-link',
-              target: '_blank',
-              href: `https://discord.gg/${storyCfg.discordInvite}`,
-              id: 'discord-server',
-            })
-              .text('Discord')
-              .prepend(tinyLib.icon('fab fa-discord me-2'))
-              .on('click', () => {
-                if (offCanvasEl) offCanvasEl.hide();
-              }),
-          ),
-
-          // Blog
-          $('<li>', { class: 'nav-item' }).prepend(
-            $('<a>', {
-              class: 'nav-link',
-              target: '_blank',
-              href: storyCfg.blog_url,
-              id: 'blog-url',
-            })
-              .text('Blog')
-              .prepend(tinyLib.icon('fa-solid fa-rss me-2'))
-              .on('click', () => {
-                if (offCanvasEl) offCanvasEl.hide();
-              }),
-          ),
-
-          // AI
-          $('<li>', { class: 'nav-item nav-ai' }).prepend(
-            $('<a>', {
-              class: 'nav-link',
-              href: '/?path=ai',
-              id: 'ai-access-page',
-            })
-              .text('AI Page')
-              .prepend(tinyLib.icon('fa-solid fa-server me-2'))
-              .on('click', () => {
-                tinyAiScript.open();
-                if (offCanvasEl) offCanvasEl.hide();
-                return false;
-              }),
-          ),
-
-          newItem.dropdowns.information,
-          newItem.dropdowns.donations,
-          newItem.dropdowns.characters,
-        ];
-        newItem.right = [
-          // Status Place
-          $('<span>', { id: 'status' }),
-
-          // Chapter Name
-          $('<li>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
-
-          // Login
-          aiLogin.base,
-
-          // Login
-          loginAccount.base ? $(loginAccount.base.get(0)) : null,
-
-          // Read Fic
-          $('<li>', {
-            class: 'nav-item font-weight-bold',
-          })
-            .prepend(
+            // Discord Server
+            $('<li>', { class: 'nav-item' }).prepend(
               $('<a>', {
-                id: 'fic-start',
                 class: 'nav-link',
-                href: '/?path=read-fic',
+                target: '_blank',
+                href: `https://discord.gg/${storyCfg.discordInvite}`,
+                id: 'discord-server',
               })
-                .text('Read Fic')
-                .append(isNewValue)
-                .prepend(tinyLib.icon('fab fa-readme me-2')),
-            )
-            .on('click', () => {
-              $('#top_page').addClass('d-none');
-              openChapterMenu();
-              if (offCanvasEl) offCanvasEl.hide();
+                .text('Discord')
+                .prepend(tinyLib.icon('fab fa-discord me-2'))
+                .on('click', () => {
+                  if (offCanvasEl) offCanvasEl.hide();
+                }),
+            ),
+
+            // Blog
+            $('<li>', { class: 'nav-item' }).prepend(
+              $('<a>', {
+                class: 'nav-link',
+                target: '_blank',
+                href: storyCfg.blog_url,
+                id: 'blog-url',
+              })
+                .text('Blog')
+                .prepend(tinyLib.icon('fa-solid fa-rss me-2'))
+                .on('click', () => {
+                  if (offCanvasEl) offCanvasEl.hide();
+                }),
+            ),
+
+            // AI
+            $('<li>', { class: 'nav-item nav-ai' }).prepend(
+              $('<a>', {
+                class: 'nav-link',
+                href: '/?path=ai',
+                id: 'ai-access-page',
+              })
+                .text('AI Page')
+                .prepend(tinyLib.icon('fa-solid fa-server me-2'))
+                .on('click', () => {
+                  tinyAiScript.open();
+                  if (offCanvasEl) offCanvasEl.hide();
+                  return false;
+                }),
+            ),
+
+            newItem.dropdowns.information,
+            newItem.dropdowns.donations,
+            newItem.dropdowns.characters,
+          ];
+          newItem.right = [
+            // Status Place
+            $('<span>', { id: 'status' }),
+
+            // Chapter Name
+            $('<li>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
+
+            // Login
+            aiLogin.base,
+
+            // Login
+            loginAccount.base ? $(loginAccount.base.get(0)) : null,
+
+            // Read Fic
+            $('<li>', {
+              class: 'nav-item font-weight-bold',
+            })
+              .prepend(
+                $('<a>', {
+                  id: 'fic-start',
+                  class: 'nav-link',
+                  href: '/?path=read-fic',
+                })
+                  .text('Read Fic')
+                  .append(isNewValue)
+                  .prepend(tinyLib.icon('fab fa-readme me-2')),
+              )
+              .on('click', () => {
+                $('#top_page').addClass('d-none');
+                openChapterMenu();
+                if (offCanvasEl) offCanvasEl.hide();
+                return false;
+              }),
+          ];
+
+          aiLogin.button.tooltip();
+          return newItem;
+        };
+
+        // Navbar items
+        const navbarData = navbarItems();
+        const offCanvasBase = $('<ul>', { class: 'list-group list-group-flush' });
+        const navbarOffCanvas = tinyLib.bs.offcanvas(
+          'end d-lg-none',
+          'offcanvasNavbar',
+          'Pony Driland',
+          offCanvasBase,
+        );
+
+        const tinyCollapse1 = tinyLib.bs.navbar.collapse('left', 'small mdMenu', null);
+        const tinyCollapse2 = tinyLib.bs.navbar.collapse('right', 'small mdMenu', 'fic-nav');
+
+        // Insert Navbar
+        $('body').prepend(
+          // Navbar
+          navbarOffCanvas,
+          tinyLib.bs.navbar.root('md-navbar', 'dark', true).append(
+            // Title
+            tinyLib.bs.navbar.title(storyCfg.title, '/').on('click', () => {
+              openMDFile('MAIN', true);
               return false;
             }),
-        ];
 
-        aiLogin.button.tooltip();
-        return newItem;
-      };
+            // Offcanvas button
+            tinyLib.bs
+              .button({
+                dsBtn: true,
+                class: 'navbar-toggler',
+                toggle: 'offcanvas',
+                target: '#offcanvasNavbar',
+              })
+              .append($('<span>', { class: 'navbar-toggler-icon' })),
 
-      // Navbar items
-      const navbarData = navbarItems();
-      const offCanvasBase = $('<ul>', { class: 'list-group list-group-flush' });
-      const navbarOffCanvas = tinyLib.bs.offcanvas(
-        'end d-lg-none',
-        'offcanvasNavbar',
-        'Pony Driland',
-        offCanvasBase,
-      );
+            // Collapse
+            tinyCollapse1,
+            tinyCollapse2,
+          ),
+        );
 
-      const tinyCollapse1 = tinyLib.bs.navbar.collapse('left', 'small mdMenu', null);
-      const tinyCollapse2 = tinyLib.bs.navbar.collapse('right', 'small mdMenu', 'fic-nav');
+        storyData.nc = { base: {}, item: {} };
+        storyData.nc.item.left = tinyCollapse1.find('> ul');
+        storyData.nc.item.right = tinyCollapse2.find('> ul');
+        const offCanvasNavCfg = new Offcanvas(navbarOffCanvas.get(0));
+        addDropdown(navbarData);
+        navbarData.setOffCanvas(offCanvasNavCfg);
 
-      // Insert Navbar
-      $('body').prepend(
-        // Navbar
-        navbarOffCanvas,
-        tinyLib.bs.navbar.root('md-navbar', 'dark', true).append(
-          // Title
-          tinyLib.bs.navbar.title(storyCfg.title, '/').on('click', () => {
-            openMDFile('MAIN', true);
-            return false;
-          }),
+        const checkWindowSize = () => {
+          if (window.matchMedia('(min-width: 992px)').matches) {
+            storyData.nc.base.left = storyData.nc.item.left;
+            storyData.nc.base.right = storyData.nc.item.right;
+            storyData.nc.item.left.append(navbarData.left);
+            storyData.nc.item.right.append(navbarData.right);
+          } else {
+            storyData.nc.base.left = offCanvasBase;
+            storyData.nc.base.right = offCanvasBase;
+            offCanvasBase.append(navbarData.left, navbarData.right);
+          }
+        };
 
-          // Offcanvas button
-          tinyLib.bs
-            .button({
-              dsBtn: true,
-              class: 'navbar-toggler',
-              toggle: 'offcanvas',
-              target: '#offcanvasNavbar',
-            })
-            .append($('<span>', { class: 'navbar-toggler-icon' })),
+        window.addEventListener('resize', checkWindowSize);
+        checkWindowSize();
 
-          // Collapse
-          tinyCollapse1,
-          tinyCollapse2,
-        ),
-      );
+        // Insert Readme
+        $('#app').append(tinyLib.bs.container('markdown-read'));
 
-      storyData.nc = { base: {}, item: {} };
-      storyData.nc.item.left = tinyCollapse1.find('> ul');
-      storyData.nc.item.right = tinyCollapse2.find('> ul');
-      const offCanvasNavCfg = new Offcanvas(navbarOffCanvas.get(0));
-      addDropdown(navbarData);
-      navbarData.setOffCanvas(offCanvasNavCfg);
+        // Footer Base
+        const tinyFooter = { 1: [], 2: [] };
 
-      const checkWindowSize = () => {
-        if (window.matchMedia('(min-width: 992px)').matches) {
-          storyData.nc.base.left = storyData.nc.item.left;
-          storyData.nc.base.right = storyData.nc.item.right;
-          storyData.nc.item.left.append(navbarData.left);
-          storyData.nc.item.right.append(navbarData.right);
-        } else {
-          storyData.nc.base.left = offCanvasBase;
-          storyData.nc.base.right = offCanvasBase;
-          offCanvasBase.append(navbarData.left, navbarData.right);
+        // Footer 1
+
+        // OpenSea
+        if (storyCfg.opensea) {
+          tinyFooter[1].push(
+            $('<li>').append(
+              $('<a>', {
+                target: '_blank',
+                href: `https://opensea.io/collection/${storyCfg.opensea}`,
+              })
+                .text('OpenSea')
+                .prepend(tinyLib.icon('fab fa-ethereum me-2')),
+            ),
+          );
         }
-      };
 
-      window.addEventListener('resize', checkWindowSize);
-      checkWindowSize();
+        // CID32
+        if (storyData.cid32) {
+          tinyFooter[1].push(
+            $('<li>').append(
+              $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` })
+                .text('IPFS ' + storyCfg.nftDomain.name)
+                .prepend(tinyLib.icon('fas fa-wifi me-2')),
+            ),
+          );
+        }
 
-      // Insert Readme
-      $('#app').append(tinyLib.bs.container('markdown-read'));
+        // Mastodon
+        if (storyCfg.mastodon) {
+          tinyFooter[1].push(
+            $('<li>').prepend(
+              $('<a>', {
+                rel: 'me',
+                target: '_blank',
+                href: `https://${storyCfg.mastodon.domain}/@${storyCfg.mastodon.username}`,
+              })
+                .text('Mastodon')
+                .prepend(tinyLib.icon('fa-brands fa-mastodon me-2')),
+            ),
+          );
+        }
 
-      // Footer Base
-      const tinyFooter = { 1: [], 2: [] };
+        // Discord Invite
+        if (storyCfg.discordInvite) {
+          tinyFooter[1].push(
+            $('<li>').append(
+              $('<a>', {
+                target: '_blank',
+                href: `https://discord.gg/${storyCfg.discordInvite}`,
+              })
+                .text('Discord Server')
+                .prepend(tinyLib.icon('fab fa-discord me-2')),
+            ),
+          );
+        }
 
-      // Footer 1
+        // Mirror
+        if (
+          (Array.isArray(storyCfg.mirror) && storyCfg.mirror.indexOf(location.host) > -1) ||
+          !Array.isArray(storyCfg.mirror) ||
+          storyCfg.mirror.length < 1
+        ) {
+          tinyFooter[1].push(
+            $('<li>').append(
+              $('<a>', { target: '_blank', href: `https://${storyCfg.domain}` })
+                .text('Website')
+                .prepend(tinyLib.icon('fa-solid fa-pager me-2')),
+            ),
+          );
+        } else {
+          tinyFooter[1].push(
+            $('<li>').append(
+              $('<a>', {
+                target: '_blank',
+                href: `https://${storyCfg.mirror[Math.floor(Math.random() * storyCfg?.mirror.length ?? 0)]}`,
+              })
+                .text('Mirror')
+                .prepend(tinyLib.icon('fa-solid fa-pager me-2')),
+            ),
+          );
+        }
 
-      // OpenSea
-      if (storyCfg.opensea) {
-        tinyFooter[1].push(
-          $('<li>').append(
-            $('<a>', {
-              target: '_blank',
-              href: `https://opensea.io/collection/${storyCfg.opensea}`,
-            })
-              .text('OpenSea')
-              .prepend(tinyLib.icon('fab fa-ethereum me-2')),
-          ),
-        );
-      }
+        // Footer 2
+        if (storyCfg.nftDomain) {
+          tinyFooter[2].push(
+            $('<li>').append(
+              $('<a>', {
+                target: '_blank',
+                href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.valueURL),
+              })
+                .text(storyCfg.nftDomain.name)
+                .prepend(tinyLib.icon('fas fa-marker me-2')),
+            ),
+          );
+        }
 
-      // CID32
-      if (storyData.cid32) {
-        tinyFooter[1].push(
-          $('<li>').append(
-            $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` })
-              .text('IPFS ' + storyCfg.nftDomain.name)
-              .prepend(tinyLib.icon('fas fa-wifi me-2')),
-          ),
-        );
-      }
+        if (storyCfg.github) {
+          tinyFooter[2].push(
+            $('<li>').append(
+              $('<a>', {
+                target: '_blank',
+                href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}`,
+              })
+                .text('Github')
+                .prepend(tinyLib.icon('fab fa-github me-2')),
+            ),
+          );
+        }
 
-      // Mastodon
-      if (storyCfg.mastodon) {
-        tinyFooter[1].push(
-          $('<li>').prepend(
-            $('<a>', {
-              rel: 'me',
-              target: '_blank',
-              href: `https://${storyCfg.mastodon.domain}/@${storyCfg.mastodon.username}`,
-            })
-              .text('Mastodon')
-              .prepend(tinyLib.icon('fa-brands fa-mastodon me-2')),
-          ),
-        );
-      }
-
-      // Discord Invite
-      if (storyCfg.discordInvite) {
-        tinyFooter[1].push(
-          $('<li>').append(
-            $('<a>', {
-              target: '_blank',
-              href: `https://discord.gg/${storyCfg.discordInvite}`,
-            })
-              .text('Discord Server')
-              .prepend(tinyLib.icon('fab fa-discord me-2')),
-          ),
-        );
-      }
-
-      // Mirror
-      if (
-        (Array.isArray(storyCfg.mirror) && storyCfg.mirror.indexOf(location.host) > -1) ||
-        !Array.isArray(storyCfg.mirror) ||
-        storyCfg.mirror.length < 1
-      ) {
-        tinyFooter[1].push(
-          $('<li>').append(
-            $('<a>', { target: '_blank', href: `https://${storyCfg.domain}` })
-              .text('Website')
-              .prepend(tinyLib.icon('fa-solid fa-pager me-2')),
-          ),
-        );
-      } else {
-        tinyFooter[1].push(
-          $('<li>').append(
-            $('<a>', {
-              target: '_blank',
-              href: `https://${storyCfg.mirror[Math.floor(Math.random() * storyCfg?.mirror.length ?? 0)]}`,
-            })
-              .text('Mirror')
-              .prepend(tinyLib.icon('fa-solid fa-pager me-2')),
-          ),
-        );
-      }
-
-      // Footer 2
-      if (storyCfg.nftDomain) {
         tinyFooter[2].push(
           $('<li>').append(
-            $('<a>', {
-              target: '_blank',
-              href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.valueURL),
-            })
-              .text(storyCfg.nftDomain.name)
-              .prepend(tinyLib.icon('fas fa-marker me-2')),
+            $('<a>', { target: '_blank', href: 'mailto:' + storyCfg.contact })
+              .text('Contact')
+              .prepend(tinyLib.icon('fas fa-envelope me-2')),
           ),
         );
-      }
 
-      if (storyCfg.github) {
         tinyFooter[2].push(
-          $('<li>').append(
-            $('<a>', {
-              target: '_blank',
-              href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}`,
-            })
-              .text('Github')
-              .prepend(tinyLib.icon('fab fa-github me-2')),
-          ),
+          $('<li>')
+            .prepend(
+              $('<a>', {
+                href: '/?path=%2FLICENSE.md&title=License',
+                href: '/?path=%2FLICENSE.md&title=License',
+                id: 'license',
+              })
+                .text('License')
+                .prepend(tinyLib.icon('fas fa-copyright me-2')),
+            )
+            .on('click', () => {
+              openMDFile('/LICENSE.md');
+              return false;
+            }),
         );
-      }
 
-      tinyFooter[2].push(
-        $('<li>').append(
-          $('<a>', { target: '_blank', href: 'mailto:' + storyCfg.contact })
-            .text('Contact')
-            .prepend(tinyLib.icon('fas fa-envelope me-2')),
-        ),
-      );
+        // Insert Footer
+        $('body').append(
+          $('<footer>', { class: 'page-footer font-small pt-4 clearfix' }).append(
+            // Base
+            $('<div>', {
+              class: 'container-fluid text-center text-md-left',
+            }).append(
+              $('<div>', { class: 'row' }).append(
+                // Logo
+                $('<div>', { class: 'col-md-6 mt-md-0 mt-3' }).append(
+                  $('<center>').append(
+                    $('<img>', { class: 'img-fluid', src: '/img/logo.png' }),
+                    $('<br/>'),
+                  ),
+                ),
 
-      tinyFooter[2].push(
-        $('<li>')
-          .prepend(
-            $('<a>', {
-              href: '/?path=%2FLICENSE.md&title=License',
-              href: '/?path=%2FLICENSE.md&title=License',
-              id: 'license',
-            })
-              .text('License')
-              .prepend(tinyLib.icon('fas fa-copyright me-2')),
-          )
-          .on('click', () => {
-            openMDFile('/LICENSE.md');
-            return false;
-          }),
-      );
+                // Links 1
+                $('<div>', { class: 'col-md-3 mb-md-0 mb-3' }).append(
+                  $('<h5>').text('Links'),
+                  $('<ul>', { class: 'list-unstyled' }).append(tinyFooter[1]),
+                ),
 
-      // Insert Footer
-      $('body').append(
-        $('<footer>', { class: 'page-footer font-small pt-4 clearfix' }).append(
-          // Base
-          $('<div>', {
-            class: 'container-fluid text-center text-md-left',
-          }).append(
-            $('<div>', { class: 'row' }).append(
-              // Logo
-              $('<div>', { class: 'col-md-6 mt-md-0 mt-3' }).append(
-                $('<center>').append(
-                  $('<img>', { class: 'img-fluid', src: '/img/logo.png' }),
-                  $('<br/>'),
+                // Links 2
+                $('<div>', { class: 'col-md-3 mb-md-0 mb-3' }).append(
+                  $('<h5>').text('Links'),
+                  $('<ul>', { class: 'list-unstyled' }).append(tinyFooter[2]),
                 ),
               ),
-
-              // Links 1
-              $('<div>', { class: 'col-md-3 mb-md-0 mb-3' }).append(
-                $('<h5>').text('Links'),
-                $('<ul>', { class: 'list-unstyled' }).append(tinyFooter[1]),
-              ),
-
-              // Links 2
-              $('<div>', { class: 'col-md-3 mb-md-0 mb-3' }).append(
-                $('<h5>').text('Links'),
-                $('<ul>', { class: 'list-unstyled' }).append(tinyFooter[2]),
-              ),
             ),
+
+            // Copyright
+            $('<div>', {
+              id: 'footer2',
+              class: 'footer-copyright text-center py-3 bg-secondary text-white',
+            })
+              .text(copyrightText)
+              .append(
+                $('<a>', { target: '_blank', href: storyCfg.creator_url }).text(storyCfg.creator),
+                '.',
+              ),
           ),
-
-          // Copyright
-          $('<div>', {
-            id: 'footer2',
-            class: 'footer-copyright text-center py-3 bg-secondary text-white',
-          })
-            .text(copyrightText)
-            .append(
-              $('<a>', { target: '_blank', href: storyCfg.creator_url }).text(storyCfg.creator),
-              '.',
-            ),
-        ),
-      );
-
-      // Carousel
-      const indicators = $('body > #root #carouselHomepage .carousel-indicators');
-      const inner = $('body > #root #carouselHomepage .carousel-inner');
-
-      const slides = [
-        {
-          img: './img/homepage/banner/pony_driland.jpg',
-          title: 'Pony Driland',
-          text: 'Discover a science fiction story mixed with horror, mystery, and adventure. A mysterious dimension has just been discovered!',
-        },
-        {
-          img: './img/homepage/banner/discord.jpg',
-          title: 'Discord Server',
-          text: '<a href="https://discord.gg/sSkysVtj7y" target="_blank">Join the Discord official server to see real-time updates.</a>',
-        },
-      ];
-
-      // Insert slides
-      slides.forEach((slide, index) => {
-        // Options
-        $('<li>', {
-          'data-bs-target': '#carouselHomepage',
-          'data-bs-slide-to': index,
-          class: index === 0 ? 'active' : '',
-        }).appendTo(indicators);
-
-        const item = $('<div>', {
-          class: 'carousel-item' + (index === 0 ? ' active' : ''),
-        }).appendTo(inner);
-
-        // Image
-        $('<div>', {
-          class: 'img',
-          css: { 'background-image': 'url(' + slide.img + ')' },
-        }).appendTo(item);
-
-        // Text
-        const caption = $('<div>', { class: 'carousel-caption' }).appendTo(item);
-        $('<h5>', { class: 'px-5', text: slide.title }).appendTo(caption);
-        $('<p>', { class: 'px-5' }).html(slide.text).appendTo(caption);
-      });
-
-      // Start Readme
-      const params = getParams();
-      if (params.path === 'read-fic') openChapterMenu(params);
-      else if (params.path === 'ai') tinyAiScript.open();
-      else openNewAddress(params, true, true);
-
-      // Final part
-      fn();
-
-      // First Time
-      if (!tinyLs.getItem('firstTime')) {
-        tinyLs.setItem('firstTime', true);
-        alert(
-          `If this is your first time visiting the website, remember that you can navigate using the navbar at the top of the page. ` +
-            `To read the fic, just click on the "Read Fic" link located in the top-right corner of the navbar. ` +
-            `The same navbar also gives you access to fic-related tools like bookmarks and story progress tracking.` +
-            `\n\nDue to restrictions from some countries, the website is required to track your country of origin to restrict some resources.`,
-          'Welcome to Pony Driland!',
         );
-      }
-    });
+
+        // Carousel
+        const indicators = $('body > #root #carouselHomepage .carousel-indicators');
+        const inner = $('body > #root #carouselHomepage .carousel-inner');
+
+        const slides = [
+          {
+            img: './img/homepage/banner/pony_driland.jpg',
+            title: 'Pony Driland',
+            text: 'Discover a science fiction story mixed with horror, mystery, and adventure. A mysterious dimension has just been discovered!',
+          },
+          {
+            img: './img/homepage/banner/discord.jpg',
+            title: 'Discord Server',
+            text: '<a href="https://discord.gg/sSkysVtj7y" target="_blank">Join the Discord official server to see real-time updates.</a>',
+          },
+        ];
+
+        // Insert slides
+        slides.forEach((slide, index) => {
+          // Options
+          $('<li>', {
+            'data-bs-target': '#carouselHomepage',
+            'data-bs-slide-to': index,
+            class: index === 0 ? 'active' : '',
+          }).appendTo(indicators);
+
+          const item = $('<div>', {
+            class: 'carousel-item' + (index === 0 ? ' active' : ''),
+          }).appendTo(inner);
+
+          // Image
+          $('<div>', {
+            class: 'img',
+            css: { 'background-image': 'url(' + slide.img + ')' },
+          }).appendTo(item);
+
+          // Text
+          const caption = $('<div>', { class: 'carousel-caption' }).appendTo(item);
+          $('<h5>', { class: 'px-5', text: slide.title }).appendTo(caption);
+          $('<p>', { class: 'px-5' }).html(slide.text).appendTo(caption);
+        });
+
+        // Start Readme
+        const params = getParams();
+        if (params.path === 'read-fic') openChapterMenu(params);
+        else if (params.path === 'ai') tinyAiScript.open();
+        else openNewAddress(params, true, true);
+
+        // Final part
+        fn();
+
+        // First Time
+        if (!tinyLs.getItem('firstTime')) {
+          tinyLs.setItem('firstTime', true);
+          alert(
+            `If this is your first time visiting the website, remember that you can navigate using the navbar at the top of the page. ` +
+              `To read the fic, just click on the "Read Fic" link located in the top-right corner of the navbar. ` +
+              `The same navbar also gives you access to fic-related tools like bookmarks and story progress tracking.` +
+              `\n\nDue to restrictions from some countries, the website is required to track your country of origin to restrict some resources.`,
+            'Welcome to Pony Driland!',
+          );
+        }
+      },
+    );
   };
 
   startApp();

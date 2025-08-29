@@ -1,5 +1,6 @@
-import { isJsonObject } from "tiny-essentials";
-import { tinyLs } from "../important.mjs";
+import { EventEmitter } from 'events';
+import { isJsonObject } from 'tiny-essentials';
+import { tinyLs } from '../important.mjs';
 
 // Localstorage Manager
 class TinyAiStorage extends EventEmitter {

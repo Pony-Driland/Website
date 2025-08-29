@@ -1,3 +1,4 @@
+import { EventEmitter } from 'events';
 import { getAge, TinyLocalStorage, TinyNotifications } from 'tiny-essentials';
 import storyCfg from './chapters/config.mjs';
 import FirebaseAccount from './account/firebase.mjs';
@@ -5,10 +6,18 @@ import FirebaseAccount from './account/firebase.mjs';
 // Localstorage
 export const tinyLs = new TinyLocalStorage('pony-driland');
 
+// App Data
+export const appData = {
+  youtube: {},
+  ai: { using: false, interval: null, secondsUsed: 0 },
+  emitter: new EventEmitter(),
+};
+
 // gtag
 // @ts-ignore
 window.dataLayer = window.dataLayer || [];
 export function gtag() {
+  if (location.hostname === 'localhost') return;
   // @ts-ignore
   dataLayer.push(arguments);
 }

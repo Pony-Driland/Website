@@ -8051,10 +8051,15 @@ tiny-dices@^1.0.6:
     tiny-essentials "^1.3.0"
     validate-color "^2.2.4"
 
-tiny-essentials@^1.12.2, tiny-essentials@^1.13.0, tiny-essentials@^1.20.0, tiny-essentials@^1.20.3, tiny-essentials@^1.3.0:
+tiny-essentials@^1.12.2, tiny-essentials@^1.13.0, tiny-essentials@^1.20.0, tiny-essentials@^1.3.0:
   version "1.20.3"
   resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.20.3.tgz#739b60dc5f00e9e13a99b6643c847403042a0f0c"
   integrity sha512-kM+tp68vVit9wuMLMmeY3cuENYnCLF10mcZ33ZtxVoDPQSbVXflUn/6akPLbFGd65+tYrjWLgMIykB5l1xNdMA==
+
+tiny-essentials@^1.21.2:
+  version "1.21.2"
+  resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.21.2.tgz#367eaae15b98d85c494211f9d143b3dfd57066bf"
+  integrity sha512-RvIM/iDVM+IGf4n9CAX6CzRbgq6xK91fN88QPwXA4vwbDH9mJRQUfJ4qczA8o6aALRM2qgL6fETxlmYpyO79hQ==
 
 tiny-server-essentials@^1.0.3:
   version "1.0.3"
