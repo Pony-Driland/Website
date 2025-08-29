@@ -11,6 +11,7 @@ import { storyData } from '../files/chapters.mjs';
 import cacheChapterUpdater from './updater.mjs';
 import musicManager from './music/index.mjs';
 import storyCfg from '../chapters/config.mjs';
+import BootstrapPaginator from '../../build/bundle/bootstrap-paginator.mjs';
 
 /*  Rain made by Aaron Rickle */
 const rainConfig = {};
@@ -337,46 +338,53 @@ export const openChapterMenu = (params = {}) => {
 
     // Items
     const table = $('<tbody>');
-    const tinyPag = { base: [], default: [], search: [] };
-    tinyPag.base[0] = $('<div>');
-    tinyPag.base[1] = $('<div>');
+
+    /** @type {Record<string, TinyHtml[]>} */
+    const tinyPag = {
+      base: [],
+      default: [],
+      search: [],
+    };
+
+    tinyPag.base[0] = TinyHtml.createElement('div');
+    tinyPag.base[1] = TinyHtml.createElement('div');
 
     const addDefaultPagination = (ftItems, tPage, where = 'default') => {
       tinyPag.base[0].empty();
       tinyPag.base[1].empty();
 
-      tinyPag[where][0] = $('<nav>');
-      tinyPag[where][0].bootstrapPaginator({
+      tinyPag[where][0] = TinyHtml.createElement('nav');
+      const pagination1 = new BootstrapPaginator(tinyPag[where][0], {
+        listContainerClass: 'justify-content-center',
         currentPage: tPage.currentPage,
         totalPages: tPage.totalPages,
         size: 'normal',
         alignment: 'center',
+        onPageChanged: () => {
+          // Process Data
+          const page = Number(new TinyHtml(tinyPag[where][0].find('.active')).text().trim());
+          const tPage = paginateArray(ftItems, page, storyCfg.itemsPerPage);
+          insertTableData(table, tPage);
+
+          // Scroll
+          TinyHtml.setWinScrollTop(TinyHtml.getById('app').offset().top);
+          pagination2.show(page);
+          $(window).trigger('scroll');
+        },
       });
 
-      tinyPag[where][1] = $('<nav>');
-      tinyPag[where][1].bootstrapPaginator({
+      tinyPag[where][1] = TinyHtml.createElement('nav');
+      const pagination2 = new BootstrapPaginator(tinyPag[where][1], {
+        listContainerClass: 'justify-content-center',
         currentPage: tPage.currentPage,
         totalPages: tPage.totalPages,
         size: 'normal',
         alignment: 'center',
-      });
-
-      tinyPag[where][0].on('page-changed', function () {
-        // Process Data
-        const page = Number($(this).find('.active').text().trim());
-        const tPage = paginateArray(ftItems, page, storyCfg.itemsPerPage);
-        insertTableData(table, tPage);
-
-        // Scroll
-        TinyHtml.setWinScrollTop(TinyHtml.getById('app').offset().top);
-        tinyPag[where][1].bootstrapPaginator('show', page);
-        $(window).trigger('scroll');
-      });
-
-      tinyPag[where][1].on('page-changed', function () {
-        // Get Page
-        const page = Number($(this).find('.active').text().trim());
-        tinyPag[where][0].bootstrapPaginator('show', page);
+        onPageChanged: () => {
+          // Get Page
+          const page = Number(new TinyHtml(tinyPag[where][1].find('.active')).text().trim());
+          pagination1.show(page);
+        },
       });
 
       tinyPag.base[0].append(tinyPag[where][0]);
@@ -475,7 +483,7 @@ export const openChapterMenu = (params = {}) => {
 
       // Pagination
       searchItems.base,
-      tinyPag.base[0],
+      tinyPag.base[0].get(0),
 
       // Table
       $('<table>', {
@@ -494,7 +502,7 @@ export const openChapterMenu = (params = {}) => {
         ]),
 
       // Pagination
-      tinyPag.base[1],
+      tinyPag.base[1].get(0),
 
       // Night Effects
       $('<div>', { id: 'bg-sky' }).append(
@@ -508,7 +516,7 @@ export const openChapterMenu = (params = {}) => {
     );
 
     // Fic Mode
-    $('body').addClass('ficMode');
+    TinyHtml.query('body').addClass('ficMode');
 
     // Complete
     $(window).trigger('scroll');

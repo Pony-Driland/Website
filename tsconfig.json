@@ -13,6 +13,9 @@
         "strict": true,
         "moduleResolution": "node"
     },
-    "include": ["src/modules", "src/account"],
+    "include": [
+        "src/modules", 
+        "src/account"
+    ],
     "exclude": ["node_modules"]
 }

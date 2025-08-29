@@ -1,601 +1,300 @@
-import $ from 'jquery';
+import { TinyHtml } from 'tiny-essentials';
 
 /**
- * bootstrap-paginator.js v0.6 (MODIFIED BY YASMIN SEIDEL)
- * --
- * Copyright 2013 Yun Lai <lyonlai1984@gmail.com>
- * Copyright 2022 Bootstrap 4 Version adapted by Yasmin Seidel (JasminDreasond)
- * --
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * @typedef {Object} BootstrapPaginatorConstructor
+ * @property {string} [containerClass=''] - CSS class for the outer container.
+ * @property {'normal'|'large'|'small'|'mini'} [size='normal'] - Size of the pagination.
+ * @property {'left'|'center'|'right'} [alignment='left'] - Alignment of the pagination.
+ * @property {string} [listContainerClass=''] - CSS class for the UL element containing page items.
+ * @property {function(type: string, page: number, current: number): string} [itemContainerClass] - Function returning CSS classes for each LI item.
+ * @property {function(type: string, page: number, current: number): string} [itemContentClass] - Function returning CSS classes for each A element inside LI.
+ * @property {number} [currentPage=1] - Initial page.
+ * @property {number} [numberOfPages=5] - Number of visible pages at the same time.
+ * @property {number} [totalPages=1] - Total number of pages.
+ * @property {function(type: string, page: number, current: number): string|null} [pageUrl] - Function returning href for each page item (optional).
+ * @property {function(event: Event, type: string, page: number): void} [onPageClicked] - Callback executed when any page item is clicked.
+ * @property {function(lastPage: number, currentPage: number): void} [onPageChanged] - Callback executed when the current page changes.
+ * @property {boolean} [useBootstrapTooltip=false] - Whether to use Bootstrap tooltip.
+ * @property {function(type: string, page: number, current: number): boolean} [shouldShowPage] - Function to determine if a page item should be shown.
+ * @property {function(type: string, page: number, current: number): string|number} [itemTexts] - Function returning the text content for each page item.
+ * @property {function(type: string, page: number, current: number): string} [tooltipTitles] - Function returning the tooltip/title for each page item.
  */
 
-/* https://jacobmarshall-etc.github.io/bootstrap-paginator/ */
-
+/**
+ * ## BootstrapPaginator Vanilla JS
+ *
+ * Rewritten version for TinyHtml
+ * Based on the original bootstrap-paginator.js
+ * by Yun Lai <lyonlai1984@gmail.com>
+ * Refactored by Yasmin Seidel (JasminDreasond)
+ */
 class BootstrapPaginator {
-    currentPage = 1;
-    lastPage = 1;
-    initialized = false;
-
-      /**
-   * Initialization function of the paginator, accepting an element and the options as parameters
-   *
-   * @param element element of the paginator
-   * @param options the options to config the paginator
-   *
-   * */
-  constructor(element, options) {
-    this.$element = $(element);
-    this.setOptions(options);
-    this.initialized = true;
-  }
-
-  old = null;
-
   /**
-   * Update the properties of the paginator element
-   *
-   * @param options options to config the paginator
-   * */
-  setOptions(options) {
-    this.options = $.extend({}, this.options || $.fn.bootstrapPaginator.defaults, options);
+   * @param {HTMLElement|string|TinyHtml} element - Target container for the paginator.
+   * @param {Object} [options={}] - Configuration options for paginator.
+   */
+  constructor(element, options = {}) {
+    this.element = !(element instanceof TinyHtml)
+      ? typeof element === 'string'
+        ? TinyHtml.query(element)
+        : new TinyHtml(element)
+      : element;
 
-    this.totalPages = parseInt(this.options.totalPages, 10); //setup the total pages property.
-    this.numberOfPages = parseInt(this.options.numberOfPages, 10); //setup the numberOfPages to be shown
+    if (!this.element) throw new Error('BootstrapPaginator: Target element not found.');
+    this.element.setData('BootstrapPaginator', this);
 
-    //move the set current page after the setting of total pages. otherwise it will cause out of page exception.
-    if (options && typeof options.currentPage !== 'undefined') {
-      this.setCurrentPage(options.currentPage);
-    }
+    this.defaults = {
+      containerClass: '',
+      size: 'normal',
+      alignment: 'left',
+      listContainerClass: '',
+      itemContainerClass: (type, page, current) => (page === current ? 'active' : ''),
+      itemContentClass: () => '',
+      currentPage: 1,
+      numberOfPages: 5,
+      totalPages: 1,
+      pageUrl: () => null,
+      onPageClicked: null,
+      onPageChanged: null,
+      useBootstrapTooltip: false,
+      shouldShowPage: (type, page, current) => {
+        switch (type) {
+          case 'first':
+            return current !== 1;
+          case 'prev':
+            return current !== 1;
+          case 'next':
+            return current !== this.totalPages;
+          case 'last':
+            return current !== this.totalPages;
+          case 'page':
+            return true;
+        }
+      },
+      itemTexts: (type, page, current) => {
+        switch (type) {
+          case 'first':
+            return '«';
+          case 'prev':
+            return '‹';
+          case 'next':
+            return '›';
+          case 'last':
+            return '»';
+          case 'page':
+            return page;
+        }
+      },
+      tooltipTitles: (type, page, current) => {
+        switch (type) {
+          case 'first':
+            return 'Go to first page';
+          case 'prev':
+            return 'Go to previous page';
+          case 'next':
+            return 'Go to next page';
+          case 'last':
+            return 'Go to last page';
+          case 'page':
+            return page === current ? `Current page is ${page}` : `Go to page ${page}`;
+        }
+      },
+    };
 
-    this.listen();
+    this.options = { ...this.defaults, ...options };
+    this.currentPage = this.options.currentPage;
+    this.lastPage = this.options.currentPage;
+    this.totalPages = parseInt(this.options.totalPages, 10);
+    this.numberOfPages = parseInt(this.options.numberOfPages, 10);
 
-    //render the paginator
     this.render();
-
-    if (!this.initialized && this.lastPage !== this.currentPage) {
-      this.$element.trigger('page-changed', [this.lastPage, this.currentPage]);
-    }
   }
 
-  /**
-   * Sets up the events listeners. Currently the pageclicked and pagechanged events are linked if available.
-   *
-   * */
-  listen() {
-    this.$element.off('page-clicked');
-
-    this.$element.off('page-changed'); // unload the events for the element
-
-    if (typeof this.options.onPageClicked === 'function') {
-      this.$element.bind('page-clicked', this.options.onPageClicked);
-    }
-
-    if (typeof this.options.onPageChanged === 'function') {
-      this.$element.on('page-changed', this.options.onPageChanged);
-    }
-
-    this.$element.bind('page-clicked', this.onPageClicked);
-  }
+  /** ------------------ NAVIGATION METHODS ------------------ **/
 
   /**
-   *
-   *  Destroys the paginator element, it unload the event first, then empty the content inside.
-   *
-   * */
-  destroy() {
-    this.$element.off('page-clicked');
-
-    this.$element.off('page-changed');
-
-    this.$element.removeData('bootstrapPaginator');
-
-    this.$element.empty();
-  }
-
-  /**
-   * Shows the page
-   *
-   * */
+   * Show a specific page.
+   * @param {number} page - Page number to display.
+   */
   show(page) {
     this.setCurrentPage(page);
-
     this.render();
-
-    if (this.lastPage !== this.currentPage) {
-      this.$element.trigger('page-changed', [this.lastPage, this.currentPage]);
+    if (this.lastPage !== this.currentPage && this.options.onPageChanged) {
+      this.options.onPageChanged(this.lastPage, this.currentPage);
     }
   }
 
-  /**
-   * Shows the next page
-   *
-   * */
+  /** Show the next page if available. */
   showNext() {
-    var pages = this.getPages();
-
-    if (pages.next) {
-      this.show(pages.next);
-    }
+    if (this.currentPage < this.totalPages) this.show(this.currentPage + 1);
   }
 
-  /**
-   * Shows the previous page
-   *
-   * */
+  /** Show the previous page if available. */
   showPrevious() {
-    var pages = this.getPages();
-
-    if (pages.prev) {
-      this.show(pages.prev);
-    }
+    if (this.currentPage > 1) this.show(this.currentPage - 1);
   }
 
-  /**
-   * Shows the first page
-   *
-   * */
+  /** Show the first page. */
   showFirst() {
-    var pages = this.getPages();
-
-    if (pages.first) {
-      this.show(pages.first);
-    }
+    this.show(1);
   }
 
-  /**
-   * Shows the last page
-   *
-   * */
+  /** Show the last page. */
   showLast() {
-    var pages = this.getPages();
-
-    if (pages.last) {
-      this.show(pages.last);
-    }
+    this.show(this.totalPages);
   }
+
+  /** ------------------ CORE ------------------ **/
 
   /**
-   * Internal on page item click handler, when the page item is clicked, change the current page to the corresponding page and
-   * trigger the pageclick event for the listeners.
-   *
-   *
-   * */
-  onPageItemClicked(event) {
-    var type = event.data.type,
-      page = event.data.page;
-
-    this.$element.trigger('page-clicked', [event, type, page]);
-  }
-
-  onPageClicked(event, originalEvent, type, page) {
-    //show the corresponding page and retrieve the newly built item related to the page clicked before for the event return
-
-    var currentTarget = $(event.currentTarget);
-
-    switch (type) {
-      case 'first':
-        currentTarget.bootstrapPaginator('showFirst');
-        break;
-      case 'prev':
-        currentTarget.bootstrapPaginator('showPrevious');
-        break;
-      case 'next':
-        currentTarget.bootstrapPaginator('showNext');
-        break;
-      case 'last':
-        currentTarget.bootstrapPaginator('showLast');
-        break;
-      case 'page':
-        currentTarget.bootstrapPaginator('show', page);
-        break;
-    }
-  }
-
-  /**
-   * Renders the paginator according to the internal properties and the settings.
-   *
-   *
-   * */
-  render() {
-    //fetch the container class and add them to the container
-    var containerClass = this.getValueFromOption(this.options.containerClass, this.$element),
-      size = this.options.size || 'normal',
-      alignment = this.options.alignment || 'left',
-      pages = this.getPages(),
-      listContainer = $('<ul class="pagination"></ul>'),
-      listContainerClass = this.getValueFromOption(this.options.listContainerClass, listContainer),
-      first = null,
-      prev = null,
-      next = null,
-      last = null,
-      p = null,
-      i = 0;
-
-    switch (size.toLowerCase()) {
-      case 'large':
-      case 'small':
-      case 'mini':
-        listContainer.addClass($.fn.bootstrapPaginator.sizeArray[size.toLowerCase()]);
-        break;
-      default:
-        break;
-    }
-
-    switch (alignment.toLowerCase()) {
-      case 'center':
-        listContainer.addClass('justify-content-center');
-        break;
-      case 'right':
-        listContainer.addClass('justify-content-end');
-        break;
-      default:
-        break;
-    }
-
-    this.$element.addClass(containerClass);
-
-    //empty the outter most container then add the listContainer inside.
-    this.$element.empty();
-
-    this.$element.append(listContainer);
-    listContainer.addClass(listContainerClass);
-
-    //update the page element reference
-    this.pageRef = [];
-
-    if (pages.first) {
-      //if the there is first page element
-      first = this.buildPageItem('first', pages.first);
-
-      if (first) {
-        listContainer.append(first);
-      }
-    }
-
-    if (pages.prev) {
-      //if the there is previous page element
-
-      prev = this.buildPageItem('prev', pages.prev);
-
-      if (prev) {
-        listContainer.append(prev);
-      }
-    }
-
-    for (i = 0; i < pages.length; i = i + 1) {
-      //fill the numeric pages.
-
-      p = this.buildPageItem('page', pages[i]);
-
-      if (p) {
-        listContainer.append(p);
-      }
-    }
-
-    if (pages.next) {
-      //if there is next page
-
-      next = this.buildPageItem('next', pages.next);
-
-      if (next) {
-        listContainer.append(next);
-      }
-    }
-
-    if (pages.last) {
-      //if there is last page
-
-      last = this.buildPageItem('last', pages.last);
-
-      if (last) {
-        listContainer.append(last);
-      }
-    }
-  }
-
-  /**
-   *
-   * Creates a page item base on the type and page number given.
-   *
-   * @param page page number
-   * @param type type of the page, whether it is the first, prev, page, next, last
-   *
-   * @return Object the constructed page element
-   * */
-  buildPageItem(type, page) {
-    var itemContainer = $('<li class="page-item"></li>'), //creates the item container
-      itemContent = $('<a class="page-link"></a>'), //creates the item content
-      text = '',
-      title = '',
-      itemContainerClass = this.options.itemContainerClass(type, page, this.currentPage),
-      itemContentClass = this.getValueFromOption(
-        this.options.itemContentClass,
-        type,
-        page,
-        this.currentPage,
-      ),
-      tooltipOpts = null;
-
-    switch (type) {
-      case 'first':
-        if (!this.getValueFromOption(this.options.shouldShowPage, type, page, this.currentPage)) {
-          return;
-        }
-        text = this.options.itemTexts(type, page, this.currentPage);
-        title = this.options.tooltipTitles(type, page, this.currentPage);
-        break;
-      case 'last':
-        if (!this.getValueFromOption(this.options.shouldShowPage, type, page, this.currentPage)) {
-          return;
-        }
-        text = this.options.itemTexts(type, page, this.currentPage);
-        title = this.options.tooltipTitles(type, page, this.currentPage);
-        break;
-      case 'prev':
-        if (!this.getValueFromOption(this.options.shouldShowPage, type, page, this.currentPage)) {
-          return;
-        }
-        text = this.options.itemTexts(type, page, this.currentPage);
-        title = this.options.tooltipTitles(type, page, this.currentPage);
-        break;
-      case 'next':
-        if (!this.getValueFromOption(this.options.shouldShowPage, type, page, this.currentPage)) {
-          return;
-        }
-        text = this.options.itemTexts(type, page, this.currentPage);
-        title = this.options.tooltipTitles(type, page, this.currentPage);
-        break;
-      case 'page':
-        if (!this.getValueFromOption(this.options.shouldShowPage, type, page, this.currentPage)) {
-          return;
-        }
-        text = this.options.itemTexts(type, page, this.currentPage);
-        title = this.options.tooltipTitles(type, page, this.currentPage);
-        break;
-    }
-
-    itemContainer.addClass(itemContainerClass).append(itemContent);
-
-    itemContent
-      .addClass(itemContentClass)
-      .html(text)
-      .on('click', null, { type: type, page: page }, $.proxy(this.onPageItemClicked, this));
-
-    if (this.options.pageUrl) {
-      itemContent.attr(
-        'href',
-        this.getValueFromOption(this.options.pageUrl, type, page, this.currentPage),
-      );
-    }
-
-    if (this.options.useBootstrapTooltip) {
-      tooltipOpts = $.extend({}, this.options.bootstrapTooltipOptions, { title: title });
-
-      itemContent.tooltip(tooltipOpts);
-    } else {
-      itemContent.attr('title', title);
-    }
-
-    return itemContainer;
-  }
-
+   * Set the current active page.
+   * @param {number} page - Page number to set.
+   */
   setCurrentPage(page) {
-    if (page > this.totalPages || page < 1) {
-      // if the current page is out of range, throw exception.
-
-      throw 'Page out of range';
-    }
-
+    if (page < 1 || page > this.totalPages) throw new Error('Page out of range');
     this.lastPage = this.currentPage;
-
     this.currentPage = parseInt(page, 10);
   }
 
   /**
-   * Gets an array that represents the current status of the page object. Numeric pages can be access via array mode. length attributes describes how many numeric pages are there. First, previous, next and last page can be accessed via attributes first, prev, next and last. Current attribute marks the current page within the pages.
-   *
-   * @return object output objects that has first, prev, next, last and also the number of pages in between.
-   * */
+   * Get the list of visible pages around the current one.
+   * Keeps the current page centered if possible.
+   * @returns {Array<number> & {first:number, prev:number, next:number, last:number, current:number, total:number, numberOfPages:number}}
+   */
   getPages() {
-    var totalPages = this.totalPages, // get or calculate the total pages via the total records
-      pageStart =
-        this.currentPage % this.numberOfPages === 0
-          ? (parseInt(this.currentPage / this.numberOfPages, 10) - 1) * this.numberOfPages + 1
-          : parseInt(this.currentPage / this.numberOfPages, 10) * this.numberOfPages + 1, //calculates the start page.
-      output = [],
-      i = 0,
-      counter = 0;
+    const totalPages = this.totalPages;
+    const numberOfPages = this.numberOfPages;
+    const currentPage = this.currentPage;
 
-    pageStart = pageStart < 1 ? 1 : pageStart; //check the range of the page start to see if its less than 1.
+    const half = Math.floor(numberOfPages / 2);
 
-    for (
-      i = pageStart, counter = 0;
-      counter < this.numberOfPages && i <= totalPages;
-      i = i + 1, counter = counter + 1
-    ) {
-      //fill the pages
+    let start = currentPage - half;
+    let end = currentPage + half;
+
+    // Ajusta para borda esquerda
+    if (start < 1) {
+      start = 1;
+      end = Math.min(totalPages, start + numberOfPages - 1);
+    }
+
+    // Ajusta para borda direita
+    if (end > totalPages) {
+      end = totalPages;
+      start = Math.max(1, end - numberOfPages + 1);
+    }
+
+    const output = [];
+    for (let i = start; i <= end; i++) {
       output.push(i);
     }
 
-    output.first = 1; //add the first when the current page leaves the 1st page.
-
-    if (this.currentPage > 1) {
-      // add the previous when the current page leaves the 1st page
-      output.prev = this.currentPage - 1;
-    } else {
-      output.prev = 1;
-    }
-
-    if (this.currentPage < totalPages) {
-      // add the next page when the current page doesn't reach the last page
-      output.next = this.currentPage + 1;
-    } else {
-      output.next = totalPages;
-    }
-
-    output.last = totalPages; // add the last page when the current page doesn't reach the last page
-
-    output.current = this.currentPage; //mark the current page.
-
+    // Metadados extras (mesmo formato do seu código anterior)
+    output.first = 1;
+    output.prev = currentPage > 1 ? currentPage - 1 : 1;
+    output.next = currentPage < totalPages ? currentPage + 1 : totalPages;
+    output.last = totalPages;
+    output.current = currentPage;
     output.total = totalPages;
-
-    output.numberOfPages = this.options.numberOfPages;
+    output.numberOfPages = numberOfPages;
 
     return output;
   }
 
   /**
-   * Gets the value from the options, this is made to handle the situation where value is the return value of a function.
-   *
-   * @return mixed value that depends on the type of parameters, if the given parameter is a function, then the evaluated result is returned. Otherwise the parameter itself will get returned.
-   * */
-  getValueFromOption(value) {
-    var output = null,
-      args = Array.prototype.slice.call(arguments, 1);
+   * Build an individual page item.
+   * @param {'first'|'prev'|'next'|'last'|'page'} type - Item type.
+   * @param {number} page - Page number for the item.
+   * @returns {HTMLLIElement|null}
+   */
+  buildPageItem(type, page) {
+    if (!this.options.shouldShowPage(type, page, this.currentPage)) return null;
 
-    if (typeof value === 'function') {
-      output = value.apply(this, args);
+    const li = document.createElement('li');
+    li.className = `page-item ${this.options.itemContainerClass(type, page, this.currentPage)}`;
+
+    const a = document.createElement('a');
+    a.className = `page-link ${this.options.itemContentClass(type, page, this.currentPage)}`;
+    a.innerHTML = this.options.itemTexts(type, page, this.currentPage);
+    a.title = this.options.tooltipTitles(type, page, this.currentPage);
+
+    if (this.options.pageUrl) {
+      const href = this.options.pageUrl(type, page, this.currentPage);
+      if (href) a.href = href;
     } else {
-      output = value;
+      a.href = 'javascript:void(0)';
     }
 
-    return output;
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (this.options.onPageClicked) {
+        this.options.onPageClicked(e, type, page);
+      }
+      switch (type) {
+        case 'first':
+          this.showFirst();
+          break;
+        case 'prev':
+          this.showPrevious();
+          break;
+        case 'next':
+          this.showNext();
+          break;
+        case 'last':
+          this.showLast();
+          break;
+        case 'page':
+          this.show(page);
+          break;
+      }
+    });
+
+    li.appendChild(a);
+    return li;
+  }
+
+  /** Render the paginator UI. */
+  render() {
+    const classChecker = (value) => typeof value === 'string' && value.length > 0;
+    const oldClasses = this.element.classList();
+    if (oldClasses.length > 0 && oldClasses.every(classChecker))
+      this.element.removeClass(...oldClasses);
+    const newClasses = ` ${this.options.containerClass}`.trim().split(' ');
+    if (newClasses.length > 0 && newClasses.every(classChecker))
+      this.element.addClass(...newClasses);
+    this.element.setHtml('');
+
+    const ul = document.createElement('ul');
+    ul.className = 'pagination ' + this.options.listContainerClass;
+
+    const pages = this.getPages();
+
+    if (pages.first) {
+      const data = this.buildPageItem('first', pages.first);
+      if (data) ul.appendChild(data);
+    }
+
+    if (pages.prev) {
+      const data = this.buildPageItem('prev', pages.prev);
+      if (data) ul.appendChild(data);
+    }
+
+    pages.forEach((p) => {
+      const data = this.buildPageItem('page', p);
+      if (data) ul.appendChild(data);
+    });
+
+    if (pages.next) {
+      const data = this.buildPageItem('next', pages.next);
+      if (data) ul.appendChild(data);
+    }
+
+    if (pages.last) {
+      const data = this.buildPageItem('last', pages.last);
+      if (data) ul.appendChild(data);
+    }
+
+    this.element.append(ul);
   }
 }
 
-/* TYPEAHEAD PLUGIN DEFINITION
- * =========================== */
-
-BootstrapPaginator.old = $.fn.bootstrapPaginator;
-
-$.fn.bootstrapPaginator = function (option) {
-  var args = arguments,
-    result = null;
-
-  $(this).each(function (index, item) {
-    var $this = $(item),
-      data = $this.data('bootstrapPaginator'),
-      options = typeof option !== 'object' ? null : option;
-
-    if (!data) {
-      data = new BootstrapPaginator(this, options);
-
-      $this = $(data.$element);
-
-      $this.data('bootstrapPaginator', data);
-
-      return;
-    }
-
-    if (typeof option === 'string') {
-      if (data[option]) {
-        result = data[option].apply(data, Array.prototype.slice.call(args, 1));
-      } else {
-        throw 'Method ' + option + ' does not exist';
-      }
-    } else {
-      result = data.setOptions(option);
-    }
-  });
-
-  return result;
-};
-
-$.fn.bootstrapPaginator.sizeArray = {
-  large: 'pagination-lg',
-  small: 'pagination-sm',
-  mini: '',
-};
-
-$.fn.bootstrapPaginator.defaults = {
-  containerClass: '',
-  size: 'normal',
-  alignment: 'left',
-  listContainerClass: '',
-  itemContainerClass: function (type, page, current) {
-    return page === current ? 'active' : '';
-  },
-  itemContentClass: function (type, page, current) {
-    return '';
-  },
-  currentPage: 1,
-  numberOfPages: 5,
-  totalPages: 1,
-  pageUrl: function (type, page, current) {
-    return null;
-  },
-  onPageClicked: null,
-  onPageChanged: null,
-  useBootstrapTooltip: false,
-  shouldShowPage: function (type, page, current) {
-    var result = true;
-
-    switch (type) {
-      case 'first':
-        result = current !== 1;
-        break;
-      case 'prev':
-        result = current !== 1;
-        break;
-      case 'next':
-        result = current !== this.totalPages;
-        break;
-      case 'last':
-        result = current !== this.totalPages;
-        break;
-      case 'page':
-        result = true;
-        break;
-    }
-
-    return result;
-  },
-  itemTexts: function (type, page, current) {
-    switch (type) {
-      case 'first':
-        return '&lt;&lt;';
-      case 'prev':
-        return '&lt;';
-      case 'next':
-        return '&gt;';
-      case 'last':
-        return '&gt;&gt;';
-      case 'page':
-        return page;
-    }
-  },
-  tooltipTitles: function (type, page, current) {
-    switch (type) {
-      case 'first':
-        return 'Go to first page';
-      case 'prev':
-        return 'Go to previous page';
-      case 'next':
-        return 'Go to next page';
-      case 'last':
-        return 'Go to last page';
-      case 'page':
-        return page === current ? 'Current page is ' + page : 'Go to page ' + page;
-    }
-  },
-  bootstrapTooltipOptions: {
-    animation: true,
-    html: true,
-    placement: 'top',
-    selector: false,
-    title: '',
-    container: false,
-  },
-};
-
-$.fn.bootstrapPaginator.Constructor = BootstrapPaginator;
+export default BootstrapPaginator;
