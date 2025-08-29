@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 /**
- * bootstrap-paginator.js v0.6
+ * bootstrap-paginator.js v0.6 (MODIFIED BY YASMIN SEIDEL)
  * --
  * Copyright 2013 Yun Lai <lyonlai1984@gmail.com>
  * Copyright 2022 Bootstrap 4 Version adapted by Yasmin Seidel (JasminDreasond)
@@ -21,37 +21,32 @@ import $ from 'jquery';
 
 /* https://jacobmarshall-etc.github.io/bootstrap-paginator/ */
 
-var BootstrapPaginator = function (element, options) {
-    this.init(element, options);
-  },
-  old = null;
+class BootstrapPaginator {
+    currentPage = 1;
+    lastPage = 1;
+    initialized = false;
 
-BootstrapPaginator.prototype = {
-  /**
+      /**
    * Initialization function of the paginator, accepting an element and the options as parameters
    *
    * @param element element of the paginator
    * @param options the options to config the paginator
    *
    * */
-  init: function (element, options) {
+  constructor(element, options) {
     this.$element = $(element);
-
-    this.currentPage = 1;
-
-    this.lastPage = 1;
-
     this.setOptions(options);
-
     this.initialized = true;
-  },
+  }
+
+  old = null;
 
   /**
    * Update the properties of the paginator element
    *
    * @param options options to config the paginator
    * */
-  setOptions: function (options) {
+  setOptions(options) {
     this.options = $.extend({}, this.options || $.fn.bootstrapPaginator.defaults, options);
 
     this.totalPages = parseInt(this.options.totalPages, 10); //setup the total pages property.
@@ -70,13 +65,13 @@ BootstrapPaginator.prototype = {
     if (!this.initialized && this.lastPage !== this.currentPage) {
       this.$element.trigger('page-changed', [this.lastPage, this.currentPage]);
     }
-  },
+  }
 
   /**
    * Sets up the events listeners. Currently the pageclicked and pagechanged events are linked if available.
    *
    * */
-  listen: function () {
+  listen() {
     this.$element.off('page-clicked');
 
     this.$element.off('page-changed'); // unload the events for the element
@@ -90,14 +85,14 @@ BootstrapPaginator.prototype = {
     }
 
     this.$element.bind('page-clicked', this.onPageClicked);
-  },
+  }
 
   /**
    *
    *  Destroys the paginator element, it unload the event first, then empty the content inside.
    *
    * */
-  destroy: function () {
+  destroy() {
     this.$element.off('page-clicked');
 
     this.$element.off('page-changed');
@@ -105,13 +100,13 @@ BootstrapPaginator.prototype = {
     this.$element.removeData('bootstrapPaginator');
 
     this.$element.empty();
-  },
+  }
 
   /**
    * Shows the page
    *
    * */
-  show: function (page) {
+  show(page) {
     this.setCurrentPage(page);
 
     this.render();
@@ -119,55 +114,55 @@ BootstrapPaginator.prototype = {
     if (this.lastPage !== this.currentPage) {
       this.$element.trigger('page-changed', [this.lastPage, this.currentPage]);
     }
-  },
+  }
 
   /**
    * Shows the next page
    *
    * */
-  showNext: function () {
+  showNext() {
     var pages = this.getPages();
 
     if (pages.next) {
       this.show(pages.next);
     }
-  },
+  }
 
   /**
    * Shows the previous page
    *
    * */
-  showPrevious: function () {
+  showPrevious() {
     var pages = this.getPages();
 
     if (pages.prev) {
       this.show(pages.prev);
     }
-  },
+  }
 
   /**
    * Shows the first page
    *
    * */
-  showFirst: function () {
+  showFirst() {
     var pages = this.getPages();
 
     if (pages.first) {
       this.show(pages.first);
     }
-  },
+  }
 
   /**
    * Shows the last page
    *
    * */
-  showLast: function () {
+  showLast() {
     var pages = this.getPages();
 
     if (pages.last) {
       this.show(pages.last);
     }
-  },
+  }
 
   /**
    * Internal on page item click handler, when the page item is clicked, change the current page to the corresponding page and
@@ -175,14 +170,14 @@ BootstrapPaginator.prototype = {
    *
    *
    * */
-  onPageItemClicked: function (event) {
+  onPageItemClicked(event) {
     var type = event.data.type,
       page = event.data.page;
 
     this.$element.trigger('page-clicked', [event, type, page]);
-  },
+  }
 
-  onPageClicked: function (event, originalEvent, type, page) {
+  onPageClicked(event, originalEvent, type, page) {
     //show the corresponding page and retrieve the newly built item related to the page clicked before for the event return
 
     var currentTarget = $(event.currentTarget);
@@ -204,14 +199,14 @@ BootstrapPaginator.prototype = {
         currentTarget.bootstrapPaginator('show', page);
         break;
     }
-  },
+  }
 
   /**
    * Renders the paginator according to the internal properties and the settings.
    *
    *
    * */
-  render: function () {
+  render() {
     //fetch the container class and add them to the container
     var containerClass = this.getValueFromOption(this.options.containerClass, this.$element),
       size = this.options.size || 'normal',
@@ -306,7 +301,7 @@ BootstrapPaginator.prototype = {
         listContainer.append(last);
       }
     }
-  },
+  }
 
   /**
    *
@@ -317,7 +312,7 @@ BootstrapPaginator.prototype = {
    *
    * @return Object the constructed page element
    * */
-  buildPageItem: function (type, page) {
+  buildPageItem(type, page) {
     var itemContainer = $('<li class="page-item"></li>'), //creates the item container
       itemContent = $('<a class="page-link"></a>'), //creates the item content
       text = '',
@@ -392,9 +387,9 @@ BootstrapPaginator.prototype = {
     }
 
     return itemContainer;
-  },
+  }
 
-  setCurrentPage: function (page) {
+  setCurrentPage(page) {
     if (page > this.totalPages || page < 1) {
       // if the current page is out of range, throw exception.
 
@@ -404,14 +399,14 @@ BootstrapPaginator.prototype = {
     this.lastPage = this.currentPage;
 
     this.currentPage = parseInt(page, 10);
-  },
+  }
 
   /**
    * Gets an array that represents the current status of the page object. Numeric pages can be access via array mode. length attributes describes how many numeric pages are there. First, previous, next and last page can be accessed via attributes first, prev, next and last. Current attribute marks the current page within the pages.
    *
    * @return object output objects that has first, prev, next, last and also the number of pages in between.
    * */
-  getPages: function () {
+  getPages() {
     var totalPages = this.totalPages, // get or calculate the total pages via the total records
       pageStart =
         this.currentPage % this.numberOfPages === 0
@@ -457,14 +452,14 @@ BootstrapPaginator.prototype = {
     output.numberOfPages = this.options.numberOfPages;
 
     return output;
-  },
+  }
 
   /**
    * Gets the value from the options, this is made to handle the situation where value is the return value of a function.
    *
    * @return mixed value that depends on the type of parameters, if the given parameter is a function, then the evaluated result is returned. Otherwise the parameter itself will get returned.
    * */
-  getValueFromOption: function (value) {
+  getValueFromOption(value) {
     var output = null,
       args = Array.prototype.slice.call(arguments, 1);
 
@@ -475,13 +470,13 @@ BootstrapPaginator.prototype = {
     }
 
     return output;
-  },
-};
+  }
+}
 
 /* TYPEAHEAD PLUGIN DEFINITION
  * =========================== */
 
-old = $.fn.bootstrapPaginator;
+BootstrapPaginator.old = $.fn.bootstrapPaginator;
 
 $.fn.bootstrapPaginator = function (option) {
   var args = arguments,
