@@ -9,7 +9,7 @@ import $ from 'jquery';
 import { objType, countObj, toTitleCase, TinyTextRangeEditor } from 'tiny-essentials';
 import TinyDices from 'tiny-dices';
 
-import { isNoNsfw, tinyLs, tinyNotification, appData } from '../important.mjs';
+import { isNoNsfw, tinyLs, tinyNotification, appData, connStore } from '../important.mjs';
 import tinyLib from '../files/tinyLib.mjs';
 import { clearFicData, saveRoleplayFormat, urlUpdate } from '../start.mjs';
 import storyCfg from '../chapters/config.mjs';
@@ -17,19 +17,15 @@ import TinyMap from './TinyMap.mjs';
 import aiTemplates from './values/templates.mjs';
 import TinyClientIo from './socketClient.mjs';
 import UserRoomManager from './RoomUserManagerUI.mjs';
-import RpgData from './rpgData.mjs';
-import EnablerAiContent from './enablerContent.mjs';
+import RpgData from './software/rpgData.mjs';
+import EnablerAiContent from './software/enablerContent.mjs';
 
 import './values/jsonTemplate.mjs';
 
 import { canSandBox, tinyAi, tinyIo, tinyStorage } from './software/base.mjs';
 import { tinyAiScript } from './software/tinyAiScript.mjs';
 
-/**
- * Open AI Page
- * @param {JsStore.Connection} connStore
- */
-export const AiScriptStart = async (connStore) => {
+export const AiScriptStart = async () => {
   let sessionEnabled = true;
   // Update Url
   urlUpdate('ai', 'AI Page');

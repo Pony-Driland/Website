@@ -1,10 +1,10 @@
 import { objType } from 'tiny-essentials';
 import $ from 'jquery';
 import { Offcanvas } from 'bootstrap';
-import JSONEditor from '../../build/bundle/JSONEditor.mjs';
+import JSONEditor from '../../../build/bundle/JSONEditor.mjs';
 
-import tinyLib from '../files/tinyLib.mjs';
-import aiTemplates from './values/templates.mjs';
+import tinyLib from '../../files/tinyLib.mjs';
+import aiTemplates from '../values/templates.mjs';
 
 class RpgData {
   constructor() {

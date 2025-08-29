@@ -1,12 +1,11 @@
 import { Loader } from 'circle-loader';
 import objHash from 'object-hash';
 
-import * as JsStore from 'jsstore';
 import { toTitleCase, fetchJson, isJsonObject } from 'tiny-essentials';
 
 import tinyLib from './tinyLib.mjs';
 import storyCfg from '../chapters/config.mjs';
-import { tinyLs } from '../important.mjs';
+import { connStore, tinyLs } from '../important.mjs';
 
 // Prepare Data
 export const storyData = {
@@ -196,9 +195,6 @@ export const storyData = {
       storyData.count++;
     }
 
-    // Start jsStore
-    const connStore = new JsStore.Connection(new Worker('jsstore.worker.min.js'));
-
     // Ai page database
     const aiPage = { room: {}, hash: {}, tokens: {}, data: {} };
     aiPage.room = {
@@ -300,13 +296,9 @@ export const storyData = {
     }
 
     // Start app now
-    startApp(
-      connStore,
-      () => {
-        Loader.close();
-        console.log('UI loaded!');
-      },
-      readme,
-    );
+    startApp(() => {
+      Loader.close();
+      console.log('UI loaded!');
+    }, readme);
   },
 };
