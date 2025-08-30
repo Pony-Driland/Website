@@ -11,7 +11,7 @@ import { storyData } from '../files/chapters.mjs';
 import cacheChapterUpdater from './updater.mjs';
 import musicManager from './music/index.mjs';
 import storyCfg from '../chapters/config.mjs';
-import BootstrapPaginator from '../../build/bundle/bootstrap-paginator.mjs';
+import BootstrapPaginator from '../modules/bootstrap-paginator.mjs';
 
 /*  Rain made by Aaron Rickle */
 const rainConfig = {};
