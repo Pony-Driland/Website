@@ -14,8 +14,6 @@ import { saveAs } from 'file-saver';
 import $ from 'jquery';
 import { Offcanvas } from 'bootstrap';
 
-import '../build/bundle/bootstrap-paginator.mjs';
-
 import { vanillaPwa } from './pwa/installer.mjs';
 import './chapters/sound.mjs';
 import './chapters/counter.mjs';

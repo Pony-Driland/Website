@@ -15,8 +15,7 @@
     },
     "include": [
         "src/modules", 
-        "src/account",
-        "build/bundle/bootstrap-paginator.mjs"
+        "src/account"
     ],
     "exclude": ["node_modules"]
 }
