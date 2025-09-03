@@ -12,7 +12,7 @@ const metaLogin = {
 
 metaLogin.button = tinyLib.bs
   .button({ dsBtn: true, id: 'login', class: 'nav-link web3-element' })
-  .attr('title', metaLogin.title)
+  .setAttr('title', metaLogin.title)
   .prepend(tinyLib.icon('fa-brands fa-ethereum me-2'));
 
 metaLogin.base.prepend(metaLogin.button);
