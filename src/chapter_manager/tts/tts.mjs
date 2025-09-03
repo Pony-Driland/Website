@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import { TinyHtml } from 'tiny-essentials';
 import tinyLib from '../../files/tinyLib.mjs';
 import { storyData } from '../../files/chapters.mjs';
 import cacheChapterUpdater from '../updater.mjs';
@@ -56,14 +56,14 @@ const ttsManager = {
       if (!storyData.chapter.nav) {
         storyData.chapter.nav = {};
       }
-      storyData.chapter.nav.tts = $('<div>', {
+      storyData.chapter.nav.tts = TinyHtml.createFrom('div', {
         indexItem: 1,
         class: 'nav-item',
         id: 'tts',
       }).append(
-        $('<div>', { id: 'tts-player' }).append(
+        TinyHtml.createFrom('div', { id: 'tts-player' }).append(
           // Play
-          $('<a>', {
+          TinyHtml.createFrom('a', {
             href: 'javascript:void(0)',
             class: 'text-white',
             title: 'Start TTS',
@@ -71,7 +71,7 @@ const ttsManager = {
             .on('click', () => ttsManager.enable())
             .append(storyData.tts.nav.play),
           // Stop
-          $('<a>', {
+          TinyHtml.createFrom('a', {
             href: 'javascript:void(0)',
             class: 'text-white',
             title: 'Stop TTS',
@@ -82,7 +82,7 @@ const ttsManager = {
       );
 
       // Insert
-      storyData.nc.base.right.find('> #status').prepend([
+      new TinyHtml(storyData.nc.base.right.find('> #status')).prepend([
         // TTS
         storyData.chapter.nav.tts,
       ]);

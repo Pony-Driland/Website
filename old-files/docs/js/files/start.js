@@ -6,7 +6,7 @@ puddyWeb3.waitReadyProvider().then().catch(startApp);
 
 // Meta Login
 const metaLogin = {
-  base: $('<li>', { class: 'nav-item font-weight-bold' }),
+  base: TinyHtml.createFrom('li', { class: 'nav-item font-weight-bold' }),
   title: 'Login',
 };
 

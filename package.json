@@ -55,15 +55,15 @@
         "paginate-array": "^2.1.0",
         "photoswipe": "^5.4.4",
         "pizzicato": "^0.6.4",
-        "puddysql": "^1.0.0-beta",
+        "puddysql": "^1.0.0-beta-2",
         "qrcode": "^1.5.0",
         "sitemap": "^8.0.0",
         "socket.io": "^4.8.1",
         "socket.io-client": "^4.8.1",
         "tiny-ai-api": "^1.1.7",
         "tiny-dices": "^1.0.6",
-        "tiny-essentials": "^1.21.2",
-        "tiny-server-essentials": "^1.0.3",
+        "tiny-essentials": "^1.22.3",
+        "tiny-server-essentials": "^1.0.4",
         "tippy.js": "^6.3.7"
     },
     "devDependencies": {

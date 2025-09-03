@@ -41,11 +41,11 @@ class BootstrapPaginator {
   /** @type {number} */
   numberOfPages;
 
-  /** @type {TinyHtml} */
+  /** @type {TinyHtml<any>} */
   element;
 
   /**
-   * @param {HTMLElement|string|TinyHtml} element - Target container for the paginator.
+   * @param {HTMLElement|string|TinyHtml<any>} element - Target container for the paginator.
    * @param {Partial<BootstrapPaginatorConstructor>} [options={}] - Configuration options for paginator.
    */
   constructor(element, options = {}) {

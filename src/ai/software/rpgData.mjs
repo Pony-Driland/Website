@@ -1,5 +1,4 @@
-import { objType } from 'tiny-essentials';
-import $ from 'jquery';
+import { objType, TinyHtml } from 'tiny-essentials';
 import { Offcanvas } from 'bootstrap';
 import JSONEditor from '../../../build/bundle/JSONEditor.mjs';
 
@@ -18,8 +17,8 @@ class RpgData {
     this.ready = { public: false, private: false };
     this.data = { public: null, private: null };
     this.base = {
-      public: $('<div>', { id: 'info_box' }),
-      private: $('<div>', { id: 'privateInfo' }),
+      public: TinyHtml.createFrom('div', { id: 'info_box' }),
+      private: TinyHtml.createFrom('div', { id: 'privateInfo' }),
     };
   }
 
@@ -72,12 +71,8 @@ class RpgData {
         }
       }, 300);
     };
-    this.html.public
-      .get(0)
-      .addEventListener('hide.bs.offcanvas', onOffCanvasClosed('public', 'rpgData'));
-    this.html.private
-      .get(0)
-      .addEventListener('hide.bs.offcanvas', onOffCanvasClosed('private', 'rpgPrivateData'));
+    this.html.public.on('hide.bs.offcanvas', onOffCanvasClosed('public', 'rpgData'));
+    this.html.private.on('hide.bs.offcanvas', onOffCanvasClosed('private', 'rpgPrivateData'));
   }
 
   initOffCanvas(container) {

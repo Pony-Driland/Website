@@ -1,52 +1,7 @@
-import $ from 'jquery';
 import tippy from 'tippy.js';
-import { Modal, Tooltip } from 'bootstrap';
-import { objType, readJsonBlob, readBase64Blob } from 'tiny-essentials';
+import { objType, readJsonBlob, readBase64Blob, TinyHtml } from 'tiny-essentials';
 import storyCfg from '../chapters/config.mjs';
-
-// Bootstrap 5
-const enableQuery = function () {
-  $.fn.modal = function (type, configObject) {
-    this.each(function () {
-      if (!$(this).data('bs-modal')) {
-        if (configObject) {
-          $(this).data('bs-modal', new Modal(this, configObject));
-        } else if (typeof type !== 'string') {
-          $(this).data('bs-modal', new Modal(this, type));
-        } else {
-          $(this).data('bs-modal', new Modal(this));
-        }
-      }
-
-      const modal = $(this).data('bs-modal');
-
-      if (typeof type === 'string' && typeof modal[type] === 'function') {
-        modal[type]();
-      } else {
-        modal.show();
-      }
-    });
-  };
-
-  $.fn.tooltip = function (type, configObject, returnTooltip = false) {
-    let tooltip = null;
-    this.each(function () {
-      if (!$(this).data('bs-tooltip')) {
-        if (objType(configObject, 'object')) tooltip = new Tooltip(this, configObject);
-        else if (typeof type !== 'string') tooltip = new Tooltip(this, type);
-        else tooltip = new Tooltip(this);
-        $(this).data('bs-tooltip', tooltip);
-      }
-    });
-    if (!returnTooltip) tooltip = null;
-    return tooltip || this;
-  };
-};
-
-enableQuery();
-$(() => {
-  enableQuery();
-});
+import { Modal } from '../modules/TinyBootstrap.mjs';
 
 // Prepare Tiny Lib
 const tinyLib = {};
@@ -89,68 +44,68 @@ tinyLib.mdManager.removeMetadata = function (text) {
   return result;
 };
 
-// Dialog
-tinyLib.dialog = function (data1, data2) {
-  const newData = $('<div>', {
-    id: data1.id,
-    title: data1.title,
-  }).append(data1.html);
-
-  $('body').append(newData);
-  newData.dialog(data2);
-};
-
 // Alert
-tinyLib.alert = function (where, alertType, icon, text) {
-  $(where)
+tinyLib.alert = (where, alertType, icon, text) => {
+  TinyHtml.query(where)
     .empty()
-    .append(tinyLib.bs.alert(alertType, [$('<i>', { class: icon }), ' ', text], true));
+    .append(
+      tinyLib.bs.alert(alertType, [TinyHtml.createFrom('i', { class: icon }), ' ', text], true),
+    );
 };
 
 // Modal
-tinyLib.modal = function (data) {
-  if (typeof data.dialog !== 'string') {
-    data.dialog = '';
-  }
+/** @returns {bootstrap.Modal} */
+tinyLib.modal = (data) => {
+  if (typeof data.dialog !== 'string') data.dialog = '';
 
-  const modal = $('<div>', { class: 'modal fade', id: data.id, tabindex: -1, role: 'dialog' })
-    .on('hidden.bs.modal', function (e) {
-      $(this).remove();
+  const modal = TinyHtml.createFrom('div', {
+    class: 'modal fade',
+    id: data.id,
+    tabindex: -1,
+    role: 'dialog',
+  })
+    .on('hidden.bs.modal', () => {
+      modal.remove();
       if (typeof data.hidden === 'function') {
         data.hidden();
       }
     })
     .append(
-      $('<div>', { class: 'modal-dialog ' + data.dialog, role: 'document' }).append(
-        $('<div>', { class: 'modal-content' }).append(
-          $('<div>', { class: 'modal-header' }).append(
-            $('<h5>', { class: 'modal-title' }).append(data.title),
-            $('<button>', { type: 'button', class: 'btn-close', 'data-bs-dismiss': 'modal' }),
+      TinyHtml.createFrom('div', { class: 'modal-dialog ' + data.dialog, role: 'document' }).append(
+        TinyHtml.createFrom('div', { class: 'modal-content' }).append(
+          TinyHtml.createFrom('div', { class: 'modal-header' }).append(
+            TinyHtml.createFrom('h5', { class: 'modal-title' }).append(data.title),
+            TinyHtml.createFrom('button', {
+              type: 'button',
+              class: 'btn-close',
+              'data-bs-dismiss': 'modal',
+            }),
           ),
 
-          $('<div>', { class: 'modal-body' }).append(data.body),
-          data.footer ? $('<div>', { class: 'modal-footer' }).append(data.footer) : null,
+          TinyHtml.createFrom('div', { class: 'modal-body' }).append(data.body),
+          data.footer
+            ? TinyHtml.createFrom('div', { class: 'modal-footer' }).append(data.footer)
+            : null,
         ),
       ),
     );
 
-  $('body').prepend(modal);
-  modal.modal();
-  return modal;
+  TinyHtml.query('body').prepend(modal);
+  return Modal(modal, undefined, true);
 };
 
 tinyLib.formGroup = function (data) {
   if (typeof data.class !== 'string') {
     data.class = '';
   }
-  const result = $('<div>', { class: 'form-group ' + data.class, id: data.id });
+  const result = TinyHtml.createFrom('div', { class: 'form-group ' + data.class, id: data.id });
 
   if (typeof data.title === 'string') {
-    result.append($('<label>', { for: data.id + '_input' }).text(data.title));
+    result.append(TinyHtml.createFrom('label', { for: data.id + '_input' }).setText(data.title));
   }
 
   result.append(
-    $('<input>', {
+    TinyHtml.createFrom('input', {
       type: data.type,
       class: 'form-control',
       name: data.id,
@@ -162,18 +117,18 @@ tinyLib.formGroup = function (data) {
   );
 
   if (typeof data.help === 'string') {
-    const newValue = $('<label>', {
+    const newValue = TinyHtml.createFrom('label', {
       id: data.id + '_help',
       class: 'form-text text-muted small',
-    }).text(data.help);
+    }).setText(data.help);
     if (data.checkbox && data.checkbox.enabled) {
       newValue.prepend(
-        $('<input>', {
+        TinyHtml.createFrom('input', {
           class: 'me-2',
           id: data.id + '_enabled',
           name: data.id + '_enabled',
           type: 'checkbox',
-        }).attr('checked', data.checkbox.value),
+        }).setAttr('checked', data.checkbox.value),
       );
     }
     result.append(newValue);
@@ -187,23 +142,30 @@ tinyLib.formGroupCheck = function (data) {
     data.class = '';
   }
 
-  return $('<div>', { class: 'form-group form-check ' + data.class, id: data.id }).append(
-    $('<input>', {
+  return TinyHtml.createFrom('div', {
+    class: 'form-group form-check ' + data.class,
+    id: data.id,
+  }).append(
+    TinyHtml.createFrom('input', {
       type: 'checkbox',
       class: 'form-check-input',
       name: data.id,
       id: data.id + '_input',
       'aria-describedby': data.id + '_help',
-    }).attr('checked', data.value),
-    $('<label>', { class: 'form-check-label', for: data.id + '_input' }).text(data.title),
+    }).setAttr('checked', data.value),
+    TinyHtml.createFrom('label', { class: 'form-check-label', for: data.id + '_input' }).setText(
+      data.title,
+    ),
   );
 };
 
 // Alert
 alert = function (text, title = 'Browser Warning!') {
   return tinyLib.modal({
-    title: $('<span>').text(title),
-    body: $('<div>', { class: 'text-break' }).css('white-space', 'pre-wrap').text(text),
+    title: TinyHtml.createFrom('span').setText(title),
+    body: TinyHtml.createFrom('div', { class: 'text-break' })
+      .setStyle('white-space', 'pre-wrap')
+      .setText(text),
     dialog: 'modal-lg',
   });
 };
@@ -219,20 +181,20 @@ tinyLib.getGitUrlPath = function (text, type = 'g') {
 };
 
 // Icon
-tinyLib.icon = (classItem) => $('<i>', { class: classItem });
+tinyLib.icon = (classItem) => TinyHtml.createFrom('i', { class: classItem });
 
 // Files Upload button
 tinyLib.upload = {};
 tinyLib.upload.button = (configs = {}, button = null, callback = null) => {
   // Create button
-  const importButton = $('<input>', { type: 'file', style: 'display: none;' });
-  importButton.attr('accept', configs.accept);
+  const importButton = TinyHtml.createFrom('input', { type: 'file', style: 'display: none;' });
+  importButton.setAttr('accept', configs.accept);
 
   // Multiple
-  if (configs.multiple) importButton.prop('multiple', true);
+  if (configs.multiple) importButton.addProp('multiple');
 
   // Directory
-  if (configs.directory) importButton.prop('directory', true);
+  if (configs.directory) importButton.addProp('directory');
 
   // Prepare button functions
   importButton.on('change', callback);
@@ -284,7 +246,7 @@ tinyLib.bs.button = (className = 'primary', tag = 'button', isButton = true) => 
         : null;
   const introClass = typeof className === 'string' || !className.dsBtn ? 'btn btn-' : '';
 
-  return $(`<${tag}>`, {
+  return TinyHtml.createFrom(tag, {
     id: objType(className, 'object') && typeof className.id === 'string' ? className.id : null,
     class: `${introClass}${buttonClass}`,
     role: isButton && (!objType(className, 'object') || !className.toggle) ? 'button' : null,
@@ -302,7 +264,7 @@ tinyLib.bs.button = (className = 'primary', tag = 'button', isButton = true) => 
 
 // Btn Close
 tinyLib.bs.closeButton = (dataDismiss = null) =>
-  $('<button>', {
+  TinyHtml.createFrom('button', {
     class: 'btn-close',
     type: 'button',
     'data-bs-dismiss': dataDismiss,
@@ -311,24 +273,24 @@ tinyLib.bs.closeButton = (dataDismiss = null) =>
 // Navbar
 tinyLib.bs.navbar = {};
 tinyLib.bs.navbar.root = (id, theme = 'dark', isFixed = false) =>
-  $('<nav>', {
+  TinyHtml.createFrom('nav', {
     class: `navbar navbar-expand-lg navbar-${theme} bg-${theme}${isFixed ? ' fixed-top' : ''} px-4 py-0 tiny-navabar-style`,
     id,
   });
 
 tinyLib.bs.navbar.title = (text, href) =>
-  $('<a>', {
+  TinyHtml.createFrom('a', {
     class: 'navbar-brand',
     href,
     text,
   });
 
 tinyLib.bs.navbar.collapse = (dir, className, id, content) =>
-  $('<div>', {
+  TinyHtml.createFrom('div', {
     class: `collapse navbar-collapse navbar-nav-${dir}${className ? ` ${className}` : ''}`,
     id,
   }).append(
-    $('<ul>', {
+    TinyHtml.createFrom('ul', {
       class: `navbar-nav ${dir === 'left' ? 'me' : dir === 'right' ? 'ms' : ''}-auto mb-2 mb-lg-0`,
     }).append(content),
   );
@@ -342,24 +304,24 @@ tinyLib.bs.offcanvas = (
   closeButtonInverse = false,
   tabIndex = -1,
 ) => {
-  const body = $('<div>', {
+  const body = TinyHtml.createFrom('div', {
     class: 'offcanvas-body',
   });
 
   if (!Array.isArray(content)) body.append(content);
   else for (const index in content) body.append(content[index]);
 
-  return $('<div>', {
+  return TinyHtml.createFrom('div', {
     class: `offcanvas offcanvas-${where}`,
     tabindex: tabIndex,
     id,
   }).append(
-    $('<div>', { class: 'offcanvas-header' }).append(
+    TinyHtml.createFrom('div', { class: 'offcanvas-header' }).append(
       title
-        ? $('<h5>', {
+        ? TinyHtml.createFrom('h5', {
             class: 'offcanvas-title',
             id: `${id}Label`,
-          }).text(title)
+          }).setText(title)
         : null,
       !closeButtonInverse && tinyLib.bs.closeButton('offcanvas'),
       body,
@@ -370,14 +332,14 @@ tinyLib.bs.offcanvas = (
 
 // Container
 tinyLib.bs.container = (id = null, classItems = null, tag = 'div') =>
-  $(`<${tag}>`, {
+  TinyHtml.createFrom(tag, {
     id,
     class: `container${classItems ? ` ${classItems}` : ''}`,
   });
 
 // Alert
 tinyLib.bs.alert = (type = 'primary', content = null, isDismissible = false) => {
-  const result = $('<div>', {
+  const result = TinyHtml.createFrom('div', {
     class: `alert alert-${type}${isDismissible ? ` alert-dismissible fade show` : ''}`,
     role: 'alert',
   });
@@ -388,7 +350,7 @@ tinyLib.bs.alert = (type = 'primary', content = null, isDismissible = false) => 
 
 // Dropdown
 tinyLib.bs.dropdownClick = (place, data, callbackInsert) => {
-  const rootBase = $('<ul>', { class: 'dropdown-menu show' });
+  const rootBase = TinyHtml.createFrom('ul', { class: 'dropdown-menu show' });
   const element = tippy(place.get(0), {
     content: rootBase.get(0),
     allowHTML: true,
@@ -398,11 +360,11 @@ tinyLib.bs.dropdownClick = (place, data, callbackInsert) => {
     placement: 'bottom-start',
     trigger: 'click',
     hideOnClick: true,
-    appendTo: () => $('body > #root').get(0),
+    appendTo: () => TinyHtml.query('body > #root').get(0),
   });
 
   for (const index in data) {
-    const li = $('<li>');
+    const li = TinyHtml.createFrom('li');
     rootBase.append(li);
     callbackInsert(li, element, data[index], index);
   }

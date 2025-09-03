@@ -1,7 +1,6 @@
 import { Loader } from 'circle-loader';
 import objHash from 'object-hash';
 import { countObj, toTitleCase, TinyHtml } from 'tiny-essentials';
-import $ from 'jquery';
 import paginateArray from 'paginate-array';
 
 import { isNoNsfw, tinyLs } from '../important.mjs';
@@ -12,6 +11,7 @@ import cacheChapterUpdater from './updater.mjs';
 import musicManager from './music/index.mjs';
 import storyCfg from '../chapters/config.mjs';
 import BootstrapPaginator from '../modules/bootstrap-paginator.mjs';
+import { Tooltip } from '../modules/TinyBootstrap.mjs';
 
 /*  Rain made by Aaron Rickle */
 const rainConfig = {};
@@ -72,17 +72,17 @@ const rainConfig = {};
 // Start Rain
 const rainMode = {
   start: function () {
-    $('.rain').empty();
-    $('.rain.front-row').append(rainConfig.drops);
-    $('.rain.back-row').append(rainConfig.backDrops);
+    TinyHtml.queryAll('.rain').empty();
+    TinyHtml.queryAll('.rain.front-row').append(rainConfig.drops);
+    TinyHtml.queryAll('.rain.back-row').append(rainConfig.backDrops);
   },
 
   on: function () {
-    $('body').addClass('raining-sky');
+    TinyHtml.query('body').addClass('raining-sky');
   },
 
   off: function () {
-    $('body').addClass('raining-sky');
+    TinyHtml.query('body').addClass('raining-sky');
   },
 };
 
@@ -117,31 +117,31 @@ const storyDialogue = {
     if (message) {
       // Get text html
       const text = storyDialogue.extractAiTags(message).map((txt) =>
-        $('<span>', {
+        TinyHtml.createFrom('span', {
           class: txt[1] ? 'made-by-ai' : '',
-        }).text(`${txt[2] ? ' ' : ''}${txt[0]}${txt[3] ? ' ' : ''}`),
+        }).setText(`${txt[2] ? ' ' : ''}${txt[0]}${txt[3] ? ' ' : ''}`),
       );
 
       // Insert html
-      storyData.chapter.html[line] = $('<tr>', { line: line }).append(
+      storyData.chapter.html[line] = TinyHtml.createFrom('tr', { line: line }).append(
         // Line number
-        $('<td>', {
+        TinyHtml.createFrom('td', {
           class: 'py-4 font-weight-bold d-none d-md-table-cell text-white text-center',
-        }).text(line),
+        }).setText(line),
 
         // Type base
-        $('<td>', { class: 'py-4 text-white text-center', width: baseWidth })
-          .text(baseName)
+        TinyHtml.createFrom('td', { class: 'py-4 text-white text-center', width: baseWidth })
+          .setText(baseName)
           .prepend(
-            $('<span>', { class: 'badge bg-secondary' }).text(
+            TinyHtml.createFrom('span', { class: 'badge bg-secondary' }).setText(
               `${type}${data.flashback ? ` (Flashback)` : ''}`,
             ),
-            baseName ? $('<br>') : null,
+            baseName ? TinyHtml.createFrom('br') : null,
           ),
 
         // Text
-        $('<td>', { class: 'py-4 text-break text-white' }).append(
-          $(`<${msgTag}>`, { class: 'text-break' }).append(text),
+        TinyHtml.createFrom('td', { class: 'py-4 text-break text-white' }).append(
+          TinyHtml.createFrom(msgTag, { class: 'text-break' }).append(text),
         ),
       );
 
@@ -189,7 +189,7 @@ const storyDialogue = {
 export const openChapterMenu = (params = {}) => {
   // Prepare Data
   clearFicData();
-  $('#markdown-read').empty();
+  TinyHtml.query('#markdown-read').empty();
   storyData.chapter.blockLineSave = false;
 
   // Get Page Data
@@ -273,7 +273,7 @@ export const openChapterMenu = (params = {}) => {
   // New Read
   const newRead = async (chapter = 1, selectedLine = null) => {
     // Clear Update Warn
-    $('#fic-start').text('Read Fic').prepend(tinyLib.icon('fab fa-readme me-2'));
+    TinyHtml.query('#fic-start').setText('Read Fic').prepend(tinyLib.icon('fab fa-readme me-2'));
 
     // Load Sounds
     if (storyCfg.sfx) {
@@ -320,11 +320,11 @@ export const openChapterMenu = (params = {}) => {
 
     // Set Selected
     storyData.readFic = true;
-    $('#fic-chapter').text(`Chapter ${chapter}`);
+    TinyHtml.query('#fic-chapter').setText(`Chapter ${chapter}`);
     storyData.chapter.selected = chapter;
 
     // Prepare Data
-    $('#markdown-read').empty();
+    TinyHtml.query('#markdown-read').empty();
 
     // Detect Bookmark
     const { page, filtedItems, selectedLine: line } = getPageData(selectedLine, chapter);
@@ -337,7 +337,7 @@ export const openChapterMenu = (params = {}) => {
     const pagination = paginateArray(filtedItems, page, storyCfg.itemsPerPage);
 
     // Items
-    const table = $('<tbody>');
+    const table = TinyHtml.createFrom('tbody');
 
     /** @type {Record<string, TinyHtml[]>} */
     const tinyPag = {
@@ -369,7 +369,7 @@ export const openChapterMenu = (params = {}) => {
           // Scroll
           TinyHtml.setWinScrollTop(TinyHtml.getById('app').offset().top);
           pagination2.show(page);
-          $(window).trigger('scroll');
+          TinyHtml.query(window).trigger('scroll');
         },
       });
 
@@ -397,7 +397,7 @@ export const openChapterMenu = (params = {}) => {
     // Search
     storyData.chapter.blockLineSave = false;
     const searchItems = {
-      base: $('<div>', { class: 'input-group mb-3' }),
+      base: TinyHtml.createFrom('div', { class: 'input-group mb-3' }),
     };
 
     // Search checker
@@ -446,16 +446,16 @@ export const openChapterMenu = (params = {}) => {
       }
 
       TinyHtml.setWinScrollTop(TinyHtml.getById('app').offset().top);
-      $(window).trigger('scroll');
+      TinyHtml.query(window).trigger('scroll');
     };
 
-    searchItems.character = $('<input>', {
+    searchItems.character = TinyHtml.createFrom('input', {
       type: 'text',
       class: 'form-control',
       placeholder: 'Character Name',
     });
 
-    searchItems.message = $('<input>', {
+    searchItems.message = TinyHtml.createFrom('input', {
       type: 'text',
       class: 'form-control',
       placeholder: 'Dialogue / Action',
@@ -467,51 +467,57 @@ export const openChapterMenu = (params = {}) => {
     searchItems.base.append(searchItems.character, searchItems.message);
 
     // Table
-    $('#markdown-read').append(
+    TinyHtml.query('#markdown-read').append(
       // Info
       tinyLib.bs
         .alert('info')
-        .text(
+        .setText(
           'Bold texts are action texts, small texts are thoughts of characters, common texts are dialogues or telepathy. If you are using filters to keep your reading 100% SFW, some unnecessary text lines will be automatically skipped.',
         )
         .prepend(tinyLib.icon('fas fa-info-circle me-3')),
 
       // Title
-      $('<h3>')
-        .text(`Chapter ${chapter}`)
-        .append($('<small>', { class: 'ms-3' }).text(storyCfg.chapterName[chapter].title)),
+      TinyHtml.createFrom('h3')
+        .setText(`Chapter ${chapter}`)
+        .append(
+          TinyHtml.createFrom('small', { class: 'ms-3' }).setText(
+            storyCfg.chapterName[chapter].title,
+          ),
+        ),
 
       // Pagination
       searchItems.base,
-      tinyPag.base[0].get(0),
+      tinyPag.base[0],
 
       // Table
-      $('<table>', {
+      TinyHtml.createFrom('table', {
         class: 'table table-bordered table-striped text-white small',
       })
-        .css('background-color', 'rgb(44 44 44)')
+        .setStyle('background-color', 'rgb(44 44 44)')
         .append([
-          $('<thead>').append(
-            $('<tr>').append(
-              $('<th>', { class: 'd-none d-md-table-cell', scope: 'col' }).text('Line'),
-              $('<th>', { scope: 'col' }).text('Type'),
-              $('<th>', { scope: 'col' }).text('Content'),
+          TinyHtml.createFrom('thead').append(
+            TinyHtml.createFrom('tr').append(
+              TinyHtml.createFrom('th', { class: 'd-none d-md-table-cell', scope: 'col' }).setText(
+                'Line',
+              ),
+              TinyHtml.createFrom('th', { scope: 'col' }).setText('Type'),
+              TinyHtml.createFrom('th', { scope: 'col' }).setText('Content'),
             ),
           ),
           table,
         ]),
 
       // Pagination
-      tinyPag.base[1].get(0),
+      tinyPag.base[1],
 
       // Night Effects
-      $('<div>', { id: 'bg-sky' }).append(
-        $('<div>', { class: 'flash' }),
-        $('<div>', { class: 'rain front-row' }),
-        $('<div>', { class: 'rain back-row' }),
-        $('<div>', { class: 'stars' }),
-        $('<div>', { class: 'twinkling' }),
-        $('<div>', { class: 'clouds' }),
+      TinyHtml.createFrom('div', { id: 'bg-sky' }).append(
+        TinyHtml.createFrom('div', { class: 'flash' }),
+        TinyHtml.createFrom('div', { class: 'rain front-row' }),
+        TinyHtml.createFrom('div', { class: 'rain back-row' }),
+        TinyHtml.createFrom('div', { class: 'stars' }),
+        TinyHtml.createFrom('div', { class: 'twinkling' }),
+        TinyHtml.createFrom('div', { class: 'clouds' }),
       ),
     );
 
@@ -519,7 +525,7 @@ export const openChapterMenu = (params = {}) => {
     TinyHtml.query('body').addClass('ficMode');
 
     // Complete
-    $(window).trigger('scroll');
+    TinyHtml.query(window).trigger('scroll');
     if (line !== null) {
       const tinyLine = TinyHtml.query('#markdown-read [line="' + line + '"]');
       if (tinyLine) TinyHtml.setWinScrollTop(tinyLine.offset().top);
@@ -553,7 +559,7 @@ export const openChapterMenu = (params = {}) => {
 
   // Nope. Choose One
   else {
-    const markdownRead = $('#markdown-read');
+    const markdownRead = TinyHtml.query('#markdown-read');
     const cantNsfw = isNoNsfw();
     if (cantNsfw) {
       for (const item in storyCfg.nsfw) {
@@ -564,35 +570,38 @@ export const openChapterMenu = (params = {}) => {
     // Prepare Choose
     markdownRead.append(
       // Banner
-      $('<img>', { class: 'img-fluid mb-2', src: '/img/external/banner1.jpg' }),
+      TinyHtml.createFrom('img', { class: 'img-fluid mb-2', src: '/img/external/banner1.jpg' }),
 
       // Nav
-      $('<nav>', { class: 'nav nav-pills nav-fill' }).append(
+      TinyHtml.createFrom('nav', { class: 'nav nav-pills nav-fill' }).append(
         // Warnings
-        $('<a>', {
+        TinyHtml.createFrom('a', {
           class: 'nav-item nav-link',
           href: '#warnings',
           'data-bs-toggle': 'collapse',
           role: 'button',
           'aria-expanded': false,
           'aria-controls': 'warnings',
-        }).text('Important Warnings'),
+        }).setText('Important Warnings'),
 
         // Character Statistics
-        $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' })
-          .text('Character Statistics')
-          .on('click', () => {
+        TinyHtml.createFrom('a', { class: 'nav-item nav-link', href: 'javascript:void(0)' })
+          .setText('Character Statistics')
+          .on('click', (e) => {
+            e.preventDefault();
             // Prepare Content
-            const newDiv = $('<div>', { class: 'row' });
+            const newDiv = TinyHtml.createFrom('div', { class: 'row' });
             const content = [];
             for (const item in storyData.characters.data) {
               const charData = storyData.characters.data[item];
               const isNpc = storyCfg.characters[`npc/${charData.id}`];
               if (!charData.value.startsWith('???') && !isNpc) {
                 // Prepare Data
-                const dataBase = $('<div>', { class: 'card-body' }).append(
-                  $('<h5>', { class: 'card-title' }).text(toTitleCase(charData.value)),
-                  $('<p>', { class: 'card-text small' }).text(
+                const dataBase = TinyHtml.createFrom('div', { class: 'card-body' }).append(
+                  TinyHtml.createFrom('h5', { class: 'card-title' }).setText(
+                    toTitleCase(charData.value),
+                  ),
+                  TinyHtml.createFrom('p', { class: 'card-text small' }).setText(
                     `Performed ${charData.count} dialogues`,
                   ),
                 );
@@ -600,7 +609,7 @@ export const openChapterMenu = (params = {}) => {
                 // Chapter Read
                 for (const item2 in charData.chapter) {
                   dataBase.append(
-                    $('<p>', { class: 'card-text small' }).text(
+                    TinyHtml.createFrom('p', { class: 'card-text small' }).setText(
                       `${charData.chapter[item2]} dialogues in Chapter ${item2}`,
                     ),
                   );
@@ -608,8 +617,8 @@ export const openChapterMenu = (params = {}) => {
 
                 // Insert Data
                 content.push(
-                  $('<div>', { class: 'col-sm-6' }).append(
-                    $('<div>', { class: 'card' }).append(dataBase),
+                  TinyHtml.createFrom('div', { class: 'col-sm-6' }).append(
+                    TinyHtml.createFrom('div', { class: 'card' }).append(dataBase),
                   ),
                 );
               }
@@ -618,29 +627,29 @@ export const openChapterMenu = (params = {}) => {
             // Modal
             tinyLib.modal({
               title: [tinyLib.icon('fa-solid fa-user me-3'), 'Character Statistics'],
-              body: $('<span>').append(newDiv.append(content)),
+              body: TinyHtml.createFrom('span').append(newDiv.append(content)),
               dialog: 'modal-lg',
             });
-
-            // Complete
-            return false;
           }),
 
         // Word Statistics
-        $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' })
-          .text('Letter Statistics')
-          .on('click', () => {
+        TinyHtml.createFrom('a', { class: 'nav-item nav-link', href: 'javascript:void(0)' })
+          .setText('Letter Statistics')
+          .on('click', (e) => {
+            e.preventDefault();
             // Prepare Content
-            const newDiv = $('<div>', { class: 'row' });
+            const newDiv = TinyHtml.createFrom('div', { class: 'row' });
             const content = [];
 
             // Insert Data
             content.push(
-              $('<div>', { class: 'col-sm-6' }).append(
-                $('<div>', { class: 'card' }).append(
-                  $('<div>', { class: 'card-body' }).append(
-                    $('<h5>', { class: 'card-title' }).text(`Total Letters`),
-                    $('<p>', { class: 'card-text small' }).text(storyData.lettersCount.total),
+              TinyHtml.createFrom('div', { class: 'col-sm-6' }).append(
+                TinyHtml.createFrom('div', { class: 'card' }).append(
+                  TinyHtml.createFrom('div', { class: 'card-body' }).append(
+                    TinyHtml.createFrom('h5', { class: 'card-title' }).setText(`Total Letters`),
+                    TinyHtml.createFrom('p', { class: 'card-text small' }).setText(
+                      storyData.lettersCount.total,
+                    ),
                   ),
                 ),
               ),
@@ -651,17 +660,17 @@ export const openChapterMenu = (params = {}) => {
               if (item !== 'total') {
                 // Prepare Data
                 const charData = storyData.lettersCount[item];
-                const dataBase = $('<div>', { class: 'card-body' });
+                const dataBase = TinyHtml.createFrom('div', { class: 'card-body' });
 
                 dataBase.append(
-                  $('<h5>', { class: 'card-title' }).text(`Chapter ${item}`),
-                  $('<p>', { class: 'card-text small' }).text(charData),
+                  TinyHtml.createFrom('h5', { class: 'card-title' }).setText(`Chapter ${item}`),
+                  TinyHtml.createFrom('p', { class: 'card-text small' }).setText(charData),
                 );
 
                 // Insert Data
                 content.push(
-                  $('<div>', { class: 'col-sm-6' }).append(
-                    $('<div>', { class: 'card' }).append(dataBase),
+                  TinyHtml.createFrom('div', { class: 'col-sm-6' }).append(
+                    TinyHtml.createFrom('div', { class: 'card' }).append(dataBase),
                   ),
                 );
               }
@@ -670,28 +679,28 @@ export const openChapterMenu = (params = {}) => {
             // Modal
             tinyLib.modal({
               title: [tinyLib.icon('fa-solid fa-a me-3'), 'Letter Statistics'],
-              body: $('<span>').append(newDiv.append(content)),
+              body: TinyHtml.createFrom('span').append(newDiv.append(content)),
               dialog: 'modal-lg',
             });
-
-            // Complete
-            return false;
           }),
 
-        $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' })
-          .text('Word Statistics')
-          .on('click', () => {
+        TinyHtml.createFrom('a', { class: 'nav-item nav-link', href: 'javascript:void(0)' })
+          .setText('Word Statistics')
+          .on('click', (e) => {
+            e.preventDefault();
             // Prepare Content
-            const newDiv = $('<div>', { class: 'row' });
+            const newDiv = TinyHtml.createFrom('div', { class: 'row' });
             const content = [];
 
             // Insert Data
             content.push(
-              $('<div>', { class: 'col-sm-6' }).append(
-                $('<div>', { class: 'card' }).append(
-                  $('<div>', { class: 'card-body' }).append(
-                    $('<h5>', { class: 'card-title' }).text(`Total Words`),
-                    $('<p>', { class: 'card-text small' }).text(storyData.wordsCount.total),
+              TinyHtml.createFrom('div', { class: 'col-sm-6' }).append(
+                TinyHtml.createFrom('div', { class: 'card' }).append(
+                  TinyHtml.createFrom('div', { class: 'card-body' }).append(
+                    TinyHtml.createFrom('h5', { class: 'card-title' }).setText(`Total Words`),
+                    TinyHtml.createFrom('p', { class: 'card-text small' }).setText(
+                      storyData.wordsCount.total,
+                    ),
                   ),
                 ),
               ),
@@ -702,17 +711,17 @@ export const openChapterMenu = (params = {}) => {
               if (item !== 'total') {
                 // Prepare Data
                 const charData = storyData.wordsCount[item];
-                const dataBase = $('<div>', { class: 'card-body' });
+                const dataBase = TinyHtml.createFrom('div', { class: 'card-body' });
 
                 dataBase.append(
-                  $('<h5>', { class: 'card-title' }).text(`Chapter ${item}`),
-                  $('<p>', { class: 'card-text small' }).text(charData),
+                  TinyHtml.createFrom('h5', { class: 'card-title' }).setText(`Chapter ${item}`),
+                  TinyHtml.createFrom('p', { class: 'card-text small' }).setText(charData),
                 );
 
                 // Insert Data
                 content.push(
-                  $('<div>', { class: 'col-sm-6' }).append(
-                    $('<div>', { class: 'card' }).append(dataBase),
+                  TinyHtml.createFrom('div', { class: 'col-sm-6' }).append(
+                    TinyHtml.createFrom('div', { class: 'card' }).append(dataBase),
                   ),
                 );
               }
@@ -721,20 +730,17 @@ export const openChapterMenu = (params = {}) => {
             // Modal
             tinyLib.modal({
               title: [tinyLib.icon('fa-solid fa-a me-3'), 'Word Statistics'],
-              body: $('<span>').append(newDiv.append(content)),
+              body: TinyHtml.createFrom('span').append(newDiv.append(content)),
               dialog: 'modal-lg',
             });
-
-            // Complete
-            return false;
           }),
       ),
 
       // Info
-      $('<div>', { class: 'collapse', id: 'warnings' }).append(
+      TinyHtml.createFrom('div', { class: 'collapse', id: 'warnings' }).append(
         tinyLib.bs
           .alert('info')
-          .text(
+          .setText(
             'Each time you read a chapter, your progress is automatically saved. This checkpoint is stored in your browser. If you want to continue reading on another device, simply save the checkpoint URL that appears when you open a chapter.',
           )
           .prepend(tinyLib.icon('fas fa-info-circle me-3'))
@@ -742,7 +748,7 @@ export const openChapterMenu = (params = {}) => {
 
         tinyLib.bs
           .alert('info')
-          .text(
+          .setText(
             "Disclaimer: All songs on this page are streamed directly from YouTube. This means many tracks are not owned by me and are used solely to enhance the reading experience. I acknowledge that if any artist requests removal, the song will be replaced. All songs played count as views on the original creator's YouTube channel. You can find the official music page via the info icon on the player.",
           )
           .prepend(tinyLib.icon('fas fa-info-circle me-3'))
@@ -750,33 +756,33 @@ export const openChapterMenu = (params = {}) => {
 
         tinyLib.bs
           .alert('info')
-          .text(
+          .setText(
             'This site does not collect your personal access data. However, some third-party services used on this page — such as YouTube, Google, and Cloudflare — may collect browsing information.',
           )
           .prepend(tinyLib.icon('fas fa-info-circle me-3'))
           .addClass('made-by-ai'),
       ),
 
-      $('<h2>')
-        .text(`Please select a chapter to read.`)
+      TinyHtml.createFrom('h2')
+        .setText(`Please select a chapter to read.`)
         .prepend(tinyLib.icon('fas fa-book-open me-3'))
         .append(
           tinyLib.bs
             .button(`${!cantNsfw ? 'info' : 'danger'} btn-sm ms-3`)
-            .text(
+            .setText(
               !cantNsfw
                 ? 'Choose Optional Mature Content'
                 : 'Unavailable in your region (Login with an 18+ account)',
             )
-            .prop('disabled', cantNsfw)
+            .toggleProp('disabled', cantNsfw)
             .on('click', () => {
               // Nothing NSFW
               let existNSFW = false;
-              let nsfwContent = $('<center>', {
+              let nsfwContent = TinyHtml.createFrom('center', {
                 class: 'm-3 small text-warning',
               })
                 .addClass('made-by-ai')
-                .text(
+                .setText(
                   'No mature content has been detected. However, some may be added in the future.',
                 );
               const nsfwList = [];
@@ -812,43 +818,43 @@ export const openChapterMenu = (params = {}) => {
                             buttonClass = 'danger';
                           }
 
+                          const nsfwButton = tinyLib.bs.button(buttonClass);
                           nsfwContent.push(
-                            $('<div>', {
+                            TinyHtml.createFrom('div', {
                               class: `col-sm-${storyCfg.nsfw[NSFWITEM].size}`,
                             }).append(
-                              $('<div>', { class: 'card' }).append(
-                                $('<div>', { class: 'card-body' }).append(
-                                  $('<h5>', { class: 'card-title' }).text(
+                              TinyHtml.createFrom('div', { class: 'card' }).append(
+                                TinyHtml.createFrom('div', { class: 'card-body' }).append(
+                                  TinyHtml.createFrom('h5', { class: 'card-title' }).setText(
                                     storyCfg.nsfw[NSFWITEM].name,
                                   ),
-                                  $('<p>', {
+                                  TinyHtml.createFrom('p', {
                                     class: `card-text small${storyCfg.nsfw[NSFWITEM].aiMsg ? ' made-by-ai' : ''}`,
-                                  }).text(storyCfg.nsfw[NSFWITEM].description),
+                                  }).setText(storyCfg.nsfw[NSFWITEM].description),
 
-                                  tinyLib.bs
-                                    .button(buttonClass)
-                                    .on('click', function () {
+                                  nsfwButton
+                                    .on('click', () => {
                                       // Enable
                                       if (!nsfwValue) {
                                         tinyLs.setItem('NSFW' + NSFWITEM, true);
                                         nsfwValue = true;
-                                        $(this)
+                                        nsfwButton
                                           .removeClass('btn-success')
                                           .addClass('btn-danger')
-                                          .text('Disable');
+                                          .setText('Disable');
                                       }
 
                                       // Disable
                                       else {
                                         tinyLs.setItem('NSFW' + NSFWITEM, false);
                                         nsfwValue = false;
-                                        $(this)
+                                        nsfwButton
                                           .removeClass('btn-danger')
                                           .addClass('btn-success')
-                                          .text('Enable');
+                                          .setText('Enable');
                                       }
                                     })
-                                    .text(allowButton),
+                                    .setText(allowButton),
                                 ),
                               ),
                             ),
@@ -865,7 +871,7 @@ export const openChapterMenu = (params = {}) => {
               }
 
               // Mature Content Item
-              const nsfwDIV = $('<div>');
+              const nsfwDIV = TinyHtml.createFrom('div');
               nsfwDIV.append(nsfwContent);
               if (existNSFW) {
                 nsfwDIV.addClass('row');
@@ -874,8 +880,8 @@ export const openChapterMenu = (params = {}) => {
               // Modal
               tinyLib.modal({
                 title: [tinyLib.icon('fas fa-eye me-3'), 'Mature Content Settings'],
-                body: $('<center>').append(
-                  $('<p>', { class: 'text-danger made-by-ai' }).text(
+                body: TinyHtml.createFrom('center').append(
+                  TinyHtml.createFrom('p', { class: 'text-danger made-by-ai' }).setText(
                     "Don't expect any explicit 18+ content here. The mature themes are not graphic and are only used to add depth to the story — for example, to make certain scenes feel more realistic. By enabling these settings, you confirm that you are over 18 and accept full responsibility for the content you choose to view.",
                   ),
                   nsfwDIV,
@@ -884,9 +890,9 @@ export const openChapterMenu = (params = {}) => {
               });
             }),
         ),
-      $('<h5>')
+      TinyHtml.createFrom('h5')
         .addClass('made-by-ai')
-        .text(
+        .setText(
           `When you open a chapter, look at the top of the page. You'll find extra tools, including a bookmark manager to save your progress directly in your browser.`,
         ),
     );
@@ -897,70 +903,75 @@ export const openChapterMenu = (params = {}) => {
       const chapter = String(i + 1);
       let isNewValue = '';
       if (storyData.isNew[chapter] === 2) {
-        isNewValue = $('<span>', {
+        isNewValue = TinyHtml.createFrom('span', {
           class: 'badge chapter-notification badge-primary ms-3',
-        }).text('NEW');
+        }).setText('NEW');
       } else if (storyData.isNew[chapter] === 1) {
-        isNewValue = $('<span>', {
+        isNewValue = TinyHtml.createFrom('span', {
           class: 'badge chapter-notification badge-secondary ms-3',
-        }).text('UPDATE');
+        }).setText('UPDATE');
       }
 
       if (isNewValue) {
-        isNewValue.attr('title', 'Click to mark as read').tooltip();
+        Tooltip(isNewValue.setAttr('title', 'Click to mark as read'));
         isNewValue.on('click', function () {
           // Clear is new value
           tinyLs.setItem('chapter' + chapter + 'MD5', objHash(storyData.data[chapter]));
           storyData.isNew[chapter] = 0;
 
           // Remove tooltip
-          const tooltip = $(this).data('bs-tooltip');
+          const tooltip = isNewValue.data('BootstrapToolTip');
           if (tooltip) {
             tooltip.hide();
             tooltip.disable();
           }
 
           // Remove element
-          $(this).remove();
+          isNewValue.remove();
         });
       }
 
+      // Chapter Button
+      const chapterButton = TinyHtml.createFrom('a', {
+        class: 'btn btn-primary m-2 ms-0',
+        href: `/chapter/${chapter}.html`,
+        chapter: chapter,
+      });
+
       // Add Chapter
       markdownRead.append(
-        $('<div>', { class: 'card mb-2' }).append(
-          $('<div>', { class: 'card-body' }).append(
-            $('<h5>', { class: 'card-title' })
-              .text('Chapter ' + chapter)
+        TinyHtml.createFrom('div', { class: 'card mb-2' }).append(
+          TinyHtml.createFrom('div', { class: 'card-body' }).append(
+            TinyHtml.createFrom('h5', { class: 'card-title' })
+              .setText('Chapter ' + chapter)
               .append(isNewValue),
-            $('<p>', { class: 'card-text' }).text(storyCfg.chapterName[chapter].title),
-            $('<span>', { class: 'card-text small me-1' }).text(
+            TinyHtml.createFrom('p', { class: 'card-text' }).setText(
+              storyCfg.chapterName[chapter].title,
+            ),
+            TinyHtml.createFrom('span', { class: 'card-text small me-1' }).setText(
               `${storyData.data[chapter].length} Lines`,
             ),
-            $('<span>', { class: 'card-text small me-2' }).text(
+            TinyHtml.createFrom('span', { class: 'card-text small me-2' }).setText(
               `${Math.ceil(storyData.data[chapter].length / storyCfg.itemsPerPage)} Pages`,
             ),
-            $('<span>', { class: 'card-text small ms-1' }).text(
+            TinyHtml.createFrom('span', { class: 'card-text small ms-1' }).setText(
               `${storyData.lettersCount[chapter]} Letters`,
             ),
-            $('<span>', { class: 'card-text small ms-1' }).text(
+            TinyHtml.createFrom('span', { class: 'card-text small ms-1' }).setText(
               `${storyData.wordsCount[chapter]} Words`,
             ),
-            $('<p>', { class: 'card-text small' }).text(storyCfg.chapterName[chapter].description),
-            $('<div>', { class: 'd-grid gap-2 col-6 mx-auto' }).append(
-              $('<a>', {
-                class: 'btn btn-primary m-2 ms-0',
-                href: `/chapter/${chapter}.html`,
-                chapter: chapter,
-              })
-                .on('click', function () {
+            TinyHtml.createFrom('p', { class: 'card-text small' }).setText(
+              storyCfg.chapterName[chapter].description,
+            ),
+            TinyHtml.createFrom('div', { class: 'd-grid gap-2 col-6 mx-auto' }).append(
+              chapterButton
+                .on('click', (e) => {
+                  e.preventDefault();
                   // Start Chapter
                   urlUpdate(`read-fic`, null, false, { chapter });
-                  newRead(Number($(this).attr('chapter')));
-
-                  // Complete
-                  return false;
+                  newRead(Number(chapterButton.attr('chapter')));
                 })
-                .text('Load Chapter'),
+                .setText('Load Chapter'),
             ),
           ),
         ),

@@ -1,5 +1,5 @@
-import $ from 'jquery';
 import { setTinyGoogleAi } from 'tiny-ai-api';
+import { TinyHtml } from 'tiny-essentials';
 
 import tinyLib from '../../files/tinyLib.mjs';
 import { appData } from '../../important.mjs';
@@ -29,9 +29,9 @@ export const tinyAiScript = {
     // Exists Google only. Then select google generative
     if (typeof selectedAi === 'string' && selectedAi.length > 0 && selectedAi !== 'NONE') {
       // Update html
-      tinyAiScript.aiLogin.button.find('> i').removeClass('text-danger-emphasis');
+      new TinyHtml(tinyAiScript.aiLogin.button.find('> i')).removeClass('text-danger-emphasis');
       tinyAiScript.aiLogin.title = 'AI/RP Enabled';
-      $('body').addClass('can-ai');
+      TinyHtml.query('body').addClass('can-ai');
 
       // Update Ai API script
       tinyAiScript.mpClient = false;
@@ -51,9 +51,9 @@ export const tinyAiScript = {
       tinyAiScript.enabled = true;
     } else {
       // Update html
-      tinyAiScript.aiLogin.button.find('> i').addClass('text-danger-emphasis');
+      new TinyHtml(tinyAiScript.aiLogin.button.find('> i')).addClass('text-danger-emphasis');
       tinyAiScript.aiLogin.title = 'AI/RP Disabled';
-      $('body').removeClass('can-ai');
+      TinyHtml.query('body').removeClass('can-ai');
       tinyAiScript.enabled = false;
     }
 
@@ -64,9 +64,9 @@ export const tinyAiScript = {
   // Login button
   login: () => {
     // Selector
-    const selector = $('<select>', { class: 'form-select text-center' });
-    selector.append($('<option>', { value: 'NONE' }).text('None'));
-    const apiPlace = $('<span>');
+    const selector = TinyHtml.createFrom('select', { class: 'form-select text-center' });
+    selector.append(TinyHtml.createFrom('option', { value: 'NONE' }).setText('None'));
+    const apiPlace = TinyHtml.createFrom('span');
     selector.on('change', function () {
       const value = selector.val();
       const html =
@@ -77,14 +77,14 @@ export const tinyAiScript = {
       tinyAiScript.checkTitle();
     });
 
-    selector.prop('disabled', appData.ai.using);
+    selector.toggleProp('disabled', appData.ai.using);
     const tinyAiHtml = {};
 
     // Server login inputs
     const insertServerLogin = (tinyInput, values) => {
       const indexs = [];
       tinyInput.push(
-        $('<input>', {
+        TinyHtml.createFrom('input', {
           type: 'text',
           placeholder: 'Server ip',
           class: 'form-control text-center',
@@ -93,7 +93,7 @@ export const tinyAiScript = {
       indexs.push(tinyInput.length - 1);
 
       tinyInput.push(
-        $('<input>', {
+        TinyHtml.createFrom('input', {
           type: 'text',
           placeholder: 'Username',
           class: 'form-control text-center mt-3',
@@ -102,7 +102,7 @@ export const tinyAiScript = {
       indexs.push(tinyInput.length - 1);
 
       tinyInput.push(
-        $('<input>', {
+        TinyHtml.createFrom('input', {
           type: 'password',
           placeholder: 'Password',
           class: 'form-control text-center mt-2',
@@ -111,7 +111,7 @@ export const tinyAiScript = {
       indexs.push(tinyInput.length - 1);
 
       tinyInput.push(
-        $('<input>', {
+        TinyHtml.createFrom('input', {
           type: 'text',
           placeholder: 'Room Id',
           class: 'form-control text-center mt-3',
@@ -120,7 +120,7 @@ export const tinyAiScript = {
       indexs.push(tinyInput.length - 1);
 
       tinyInput.push(
-        $('<input>', {
+        TinyHtml.createFrom('input', {
           type: 'password',
           placeholder: 'Room password',
           class: 'form-control text-center mt-2',
@@ -128,11 +128,11 @@ export const tinyAiScript = {
       );
       indexs.push(tinyInput.length - 1);
 
-      tinyInput[indexs[0]].val(values.ip).prop('disabled', appData.ai.using);
-      tinyInput[indexs[1]].val(values.username).prop('disabled', appData.ai.using);
-      tinyInput[indexs[2]].val(values.password).prop('disabled', appData.ai.using);
-      tinyInput[indexs[3]].val(values.roomId).prop('disabled', appData.ai.using);
-      tinyInput[indexs[4]].val(values.roomPassword).prop('disabled', appData.ai.using);
+      tinyInput[indexs[0]].val(values.ip).toggleProp('disabled', appData.ai.using);
+      tinyInput[indexs[1]].val(values.username).toggleProp('disabled', appData.ai.using);
+      tinyInput[indexs[2]].val(values.password).toggleProp('disabled', appData.ai.using);
+      tinyInput[indexs[3]].val(values.roomId).toggleProp('disabled', appData.ai.using);
+      tinyInput[indexs[4]].val(values.roomPassword).toggleProp('disabled', appData.ai.using);
 
       return indexs;
     };
@@ -150,20 +150,20 @@ export const tinyAiScript = {
 
     // Server host about
     const insertServerAbout = () =>
-      $('<p>').append(
-        $('<span>').text('You can host your server '),
-        $('<a>', {
+      TinyHtml.createFrom('p').append(
+        TinyHtml.createFrom('span').setText('You can host your server '),
+        TinyHtml.createFrom('a', {
           href: 'https://github.com/Pony-Driland/Website/tree/main/server/tiny-chat',
           target: '_blank',
-        }).text('here'),
-        $('<span>').text('. Enter the server settings you want to connect to.'),
+        }).setText('here'),
+        TinyHtml.createFrom('span').setText('. Enter the server settings you want to connect to.'),
       );
 
     const hostButton = (inputs, tinyBig = -1) =>
-      $('<div>').append(
+      TinyHtml.createFrom('div').append(
         tinyLib.bs
           .button('secondary mb-3')
-          .text('Show host settings (Alpha)')
+          .setText('Show host settings (Alpha)')
           .on('click', () => {
             for (const index in inputs) {
               if (index > tinyBig) {
@@ -174,7 +174,7 @@ export const tinyAiScript = {
       );
 
     // No AI
-    selector.append($('<option>', { value: 'no-ai' }).text('No AI'));
+    selector.append(TinyHtml.createFrom('option', { value: 'no-ai' }).setText('No AI'));
     tinyAiHtml['no-ai'] = {};
     const noAi = tinyAiHtml['no-ai'];
     noAi.inputs = () => {
@@ -183,39 +183,43 @@ export const tinyAiScript = {
       data.input.push(insertServerAbout());
       const values = tinyStorage.getApiKey('no-ai') || {};
       const ids = insertServerLogin(data.input, values);
-      data.input[0].find('> button').trigger('click');
+      new TinyHtml(data.input[0].find('> button')).trigger('click');
 
-      data.desc = $('<p>').text(
+      data.desc = TinyHtml.createFrom('p').setText(
         'No AI will be used in this mode. You will only have access to the simple features.',
       );
 
       data.submit = tinyLib.bs
         .button('info mx-4 mt-4')
-        .text('Set Settings')
+        .setText('Set Settings')
         .on('click', () => {
           const result = insertSaveServerLogin(data.input, ids);
           tinyStorage.setApiKey('no-ai', result);
           tinyAiScript.checkTitle();
-          $('#ai_connection').modal('hide');
+          TinyHtml.query('#ai_connection').data('BootstrapModal').hide();
         })
-        .prop('disabled', appData.ai.using);
+        .toggleProp('disabled', appData.ai.using);
 
       return data;
     };
 
     // Separator
-    selector.append($('<option>').prop('disabled', true).text('--------------------'));
-    selector.append($('<option>').prop('disabled', true).text('AI Models'));
+    selector.append(
+      TinyHtml.createFrom('option').addProp('disabled').setText('--------------------'),
+    );
+    selector.append(TinyHtml.createFrom('option').addProp('disabled').setText('AI Models'));
 
     // Google AI
-    selector.append($('<option>', { value: 'google-generative' }).text('Google Studio'));
+    selector.append(
+      TinyHtml.createFrom('option', { value: 'google-generative' }).setText('Google Studio'),
+    );
     tinyAiHtml['google-generative'] = {};
     const googleAi = tinyAiHtml['google-generative'];
     googleAi.inputs = () => {
       const data = { input: [] };
 
       data.input.push(
-        $('<input>', {
+        TinyHtml.createFrom('input', {
           type: 'password',
           class: 'form-control text-center mb-2',
         }),
@@ -224,40 +228,42 @@ export const tinyAiScript = {
       data.input.push(hostButton(data.input, 1));
       data.input.push(insertServerAbout());
       const values = tinyStorage.getApiKey('google-generative') || {};
-      data.input[0].val(values.key).prop('disabled', appData.ai.using);
+      data.input[0].val(values.key).toggleProp('disabled', appData.ai.using);
       const ids = insertServerLogin(data.input, values);
-      data.input[1].find('> button').trigger('click');
+      new TinyHtml(data.input[1].find('> button')).trigger('click');
 
-      data.desc = $('<p>').append(
-        $('<span>').text('You can get your Google API key '),
-        $('<a>', {
+      data.desc = TinyHtml.createFrom('p').append(
+        TinyHtml.createFrom('span').setText('You can get your Google API key '),
+        TinyHtml.createFrom('a', {
           href: 'https://aistudio.google.com/apikey',
           target: '_blank',
-        }).text('here'),
-        $('<span>').text('. Website: aistudio.google.com'),
+        }).setText('here'),
+        TinyHtml.createFrom('span').setText('. Website: aistudio.google.com'),
       );
 
       data.submit = tinyLib.bs
         .button('info mx-4 mt-4')
-        .text('Set API Tokens')
+        .setText('Set API Tokens')
         .on('click', () => {
           const result = insertSaveServerLogin(data.input, ids);
           result.key = data.input[0].val();
           tinyStorage.setApiKey('google-generative', result);
           tinyAiScript.checkTitle();
-          $('#ai_connection').modal('hide');
+          TinyHtml.query('#ai_connection').data('BootstrapModal').hide();
         })
-        .prop('disabled', appData.ai.using);
+        .toggleProp('disabled', appData.ai.using);
 
       return data;
     };
 
     // Separator
-    selector.append($('<option>').prop('disabled', true).text('--------------------'));
-    selector.append($('<option>').prop('disabled', true).text('Clients'));
+    selector.append(
+      TinyHtml.createFrom('option').addProp('disabled').setText('--------------------'),
+    );
+    selector.append(TinyHtml.createFrom('option').addProp('disabled').setText('Clients'));
 
     // Tiny chat
-    selector.append($('<option>', { value: 'tiny-chat' }).text('Multiplayer'));
+    selector.append(TinyHtml.createFrom('option', { value: 'tiny-chat' }).setText('Multiplayer'));
     tinyAiHtml['tiny-chat'] = {};
     const tinyChat = tinyAiHtml['tiny-chat'];
     tinyChat.inputs = () => {
@@ -268,13 +274,13 @@ export const tinyAiScript = {
 
       data.submit = tinyLib.bs
         .button('info mx-4 mt-4')
-        .text('Set connection settings')
+        .setText('Set connection settings')
         .on('click', () => {
           tinyStorage.setApiKey('tiny-chat', insertSaveServerLogin(data.input, ids));
           tinyAiScript.checkTitle();
-          $('#ai_connection').modal('hide');
+          TinyHtml.query('#ai_connection').data('BootstrapModal').hide();
         })
-        .prop('disabled', appData.ai.using);
+        .toggleProp('disabled', appData.ai.using);
 
       return data;
     };
@@ -287,12 +293,14 @@ export const tinyAiScript = {
       id: 'ai_connection',
       title: 'AI/RP Protocol',
       dialog: 'modal-lg',
-      body: $('<center>').append(
-        $('<p>').text(`You are in an optional setting. You do not need AI to use the website!`),
-        $('<p>').text(
+      body: TinyHtml.createFrom('center').append(
+        TinyHtml.createFrom('p').setText(
+          `You are in an optional setting. You do not need AI to use the website!`,
+        ),
+        TinyHtml.createFrom('p').setText(
           `This website does not belong to any AI company, and all API input is stored locally inside your machine. This website is just a client to run prompts in artificial intelligence, there is no native artificial intelligence installed here.`,
         ),
-        $('<p>').text(
+        TinyHtml.createFrom('p').setText(
           `By activating an artificial intelligence service in your session, you agree to the terms of use and privacy policies of the third party services you are using on this website. You will always be warned when any artificial intelligence service needs to be run on this website.`,
         ),
         selector,

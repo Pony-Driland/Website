@@ -1,7 +1,6 @@
 import Pizzicato from 'pizzicato';
 import objHash from 'object-hash';
-import $ from 'jquery';
-import { shuffleArray, ruleOfThree } from 'tiny-essentials';
+import { shuffleArray, ruleOfThree, TinyHtml } from 'tiny-essentials';
 import { tinyLs, gtag, appData } from '../../important.mjs';
 import SeamlessLoop from '../../../build/bundle/SeamlessLoop.mjs';
 import BuffAudio from '../../../build/bundle/buffaudio.mjs';
@@ -10,6 +9,7 @@ import tinyLib from '../../files/tinyLib.mjs';
 import { storyData } from '../../files/chapters.mjs';
 import storyCfg from '../../chapters/config.mjs';
 import ttsManager from '../tts/tts.mjs';
+import { Tooltip } from '../../modules/TinyBootstrap.mjs';
 
 // Base
 storyData.music = {
@@ -197,7 +197,7 @@ storyData.youtube = {
         console.log(`Starting Youtube API...`, videoID);
         const tag = document.createElement('script');
         tag.src = 'https://www.youtube.com/iframe_api';
-        $('head').append(tag);
+        TinyHtml.query('head').append(tag);
 
         // Current Time Detector
         setInterval(function () {
@@ -425,10 +425,10 @@ const musicManager = {
   disable: function (react = true) {
     if (react) {
       storyData.music.disabled = true;
-      $('#music-player').addClass('disabled-player');
+      TinyHtml.query('#music-player').addClass('disabled-player');
     } else {
       storyData.music.disabled = false;
-      $('#music-player').removeClass('disabled-player');
+      TinyHtml.query('#music-player').removeClass('disabled-player');
     }
   },
 
@@ -454,7 +454,7 @@ const musicManager = {
       }
 
       // Buttons
-      storyData.music.nav.youtube = $('#youtubePlayer');
+      storyData.music.nav.youtube = TinyHtml.query('#youtubePlayer');
       storyData.music.nav.info = tinyLib.icon('fas fa-info-circle');
       storyData.music.nav.play = tinyLib.icon('fas fa-play');
       storyData.music.nav.volume = tinyLib.icon('fas fa-volume-mute');
@@ -468,14 +468,21 @@ const musicManager = {
       if (!storyData.chapter.nav) {
         storyData.chapter.nav = {};
       }
-      storyData.chapter.nav.music = $('<div>', {
+
+      const disableButton = TinyHtml.createFrom('a', {
+        href: 'javascript:void(0)',
+        class: 'disabled text-white',
+        title: 'Disable',
+      });
+
+      storyData.chapter.nav.music = TinyHtml.createFrom('div', {
         indexItem: 1,
         class: 'nav-item',
         id: 'music',
       }).append(
-        $('<div>', { id: 'music-player', class: 'd-none' }).append(
+        TinyHtml.createFrom('div', { id: 'music-player', class: 'd-none' }).append(
           // Info
-          $('<a>', {
+          TinyHtml.createFrom('a', {
             href: 'javascript:void(0)',
             class: 'disabled text-white',
             title: 'Source',
@@ -488,7 +495,7 @@ const musicManager = {
             .append(storyData.music.nav.info),
 
           // Play
-          $('<a>', {
+          TinyHtml.createFrom('a', {
             href: 'javascript:void(0)',
             class: 'disabled text-white',
             title: 'Play/Pause',
@@ -505,7 +512,7 @@ const musicManager = {
             .append(storyData.music.nav.play),
 
           // Stop
-          $('<a>', {
+          TinyHtml.createFrom('a', {
             href: 'javascript:void(0)',
             class: 'disabled text-white',
             title: 'Stop',
@@ -519,26 +526,28 @@ const musicManager = {
             .append(storyData.music.nav.stop),
 
           // Volume
-          $('<a>', {
+          TinyHtml.createFrom('a', {
             href: 'javascript:void(0)',
             class: 'disabled text-white',
             title: 'Volume',
           })
             .on('click', () => {
               if (!storyData.music.loading) {
+                const input = TinyHtml.createFrom('input', {
+                  class: 'form-control range',
+                  type: 'range',
+                  min: 0,
+                  max: 100,
+                });
+
                 // Modal
                 tinyLib.modal({
                   title: [tinyLib.icon('fas fa-volume me-3'), 'Song Volume'],
-                  body: $('<center>').append(
-                    $('<p>').text('Change the page music volume'),
-                    $('<input>', {
-                      class: 'form-control range',
-                      type: 'range',
-                      min: 0,
-                      max: 100,
-                    })
-                      .change(function () {
-                        storyData.youtube.setVolume($(this).val());
+                  body: TinyHtml.createFrom('center').append(
+                    TinyHtml.createFrom('p').setText('Change the page music volume'),
+                    input
+                      .on('change', () => {
+                        storyData.youtube.setVolume(input.val());
                       })
                       .val(storyData.music.volume),
                   ),
@@ -549,14 +558,11 @@ const musicManager = {
             .append(storyData.music.nav.volume),
 
           // Disable
-          $('<a>', {
-            href: 'javascript:void(0)',
-            class: 'disabled text-white',
-            title: 'Disable',
-          })
-            .on('click', function () {
+
+          disableButton
+            .on('click', () => {
               if (!storyData.music.loading) {
-                $(this).removeClass('');
+                disableButton.removeClass('');
                 if (storyData.music.useThis) {
                   storyData.music.useThis = false;
                   storyData.music.nav.disable.addClass('text-danger');
@@ -571,12 +577,12 @@ const musicManager = {
       );
 
       // Insert
-      storyData.nc.base.right.find('> #status').prepend([
+      new TinyHtml(storyData.nc.base.right.find('> #status')).prepend([
         // Music
         storyData.chapter.nav.music,
 
         // Youtube
-        //$('<a>', { class: 'nav-item nav-link mx-3 p-0', indexitem: '0', id: 'youtube-thumb' }).append(storyData.music.nav.youtube),
+        //TinyHtml.createFrom('a', { class: 'nav-item nav-link mx-3 p-0', indexitem: '0', id: 'youtube-thumb' }).append(storyData.music.nav.youtube),
       ]);
     }
   },
@@ -603,7 +609,7 @@ window.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady() {
 musicManager.updatePlayer = function () {
   if (storyData.music.nav) {
     // View
-    $('#music-player').addClass('border').removeClass('d-none').addClass('me-3');
+    TinyHtml.query('#music-player').addClass('border').removeClass('d-none').addClass('me-3');
 
     // Buff
     if (
@@ -612,19 +618,19 @@ musicManager.updatePlayer = function () {
       !storyData.music.usingSystem ||
       !storyData.youtube.checkYT()
     ) {
-      $('#music-player > a').addClass('disabled');
+      TinyHtml.queryAll('#music-player > a').addClass('disabled');
     } else {
-      $('#music-player > a').removeClass('disabled');
+      TinyHtml.queryAll('#music-player > a').removeClass('disabled');
     }
 
     // Title
     if (typeof storyData.music.title === 'string' && storyData.music.title.length > 0) {
       const newTitle = `Youtube - ${storyData.music.author_name} - ${storyData.music.title}`;
-      const divBase = $('#music-player > a').has(storyData.music.nav.info);
+      const divBase = TinyHtml.queryAll('#music-player > a').has(storyData.music.nav.info);
 
       if (divBase && divBase.data('bs-tooltip-data') !== newTitle) {
-        divBase.data('bs-tooltip-data', newTitle);
-        const bsToolTip = divBase.data('bs-tooltip');
+        divBase.setData('bs-tooltip-data', newTitle);
+        const bsToolTip = divBase.data('BootstrapToolTip');
         if (bsToolTip) bsToolTip.setContent({ '.tooltip-inner': newTitle });
       }
     }
@@ -652,9 +658,7 @@ musicManager.updatePlayer = function () {
     }
 
     // Tooltip
-    $('#music-player > a[title]').each(function () {
-      $(this).tooltip();
-    });
+    TinyHtml.queryAll('#music-player > a[title]').forEach((instance) => Tooltip(instance));
   }
 };
 
@@ -662,12 +666,10 @@ musicManager.updatePlayer = function () {
 ttsManager.updatePlayer = function () {
   if (storyData.tts.nav) {
     // View
-    $('#tts-player').addClass('border').removeClass('d-none').addClass('me-3');
+    TinyHtml.queryAll('#tts-player').addClass('border').removeClass('d-none').addClass('me-3');
 
     // Tooltip
-    $('#tts-player > a[title]').each(function () {
-      $(this).tooltip();
-    });
+    TinyHtml.queryAll('#tts-player > a[title]').forEach((instance) => Tooltip(instance));
   }
 };
 
@@ -1321,7 +1323,7 @@ musicManager.start.vanilla = (item, newSound) => {
 
   newSound.addEventListener(
     'timeupdate',
-    function () {
+    () => {
       if (storyData.sfx[item].playing) {
         storyData.sfx[item].currentTime = storyData.sfx[item].file.currentTime;
         storyData.sfx[item].leftTime =

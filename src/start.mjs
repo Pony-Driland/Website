@@ -11,7 +11,6 @@ import QRCode from 'qrcode';
 import moment from 'moment';
 import { marked } from 'marked';
 import { saveAs } from 'file-saver';
-import $ from 'jquery';
 import { Offcanvas } from 'bootstrap';
 
 import { vanillaPwa } from './pwa/installer.mjs';
@@ -363,51 +362,53 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
   else data = data.replace('{{content_list}}', '');
 
   // Markdown page ways
-  const markdownBase = $('#markdown-read');
+  const markdownBase = TinyHtml.query('#markdown-read');
   const pageTypes = {
     // Wiki
     wiki: () => {
       // Row
-      const row = $('<div>', { class: 'wiki-page' });
+      const row = TinyHtml.createFrom('div', { class: 'wiki-page' });
 
       // Main content
-      const colMain = $('<div>');
+      const colMain = TinyHtml.createFrom('div');
 
-      colMain.append($('<h1>').text(metadata.name), data);
+      colMain.append(TinyHtml.createFrom('h1').setText(metadata.name), data);
 
       // Sidebar
-      const colSidebar = $('<div>', {
+      const colSidebar = TinyHtml.createFrom('div', {
         class: 'float-end character-wikicard ms-2 mb-2',
       });
 
-      const card = $('<div>', { class: 'card position-relative' });
-      const cardImg = $('<img>', {
+      const card = TinyHtml.createFrom('div', { class: 'card position-relative' });
+      const cardImg = TinyHtml.createFrom('img', {
         src: metadata.cardUrl,
         class: 'card-img-top',
         alt: metadata.name,
       });
 
       // Card body
-      const cardBody = $('<div>', { class: 'card-body' }).append(
-        $('<h5>', { class: 'card-title' }).text(metadata.name),
-        $('<p>', { class: 'card-text text-muted' }).text(`(${metadata.subName})`),
+      const cardBody = TinyHtml.createFrom('div', { class: 'card-body' }).append(
+        TinyHtml.createFrom('h5', { class: 'card-title' }).setText(metadata.name),
+        TinyHtml.createFrom('p', { class: 'card-text text-muted' }).setText(
+          `(${metadata.subName})`,
+        ),
       );
 
       // Character table
       if (Array.isArray(metadata.charTable) && metadata.charTable.length > 0) {
-        const cardBodyTable = $('<table>', { class: 'table table-hover m-0' });
-        const cardBodyTbody = $('<tbody>');
+        const cardBodyTable = TinyHtml.createFrom('table', { class: 'table table-hover m-0' });
+        const cardBodyTbody = TinyHtml.createFrom('tbody');
         for (const tIndex in metadata.charTable) {
           if (typeof metadata.charTable[tIndex][1] !== 'undefined') {
-            const td = $('<td>', { class: 'bg-transparent' });
+            const td = TinyHtml.createFrom('td', { class: 'bg-transparent' });
             if (typeof metadata.charTable[tIndex][1] === 'string')
-              td.text(metadata.charTable[tIndex][1]);
+              td.setText(metadata.charTable[tIndex][1]);
             else if (
               typeof metadata.charTable[tIndex][1].text === 'string' &&
               typeof metadata.charTable[tIndex][1].url === 'string'
             )
               td.append(
-                $('<a>', {
+                TinyHtml.createFrom('a', {
                   class: 'text-decoration-none',
                   target: '_blank',
                   href: !metadata.charTable[tIndex][1].isRepUrl
@@ -416,12 +417,12 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
                   file: metadata.charTable[tIndex][1].isRepUrl
                     ? `../${metadata.charTable[tIndex][1].isRepUrl}`
                     : null,
-                }).text(metadata.charTable[tIndex][1].text),
+                }).setText(metadata.charTable[tIndex][1].text),
               );
 
             cardBodyTbody.append(
-              $('<tr>').append(
-                $('<th>', { class: 'bg-transparent', scope: 'row' }).text(
+              TinyHtml.createFrom('tr').append(
+                TinyHtml.createFrom('th', { class: 'bg-transparent', scope: 'row' }).setText(
                   metadata.charTable[tIndex][0],
                 ),
                 td,
@@ -470,27 +471,28 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
         .replace(/\(|\)|\?|\!/g, '_'),
     )}`;
 
-  markdownBase.find(`h1,h2,h3,h4,h5`).each(function () {
-    $(this).attr('id', markdownHid($(this).text()));
+  const markdownItems = new TinyHtml(markdownBase.find(`h1,h2,h3,h4,h5`));
+  markdownItems.forEach((item) => {
+    item.setAttr('id', markdownHid(item.text()));
   });
 
   // Content List
   if (canContentList)
-    $('[id="markdown-read"] .content-list-data').each(function () {
-      const tinyBase = $('<div>', {
+    TinyHtml.queryAll('[id="markdown-read"] .content-list-data').forEach((item) => {
+      const tinyBase = TinyHtml.createFrom('div', {
         class: 'bg-black rounded-top collapse-content d-flex align-items-center',
       });
       // Open Button
-      const openButton = $('<h5>', { class: 'm-0 p-2 w-100' });
+      const openButton = TinyHtml.createFrom('h5', { class: 'm-0 p-2 w-100' });
       openButton
-        .text('Contents')
+        .setText('Contents')
         .prepend(tinyLib.icon('d-flex align-items-center fa-solid fa-list me-2 small'));
 
       const collapseButton = tinyLib.bs
         .button('link btn-bg p-2 d-flex justify-content-center align-items-center me-2')
-        .attr('data-bs-toggle', 'collapse')
-        .attr('href', '#content-list-collapse')
-        .css({
+        .setAttr('data-bs-toggle', 'collapse')
+        .setAttr('href', '#content-list-collapse')
+        .setStyle({
           height: 30,
           width: 30,
           'font-size': '14px',
@@ -500,22 +502,22 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
       tinyBase.append(openButton, collapseButton);
 
       // The Ul
-      const ul = $('<ul>', {
+      const ul = TinyHtml.createFrom('ul', {
         class: 'list-group mb-3 rounded-top-0 bg-black collapse show',
         id: 'content-list-collapse',
       });
 
       // Insert Li
       const insertLi = (tClass = '', text, isLast, index, index2 = null, extraElement = null) => {
-        const li = $('<li>', { class: `${tClass} pb-0 border-0` });
-        const liTarget = markdownBase.find(`#${markdownHid(text)}`);
+        const li = TinyHtml.createFrom('li', { class: `${tClass} pb-0 border-0` });
+        const liTarget = new TinyHtml(markdownBase.find(`#${markdownHid(text)}`));
         const tinyText = `${Number(index) + 1}.${index2 !== null ? `${Number(index2)}.` : ''} ${text}`;
 
         li.append(
-          $('<a>', {
+          TinyHtml.createFrom('a', {
             class: 'btn btn-link btn-bg w-100 text-start',
-            href: liTarget.length > 0 ? `#${liTarget.attr('id')}` : null,
-          }).text(tinyText),
+            href: liTarget.size > 0 ? `#${liTarget.attr('id')}` : null,
+          }).setText(tinyText),
         );
         if (extraElement) li.append(extraElement);
 
@@ -532,7 +534,7 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
           Array.isArray(metadata.contentList[index]) &&
           metadata.contentList[index].length > 0
         ) {
-          const ul2 = $('<ul>', { class: 'my-0' });
+          const ul2 = TinyHtml.createFrom('ul', { class: 'my-0' });
 
           ul.append(
             insertLi(
@@ -553,53 +555,52 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
         }
       }
 
-      ul.find('> li:first').removeClass('py-0').removeClass('pt-0').addClass('pb-0');
-      ul.find('> li:last').removeClass('py-0').removeClass('pb-0').addClass('pt-0');
-      $(this).append(tinyBase, ul);
+      new TinyHtml(ul.find('> li:first')).removeClass('py-0').removeClass('pt-0').addClass('pb-0');
+      new TinyHtml(ul.find('> li:last')).removeClass('py-0').removeClass('pb-0').addClass('pt-0');
+      item.append(tinyBase, ul);
     });
 
   // Convert File URLs
-  $('[id="markdown-read"] a[file]')
-    .removeAttr('target')
-    .on('click', function () {
-      openMDFile($(this).attr('file'));
+  TinyHtml.queryAll('[id="markdown-read"] a[file]').forEach((item) => {
+    item.removeAttr('target').on('click', () => {
+      openMDFile(item.attr('file'));
     });
+  });
 
   // Fix Image
-  $('[id="markdown-read"] img').each(function () {
-    if ($(this).parents('a').length < 1) {
+  TinyHtml.queryAll('[id="markdown-read"] img').forEach((item) => {
+    if (item.parents('a').length < 1) {
       // New Image Item
-      const src = $(this).attr('src');
-      const newImage = $('<img>', { class: 'img-fluid' })
-        .css('height', $(this).attr('height'))
-        .css('width', $(this).attr('width'));
-      $(this).replaceWith(newImage);
+      const src = item.attr('src');
+      const newImage = TinyHtml.createFrom('img', { class: 'img-fluid' })
+        .setStyle('height', item.attr('height'))
+        .setStyle('width', item.attr('width'));
+      item.replaceWith(newImage);
 
-      // Load Image FIle
+      // Load Image File
       newImage
-        .css({
+        .setStyle({
           cursor: 'pointer',
           opacity: '0%',
           'pointer-events': 'none',
         })
-        .on('load', function () {
+        .on('load', () => {
           const newImg = new Image();
-          const tinyThis = $(this);
-
-          newImg.onload = function () {
-            tinyThis.data('image-size', {
-              width: this.width,
-              height: this.height,
+          newImg.onload = () => {
+            newImg.setData('image-size', {
+              width: newImg.width,
+              height: newImg.height,
             });
-            tinyThis.css({ opacity: '100%', 'pointer-events': '' });
+            newImg.setStyle({ opacity: '100%', 'pointer-events': '' });
           };
 
-          newImg.src = $(this).attr('src');
+          newImg.src = newImage.attr('src');
         })
-        .on('click', function () {
-          const imgSize = $(this).data('image-size');
-          const imgData = { src: $(this).attr('src') };
-          const imgAlt = $(this).add('alt');
+        .on('click', (e) => {
+          e.preventDefault();
+          const imgSize = newImage.data('image-size');
+          const imgData = { src: newImage.attr('src') };
+          const imgAlt = newImage.add('alt');
           if (imgSize) {
             imgData.h = imgSize?.height;
             imgData.w = imgSize?.width;
@@ -625,24 +626,21 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
           });
 
           pswp.init();
-          $(this).fadeTo('fast', 0.7, function () {
-            $(this).fadeTo('fast', 1);
-          });
-          return false;
+          newImage
+            .fadeTo(0.7, 'fast')
+            .forEach(
+              (anim) => anim && anim.addEventListener('finish', () => newImage.fadeTo(1, 'fast')),
+            );
         })
         .hover(
-          function () {
-            $(this).fadeTo('fast', 0.8);
-          },
-          function () {
-            $(this).fadeTo('fast', 1);
-          },
+          () => newImage.fadeTo(0.8, 'fast'),
+          () => newImage.fadeTo(1, 'fast'),
         );
 
       // Load Image
-      newImage.attr('src', src);
+      newImage.setAttr('src', src);
 
-      const newTinyPlace = $('<p>', { class: 'pswp-space mt-4' });
+      const newTinyPlace = TinyHtml.createFrom('p', { class: 'pswp-space mt-4' });
       newTinyPlace.insertAfter(newImage);
     }
   });
@@ -667,15 +665,15 @@ export const clearFicData = function () {
     }
   }
 
-  $('body')
+  TinyHtml.query('body')
     .removeClass('ficMode')
     .removeClass(`fic-daycicle-morning`)
     .removeClass(`fic-daycicle-evening`)
     .removeClass(`fic-daycicle-night`)
     .removeClass(`fic-daycicle-lateAtNight`);
 
-  storyData.nc.base.right.find('> #status').empty();
-  $('#fic-chapter').empty();
+  new TinyHtml(storyData.nc.base.right.find('> #status')).empty();
+  TinyHtml.query('#fic-chapter').empty();
   storyData.readFic = false;
   storyData.chapter.html = {};
   storyData.chapter.line = null;
@@ -802,8 +800,8 @@ rootApp.onReady(() => {
        */
       (fn, readme) => {
         // Custom Colors
-        $('head').append(
-          $('<style>', { id: 'custom_color' }).text(`
+        TinyHtml.query('head').append(
+          TinyHtml.createFrom('style', { id: 'custom_color' }).setText(`
 
             .alert .close span{
                 color: ${storyCfg.theme.color4} !important;
@@ -920,15 +918,17 @@ rootApp.onReady(() => {
         for (const chapter in storyData.isNew) {
           if (storyData.isNew[chapter] === 2 && storyData.isNew[chapter] > storyData.globalIsNew) {
             storyData.globalIsNew = 2;
-            isNewValue = $('<span>', { class: 'badge badge-primary ms-2' }).text('NEW');
+            isNewValue = TinyHtml.createFrom('span', { class: 'badge badge-primary ms-2' }).setText(
+              'NEW',
+            );
           } else if (
             storyData.isNew[chapter] === 1 &&
             storyData.isNew[chapter] > storyData.globalIsNew
           ) {
             storyData.globalIsNew = 1;
-            isNewValue = $('<span>', {
+            isNewValue = TinyHtml.createFrom('span', {
               class: 'badge badge-secondary ms-2',
-            }).text('UPDATE');
+            }).setText('UPDATE');
           }
         }
 
@@ -948,21 +948,26 @@ rootApp.onReady(() => {
             const tinyHtml = newItem.dropdowns[valueName];
             tinyLib.bs.dropdownClick(tinyHtml, dataList, (li, element, item) => {
               // Create Dropdown
-              const aItem = $('<a>', { class: 'dropdown-item', id: item.id, href: item.href });
+              const aItem = TinyHtml.createFrom('a', {
+                class: 'dropdown-item',
+                id: item.id,
+                href: item.href,
+              });
               li.append(aItem);
 
               // Add text
-              aItem.text(item.text);
+              aItem.setText(item.text);
               if (item.icon) aItem.prepend(tinyLib.icon(`${item.icon} me-2`));
 
               // File
               if (typeof item.file === 'string') {
-                aItem.attr('href', 'javascript:void(0)');
-                aItem.attr('file', item.file);
+                aItem.setAttr('href', 'javascript:void(0)');
+                aItem.setAttr('file', item.file);
               }
 
               // Target
-              if (item.href && item.href !== 'javascript:void(0)') aItem.attr('target', '_blank');
+              if (item.href && item.href !== 'javascript:void(0)')
+                aItem.setAttr('target', '_blank');
 
               // Is web3
               if (item.web3Element) li.addClass('web3-element');
@@ -987,8 +992,8 @@ rootApp.onReady(() => {
           let offCanvasEl = null;
           const baseCryptoModal = function (crypto_value, title) {
             return function () {
-              const qrcodeCanvas = $('<canvas>');
-              QRCode.toCanvas(qrcodeCanvas[0], storyCfg[crypto_value].address, function (error) {
+              const qrcodeCanvas = TinyHtml.createFrom('canvas');
+              QRCode.toCanvas(qrcodeCanvas[0], storyCfg[crypto_value].address, (error) => {
                 if (error) {
                   alert(error);
                 } else {
@@ -999,26 +1004,23 @@ rootApp.onReady(() => {
                     id: 'busd_request',
                     dialog: 'modal-lg',
 
-                    body: $('<center>').append(
-                      $('<h4>', { class: 'mb-5' }).text(
+                    body: TinyHtml.createFrom('center').append(
+                      TinyHtml.createFrom('h4', { class: 'mb-5' }).setText(
                         'Please enter the address correctly! Any type issue will be permanent loss of your funds!',
                       ),
-                      $('<a>', {
+                      TinyHtml.createFrom('a', {
                         target: '_blank',
                         href: storyCfg[crypto_value].explorer + storyCfg[crypto_value].address,
-                      }).text('Blockchain Explorer'),
-                      $('<br>'),
-                      $('<span>').text(storyCfg[crypto_value].address),
-                      $('<div>', { class: 'mt-3' }).append(qrcodeCanvas),
+                      }).setText('Blockchain Explorer'),
+                      TinyHtml.createFrom('br'),
+                      TinyHtml.createFrom('span').setText(storyCfg[crypto_value].address),
+                      TinyHtml.createFrom('div', { class: 'mt-3' }).append(qrcodeCanvas),
                     ),
 
                     footer: [],
                   });
                 }
               });
-
-              // Complete
-              return false;
             };
           };
 
@@ -1214,14 +1216,14 @@ rootApp.onReady(() => {
 
           // AI Login
           tinyAiScript.aiLogin = {
-            base: $('<li>', { class: 'nav-item font-weight-bold' }),
+            base: TinyHtml.createFrom('li', { class: 'nav-item font-weight-bold' }),
             secondsUsed: 0,
             title: '',
             updateTitle: () => {
               if (tinyAiScript.aiLogin.button) {
                 const title = `${tinyAiScript.aiLogin.title}${tinyAiScript.aiLogin.secondsUsed > 0 ? ` - ${formatDayTimer(tinyAiScript.aiLogin.secondsUsed)}` : ''}`;
                 tinyAiScript.aiLogin.button.removeAttr('title');
-                tinyAiScript.aiLogin.button.attr('data-bs-original-title', title);
+                tinyAiScript.aiLogin.button.setAttr('data-bs-original-title', title);
               }
             },
           };
@@ -1232,9 +1234,9 @@ rootApp.onReady(() => {
 
           tinyAiScript.checkTitle();
           tinyAiScript.aiLogin.base.prepend(tinyAiScript.aiLogin.button);
-          tinyAiScript.aiLogin.button.on('click', function () {
-            tinyAiScript.login(this);
-            return false;
+          tinyAiScript.aiLogin.button.on('click', (e) => {
+            e.preventDefault();
+            tinyAiScript.login();
           });
 
           // Login Account
@@ -1289,52 +1291,54 @@ rootApp.onReady(() => {
           // Nav Items
           newItem.dropdowns = {};
 
-          newItem.dropdowns.information = $('<li>', {
+          newItem.dropdowns.information = TinyHtml.createFrom('li', {
             class: 'nav-item dropdown',
             id: 'information-menu',
           }).prepend(
             tinyLib.bs
               .button({ dsBtn: true, class: 'nav-link dropdown-toggle' })
-              .text('Information'),
+              .setText('Information'),
           );
           // Donations Button
-          newItem.dropdowns.donations = $('<li>', {
+          newItem.dropdowns.donations = TinyHtml.createFrom('li', {
             class: 'nav-item dropdown',
             id: 'donations-menu',
           }).prepend(
-            tinyLib.bs.button({ dsBtn: true, class: 'nav-link dropdown-toggle' }).text('Donations'),
+            tinyLib.bs
+              .button({ dsBtn: true, class: 'nav-link dropdown-toggle' })
+              .setText('Donations'),
           );
           // Characters
-          newItem.dropdowns.characters = $('<li>', {
+          newItem.dropdowns.characters = TinyHtml.createFrom('li', {
             class: 'nav-item dropdown',
             id: 'characters-menu',
           }).prepend(
             tinyLib.bs
               .button({ dsBtn: true, class: 'nav-link dropdown-toggle' })
-              .text('Characters'),
+              .setText('Characters'),
           );
           newItem.left = [
             // Homepage
-            $('<li>', { class: 'nav-item' }).prepend(
-              $('<a>', { class: 'nav-link', href: '/', id: 'homepage' })
-                .text('Home')
+            TinyHtml.createFrom('li', { class: 'nav-item' }).prepend(
+              TinyHtml.createFrom('a', { class: 'nav-link', href: '/', id: 'homepage' })
+                .setText('Home')
                 .prepend(tinyLib.icon('fas fa-home me-2'))
-                .on('click', () => {
+                .on('click', (e) => {
+                  e.preventDefault();
                   openMDFile('MAIN', true);
                   if (offCanvasEl) offCanvasEl.hide();
-                  return false;
                 }),
             ),
 
             // Discord Server
-            $('<li>', { class: 'nav-item' }).prepend(
-              $('<a>', {
+            TinyHtml.createFrom('li', { class: 'nav-item' }).prepend(
+              TinyHtml.createFrom('a', {
                 class: 'nav-link',
                 target: '_blank',
                 href: `https://discord.gg/${storyCfg.discordInvite}`,
                 id: 'discord-server',
               })
-                .text('Discord')
+                .setText('Discord')
                 .prepend(tinyLib.icon('fab fa-discord me-2'))
                 .on('click', () => {
                   if (offCanvasEl) offCanvasEl.hide();
@@ -1342,14 +1346,14 @@ rootApp.onReady(() => {
             ),
 
             // Blog
-            $('<li>', { class: 'nav-item' }).prepend(
-              $('<a>', {
+            TinyHtml.createFrom('li', { class: 'nav-item' }).prepend(
+              TinyHtml.createFrom('a', {
                 class: 'nav-link',
                 target: '_blank',
                 href: storyCfg.blog_url,
                 id: 'blog-url',
               })
-                .text('Blog')
+                .setText('Blog')
                 .prepend(tinyLib.icon('fa-solid fa-rss me-2'))
                 .on('click', () => {
                   if (offCanvasEl) offCanvasEl.hide();
@@ -1357,18 +1361,18 @@ rootApp.onReady(() => {
             ),
 
             // AI
-            $('<li>', { class: 'nav-item nav-ai' }).prepend(
-              $('<a>', {
+            TinyHtml.createFrom('li', { class: 'nav-item nav-ai' }).prepend(
+              TinyHtml.createFrom('a', {
                 class: 'nav-link',
                 href: '/?path=ai',
                 id: 'ai-access-page',
               })
-                .text('AI Page')
+                .setText('AI Page')
                 .prepend(tinyLib.icon('fa-solid fa-server me-2'))
-                .on('click', () => {
+                .on('click', (e) => {
+                  e.preventDefault();
                   AiScriptStart();
                   if (offCanvasEl) offCanvasEl.hide();
-                  return false;
                 }),
             ),
 
@@ -1378,46 +1382,46 @@ rootApp.onReady(() => {
           ];
           newItem.right = [
             // Status Place
-            $('<span>', { id: 'status' }),
+            TinyHtml.createFrom('span', { id: 'status' }),
 
             // Chapter Name
-            $('<li>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
+            TinyHtml.createFrom('li', { id: 'fic-chapter', class: 'nav-item nav-link' }),
 
             // Login
             tinyAiScript.aiLogin.base,
 
             // Login
-            loginAccount.base ? $(loginAccount.base.get(0)) : null,
+            loginAccount.base ? loginAccount.base : null,
 
             // Read Fic
-            $('<li>', {
+            TinyHtml.createFrom('li', {
               class: 'nav-item font-weight-bold',
             })
               .prepend(
-                $('<a>', {
+                TinyHtml.createFrom('a', {
                   id: 'fic-start',
                   class: 'nav-link',
                   href: '/?path=read-fic',
                 })
-                  .text('Read Fic')
+                  .setText('Read Fic')
                   .append(isNewValue)
                   .prepend(tinyLib.icon('fab fa-readme me-2')),
               )
-              .on('click', () => {
-                $('#top_page').addClass('d-none');
+              .on('click', (e) => {
+                e.preventDefault();
+                TinyHtml.query('#top_page').addClass('d-none');
                 openChapterMenu();
                 if (offCanvasEl) offCanvasEl.hide();
-                return false;
               }),
           ];
 
-          tinyAiScript.aiLogin.button.tooltip();
+          Tooltip(tinyAiScript.aiLogin.button);
           return newItem;
         };
 
         // Navbar items
         const navbarData = navbarItems();
-        const offCanvasBase = $('<ul>', { class: 'list-group list-group-flush' });
+        const offCanvasBase = TinyHtml.createFrom('ul', { class: 'list-group list-group-flush' });
         const navbarOffCanvas = tinyLib.bs.offcanvas(
           'end d-lg-none',
           'offcanvasNavbar',
@@ -1429,14 +1433,14 @@ rootApp.onReady(() => {
         const tinyCollapse2 = tinyLib.bs.navbar.collapse('right', 'small mdMenu', 'fic-nav');
 
         // Insert Navbar
-        $('body').prepend(
+        TinyHtml.query('body').prepend(
           // Navbar
           navbarOffCanvas,
           tinyLib.bs.navbar.root('md-navbar', 'dark', true).append(
             // Title
-            tinyLib.bs.navbar.title(storyCfg.title, '/').on('click', () => {
+            tinyLib.bs.navbar.title(storyCfg.title, '/').on('click', (e) => {
+              e.preventDefault();
               openMDFile('MAIN', true);
-              return false;
             }),
 
             // Offcanvas button
@@ -1447,7 +1451,7 @@ rootApp.onReady(() => {
                 toggle: 'offcanvas',
                 target: '#offcanvasNavbar',
               })
-              .append($('<span>', { class: 'navbar-toggler-icon' })),
+              .append(TinyHtml.createFrom('span', { class: 'navbar-toggler-icon' })),
 
             // Collapse
             tinyCollapse1,
@@ -1456,8 +1460,8 @@ rootApp.onReady(() => {
         );
 
         storyData.nc = { base: {}, item: {} };
-        storyData.nc.item.left = tinyCollapse1.find('> ul');
-        storyData.nc.item.right = tinyCollapse2.find('> ul');
+        storyData.nc.item.left = new TinyHtml(tinyCollapse1.find('> ul'));
+        storyData.nc.item.right = new TinyHtml(tinyCollapse2.find('> ul'));
         const offCanvasNavCfg = new Offcanvas(navbarOffCanvas.get(0));
         addDropdown(navbarData);
         navbarData.setOffCanvas(offCanvasNavCfg);
@@ -1479,7 +1483,7 @@ rootApp.onReady(() => {
         checkWindowSize();
 
         // Insert Readme
-        $('#app').append(tinyLib.bs.container('markdown-read'));
+        TinyHtml.query('#app').append(tinyLib.bs.container('markdown-read'));
 
         // Footer Base
         const tinyFooter = { 1: [], 2: [] };
@@ -1489,12 +1493,12 @@ rootApp.onReady(() => {
         // OpenSea
         if (storyCfg.opensea) {
           tinyFooter[1].push(
-            $('<li>').append(
-              $('<a>', {
+            TinyHtml.createFrom('li').append(
+              TinyHtml.createFrom('a', {
                 target: '_blank',
                 href: `https://opensea.io/collection/${storyCfg.opensea}`,
               })
-                .text('OpenSea')
+                .setText('OpenSea')
                 .prepend(tinyLib.icon('fab fa-ethereum me-2')),
             ),
           );
@@ -1503,9 +1507,9 @@ rootApp.onReady(() => {
         // CID32
         if (storyData.cid32) {
           tinyFooter[1].push(
-            $('<li>').append(
-              $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` })
-                .text('IPFS ' + storyCfg.nftDomain.name)
+            TinyHtml.createFrom('li').append(
+              TinyHtml.createFrom('a', { href: `https://${storyData.cid32}.ipfs.dweb.link/` })
+                .setText('IPFS ' + storyCfg.nftDomain.name)
                 .prepend(tinyLib.icon('fas fa-wifi me-2')),
             ),
           );
@@ -1514,13 +1518,13 @@ rootApp.onReady(() => {
         // Mastodon
         if (storyCfg.mastodon) {
           tinyFooter[1].push(
-            $('<li>').prepend(
-              $('<a>', {
+            TinyHtml.createFrom('li').prepend(
+              TinyHtml.createFrom('a', {
                 rel: 'me',
                 target: '_blank',
                 href: `https://${storyCfg.mastodon.domain}/@${storyCfg.mastodon.username}`,
               })
-                .text('Mastodon')
+                .setText('Mastodon')
                 .prepend(tinyLib.icon('fa-brands fa-mastodon me-2')),
             ),
           );
@@ -1529,12 +1533,12 @@ rootApp.onReady(() => {
         // Discord Invite
         if (storyCfg.discordInvite) {
           tinyFooter[1].push(
-            $('<li>').append(
-              $('<a>', {
+            TinyHtml.createFrom('li').append(
+              TinyHtml.createFrom('a', {
                 target: '_blank',
                 href: `https://discord.gg/${storyCfg.discordInvite}`,
               })
-                .text('Discord Server')
+                .setText('Discord Server')
                 .prepend(tinyLib.icon('fab fa-discord me-2')),
             ),
           );
@@ -1547,20 +1551,20 @@ rootApp.onReady(() => {
           storyCfg.mirror.length < 1
         ) {
           tinyFooter[1].push(
-            $('<li>').append(
-              $('<a>', { target: '_blank', href: `https://${storyCfg.domain}` })
-                .text('Website')
+            TinyHtml.createFrom('li').append(
+              TinyHtml.createFrom('a', { target: '_blank', href: `https://${storyCfg.domain}` })
+                .setText('Website')
                 .prepend(tinyLib.icon('fa-solid fa-pager me-2')),
             ),
           );
         } else {
           tinyFooter[1].push(
-            $('<li>').append(
-              $('<a>', {
+            TinyHtml.createFrom('li').append(
+              TinyHtml.createFrom('a', {
                 target: '_blank',
                 href: `https://${storyCfg.mirror[Math.floor(Math.random() * storyCfg?.mirror.length ?? 0)]}`,
               })
-                .text('Mirror')
+                .setText('Mirror')
                 .prepend(tinyLib.icon('fa-solid fa-pager me-2')),
             ),
           );
@@ -1569,12 +1573,12 @@ rootApp.onReady(() => {
         // Footer 2
         if (storyCfg.nftDomain) {
           tinyFooter[2].push(
-            $('<li>').append(
-              $('<a>', {
+            TinyHtml.createFrom('li').append(
+              TinyHtml.createFrom('a', {
                 target: '_blank',
                 href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.valueURL),
               })
-                .text(storyCfg.nftDomain.name)
+                .setText(storyCfg.nftDomain.name)
                 .prepend(tinyLib.icon('fas fa-marker me-2')),
             ),
           );
@@ -1582,88 +1586,90 @@ rootApp.onReady(() => {
 
         if (storyCfg.github) {
           tinyFooter[2].push(
-            $('<li>').append(
-              $('<a>', {
+            TinyHtml.createFrom('li').append(
+              TinyHtml.createFrom('a', {
                 target: '_blank',
                 href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}`,
               })
-                .text('Github')
+                .setText('Github')
                 .prepend(tinyLib.icon('fab fa-github me-2')),
             ),
           );
         }
 
         tinyFooter[2].push(
-          $('<li>').append(
-            $('<a>', { target: '_blank', href: 'mailto:' + storyCfg.contact })
-              .text('Contact')
+          TinyHtml.createFrom('li').append(
+            TinyHtml.createFrom('a', { target: '_blank', href: 'mailto:' + storyCfg.contact })
+              .setText('Contact')
               .prepend(tinyLib.icon('fas fa-envelope me-2')),
           ),
         );
 
         tinyFooter[2].push(
-          $('<li>')
+          TinyHtml.createFrom('li')
             .prepend(
-              $('<a>', {
+              TinyHtml.createFrom('a', {
                 href: '/?path=%2FLICENSE.md&title=License',
                 href: '/?path=%2FLICENSE.md&title=License',
                 id: 'license',
               })
-                .text('License')
+                .setText('License')
                 .prepend(tinyLib.icon('fas fa-copyright me-2')),
             )
-            .on('click', () => {
+            .on('click', (e) => {
+              e.preventDefault();
               openMDFile('/LICENSE.md');
-              return false;
             }),
         );
 
         // Insert Footer
-        $('body').append(
-          $('<footer>', { class: 'page-footer font-small pt-4 clearfix' }).append(
+        TinyHtml.query('body').append(
+          TinyHtml.createFrom('footer', { class: 'page-footer font-small pt-4 clearfix' }).append(
             // Base
-            $('<div>', {
+            TinyHtml.createFrom('div', {
               class: 'container-fluid text-center text-md-left',
             }).append(
-              $('<div>', { class: 'row' }).append(
+              TinyHtml.createFrom('div', { class: 'row' }).append(
                 // Logo
-                $('<div>', { class: 'col-md-6 mt-md-0 mt-3' }).append(
-                  $('<center>').append(
-                    $('<img>', { class: 'img-fluid', src: '/img/logo.png' }),
-                    $('<br/>'),
+                TinyHtml.createFrom('div', { class: 'col-md-6 mt-md-0 mt-3' }).append(
+                  TinyHtml.createFrom('center').append(
+                    TinyHtml.createFrom('img', { class: 'img-fluid', src: '/img/logo.png' }),
+                    TinyHtml.createFrom('br/'),
                   ),
                 ),
 
                 // Links 1
-                $('<div>', { class: 'col-md-3 mb-md-0 mb-3' }).append(
-                  $('<h5>').text('Links'),
-                  $('<ul>', { class: 'list-unstyled' }).append(tinyFooter[1]),
+                TinyHtml.createFrom('div', { class: 'col-md-3 mb-md-0 mb-3' }).append(
+                  TinyHtml.createFrom('h5').setText('Links'),
+                  TinyHtml.createFrom('ul', { class: 'list-unstyled' }).append(tinyFooter[1]),
                 ),
 
                 // Links 2
-                $('<div>', { class: 'col-md-3 mb-md-0 mb-3' }).append(
-                  $('<h5>').text('Links'),
-                  $('<ul>', { class: 'list-unstyled' }).append(tinyFooter[2]),
+                TinyHtml.createFrom('div', { class: 'col-md-3 mb-md-0 mb-3' }).append(
+                  TinyHtml.createFrom('h5').setText('Links'),
+                  TinyHtml.createFrom('ul', { class: 'list-unstyled' }).append(tinyFooter[2]),
                 ),
               ),
             ),
 
             // Copyright
-            $('<div>', {
+            TinyHtml.createFrom('div', {
               id: 'footer2',
               class: 'footer-copyright text-center py-3 bg-secondary text-white',
             })
-              .text(copyrightText)
+              .setText(copyrightText)
               .append(
-                $('<a>', { target: '_blank', href: storyCfg.creator_url }).text(storyCfg.creator),
+                TinyHtml.createFrom('a', { target: '_blank', href: storyCfg.creator_url }).setText(
+                  storyCfg.creator,
+                ),
                 '.',
               ),
           ),
         );
 
         // Carousel
-        const indicators = $('body > #root #carouselHomepage .carousel-indicators');
-        const inner = $('body > #root #carouselHomepage .carousel-inner');
+        const indicators = TinyHtml.queryAll('body > #root #carouselHomepage .carousel-indicators');
+        const inner = TinyHtml.queryAll('body > #root #carouselHomepage .carousel-inner');
 
         const slides = [
           {
@@ -1681,26 +1687,26 @@ rootApp.onReady(() => {
         // Insert slides
         slides.forEach((slide, index) => {
           // Options
-          $('<li>', {
+          TinyHtml.createFrom('li', {
             'data-bs-target': '#carouselHomepage',
             'data-bs-slide-to': index,
             class: index === 0 ? 'active' : '',
           }).appendTo(indicators);
 
-          const item = $('<div>', {
+          const item = TinyHtml.createFrom('div', {
             class: 'carousel-item' + (index === 0 ? ' active' : ''),
           }).appendTo(inner);
 
           // Image
-          $('<div>', {
+          TinyHtml.createFrom('div', {
             class: 'img',
             css: { 'background-image': 'url(' + slide.img + ')' },
           }).appendTo(item);
 
           // Text
-          const caption = $('<div>', { class: 'carousel-caption' }).appendTo(item);
-          $('<h5>', { class: 'px-5', text: slide.title }).appendTo(caption);
-          $('<p>', { class: 'px-5' }).html(slide.text).appendTo(caption);
+          const caption = TinyHtml.createFrom('div', { class: 'carousel-caption' }).appendTo(item);
+          TinyHtml.createFrom('h5', { class: 'px-5', text: slide.title }).appendTo(caption);
+          TinyHtml.createFrom('p', { class: 'px-5' }).html(slide.text).appendTo(caption);
         });
 
         // Start Readme

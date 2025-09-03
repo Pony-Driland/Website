@@ -19,6 +19,8 @@ import { TinyHtml } from 'tiny-essentials';
  * As a result, TinyHtmlTemplate provides a small-scale, component-like
  * abstraction for HTML elements, serving as a lightweight building block
  * for higher-level UI helpers.
+ *
+ * @extends TinyHtml<Element>
  */
 class TinyHtmlTemplate extends TinyHtml {
   /** @type {Set<string>} */

@@ -4,9 +4,8 @@ import { marked } from 'marked';
 import clone from 'clone';
 import objHash from 'object-hash';
 import { saveAs } from 'file-saver';
-import $ from 'jquery';
 
-import { objType, countObj, toTitleCase, TinyTextRangeEditor } from 'tiny-essentials';
+import { objType, countObj, toTitleCase, TinyTextRangeEditor, TinyHtml } from 'tiny-essentials';
 import TinyDices from 'tiny-dices';
 
 import { isNoNsfw, tinyLs, tinyNotification, appData, connStore } from '../important.mjs';
@@ -19,11 +18,13 @@ import TinyClientIo from './socketClient.mjs';
 import UserRoomManager from './RoomUserManagerUI.mjs';
 import RpgData from './software/rpgData.mjs';
 import EnablerAiContent from './software/enablerContent.mjs';
+import ficConfigs from './values/ficConfigs.mjs';
 
 import './values/jsonTemplate.mjs';
 
 import { canSandBox, tinyAi, tinyIo, tinyStorage } from './software/base.mjs';
 import { tinyAiScript } from './software/tinyAiScript.mjs';
+import { Tooltip } from '../modules/TinyBootstrap.mjs';
 
 export const AiScriptStart = async () => {
   let sessionEnabled = true;
@@ -32,8 +33,8 @@ export const AiScriptStart = async () => {
 
   // Clear page
   clearFicData();
-  $('#markdown-read').empty();
-  $('#top_page').addClass('d-none');
+  TinyHtml.query('#markdown-read').empty();
+  TinyHtml.query('#top_page').addClass('d-none');
 
   // Can use backup
   const rpgCfg = tinyStorage.getApiKey(tinyStorage.selectedAi()) || {};
@@ -110,21 +111,21 @@ export const AiScriptStart = async () => {
     const tinyClass = `link btn-bg text-start w-100${disabled ? ' disabled' : ''}`;
     return tinyLib.bs
       .button(!options ? tinyClass : { class: tinyClass, ...options })
-      .text(text)
+      .setText(text)
       .prepend(tinyLib.icon(`${icon} me-2`))
       .on('click', callback)
-      .prop('disabled', disabled);
+      .toggleProp('disabled', disabled);
   };
 
   // Select Model
-  const modelSelector = $('<select>', {
+  const modelSelector = TinyHtml.createFrom('select', {
     class: 'form-select',
     id: 'select-ai-model',
   });
   contentEnabler.setModelSelector(modelSelector);
   const resetModelSelector = () => {
     modelSelector.empty();
-    modelSelector.append($('<option>').text('None'));
+    modelSelector.append(TinyHtml.createFrom('option').setText('None'));
   };
 
   resetModelSelector();
@@ -135,17 +136,17 @@ export const AiScriptStart = async () => {
 
   // Token Count
   const tokenCount = {
-    amount: $('<span>').data('token-count', 0).text('0'),
-    total: $('<span>').text('0'),
+    amount: TinyHtml.createFrom('span').setData('token-count', 0).setText('0'),
+    total: TinyHtml.createFrom('span').setText('0'),
     updateValue: (where, value) => {
       if (typeof value === 'number') {
         if (!Number.isNaN(value) && Number.isFinite(value)) {
           if (tokenCount[where] && where !== 'updateValue' && where !== 'getValue')
             return tokenCount[where]
-              .data('token-count', value)
-              .text(value.toLocaleString(navigator.language || 'en-US'));
+              .setData('token-count', value)
+              .setText(value.toLocaleString(navigator.language || 'en-US'));
         }
-      } else return tokenCount[where].data('token-count', 0).text(0);
+      } else return tokenCount[where].setData('token-count', 0).setText(0);
     },
 
     getValue: (where) => {
@@ -156,11 +157,11 @@ export const AiScriptStart = async () => {
 
   // Ranger Generator
   const tinyRanger = () => {
-    const rangerBase = $('<div>', {
+    const rangerBase = TinyHtml.createFrom('div', {
       class: 'd-flex flex-row align-items-center',
     });
-    const ranger = $('<input>', { type: 'range', class: 'form-range' });
-    const rangerNumber = $('<input>', {
+    const ranger = TinyHtml.createFrom('input', { type: 'range', class: 'form-range' });
+    const rangerNumber = TinyHtml.createFrom('input', {
       type: 'number',
       class: 'form-control ms-2',
       style: 'width: 70px; max-width: 70px; min-width: 70px;',
@@ -230,33 +231,33 @@ export const AiScriptStart = async () => {
         return this;
       },
       setMin: function (value) {
-        ranger.attr('min', value);
-        rangerNumber.attr('min', value);
+        ranger.setAttr('min', value);
+        rangerNumber.setAttr('min', value);
         return this;
       },
       setMax: function (value) {
-        ranger.attr('max', value);
-        rangerNumber.attr('max', value);
+        ranger.setAttr('max', value);
+        rangerNumber.setAttr('max', value);
         return this;
       },
       setStep: function (value) {
-        ranger.attr('step', value);
-        rangerNumber.attr('step', value);
+        ranger.setAttr('step', value);
+        rangerNumber.setAttr('step', value);
         return this;
       },
 
       disable: function () {
         ranger.addClass('disabled');
-        ranger.prop('disabled', true);
+        ranger.addProp('disabled');
         rangerNumber.addClass('disabled');
-        rangerNumber.prop('disabled', true);
+        rangerNumber.addProp('disabled');
         return this;
       },
       enable: function () {
         ranger.removeClass('disabled');
-        ranger.prop('disabled', false);
+        ranger.removeProp('disabled');
         rangerNumber.removeClass('disabled');
-        rangerNumber.prop('disabled', false);
+        rangerNumber.removeProp('disabled');
         return this;
       },
 
@@ -279,7 +280,7 @@ export const AiScriptStart = async () => {
   };
 
   // Output Length
-  const outputLength = $('<input>', {
+  const outputLength = TinyHtml.createFrom('input', {
     type: 'number',
     class: 'form-control',
   });
@@ -579,54 +580,6 @@ export const AiScriptStart = async () => {
     return false;
   };
 
-  const ficConfigs = {
-    data: [
-      {
-        title: 'Safe Talk',
-        id: 'ficTalkSfw',
-        template: 'talkToFicSfw',
-        icon: 'fa-solid fa-book-open',
-        isSafe: true,
-        intro:
-          'Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this). I will try to hide some explicit details from fic, but if you insist, I will try to say in a few details.',
-        getData: async () => saveRoleplayFormat(null, false),
-      },
-      {
-        title: 'Full Talk',
-        id: 'ficTalk',
-        template: 'talkToFic',
-        icon: 'fa-solid fa-book-open-reader',
-        intro:
-          'Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this), but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes (but i will do this respecting the limitations of my selected model).',
-        getData: async () => saveRoleplayFormat(null, false),
-      },
-      {
-        title: 'Sandbox',
-        id: 'sandBoxFic',
-        template: 'sandBoxToFic',
-        icon: 'fa-solid fa-fill-drip',
-        intro:
-          'Welcome to sandbox of the fic Pony Driland! This is my purely sandbox version, that means I have no special configuration, allowing you to do whatever you want within the limits of your selected model.',
-        getData: async () =>
-          saveRoleplayFormat(null, false, {
-            ficLine: false,
-            dayNumber: false,
-          }),
-      },
-      {
-        title: 'No Data',
-        id: 'noData',
-        template: null,
-        icon: 'fa-solid fa-file',
-        intro:
-          'You are in a completely clean environment, with no stored data from the fic. You can use all website features without any limitations.',
-        getData: async () => null,
-      },
-    ],
-    buttons: [],
-    selected: null,
-    contentsMd5: null,
-  };
   rpgData.setFicConfigs(ficConfigs);
 
   // Reset buttons
@@ -797,13 +750,13 @@ export const AiScriptStart = async () => {
     textValueName = 'text',
   ) => {
     // Body
-    const body = $('<div>');
-    const textarea = $('<textarea>', {
+    const body = TinyHtml.createFrom('div');
+    const textarea = TinyHtml.createFrom('textarea', {
       class: 'form-control',
       style: `height: ${String(config.size)}px;`,
     });
     textarea.val(config.textarea);
-    if (config.readOnly) textarea.prop('readOnly', true);
+    if (config.readOnly) textarea.addProp('readOnly');
     const textEditor = new TinyTextRangeEditor(textarea[0]);
 
     // Templates list
@@ -814,12 +767,16 @@ export const AiScriptStart = async () => {
     ) {
       const templateList = config.addTemplates.data;
       // Select
-      const textareaAdd = $('<select>', { class: 'form-control' });
-      textareaAdd.append($('<option>', { value: 'DEFAULT' }).text(config.addTemplates.title));
+      const textareaAdd = TinyHtml.createFrom('select', { class: 'form-control' });
+      textareaAdd.append(
+        TinyHtml.createFrom('option', { value: 'DEFAULT' }).setText(config.addTemplates.title),
+      );
 
       // Separator
       const addSeparator = () =>
-        textareaAdd.append($('<option>').prop('disabled', true).text('----------------------'));
+        textareaAdd.append(
+          TinyHtml.createFrom('option').addProp('disabled').setText('----------------------'),
+        );
 
       addSeparator();
 
@@ -892,12 +849,12 @@ export const AiScriptStart = async () => {
               (typeof templateItem.value === 'string' || templateItem.disabled)
             )
               textareaAdd.append(
-                $('<option>', {
+                TinyHtml.createFrom('option', {
                   value: templateItem.value,
                 })
                   // Data item
-                  .data('TinyAI-select-text', getTypeValue())
-                  .data(
+                  .setData('TinyAI-select-text', getTypeValue())
+                  .setData(
                     'TinyAI-temperature',
                     typeof templateItem.temperature === 'number' &&
                       !Number.isNaN(templateItem.temperature) &&
@@ -905,7 +862,7 @@ export const AiScriptStart = async () => {
                       ? templateItem.temperature
                       : null,
                   )
-                  .data(
+                  .setData(
                     'TinyAI-max-output-tokens',
                     typeof templateItem.maxOutputTokens === 'number' &&
                       !Number.isNaN(templateItem.maxOutputTokens) &&
@@ -913,7 +870,7 @@ export const AiScriptStart = async () => {
                       ? templateItem.maxOutputTokens
                       : null,
                   )
-                  .data(
+                  .setData(
                     'TinyAI-topP',
                     typeof templateItem.topP === 'number' &&
                       !Number.isNaN(templateItem.topP) &&
@@ -921,7 +878,7 @@ export const AiScriptStart = async () => {
                       ? templateItem.topP
                       : null,
                   )
-                  .data(
+                  .setData(
                     'TinyAI-topK',
                     typeof templateItem.topK === 'number' &&
                       !Number.isNaN(templateItem.topK) &&
@@ -929,7 +886,7 @@ export const AiScriptStart = async () => {
                       ? templateItem.topK
                       : null,
                   )
-                  .data(
+                  .setData(
                     'TinyAI-presence-penalty',
                     typeof templateItem.presencePenalty === 'number' &&
                       !Number.isNaN(templateItem.presencePenalty) &&
@@ -937,7 +894,7 @@ export const AiScriptStart = async () => {
                       ? templateItem.presencePenalty
                       : null,
                   )
-                  .data(
+                  .setData(
                     'TinyAI-frequency-penalty',
                     typeof templateItem.frequencyPenalty === 'number' &&
                       !Number.isNaN(templateItem.frequencyPenalty) &&
@@ -946,10 +903,10 @@ export const AiScriptStart = async () => {
                       : null,
                   )
                   // Option name
-                  .text(templateItem.name)
+                  .setText(templateItem.name)
 
                   // Option is disabled?
-                  .prop(
+                  .toggleProp(
                     'disabled',
                     typeof templateItem.disabled === 'boolean' ? templateItem.disabled : false,
                   ),
@@ -963,7 +920,7 @@ export const AiScriptStart = async () => {
       // Option selected
       textareaAdd.on('change', () => {
         // Get value
-        const option = textareaAdd.find(`[value="${textareaAdd.val()}"]`);
+        const option = new TinyHtml(textareaAdd.find(`[value="${textareaAdd.val()}"]`));
         const text = option ? option.data('TinyAI-select-text') : null || null;
 
         const tempValue = option.data('TinyAI-temperature') || null;
@@ -996,21 +953,21 @@ export const AiScriptStart = async () => {
     }
 
     // Add textarea
-    body.append($('<p>').text(config.info));
+    body.append(TinyHtml.createFrom('p').setText(config.info));
     body.append(textarea);
 
     // Submit
     const submit = tinyLib.bs.button('info m-2 ms-0');
-    submit.text(config.submitName);
+    submit.setText(config.submitName);
 
     submit.on('click', () => {
       config.submitCall(textarea.val());
-      $(`#${config.id}`).modal('hide');
+      TinyHtml.query(`#${config.id}`).data('BootstrapModal').hide();
     });
 
-    if (config.readOnly) submit.prop('disabled', true).addClass('disabled');
+    if (config.readOnly) submit.addProp('disabled').addClass('disabled');
 
-    body.append($('<div>', { class: 'd-grid gap-2 col-6 mx-auto' }).append(submit));
+    body.append(TinyHtml.createFrom('div', { class: 'd-grid gap-2 col-6 mx-auto' }).append(submit));
 
     // Start modal
     tinyLib.modal({
@@ -1026,29 +983,29 @@ export const AiScriptStart = async () => {
 
   if (!tinyAiScript.mpClient) {
     // Reset
-    leftMenu.push($('<h5>').text('Reset'));
+    leftMenu.push(TinyHtml.createFrom('h5').setText('Reset'));
     leftMenu.push(...ficResets);
 
     // Modes
-    leftMenu.push($('<h5>').text('Modes'));
+    leftMenu.push(TinyHtml.createFrom('h5').setText('Modes'));
 
     // Fic Talk
     leftMenu.push(...ficTemplates);
   }
 
   // Settings
-  leftMenu.push($('<h5>').text('Settings'));
+  leftMenu.push(TinyHtml.createFrom('h5').setText('Settings'));
   leftMenu.push(...ficPromptItems);
 
   // RPG
-  leftMenu.push($('<h5>').text('RPG'));
+  leftMenu.push(TinyHtml.createFrom('h5').setText('RPG'));
   // Dice
   leftMenu.push(
     createButtonSidebar('fa-solid fa-dice', 'Roll Dice', () => {
       // Root
-      const $root = $('<div>');
-      const $formRow = $('<div>').addClass('row g-3');
-      const $totalBase = $('<center>', { class: 'fw-bold mt-3' }).text(0);
+      const $root = TinyHtml.createFrom('div');
+      const $formRow = TinyHtml.createFrom('div').addClass('row g-3');
+      const $totalBase = TinyHtml.createFrom('center', { class: 'fw-bold mt-3' }).setText(0);
 
       // Config
       const tinyCfg = {
@@ -1073,13 +1030,16 @@ export const AiScriptStart = async () => {
       // Form template
       const configs = {};
       const genLabel = (id, text) =>
-        $('<label>').addClass('form-label').attr('for', `tiny-dice_${id}`).text(text);
+        TinyHtml.createFrom('label')
+          .addClass('form-label')
+          .setAttr('for', `tiny-dice_${id}`)
+          .setText(text);
 
       const genInput = (id, type, value, min) =>
-        $('<input>')
+        TinyHtml.createFrom('input')
           .addClass('form-control text-center')
-          .attr({ id: `tiny-dice_${id}`, type, min })
-          .attr('placeholder', min)
+          .setAttr({ id: `tiny-dice_${id}`, type, min })
+          .setAttr('placeholder', min)
           .val(value);
 
       const genConfig = (id, text, type, value, min) => {
@@ -1088,35 +1048,35 @@ export const AiScriptStart = async () => {
       };
 
       // Form
-      const $perDieCol = $('<div>')
+      const $perDieCol = TinyHtml.createFrom('div')
         .addClass('col-md-12')
         .append(genConfig('perDieValues', 'Per-Die Values', 'text', '6', 'e.g., 6,12,20'));
 
-      const $allow0input = $('<input>')
+      const $allow0input = TinyHtml.createFrom('input')
         .addClass('form-check-input')
-        .attr({ type: 'checkbox', id: 'tiny-dice_allow0' });
-      const $allow0Col = $('<div>')
+        .setAttr({ type: 'checkbox', id: 'tiny-dice_allow0' });
+      const $allow0Col = TinyHtml.createFrom('div')
         .addClass('d-flex justify-content-center align-items-center mt-2')
         .append(
-          $('<div>')
+          TinyHtml.createFrom('div')
             .addClass('form-check')
             .append(
               $allow0input,
-              $('<label>')
+              TinyHtml.createFrom('label')
                 .addClass('form-check-label')
-                .attr('for', 'tiny-dice_allow0')
-                .text('Allow zero values'),
+                .setAttr('for', 'tiny-dice_allow0')
+                .setText('Allow zero values'),
             ),
         );
 
       $formRow.append($perDieCol);
 
       // Roll button
-      const $rollButton = tinyLib.bs.button('primary w-100 mb-4 mt-2').text('Roll Dice');
+      const $rollButton = tinyLib.bs.button('primary w-100 mb-4 mt-2').setText('Roll Dice');
 
       // Add container
-      const $diceContainer = $('<div>');
-      const $diceError = $('<div>');
+      const $diceContainer = TinyHtml.createFrom('div');
+      const $diceError = TinyHtml.createFrom('div');
       const readSkinValues = [
         ['bgSkin', 'bg', 'setBgSkin'],
         ['textSkin', 'text', 'setTextSkin'],
@@ -1129,12 +1089,12 @@ export const AiScriptStart = async () => {
       // TinyDices logic
       const dice = new TinyDices($diceContainer.get(0));
       let updateTotalBase = null;
-      $rollButton.on('click', async function () {
+      $rollButton.on('click', async () => {
         // Get values
         const perDieRaw = configs.perDieValues.val().trim();
         const perDie = perDieRaw.length > 0 ? perDieRaw : null;
         const canZero = $allow0input.is(':checked');
-        $totalBase.text(0);
+        $totalBase.setText(0);
         if (updateTotalBase) {
           clearTimeout(updateTotalBase);
           updateTotalBase = null;
@@ -1146,7 +1106,7 @@ export const AiScriptStart = async () => {
           let total = 0;
           for (const item of result) total += item.result;
           updateTotalBase = setTimeout(() => {
-            $totalBase.text(total);
+            $totalBase.setText(total);
             updateTotalBase = null;
           }, 2000);
         }
@@ -1158,9 +1118,9 @@ export const AiScriptStart = async () => {
           for (const index in diceParse) sides.push(diceParse[index]);
 
           // Get result
-          $(this).attr('disabled', true).addClass('disabled');
+          $rollButton.addProp('disabled').addClass('disabled');
           const result = await tinyIo.client.rollDice(sides, canZero);
-          $(this).attr('disabled', false).removeClass('disabled');
+          $rollButton.removeProp('disabled').removeClass('disabled');
 
           // Proccess Results
           if (!result.error) {
@@ -1179,34 +1139,37 @@ export const AiScriptStart = async () => {
                   );
               }
               updateTotalBase = setTimeout(() => {
-                $totalBase.text(result.total);
+                $totalBase.setText(result.total);
                 updateTotalBase = null;
               }, 2000);
             }
-          } else $totalBase.addClass('text-danger').text(result.msg);
+          } else $totalBase.addClass('text-danger').setText(result.msg);
         }
       });
 
       // Skin form
       const createInputField = (label, id, placeholder, value) => {
-        configs[id] = $('<input>')
+        configs[id] = TinyHtml.createFrom('input')
           .addClass('form-control text-center')
-          .attr({ type: 'text', placeholder })
+          .setAttr({ type: 'text', placeholder })
           .val(value);
 
-        return $('<div>')
+        return TinyHtml.createFrom('div')
           .addClass('col-md-4 text-center')
-          .append($('<label>').addClass('form-label').attr('for', id).text(label), configs[id]);
+          .append(
+            TinyHtml.createFrom('label').addClass('form-label').setAttr('for', id).setText(label),
+            configs[id],
+          );
       };
 
-      configs.bgImg = $('<input>')
+      configs.bgImg = TinyHtml.createFrom('input')
         .addClass('form-control')
         .addClass('d-none')
-        .attr('type', 'text')
+        .setAttr('type', 'text')
         .val(tinyCfg.data.img);
       const bgImgUploadButton = tinyLib.bs.button('info w-100');
       const uploadImgButton = tinyLib.upload.img(
-        bgImgUploadButton.text('Select Image').on('contextmenu', (e) => {
+        bgImgUploadButton.setText('Select Image').on('contextmenu', (e) => {
           e.preventDefault();
           configs.bgImg.val('').removeClass('text-danger').trigger('change');
         }),
@@ -1249,7 +1212,7 @@ export const AiScriptStart = async () => {
       );
 
       const importDiceButton = tinyLib.upload.json(
-        tinyLib.bs.button('info w-100').text('Import'),
+        tinyLib.bs.button('info w-100').setText('Import'),
         (err, jsonData) => {
           // Error
           if (err) {
@@ -1277,7 +1240,7 @@ export const AiScriptStart = async () => {
         },
       );
 
-      const $formRow2 = $('<div>', { class: 'd-none' })
+      const $formRow2 = TinyHtml.createFrom('div', { class: 'd-none' })
         .addClass('row g-3 mb-4')
         .append(
           // Background skin
@@ -1312,15 +1275,15 @@ export const AiScriptStart = async () => {
           ),
           // Image upload
           configs.bgImg,
-          $('<div>', { class: 'col-md-4 text-center' }).append(
-            $('<label>').addClass('form-label').text('Custom Image'),
+          TinyHtml.createFrom('div', { class: 'col-md-4 text-center' }).append(
+            TinyHtml.createFrom('label').addClass('form-label').setText('Custom Image'),
             uploadImgButton,
           ),
           // Export
-          $('<div>', { class: 'col-md-6' }).append(
+          TinyHtml.createFrom('div', { class: 'col-md-6' }).append(
             tinyLib.bs
               .button('info w-100')
-              .text('Export')
+              .setText('Export')
               .on('click', () => {
                 // Data base
                 const fileData = { data: {} };
@@ -1339,7 +1302,7 @@ export const AiScriptStart = async () => {
               }),
           ),
           // Import
-          $('<div>', { class: 'col-md-6' }).append(importDiceButton),
+          TinyHtml.createFrom('div', { class: 'col-md-6' }).append(importDiceButton),
         );
 
       const updateDiceData = (where, dataName, value) => {
@@ -1352,11 +1315,12 @@ export const AiScriptStart = async () => {
       };
 
       for (const index in readSkinValues) {
-        configs[readSkinValues[index][0]].on('change', function () {
+        const tinySkin = configs[readSkinValues[index][0]];
+        tinySkin.on('change', () => {
           updateDiceData(
             readSkinValues[index][2],
             readSkinValues[index][1],
-            $(this).val().trim() || null,
+            tinySkin.val().trim() || null,
           );
         });
       }
@@ -1366,48 +1330,48 @@ export const AiScriptStart = async () => {
       };
 
       // Root insert
-      $root.append($('<center>').append($formRow), $allow0Col, $formRow2);
+      $root.append(TinyHtml.createFrom('center').append($formRow), $allow0Col, $formRow2);
 
       // Main button of the skin editor
-      const $applyBtn = tinyLib.bs.button('success w-100').text('Edit Skin Data');
+      const $applyBtn = tinyLib.bs.button('success w-100').setText('Edit Skin Data');
       $applyBtn.on('click', async function () {
         // Show content
         if ($formRow2.hasClass('d-none')) {
-          $applyBtn.text(tinyIo.client ? 'Apply Dice Skins' : 'Hide Skin Data');
+          $applyBtn.setText(tinyIo.client ? 'Apply Dice Skins' : 'Hide Skin Data');
         }
         // Hide Content
         else {
-          $applyBtn.text('Edit Skin Data');
+          $applyBtn.setText('Edit Skin Data');
           if (tinyCfg.isOnline) {
             updateAllSkins();
 
             // Disable buttons
-            $applyBtn.attr('disabled', true).addClass('disabled');
+            $applyBtn.addProp('disabled').addClass('disabled');
             const diceSkin = {};
-            importDiceButton.attr('disabled', true).addClass('disabled');
-            uploadImgButton.attr('disabled', true).addClass('disabled');
+            importDiceButton.addProp('disabled').addClass('disabled');
+            uploadImgButton.addProp('disabled').addClass('disabled');
 
             // Send dice data
             for (const index in readSkinValues)
               diceSkin[readSkinValues[index][1]] = configs[readSkinValues[index][0]]
-                .attr('disabled', true)
+                .addProp('disabled')
                 .addClass('disabled')
                 .val()
                 .trim();
 
             const result = await tinyIo.client.setAccountDice(diceSkin);
-            if (result.error) $totalBase.addClass('text-danger').text(result.msg);
+            if (result.error) $totalBase.addClass('text-danger').setText(result.msg);
             else {
-              $totalBase.removeClass('text-danger').text(0);
+              $totalBase.removeClass('text-danger').setText(0);
               tinyIo.client.setDice(diceSkin);
             }
 
             // Enable buttons again
             for (const index in readSkinValues)
-              configs[readSkinValues[index][0]].attr('disabled', false).removeClass('disabled');
-            uploadImgButton.attr('disabled', false).removeClass('disabled');
-            importDiceButton.attr('disabled', false).removeClass('disabled');
-            $applyBtn.attr('disabled', false).removeClass('disabled');
+              configs[readSkinValues[index][0]].removeProp('disabled').removeClass('disabled');
+            uploadImgButton.removeProp('disabled').removeClass('disabled');
+            importDiceButton.removeProp('disabled').removeClass('disabled');
+            $applyBtn.removeProp('disabled').removeClass('disabled');
           }
         }
         // Change class mode
@@ -1466,7 +1430,10 @@ export const AiScriptStart = async () => {
               const map = new TinyMap(maps[index]);
               map.setLocation(location);
               map.buildMap(true);
-              tinyHtml.append(map.getMapBaseHtml(), $('<center>').append(map.getMapButton()));
+              tinyHtml.append(
+                map.getMapBaseHtml(),
+                TinyHtml.createFrom('center').append(map.getMapButton()),
+              );
             }
           }
         } catch (e) {
@@ -1476,8 +1443,8 @@ export const AiScriptStart = async () => {
         }
       };
 
-      const tinyHtml = $('<span>');
-      const tinyHr = $('<hr>', { class: 'my-5 d-none' });
+      const tinyHtml = TinyHtml.createFrom('span');
+      const tinyHr = TinyHtml.createFrom('hr', { class: 'my-5 d-none' });
       tinyLib.modal({
         title: 'Maps',
         dialog: 'modal-lg',
@@ -1485,11 +1452,11 @@ export const AiScriptStart = async () => {
         body: [
           tinyHtml,
           tinyHr,
-          $('<center>').append(
+          TinyHtml.createFrom('center').append(
             // Public Maps
             tinyLib.bs
               .button('secondary m-2')
-              .text('Public')
+              .setText('Public')
               .on('click', () => {
                 tinyHr.removeClass('d-none');
                 startTinyMap('public');
@@ -1497,7 +1464,7 @@ export const AiScriptStart = async () => {
             // Private Maps
             tinyLib.bs
               .button('secondary m-2')
-              .text('Private')
+              .setText('Private')
               .on('click', () => {
                 tinyHr.removeClass('d-none');
                 startTinyMap('private');
@@ -1510,7 +1477,7 @@ export const AiScriptStart = async () => {
 
   // Online Mode options
   if (!canUsejsStore) {
-    leftMenu.push($('<h5>').text('Online'));
+    leftMenu.push(TinyHtml.createFrom('h5').setText('Online'));
 
     leftMenu.push(
       createButtonSidebar('fas fa-users', 'Room settings', () => {
@@ -1520,30 +1487,30 @@ export const AiScriptStart = async () => {
           const user = tinyIo.client.getUser() || {};
           const cantEdit = room.ownerId !== tinyIo.client.getUserId() && !user.isOwner;
 
-          const $root = $('<div>');
+          const $root = TinyHtml.createFrom('div');
 
-          const $formContainer = $('<div>').addClass('mb-4');
-          const $editError = $('<div>').addClass('text-danger small mt-2');
-          const $deleteError = $('<div>').addClass('text-danger small mt-2');
+          const $formContainer = TinyHtml.createFrom('div').addClass('mb-4');
+          const $editError = TinyHtml.createFrom('div').addClass('text-danger small mt-2');
+          const $deleteError = TinyHtml.createFrom('div').addClass('text-danger small mt-2');
 
           // ─── Edit room ───────────────────────────────
-          const $editForm = $('<form>').addClass('mb-4');
-          $editForm.append($('<h5>').text('Edit Room Info'));
+          const $editForm = TinyHtml.createFrom('form').addClass('mb-4');
+          $editForm.append(TinyHtml.createFrom('h5').setText('Edit Room Info'));
 
-          const $roomId = $('<input>')
-            .attr({
+          const $roomId = TinyHtml.createFrom('input')
+            .setAttr({
               type: 'text',
               id: 'roomId',
               placeholder: 'Enter new room title',
               maxLength: ratelimit.size.roomId,
             })
-            .prop('disabled', true)
+            .addProp('disabled')
             .addClass('form-control')
             .addClass('form-control')
             .val(tinyIo.client.getRoomId());
 
-          const $roomTitle = $('<input>')
-            .attr({
+          const $roomTitle = TinyHtml.createFrom('input')
+            .setAttr({
               type: 'text',
               id: 'roomTitle',
               placeholder: 'Enter new room title',
@@ -1551,22 +1518,28 @@ export const AiScriptStart = async () => {
             })
             .addClass('form-control')
             .val(room.title)
-            .prop('disabled', cantEdit);
+            .toggleProp('disabled', cantEdit);
 
           $editForm.append(
-            $('<div>')
+            TinyHtml.createFrom('div')
               .addClass('row mb-3')
               .append(
-                $('<div>')
+                TinyHtml.createFrom('div')
                   .addClass('col-md-6')
                   .append(
-                    $('<label>').attr('for', 'roomId').addClass('form-label').text('Room ID'),
+                    TinyHtml.createFrom('label')
+                      .setAttr('for', 'roomId')
+                      .addClass('form-label')
+                      .setText('Room ID'),
                     $roomId,
                   ),
-                $('<div>')
+                TinyHtml.createFrom('div')
                   .addClass('col-md-6')
                   .append(
-                    $('<label>').attr('for', 'roomTitle').addClass('form-label').text('Room Title'),
+                    TinyHtml.createFrom('label')
+                      .setAttr('for', 'roomTitle')
+                      .addClass('form-label')
+                      .setText('Room Title'),
                     $roomTitle,
                   ),
               ),
@@ -1574,12 +1547,15 @@ export const AiScriptStart = async () => {
 
           // Max users
           $editForm.append(
-            $('<div>')
+            TinyHtml.createFrom('div')
               .addClass('mb-3')
               .append(
-                $('<label>').attr('for', 'maxUsers').addClass('form-label').text('Max Users'),
-                $('<input>')
-                  .attr({
+                TinyHtml.createFrom('label')
+                  .setAttr('for', 'maxUsers')
+                  .addClass('form-label')
+                  .setText('Max Users'),
+                TinyHtml.createFrom('input')
+                  .setAttr({
                     type: 'number',
                     id: 'maxUsers',
                     min: 1,
@@ -1588,80 +1564,80 @@ export const AiScriptStart = async () => {
                   })
                   .addClass('form-control')
                   .val(room.maxUsers)
-                  .prop('disabled', cantEdit),
+                  .toggleProp('disabled', cantEdit),
               ),
           );
 
           // New password
           $editForm.append(
-            $('<div>')
+            TinyHtml.createFrom('div')
               .addClass('mb-3')
               .append(
-                $('<label>')
-                  .attr('for', 'roomPassword')
+                TinyHtml.createFrom('label')
+                  .setAttr('for', 'roomPassword')
                   .addClass('form-label')
-                  .text('New Room Password'),
-                $('<input>')
-                  .attr({
+                  .setText('New Room Password'),
+                TinyHtml.createFrom('input')
+                  .setAttr({
                     type: 'password',
                     id: 'roomPassword',
                     placeholder: 'Leave empty to keep current password',
                     maxLength: ratelimit.size.password,
                   })
                   .addClass('form-control')
-                  .prop('disabled', cantEdit),
+                  .toggleProp('disabled', cantEdit),
               ),
           );
 
           // Submit
           $editForm.append(
-            $('<button>')
-              .attr('type', 'submit')
+            TinyHtml.createFrom('button')
+              .setAttr('type', 'submit')
               .addClass('btn btn-primary')
-              .text('Save Changes')
-              .prop('disabled', cantEdit),
+              .setText('Save Changes')
+              .toggleProp('disabled', cantEdit),
           );
 
           // ─── Delete room ─────────────────────────────
-          const $deleteSection = $('<div>').addClass('border-top pt-4');
+          const $deleteSection = TinyHtml.createFrom('div').addClass('border-top pt-4');
 
           $deleteSection.append(
-            $('<h5>').addClass('text-danger').text('Delete Room'),
-            $('<p>')
+            TinyHtml.createFrom('h5').addClass('text-danger').setText('Delete Room'),
+            TinyHtml.createFrom('p')
               .addClass('text-muted mb-2')
               .html(
                 'This action <strong>cannot be undone</strong>. Deleting this room will remove all its data permanently.',
               ),
           );
 
-          const $deleteForm = $('<form>').addClass('d-flex flex-column gap-2');
+          const $deleteForm = TinyHtml.createFrom('form').addClass('d-flex flex-column gap-2');
 
           // Your password
           $deleteForm.append(
-            $('<div>').append(
-              $('<label>')
-                .attr('for', 'ownerPassword')
+            TinyHtml.createFrom('div').append(
+              TinyHtml.createFrom('label')
+                .setAttr('for', 'ownerPassword')
                 .addClass('form-label')
-                .text('Enter your current password to confirm:'),
-              $('<input>')
-                .attr({
+                .setText('Enter your current password to confirm:'),
+              TinyHtml.createFrom('input')
+                .setAttr({
                   type: 'password',
                   id: 'ownerPassword',
                   placeholder: 'Current account password',
                   maxLength: ratelimit.size.password,
                 })
                 .addClass('form-control')
-                .prop('disabled', cantEdit),
+                .toggleProp('disabled', cantEdit),
             ),
           );
 
           // Delete now
           $deleteForm.append(
-            $('<button>')
-              .attr('type', 'submit')
+            TinyHtml.createFrom('button')
+              .setAttr('type', 'submit')
               .addClass('btn btn-danger mt-2')
-              .text('Delete Room Permanently')
-              .prop('disabled', cantEdit),
+              .setText('Delete Room Permanently')
+              .toggleProp('disabled', cantEdit),
           );
 
           $deleteSection.append($deleteForm);
@@ -1689,16 +1665,16 @@ export const AiScriptStart = async () => {
               $editError.empty(); // limpa erros anteriores
 
               const title = $roomTitle.val().trim();
-              const maxUsers = parseInt($editForm.find('#maxUsers').val(), 10);
-              const password = $editForm.find('#roomPassword').val().trim();
+              const maxUsers = parseInt(new TinyHtml($editForm.find('#maxUsers')).val(), 10);
+              const password = new TinyHtml($editForm.find('#roomPassword')).val().trim();
 
               if (Number.isNaN(maxUsers) || maxUsers <= 0) {
-                $editError.text('Max users must be a positive number.');
+                $editError.setText('Max users must be a positive number.');
                 return;
               }
 
               if (maxUsers > 50) {
-                $editError.text('Max users cannot exceed 50.');
+                $editError.setText('Max users cannot exceed 50.');
                 return;
               }
 
@@ -1706,7 +1682,7 @@ export const AiScriptStart = async () => {
               if (typeof password === 'string' && password.length > 0)
                 newSettings.password = password;
 
-              modal.modal('hide');
+              modal.hide();
               tinyIo.client.updateRoomSettings(newSettings).then((result) => {
                 if (result.error) alert(`${result.msg}\nCode ${result.code}`);
                 else alert('Your room settings has been changed successfully!');
@@ -1719,16 +1695,16 @@ export const AiScriptStart = async () => {
             if (!cantEdit) {
               $deleteError.empty(); // limpa erros anteriores
 
-              const password = $deleteForm.find('#ownerPassword').val().trim();
+              const password = new TinyHtml($deleteForm.find('#ownerPassword')).val().trim();
 
               if (!password) {
-                $deleteError.text('Please enter your current password.');
+                $deleteError.setText('Please enter your current password.');
                 return;
               }
 
               if (!confirm('Are you absolutely sure? This cannot be undone.')) return;
 
-              modal.modal('hide');
+              modal.hide();
               tinyIo.client.deleteRoom(password).then((result) => {
                 if (result.error) alert(`${result.msg}\nCode ${result.code}`);
                 else alert('Your room has been deleted successfully!');
@@ -1742,7 +1718,7 @@ export const AiScriptStart = async () => {
     leftMenu.push(
       createButtonSidebar('fas fa-users', 'User manager', () => {
         if (tinyIo.client) {
-          const $root = $('<div>');
+          const $root = TinyHtml.createFrom('div');
 
           // Start modal
           const modal = tinyLib.modal({
@@ -1817,27 +1793,30 @@ export const AiScriptStart = async () => {
       leftMenu.push(
         createButtonSidebar(icon, buttonName, () => {
           // Prepare root
-          const $root = $('<div>');
+          const $root = TinyHtml.createFrom('div');
 
-          const $card = $('<div>').addClass('card shadow rounded-4');
-          const $cardBody = $('<div>').addClass('card-body');
+          const $card = TinyHtml.createFrom('div').addClass('card shadow rounded-4');
+          const $cardBody = TinyHtml.createFrom('div').addClass('card-body');
 
-          const $inputGroup = $('<div>').addClass('mb-3');
-          const $label = $('<label>')
+          const $inputGroup = TinyHtml.createFrom('div').addClass('mb-3');
+          const $label = TinyHtml.createFrom('label')
             .addClass('form-label')
-            .attr('for', 'on_edit_tinyinfo')
-            .text(labelName);
+            .setAttr('for', 'on_edit_tinyinfo')
+            .setText(labelName);
 
-          const $input = $('<input>').addClass('form-control').addClass('text-center').attr({
-            type: 'text',
-            id: 'on_edit_tinyinfo',
-            placeholder: placeHolder,
-          });
+          const $input = TinyHtml.createFrom('input')
+            .addClass('form-control')
+            .addClass('text-center')
+            .setAttr({
+              type: 'text',
+              id: 'on_edit_tinyinfo',
+              placeholder: placeHolder,
+            });
 
           // Page information
           const { ratelimit, userData } = getInfo();
           $input
-            .attr('maxLength', ratelimit.size[infoName])
+            .setAttr('maxLength', ratelimit.size[infoName])
             .val(typeof userData[infoName] === 'string' ? userData[infoName] : '')
             .on('keydown', function (e) {
               if (e.key === 'Enter') {
@@ -1846,7 +1825,7 @@ export const AiScriptStart = async () => {
               }
             });
 
-          const $saveBtn = tinyLib.bs.button('primary w-100').text('Save');
+          const $saveBtn = tinyLib.bs.button('primary w-100').setText('Save');
 
           // Build elements
           $inputGroup.addClass('text-center').append($label, $input);
@@ -1857,7 +1836,7 @@ export const AiScriptStart = async () => {
           // Click button event
           $saveBtn.on('click', function () {
             callback($input.val().trim());
-            modal.modal('hide');
+            modal.hide();
           });
 
           // Start modal
@@ -1901,16 +1880,19 @@ export const AiScriptStart = async () => {
       createButtonSidebar('fas fa-key', 'Change password', () => {
         // Root
         const ratelimit = tinyIo.client.getRateLimit() || { size: {} };
-        const $root = $('<div>');
+        const $root = TinyHtml.createFrom('div');
 
         // Error place
         const $errorBox = tinyLib.bs.alert('danger', '', false).addClass('d-none');
 
         // Create label and input
         const createInputGroup = (labelText, inputId, type = 'password') => {
-          const $group = $('<div>').addClass('mb-3');
-          const $label = $('<label>').addClass('form-label').attr('for', inputId).text(labelText);
-          const $input = $('<input>').addClass('form-control').attr({
+          const $group = TinyHtml.createFrom('div').addClass('mb-3');
+          const $label = TinyHtml.createFrom('label')
+            .addClass('form-label')
+            .setAttr('for', inputId)
+            .setText(labelText);
+          const $input = TinyHtml.createFrom('input').addClass('form-control').setAttr({
             type,
             id: inputId,
             placeholder: labelText,
@@ -1925,7 +1907,7 @@ export const AiScriptStart = async () => {
         const confirmPass = createInputGroup('Confirm New Password', 'confirm-password');
 
         // Change password button
-        const $button = tinyLib.bs.button('primary').addClass('w-100').text('Change Password');
+        const $button = tinyLib.bs.button('primary').addClass('w-100').setText('Change Password');
 
         // Build all
         $root.append($errorBox, current.group, newPass.group, confirmPass.group, $button);
@@ -1973,7 +1955,7 @@ export const AiScriptStart = async () => {
 
           // Tiny okay!
           $errorBox.addClass('d-none');
-          modal.modal('hide');
+          modal.hide();
           tinyIo.client.changePassword(currentVal, newVal).then((result) => {
             if (result.error) alert(`${result.msg}\nCode ${result.code}`);
             else alert('Your password has been changed successfully!');
@@ -2001,18 +1983,21 @@ export const AiScriptStart = async () => {
         const userData = tinyIo.client.getUser() || {};
         if (ratelimit.openRegistration || userData.isAdmin) {
           // Root container
-          const $root = $('<div>');
+          const $root = TinyHtml.createFrom('div');
 
           // Error alert box (initially hidden)
           const $errorBox = tinyLib.bs.alert('danger', '', false).addClass('d-none');
 
           // Helper to build input fields
           const createInputGroup = (labelText, inputId, maxLength = null, type = 'text') => {
-            const $group = $('<div>').addClass('mb-3');
-            const $label = $('<label>').addClass('form-label').attr('for', inputId).text(labelText);
-            const $input = $('<input>')
+            const $group = TinyHtml.createFrom('div').addClass('mb-3');
+            const $label = TinyHtml.createFrom('label')
+              .addClass('form-label')
+              .setAttr('for', inputId)
+              .setText(labelText);
+            const $input = TinyHtml.createFrom('input')
               .addClass('form-control')
-              .attr({ maxLength, type, id: inputId, placeholder: labelText });
+              .setAttr({ maxLength, type, id: inputId, placeholder: labelText });
             $group.append($label, $input);
             return { group: $group, input: $input };
           };
@@ -2042,7 +2027,7 @@ export const AiScriptStart = async () => {
           );
 
           // Submit button
-          const $button = tinyLib.bs.button('success').addClass('w-100').text('Create Account');
+          const $button = tinyLib.bs.button('success').addClass('w-100').setText('Create Account');
 
           // Build the form
           $root.append($errorBox, user.group, pass.group, confirm.group, nick.group, $button);
@@ -2096,7 +2081,7 @@ export const AiScriptStart = async () => {
 
             // Tiny okay!
             $errorBox.addClass('d-none');
-            modal.modal('hide');
+            modal.hide();
             tinyIo.client.register(userId, password, nickname).then((result) => {
               if (result.error) alert(`${result.msg}\nCode ${result.code}`);
               else alert(`The new account was successfully created!`);
@@ -2122,14 +2107,14 @@ export const AiScriptStart = async () => {
             title: 'Create Account',
             dialog: 'modal-lg',
             id: 'modal-create-account',
-            body: $('<center>').text('You are not allowed to do this.'),
+            body: TinyHtml.createFrom('center').setText('You are not allowed to do this.'),
           });
       }),
     );
   }
 
   // Import
-  leftMenu.push($('<h5>').text('Data'));
+  leftMenu.push(TinyHtml.createFrom('h5').setText('Data'));
   leftMenu.push(...importItems);
 
   // Export
@@ -2155,52 +2140,54 @@ export const AiScriptStart = async () => {
   // Downloads
   leftMenu.push(
     createButtonSidebar('fa-solid fa-download', 'Downloads', () => {
-      const body = $('<div>');
+      const body = TinyHtml.createFrom('div');
       body.append(
-        $('<h3>')
-          .text(`Download Content`)
+        TinyHtml.createFrom('h3')
+          .setText(`Download Content`)
           .prepend(tinyLib.icon('fa-solid fa-download me-3'))
           .append(
             tinyLib.bs
               .button('info btn-sm ms-3')
-              .text('Save As all chapters')
+              .setText('Save As all chapters')
               .on('click', () => saveRoleplayFormat()),
           ),
-        $('<h5>')
-          .text(
+        TinyHtml.createFrom('h5')
+          .setText(
             `Here you can download the official content of fic to produce unofficial content dedicated to artificial intelligence.`,
           )
           .append(
-            $('<br/>'),
-            $('<small>').text('Remember that you are downloading the uncensored version.'),
+            TinyHtml.createFrom('br'),
+            TinyHtml.createFrom('small').setText(
+              'Remember that you are downloading the uncensored version.',
+            ),
           ),
       );
 
       for (let i = 0; i < storyData.chapter.amount; i++) {
         // Chapter Number
         const chapter = String(i + 1);
+        const tinyClick = TinyHtml.createFrom('a', {
+          class: 'btn btn-primary m-2 me-0 btn-sm',
+          href: `/chapter/${chapter}.html`,
+          chapter: chapter,
+        });
 
         // Add Chapter
         body.append(
-          $('<div>', { class: 'card' }).append(
-            $('<div>', { class: 'card-body' }).append(
-              $('<h5>', { class: 'card-title m-0' })
-                .text(`Chapter ${chapter} - `)
+          TinyHtml.createFrom('div', { class: 'card' }).append(
+            TinyHtml.createFrom('div', { class: 'card-body' }).append(
+              TinyHtml.createFrom('h5', { class: 'card-title m-0' })
+                .setText(`Chapter ${chapter} - `)
                 .append(
-                  $('<small>').text(storyCfg.chapterName[chapter].title),
-                  $('<a>', {
-                    class: 'btn btn-primary m-2 me-0 btn-sm',
-                    href: `/chapter/${chapter}.html`,
-                    chapter: chapter,
-                  })
-                    .on('click', function () {
-                      // Save Chapter
-                      saveRoleplayFormat(Number($(this).attr('chapter')));
+                  TinyHtml.createFrom('small').setText(storyCfg.chapterName[chapter].title),
 
-                      // Complete
-                      return false;
+                  tinyClick
+                    .on('click', (e) => {
+                      e.preventDefault();
+                      // Save Chapter
+                      saveRoleplayFormat(Number(tinyClick.attr('chapter')));
                     })
-                    .text('Save as'),
+                    .setText('Save as'),
                 ),
             ),
           ),
@@ -2208,7 +2195,7 @@ export const AiScriptStart = async () => {
       }
 
       body.append(
-        $('<p>', { class: 'm-0' }).text(
+        TinyHtml.createFrom('p', { class: 'm-0' }).setText(
           `This content is ready for AI to know which lines of text, chapters, day number, weather, location on any part of the fic you ask. The website script will convert all content to be easily understood by AI languages.`,
         ),
       );
@@ -2223,52 +2210,52 @@ export const AiScriptStart = async () => {
   );
 
   // Donate
-  leftMenu.push($('<h5>').text('Donate'));
+  leftMenu.push(TinyHtml.createFrom('h5').setText('Donate'));
   leftMenu.push(
     createButtonSidebar('fas fa-donate', 'Donate <3', () => {
-      const $container = $('<div>').addClass('text-center');
+      const $container = TinyHtml.createFrom('div').addClass('text-center');
       $container.append(
-        $('<p>', { class: 'made-by-ai' }).html(
+        TinyHtml.createFrom('p', { class: 'made-by-ai' }).html(
           'This project took <strong>months of dedication</strong> and many <em>sleepless nights</em>.',
         ),
       );
 
       $container.append(
-        $('<p>', { class: 'made-by-ai m-0' }).html(
+        TinyHtml.createFrom('p', { class: 'made-by-ai m-0' }).html(
           'If you enjoyed all the love and effort I put into this <strong>super AI roleplay project</strong>,',
         ),
       );
 
       $container.append(
-        $('<p>', { class: 'made-by-ai' }).html(
+        TinyHtml.createFrom('p', { class: 'made-by-ai' }).html(
           'I warmly invite you to support it with a <strong>voluntary donation</strong>',
         ),
       );
 
       $container.append(
-        $('<p>', { class: 'made-by-ai m-0' }).html(
+        TinyHtml.createFrom('p', { class: 'made-by-ai m-0' }).html(
           'I accept both <strong>traditional currencies</strong> and <strong>cryptocurrencies</strong> as donation methods',
         ),
       );
 
       $container.append(
-        $('<p>', { class: 'made-by-ai' }).html(
+        TinyHtml.createFrom('p', { class: 'made-by-ai' }).html(
           'Thank you for helping this tiny magical project grow! 🎁💕',
         ),
       );
 
       const patreonNames = ['Jimm'];
 
-      const $thankYouBox = $('<div>').addClass('patreon-thankyou');
+      const $thankYouBox = TinyHtml.createFrom('div').addClass('patreon-thankyou');
 
-      const $thankYouText = $('<p>').text(
+      const $thankYouText = TinyHtml.createFrom('p').setText(
         'Tiny magic moment to thank these magical patreons which supports the tiny fic:',
       );
-      const $ul = $('<ul>', { class: 'list-unstyled' });
+      const $ul = TinyHtml.createFrom('ul', { class: 'list-unstyled' });
 
       patreonNames.forEach((name) => {
-        const $nameSpan = $('<span>').addClass('magic-name').text(name);
-        const $li = $('<li>').append($nameSpan);
+        const $nameSpan = TinyHtml.createFrom('span').addClass('magic-name').setText(name);
+        const $li = TinyHtml.createFrom('li').append($nameSpan);
         $ul.append($li);
       });
 
@@ -2280,8 +2267,8 @@ export const AiScriptStart = async () => {
         dialog: 'modal-lg',
         id: 'modal-donate',
         body: $container.append(
-          $('<div>', { class: 'donation-highlight' }).append(
-            $('<img>', {
+          TinyHtml.createFrom('div', { class: 'donation-highlight' }).append(
+            TinyHtml.createFrom('img', {
               class: 'd-block w-100',
               src: '/img/ai-example/2025-04-09_06-48.jpg',
             }),
@@ -2292,24 +2279,26 @@ export const AiScriptStart = async () => {
   );
 
   // Left
-  const connectionInfoBar = $('<span>');
-  const sidebarLeft = $('<div>', sidebarStyle)
+  const connectionInfoBar = TinyHtml.createFrom('span');
+  const sidebarLeft = TinyHtml.createFrom('div', sidebarStyle)
     .removeClass('d-md-block')
     .removeClass('p-3')
     .addClass('d-md-flex')
     .addClass('flex-column')
     .addClass('py-0')
     .append(
-      $('<ul>', { class: 'list-unstyled flex-grow-1 overflow-auto mb-0 pt-3 px-3' }).append(
-        $('<li>', { id: 'ai-mode-list', class: 'mb-3' }).append(leftMenu),
+      TinyHtml.createFrom('ul', {
+        class: 'list-unstyled flex-grow-1 overflow-auto mb-0 pt-3 px-3',
+      }).append(
+        TinyHtml.createFrom('li', { id: 'ai-mode-list', class: 'mb-3' }).append(leftMenu),
 
         // Tiny information
-        $('<div>', {
+        TinyHtml.createFrom('div', {
           class: 'small text-grey p-2 bg-dark position-sticky bottom-0 pt-0',
         }).append(
-          $('<hr/>', { class: 'border-white mt-0 mb-2' }),
+          TinyHtml.createFrom('hr', { class: 'border-white mt-0 mb-2' }),
           connectionInfoBar,
-          $('<span>').text(
+          TinyHtml.createFrom('span').setText(
             'AI makes mistakes, so double-check it. AI does not replace the fic literature (Careful! AI can type spoilers!).',
           ),
         ),
@@ -2320,106 +2309,108 @@ export const AiScriptStart = async () => {
   const sidebarSettingTemplate = { span: { class: 'pb-2 d-inline-block' } };
   const sidebarRightBase = {
     // Model Selector
-    modelSelector: $('<div>', {
+    modelSelector: TinyHtml.createFrom('div', {
       class: 'form-floating',
       title: 'The AI model used here',
     }).append(
       modelSelector,
-      $('<label>', { for: 'select-ai-model' })
-        .text('Select AI Model')
+      TinyHtml.createFrom('label', { for: 'select-ai-model' })
+        .setText('Select AI Model')
         .prepend(tinyLib.icon(`fa-solid fa-atom me-2`)),
     ),
 
     // Token Counter
-    tokenCounter: $('<div>', {
+    tokenCounter: TinyHtml.createFrom('div', {
       class: 'mt-3',
       title: 'Counts how many tokens are used for the content generation',
     }).append(
-      $('<span>').text('Token count').prepend(tinyLib.icon(`fa-solid fa-magnifying-glass me-2`)),
-      $('<div>', { class: 'mt-1 small' }).append(
+      TinyHtml.createFrom('span')
+        .setText('Token count')
+        .prepend(tinyLib.icon(`fa-solid fa-magnifying-glass me-2`)),
+      TinyHtml.createFrom('div', { class: 'mt-1 small' }).append(
         tokenCount.amount,
-        $('<span>', { class: 'mx-1' }).text('/'),
+        TinyHtml.createFrom('span', { class: 'mx-1' }).setText('/'),
         tokenCount.total,
       ),
     ),
 
     // Temperature
-    temperature: $('<div>', {
+    temperature: TinyHtml.createFrom('div', {
       class: 'mt-3',
       title: 'Creativity allowed in the responses',
     }).append(
-      $('<span>', sidebarSettingTemplate.span)
-        .text('Temperature')
+      TinyHtml.createFrom('span', sidebarSettingTemplate.span)
+        .setText('Temperature')
         .prepend(tinyLib.icon(`fa-solid fa-temperature-three-quarters me-2`)),
       temperature.insert(),
     ),
 
     // Output Length
-    outputLength: $('<div>', {
+    outputLength: TinyHtml.createFrom('div', {
       class: 'mt-3',
       title: 'Maximum number of tokens in response',
     }).append(
-      $('<span>', sidebarSettingTemplate.span)
-        .text('Output length')
+      TinyHtml.createFrom('span', sidebarSettingTemplate.span)
+        .setText('Output length')
         .prepend(tinyLib.icon(`fa-solid fa-comment me-2`)),
       outputLength,
     ),
 
     // Top P
-    topP: $('<div>', {
+    topP: TinyHtml.createFrom('div', {
       class: 'mt-3',
       title: 'The maximum cumulative probability of tokens to consider when sampling',
     }).append(
-      $('<span>', sidebarSettingTemplate.span)
-        .text('Top P')
+      TinyHtml.createFrom('span', sidebarSettingTemplate.span)
+        .setText('Top P')
         .prepend(tinyLib.icon(`fa-solid fa-percent me-2`)),
       topP.insert(),
     ),
 
     // Top K
-    topK: $('<div>', {
+    topK: TinyHtml.createFrom('div', {
       class: 'mt-3',
       title: 'The maximum number of tokens to consider when sampling',
     }).append(
-      $('<span>', sidebarSettingTemplate.span)
-        .text('Top K')
+      TinyHtml.createFrom('span', sidebarSettingTemplate.span)
+        .setText('Top K')
         .prepend(tinyLib.icon(`fa-solid fa-0 me-2`)),
       topK.insert(),
     ),
 
     // Presence penalty
-    presencePenalty: $('<div>', {
+    presencePenalty: TinyHtml.createFrom('div', {
       class: 'mt-3',
       title:
         "Presence penalty applied to the next token's logprobs if the token has already been seen in the response",
     }).append(
-      $('<span>', sidebarSettingTemplate.span)
-        .text('Presence penalty')
+      TinyHtml.createFrom('span', sidebarSettingTemplate.span)
+        .setText('Presence penalty')
         .prepend(tinyLib.icon(`fa-solid fa-hand me-2`)),
       presencePenalty.insert(),
     ),
 
     // Frequency penalty
-    frequencyPenalty: $('<div>', {
+    frequencyPenalty: TinyHtml.createFrom('div', {
       class: 'mt-3',
       title:
         "Frequency penalty applied to the next token's logprobs, multiplied by the number of times each token has been seen in the respponse so far",
     }).append(
-      $('<span>', sidebarSettingTemplate.span)
-        .text('Frequency penalty')
+      TinyHtml.createFrom('span', sidebarSettingTemplate.span)
+        .setText('Frequency penalty')
         .prepend(tinyLib.icon(`fa-solid fa-hand me-2`)),
       frequencyPenalty.insert(),
     ),
   };
 
   // Active tooltip
-  sidebarRightBase.tokenCounter.tooltip();
-  sidebarRightBase.temperature.tooltip();
-  sidebarRightBase.outputLength.tooltip();
-  sidebarRightBase.topP.tooltip();
-  sidebarRightBase.topK.tooltip();
-  sidebarRightBase.presencePenalty.tooltip();
-  sidebarRightBase.frequencyPenalty.tooltip();
+  Tooltip(sidebarRightBase.tokenCounter);
+  Tooltip(sidebarRightBase.temperature);
+  Tooltip(sidebarRightBase.outputLength);
+  Tooltip(sidebarRightBase.topP);
+  Tooltip(sidebarRightBase.topK);
+  Tooltip(sidebarRightBase.presencePenalty);
+  Tooltip(sidebarRightBase.frequencyPenalty);
 
   // Models list
   const updateModelList = () => {
@@ -2430,7 +2421,9 @@ export const AiScriptStart = async () => {
         // Insert model
         const insertItem = (id, displayName, disabled = false) =>
           modelSelector.append(
-            $('<option>', { value: id }).prop('disabled', disabled).text(displayName),
+            TinyHtml.createFrom('option', { value: id })
+              .toggleProp('disabled', disabled)
+              .setText(displayName),
           );
 
         // Get models
@@ -2470,7 +2463,7 @@ export const AiScriptStart = async () => {
 
     outputLength
       .val(model.outputTokenLimit)
-      .prop('disabled', false)
+      .removeProp('disabled')
       .removeClass('disabled')
       .trigger('input');
 
@@ -2496,9 +2489,9 @@ export const AiScriptStart = async () => {
         tinyLs.setItem('tiny-ai-storage-model-selected', newModel);
         if (tinyAi.getData()) tinyAi.setModel(newModel, ficConfigs.selected);
       } else {
-        tokenCount.total.text(0);
+        tokenCount.total.setText(0);
         temperature.reset().disable();
-        outputLength.val(0).prop('disabled', true).addClass('disabled');
+        outputLength.val(0).addProp('disabled').addClass('disabled');
         topP.reset().disable();
         topK.reset().disable();
         presencePenalty.reset().disable();
@@ -2506,7 +2499,7 @@ export const AiScriptStart = async () => {
         tinyLs.removeItem('tiny-ai-storage-model-selected');
       }
 
-      if (!isFirstTime && !ignoreTokenUpdater && !modelSelector.prop('disabled'))
+      if (!isFirstTime && !ignoreTokenUpdater && !modelSelector.hasProp('disabled'))
         updateAiTokenCounterData(undefined, true);
     }
   };
@@ -2524,7 +2517,7 @@ export const AiScriptStart = async () => {
 
         if (!tinyAi._nextModelsPageToken) {
           loadMoreModels.addClass('disabled');
-          loadMoreModels.prop('disabled', true);
+          loadMoreModels.addProp('disabled');
         }
 
         updateModelList();
@@ -2547,9 +2540,9 @@ export const AiScriptStart = async () => {
   );
   contentEnabler.setResetSettingsButton(resetSettingsButton);
 
-  const sidebarRight = $('<div>', sidebarStyle).append(
-    $('<ul>', { class: 'list-unstyled' }).append(
-      $('<h5>').text('Run Settings'),
+  const sidebarRight = TinyHtml.createFrom('div', sidebarStyle).append(
+    TinyHtml.createFrom('ul', { class: 'list-unstyled' }).append(
+      TinyHtml.createFrom('h5').setText('Run Settings'),
       sidebarRightBase.modelSelector,
       sidebarRightBase.tokenCounter,
       sidebarRightBase.temperature,
@@ -2559,7 +2552,7 @@ export const AiScriptStart = async () => {
       sidebarRightBase.presencePenalty,
       sidebarRightBase.frequencyPenalty,
 
-      $('<hr/>', { class: 'm-2' }),
+      TinyHtml.createFrom('hr', { class: 'm-2' }),
 
       // Load more models
       loadMoreModels,
@@ -2953,7 +2946,9 @@ export const AiScriptStart = async () => {
           );
           addMessage(tinyCache.msgBallon);
         } else {
-          tinyCache.msgBallon.find('.ai-msg-ballon').empty().append(makeMsgRenderer(msgData));
+          new TinyHtml(tinyCache.msgBallon.find('.ai-msg-ballon'))
+            .empty()
+            .append(makeMsgRenderer(msgData));
           const tinyErrorAlert = tinyCache.msgBallon.data('tiny-ai-error-alert');
           if (tinyErrorAlert) tinyErrorAlert.updateText(finishReason);
           scrollChatContainerToTop();
@@ -3011,7 +3006,7 @@ export const AiScriptStart = async () => {
               // Update message cache
               const oldBallonCache = tinyCache.msgBallon.data('tiny-ai-cache');
               oldBallonCache.msg = chuck.contents[index].parts[0].text;
-              tinyCache.msgBallon.data('tiny-ai-cache', oldBallonCache);
+              tinyCache.msgBallon.setData('tiny-ai-cache', oldBallonCache);
 
               // Add class
               tinyCache.msgBallon.addClass('entering-ai-message');
@@ -3026,11 +3021,11 @@ export const AiScriptStart = async () => {
             if (tinyCache.msgBallon) {
               tinyCache.msgBallon.removeClass('entering-ai-message');
               const ballonCache = tinyCache.msgBallon.data('tiny-ai-cache');
-              if ($('body').hasClass('windowHidden')) {
+              if (TinyHtml.query('body').hasClass('windowHidden')) {
                 if (ballonCache) tinyNotification.send(ballonCache.role, { body: ballonCache.msg });
                 else notificationError();
               }
-            } else if ($('body').hasClass('windowHidden')) notificationError();
+            } else if (TinyHtml.query('body').hasClass('windowHidden')) notificationError();
             completeTask();
           }
         })
@@ -3064,7 +3059,7 @@ export const AiScriptStart = async () => {
                 // Update message data
                 const oldBallonCache = tinyCache.msgBallon.data('tiny-ai-cache');
                 oldBallonCache.msg = msg.parts[0].text;
-                tinyCache.msgBallon.data('tiny-ai-cache', oldBallonCache);
+                tinyCache.msgBallon.setData('tiny-ai-cache', oldBallonCache);
               }
             }
           }
@@ -3092,7 +3087,7 @@ export const AiScriptStart = async () => {
     callback = null,
   ) => {
     // Create textarea
-    const textarea = $('<textarea>', {
+    const textarea = TinyHtml.createFrom('textarea', {
       style: [
         `min-height: ${minHeight}px`,
         `height: ${minHeight}px`,
@@ -3106,14 +3101,14 @@ export const AiScriptStart = async () => {
       // Reset for minimum height before recalculating
       const value = textarea.val();
       const lines = value.split('\n').length;
-      textarea.css('height', 'auto');
+      textarea.setStyle('height', 'auto');
 
       // Get scrollHeight via jQuery
       const newHeight = textarea.prop('scrollHeight');
       const height = lines > 1 ? Math.min(newHeight, maxHeight) : minHeight;
 
       // Defines height, but respects the maximum limit
-      textarea.css('height', `${String(height)}px`);
+      textarea.setStyle('height', `${String(height)}px`);
       if (typeof callback === 'function') callback({ height, newHeight, lines, value });
     });
 
@@ -3142,9 +3137,9 @@ export const AiScriptStart = async () => {
       const heightBefore = chatContainer.prop('scrollHeight');
 
       // And use this to correct the size of other elements
-      chatContainer.css('padding-bottom', `${String(tinyFinalValue)}px`);
+      chatContainer.setStyle('padding-bottom', `${String(tinyFinalValue)}px`);
 
-      textInputContainer.css({
+      textInputContainer.setStyle({
         position: 'relative',
         top: `-${String(tinyFinalValue)}px`,
       });
@@ -3166,12 +3161,12 @@ export const AiScriptStart = async () => {
   contentEnabler.setMsgInput(msgInput);
 
   // Submit
-  const msgSubmit = tinyLib.bs.button('primary input-group-text-dark').text('Send');
+  const msgSubmit = tinyLib.bs.button('primary input-group-text-dark').setText('Send');
   contentEnabler.setMsgSubmit(msgSubmit);
 
   const cancelSubmit = tinyLib.bs
     .button('primary input-group-text-dark rounded-end')
-    .text('Cancel');
+    .setText('Cancel');
   contentEnabler.setCancelSubmit(cancelSubmit);
 
   const submitMessage = async () => {
@@ -3261,7 +3256,7 @@ export const AiScriptStart = async () => {
   const submitCache = {};
   contentEnabler.setSubmitCache(submitCache);
   msgSubmit.on('click', async () => {
-    if (!msgInput.prop('disabled')) submitMessage();
+    if (!msgInput.hasProp('disabled')) submitMessage();
   });
 
   msgInput.on('keydown', function (event) {
@@ -3273,15 +3268,15 @@ export const AiScriptStart = async () => {
 
   // First Dialogue button
   const firstDialogueBase = {
-    base: $('<div>', {
+    base: TinyHtml.createFrom('div', {
       class: 'first-dialogue-base position-absolute  top-50 start-50 translate-middle',
       style: 'pointer-events: none;',
     }),
 
     button: tinyLib.bs
       .button('lg btn-bg d-flex justify-content-center align-items-center')
-      .attr('title', 'Insert first dialogue')
-      .css({
+      .setAttr('title', 'Insert first dialogue')
+      .setStyle({
         'pointer-events': 'all',
         height: 150,
         'font-size': '100px',
@@ -3325,7 +3320,7 @@ export const AiScriptStart = async () => {
   firstDialogueBase.base.append(firstDialogueBase.button);
 
   // Message List
-  const msgList = $('<div>', {
+  const msgList = TinyHtml.createFrom('div', {
     class: 'p-3',
     style: 'margin-bottom: 55px !important;',
   });
@@ -3387,7 +3382,7 @@ export const AiScriptStart = async () => {
   };
 
   const makeMsgWarning = (finishReason) => {
-    const textBase = $('<span>');
+    const textBase = TinyHtml.createFrom('span');
     const result = tinyLib.bs.alert(
       'danger mt-2 mb-0 d-none',
       [tinyLib.icon('fas fa-exclamation-triangle me-2'), textBase],
@@ -3397,7 +3392,7 @@ export const AiScriptStart = async () => {
     const updateText = (errorCode) => {
       const tinyError = tinyAi.getErrorCode(errorCode);
       if (tinyError && typeof tinyError.text === 'string' && !tinyError.hide) {
-        textBase.text(tinyError.text);
+        textBase.setText(tinyError.text);
         result.removeClass('d-none');
       }
     };
@@ -3413,20 +3408,20 @@ export const AiScriptStart = async () => {
       role: username ? toTitleCase(username) : 'User',
     };
 
-    const msgBase = $('<div>', {
+    const msgBase = TinyHtml.createFrom('div', {
       class: `p-3${typeof username !== 'string' ? ' d-flex flex-column align-items-end' : ''} ai-chat-data`,
     });
 
-    const msgBallon = $('<div>', {
+    const msgBallon = TinyHtml.createFrom('div', {
       class: `bg-${typeof username === 'string' ? 'secondary d-inline-block' : 'primary'} text-white p-2 rounded ai-msg-ballon`,
     });
 
-    msgBase.data('tiny-ai-cache', tinyCache);
+    msgBase.setData('tiny-ai-cache', tinyCache);
     const isIgnore = typeof data.id !== 'number' || data.id < 0;
     const tinyIndex = tinyAi.getIndexOfId(data.id);
 
     // Edit message panel
-    const editPanel = $('<div>', { class: 'ai-text-editor' });
+    const editPanel = TinyHtml.createFrom('div', { class: 'ai-text-editor' });
     editPanel.append(
       // Edit button
       !isIgnore && tinyIndex > -1
@@ -3435,7 +3430,7 @@ export const AiScriptStart = async () => {
             .append(tinyLib.icon('fa-solid fa-pen-to-square'))
             .on('click', () => {
               // Text
-              const textInput = $('<textarea>', { class: 'form-control' });
+              const textInput = TinyHtml.createFrom('textarea', { class: 'form-control' });
               textInput.val(tinyCache.msg);
               const oldMsg = tinyCache.msg;
 
@@ -3444,13 +3439,13 @@ export const AiScriptStart = async () => {
                 .button(
                   `${typeof username !== 'string' ? 'secondary d-inline-block' : 'primary'} mt-2 w-100 me-2`,
                 )
-                .text('Submit');
+                .setText('Submit');
 
               const cancelButton = tinyLib.bs
                 .button(
                   `${typeof username !== 'string' ? 'secondary d-inline-block' : 'primary'} mt-2 w-100`,
                 )
-                .text('Cancel');
+                .setText('Cancel');
 
               const closeReplace = () => {
                 msgBallon.removeClass('w-100').empty();
@@ -3479,7 +3474,10 @@ export const AiScriptStart = async () => {
                 .addClass('w-100')
                 .append(
                   textInput,
-                  $('<div>', { class: 'd-flex mx-5' }).append(submitButton, cancelButton),
+                  TinyHtml.createFrom('div', { class: 'd-flex mx-5' }).append(
+                    submitButton,
+                    cancelButton,
+                  ),
                 );
             })
         : null,
@@ -3512,19 +3510,19 @@ export const AiScriptStart = async () => {
     const msgContent = msgBase.append(
       editPanel,
       msgBallon.append(makeMsgRenderer(tinyCache.msg)),
-      $('<div>', {
+      TinyHtml.createFrom('div', {
         class: `text-muted small mt-1${typeof username !== 'string' ? ' text-end' : ''}`,
         text: typeof username === 'string' ? username : 'User',
       }),
       tinyErrorAlert.result,
     );
 
-    msgContent.data('tiny-ai-error-alert', tinyErrorAlert);
+    msgContent.setData('tiny-ai-error-alert', tinyErrorAlert);
     return msgContent;
   };
 
   // Container
-  const chatContainer = $('<div>', {
+  const chatContainer = TinyHtml.createFrom('div', {
     id: 'ai-chatbox',
     class: 'h-100 body-background',
     style: 'overflow-y: auto; margin-bottom: -54px;',
@@ -3532,30 +3530,32 @@ export const AiScriptStart = async () => {
 
   contentEnabler.setChatContainer(chatContainer);
 
-  const textInputContainer = $('<div>', {
+  const textInputContainer = TinyHtml.createFrom('div', {
     class: 'input-group pb-3 body-background',
   }).append(msgInput, cancelSubmit, msgSubmit);
 
-  const container = $('<div>', {
+  const container = TinyHtml.createFrom('div', {
     class: 'd-flex h-100 y-100',
     id: 'ai-element-root',
   }).append(
     sidebarLeft,
     // Main container
-    $('<div>', { class: 'flex-grow-1 d-flex flex-column' }).append(
+    TinyHtml.createFrom('div', { class: 'flex-grow-1 d-flex flex-column' }).append(
       firstDialogueBase.base,
-      $('<div>', { class: 'justify-content-center h-100' }).append(
+      TinyHtml.createFrom('div', { class: 'justify-content-center h-100' }).append(
         // Chat Messages Area
         chatContainer.append(msgList),
 
         // Input Area
-        $('<div>', { class: 'px-3 d-inline-block w-100' }).append(textInputContainer),
+        TinyHtml.createFrom('div', { class: 'px-3 d-inline-block w-100' }).append(
+          textInputContainer,
+        ),
       ),
     ),
     sidebarRight,
   );
 
-  firstDialogueBase.button.tooltip();
+  Tooltip(firstDialogueBase.button);
 
   // Prepare events
   tinyAi.removeAllListeners('setMaxOutputTokens');
@@ -3855,13 +3855,13 @@ export const AiScriptStart = async () => {
     // Insert First Dialogue
     const insertAddFirstDialogue = () => {
       firstDialogueBase.base.removeClass('d-none');
-      firstDialogueBase.button.prop('disabled', false).removeClass('disabled');
+      firstDialogueBase.button.removeProp('disabled').removeClass('disabled');
     };
 
     // Remove First Dialogue
     const removeAddFirstDialogue = () => {
       firstDialogueBase.base.addClass('d-none');
-      firstDialogueBase.button.prop('disabled', true).addClass('disabled');
+      firstDialogueBase.button.addProp('disabled').addClass('disabled');
     };
 
     // Check need first dialogue
@@ -3907,7 +3907,7 @@ export const AiScriptStart = async () => {
   }
 
   // Complete
-  $('#markdown-read').append(container);
+  TinyHtml.query('#markdown-read').append(container);
   await rpgData.init().then(() => rpgData.finishOffCanvas(updateAiTokenCounterData));
 
   // Rpg mode
@@ -3925,11 +3925,11 @@ export const AiScriptStart = async () => {
     if (tinyAiScript.mpClient || socket) {
       // Online tab html
       const onlineStatus = {};
-      onlineStatus.base = $('<div>').addClass('mb-1 small');
-      onlineStatus.wrapper = $('<div>').addClass('d-flex align-items-center gap-1');
+      onlineStatus.base = TinyHtml.createFrom('div').addClass('mb-1 small');
+      onlineStatus.wrapper = TinyHtml.createFrom('div').addClass('d-flex align-items-center gap-1');
       onlineStatus.icon = tinyLib.icon('fas fa-circle text-danger');
-      onlineStatus.text = $('<span>').text('Offline');
-      onlineStatus.id = $('<span>');
+      onlineStatus.text = TinyHtml.createFrom('span').setText('Offline');
+      onlineStatus.id = TinyHtml.createFrom('span');
       onlineStatus.wrapper.append(onlineStatus.icon, onlineStatus.text, onlineStatus.id);
       onlineStatus.base.append(onlineStatus.wrapper, onlineStatus.id);
       connectionInfoBar.replaceWith(onlineStatus.base);
@@ -3955,8 +3955,11 @@ export const AiScriptStart = async () => {
         client.on('connect', (connectionId) => {
           // Prepare online status
           onlineStatus.icon.removeClass('text-danger').addClass('text-success');
-          onlineStatus.text.text('Online');
-          onlineStatus.id.empty().text('Id: ').append($('<strong>').text(connectionId));
+          onlineStatus.text.setText('Online');
+          onlineStatus.id
+            .empty()
+            .setText('Id: ')
+            .append(TinyHtml.createFrom('strong').setText(connectionId));
 
           // First time message
           const firstTime = tinyIo.firstTime;
@@ -4003,7 +4006,7 @@ export const AiScriptStart = async () => {
         client.on('disconnect', (reason, details) => {
           // Offline!
           onlineStatus.icon.addClass('text-danger').removeClass('text-success');
-          onlineStatus.text.text('Offline');
+          onlineStatus.text.setText('Offline');
           onlineStatus.id.empty();
 
           // Message
