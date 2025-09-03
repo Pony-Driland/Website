@@ -265,10 +265,9 @@ class TinyPwa extends EventEmitter {
   }
 
   waitInit() {
-    const tinyThis = this;
     return new Promise((resolve, reject) => {
       if (this.initialized) resolve(true);
-      else setTimeout(() => tinyThis.waitInit().then(resolve).catch(reject), 100);
+      else setTimeout(() => this.waitInit().then(resolve).catch(reject), 100);
     });
   }
 

@@ -85,7 +85,7 @@ class EnablerAiContent {
 
   #readOnlyTemplate(item, value, needAi = true) {
     const isEnabled = this.#validateMultiplayer(value, needAi);
-    item.prop('disabled', isEnabled);
+    item.toggleProp('disabled', isEnabled);
     if (isEnabled) {
       item.addClass('disabled');
     } else {
@@ -95,7 +95,7 @@ class EnablerAiContent {
 
   #enableModelReadOnly(value = true) {
     const isEnabled = this.#validateMultiplayer(value);
-    this.outputLength.prop('disabled', isEnabled);
+    this.outputLength.toggleProp('disabled', isEnabled);
     this.#enableModelSelectorReadOnly(isEnabled);
 
     const validateChange = (where) =>
@@ -135,7 +135,7 @@ class EnablerAiContent {
     }
 
     for (const index in this.ficPromptItems) {
-      this.ficPromptItems[index].prop('disabled', isDisabled);
+      this.ficPromptItems[index].toggleProp('disabled', isDisabled);
       if (isDisabled) this.ficPromptItems[index].addClass('disabled');
       else this.ficPromptItems[index].removeClass('disabled');
     }
@@ -217,7 +217,7 @@ class EnablerAiContent {
 
   #enableModelSelectorReadOnly(value = true) {
     const isEnabled = this.#validateMultiplayer(value);
-    this.modelSelector.prop('disabled', isEnabled);
+    this.modelSelector.toggleProp('disabled', isEnabled);
     if (isEnabled) this.modelSelector.addClass('disabled');
     else this.modelSelector.removeClass('disabled');
   }

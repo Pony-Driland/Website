@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import { TinyHtml, TinyAfterScrollWatcher } from 'tiny-essentials';
 
 import { tinyLs, gtag } from '../important.mjs';
@@ -7,6 +6,7 @@ import { storyData } from '../files/chapters.mjs';
 import storyCfg from '../chapters/config.mjs';
 import ttsManager from './tts/tts.mjs';
 import musicManager from './music/index.mjs';
+import { Tooltip } from '../modules/TinyBootstrap.mjs';
 
 // Prepare Cache
 const cacheChapterUpdater = { soundCache: {} };
@@ -56,7 +56,7 @@ cacheChapterUpdater.setActiveItem = function (item, scrollIntoView = false) {
 
 // Read Data on Scroll
 const winScroller = new TinyAfterScrollWatcher(window);
-$(window).on('resize scroll', function () {
+new TinyHtml(window).on(['resize', 'scroll'], () => {
   if (ttsManager.enabled) {
     return;
   }
@@ -67,10 +67,10 @@ $(window).on('resize scroll', function () {
 
     // Normal Mode
     if (!TinyHtml.isPageBottom()) {
-      const mdNavbar = $('#md-navbar').get(0);
+      const mdNavbar = TinyHtml.query('#md-navbar');
       // Detect Selected Item
       for (const item in storyData.chapter.html) {
-        const tinyItem = storyData.chapter.html[item].get(0);
+        const tinyItem = storyData.chapter.html[item];
         if (TinyHtml.isInViewport(tinyItem) && !TinyHtml.isCollWith(tinyItem, mdNavbar)) {
           selectedItem = Number(item);
           break;
@@ -185,9 +185,9 @@ cacheChapterUpdater.scrollData = function () {
 };
 
 // Update Cache
-cacheChapterUpdater.data = function (lastPage) {
+cacheChapterUpdater.data = (lastPage) => {
   if (storyData.chapter.selected > 0) {
-    $('.selected-tr').removeClass('selected-tr');
+    TinyHtml.queryAll('.selected-tr').removeClass('selected-tr');
 
     let element = document.querySelector(`tr[line="${lastPage}"]`);
     if (element) {
@@ -237,35 +237,43 @@ cacheChapterUpdater.data = function (lastPage) {
       if (!storyData.chapter.nav) {
         storyData.chapter.nav = {};
       }
-      storyData.chapter.nav.bookmark = $('<a>', {
+      storyData.chapter.nav.bookmark = TinyHtml.createFrom('a', {
         indexItem: 2,
         class: 'nav-item nav-link',
         id: 'bookmark',
       });
-      storyData.nc.base.right.find('> #status').prepend(storyData.chapter.nav.bookmark);
+      new TinyHtml(storyData.nc.base.right.find('> #status')).prepend(
+        storyData.chapter.nav.bookmark,
+      );
 
       // Icon
-      storyData.chapter.nav.bookmark.css({
+      storyData.chapter.nav.bookmark.setStyle({
         cursor: 'pointer',
       });
       storyData.chapter.nav.bookmark
-        .attr('title', 'Bookmark')
+        .setAttr('title', 'Bookmark')
         .append(tinyLib.icon('fas fa-bookmark'));
-      storyData.chapter.nav.bookmark.tooltip();
+      Tooltip(storyData.chapter.nav.bookmark);
 
       // Action
+      const bookInput = TinyHtml.createFrom('input', {
+        type: 'text',
+        class: 'form-control text-center',
+      });
       storyData.chapter.nav.bookmark.on('click', () => {
         tinyLib.modal({
-          title: $('<span>').text('Bookmark'),
-          body: $('<center>').append(
-            $('<h5>').text(`Save this URL to your favorites to re-read the story on any device`),
-            $('<input>', { type: 'text', class: 'form-control text-center' })
-              .prop('readonly', true)
-              .val(
+          title: TinyHtml.createFrom('span').setText('Bookmark'),
+          body: TinyHtml.createFrom('center').append(
+            TinyHtml.createFrom('h5').setText(
+              `Save this URL to your favorites to re-read the story on any device`,
+            ),
+            bookInput
+              .addProp('readonly')
+              .setVal(
                 `${location.protocol}//${location.host}/?path=read-fic&chapter=${storyData.chapter.selected}&line=${storyData.chapter.line}`,
               )
-              .on('click', function () {
-                $(this).select();
+              .on('click', () => {
+                bookInput.select();
               }),
           ),
           dialog: 'modal-lg',
@@ -275,20 +283,21 @@ cacheChapterUpdater.data = function (lastPage) {
 
     if (!storyData.chapter.blockLineSave) {
       storyData.chapter.nav.bookmark.removeClass('disabled');
-      storyData.chapter.nav.bookmark.prop('disabled', false);
+      storyData.chapter.nav.bookmark.removeProp('disabled');
     } else {
       storyData.chapter.nav.bookmark.addClass('disabled');
-      storyData.chapter.nav.bookmark.prop('disabled', true);
+      storyData.chapter.nav.bookmark.addProp('disabled');
     }
 
     // Sortable  #status
-    storyData.nc.base.right.each(function () {
-      $(this)
-        .find('#status > a')
-        .sort(function (a, b) {
-          return Number($(a).attr('indexitem')) - Number($(b).attr('indexitem'));
-        })
-        .appendTo($(this).find('#status'));
+    storyData.nc.base.right.forEach((tinyThis) => {
+      new TinyHtml(
+        tinyThis.find('#status > a').sort((a, b) => {
+          return (
+            Number(new TinyHtml(a).attr('indexitem')) - Number(new TinyHtml(b).attr('indexitem'))
+          );
+        }),
+      ).appendTo(tinyThis.find('#status'));
     });
 
     // Update Title
@@ -298,7 +307,7 @@ cacheChapterUpdater.data = function (lastPage) {
     }
 
     const infoInsert = `Chapter ${storyData.chapter.selected} / Line ${storyData.chapter.line}`;
-    $('#fic-chapter').text(infoInsert);
+    TinyHtml.query('#fic-chapter').setText(infoInsert);
     document.title = `${storyData.title} - ${infoInsert}`;
   }
 };
@@ -337,21 +346,21 @@ const chapterSet = {
         if (!storyData.chapter.nav) {
           storyData.chapter.nav = {};
         }
-        storyData.chapter.nav.day = $('<a>', {
+        storyData.chapter.nav.day = TinyHtml.createFrom('a', {
           indexItem: 5,
           class: 'nav-item nav-link',
           id: 'day',
         });
-        storyData.nc.base.right.find('> #status').prepend(storyData.chapter.nav.day);
+        new TinyHtml(storyData.nc.base.right.find('> #status')).prepend(storyData.chapter.nav.day);
       }
 
-      storyData.nc.base.right.find('> #status #day').text(`Day: ${value}`);
+      new TinyHtml(storyData.nc.base.right.find('> #status #day')).setText(`Day: ${value}`);
     }
   },
 
   dayNightCycle: function (value, actionFromNow = false) {
     if (actionFromNow) {
-      $('body')
+      TinyHtml.query('body')
         .removeClass(`fic-daycicle-morning`)
         .removeClass(`fic-daycicle-evening`)
         .removeClass(`fic-daycicle-night`)
@@ -363,12 +372,14 @@ const chapterSet = {
         if (!storyData.chapter.nav) {
           storyData.chapter.nav = {};
         }
-        storyData.chapter.nav.dayNightCycle = $('<a>', {
+        storyData.chapter.nav.dayNightCycle = TinyHtml.createFrom('a', {
           indexItem: 4,
           class: 'nav-item nav-link',
           id: 'dayNightCycle',
         });
-        storyData.nc.base.right.find('> #status').prepend(storyData.chapter.nav.dayNightCycle);
+        new TinyHtml(storyData.nc.base.right.find('> #status')).prepend(
+          storyData.chapter.nav.dayNightCycle,
+        );
       }
 
       // Types
@@ -379,18 +390,18 @@ const chapterSet = {
         lateAtNight: { icon: 'fas fa-bullseye', title: 'Late at Night' },
       };
 
-      const obj = storyData.nc.base.right.find('> #status #dayNightCycle');
+      const obj = new TinyHtml(storyData.nc.base.right.find('> #status #dayNightCycle'));
       obj.empty();
       if (types[value]) {
         const newTitle = types[value].title;
         if (!obj.data('bs-tooltip-data')) {
-          obj.attr('title', newTitle);
-          obj.data('bs-tooltip-data', newTitle);
-          obj.tooltip();
+          obj.setAttr('title', newTitle);
+          obj.setData('bs-tooltip-data', newTitle);
+          Tooltip(obj);
         } else {
           obj
-            .data('bs-tooltip-data', newTitle)
-            .data('bs-tooltip')
+            .setData('bs-tooltip-data', newTitle)
+            .data('BootstrapToolTip')
             .setContent({ '.tooltip-inner': newTitle });
         }
         obj.removeAttr('title').append(tinyLib.icon(types[value].icon));
@@ -405,12 +416,14 @@ const chapterSet = {
         if (!storyData.chapter.nav) {
           storyData.chapter.nav = {};
         }
-        storyData.chapter.nav.weather = $('<a>', {
+        storyData.chapter.nav.weather = TinyHtml.createFrom('a', {
           indexItem: 3,
           class: 'nav-item nav-link',
           id: 'weather',
         });
-        storyData.nc.base.right.find('> #status').prepend(storyData.chapter.nav.weather);
+        new TinyHtml(storyData.nc.base.right.find('> #status')).prepend(
+          storyData.chapter.nav.weather,
+        );
       }
 
       // Types
@@ -422,11 +435,11 @@ const chapterSet = {
       };
 
       storyData.chapter.nextWeather = value;
-      const obj = storyData.nc.base.right.find('> #status #weather');
+      const obj = new TinyHtml(storyData.nc.base.right.find('> #status #weather'));
       obj.empty();
       if (types[value]) {
-        obj.attr('title', types[value].title).append(tinyLib.icon(types[value].icon));
-        obj.tooltip();
+        obj.setAttr('title', types[value].title).append(tinyLib.icon(types[value].icon));
+        Tooltip(obj);
         obj.removeAttr('title');
       }
     }
@@ -439,15 +452,17 @@ const chapterSet = {
         if (!storyData.chapter.nav) {
           storyData.chapter.nav = {};
         }
-        storyData.chapter.nav.where = $('<a>', {
+        storyData.chapter.nav.where = TinyHtml.createFrom('a', {
           indexItem: 6,
           class: 'nav-item nav-link',
           id: 'where',
         });
-        storyData.nc.base.right.find('> #status').prepend(storyData.chapter.nav.where);
+        new TinyHtml(storyData.nc.base.right.find('> #status')).prepend(
+          storyData.chapter.nav.where,
+        );
       }
 
-      storyData.nc.base.right.find('> #status #where').text(`Location: ${value}`);
+      new TinyHtml(storyData.nc.base.right.find('> #status #where')).setText(`Location: ${value}`);
     }
   },
 };

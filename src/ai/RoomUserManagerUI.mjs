@@ -1,7 +1,8 @@
 import moment from 'moment';
 import objHash from 'object-hash';
-import $ from 'jquery';
+import { TinyHtml } from 'tiny-essentials';
 import tinyLib from '../files/tinyLib.mjs';
+import { Tooltip } from '../modules/TinyBootstrap.mjs';
 
 /**
  * UserRoomManager
@@ -20,7 +21,7 @@ import tinyLib from '../files/tinyLib.mjs';
  * const manager = new UserRoomManager({
  *   currentUserId: 'meow123',
  *   isOwner: true,
- *   root: $('#room-content'),
+ *   root: TinyHtml.query('#room-content'),
  * });
  *
  * manager.addUser('user1', { nickname: 'Twilight', ping: Date.now() });
@@ -57,7 +58,7 @@ class UserRoomManager {
     this.$header = null;
     this.$footer = null;
     this.$searchInput = null;
-    this.$userList = $('<div>');
+    this.$userList = TinyHtml.createFrom('div');
 
     this.init();
   }
@@ -112,16 +113,16 @@ class UserRoomManager {
     const room = this.#client.getRoom() || {};
     const user = this.#client.getUser() || {};
     if (this.$unbanInput)
-      this.$unbanInput.prop('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
+      this.$unbanInput.toggleProp('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
     if (this.$kickAll)
-      this.$kickAll.prop('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
+      this.$kickAll.toggleProp('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
     for (const item of this.#usersHtml) {
       const needDisable =
         item.userId === room.ownerId ||
         item.userId === this.currentUserId ||
         (!this.isModerator && !this.isOwner && !user.isOwner);
-      item.actions.kick.prop('disabled', needDisable);
-      item.actions.ban.prop('disabled', needDisable);
+      item.actions.kick.toggleProp('disabled', needDisable);
+      item.actions.ban.toggleProp('disabled', needDisable);
     }
   }
 
@@ -136,12 +137,12 @@ class UserRoomManager {
    * Appends the constructed elements to the root and initializes their events.
    */
   renderHeader() {
-    this.$header = $('<div>').addClass(
+    this.$header = TinyHtml.createFrom('div').addClass(
       'd-flex flex-wrap align-items-center justify-content-between mb-3 gap-2',
     );
 
     // Kick all
-    this.$kickAll = tinyLib.bs.button('danger').text('Kick all');
+    this.$kickAll = tinyLib.bs.button('danger').setText('Kick all');
     this.$kickAll.on('click', () => {
       const room = this.#client.getRoom() || {};
       const userIds = [];
@@ -173,7 +174,7 @@ class UserRoomManager {
     });
 
     // Search input
-    this.$searchInput = $('<input>', {
+    this.$searchInput = TinyHtml.createFrom('input', {
       type: 'text',
       class: 'form-control',
       placeholder: 'Search users...',
@@ -182,7 +183,9 @@ class UserRoomManager {
       this.renderUserList(this.$searchInput.val().trim().toLowerCase());
     });
 
-    const $searchWrapper = $('<div>').addClass('flex-grow-1').append(this.$searchInput);
+    const $searchWrapper = TinyHtml.createFrom('div')
+      .addClass('flex-grow-1')
+      .append(this.$searchInput);
     this.$header.append(this.$kickAll, $roomStatus, $searchWrapper);
     this.$root.append(this.$header, this.$userList);
 
@@ -200,12 +203,14 @@ class UserRoomManager {
    * Appends the constructed elements to the root container.
    */
   renderFooter() {
-    this.$footer = $('<div>');
-    const $unbanWrapper = $('<div>').addClass('d-flex mt-4 gap-2 align-items-center');
-    this.$unbanInput = $('<input>')
+    this.$footer = TinyHtml.createFrom('div');
+    const $unbanWrapper = TinyHtml.createFrom('div').addClass(
+      'd-flex mt-4 gap-2 align-items-center',
+    );
+    this.$unbanInput = TinyHtml.createFrom('input')
       .addClass('form-control')
-      .attr('type', 'text')
-      .attr('placeholder', 'Enter user ID to unban')
+      .setAttr('type', 'text')
+      .setAttr('placeholder', 'Enter user ID to unban')
       .on('keydown', function (e) {
         if (e.key === 'Enter') {
           e.preventDefault();
@@ -213,9 +218,9 @@ class UserRoomManager {
         }
       });
 
-    const $unbanButton = tinyLib.bs.button('success').text('Unban');
+    const $unbanButton = tinyLib.bs.button('success').setText('Unban');
     $unbanButton.on('click', () => {
-      if (!this.$unbanInput.prop('disabled')) {
+      if (!this.$unbanInput.hasProp('disabled')) {
         const userId = this.$unbanInput.val().trim();
         if (userId) {
           this.$unbanInput.val('');
@@ -249,14 +254,14 @@ class UserRoomManager {
       .addClass(
         this.isWaitingRoomStatus ? 'btn-warning' : this.roomActive ? 'btn-success' : 'btn-danger',
       )
-      .text(
+      .setText(
         this.isWaitingRoomStatus
           ? 'Waiting...'
           : this.roomActive
             ? 'Room is Active'
             : 'Room is Inactive',
       )
-      .prop('disabled', !this.isOwner);
+      .toggleProp('disabled', !this.isOwner);
   }
 
   /**
@@ -317,43 +322,53 @@ class UserRoomManager {
       )
         return;
 
-      const $row = $('<div>').addClass(
+      const $row = TinyHtml.createFrom('div').addClass(
         `d-flex align-items-center py-2${index < sortedUsers.length - 1 ? ' border-bottom' : ''}`,
       );
 
-      const $info = $('<div>').addClass('flex-grow-1 d-flex align-items-center gap-2');
-      const $nickname = $('<strong>').text(user.nickname);
-      const $userIdText = $('<small>').addClass('text-muted').text(`(${user.userId})`);
+      const $info = TinyHtml.createFrom('div').addClass(
+        'flex-grow-1 d-flex align-items-center gap-2',
+      );
+      const $nickname = TinyHtml.createFrom('strong').setText(user.nickname);
+      const $userIdText = TinyHtml.createFrom('small')
+        .addClass('text-muted')
+        .setText(`(${user.userId})`);
       $info.append($nickname, $userIdText);
 
-      const $ping = $('<div>').addClass('text-muted small text-nowrap').text(user.ping.fromNow());
-      const $actions = $('<div>').addClass('d-flex flex-wrap gap-2');
+      const $ping = TinyHtml.createFrom('div')
+        .addClass('text-muted small text-nowrap')
+        .setText(user.ping.fromNow());
+      const $actions = TinyHtml.createFrom('div').addClass('d-flex flex-wrap gap-2');
       const tooltips = [];
       const actions = {};
 
       const $kickBtn = tinyLib.bs
         .button('warning')
-        .append($('<i>').addClass('fas fa-user-slash'))
-        .attr('title', 'Kick');
+        .append(TinyHtml.createFrom('i').addClass('fas fa-user-slash'))
+        .setAttr('title', 'Kick');
       $kickBtn.on('click', () => this.kickUser(user.userId));
 
       const $banBtn = tinyLib.bs
         .button('danger')
-        .append($('<i>').addClass('fas fa-ban'))
-        .attr('title', 'Ban');
+        .append(TinyHtml.createFrom('i').addClass('fas fa-ban'))
+        .setAttr('title', 'Ban');
       $banBtn.on('click', () => this.banUser(user.userId));
 
       $actions.append($kickBtn, $banBtn);
       actions.kick = $kickBtn;
       actions.ban = $banBtn;
-      tooltips.push($banBtn.tooltip(null, null, true));
-      tooltips.push($kickBtn.tooltip(null, null, true));
+      tooltips.push(Tooltip($banBtn));
+      tooltips.push(Tooltip($kickBtn));
 
       const $modBtn = tinyLib.bs.button(user.isModerator ? 'secondary' : 'info');
       $modBtn
-        .append($('<i>').addClass(user.isModerator ? 'fas fa-user-minus' : 'fas fa-user-plus'))
-        .attr('title', user.isModerator ? 'Demote' : 'Promote')
-        .prop('disabled', user.isSelf || !this.isOwner);
+        .append(
+          TinyHtml.createFrom('i').addClass(
+            user.isModerator ? 'fas fa-user-minus' : 'fas fa-user-plus',
+          ),
+        )
+        .setAttr('title', user.isModerator ? 'Demote' : 'Promote')
+        .toggleProp('disabled', user.isSelf || !this.isOwner);
       $modBtn.on('click', () => {
         if (user.isModerator) {
           this.reqDemoteModerator(user.userId);
@@ -364,9 +379,12 @@ class UserRoomManager {
 
       $actions.append($modBtn);
       actions.mod = $modBtn;
-      tooltips.push($modBtn.tooltip(null, null, true));
+      tooltips.push(Tooltip($modBtn));
 
-      if (user.isSelf) $info.append($('<span>').addClass('badge bg-secondary ms-2').text('You'));
+      if (user.isSelf)
+        $info.append(
+          TinyHtml.createFrom('span').addClass('badge bg-secondary ms-2').setText('You'),
+        );
 
       $row.append(
         $info.addClass('col-5'),
@@ -464,9 +482,9 @@ class UserRoomManager {
   reqPromoteModerator(userId) {
     if (!this.moderators.find((m) => m.userId === userId)) {
       const html = this.#usersHtml.find((item) => item.userId === userId);
-      if (html) html.actions.mod.prop('disabled', true);
+      if (html) html.actions.mod.addProp('disabled');
       this.#client.addMod([userId]).then((result) => {
-        if (html) html.actions.mod.prop('disabled', false).removeClass('disabled');
+        if (html) html.actions.mod.removeProp('disabled').removeClass('disabled');
         if (!result.error) this.promoteModerator(userId);
       });
     }
@@ -480,9 +498,9 @@ class UserRoomManager {
    */
   reqDemoteModerator(userId) {
     const html = this.#usersHtml.find((item) => item.userId === userId);
-    if (html) html.actions.mod.prop('disabled', true);
+    if (html) html.actions.mod.addProp('disabled');
     this.#client.removeMod([userId]).then((result) => {
-      if (html) html.actions.mod.prop('disabled', false).removeClass('disabled');
+      if (html) html.actions.mod.removeProp('disabled').removeClass('disabled');
       if (!result.error) this.demoteModerator(userId);
     });
   }
@@ -496,9 +514,9 @@ class UserRoomManager {
    */
   banUser(userId) {
     const html = this.#usersHtml.find((item) => item.userId === userId);
-    if (html) html.actions.ban.prop('disabled', true);
+    if (html) html.actions.ban.addProp('disabled');
     this.#client.banUser(userId).then((result) => {
-      if (html) html.actions.ban.prop('disabled', false).removeClass('disabled');
+      if (html) html.actions.ban.removeProp('disabled').removeClass('disabled');
       if (!result.error) this.removeUser(userId);
     });
   }
@@ -511,9 +529,9 @@ class UserRoomManager {
    * @param {string} userId - The user ID to unban.
    */
   unbanUser(userId) {
-    this.$unbanInput.prop('disabled', true);
+    this.$unbanInput.addProp('disabled');
     this.#client.unbanUser(userId).then((result) => {
-      this.$unbanInput.prop('disabled', false).removeClass('disabled');
+      this.$unbanInput.removeProp('disabled').removeClass('disabled');
       if (result.error)
         this.$unbanInput.val(typeof result.msg === 'string' ? result.msg : 'Unknown error');
       this.$unbanInput.trigger('focus').trigger('select');
@@ -529,9 +547,9 @@ class UserRoomManager {
    */
   kickUser(userId) {
     const html = this.#usersHtml.find((item) => item.userId === userId);
-    if (html) html.actions.kick.prop('disabled', true);
+    if (html) html.actions.kick.addProp('disabled');
     this.#client.kickUser(userId).then((result) => {
-      if (html) html.actions.kick.prop('disabled', false).removeClass('disabled');
+      if (html) html.actions.kick.removeProp('disabled').removeClass('disabled');
       if (!result.error) this.removeUser(userId);
     });
   }

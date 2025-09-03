@@ -1,4 +1,5 @@
-import $ from 'jquery';
+import { TinyHtml } from 'tiny-essentials';
+import { Tooltip } from '../modules/TinyBootstrap.mjs';
 
 /*
  * TinyMap - A lightweight map generator and handler
@@ -126,7 +127,7 @@ class TinyMap {
    */
   setMapName(name) {
     this.name = name;
-    if (this.html.mapButton) this.html.mapButton.text(name);
+    if (this.html.mapButton) this.html.mapButton.setText(name);
   }
 
   /**
@@ -216,17 +217,17 @@ class TinyMap {
    * @returns {jQuery} - A jQuery object representing the table cell (`<td>`) element.
    */
   _buildGridTemplate(cw = 0, ch = 0, text = null, color = null) {
-    return $('<td>', {
+    return TinyHtml.createFrom('td', {
       class: 'p-0 m-0',
       coordinates:
         typeof cw === 'number' && typeof ch === 'number' ? Number(cw) + 'x' + Number(ch) : null,
     })
-      .css({
+      .setStyle({
         height: this.tile[1] - 2,
         width: this.tile[0] - 2,
         'background-color': color,
       })
-      .text(text);
+      .setText(text);
   }
 
   /**
@@ -257,7 +258,7 @@ class TinyMap {
 
     // Render grid
     for (let i = 0; i < this.grid.height + 1; i++) {
-      const tinytr = $('<tr>', { class: 'p-0 m-0' });
+      const tinytr = TinyHtml.createFrom('tr', { class: 'p-0 m-0' });
       const tinytds = [];
 
       // Height
@@ -313,7 +314,6 @@ class TinyMap {
    */
   updateGridContent() {
     // Routes Generator
-    const tinyThis = this;
     const getCoordPlace = (coords) => {
       const coordinates = coords.split('x');
       coordinates[0] = Number(coordinates[0]);
@@ -321,8 +321,8 @@ class TinyMap {
 
       if (!Number.isNaN(coordinates[0]) && !Number.isNaN(coordinates[1])) {
         const cordsValue = coordinates[0] + 'x' + coordinates[1];
-        for (const index in tinyThis.html.grid) {
-          const coordBase = tinyThis.html.grid[index].data.find(
+        for (const index in this.html.grid) {
+          const coordBase = this.html.grid[index].data.find(
             (item) => item.attr('coordinates') === cordsValue,
           );
           if (coordBase) return coordBase;
@@ -335,31 +335,31 @@ class TinyMap {
       const coordplace = getCoordPlace(this.routes[item2].coordinates);
       if (coordplace) {
         const routeNumber = item2;
-        coordplace.attr(
+        coordplace.setAttr(
           'location_enabled',
           this.location === `Route {number}`.replace(/\{number\}/g, routeNumber) ? 'on' : 'off',
         );
 
         if (this.routes[item2].about) {
-          coordplace.attr(
+          coordplace.setAttr(
             'title',
             'Route {number}: {about}'
               .replace(/\{number\}/g, routeNumber)
               .replace(/\{about\}/g, this.routes[item2].about),
           );
         } else {
-          coordplace.attr('title', 'Route {number}'.replace(/\{number\}/g, routeNumber));
+          coordplace.setAttr('title', 'Route {number}'.replace(/\{number\}/g, routeNumber));
         }
 
-        coordplace.tooltip();
-        coordplace.text('R' + routeNumber);
+        Tooltip(coordplace);
+        coordplace.setText('R' + routeNumber);
 
         if (this.routes[item2].color) {
-          coordplace.css('background-color', this.routes[item2].color);
+          coordplace.setStyle('background-color', this.routes[item2].color);
         }
 
         if (this.routes[item2].fontColor) {
-          coordplace.css('color', this.routes[item2].fontColor);
+          coordplace.setStyle('color', this.routes[item2].fontColor);
         }
       }
     }
@@ -368,30 +368,29 @@ class TinyMap {
     for (const item2 in this.locations) {
       const coordplace = getCoordPlace(this.locations[item2].coordinates);
       if (coordplace) {
-        coordplace.attr(
+        coordplace.setAttr(
           'location_enabled',
           this.location === this.locations[item2].name ? 'on' : 'off',
         );
-        coordplace.attr('title', this.locations[item2].name);
-        const tooltip = coordplace.tooltip(null, null, true);
+        coordplace.setAttr('title', this.locations[item2].name);
+        const tooltip = Tooltip(coordplace);
 
-        coordplace.text(this.locations[item2].mininame);
+        coordplace.setText(this.locations[item2].mininame);
         if (this.locations[item2].color) {
-          coordplace.css('background-color', this.locations[item2].color);
+          coordplace.setStyle('background-color', this.locations[item2].color);
         }
 
         if (this.locations[item2].fontColor) {
-          coordplace.css('color', this.locations[item2].fontColor);
+          coordplace.setStyle('color', this.locations[item2].fontColor);
         }
 
         // Click Location
-        const tinyThis = this;
         coordplace
-          .css('cursor', 'pointer')
-          .data('tinyLocation', this.locations[item2])
-          .on('click', function () {
+          .setStyle('cursor', 'pointer')
+          .setData('tinyLocation', this.locations[item2])
+          .on('click', () => {
             // Prepare Click
-            const tinyLocation = $(this).data('tinyLocation');
+            const tinyLocation = coordplace.data('tinyLocation');
 
             // Get Items
             let tinyItems;
@@ -431,13 +430,10 @@ class TinyMap {
                     }
 
                     // Tiny fix
-                    if (tinyCities[city] === tinyThis.locations[item2].name && !alllocations) {
+                    if (tinyCities[city] === this.locations[item2].name && !alllocations) {
                       cancity = true;
                       break;
-                    } else if (
-                      alllocations &&
-                      tinyCities[city] === tinyThis.locations[item2].name
-                    ) {
+                    } else if (alllocations && tinyCities[city] === this.locations[item2].name) {
                       cancity = false;
                       break;
                     }
@@ -448,18 +444,18 @@ class TinyMap {
                 if (cancity) {
                   let separeItem = '';
                   if (Number(item) !== Number(tinyItems.length - 1)) {
-                    separeItem = $('<hr>');
+                    separeItem = TinyHtml.createFrom('hr');
                   }
                   tinyShop.push(
-                    $('<div>').append([
-                      $('<span>').text(`Name: `),
-                      $('<span>').text(tinyItems[item].name),
-                      $('<br>'),
-                      $('<span>').text(`Price: `),
-                      $('<span>').text(tinyItems[item].price),
-                      $('<br>'),
-                      $('<span>').text(`About: `),
-                      $('<span>').text(tinyItems[item].about),
+                    TinyHtml.createFrom('div').append([
+                      TinyHtml.createFrom('span').setText(`Name: `),
+                      TinyHtml.createFrom('span').setText(tinyItems[item].name),
+                      TinyHtml.createFrom('br'),
+                      TinyHtml.createFrom('span').setText(`Price: `),
+                      TinyHtml.createFrom('span').setText(tinyItems[item].price),
+                      TinyHtml.createFrom('br'),
+                      TinyHtml.createFrom('span').setText(`About: `),
+                      TinyHtml.createFrom('span').setText(tinyItems[item].about),
                       separeItem,
                     ]),
                   );
@@ -470,23 +466,23 @@ class TinyMap {
             // Modal Body
             const tinyBody = [
               // Info
-              $('<h3>').text('Info'),
-              $('<div>').text(tinyLocation.about),
+              TinyHtml.createFrom('h3').setText('Info'),
+              TinyHtml.createFrom('div').setText(tinyLocation.about),
             ];
 
             if (tinyShop.length > 0) {
-              tinyBody.push($('<hr>'), $('<h3>').text('Shop'));
+              tinyBody.push(TinyHtml.createFrom('hr'), TinyHtml.createFrom('h3').setText('Shop'));
               for (const item2 in tinyShop) {
                 tinyBody.push(tinyShop[item2]);
               }
             }
 
-            tinyThis.html.subPage = {
+            this.html.subPage = {
               html: tinyBody,
               title: 'Location - {location}'.replace(/\{location\}/g, tinyLocation.name),
             };
 
-            tinyThis.activeSubPage(true);
+            this.activeSubPage(true);
             if (tooltip) tooltip.hide();
           });
       }
@@ -503,7 +499,7 @@ class TinyMap {
    * @returns {void}
    */
   updateMapSize() {
-    this.html.table.css({
+    this.html.table.setStyle({
       width: this.size[0] + this.tile[0],
       height: this.size[1] + this.tile[1],
     });
@@ -524,7 +520,7 @@ class TinyMap {
   setMapImage(imgUrl) {
     this.image = typeof imgUrl === 'string' && this.#isValidDataImage(imgUrl) ? imgUrl : '';
     if (this.html.table)
-      this.html.table.css({
+      this.html.table.setStyle({
         background: this.image
           ? 'transparent url("' + this.image + '") no-repeat right bottom'
           : '',
@@ -550,8 +546,8 @@ class TinyMap {
     this.html.base
       .empty()
       .append(
-        typeof title === 'string' ? $('<h3>').text(title) : null,
-        $('<div>', { class: className }).append(tinyHtml),
+        typeof title === 'string' ? TinyHtml.createFrom('h3').setText(title) : null,
+        TinyHtml.createFrom('div', { class: className }).append(tinyHtml),
       );
   }
 
@@ -597,11 +593,11 @@ class TinyMap {
    */
   buildMap(resetHtml = false) {
     // The map
-    const tinyThis = this;
-    if (resetHtml) this.html.base = $('<center>', { class: 'd-none' });
+    if (resetHtml) this.html.base = TinyHtml.createFrom('center', { class: 'd-none' });
 
     // The table
-    if (resetHtml) this.html.table = $('<table>', { class: 'table table-bordered' });
+    if (resetHtml)
+      this.html.table = TinyHtml.createFrom('table', { class: 'table table-bordered' });
     this.updateMapSize();
 
     // Insert map table into map element
@@ -610,14 +606,14 @@ class TinyMap {
 
     // Map Button
     if (resetHtml)
-      this.html.mapButton = $('<button>', {
+      this.html.mapButton = TinyHtml.createFrom('button', {
         type: 'button',
         class: 'btn btn-secondary m-2',
       }).on('click', () => {
-        if (tinyThis._isSubPage) {
-          tinyThis.buildMap();
-          tinyThis.html.base.removeClass('d-none');
-        } else tinyThis.html.base.toggleClass('d-none');
+        if (this._isSubPage) {
+          this.buildMap();
+          this.html.base.removeClass('d-none');
+        } else this.html.base.toggleClass('d-none');
       });
 
     // Set name

@@ -1,5 +1,5 @@
-import $ from 'jquery';
 import { TinyAiInstance } from 'tiny-ai-api';
+import { TinyHtml } from 'tiny-essentials';
 import TinyAiStorage from './TinyAiStorage.mjs';
 import { appData } from '../../important.mjs';
 
@@ -10,9 +10,9 @@ export const tinyStorage = new TinyAiStorage();
 
 appData.emitter.on('isUsingAI', (usingAI) => {
   if (usingAI) {
-    $('body').addClass('is-using-ai');
+    TinyHtml.query('body').addClass('is-using-ai');
   } else {
-    $('body').removeClass('is-using-ai');
+    TinyHtml.query('body').removeClass('is-using-ai');
   }
 });
 

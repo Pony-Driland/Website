@@ -1,3 +1,5 @@
+import { TinyHtml } from "tiny-essentials";
+
 // Start Web3
 const puddyWeb3 = new PuddyWeb3('matic');
 
@@ -47,8 +49,8 @@ storyCfg.web3.login = () => {
     tinyLib.modal({
       id: 'crypto_connection',
       title: 'Login Protocol',
-      body: $('<center>').append(
-        $('<p>').text(
+      body: TinyHtml.createFrom('center').append(
+        TinyHtml.createFrom('p').text(
           `Login is not required. You can continue using all the tools of the website for free. Login is only to use cloud services.`,
         ),
 
@@ -118,7 +120,7 @@ storyCfg.web3.login = () => {
     // Prepare Items
     const modalTitle =
       'Choose what kind of data you want to interact within the blockchain. Please make sure you are in the correct domain.';
-    const modalWarn = $('<strong>', { class: 'ms-1' }).text(
+    const modalWarn = TinyHtml.createFrom('strong', { class: 'ms-1' }).text(
       'We only work on the domain ' + storyCfg.domain + '!',
     );
     const items = [];
@@ -237,8 +239,8 @@ storyCfg.web3.login = () => {
           title:
             'Blockchain Storage (BETA) ' + puddyWeb3.getBlockchain().chainName + ' - ' + clickType2,
           dialog: 'modal-lg',
-          body: $('<center>').append(
-            $('<div>').text('Choose which filter you want to interact with.'),
+          body: TinyHtml.createFrom('center').append(
+            TinyHtml.createFrom('div').text('Choose which filter you want to interact with.'),
             filters,
           ),
         });
@@ -403,12 +405,12 @@ storyCfg.web3.login = () => {
       id: 'crypto_connection',
       title: 'Blockchain Storage (BETA) ' + puddyWeb3.getBlockchain().chainName,
       dialog: 'modal-lg',
-      body: $('<center>').append(
-        $('<div>').append(
-          $('<p>').text(
+      body: TinyHtml.createFrom('center').append(
+        TinyHtml.createFrom('div').append(
+          TinyHtml.createFrom('p').text(
             'This is your cloud storage. Choose what you want to do. All your data is saved inside the blockchain publicly. Any user can see your data in a blockchain explorer.',
           ),
-          $('<small>').append(
+          TinyHtml.createFrom('small').append(
             $('<a>', {
               href: `${puddyWeb3.getBlockchain().blockExplorerUrls}address/${storyCfg.web3.contractAddress}`,
               target: '_blank',
@@ -432,7 +434,7 @@ storyCfg.web3.login = () => {
                 ' - ' +
                 clickType2,
               dialog: 'modal-lg',
-              body: $('<center>').append($('<div>').text(modalTitle).append(modalWarn), items),
+              body: TinyHtml.createFrom('center').append(TinyHtml.createFrom('div').text(modalTitle).append(modalWarn), items),
             });
           }),
 
@@ -452,7 +454,7 @@ storyCfg.web3.login = () => {
                 ' - ' +
                 clickType2,
               dialog: 'modal-lg',
-              body: $('<center>').append($('<div>').text(modalTitle).append(modalWarn), items),
+              body: TinyHtml.createFrom('center').append(TinyHtml.createFrom('div').text(modalTitle).append(modalWarn), items),
             });
           }),
       ),
