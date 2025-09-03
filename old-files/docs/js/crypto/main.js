@@ -50,13 +50,13 @@ storyCfg.web3.login = () => {
       id: 'crypto_connection',
       title: 'Login Protocol',
       body: TinyHtml.createFrom('center').append(
-        TinyHtml.createFrom('p').text(
+        TinyHtml.createFrom('p').setText(
           `Login is not required. You can continue using all the tools of the website for free. Login is only to use cloud services.`,
         ),
 
         tinyLib.bs
           .button('info m-4')
-          .text('Metamask')
+          .setText('Metamask')
           .on('click', () => {
             $('#crypto_connection').modal('hide');
             puddyWeb3.alertIsEnabled();
@@ -120,7 +120,7 @@ storyCfg.web3.login = () => {
     // Prepare Items
     const modalTitle =
       'Choose what kind of data you want to interact within the blockchain. Please make sure you are in the correct domain.';
-    const modalWarn = TinyHtml.createFrom('strong', { class: 'ms-1' }).text(
+    const modalWarn = TinyHtml.createFrom('strong', { class: 'ms-1' }).setText(
       'We only work on the domain ' + storyCfg.domain + '!',
     );
     const items = [];
@@ -131,7 +131,7 @@ storyCfg.web3.login = () => {
     // NSFW Filter
     itemsData.nsfwFilter = tinyLib.bs
       .button('secondary m-2')
-      .text('NSFW Filters')
+      .setText('NSFW Filters')
       .on('click', function () {
         const filters = [];
         const nsfwList = [];
@@ -151,7 +151,7 @@ storyCfg.web3.login = () => {
                       tinyLib.bs
                         .button('secondary m-2')
                         .data('nsfw_crypto_data', { id: NSFWITEM, data: storyCfg.nsfw[NSFWITEM] })
-                        .text(storyCfg.nsfw[NSFWITEM].name)
+                        .setText(storyCfg.nsfw[NSFWITEM].name)
                         .on('click', async function () {
                           const tinyThis = this;
                           $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
@@ -240,7 +240,7 @@ storyCfg.web3.login = () => {
             'Blockchain Storage (BETA) ' + puddyWeb3.getBlockchain().chainName + ' - ' + clickType2,
           dialog: 'modal-lg',
           body: TinyHtml.createFrom('center').append(
-            TinyHtml.createFrom('div').text('Choose which filter you want to interact with.'),
+            TinyHtml.createFrom('div').setText('Choose which filter you want to interact with.'),
             filters,
           ),
         });
@@ -251,7 +251,7 @@ storyCfg.web3.login = () => {
     // Volume
     itemsData.volume = tinyLib.bs
       .button('secondary m-2')
-      .text('Volume')
+      .setText('Volume')
       .on('click', async () => {
         $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
         await puddyWeb3.requestAccounts();
@@ -324,7 +324,7 @@ storyCfg.web3.login = () => {
       // Bookmark
       itemsData.bookmark = tinyLib.bs
         .button('secondary m-2')
-        .text('Bookmark - Chapter ' + storyData.chapter.selected)
+        .setText('Bookmark - Chapter ' + storyData.chapter.selected)
         .on('click', async () => {
           $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
           await puddyWeb3.requestAccounts();
@@ -407,21 +407,21 @@ storyCfg.web3.login = () => {
       dialog: 'modal-lg',
       body: TinyHtml.createFrom('center').append(
         TinyHtml.createFrom('div').append(
-          TinyHtml.createFrom('p').text(
+          TinyHtml.createFrom('p').setText(
             'This is your cloud storage. Choose what you want to do. All your data is saved inside the blockchain publicly. Any user can see your data in a blockchain explorer.',
           ),
           TinyHtml.createFrom('small').append(
             $('<a>', {
               href: `${puddyWeb3.getBlockchain().blockExplorerUrls}address/${storyCfg.web3.contractAddress}`,
               target: '_blank',
-            }).text(storyCfg.web3.contractAddress),
+            }).setText(storyCfg.web3.contractAddress),
           ),
         ),
 
         // Load
         tinyLib.bs
           .button('secondary m-4')
-          .text('Load')
+          .setText('Load')
           .on('click', () => {
             clickType = 'load';
             clickType2 = 'Load';
@@ -434,14 +434,14 @@ storyCfg.web3.login = () => {
                 ' - ' +
                 clickType2,
               dialog: 'modal-lg',
-              body: TinyHtml.createFrom('center').append(TinyHtml.createFrom('div').text(modalTitle).append(modalWarn), items),
+              body: TinyHtml.createFrom('center').append(TinyHtml.createFrom('div').setText(modalTitle).append(modalWarn), items),
             });
           }),
 
         // Save
         tinyLib.bs
           .button('primary m-4')
-          .text('Save')
+          .setText('Save')
           .on('click', () => {
             clickType = 'save';
             clickType2 = 'Save';
@@ -454,7 +454,7 @@ storyCfg.web3.login = () => {
                 ' - ' +
                 clickType2,
               dialog: 'modal-lg',
-              body: TinyHtml.createFrom('center').append(TinyHtml.createFrom('div').text(modalTitle).append(modalWarn), items),
+              body: TinyHtml.createFrom('center').append(TinyHtml.createFrom('div').setText(modalTitle).append(modalWarn), items),
             });
           }),
       ),
