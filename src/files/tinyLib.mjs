@@ -9,7 +9,7 @@ const tinyLib = {};
 // MD Data manager
 tinyLib.mdManager = {};
 
-tinyLib.mdManager.extractMetadata = function (markdown) {
+tinyLib.mdManager.extractMetadata = (markdown) => {
   const charactersBetweenGroupedHyphens = /^\#---([\s\S]*?)\#---/;
   const metadataMatched = markdown.match(charactersBetweenGroupedHyphens);
   const metadata = metadataMatched[1];
@@ -36,7 +36,7 @@ tinyLib.mdManager.extractMetadata = function (markdown) {
   return metadataObject;
 };
 
-tinyLib.mdManager.removeMetadata = function (text) {
+tinyLib.mdManager.removeMetadata = (text) => {
   let result = text.replace(/^\#---([\s\S]*?)\#---/, '');
   while (result.startsWith('\n')) {
     result = result.substring(1);
@@ -94,7 +94,7 @@ tinyLib.modal = (data) => {
   return Modal(modal, undefined, true);
 };
 
-tinyLib.formGroup = function (data) {
+tinyLib.formGroup = (data) => {
   if (typeof data.class !== 'string') {
     data.class = '';
   }
@@ -137,7 +137,7 @@ tinyLib.formGroup = function (data) {
   return result;
 };
 
-tinyLib.formGroupCheck = function (data) {
+tinyLib.formGroupCheck = (data) => {
   if (typeof data.class !== 'string') {
     data.class = '';
   }
@@ -160,7 +160,7 @@ tinyLib.formGroupCheck = function (data) {
 };
 
 // Alert
-alert = function (text, title = 'Browser Warning!') {
+alert = (text, title = 'Browser Warning!') => {
   return tinyLib.modal({
     title: TinyHtml.createFrom('span').setText(title),
     body: TinyHtml.createFrom('div', { class: 'text-break' })
@@ -171,11 +171,11 @@ alert = function (text, title = 'Browser Warning!') {
 };
 
 // Remove AI tags
-tinyLib.removeAiTags = function (str) {
+tinyLib.removeAiTags = (str) => {
   return str.replace(/\<ai\>|\<\/ai\>/g, '');
 };
 
-tinyLib.getGitUrlPath = function (text, type = 'g') {
+tinyLib.getGitUrlPath = (text, type = 'g') => {
   const tinyUrl = `https\\:\\/\\/github.com\\/${storyCfg.github.account}\\/${storyCfg.github.repository}\\/blob\\/main\\/`;
   return new RegExp(typeof text === 'string' ? text.replace('{url}', tinyUrl) : tinyUrl, type);
 };

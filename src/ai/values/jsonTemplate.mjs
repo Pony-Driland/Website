@@ -1,12 +1,12 @@
 import aiTemplates from './templates.mjs';
 
 // https://github.com/json-editor/json-editor?tab=readme-ov-file
-aiTemplates.funcs.jsonTemplate = function () {
+aiTemplates.funcs.jsonTemplate = () => {
   const rpgBase = {
     // Generator
     generator: {
       // Character List
-      characterList: function (data) {
+      characterList: (data) => {
         // Result Data
         const resultData = {
           title: data.title,

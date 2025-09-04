@@ -1406,7 +1406,7 @@ export const AiScriptStart = async () => {
   // Classic Map
   leftMenu.push(
     createButtonSidebar('fa-solid fa-map', 'Classic Map', () => {
-      const startTinyMap = function (place) {
+      const startTinyMap = (place) => {
         // Get Map Data
         let maps;
         let location;
