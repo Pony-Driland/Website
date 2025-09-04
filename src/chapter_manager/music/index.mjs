@@ -444,7 +444,7 @@ const musicManager = {
     }
 
     // Add Item Base
-    if (storyData.nc.base.right.find('> #status #music').length < 1) {
+    if (storyData.nc.base.right.find(':scope > #status #music').length < 1) {
       // Update
       storyData.music.songVolumeUpdate();
 
@@ -577,7 +577,7 @@ const musicManager = {
       );
 
       // Insert
-      new TinyHtml(storyData.nc.base.right.find('> #status')).prepend([
+      new TinyHtml(storyData.nc.base.right.find(':scope > #status')).prepend([
         // Music
         storyData.chapter.nav.music,
 

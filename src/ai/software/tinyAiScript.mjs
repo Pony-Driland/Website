@@ -10,7 +10,23 @@ export const tinyAiScript = {
   enabled: false,
   noai: false,
   mpClient: false,
-  aiLogin: null,
+  aiLogin: {
+    base: TinyHtml.createFrom('li', { class: 'nav-item font-weight-bold' }),
+    secondsUsed: 0,
+    title: '',
+
+    button: tinyLib.bs
+      .button({ id: 'ai-login', dsBtn: true, class: 'nav-link' })
+      .prepend(tinyLib.icon('fa-solid fa-robot me-2')),
+
+    updateTitle: () => {
+      if (tinyAiScript.aiLogin.button) {
+        const title = `${tinyAiScript.aiLogin.title}${tinyAiScript.aiLogin.secondsUsed > 0 ? ` - ${formatDayTimer(tinyAiScript.aiLogin.secondsUsed)}` : ''}`;
+        tinyAiScript.aiLogin.button.removeAttr('title');
+        tinyAiScript.aiLogin.button.setAttr('data-bs-original-title', title);
+      }
+    },
+  },
 
   killIo: () => {
     if (tinyIo.client) {
@@ -29,7 +45,7 @@ export const tinyAiScript = {
     // Exists Google only. Then select google generative
     if (typeof selectedAi === 'string' && selectedAi.length > 0 && selectedAi !== 'NONE') {
       // Update html
-      new TinyHtml(tinyAiScript.aiLogin.button.find('> i')).removeClass('text-danger-emphasis');
+      new TinyHtml(tinyAiScript.aiLogin.button.find(':scope > i')).removeClass('text-danger-emphasis');
       tinyAiScript.aiLogin.title = 'AI/RP Enabled';
       TinyHtml.query('body').addClass('can-ai');
 
@@ -51,7 +67,7 @@ export const tinyAiScript = {
       tinyAiScript.enabled = true;
     } else {
       // Update html
-      new TinyHtml(tinyAiScript.aiLogin.button.find('> i')).addClass('text-danger-emphasis');
+      new TinyHtml(tinyAiScript.aiLogin.button.find(':scope > i')).addClass('text-danger-emphasis');
       tinyAiScript.aiLogin.title = 'AI/RP Disabled';
       TinyHtml.query('body').removeClass('can-ai');
       tinyAiScript.enabled = false;
@@ -183,7 +199,7 @@ export const tinyAiScript = {
       data.input.push(insertServerAbout());
       const values = tinyStorage.getApiKey('no-ai') || {};
       const ids = insertServerLogin(data.input, values);
-      new TinyHtml(data.input[0].find('> button')).trigger('click');
+      new TinyHtml(data.input[0].find(':scope > button')).trigger('click');
 
       data.desc = TinyHtml.createFrom('p').setText(
         'No AI will be used in this mode. You will only have access to the simple features.',
@@ -230,7 +246,7 @@ export const tinyAiScript = {
       const values = tinyStorage.getApiKey('google-generative') || {};
       data.input[0].setVal(values.key).toggleProp('disabled', appData.ai.using);
       const ids = insertServerLogin(data.input, values);
-      new TinyHtml(data.input[1].find('> button')).trigger('click');
+      new TinyHtml(data.input[1].find(':scope > button')).trigger('click');
 
       data.desc = TinyHtml.createFrom('p').append(
         TinyHtml.createFrom('span').setText('You can get your Google API key '),
