@@ -192,22 +192,22 @@ export const AiScriptStart = async () => {
       }
 
       // Update value
-      if (currentValue < min) ranger.val(min).trigger('input');
-      else if (currentValue > max) ranger.val(max).trigger('input');
-      else ranger.val(currentValue).trigger('input');
+      if (currentValue < min) ranger.setVal(min).trigger('input');
+      else if (currentValue > max) ranger.setVal(max).trigger('input');
+      else ranger.setVal(currentValue).trigger('input');
     });
 
-    ranger.on('input', () => rangerNumber.val(ranger.val()));
-    rangerNumber.on('input', () => ranger.val(rangerNumber.val()));
+    ranger.on('input', () => rangerNumber.setVal(ranger.val()));
+    rangerNumber.on('input', () => ranger.setVal(rangerNumber.val()));
 
     rangerNumber.on('change', () => {
       let value = parseInt(rangerNumber.val());
       let min = parseInt(rangerNumber.attr('min'));
       let max = parseInt(rangerNumber.attr('max'));
       if (value < min) {
-        rangerNumber.val(min);
+        rangerNumber.setVal(min);
       } else if (value > max) {
-        rangerNumber.val(max);
+        rangerNumber.setVal(max);
       }
     });
 
@@ -259,8 +259,8 @@ export const AiScriptStart = async () => {
       insert: () => rangerBase,
       val: function (value) {
         if (typeof value !== 'undefined') {
-          ranger.val(value);
-          rangerNumber.val(value);
+          ranger.setVal(value);
+          rangerNumber.setVal(value);
           return this;
         }
         return convertToNumber(ranger.val());
@@ -405,7 +405,7 @@ export const AiScriptStart = async () => {
           if (ficConfigs.selected) {
             let textBackup = tinyLs.getItem(`tiny-ai-textarea-${ficConfigs.selected}`);
             if (typeof textBackup !== 'string') textBackup = '';
-            msgInput.val(textBackup).trigger('input');
+            msgInput.setVal(textBackup).trigger('input');
           }
 
           // Start system
@@ -503,7 +503,7 @@ export const AiScriptStart = async () => {
 
       // Set model
       if (typeof file.model === 'string') {
-        modelSelector.val(file.model);
+        modelSelector.setVal(file.model);
         tinyAi.setModel(file.model, sessionId);
         selectModel(file.model);
       }
@@ -750,7 +750,7 @@ export const AiScriptStart = async () => {
       class: 'form-control',
       style: `height: ${String(config.size)}px;`,
     });
-    textarea.val(config.textarea);
+    textarea.setVal(config.textarea);
     if (config.readOnly) textarea.addProp('readOnly');
     const textEditor = new TinyTextRangeEditor(textarea[0]);
 
@@ -936,7 +936,7 @@ export const AiScriptStart = async () => {
         if (typeof frequencyPenaltyValue === 'number')
           tinyAi.setFrequencyPenalty(frequencyPenaltyValue);
 
-        textareaAdd.val('DEFAULT');
+        textareaAdd.setVal('DEFAULT');
 
         // Insert text
         if (typeof text === 'string' && text.length > 0)
@@ -1035,7 +1035,7 @@ export const AiScriptStart = async () => {
           .addClass('form-control text-center')
           .setAttr({ id: `tiny-dice_${id}`, type, min })
           .setAttr('placeholder', min)
-          .val(value);
+          .setVal(value);
 
       const genConfig = (id, text, type, value, min) => {
         configs[id] = genInput(id, type, value, min);
@@ -1147,7 +1147,7 @@ export const AiScriptStart = async () => {
         configs[id] = TinyHtml.createFrom('input')
           .addClass('form-control text-center')
           .setAttr({ type: 'text', placeholder })
-          .val(value);
+          .setVal(value);
 
         return TinyHtml.createFrom('div')
           .addClass('col-md-4 text-center')
@@ -1161,12 +1161,12 @@ export const AiScriptStart = async () => {
         .addClass('form-control')
         .addClass('d-none')
         .setAttr('type', 'text')
-        .val(tinyCfg.data.img);
+        .setVal(tinyCfg.data.img);
       const bgImgUploadButton = tinyLib.bs.button('info w-100');
       const uploadImgButton = tinyLib.upload.img(
         bgImgUploadButton.setText('Select Image').on('contextmenu', (e) => {
           e.preventDefault();
-          configs.bgImg.val('').removeClass('text-danger').trigger('change');
+          configs.bgImg.setVal('').removeClass('text-danger').trigger('change');
         }),
         (err, dataUrl) => {
           console.log(`[dice-file] [upload] Image length: ${dataUrl.length}`);
@@ -1202,7 +1202,7 @@ export const AiScriptStart = async () => {
           }
 
           // OK
-          configs.bgImg.val(dataUrl).removeClass('text-danger').trigger('change');
+          configs.bgImg.setVal(dataUrl).removeClass('text-danger').trigger('change');
         },
       );
 
@@ -1228,7 +1228,7 @@ export const AiScriptStart = async () => {
                   item.length <= tinyCfg.rateLimit[name]
                     ? item
                     : null;
-                configs[readSkinData[0]].val(newValue).trigger('change');
+                configs[readSkinData[0]].setVal(newValue).trigger('change');
               }
             }
           }
@@ -1502,7 +1502,7 @@ export const AiScriptStart = async () => {
             .addProp('disabled')
             .addClass('form-control')
             .addClass('form-control')
-            .val(tinyIo.client.getRoomId());
+            .setVal(tinyIo.client.getRoomId());
 
           const $roomTitle = TinyHtml.createFrom('input')
             .setAttr({
@@ -1512,7 +1512,7 @@ export const AiScriptStart = async () => {
               maxLength: ratelimit.size.roomTitle,
             })
             .addClass('form-control')
-            .val(room.title)
+            .setVal(room.title)
             .toggleProp('disabled', cantEdit);
 
           $editForm.append(
@@ -1558,7 +1558,7 @@ export const AiScriptStart = async () => {
                     placeholder: 'Maximum number of users',
                   })
                   .addClass('form-control')
-                  .val(room.maxUsers)
+                  .setVal(room.maxUsers)
                   .toggleProp('disabled', cantEdit),
               ),
           );
@@ -1812,7 +1812,7 @@ export const AiScriptStart = async () => {
           const { ratelimit, userData } = getInfo();
           $input
             .setAttr('maxLength', ratelimit.size[infoName])
-            .val(typeof userData[infoName] === 'string' ? userData[infoName] : '')
+            .setVal(typeof userData[infoName] === 'string' ? userData[infoName] : '')
             .on('keydown', (e) => {
               if (e.key === 'Enter') {
                 e.preventDefault();
@@ -2441,7 +2441,7 @@ export const AiScriptStart = async () => {
         }
 
         // New model value
-        modelSelector.val(tinyLs.getItem('tiny-ai-storage-model-selected') || tinyAi.getModel());
+        modelSelector.setVal(tinyLs.getItem('tiny-ai-storage-model-selected') || tinyAi.getModel());
         modelSelector.trigger('change');
       }
     }
@@ -2455,7 +2455,7 @@ export const AiScriptStart = async () => {
     tokenCount.updateValue('total', model.inputTokenLimit);
 
     outputLength
-      .val(model.outputTokenLimit)
+      .setVal(model.outputTokenLimit)
       .removeProp('disabled')
       .removeClass('disabled')
       .trigger('input');
@@ -2484,7 +2484,7 @@ export const AiScriptStart = async () => {
       } else {
         tokenCount.total.setText(0);
         temperature.reset().disable();
-        outputLength.val(0).addProp('disabled').addClass('disabled');
+        outputLength.setVal(0).addProp('disabled').addClass('disabled');
         topP.reset().disable();
         topK.reset().disable();
         presencePenalty.reset().disable();
@@ -2860,14 +2860,14 @@ export const AiScriptStart = async () => {
           if (points === '....') points = '.';
 
           secondsWaiting++;
-          msgInput.val(`(${secondsWaiting}s) Loading model data${points}`);
+          msgInput.setVal(`(${secondsWaiting}s) Loading model data${points}`);
         };
         const loadingMessage = setInterval(loadingMoment, 1000);
         loadingMoment();
 
         const stopLoadingMessage = () => {
           clearInterval(loadingMessage);
-          msgInput.val(oldMsgInput);
+          msgInput.setVal(oldMsgInput);
           if (sessionEnabled) {
             contentEnabler.enBase();
             contentEnabler.enModelChanger();
@@ -3166,7 +3166,7 @@ export const AiScriptStart = async () => {
     // Prepare to get data
     msgInput.trigger('blur');
     const msg = msgInput.val();
-    msgInput.val('').trigger('input');
+    msgInput.setVal('').trigger('input');
 
     const controller = new AbortController();
     contentEnabler.deBase();
@@ -3182,7 +3182,7 @@ export const AiScriptStart = async () => {
       if (points === '....') points = '.';
 
       secondsWaiting++;
-      msgInput.val(`(${secondsWaiting}s) Waiting response${points}`);
+      msgInput.setVal(`(${secondsWaiting}s) Waiting response${points}`);
     };
     const loadingMessage = setInterval(loadingMoment, 1000);
     loadingMoment();
@@ -3235,7 +3235,7 @@ export const AiScriptStart = async () => {
     // Complete
     clearInterval(loadingMessage);
     if (sessionEnabled) contentEnabler.enPromptButtons();
-    msgInput.val('');
+    msgInput.setVal('');
 
     if (sessionEnabled) {
       contentEnabler.enMessageButtons();
@@ -3424,7 +3424,7 @@ export const AiScriptStart = async () => {
             .on('click', () => {
               // Text
               const textInput = TinyHtml.createFrom('textarea', { class: 'form-control' });
-              textInput.val(tinyCache.msg);
+              textInput.setVal(tinyCache.msg);
               const oldMsg = tinyCache.msg;
 
               // Submit
@@ -3751,7 +3751,10 @@ export const AiScriptStart = async () => {
 
   const tinyAiSocketTemplate = (where, where2, el) =>
     tinyAi.on(where, (value, id) => {
-      if (el) el.val(value);
+      if (el) {
+        if (el instanceof TinyHtml) el.setVal(value);
+        else el.val(value);
+      }
       saveSessionBackup(id, where2);
     });
 

@@ -128,11 +128,11 @@ export const tinyAiScript = {
       );
       indexs.push(tinyInput.length - 1);
 
-      tinyInput[indexs[0]].val(values.ip).toggleProp('disabled', appData.ai.using);
-      tinyInput[indexs[1]].val(values.username).toggleProp('disabled', appData.ai.using);
-      tinyInput[indexs[2]].val(values.password).toggleProp('disabled', appData.ai.using);
-      tinyInput[indexs[3]].val(values.roomId).toggleProp('disabled', appData.ai.using);
-      tinyInput[indexs[4]].val(values.roomPassword).toggleProp('disabled', appData.ai.using);
+      tinyInput[indexs[0]].setVal(values.ip).toggleProp('disabled', appData.ai.using);
+      tinyInput[indexs[1]].setVal(values.username).toggleProp('disabled', appData.ai.using);
+      tinyInput[indexs[2]].setVal(values.password).toggleProp('disabled', appData.ai.using);
+      tinyInput[indexs[3]].setVal(values.roomId).toggleProp('disabled', appData.ai.using);
+      tinyInput[indexs[4]].setVal(values.roomPassword).toggleProp('disabled', appData.ai.using);
 
       return indexs;
     };
@@ -228,7 +228,7 @@ export const tinyAiScript = {
       data.input.push(hostButton(data.input, 1));
       data.input.push(insertServerAbout());
       const values = tinyStorage.getApiKey('google-generative') || {};
-      data.input[0].val(values.key).toggleProp('disabled', appData.ai.using);
+      data.input[0].setVal(values.key).toggleProp('disabled', appData.ai.using);
       const ids = insertServerLogin(data.input, values);
       new TinyHtml(data.input[1].find('> button')).trigger('click');
 
@@ -286,7 +286,7 @@ export const tinyAiScript = {
     };
 
     // Modal
-    selector.val(tinyStorage.selectedAi() || 'NONE');
+    selector.setVal(tinyStorage.selectedAi() || 'NONE');
     selector.trigger('change');
 
     tinyLib.modal({
