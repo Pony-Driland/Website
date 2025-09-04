@@ -555,8 +555,8 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
         }
       }
 
-      new TinyHtml(ul.find('> li:first')).removeClass('py-0').removeClass('pt-0').addClass('pb-0');
-      new TinyHtml(ul.find('> li:last')).removeClass('py-0').removeClass('pb-0').addClass('pt-0');
+      new TinyHtml(ul.find(':scope > li:first')).removeClass('py-0').removeClass('pt-0').addClass('pb-0');
+      new TinyHtml(ul.find(':scope > li:last')).removeClass('py-0').removeClass('pb-0').addClass('pt-0');
       item.append(tinyBase, ul);
     });
 
@@ -670,7 +670,7 @@ export const clearFicData = () => {
     .removeClass(`fic-daycicle-night`)
     .removeClass(`fic-daycicle-lateAtNight`);
 
-  new TinyHtml(storyData.nc.base.right.find('> #status')).empty();
+  new TinyHtml(storyData.nc.base.right.find(':scope > #status')).empty();
   TinyHtml.query('#fic-chapter').empty();
   storyData.readFic = false;
   storyData.chapter.html = {};
@@ -1210,24 +1210,6 @@ rootApp.onReady(() => {
             text: 'Whistler (Character WIP)',
           });
 
-          // AI Login
-          tinyAiScript.aiLogin = {
-            base: TinyHtml.createFrom('li', { class: 'nav-item font-weight-bold' }),
-            secondsUsed: 0,
-            title: '',
-            updateTitle: () => {
-              if (tinyAiScript.aiLogin.button) {
-                const title = `${tinyAiScript.aiLogin.title}${tinyAiScript.aiLogin.secondsUsed > 0 ? ` - ${formatDayTimer(tinyAiScript.aiLogin.secondsUsed)}` : ''}`;
-                tinyAiScript.aiLogin.button.removeAttr('title');
-                tinyAiScript.aiLogin.button.setAttr('data-bs-original-title', title);
-              }
-            },
-          };
-
-          tinyAiScript.aiLogin.button = tinyLib.bs
-            .button({ id: 'ai-login', dsBtn: true, class: 'nav-link' })
-            .prepend(tinyLib.icon('fa-solid fa-robot me-2'));
-
           tinyAiScript.checkTitle();
           tinyAiScript.aiLogin.base.prepend(tinyAiScript.aiLogin.button);
           tinyAiScript.aiLogin.button.on('click', (e) => {
@@ -1456,8 +1438,8 @@ rootApp.onReady(() => {
         );
 
         storyData.nc = { base: {}, item: {} };
-        storyData.nc.item.left = new TinyHtml(tinyCollapse1.find('> ul'));
-        storyData.nc.item.right = new TinyHtml(tinyCollapse2.find('> ul'));
+        storyData.nc.item.left = new TinyHtml(tinyCollapse1.find(':scope > ul'));
+        storyData.nc.item.right = new TinyHtml(tinyCollapse2.find(':scope > ul'));
         const offCanvasNavCfg = new Offcanvas(navbarOffCanvas.get(0));
         addDropdown(navbarData);
         navbarData.setOffCanvas(offCanvasNavCfg);

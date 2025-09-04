@@ -232,7 +232,7 @@ cacheChapterUpdater.data = (lastPage) => {
     }, 1000);
 
     // Add Bookmark
-    if (storyData.nc.base.right.find('> #status #bookmark').length < 1) {
+    if (storyData.nc.base.right.find(':scope > #status #bookmark').length < 1) {
       // Insert
       if (!storyData.chapter.nav) {
         storyData.chapter.nav = {};
@@ -242,7 +242,7 @@ cacheChapterUpdater.data = (lastPage) => {
         class: 'nav-item nav-link',
         id: 'bookmark',
       });
-      new TinyHtml(storyData.nc.base.right.find('> #status')).prepend(
+      new TinyHtml(storyData.nc.base.right.find(':scope > #status')).prepend(
         storyData.chapter.nav.bookmark,
       );
 
@@ -340,7 +340,7 @@ const chapterSet = {
   day: (value, actionFromNow = false) => {
     if (actionFromNow) {
       // Add Item Base
-      if (storyData.nc.base.right.find('> #status #day').length < 1) {
+      if (storyData.nc.base.right.find(':scope > #status #day').length < 1) {
         if (!storyData.chapter.nav) {
           storyData.chapter.nav = {};
         }
@@ -349,10 +349,10 @@ const chapterSet = {
           class: 'nav-item nav-link',
           id: 'day',
         });
-        new TinyHtml(storyData.nc.base.right.find('> #status')).prepend(storyData.chapter.nav.day);
+        new TinyHtml(storyData.nc.base.right.find(':scope > #status')).prepend(storyData.chapter.nav.day);
       }
 
-      new TinyHtml(storyData.nc.base.right.find('> #status #day')).setText(`Day: ${value}`);
+      new TinyHtml(storyData.nc.base.right.find(':scope > #status #day')).setText(`Day: ${value}`);
     }
   },
 
@@ -366,7 +366,7 @@ const chapterSet = {
         .addClass(`fic-daycicle-${value}`);
 
       // Add Item Base
-      if (storyData.nc.base.right.find('> #status #dayNightCycle').length < 1) {
+      if (storyData.nc.base.right.find(':scope > #status #dayNightCycle').length < 1) {
         if (!storyData.chapter.nav) {
           storyData.chapter.nav = {};
         }
@@ -375,7 +375,7 @@ const chapterSet = {
           class: 'nav-item nav-link',
           id: 'dayNightCycle',
         });
-        new TinyHtml(storyData.nc.base.right.find('> #status')).prepend(
+        new TinyHtml(storyData.nc.base.right.find(':scope > #status')).prepend(
           storyData.chapter.nav.dayNightCycle,
         );
       }
@@ -388,7 +388,7 @@ const chapterSet = {
         lateAtNight: { icon: 'fas fa-bullseye', title: 'Late at Night' },
       };
 
-      const obj = new TinyHtml(storyData.nc.base.right.find('> #status #dayNightCycle'));
+      const obj = new TinyHtml(storyData.nc.base.right.find(':scope > #status #dayNightCycle'));
       obj.empty();
       if (types[value]) {
         const newTitle = types[value].title;
@@ -410,7 +410,7 @@ const chapterSet = {
   weather: (value, actionFromNow = false) => {
     if (actionFromNow) {
       // Add Item Base
-      if (storyData.nc.base.right.find('> #status #weather').length < 1) {
+      if (storyData.nc.base.right.find(':scope > #status #weather').length < 1) {
         if (!storyData.chapter.nav) {
           storyData.chapter.nav = {};
         }
@@ -419,7 +419,7 @@ const chapterSet = {
           class: 'nav-item nav-link',
           id: 'weather',
         });
-        new TinyHtml(storyData.nc.base.right.find('> #status')).prepend(
+        new TinyHtml(storyData.nc.base.right.find(':scope > #status')).prepend(
           storyData.chapter.nav.weather,
         );
       }
@@ -433,7 +433,7 @@ const chapterSet = {
       };
 
       storyData.chapter.nextWeather = value;
-      const obj = new TinyHtml(storyData.nc.base.right.find('> #status #weather'));
+      const obj = new TinyHtml(storyData.nc.base.right.find(':scope > #status #weather'));
       obj.empty();
       if (types[value]) {
         obj.setAttr('title', types[value].title).append(tinyLib.icon(types[value].icon));
@@ -446,7 +446,7 @@ const chapterSet = {
   where: (value, actionFromNow = false) => {
     if (actionFromNow) {
       // Add Item Base
-      if (storyData.nc.base.right.find('> #status #where').length < 1) {
+      if (storyData.nc.base.right.find(':scope > #status #where').length < 1) {
         if (!storyData.chapter.nav) {
           storyData.chapter.nav = {};
         }
@@ -455,12 +455,12 @@ const chapterSet = {
           class: 'nav-item nav-link',
           id: 'where',
         });
-        new TinyHtml(storyData.nc.base.right.find('> #status')).prepend(
+        new TinyHtml(storyData.nc.base.right.find(':scope > #status')).prepend(
           storyData.chapter.nav.where,
         );
       }
 
-      new TinyHtml(storyData.nc.base.right.find('> #status #where')).setText(`Location: ${value}`);
+      new TinyHtml(storyData.nc.base.right.find(':scope > #status #where')).setText(`Location: ${value}`);
     }
   },
 };

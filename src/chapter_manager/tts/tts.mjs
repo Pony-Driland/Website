@@ -44,7 +44,7 @@ const ttsManager = {
 
   // Start tts base
   startBase: () => {
-    if (storyData.nc.base.right.find('> #status #tts').length < 1) {
+    if (storyData.nc.base.right.find(':scope > #status #tts').length < 1) {
       // Buttons
       if (!storyData.tts.nav) {
         storyData.tts.nav = {};
@@ -82,7 +82,7 @@ const ttsManager = {
       );
 
       // Insert
-      new TinyHtml(storyData.nc.base.right.find('> #status')).prepend([
+      new TinyHtml(storyData.nc.base.right.find(':scope > #status')).prepend([
         // TTS
         storyData.chapter.nav.tts,
       ]);
