@@ -617,9 +617,11 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
             padding: { top: 40, bottom: 40, left: 100, right: 100 },
           });
 
-          pswp.on('close', () => setTimeout(() => {
+          pswp.on('close', () =>
+            setTimeout(() => {
               pswp.destroy();
-            }, 5000));
+            }, 5000),
+          );
 
           pswp.init();
           newImage
@@ -1628,7 +1630,7 @@ rootApp.onReady(() => {
                 TinyHtml.createFrom('div', { class: 'col-md-6 mt-md-0 mt-3' }).append(
                   TinyHtml.createFrom('center').append(
                     TinyHtml.createFrom('img', { class: 'img-fluid', src: '/img/logo.png' }),
-                    TinyHtml.createFrom('br/'),
+                    TinyHtml.createFrom('br'),
                   ),
                 ),
 

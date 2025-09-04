@@ -223,7 +223,7 @@ class UserRoomManager {
       if (!this.$unbanInput.hasProp('disabled')) {
         const userId = this.$unbanInput.val().trim();
         if (userId) {
-          this.$unbanInput.val('');
+          this.$unbanInput.setVal('');
           this.unbanUser(userId);
         }
       }
@@ -533,7 +533,7 @@ class UserRoomManager {
     this.#client.unbanUser(userId).then((result) => {
       this.$unbanInput.removeProp('disabled').removeClass('disabled');
       if (result.error)
-        this.$unbanInput.val(typeof result.msg === 'string' ? result.msg : 'Unknown error');
+        this.$unbanInput.setVal(typeof result.msg === 'string' ? result.msg : 'Unknown error');
       this.$unbanInput.trigger('focus').trigger('select');
     });
   }
