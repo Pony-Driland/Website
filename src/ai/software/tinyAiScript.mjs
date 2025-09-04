@@ -45,7 +45,9 @@ export const tinyAiScript = {
     // Exists Google only. Then select google generative
     if (typeof selectedAi === 'string' && selectedAi.length > 0 && selectedAi !== 'NONE') {
       // Update html
-      new TinyHtml(tinyAiScript.aiLogin.button.find(':scope > i')).removeClass('text-danger-emphasis');
+      new TinyHtml(tinyAiScript.aiLogin.button.find(':scope > i')).removeClass(
+        'text-danger-emphasis',
+      );
       tinyAiScript.aiLogin.title = 'AI/RP Enabled';
       TinyHtml.query('body').addClass('can-ai');
 
@@ -144,11 +146,13 @@ export const tinyAiScript = {
       );
       indexs.push(tinyInput.length - 1);
 
-      tinyInput[indexs[0]].setVal(values.ip).toggleProp('disabled', appData.ai.using);
-      tinyInput[indexs[1]].setVal(values.username).toggleProp('disabled', appData.ai.using);
-      tinyInput[indexs[2]].setVal(values.password).toggleProp('disabled', appData.ai.using);
-      tinyInput[indexs[3]].setVal(values.roomId).toggleProp('disabled', appData.ai.using);
-      tinyInput[indexs[4]].setVal(values.roomPassword).toggleProp('disabled', appData.ai.using);
+      tinyInput[indexs[0]].setVal(values.ip ?? null).toggleProp('disabled', appData.ai.using);
+      tinyInput[indexs[1]].setVal(values.username ?? null).toggleProp('disabled', appData.ai.using);
+      tinyInput[indexs[2]].setVal(values.password ?? null).toggleProp('disabled', appData.ai.using);
+      tinyInput[indexs[3]].setVal(values.roomId ?? null).toggleProp('disabled', appData.ai.using);
+      tinyInput[indexs[4]]
+        .setVal(values.roomPassword ?? null)
+        .toggleProp('disabled', appData.ai.using);
 
       return indexs;
     };
@@ -244,7 +248,7 @@ export const tinyAiScript = {
       data.input.push(hostButton(data.input, 1));
       data.input.push(insertServerAbout());
       const values = tinyStorage.getApiKey('google-generative') || {};
-      data.input[0].setVal(values.key).toggleProp('disabled', appData.ai.using);
+      data.input[0].setVal(values.key ?? null).toggleProp('disabled', appData.ai.using);
       const ids = insertServerLogin(data.input, values);
       new TinyHtml(data.input[1].find(':scope > button')).trigger('click');
 
