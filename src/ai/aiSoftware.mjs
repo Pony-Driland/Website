@@ -167,7 +167,7 @@ export const AiScriptStart = async () => {
       style: 'width: 70px; max-width: 70px; min-width: 70px;',
     });
 
-    ranger.on('wheel', function (event) {
+    ranger.on('wheel', (event) => {
       event.preventDefault();
       let currentValue = Number(ranger.val());
 
@@ -183,7 +183,7 @@ export const AiScriptStart = async () => {
       const max = getValue('max', 0);
 
       // Detect scroll position
-      if (event.originalEvent.deltaY < 0) {
+      if (event.deltaY < 0) {
         // Up
         currentValue += step;
       } else {
@@ -197,15 +197,10 @@ export const AiScriptStart = async () => {
       else ranger.val(currentValue).trigger('input');
     });
 
-    ranger.on('input', function () {
-      rangerNumber.val(ranger.val());
-    });
+    ranger.on('input', () => rangerNumber.val(ranger.val()));
+    rangerNumber.on('input', () => ranger.val(rangerNumber.val()));
 
-    rangerNumber.on('input', function () {
-      ranger.val(rangerNumber.val());
-    });
-
-    rangerNumber.on('change', function () {
+    rangerNumber.on('change', () => {
       let value = parseInt(rangerNumber.val());
       let min = parseInt(rangerNumber.attr('min'));
       let max = parseInt(rangerNumber.attr('max'));
@@ -1334,7 +1329,7 @@ export const AiScriptStart = async () => {
 
       // Main button of the skin editor
       const $applyBtn = tinyLib.bs.button('success w-100').setText('Edit Skin Data');
-      $applyBtn.on('click', async function () {
+      $applyBtn.on('click', async () => {
         // Show content
         if ($formRow2.hasClass('d-none')) {
           $applyBtn.setText(tinyIo.client ? 'Apply Dice Skins' : 'Hide Skin Data');
@@ -1818,7 +1813,7 @@ export const AiScriptStart = async () => {
           $input
             .setAttr('maxLength', ratelimit.size[infoName])
             .val(typeof userData[infoName] === 'string' ? userData[infoName] : '')
-            .on('keydown', function (e) {
+            .on('keydown', (e) => {
               if (e.key === 'Enter') {
                 e.preventDefault();
                 $saveBtn.trigger('click');
@@ -1834,7 +1829,7 @@ export const AiScriptStart = async () => {
           $root.append($card);
 
           // Click button event
-          $saveBtn.on('click', function () {
+          $saveBtn.on('click', () => {
             callback($input.val().trim());
             modal.hide();
           });
@@ -1847,9 +1842,7 @@ export const AiScriptStart = async () => {
             body: $root,
           });
 
-          modal.on('shown.bs.modal', () => {
-            $input.trigger('focus');
-          });
+          modal.on('shown.bs.modal', () => $input.trigger('focus'));
         }),
       );
     };
@@ -3259,7 +3252,7 @@ export const AiScriptStart = async () => {
     if (!msgInput.hasProp('disabled')) submitMessage();
   });
 
-  msgInput.on('keydown', function (event) {
+  msgInput.on('keydown', (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
       msgSubmit.trigger('click');

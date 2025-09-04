@@ -914,7 +914,7 @@ export const openChapterMenu = (params = {}) => {
 
       if (isNewValue) {
         Tooltip(isNewValue.setAttr('title', 'Click to mark as read'));
-        isNewValue.on('click', function () {
+        isNewValue.on('click', () => {
           // Clear is new value
           tinyLs.setItem('chapter' + chapter + 'MD5', objHash(storyData.data[chapter]));
           storyData.isNew[chapter] = 0;

@@ -562,9 +562,7 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
 
   // Convert File URLs
   TinyHtml.queryAll('[id="markdown-read"] a[file]').forEach((item) => {
-    item.removeAttr('target').on('click', () => {
-      openMDFile(item.attr('file'));
-    });
+    item.removeAttr('target').on('click', () => openMDFile(item.attr('file')));
   });
 
   // Fix Image
@@ -619,11 +617,9 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
             padding: { top: 40, bottom: 40, left: 100, right: 100 },
           });
 
-          pswp.on('close', () => {
-            setTimeout(() => {
+          pswp.on('close', () => setTimeout(() => {
               pswp.destroy();
-            }, 5000);
-          });
+            }, 5000));
 
           pswp.init();
           newImage
@@ -974,9 +970,7 @@ rootApp.onReady(() => {
 
               // Click
               if (typeof item.file === 'string')
-                li.on('click', function () {
-                  openMDFile(aItem.attr('file'));
-                });
+                li.on('click', () => openMDFile(aItem.attr('file')));
               if (item.click) li.on('click', item.click);
               li.on('click', () => {
                 element.hide();
