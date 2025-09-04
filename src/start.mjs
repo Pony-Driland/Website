@@ -203,7 +203,7 @@ export const saveRoleplayFormat = (chapter, saveAsFile = true, tinyCfg = {}) => 
 };
 
 // URL Update
-export const urlUpdate = function (url, title, isPopState = false, extra = {}) {
+export const urlUpdate = (url, title, isPopState = false, extra = {}) => {
   // Page Title
   if (typeof title !== 'string' || title.length < 1) {
     title = storyCfg.title;
@@ -265,7 +265,7 @@ export const urlUpdate = function (url, title, isPopState = false, extra = {}) {
   }
 };
 
-const openNewAddress = function (data, isPopState = false, useCustom = false) {
+const openNewAddress = (data, isPopState = false, useCustom = false) => {
   // File Path
   const filePath = data.path;
 
@@ -337,7 +337,7 @@ new TinyHtml(window).on('popstate', () => {
 });
 
 // Insert Maarkdown File
-const insertMarkdownFile = function (text, metadata = null, isMainPage = false, isHTML = false) {
+const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = false) => {
   // Convert Data
   let data;
 
@@ -645,7 +645,7 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
 };
 
 // Remove Fic Data
-export const clearFicData = function () {
+export const clearFicData = () => {
   if (appData.ai.interval) {
     clearInterval(appData.ai.interval);
     appData.ai.interval = null;
@@ -983,11 +983,11 @@ rootApp.onReady(() => {
         };
 
         // Insert Navbars
-        const navbarItems = function () {
+        const navbarItems = () => {
           // Base Crypto Modal
           let offCanvasEl = null;
-          const baseCryptoModal = function (crypto_value, title) {
-            return function () {
+          const baseCryptoModal = (crypto_value, title) => {
+            return () => {
               const qrcodeCanvas = TinyHtml.createFrom('canvas');
               QRCode.toCanvas(qrcodeCanvas[0], storyCfg[crypto_value].address, (error) => {
                 if (error) {

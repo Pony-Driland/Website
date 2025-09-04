@@ -15,7 +15,7 @@ import { Tooltip } from '../modules/TinyBootstrap.mjs';
 
 /*  Rain made by Aaron Rickle */
 const rainConfig = {};
-(function () {
+(() => {
   var increment = 0;
   rainConfig.drops = '';
   rainConfig.backDrops = '';
@@ -71,17 +71,17 @@ const rainConfig = {};
 
 // Start Rain
 const rainMode = {
-  start: function () {
+  start: () => {
     TinyHtml.queryAll('.rain').empty();
     TinyHtml.queryAll('.rain.front-row').append(rainConfig.drops);
     TinyHtml.queryAll('.rain.back-row').append(rainConfig.backDrops);
   },
 
-  on: function () {
+  on: () => {
     TinyHtml.query('body').addClass('raining-sky');
   },
 
-  off: function () {
+  off: () => {
     TinyHtml.query('body').addClass('raining-sky');
   },
 };
@@ -150,7 +150,7 @@ const storyDialogue = {
   },
 
   // Mature Content Checker
-  nsfwChecker: function (data) {
+  nsfwChecker: (data) => {
     if (Array.isArray(data.nsfw)) {
       let nsfwValue = false;
       for (const item in data.nsfw) {

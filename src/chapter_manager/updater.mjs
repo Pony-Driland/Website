@@ -11,7 +11,7 @@ import { Tooltip } from '../modules/TinyBootstrap.mjs';
 // Prepare Cache
 const cacheChapterUpdater = { soundCache: {} };
 
-cacheChapterUpdater.setActiveItem = function (item, scrollIntoView = false) {
+cacheChapterUpdater.setActiveItem = (item, scrollIntoView = false) => {
   if (cacheChapterUpdater.locked) {
     return;
   }
@@ -90,7 +90,7 @@ new TinyHtml(window).on(['resize', 'scroll'], () => {
   }
 });
 
-cacheChapterUpdater.scrollData = function () {
+cacheChapterUpdater.scrollData = () => {
   // Set Playlist
   if (Array.isArray(storyData.music.playlist)) {
     musicManager.disable(false);
@@ -123,7 +123,7 @@ cacheChapterUpdater.scrollData = function () {
   }
 
   // Remove All Weather
-  const removeAllWeather = function () {
+  const removeAllWeather = () => {
     storyData.sfx['heavy-rain'].hide();
     storyData.sfx['heavy-rain-little-thunder'].hide();
   };
@@ -227,7 +227,7 @@ cacheChapterUpdater.data = (lastPage) => {
       delete cacheChapterUpdater.timeoutChecker;
     }
 
-    cacheChapterUpdater.timeoutChecker = setTimeout(function () {
+    cacheChapterUpdater.timeoutChecker = setTimeout(() => {
       cacheChapterUpdater.scrollData();
     }, 1000);
 
@@ -312,7 +312,7 @@ cacheChapterUpdater.data = (lastPage) => {
 
 // Set Actions
 const chapterSet = {
-  playEffect: function (value, actionFromNow = false) {
+  playEffect: (value, actionFromNow = false) => {
     if (actionFromNow && value && value.file && storyData.sfx[value.file]) {
       if (!cacheChapterUpdater.soundCache[value.file]) {
         cacheChapterUpdater.soundCache[value.file] = { playing: false };
@@ -323,7 +323,7 @@ const chapterSet = {
     }
   },
 
-  playlistPlay: function (value, actionFromNow = false) {
+  playlistPlay: (value, actionFromNow = false) => {
     if (actionFromNow) {
       // Set Playlist
       const playlist = storyCfg.playlist[value];
@@ -337,7 +337,7 @@ const chapterSet = {
     }
   },
 
-  day: function (value, actionFromNow = false) {
+  day: (value, actionFromNow = false) => {
     if (actionFromNow) {
       // Add Item Base
       if (storyData.nc.base.right.find('> #status #day').length < 1) {
@@ -356,7 +356,7 @@ const chapterSet = {
     }
   },
 
-  dayNightCycle: function (value, actionFromNow = false) {
+  dayNightCycle: (value, actionFromNow = false) => {
     if (actionFromNow) {
       TinyHtml.query('body')
         .removeClass(`fic-daycicle-morning`)
@@ -407,7 +407,7 @@ const chapterSet = {
     }
   },
 
-  weather: function (value, actionFromNow = false) {
+  weather: (value, actionFromNow = false) => {
     if (actionFromNow) {
       // Add Item Base
       if (storyData.nc.base.right.find('> #status #weather').length < 1) {
@@ -443,7 +443,7 @@ const chapterSet = {
     }
   },
 
-  where: function (value, actionFromNow = false) {
+  where: (value, actionFromNow = false) => {
     if (actionFromNow) {
       // Add Item Base
       if (storyData.nc.base.right.find('> #status #where').length < 1) {

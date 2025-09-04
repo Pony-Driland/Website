@@ -18,7 +18,7 @@ const ttsManager = {
   queue: [],
 
   // Find Line
-  findLine: function (line, dontTryAgain = false) {
+  findLine: (line, dontTryAgain = false) => {
     let index = storyData.chapter.ficPageData.findIndex((item) => line === item.line);
     const ficData = storyData.chapter.ficPageData[index];
 
@@ -43,7 +43,7 @@ const ttsManager = {
   },
 
   // Start tts base
-  startBase: function () {
+  startBase: () => {
     if (storyData.nc.base.right.find('> #status #tts').length < 1) {
       // Buttons
       if (!storyData.tts.nav) {
@@ -94,17 +94,17 @@ const ttsManager = {
   },
 
   // Enable and disable
-  enable: function () {
+  enable: () => {
     ttsManager.enabled = true;
     cacheChapterUpdater.data(storyData.chapter.line);
   },
-  disable: function () {
+  disable: () => {
     ttsManager.enabled = false;
     ttsManager.synth.cancel();
   },
 
   // Init data
-  init: function () {
+  init: () => {
     ttsManager.firstTime = false;
     // Get voices
     ttsManager.voices = ttsManager.synth.getVoices();

@@ -27,8 +27,8 @@ storyData.music = {
   playlist: [],
   playlistPlaying: [null],
 
-  songVolumeUpdate: function () {
-    setTimeout(function () {
+  songVolumeUpdate: () => {
+    setTimeout(() => {
       for (const item in storyData.sfx) {
         if (typeof storyData.sfx[item].volume === 'number') {
           storyData.sfx[item].setVolume();
@@ -41,7 +41,7 @@ storyData.music = {
 // Youtube Player
 storyData.youtube = {
   // Check Youtube Values
-  checkYT: function () {
+  checkYT: () => {
     return typeof YT !== 'undefined' && YT.PlayerState;
   },
 
@@ -55,7 +55,7 @@ storyData.youtube = {
   player: null,
   events: {
     // Ready API
-    onReady: function (event) {
+    onReady: (event) => {
       // Get Data
       storyData.youtube.volume = storyData.youtube.player.getVolume();
       storyData.youtube.quality = storyData.youtube.player.getPlaybackQuality();
@@ -105,7 +105,7 @@ storyData.youtube = {
     },
 
     // State Change
-    onStateChange: function (event) {
+    onStateChange: (event) => {
       // Event
       if (event) {
         storyData.youtube.state = event.data;
@@ -119,7 +119,7 @@ storyData.youtube = {
     },
 
     // Quality
-    onPlaybackQualityChange: function (event) {
+    onPlaybackQualityChange: (event) => {
       if (event) {
         storyData.youtube.quality = event.data;
       }
@@ -130,20 +130,20 @@ storyData.youtube = {
     },
 
     // Other
-    onPlaybackRateChange: function (event) {
+    onPlaybackRateChange: (event) => {
       if (typeof appData.youtube.onPlaybackRateChange === 'function') {
         appData.youtube.onPlaybackRateChange(event);
       }
     },
 
-    onError: function (event) {
+    onError: (event) => {
       console.error(event);
       if (typeof appData.youtube.onError === 'function') {
         appData.youtube.onError(event);
       }
     },
 
-    onApiChange: function (event) {
+    onApiChange: (event) => {
       if (typeof appData.youtube.onApiChange === 'function') {
         appData.youtube.onApiChange(event);
       }
@@ -151,7 +151,7 @@ storyData.youtube = {
   },
 
   // Quality
-  setQuality: function (value) {
+  setQuality: (value) => {
     if (storyData.youtube.qualityList.indexOf(value) > -1 || value === 'default') {
       storyData.youtube.quality = value;
       storyData.youtube.player.setPlaybackQuality(value);
@@ -162,7 +162,7 @@ storyData.youtube = {
   },
 
   // Volume
-  setVolume: function (number) {
+  setVolume: (number) => {
     tinyLs.setItem('storyVolume', Number(number));
     storyData.youtube.volume = Number(number);
     storyData.youtube.player.setVolume(Number(number));
@@ -171,7 +171,7 @@ storyData.youtube = {
   },
 
   // Start Youtube
-  play: function (videoID) {
+  play: (videoID) => {
     // Read Data Base
     if (!storyData.youtube.loading && storyData.readFic) {
       storyData.music.loading = true;
@@ -200,7 +200,7 @@ storyData.youtube = {
         TinyHtml.query('head').append(tag);
 
         // Current Time Detector
-        setInterval(function () {
+        setInterval(() => {
           if (storyData.youtube.checkYT() && storyData.youtube.player) {
             // Fix
             storyData.music.playing = false;
@@ -335,8 +335,8 @@ const musicManager = {
   cache: { blob: {}, buffer: {} },
 
   // Load Sound
-  loadAudio: function (url) {
-    return new Promise(function (resolve, reject) {
+  loadAudio: (url) => {
+    return new Promise((resolve, reject) => {
       const vanillaURL = url;
       if (!musicManager.cache.blob[vanillaURL]) {
         fetch(url, { method: 'GET' })
@@ -352,7 +352,7 @@ const musicManager = {
 
             audio.addEventListener(
               'canplaythrough',
-              function () {
+              () => {
                 if (!loaded) {
                   loaded = true;
                   musicManager.cache.blob[vanillaURL] = audio;
@@ -371,8 +371,8 @@ const musicManager = {
     });
   },
 
-  loadAudioBuffer: function (url) {
-    return new Promise(function (resolve, reject) {
+  loadAudioBuffer: (url) => {
+    return new Promise((resolve, reject) => {
       const vanillaURL = url;
       if (!musicManager.cache.buffer[vanillaURL]) {
         fetch(url, { method: 'GET' })
@@ -390,7 +390,7 @@ const musicManager = {
   },
 
   // Next Song
-  nextMusic: function () {
+  nextMusic: () => {
     if (
       typeof storyData.music.now.index === 'number' &&
       !isNaN(storyData.music.now.index) &&
@@ -414,7 +414,7 @@ const musicManager = {
       ) {
         // Youtube
         if (song.type === 'youtube') {
-          setTimeout(function () {
+          setTimeout(() => {
             storyData.youtube.play(song.id);
           }, 1000);
         }
@@ -422,7 +422,7 @@ const musicManager = {
     }
   },
 
-  disable: function (react = true) {
+  disable: (react = true) => {
     if (react) {
       storyData.music.disabled = true;
       TinyHtml.query('#music-player').addClass('disabled-player');
@@ -433,10 +433,10 @@ const musicManager = {
   },
 
   // Start Base
-  startBase: function () {
+  startBase: () => {
     // Add Youtube Playing Detector
     if (appData.youtube && !appData.youtube.onPlaying) {
-      appData.youtube.onPlaying = function () {
+      appData.youtube.onPlaying = () => {
         storyData.music.currentTime = storyData.youtube.currentTime;
         storyData.music.duration = storyData.youtube.duration;
         musicManager.updatePlayer();
@@ -606,7 +606,7 @@ window.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady() {
 };
 
 // Music Updater
-musicManager.updatePlayer = function () {
+musicManager.updatePlayer = () => {
   if (storyData.music.nav) {
     // View
     TinyHtml.query('#music-player').addClass('border').removeClass('d-none').addClass('me-3');
@@ -663,7 +663,7 @@ musicManager.updatePlayer = function () {
 };
 
 // TTS Updater
-ttsManager.updatePlayer = function () {
+ttsManager.updatePlayer = () => {
   if (storyData.tts.nav) {
     // View
     TinyHtml.query('#tts-player').addClass('border').removeClass('d-none').addClass('me-3');
@@ -688,7 +688,7 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
       source: 'file',
       options: { path: url, loop: loop },
     },
-    function () {
+    () => {
       resolve();
     },
   );
@@ -699,7 +699,7 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
   pizzicato.volume = newSound.volume * 100;
 
   // Stop
-  pizzicato.stop = function () {
+  pizzicato.stop = () => {
     if (pizzicato.playing) {
       pizzicato.playing = false;
       newSound.stop();
@@ -707,7 +707,7 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
   };
 
   // Start
-  pizzicato.start = function () {
+  pizzicato.start = () => {
     if (!pizzicato.playing) {
       pizzicato.playing = true;
       newSound.play();
@@ -715,14 +715,14 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
   };
 
   // Play
-  pizzicato.play = function (volume = null) {
+  pizzicato.play = (volume = null) => {
     if (pizzicato.hiding) {
       pizzicato.stop();
     }
     pizzicato.hiding = false;
     pizzicato.showing = false;
-    return new Promise(function (resolve, reject) {
-      setTimeout(function () {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
         try {
           if (typeof volume === 'number') {
             pizzicato.setVolume(volume);
@@ -740,8 +740,8 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
   };
 
   // Set Volume
-  pizzicato.setVolume = function (value, notEdit = false) {
-    return new Promise(function (resolve) {
+  pizzicato.setVolume = (value, notEdit = false) => {
+    return new Promise((resolve) => {
       let tinyValue = value;
       if (typeof tinyValue !== 'number') {
         tinyValue = pizzicato.volume;
@@ -778,7 +778,7 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
   };
 
   // Hide
-  pizzicato.hide = async function (hideTimeout = 50) {
+  pizzicato.hide = async (hideTimeout = 50) => {
     let volume = newSound.volume * 100;
 
     pizzicato.hiding = true;
@@ -792,8 +792,8 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
     ) {
       for (let i = 0; i < 100; i++) {
         if (pizzicato.hiding) {
-          await new Promise(function (resolve) {
-            setTimeout(function () {
+          await new Promise((resolve) => {
+            setTimeout(() => {
               if (pizzicato.hiding) {
                 volume--;
                 pizzicato.setVolume(volume, true);
@@ -816,7 +816,7 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
   };
 
   // Show
-  pizzicato.show = async function (hideTimeout = 50) {
+  pizzicato.show = async (hideTimeout = 50) => {
     pizzicato.stop();
 
     pizzicato.hiding = false;
@@ -839,8 +839,8 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
     ) {
       for (let i = 0; i < 100; i++) {
         if (pizzicato.showing) {
-          await new Promise(function (resolve) {
-            setTimeout(function () {
+          await new Promise((resolve) => {
+            setTimeout(() => {
               if (pizzicato.showing) {
                 if (volume < soundVolume) {
                   volume++;
@@ -888,7 +888,7 @@ musicManager.start.seamlessloop = (item, newSound) => {
   storyData.sfx[item].volume = newSound._volume * 100;
 
   // Stop
-  storyData.sfx[item].stop = function () {
+  storyData.sfx[item].stop = () => {
     if (storyData.sfx[item].playing) {
       storyData.sfx[item].playing = false;
       newSound.stop();
@@ -896,7 +896,7 @@ musicManager.start.seamlessloop = (item, newSound) => {
   };
 
   // Start
-  storyData.sfx[item].start = function () {
+  storyData.sfx[item].start = () => {
     if (!storyData.sfx[item].playing) {
       storyData.sfx[item].playing = true;
       newSound.start(item);
@@ -904,14 +904,14 @@ musicManager.start.seamlessloop = (item, newSound) => {
   };
 
   // Play
-  storyData.sfx[item].play = function (volume = null) {
+  storyData.sfx[item].play = (volume = null) => {
     if (storyData.sfx[item].hiding) {
       storyData.sfx[item].stop();
     }
     storyData.sfx[item].hiding = false;
     storyData.sfx[item].showing = false;
-    return new Promise(function (resolve, reject) {
-      setTimeout(function () {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
         try {
           if (typeof volume === 'number') {
             storyData.sfx[item].setVolume(volume);
@@ -929,8 +929,8 @@ musicManager.start.seamlessloop = (item, newSound) => {
   };
 
   // Set Volume
-  storyData.sfx[item].setVolume = function (value, notEdit = false) {
-    return new Promise(function (resolve) {
+  storyData.sfx[item].setVolume = (value, notEdit = false) => {
+    return new Promise((resolve) => {
       let tinyValue = value;
       if (typeof tinyValue !== 'number') {
         tinyValue = storyData.sfx[item].volume;
@@ -967,7 +967,7 @@ musicManager.start.seamlessloop = (item, newSound) => {
   };
 
   // Hide
-  storyData.sfx[item].hide = async function (hideTimeout = 50) {
+  storyData.sfx[item].hide = async (hideTimeout = 50) => {
     let volume = newSound._volume * 100;
 
     storyData.sfx[item].hiding = true;
@@ -981,8 +981,8 @@ musicManager.start.seamlessloop = (item, newSound) => {
     ) {
       for (let i = 0; i < 100; i++) {
         if (storyData.sfx[item].hiding) {
-          await new Promise(function (resolve) {
-            setTimeout(function () {
+          await new Promise((resolve) => {
+            setTimeout(() => {
               if (storyData.sfx[item].hiding) {
                 volume--;
                 storyData.sfx[item].setVolume(volume, true);
@@ -1005,7 +1005,7 @@ musicManager.start.seamlessloop = (item, newSound) => {
   };
 
   // Show
-  storyData.sfx[item].show = async function (hideTimeout = 50) {
+  storyData.sfx[item].show = async (hideTimeout = 50) => {
     storyData.sfx[item].stop();
 
     storyData.sfx[item].hiding = false;
@@ -1031,8 +1031,8 @@ musicManager.start.seamlessloop = (item, newSound) => {
     ) {
       for (let i = 0; i < 100; i++) {
         if (storyData.sfx[item].showing) {
-          await new Promise(function (resolve) {
-            setTimeout(function () {
+          await new Promise((resolve) => {
+            setTimeout(() => {
               if (storyData.sfx[item].showing) {
                 if (volume < soundVolume) {
                   volume++;
@@ -1066,14 +1066,14 @@ musicManager.start.vanilla = (item, newSound) => {
   storyData.sfx[item].duration = newSound.duration;
 
   // Play
-  storyData.sfx[item].play = function (inTime = null, volume = null) {
+  storyData.sfx[item].play = (inTime = null, volume = null) => {
     if (storyData.sfx[item].hiding) {
       newSound.pause();
     }
     storyData.sfx[item].hiding = false;
     storyData.sfx[item].showing = false;
-    return new Promise(function (resolve, reject) {
-      setTimeout(function () {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
         try {
           if (typeof volume === 'number') {
             storyData.sfx[item].setVolume(volume);
@@ -1102,8 +1102,8 @@ musicManager.start.vanilla = (item, newSound) => {
   };
 
   // Seek To
-  storyData.sfx[item].seekTo = function (value) {
-    return new Promise(function (resolve) {
+  storyData.sfx[item].seekTo = (value) => {
+    return new Promise((resolve) => {
       storyData.sfx[item].currentTime = value;
       newSound.currentTime = value;
       resolve();
@@ -1111,8 +1111,8 @@ musicManager.start.vanilla = (item, newSound) => {
   };
 
   // Set Volume
-  storyData.sfx[item].setVolume = function (value, notEdit = false) {
-    return new Promise(function (resolve) {
+  storyData.sfx[item].setVolume = (value, notEdit = false) => {
+    return new Promise((resolve) => {
       let tinyValue = value;
       if (typeof tinyValue !== 'number') {
         tinyValue = storyData.sfx[item].volume;
@@ -1146,14 +1146,14 @@ musicManager.start.vanilla = (item, newSound) => {
   };
 
   // Stop
-  storyData.sfx[item].stop = function () {
+  storyData.sfx[item].stop = () => {
     if (storyData.sfx[item].hiding) {
       newSound.pause();
     }
     storyData.sfx[item].hiding = false;
     storyData.sfx[item].showing = false;
-    return new Promise(function (resolve, reject) {
-      setTimeout(function () {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
         try {
           storyData.sfx[item].playing = false;
           storyData.sfx[item].paused = false;
@@ -1170,14 +1170,14 @@ musicManager.start.vanilla = (item, newSound) => {
   };
 
   // Pause
-  storyData.sfx[item].pause = function () {
+  storyData.sfx[item].pause = () => {
     if (storyData.sfx[item].hiding) {
       newSound.pause();
     }
     storyData.sfx[item].hiding = false;
     storyData.sfx[item].showing = false;
-    return new Promise(function (resolve, reject) {
-      setTimeout(function () {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
         try {
           storyData.sfx[item].playing = false;
           storyData.sfx[item].paused = true;
@@ -1191,14 +1191,14 @@ musicManager.start.vanilla = (item, newSound) => {
   };
 
   // Resume
-  storyData.sfx[item].resume = function () {
+  storyData.sfx[item].resume = () => {
     if (storyData.sfx[item].hiding) {
       newSound.pause();
     }
     storyData.sfx[item].hiding = false;
     storyData.sfx[item].showing = false;
-    return new Promise(function (resolve, reject) {
-      setTimeout(function () {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
         try {
           storyData.sfx[item].playing = true;
           storyData.sfx[item].paused = false;
@@ -1213,7 +1213,7 @@ musicManager.start.vanilla = (item, newSound) => {
   };
 
   // Hide
-  storyData.sfx[item].hide = async function (hideTimeout = 50) {
+  storyData.sfx[item].hide = async (hideTimeout = 50) => {
     let volume = newSound.volume * 100;
 
     storyData.sfx[item].playing = true;
@@ -1229,8 +1229,8 @@ musicManager.start.vanilla = (item, newSound) => {
     ) {
       for (let i = 0; i < 100; i++) {
         if (storyData.sfx[item].hiding) {
-          await new Promise(function (resolve) {
-            setTimeout(function () {
+          await new Promise((resolve) => {
+            setTimeout(() => {
               if (storyData.sfx[item].hiding) {
                 volume--;
                 storyData.sfx[item].setVolume(volume, true);
@@ -1257,7 +1257,7 @@ musicManager.start.vanilla = (item, newSound) => {
   };
 
   // Show
-  storyData.sfx[item].show = async function (hideTimeout = 50) {
+  storyData.sfx[item].show = async (hideTimeout = 50) => {
     newSound.pause();
 
     storyData.sfx[item].playing = false;
@@ -1284,8 +1284,8 @@ musicManager.start.vanilla = (item, newSound) => {
     ) {
       for (let i = 0; i < 100; i++) {
         if (storyData.sfx[item].showing) {
-          await new Promise(function (resolve) {
-            setTimeout(function () {
+          await new Promise((resolve) => {
+            setTimeout(() => {
               if (storyData.sfx[item].showing) {
                 if (volume < soundVolume) {
                   volume++;
@@ -1315,7 +1315,7 @@ musicManager.start.vanilla = (item, newSound) => {
   // Audio Action
   newSound.addEventListener(
     'ended',
-    function () {
+    () => {
       storyData.sfx[item].stop();
     },
     false,
@@ -1335,11 +1335,11 @@ musicManager.start.vanilla = (item, newSound) => {
 };
 
 // Insert SFX
-musicManager.insertSFX = function (item, loop = true, type = 'all') {
+musicManager.insertSFX = (item, loop = true, type = 'all') => {
   if (typeof loop !== 'boolean') {
     loop = true;
   }
-  return new Promise(async function (resolve, reject) {
+  return new Promise(async (resolve, reject) => {
     if (!storyData.sfx[item]) {
       // Prepare
       storyData.sfx[item] = {};
@@ -1362,7 +1362,7 @@ musicManager.insertSFX = function (item, loop = true, type = 'all') {
         // Exist URL
         if (url) {
           // Resolve
-          const tinyResolve = function (data) {
+          const tinyResolve = (data) => {
             console.log(`[${url}] Loaded!`);
             resolve(data);
           };
@@ -1379,7 +1379,7 @@ musicManager.insertSFX = function (item, loop = true, type = 'all') {
           storyData.sfx[item].file = file;
 
           // Start Pizzicato
-          const startPizzicato = function (forcePic = false) {
+          const startPizzicato = (forcePic = false) => {
             return musicManager.start.pizzicato(item, loop, tinyResolve, file.currentSrc, forcePic);
           };
 
@@ -1389,7 +1389,7 @@ musicManager.insertSFX = function (item, loop = true, type = 'all') {
             if (type === 'all') {
               const newSound = new SeamlessLoop();
               newSound.addUri(file.currentSrc, file.duration * 1000, item);
-              newSound.callback(function () {
+              newSound.callback(() => {
                 musicManager.start.seamlessloop(item, newSound);
                 startPizzicato();
               });
@@ -1398,7 +1398,7 @@ musicManager.insertSFX = function (item, loop = true, type = 'all') {
             } else if (type === 'main') {
               const newSound = new SeamlessLoop();
               newSound.addUri(file.currentSrc, file.duration * 1000, item);
-              newSound.callback(function () {
+              newSound.callback(() => {
                 musicManager.start.seamlessloop(item, newSound);
                 tinyResolve();
               });
@@ -1441,7 +1441,7 @@ musicManager.insertSFX = function (item, loop = true, type = 'all') {
 };
 
 // Stop Playlist
-musicManager.stopPlaylist = async function () {
+musicManager.stopPlaylist = async () => {
   if (storyData.music.usingSystem) {
     // Playing Used
     if (storyData.music.playing) {
@@ -1456,8 +1456,8 @@ musicManager.stopPlaylist = async function () {
     let volume = storyData.music.volume;
     for (let i = 0; i < 100; i++) {
       if (!storyData.music.usingSystem) {
-        await new Promise(function (resolve) {
-          setTimeout(function () {
+        await new Promise((resolve) => {
+          setTimeout(() => {
             // Volume
             volume--;
 
@@ -1486,7 +1486,7 @@ musicManager.stopPlaylist = async function () {
 };
 
 // Start Playlist
-musicManager.startPlaylist = function () {
+musicManager.startPlaylist = () => {
   if (
     storyData.readFic &&
     objHash(storyData.music.playlist) !== objHash(storyData.music.playlistPlaying)
@@ -1496,7 +1496,7 @@ musicManager.startPlaylist = function () {
       // Play Song
       shuffleArray(storyData.music.playlist);
 
-      const playSong = function () {
+      const playSong = () => {
         if (
           typeof storyData.music.now.index === 'number' &&
           !isNaN(storyData.music.now.index) &&
@@ -1517,7 +1517,7 @@ musicManager.startPlaylist = function () {
           ) {
             // Youtube
             if (song.type === 'youtube') {
-              setTimeout(function () {
+              setTimeout(() => {
                 storyData.youtube.play(song.id);
               }, 100);
             }
