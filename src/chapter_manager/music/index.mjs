@@ -666,7 +666,7 @@ musicManager.updatePlayer = function () {
 ttsManager.updatePlayer = function () {
   if (storyData.tts.nav) {
     // View
-    TinyHtml.queryAll('#tts-player').addClass('border').removeClass('d-none').addClass('me-3');
+    TinyHtml.query('#tts-player').addClass('border').removeClass('d-none').addClass('me-3');
 
     // Tooltip
     TinyHtml.queryAll('#tts-player > a[title]').forEach((instance) => Tooltip(instance));
@@ -866,7 +866,7 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
   };
 
   // End Sound
-  newSound.on('end', function () {
+  newSound.on('end', () => {
     if (!loop) {
       pizzicato.hide(0);
     }

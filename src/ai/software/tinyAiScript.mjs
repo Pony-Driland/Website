@@ -67,7 +67,7 @@ export const tinyAiScript = {
     const selector = TinyHtml.createFrom('select', { class: 'form-select text-center' });
     selector.append(TinyHtml.createFrom('option', { value: 'NONE' }).setText('None'));
     const apiPlace = TinyHtml.createFrom('span');
-    selector.on('change', function () {
+    selector.on('change', () => {
       const value = selector.val();
       const html =
         tinyAiHtml[value] && tinyAiHtml[value].inputs ? tinyAiHtml[value].inputs() : null;

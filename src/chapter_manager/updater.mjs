@@ -272,9 +272,7 @@ cacheChapterUpdater.data = (lastPage) => {
               .setVal(
                 `${location.protocol}//${location.host}/?path=read-fic&chapter=${storyData.chapter.selected}&line=${storyData.chapter.line}`,
               )
-              .on('click', () => {
-                bookInput.select();
-              }),
+              .on('click', () => bookInput.select()),
           ),
           dialog: 'modal-lg',
         });

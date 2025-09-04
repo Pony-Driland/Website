@@ -211,7 +211,7 @@ class UserRoomManager {
       .addClass('form-control')
       .setAttr('type', 'text')
       .setAttr('placeholder', 'Enter user ID to unban')
-      .on('keydown', function (e) {
+      .on('keydown', (e) => {
         if (e.key === 'Enter') {
           e.preventDefault();
           $unbanButton.trigger('click');
