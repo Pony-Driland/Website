@@ -549,7 +549,7 @@ const musicManager = {
                       .on('change', () => {
                         storyData.youtube.setVolume(input.val());
                       })
-                      .setVal(storyData.music.volume),
+                      .setVal(storyData.music.volume ?? null),
                   ),
                   dialog: 'modal-lg',
                 });

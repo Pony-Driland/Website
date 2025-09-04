@@ -349,7 +349,9 @@ const chapterSet = {
           class: 'nav-item nav-link',
           id: 'day',
         });
-        new TinyHtml(storyData.nc.base.right.find(':scope > #status')).prepend(storyData.chapter.nav.day);
+        new TinyHtml(storyData.nc.base.right.find(':scope > #status')).prepend(
+          storyData.chapter.nav.day,
+        );
       }
 
       new TinyHtml(storyData.nc.base.right.find(':scope > #status #day')).setText(`Day: ${value}`);
@@ -460,7 +462,9 @@ const chapterSet = {
         );
       }
 
-      new TinyHtml(storyData.nc.base.right.find(':scope > #status #where')).setText(`Location: ${value}`);
+      new TinyHtml(storyData.nc.base.right.find(':scope > #status #where')).setText(
+        `Location: ${value}`,
+      );
     }
   },
 };

@@ -3,9 +3,10 @@
         "node": ">=20.0.0"
     },
     "scripts": {
-        "start": "npm run build:files && node ./build/index.js",
+        "start": "npm run build:files:debug && node ./build/index.js",
         "build": "npm run build:files && node ./build/merge-website.mjs",
         "build:files": "node ./build/builder.mjs",
+        "build:files:debug": "node ./build/builder.mjs debug",
         "start:tiny-chat": "npx babel-node server/tiny-chat/index.js",
         "build:tiny-chat": "node build/pkg/tiny-chat.js",
         "build:tiny-chat:all": "node build/pkg/tiny-chat.js --os=all",
@@ -77,6 +78,7 @@
         "esmify": "^2.1.1",
         "fs-extra": "^11.3.1",
         "nexe": "^5.0.0-beta.4",
-        "prettier": "3.6.2"
+        "prettier": "3.6.2",
+        "uglify-js": "^3.19.3"
     }
 }

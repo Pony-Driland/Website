@@ -128,7 +128,7 @@ tinyLib.formGroup = (data) => {
           id: data.id + '_enabled',
           name: data.id + '_enabled',
           type: 'checkbox',
-        }).setAttr('checked', data.checkbox.value),
+        }).setAttr('checked', data.checkbox.value ?? null),
       );
     }
     result.append(newValue);
@@ -152,7 +152,7 @@ tinyLib.formGroupCheck = (data) => {
       name: data.id,
       id: data.id + '_input',
       'aria-describedby': data.id + '_help',
-    }).setAttr('checked', data.value),
+    }).setAttr('checked', data.value ?? null),
     TinyHtml.createFrom('label', { class: 'form-check-label', for: data.id + '_input' }).setText(
       data.title,
     ),
@@ -188,7 +188,7 @@ tinyLib.upload = {};
 tinyLib.upload.button = (configs = {}, button = null, callback = null) => {
   // Create button
   const importButton = TinyHtml.createFrom('input', { type: 'file', style: 'display: none;' });
-  importButton.setAttr('accept', configs.accept);
+  importButton.setAttr('accept', configs.accept ?? null);
 
   // Multiple
   if (configs.multiple) importButton.addProp('multiple');
@@ -321,7 +321,7 @@ tinyLib.bs.offcanvas = (
         ? TinyHtml.createFrom('h5', {
             class: 'offcanvas-title',
             id: `${id}Label`,
-          }).setText(title)
+          }).setText(title ?? null)
         : null,
       !closeButtonInverse && tinyLib.bs.closeButton('offcanvas'),
       body,

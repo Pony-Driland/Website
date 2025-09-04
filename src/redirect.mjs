@@ -1,12 +1,12 @@
 import { Loader } from 'circle-loader';
+import { TinyHtml } from 'tiny-essentials';
 import TinyDomReadyManager from 'tiny-essentials/dist/v1/libs/TinyDomReadyManager.mjs';
-import { $ } from './important.mjs';
 
 const readyPage = new TinyDomReadyManager();
 readyPage.onReady(() => {
   Loader.start();
 
-  const newURL = $('#newURL').attr('href');
+  const newURL = TinyHtml.query('#newURL').attr('href');
   if (
     typeof newURL === 'string' &&
     newURL.length > 0 &&

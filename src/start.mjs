@@ -555,8 +555,14 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
         }
       }
 
-      new TinyHtml(ul.find(':scope > li:first')).removeClass('py-0').removeClass('pt-0').addClass('pb-0');
-      new TinyHtml(ul.find(':scope > li:last')).removeClass('py-0').removeClass('pb-0').addClass('pt-0');
+      new TinyHtml(ul.find(':scope > li:first'))
+        .removeClass('py-0')
+        .removeClass('pt-0')
+        .addClass('pb-0');
+      new TinyHtml(ul.find(':scope > li:last'))
+        .removeClass('py-0')
+        .removeClass('pb-0')
+        .addClass('pt-0');
       item.append(tinyBase, ul);
     });
 
@@ -636,7 +642,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
         );
 
       // Load Image
-      newImage.setAttr('src', src);
+      newImage.setAttr('src', src ?? null);
 
       const newTinyPlace = TinyHtml.createFrom('p', { class: 'pswp-space mt-4' });
       newTinyPlace.insertAfter(newImage);
@@ -948,8 +954,8 @@ rootApp.onReady(() => {
               // Create Dropdown
               const aItem = TinyHtml.createFrom('a', {
                 class: 'dropdown-item',
-                id: item.id,
-                href: item.href,
+                id: item.id ?? null,
+                href: item.href ?? null,
               });
               li.append(aItem);
 
@@ -960,7 +966,7 @@ rootApp.onReady(() => {
               // File
               if (typeof item.file === 'string') {
                 aItem.setAttr('href', 'javascript:void(0)');
-                aItem.setAttr('file', item.file);
+                aItem.setAttr('file', item.file ?? null);
               }
 
               // Target
@@ -1683,7 +1689,7 @@ rootApp.onReady(() => {
 
           // Text
           const caption = TinyHtml.createFrom('div', { class: 'carousel-caption' }).appendTo(item);
-          TinyHtml.createFrom('h5', { class: 'px-5', text: slide.title }).appendTo(caption);
+          TinyHtml.createFrom('h5', { class: 'px-5', text: slide.title ?? null }).appendTo(caption);
           TinyHtml.createFrom('p', { class: 'px-5' }).html(slide.text).appendTo(caption);
         });
 
