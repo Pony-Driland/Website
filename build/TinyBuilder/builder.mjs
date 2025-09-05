@@ -148,10 +148,7 @@ export async function buildWebsite() {
 
 /**
  * Setup esbuild in watch mode, so changes are rebuilt automatically.
- *
- * @returns {Promise<import('esbuild').BuildContext>}
  */
 export async function watchWebsite() {
-  const ctx = await tiny.start(firstWebBuild);
-  return ctx;
+  await tiny.start(firstWebBuild);
 }
