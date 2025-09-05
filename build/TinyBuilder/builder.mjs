@@ -196,7 +196,6 @@ class TinyFileWatcher {
   /** @param {Set<import('chokidar').EmitArgsWithName>} value */
   add(value) {
     this.#queue.push(value);
-    if (!this.#usingQueue) this._send();
   }
 }
 
@@ -233,11 +232,15 @@ export async function watchWebsite(watchCallback) {
         setup(build) {
           build.onStart(() => {
             tinyFileWatcher.usingQueue = true;
-            console.log('[tiny-builder] Build started...');
+            console.log('[tiny-builder] Instance received updates...');
           });
           build.onEnd((result) => {
             tinyFileWatcher.usingQueue = false;
-            console.log('[tiny-builder] Build finished:', result.errors.length, 'errors.');
+            console.log(
+              '[tiny-builder] Instance updates finished:',
+              result.errors.length,
+              'errors.',
+            );
           });
         },
       },
