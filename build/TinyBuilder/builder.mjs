@@ -12,6 +12,7 @@ import { nodeModulesPolyfillPlugin } from 'esbuild-plugins-node-modules-polyfill
 import TinyBuilder from './TinyBuilder.mjs';
 
 // Setup __dirname and __filename (not available in ES modules by default)
+// @ts-ignore
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -77,6 +78,7 @@ async function run(command) {
     if (stderr) process.stderr.write(stderr);
   } catch (error) {
     console.error(`❌ Error in command: ${command}`);
+    // @ts-ignore
     console.error(error.message);
     process.exit(1);
   }
@@ -147,7 +149,7 @@ export async function buildWebsite() {
 /**
  * Setup esbuild in watch mode, so changes are rebuilt automatically.
  *
- * @returns {import('esbuild').BuildContext}
+ * @returns {Promise<import('esbuild').BuildContext>}
  */
 export async function watchWebsite() {
   const ctx = await tiny.start(firstWebBuild);

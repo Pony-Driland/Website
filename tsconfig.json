@@ -15,7 +15,8 @@
     },
     "include": [
         "src/modules", 
-        "src/account"
+        "src/account", 
+        "build/TinyBuilder"
     ],
     "exclude": ["node_modules"]
 }

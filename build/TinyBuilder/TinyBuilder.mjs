@@ -4,6 +4,7 @@ import chokidar from 'chokidar';
 import { build, context } from 'esbuild';
 import { TinyEvents } from 'tiny-essentials';
 
+/** @typedef {import('tiny-essentials/dist/v1/libs/TinyEvents.mjs').handler} handler */
 /** @typedef {import('esbuild').BuildOptions} BuildOptions */
 /** @typedef {import('esbuild').BuildContext} BuildContext */
 /** @typedef {import('esbuild').BuildResult} BuildResult */
@@ -232,7 +233,7 @@ class TinyBuilder {
    * Cloned on get/set to avoid external mutations.
    * @type {BuildOptions}
    */
-  #config;
+  #config = {};
 
   /**
    * Returns a copy of the current esbuild config.
@@ -257,7 +258,7 @@ class TinyBuilder {
 
   /**
    * Returns the current output directory.
-   * @returns {string}
+   * @returns {string|undefined}
    */
   get dist() {
     return this.#config.outdir;
@@ -277,13 +278,13 @@ class TinyBuilder {
 
   /**
    * Source directory for watched entry points.
-   * @type {string}
+   * @type {string|undefined}
    */
   #src;
 
   /**
    * Returns the current source directory.
-   * @returns {string}
+   * @returns {string|undefined}
    */
   get src() {
     return this.#src;
@@ -301,9 +302,13 @@ class TinyBuilder {
     if (Array.isArray(this.#config.entryPoints))
       this.#config.entryPoints.forEach((entry, index) => {
         if (typeof entry === 'string')
-          this.#config.entryPoints[index] = join(this.#src, basename(entry));
+          // @ts-ignore
+          this.#config.entryPoints[index] = 
+            join(this.#src ?? '', basename(entry));
         else {
-          this.#config.entryPoints[index].in = join(this.#src, basename(entry.in));
+          // @ts-ignore
+          this.#config.entryPoints[index].in = 
+            join(this.#src ?? '', basename(entry.in));
         }
       });
   }
@@ -336,13 +341,13 @@ class TinyBuilder {
 
   /**
    * Esbuild context object used for watch mode.
-   * @type {BuildContext<BuildOptions>|null}
+   * @type {BuildContext|null}
    */
   #ctx = null;
 
   /**
    * Returns the esbuild context if available.
-   * @returns {BuildContext<BuildOptions>|null}
+   * @returns {BuildContext|null}
    */
   get ctx() {
     return this.#ctx;
@@ -376,15 +381,16 @@ class TinyBuilder {
   /**
    * Starts the watcher + builder process.
    * @param {Function} beforeCallback - Optional callback executed before build starts
-   * @returns {Promise<BuildContext<BuildOptions>>} Esbuild context
+   * @returns {Promise<BuildContext>} Esbuild context
    */
   async start(beforeCallback) {
+    if (typeof this.#src !== 'string') throw new Error('Expected string for Tiny Builder src.');
     // File Watcher
     this.#fsWatcher = chokidar.watch(this.#src);
 
     this.#fsWatcher.on('all', (event, path, stats) => {
       // Get file path
-      const file = path.split(this.#src)[1];
+      const file = path.split(this.#src ?? '')[1] ?? '';
       const filePath = file.startsWith('/') ? file.substring(1) : file;
       this._addFilePath([event, filePath, stats]);
     });
@@ -396,7 +402,7 @@ class TinyBuilder {
       ...this.#config,
       loader: this.#loader ?? undefined, // allow TypeScript files
       plugins: [
-        ...this.#config.plugins,
+        ...this.#config.plugins ?? [],
         // Build sender
         {
           name: 'tiny-build-watcher',
@@ -426,7 +432,7 @@ class TinyBuilder {
 
   /**
    * Executes a one-off esbuild build with the current config.
-   * @returns {Promise<BuildResult<BuildOptions>>}
+   * @returns {Promise<BuildResult>}
    */
   build() {
     return build(this.#config);

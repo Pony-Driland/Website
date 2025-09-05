@@ -9,6 +9,7 @@ import { watchWebsite } from './builder.mjs';
 process.env.NODE_ENV = 'development';
 
 // Setup __dirname and __filename (since not available in ES modules)
+// @ts-ignore
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
