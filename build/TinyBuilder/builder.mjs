@@ -1,7 +1,6 @@
 // build.mjs
 
 // Import required Node.js modules and utilities
-import chokidar from 'chokidar';
 import fs from 'fs-extra';
 import * as path from 'path';
 import { exec as execCallback } from 'child_process';
@@ -9,8 +8,8 @@ import { promisify } from 'util';
 import { fileURLToPath } from 'url';
 
 // Import esbuild and plugins
-import { build, context } from 'esbuild';
 import { nodeModulesPolyfillPlugin } from 'esbuild-plugins-node-modules-polyfill';
+import TinyBuilder from './TinyBuilder.mjs';
 
 // Setup __dirname and __filename (not available in ES modules by default)
 const __filename = fileURLToPath(import.meta.url);
@@ -21,6 +20,31 @@ const exec = promisify(execCallback);
 
 // Capture CLI argument (e.g., "debug")
 const arg = process.argv[2];
+
+// --------------------------------------------------
+// TITLE: Build Configurations
+// --------------------------------------------------
+
+// Define source and distribution folders
+const distTemp = path.join(__dirname, '../../dist/temp');
+const distPublic = path.join(__dirname, '../../dist/public');
+
+const tiny = new TinyBuilder({
+  plugins: [nodeModulesPolyfillPlugin()], // adds Node.js polyfills for browser builds
+  entryPoints: ['start.mjs', 'redirect.mjs'], // main entry points
+  format: 'esm', // output as ES modules
+  define: {
+    global: 'window', // fix libraries that expect "global" to exist
+  },
+  platform: 'browser', // target environment is the browser
+  sourcemap: arg === 'debug' ? true : false, // enable sourcemaps in debug mode
+  minify: true, // minify output
+  bundle: true, // bundle dependencies together
+  splitting: true, // enable code splitting
+  outdir: path.join(distPublic, 'vendor'), // output directory
+});
+
+tiny.src = path.join(__dirname, '../../src');
 
 // --------------------------------------------------
 // TITLE: Directory Management
@@ -57,32 +81,6 @@ async function run(command) {
     process.exit(1);
   }
 }
-
-// --------------------------------------------------
-// TITLE: Build Configurations
-// --------------------------------------------------
-
-// Define source and distribution folders
-const src = path.join(__dirname, '../../src');
-const distTemp = path.join(__dirname, '../../dist/temp');
-const distPublic = path.join(__dirname, '../../dist/public');
-const distVendor = path.join(distPublic, 'vendor');
-
-/** @type {import('esbuild').BuildOptions} */
-const buildCfg = {
-  plugins: [nodeModulesPolyfillPlugin()], // adds Node.js polyfills for browser builds
-  entryPoints: [path.join(src, 'start.mjs'), path.join(src, 'redirect.mjs')], // main entry points
-  format: 'esm', // output as ES modules
-  define: {
-    global: 'window', // fix libraries that expect "global" to exist
-  },
-  platform: 'browser', // target environment is the browser
-  sourcemap: arg === 'debug' ? true : false, // enable sourcemaps in debug mode
-  minify: true, // minify output
-  bundle: true, // bundle dependencies together
-  splitting: true, // enable code splitting
-  outdir: distVendor, // output directory
-};
 
 // --------------------------------------------------
 // TITLE: Build Steps
@@ -142,143 +140,16 @@ export const firstWebBuild = async () => {
  */
 export async function buildWebsite() {
   await firstWebBuild();
-  await build(buildCfg);
+  await tiny.build();
   console.log('✨ Build finished successfully!');
 }
-
-// Tiny File Watcher sender
-class TinyFileWatcher {
-  /**
-   * Internal queue of chokidar event arguments.
-   * @type {Array<import('chokidar').EmitArgsWithName>}
-   */
-  #queue = [];
-
-  /**
-   * Whether the watcher is holding events in the queue
-   * instead of sending them immediately.
-   * @type {boolean}
-   */
-  #usingQueue = false;
-
-  /**
-   * Returns whether the watcher is currently queueing events.
-   * @returns {boolean}
-   */
-  get usingQueue() {
-    return this.#usingQueue;
-  }
-
-  /**
-   * Enables or disables the use of the queue.
-   * When set to `false`, all queued events are sent immediately.
-   * @param {boolean} value
-   */
-  set usingQueue(value) {
-    if (typeof value !== 'boolean') throw new TypeError('');
-    this.#usingQueue = value;
-    if (!this.#usingQueue) this._send();
-  }
-
-  /**
-   * Callback function signature used for file events.
-   * @callback TinyFileFn
-   * @param {import('chokidar').EmitArgsWithName} args
-   */
-
-  /**
-   * Current callback executed when an event is sent.
-   * @type {TinyFileFn | null}
-   */
-  #callback = null;
-
-  /**
-   * Returns the current event callback.
-   * @returns {TinyFileFn | null}
-   */
-  get callback() {
-    return this.#callback;
-  }
-
-  /**
-   * Sets the callback executed for each file event.
-   * @param {TinyFileFn} value
-   */
-  set callback(value) {
-    if (typeof value !== 'function') throw new TypeError('');
-    this.#callback = value;
-  }
-
-  /**
-   * Sends all queued events to the callback.
-   * Clears the queue afterwards.
-   * @private
-   */
-  _send() {
-    this.#queue.forEach(([eventName, filePath, stats]) => {
-      console.log(`[tiny-builder] [update] ${filePath}`);
-      if (typeof this.#callback === 'function') this.#callback(eventName, filePath, stats);
-    });
-    this.#queue = [];
-  }
-
-  /**
-   * Adds a file event to the queue.
-   * @param {import('chokidar').EmitArgsWithName} value
-   */
-  add(value) {
-    this.#queue.push(value);
-  }
-}
-
-const tinyFileWatcher = new TinyFileWatcher();
 
 /**
  * Setup esbuild in watch mode, so changes are rebuilt automatically.
  *
- * @param {(event: EventName, path: string, stats?: fs.Stats | undefined) => void} watchCallback
- * @param {import('esbuild').Plugin[]} plugins
  * @returns {import('esbuild').BuildContext}
  */
-export async function watchWebsite(watchCallback) {
-  // File Watcher
-  if (typeof watchCallback === 'function') tinyFileWatcher.callback = watchCallback;
-  chokidar.watch(src).on('all', (event, path, stats) => {
-    // Get file path
-    const file = path.split(src)[1];
-    const filePath = file.startsWith('/') ? file.substring(1) : file;
-    tinyFileWatcher.add([event, filePath, stats]);
-  });
-
-  // File Builder
-  await firstWebBuild();
-  /** @type {import('esbuild').BuildOptions} */
-  const tinyCfg = {
-    ...buildCfg,
-    loader: { '.ts': 'ts' }, // allow TypeScript files
-    plugins: [
-      ...buildCfg.plugins,
-      // Build sender
-      {
-        name: 'tiny-build-watcher',
-        setup(build) {
-          build.onStart(() => {
-            tinyFileWatcher.usingQueue = true;
-            console.log('[tiny-builder] Instance received updates...');
-          });
-          build.onEnd((result) => {
-            tinyFileWatcher.usingQueue = false;
-            console.log(
-              '[tiny-builder] Instance updates finished:',
-              result.errors.length,
-              'errors.',
-            );
-          });
-        },
-      },
-    ],
-  };
-
-  const ctx = await context(tinyCfg);
+export async function watchWebsite() {
+  const ctx = await tiny.start(firstWebBuild);
   return ctx;
 }
