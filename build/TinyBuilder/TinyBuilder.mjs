@@ -228,6 +228,14 @@ class TinyBuilder {
 
   /////////////////////////////////////////////
 
+  /** Internal console tag. */
+  #tag = '[tiny-builder]';
+
+  /** Internal console tag. */
+  get tag() {
+    return this.#tag;
+  };
+
   /**
    * Internal esbuild configuration.
    * Cloned on get/set to avoid external mutations.
@@ -388,6 +396,7 @@ class TinyBuilder {
     // File Watcher
     this.#fsWatcher = chokidar.watch(this.#src);
 
+    console.log(`${this.#tag} Starting file watcher...`);
     this.#fsWatcher.on('all', (event, path, stats) => {
       // Get file path
       const file = path.split(this.#src ?? '')[1] ?? '';
@@ -409,12 +418,12 @@ class TinyBuilder {
           setup: (build) => {
             build.onStart(() => {
               this.usingQueue = true;
-              console.log('[tiny-builder] Instance received updates...');
+              console.log(`${this.#tag} Instance received updates...`);
             });
             build.onEnd((result) => {
               this.usingQueue = false;
               console.log(
-                '[tiny-builder] Instance updates finished:',
+                `${this.#tag} Instance updates finished:`,
                 result.errors.length,
                 'errors.',
               );
@@ -424,8 +433,37 @@ class TinyBuilder {
       ],
     };
 
+    console.log(`${this.#tag} Starting Esbuild context...`);
     this.#ctx = await context(tinyCfg);
+    console.log(`${this.#tag} Started!`);
     return this.#ctx;
+  }
+
+  /**
+   * Stops the watcher + builder process.  
+   * Closes the file system watcher and disposes the esbuild context.
+   *
+   * @returns {Promise<boolean>}
+   */
+  async stop() {
+    let closed = false;
+    // Stop chokidar watcher
+    if (this.#fsWatcher) {
+      await this.#fsWatcher.close();
+      this.#fsWatcher = null;
+      console.log(`${this.#tag} File watcher stopped.`);
+      closed = true;
+    }
+
+    // Dispose esbuild context
+    if (this.#ctx) {
+      await this.#ctx.dispose();
+      this.#ctx = null;
+      console.log(`${this.#tag} Esbuild context disposed.`);
+      closed = true;
+    }
+
+    return closed;
   }
 
   ////////////////////////////////////////////
@@ -486,7 +524,7 @@ class TinyBuilder {
     this.#queue.forEach(([eventName, filePath, stats]) => {
       if (lastFile === filePath) return;
       lastFile = filePath;
-      console.log(`[tiny-builder] [update] ${filePath}`);
+      console.log(`${this.#tag} [update] ${filePath}`);
       this.#emit('FileUpdate', eventName, filePath, stats);
     });
     this.#queue = [];
