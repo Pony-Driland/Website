@@ -55,7 +55,7 @@ export const storyData = {
     Loader.start('Loading readme...');
 
     // Read Data Base
-    const readme = await fetch('/readme.html' + window.fileVersion ?? '', {
+    const readme = await fetch('/readme.html' + window.fileVersion, {
       method: 'GET',
       dataType: 'text',
     })
@@ -76,10 +76,10 @@ export const storyData = {
       Loader.start(`Loading chapter ${chapter}...`);
       console.log(`Loading Chapter ${chapter}...`);
       console.log(
-        './chapters/' + storyData.lang.active + '/' + chapter + '.json' + window.fileVersion ?? '',
+        './chapters/' + storyData.lang.active + '/' + chapter + '.json' + window.fileVersion,
       );
       const data = await fetchJson(
-        './chapters/' + storyData.lang.active + '/' + chapter + '.json' + window.fileVersion ?? '',
+        './chapters/' + storyData.lang.active + '/' + chapter + '.json' + window.fileVersion,
       ).catch((err) => {
         console.log(`Chapter ${chapter} failed during the load!`);
         Loader.close();

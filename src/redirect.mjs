@@ -1,6 +1,6 @@
 import { Loader } from 'circle-loader';
 import { TinyHtml } from 'tiny-essentials';
-import TinyDomReadyManager from 'tiny-essentials/dist/v1/libs/TinyDomReadyManager.mjs';
+import { TinyDomReadyManager } from 'tiny-essentials';
 
 const readyPage = new TinyDomReadyManager();
 readyPage.onReady(() => {

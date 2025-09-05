@@ -1546,7 +1546,7 @@ rootApp.onReady(() => {
             TinyHtml.createFrom('li').append(
               TinyHtml.createFrom('a', {
                 target: '_blank',
-                href: `https://${storyCfg.mirror[Math.floor(Math.random() * storyCfg?.mirror.length ?? 0)]}`,
+                href: `https://${storyCfg.mirror[Math.floor(Math.random() * storyCfg?.mirror.length)]}`,
               })
                 .setText('Mirror')
                 .prepend(tinyLib.icon('fa-solid fa-pager me-2')),
@@ -1593,7 +1593,6 @@ rootApp.onReady(() => {
           TinyHtml.createFrom('li')
             .prepend(
               TinyHtml.createFrom('a', {
-                href: '/?path=%2FLICENSE.md&title=License',
                 href: '/?path=%2FLICENSE.md&title=License',
                 id: 'license',
               })

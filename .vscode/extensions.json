@@ -1,0 +1,30 @@
+{
+    "recommendations": [
+        "aaron-bond.better-comments",
+        "naumovs.color-highlight",
+        "formulahendry.code-runner",
+        "hookyqr.jsdoctagcomplete",
+        "dbaeumer.vscode-eslint",
+        "ecmel.vscode-html-css",
+        "xabikos.javascriptsnippets",
+        "lllllllqw.jsdoc",
+        "crystal-spider.jsdoc-generator",
+        "mrmlnc.vscode-json5",
+        "bierner.markdown-preview-github-styles",
+        "leizongmin.node-module-intellisense",
+        "christian-kohler.npm-intellisense",
+        "ibm.output-colorizer",
+        "esbenp.prettier-vscode",
+        "jccr.sandbox",
+        "sasa.vscode-sass-format",
+        "jasonnutter.search-node-modules",
+        "cymonk.sql-formatter",
+        "qwtel.sqlite-viewer",
+        "yy0931.vscode-sqlite3-editor",
+        "simonsiefke.svg-preview",
+        "gruntfuggly.todo-tree",
+        "vue.volar",
+        "fabianlauer.vs-code-xml-format",
+        "dotjoshjohnson.xml"
+    ]
+}

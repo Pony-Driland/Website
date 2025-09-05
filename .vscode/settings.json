@@ -1,3 +1,54 @@
 {
-    "rpc.buttonEnabled": true
+  "rpc.buttonEnabled": true,
+  "todo-tree.general.tags": [
+    "TITLE",
+    "TODO",
+    "FIXME",
+    "SECTION",
+    "CATEGORY",
+    "MODULE",
+    "NOTE"
+  ],
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "icon": "check",
+      "type": "line",
+      "foreground": "#FFFF00"
+    },
+    "FIXME": {
+      "icon": "alert",
+      "type": "line",
+      "foreground": "#FF0000"
+    },
+    "TITLE": {
+      "icon": "note",
+      "type": "tag",
+      "foreground": "#b8f119"
+    },
+    "SECTION": {
+      "icon": "file-directory",
+      "type": "tag",
+      "foreground": "#00FFFF"
+    },
+    "CATEGORY": {
+      "icon": "file-symlink-directory",
+      "type": "tag",
+      "foreground": "#FFA500"
+    },
+    "MODULE": {
+      "icon": "package",
+      "type": "tag",
+      "foreground": "#EE82EE"
+    },
+    "NOTE": {
+      "icon": "note",
+      "type": "line",
+      "foreground": "#90EE90"
+    }
+  },
+  "todo-tree.filtering.excludeGlobs": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/.git/**"
+  ]
 }
