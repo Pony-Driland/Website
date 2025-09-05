@@ -147,13 +147,18 @@ export async function buildWebsite() {
 
 /**
  * Setup esbuild in watch mode, so changes are rebuilt automatically.
+ * @param {import('esbuild').Plugin[]} plugins
  * @returns {import('esbuild').BuildContext}
  */
-export async function watchWebsite() {
+export async function watchWebsite(plugins) {
   await firstWebBuild();
-  const ctx = await context({
+  /** @type {import('esbuild').BuildOptions} */
+  const tinyCfg = {
     ...buildCfg,
     loader: { '.ts': 'ts' }, // allow TypeScript files
-  });
+    plugins: [...buildCfg.plugins, ...plugins],
+  };
+
+  const ctx = await context(tinyCfg);
   return ctx;
 }

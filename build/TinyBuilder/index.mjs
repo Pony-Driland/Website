@@ -5,22 +5,42 @@ import TinyWebEssentials from 'tiny-server-essentials';
 
 import { watchWebsite } from './builder.mjs';
 
+// Force environment to development mode
 process.env.NODE_ENV = 'development';
 
+// Setup __dirname and __filename (since not available in ES modules)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Initialize TinyWebEssentials Express wrapper
 const http = new TinyWebEssentials.Express();
-http.init();
+http.init(); // prepares internal middleware and routing
 const port = 3000;
 
-http.root.use(express.static(path.join(__dirname, '../dist/public')));
-http.freeMode(path.join(__dirname, '../public'));
+// Serve static files from dist/public (your build output)
+http.root.use(express.static(path.join(__dirname, '../../dist/public')));
+
+// Enable "freeMode", which serves raw files from /public (non-bundled assets)
+http.freeMode(path.join(__dirname, '../../public'));
 
 (async () => {
-  const ctx = await watchWebsite();
-  await ctx.watch();
-  console.log(ctx)
+  // Start esbuild in watch mode (rebuilds automatically on file changes)
+  const ctx = await watchWebsite([
+    {
+      name: 'tiny-build-watcher',
+      setup(build) {
+        build.onStart(() => {
+          console.log('Build started...');
+        });
+        build.onEnd((result) => {
+          console.log('Build finished:', result.errors.length, 'errors');
+        });
+      },
+    },
+  ]);
+
+  await ctx.watch(); // begin watching for changes
+  // Start HTTP server
   http.getServer().listen(port, () => {
     console.log(`Test app listening on port ${port}`);
   });
