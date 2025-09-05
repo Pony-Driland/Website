@@ -30,7 +30,7 @@ const arg = process.argv[2];
 const distTemp = path.join(__dirname, '../../dist/temp');
 const distPublic = path.join(__dirname, '../../dist/public');
 
-const tiny = new TinyBuilder({
+export const tiny = new TinyBuilder({
   plugins: [nodeModulesPolyfillPlugin()], // adds Node.js polyfills for browser builds
   entryPoints: ['start.mjs', 'redirect.mjs'], // main entry points
   format: 'esm', // output as ES modules
