@@ -279,6 +279,17 @@ class TinyBuilder {
   /** @type {import('ws').Server|null} */
   #ws = null;
 
+  /** @type {boolean} */
+  #wsClosing = false;
+
+  /**
+   * Gets the current WebSocket instance.
+   * @returns {import('ws').Server|null}
+   */
+  get ws() {
+    return this.#ws;
+  }
+
   /** Internal console tag. */
   #tag = '[tiny-builder]';
 
@@ -442,6 +453,7 @@ class TinyBuilder {
    */
   async start(beforeCallback) {
     if (typeof this.#src !== 'string') throw new Error('Expected string for Tiny Builder src.');
+    if (this.#wsClosing) throw new Error('Expected a ws closed server.');
 
     // Before callback
     if (!this.#ctx) {
@@ -499,6 +511,19 @@ class TinyBuilder {
       const hostname = `ws://${this.#host}:${this.#port}`;
       console.log(`${this.#tag} Starting WebSocket (${hostname}) hmr...`);
       this.#ws = new WebSocketServer({ port: this.#port, host: this.#host });
+      // Connection
+      this.#ws.on('connection', (ws, req) => {
+        console.log(`${this.#tag} New client connected: ${req.socket.remoteAddress}`);
+        ws.on('close', () =>
+          console.log(`${this.#tag} Client disconnected: ${req.socket.remoteAddress}`),
+        );
+      });
+
+      // Close
+      this.#ws.on('close', () => {
+        this.#wsClosing = false;
+        this.#ws = null;
+      });
     }
 
     console.log(`${this.#tag} Started!`);
@@ -531,6 +556,7 @@ class TinyBuilder {
 
     // Stop websocket
     if (this.#ws) {
+      this.#wsClosing = true;
       this.#ws.close();
       this.#ws = null;
       console.log(`${this.#tag} WebSocket stopped.`);
