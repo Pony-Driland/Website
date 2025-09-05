@@ -1,4 +1,3 @@
-import { WebSocketServer } from 'ws';
 import { basename, join } from 'path';
 import clone from 'clone';
 import chokidar from 'chokidar';
@@ -31,6 +30,52 @@ import { TinyEvents } from 'tiny-essentials';
  */
 class TinyBuilder {
   #events = new TinyEvents();
+
+  /** @typedef {import('ws').Server} WebSocketServer */
+
+  /** @type {null|WebSocketServer} */
+  #WebSocketServer = null;
+
+/**
+   * Dynamically imports the `ws` module and stores it in the instance.
+   * Ensures the module is loaded only once (lazy singleton).
+   *
+   * @returns {Promise<WebSocketServer>} The loaded `ws` module.
+   */
+  async fetchWs() {
+    if (!this.#WebSocketServer) {
+      // @ts-ignore
+      const ws = await import(/* webpackMode: "eager" */ 'ws').catch(() => {
+        console.warn(
+          '[TinyOlm] Warning: "ws" is not installed. ' +
+            'TinyOlm requires "ws" to function properly. ' +
+            'Please install it with "npm install ws".',
+        );
+        return null;
+      });
+      if (ws) {
+        // @ts-ignore
+        this.#WebSocketServer = ws?.default.WebSocketServer ?? ws.WebSocketServer;
+      }
+    }
+    return this.getWs();
+  }
+
+  /**
+   * Returns the previously loaded `ws` instance.
+   * Assumes the module has already been loaded.
+   *
+   * @returns {WebSocketServer} The `ws` module.
+   */
+  getWs() {
+    if (typeof this.#WebSocketServer === 'undefined' || this.#WebSocketServer === null)
+      throw new Error(
+        `Failed to initialize WebSocketServer: Module is ${this.#WebSocketServer !== null ? 'undefined' : 'null'}.\n` +
+          'Please make sure "ws" is installed.\n' +
+          'You can install it by running: npm install ws',
+      );
+    return this.#WebSocketServer;
+  }
 
   /**
    * Emits an event, triggering all registered handlers for that event.
@@ -276,7 +321,7 @@ class TinyBuilder {
 
   ////////////////////////////////////////////
 
-  /** @type {import('ws').Server|null} */
+  /** @type {WebSocketServer|null} */
   #ws = null;
 
   /** @type {boolean} */
@@ -284,18 +329,33 @@ class TinyBuilder {
 
   /**
    * Gets the current WebSocket instance.
-   * @returns {import('ws').Server|null}
+   * @returns {WebSocketServer|null}
    */
   get ws() {
     return this.#ws;
   }
 
-  /** Internal console tag. */
+  /** 
+   * Internal console tag. 
+   * @type {string}
+   */
   #tag = '[tiny-builder]';
 
-  /** Internal console tag. */
+  /** 
+   * Internal console tag. 
+   * @returns {string}
+   */
   get tag() {
     return this.#tag;
+  }
+
+  /** 
+   * Internal console tag. 
+   * @param {string} value
+   */
+  set tag(value) {
+    if (typeof value !== 'string') throw new TypeError('Expected string for tag.');
+    this.#tag = value;
   }
 
   /**
@@ -510,20 +570,26 @@ class TinyBuilder {
     if (!this.#ws && this.#port) {
       const hostname = `ws://${this.#host}:${this.#port}`;
       console.log(`${this.#tag} Starting WebSocket (${hostname}) hmr...`);
-      this.#ws = new WebSocketServer({ port: this.#port, host: this.#host });
-      // Connection
-      this.#ws.on('connection', (ws, req) => {
-        console.log(`${this.#tag} New client connected: ${req.socket.remoteAddress}`);
-        ws.on('close', () =>
-          console.log(`${this.#tag} Client disconnected: ${req.socket.remoteAddress}`),
-        );
-      });
+      const WebSocketServer = await this.fetchWs();
 
-      // Close
-      this.#ws.on('close', () => {
-        this.#wsClosing = false;
-        this.#ws = null;
-      });
+      /** @type {WebSocketServer} */
+      // @ts-ignore
+      this.#ws = new WebSocketServer({ port: this.#port, host: this.#host });
+      if (this.#ws) {
+        // Connection
+        this.#ws.on('connection', (ws, req) => {
+          console.log(`${this.#tag} New client connected: ${req.socket.remoteAddress}`);
+          ws.on('close', () =>
+            console.log(`${this.#tag} Client disconnected: ${req.socket.remoteAddress}`),
+          );
+        });
+
+        // Close
+        this.#ws.on('close', () => {
+          this.#wsClosing = false;
+          this.#ws = null;
+        });
+      }
     }
 
     console.log(`${this.#tag} Started!`);
@@ -626,6 +692,7 @@ class TinyBuilder {
       lastFile = filePath;
       console.log(`${this.#tag} [update] ${filePath}`);
       this.#emit('FileUpdate', eventName, filePath, stats);
+      if (this.#ws) this.#ws.emit('FileUpdate', eventName, filePath, stats);
     });
     this.#queue = [];
   }
