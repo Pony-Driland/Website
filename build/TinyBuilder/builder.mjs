@@ -1,6 +1,7 @@
 // build.mjs
 
 // Import required Node.js modules and utilities
+import chokidar from 'chokidar';
 import fs from 'fs-extra';
 import * as path from 'path';
 import { exec as execCallback } from 'child_process';
@@ -147,10 +148,16 @@ export async function buildWebsite() {
 
 /**
  * Setup esbuild in watch mode, so changes are rebuilt automatically.
+ * 
+ * @param {(event: EventName, path: string, stats?: fs.Stats | undefined) => void} watchCallback
  * @param {import('esbuild').Plugin[]} plugins
  * @returns {import('esbuild').BuildContext}
  */
-export async function watchWebsite(plugins) {
+export async function watchWebsite(watchCallback, plugins) {
+  chokidar.watch(src).on('all', (event, path, stats) => {
+    const filePath = path.split(src)[1];
+    watchCallback(event, filePath.startsWith('/') ? filePath.substring(1) : filePath, stats);
+  });
   await firstWebBuild();
   /** @type {import('esbuild').BuildOptions} */
   const tinyCfg = {
