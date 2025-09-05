@@ -1,3 +1,3 @@
-import buildWebsite from './bundle/builder.mjs';
+import { buildWebsite } from './TinyBuilder/builder.mjs';
 
 buildWebsite();
