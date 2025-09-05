@@ -146,24 +146,101 @@ export async function buildWebsite() {
   console.log('✨ Build finished successfully!');
 }
 
+// Tiny File Watcher sender
+class TinyFileWatcher {
+  /** @type {Array<import('chokidar').EmitArgsWithName>} */
+  #queue = [];
+
+  /** @type {boolean} */
+  #usingQueue = false;
+
+  /** @returns {boolean} */
+  get usingQueue() {
+    return this.#usingQueue;
+  }
+
+  /** @param {boolean} value */
+  set usingQueue(value) {
+    if (typeof value !== 'boolean') throw new TypeError('');
+    this.#usingQueue = value;
+    if (!this.#usingQueue) this._send();
+  }
+
+  /**
+   * @callback TinyFileFn
+   * @param {import('chokidar').EmitArgsWithName} args
+   */
+
+  /** @type {TinyFileFn | null} */
+  #callback = null;
+
+  /** @returns {TinyFileFn} */
+  get callback() {
+    return this.#callback;
+  }
+
+  /** @param {TinyFileFn} value */
+  set callback(value) {
+    if (typeof value !== 'function') throw new TypeError('');
+    this.#callback = value;
+  }
+
+  _send() {
+    this.#queue.forEach(([eventName, filePath, stats]) => {
+      console.log(`[tiny-builder] [update] ${filePath}`);
+      if (typeof this.#callback === 'function') this.#callback(eventName, filePath, stats);
+    });
+  }
+
+  /** @param {Set<import('chokidar').EmitArgsWithName>} value */
+  add(value) {
+    this.#queue.push(value);
+    if (!this.#usingQueue) this._send();
+  }
+}
+
+const tinyFileWatcher = new TinyFileWatcher();
+
 /**
  * Setup esbuild in watch mode, so changes are rebuilt automatically.
- * 
+ *
  * @param {(event: EventName, path: string, stats?: fs.Stats | undefined) => void} watchCallback
  * @param {import('esbuild').Plugin[]} plugins
  * @returns {import('esbuild').BuildContext}
  */
-export async function watchWebsite(watchCallback, plugins) {
+export async function watchWebsite(watchCallback) {
+  // File Watcher
+  if (typeof watchCallback === 'function') tinyFileWatcher.callback = watchCallback;
   chokidar.watch(src).on('all', (event, path, stats) => {
-    const filePath = path.split(src)[1];
-    watchCallback(event, filePath.startsWith('/') ? filePath.substring(1) : filePath, stats);
+    // Get file path
+    const file = path.split(src)[1];
+    const filePath = file.startsWith('/') ? file.substring(1) : file;
+    tinyFileWatcher.add([event, filePath, stats]);
   });
+
+  // File Builder
   await firstWebBuild();
   /** @type {import('esbuild').BuildOptions} */
   const tinyCfg = {
     ...buildCfg,
     loader: { '.ts': 'ts' }, // allow TypeScript files
-    plugins: [...buildCfg.plugins, ...plugins],
+    plugins: [
+      ...buildCfg.plugins,
+      // Build sender
+      {
+        name: 'tiny-build-watcher',
+        setup(build) {
+          build.onStart(() => {
+            tinyFileWatcher.usingQueue = true;
+            console.log('[tiny-builder] Build started...');
+          });
+          build.onEnd((result) => {
+            tinyFileWatcher.usingQueue = false;
+            console.log('[tiny-builder] Build finished:', result.errors.length, 'errors.');
+          });
+        },
+      },
+    ],
   };
 
   const ctx = await context(tinyCfg);
