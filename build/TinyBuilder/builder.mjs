@@ -190,6 +190,7 @@ class TinyFileWatcher {
       console.log(`[tiny-builder] [update] ${filePath}`);
       if (typeof this.#callback === 'function') this.#callback(eventName, filePath, stats);
     });
+    this.#queue = [];
   }
 
   /** @param {Set<import('chokidar').EmitArgsWithName>} value */
