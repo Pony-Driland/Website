@@ -5,19 +5,28 @@ import { build, context } from 'esbuild';
 import { TinyEvents } from 'tiny-essentials';
 
 /** @typedef {import('esbuild').BuildOptions} BuildOptions */
+/** @typedef {import('esbuild').BuildContext} BuildContext */
+/** @typedef {import('esbuild').BuildResult} BuildResult */
+/** @typedef {import('esbuild').Loader} Loader */
 /** @typedef {import('chokidar').FSWatcher} FSWatcher */
 /** @typedef {import('chokidar').EmitArgsWithName} ChokidarEmitArgsWithName */
 
 /**
- * @typedef {{ [ext: string]: Loader; }} BuildOptionsLoader
+ * Represents the loader configuration used by esbuild.
+ * Keys are file extensions, values are loader types (e.g., "ts", "js").
+ * @typedef {{ [ext: string]: Loader }} BuildOptionsLoader
  */
 
 /**
  * Callback function signature used for file events.
  * @callback TinyFileFn
- * @param {ChokidarEmitArgsWithName} args
+ * @param {ChokidarEmitArgsWithName} args - Chokidar event arguments
  */
 
+/**
+ * TinyBuilder is a small wrapper around esbuild with integrated
+ * file watching and queued update handling.
+ */
 class TinyBuilder {
   #events = new TinyEvents();
 
@@ -218,47 +227,76 @@ class TinyBuilder {
 
   /////////////////////////////////////////////
 
-  /** @type {BuildOptions} */
+  /**
+   * Internal esbuild configuration.
+   * Cloned on get/set to avoid external mutations.
+   * @type {BuildOptions}
+   */
   #config;
 
-  /** @returns {BuildOptions} */
+  /**
+   * Returns a copy of the current esbuild config.
+   * @returns {BuildOptions}
+   */
   get config() {
     return clone(this.#config);
   }
 
-  /** @param {BuildOptions} value */
+  /**
+   * Replaces the current esbuild config.
+   * @param {BuildOptions} value
+   * @throws {TypeError} If value is not a plain object.
+   */
   set config(value) {
     if (typeof value !== 'object' || value === null || Array.isArray(value))
-      throw new TypeError('');
+      throw new TypeError('Expected a plain object for config.');
     this.#config = clone(value);
   }
 
   ////////////////////////////////////////////
 
-  /** @returns {string} */
+  /**
+   * Returns the current output directory.
+   * @returns {string}
+   */
   get dist() {
     return this.#config.outdir;
   }
 
-  /** @param {string} value */
+  /**
+   * Sets the output directory.
+   * @param {string} value
+   * @throws {TypeError} If value is not a string.
+   */
   set dist(value) {
-    if (typeof value !== 'string') throw new TypeError('');
+    if (typeof value !== 'string') throw new TypeError('Expected string for dist.');
     this.#config.outdir = value;
   }
 
   ////////////////////////////////////////////
 
-  /** @type {string} */
+  /**
+   * Source directory for watched entry points.
+   * @type {string}
+   */
   #src;
 
-  /** @returns {string} */
+  /**
+   * Returns the current source directory.
+   * @returns {string}
+   */
   get src() {
     return this.#src;
   }
 
-  /** @param {string} value */
+  /**
+   * Sets the source directory and rewrites entryPoints
+   * accordingly, ensuring they point to the new src path.
+   * @param {string} value
+   * @throws {TypeError} If value is not a string.
+   */
   set src(value) {
-    if (typeof value !== 'string') throw new TypeError('');
+    if (typeof value !== 'string') throw new TypeError('Expected string for src.');
     this.#src = value;
     if (Array.isArray(this.#config.entryPoints))
       this.#config.entryPoints.forEach((entry, index) => {
@@ -272,47 +310,74 @@ class TinyBuilder {
 
   ////////////////////////////////////////////
 
-  /** @param {BuildOptions} cfg */
+  /**
+   * Creates a new TinyBuilder instance.
+   * @param {BuildOptions} cfg - Initial esbuild configuration
+   */
   constructor(cfg) {
     this.config = cfg;
   }
 
   ////////////////////////////////////////////
 
-  /** @type {FSWatcher|null} */
+  /**
+   * File system watcher instance.
+   * @type {FSWatcher|null}
+   */
   #fsWatcher = null;
 
-  /** @returns {FSWatcher|null} */
+  /**
+   * Returns the current chokidar watcher instance.
+   * @returns {FSWatcher|null}
+   */
   get fsWatcher() {
     return this.#fsWatcher;
   }
 
-  /** @type {BuildContext<BuildOptions>|null} */
+  /**
+   * Esbuild context object used for watch mode.
+   * @type {BuildContext<BuildOptions>|null}
+   */
   #ctx = null;
 
-  /** @returns {BuildContext<BuildOptions>|null} */
+  /**
+   * Returns the esbuild context if available.
+   * @returns {BuildContext<BuildOptions>|null}
+   */
   get ctx() {
     return this.#ctx;
   }
 
   /**
-   * @type {BuildOptionsLoader}
+   * Loader configuration.
+   * @type {BuildOptionsLoader|null}
    */
-  #loader = { '.ts': 'ts' };
+  #loader = null;
 
-  /** @returns {BuildOptionsLoader} */
+  /**
+   * Returns the current loader configuration.
+   * @returns {BuildOptionsLoader|null}
+   */
   get loader() {
     return this.#loader;
   }
 
-  /** @param {BuildOptionsLoader} value */
+  /**
+   * Replaces the loader configuration.
+   * @param {BuildOptionsLoader|null} value
+   * @throws {TypeError} If value is not a plain object.
+   */
   set loader(value) {
-    if (typeof value !== 'object' || value === null || Array.isArray(value))
-      throw new TypeError('');
+    if (value !== null && (typeof value !== 'object' || value === null || Array.isArray(value)))
+      throw new TypeError('Expected plain object for loader.');
     this.#loader = value;
   }
 
-  /** @param {Function} beforeCallback */
+  /**
+   * Starts the watcher + builder process.
+   * @param {Function} beforeCallback - Optional callback executed before build starts
+   * @returns {Promise<BuildContext<BuildOptions>>} Esbuild context
+   */
   async start(beforeCallback) {
     // File Watcher
     this.#fsWatcher = chokidar.watch(this.#src);
@@ -329,7 +394,7 @@ class TinyBuilder {
     /** @type {BuildOptions} */
     const tinyCfg = {
       ...this.#config,
-      loader: this.#loader, // allow TypeScript files
+      loader: this.#loader ?? undefined, // allow TypeScript files
       plugins: [
         ...this.#config.plugins,
         // Build sender
@@ -359,7 +424,10 @@ class TinyBuilder {
 
   ////////////////////////////////////////////
 
-  /** @returns {Promise<BuildResult<BuildOptions>>} */
+  /**
+   * Executes a one-off esbuild build with the current config.
+   * @returns {Promise<BuildResult<BuildOptions>>}
+   */
   build() {
     return build(this.#config);
   }
@@ -367,20 +435,20 @@ class TinyBuilder {
   ////////////////////////////////////////////
 
   /**
-   * Internal queue of chokidar event arguments.
+   * Queue of chokidar event arguments awaiting dispatch.
    * @type {Array<ChokidarEmitArgsWithName>}
    */
   #queue = [];
 
   /**
-   * Whether the watcher is holding events in the queue
-   * instead of sending them immediately.
+   * Whether file events are currently being queued.
+   * When `false`, all queued events are flushed immediately.
    * @type {boolean}
    */
   #usingQueue = false;
 
   /**
-   * Returns whether the watcher is currently queueing events.
+   * Returns whether events are currently queued.
    * @returns {boolean}
    */
   get usingQueue() {
@@ -388,12 +456,13 @@ class TinyBuilder {
   }
 
   /**
-   * Enables or disables the use of the queue.
-   * When set to `false`, all queued events are sent immediately.
+   * Enables or disables event queueing.
+   * When set to `false`, all queued events are flushed.
    * @param {boolean} value
+   * @throws {TypeError} If value is not a boolean.
    */
   set usingQueue(value) {
-    if (typeof value !== 'boolean') throw new TypeError('');
+    if (typeof value !== 'boolean') throw new TypeError('Expected boolean for usingQueue.');
     this.#usingQueue = value;
     if (!this.#usingQueue) this._send();
   }
@@ -401,12 +470,16 @@ class TinyBuilder {
   ////////////////////////////////////////////
 
   /**
-   * Sends all queued events to the callback.
+   * Flushes queued file events and emits them as "FileUpdate".
    * Clears the queue afterwards.
    * @private
    */
   _send() {
+    /** @type {string|null} */
+    let lastFile = null;
     this.#queue.forEach(([eventName, filePath, stats]) => {
+      if (lastFile === filePath) return;
+      lastFile = filePath;
       console.log(`[tiny-builder] [update] ${filePath}`);
       this.#emit('FileUpdate', eventName, filePath, stats);
     });
@@ -414,8 +487,9 @@ class TinyBuilder {
   }
 
   /**
-   * Adds a file event to the queue.
+   * Adds a file event to the internal queue.
    * @param {ChokidarEmitArgsWithName} value
+   * @private
    */
   _addFilePath(value) {
     this.#queue.push(value);
