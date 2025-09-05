@@ -1,3 +1,4 @@
+import { WebSocketServer } from 'ws';
 import { basename, join } from 'path';
 import clone from 'clone';
 import chokidar from 'chokidar';
@@ -228,13 +229,63 @@ class TinyBuilder {
 
   /////////////////////////////////////////////
 
+  /** @type {number|null} */
+  #port = null;
+
+  /**
+   * Gets the current port.
+   * @returns {number|null}
+   */
+  get port() {
+    return this.#port;
+  }
+
+  /**
+   * Sets the port number.
+   * @param {number|null} value
+   */
+  set port(value) {
+    if (this.#ws !== null) throw new Error('Cannot change port while WebSocket is active.');
+    if (value !== null && (typeof value !== 'number' || !Number.isInteger(value)))
+      throw new TypeError('Expected port to be an integer or null.');
+    this.#port = value;
+  }
+
+  ////////////////////////////////////////////
+
+  /** @type {string} */
+  #host = 'localhost';
+
+  /**
+   * Gets the current host.
+   * @returns {string}
+   */
+  get host() {
+    return this.#host;
+  }
+
+  /**
+   * Sets the host string.
+   * @param {string} value
+   */
+  set host(value) {
+    if (this.#ws !== null) throw new Error('Cannot change host while WebSocket is active.');
+    if (typeof value !== 'string') throw new TypeError('Expected host to be a string.');
+    this.#host = value;
+  }
+
+  ////////////////////////////////////////////
+
+  /** @type {import('ws').Server|null} */
+  #ws = null;
+
   /** Internal console tag. */
   #tag = '[tiny-builder]';
 
   /** Internal console tag. */
   get tag() {
     return this.#tag;
-  };
+  }
 
   /**
    * Internal esbuild configuration.
@@ -311,12 +362,10 @@ class TinyBuilder {
       this.#config.entryPoints.forEach((entry, index) => {
         if (typeof entry === 'string')
           // @ts-ignore
-          this.#config.entryPoints[index] = 
-            join(this.#src ?? '', basename(entry));
+          this.#config.entryPoints[index] = join(this.#src ?? '', basename(entry));
         else {
           // @ts-ignore
-          this.#config.entryPoints[index].in = 
-            join(this.#src ?? '', basename(entry.in));
+          this.#config.entryPoints[index].in = join(this.#src ?? '', basename(entry.in));
         }
       });
   }
@@ -393,54 +442,71 @@ class TinyBuilder {
    */
   async start(beforeCallback) {
     if (typeof this.#src !== 'string') throw new Error('Expected string for Tiny Builder src.');
-    // File Watcher
-    this.#fsWatcher = chokidar.watch(this.#src);
 
-    console.log(`${this.#tag} Starting file watcher...`);
-    this.#fsWatcher.on('all', (event, path, stats) => {
-      // Get file path
-      const file = path.split(this.#src ?? '')[1] ?? '';
-      const filePath = file.startsWith('/') ? file.substring(1) : file;
-      this._addFilePath([event, filePath, stats]);
-    });
+    // Before callback
+    if (!this.#ctx) {
+      if (typeof beforeCallback === 'function') await beforeCallback();
+    }
+
+    // File Watcher
+    if (!this.#fsWatcher) {
+      this.#fsWatcher = chokidar.watch(this.#src);
+
+      console.log(`${this.#tag} Starting file watcher...`);
+      this.#fsWatcher.on('all', (event, path, stats) => {
+        // Get file path
+        const file = path.split(this.#src ?? '')[1] ?? '';
+        const filePath = file.startsWith('/') ? file.substring(1) : file;
+        this._addFilePath([event, filePath, stats]);
+      });
+    }
 
     // File Builder
-    if (typeof beforeCallback === 'function') await beforeCallback();
-    /** @type {BuildOptions} */
-    const tinyCfg = {
-      ...this.#config,
-      loader: this.#loader ?? undefined, // allow TypeScript files
-      plugins: [
-        ...this.#config.plugins ?? [],
-        // Build sender
-        {
-          name: 'tiny-build-watcher',
-          setup: (build) => {
-            build.onStart(() => {
-              this.usingQueue = true;
-              console.log(`${this.#tag} Instance received updates...`);
-            });
-            build.onEnd((result) => {
-              this.usingQueue = false;
-              console.log(
-                `${this.#tag} Instance updates finished:`,
-                result.errors.length,
-                'errors.',
-              );
-            });
+    if (!this.#ctx) {
+      /** @type {BuildOptions} */
+      const tinyCfg = {
+        ...this.#config,
+        loader: this.#loader ?? undefined, // allow TypeScript files
+        plugins: [
+          ...(this.#config.plugins ?? []),
+          // Build sender
+          {
+            name: 'tiny-build-watcher',
+            setup: (build) => {
+              build.onStart(() => {
+                this.usingQueue = true;
+                console.log(`${this.#tag} Instance received updates...`);
+              });
+              build.onEnd((result) => {
+                this.usingQueue = false;
+                console.log(
+                  `${this.#tag} Instance updates finished:`,
+                  result.errors.length,
+                  'errors.',
+                );
+              });
+            },
           },
-        },
-      ],
-    };
+        ],
+      };
 
-    console.log(`${this.#tag} Starting Esbuild context...`);
-    this.#ctx = await context(tinyCfg);
+      console.log(`${this.#tag} Starting Esbuild context...`);
+      this.#ctx = await context(tinyCfg);
+    }
+
+    // WebSocket Hmr
+    if (!this.#ws && this.#port) {
+      const hostname = `ws://${this.#host}:${this.#port}`;
+      console.log(`${this.#tag} Starting WebSocket (${hostname}) hmr...`);
+      this.#ws = new WebSocketServer({ port: this.#port, host: this.#host });
+    }
+
     console.log(`${this.#tag} Started!`);
     return this.#ctx;
   }
 
   /**
-   * Stops the watcher + builder process.  
+   * Stops the watcher + builder process.
    * Closes the file system watcher and disposes the esbuild context.
    *
    * @returns {Promise<boolean>}
@@ -460,6 +526,14 @@ class TinyBuilder {
       await this.#ctx.dispose();
       this.#ctx = null;
       console.log(`${this.#tag} Esbuild context disposed.`);
+      closed = true;
+    }
+
+    // Stop websocket
+    if (this.#ws) {
+      this.#ws.close();
+      this.#ws = null;
+      console.log(`${this.#tag} WebSocket stopped.`);
       closed = true;
     }
 

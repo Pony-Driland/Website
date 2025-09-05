@@ -3,7 +3,7 @@ import * as path from 'path';
 import { fileURLToPath } from 'url';
 import TinyWebEssentials from 'tiny-server-essentials';
 
-import { watchWebsite } from './builder.mjs';
+import { tiny, watchWebsite } from './builder.mjs';
 
 // Force environment to development mode
 process.env.NODE_ENV = 'development';
@@ -17,6 +17,7 @@ const __dirname = path.dirname(__filename);
 const http = new TinyWebEssentials.Express();
 http.init(); // prepares internal middleware and routing
 const port = 3000;
+tiny.port = port + 1;
 
 // Serve static files from dist/public (your build output)
 http.root.use(express.static(path.join(__dirname, '../../dist/public')));
