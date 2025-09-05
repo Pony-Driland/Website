@@ -44,9 +44,9 @@ async function run(command) {
 
 // TITLE: Main
 export default async function buildWebsite() {
-  const src = path.join(__dirname, '../src');
-  const distTemp = path.join(__dirname, '../dist/temp');
-  const distPublic = path.join(__dirname, '../dist/public');
+  const src = path.join(__dirname, '../../src');
+  const distTemp = path.join(__dirname, '../../dist/temp');
+  const distPublic = path.join(__dirname, '../../dist/public');
   const distVendor = path.join(distPublic, 'vendor');
 
   // Step 1: Reset dist/public
