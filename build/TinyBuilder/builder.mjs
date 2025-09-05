@@ -148,18 +148,32 @@ export async function buildWebsite() {
 
 // Tiny File Watcher sender
 class TinyFileWatcher {
-  /** @type {Array<import('chokidar').EmitArgsWithName>} */
+  /**
+   * Internal queue of chokidar event arguments.
+   * @type {Array<import('chokidar').EmitArgsWithName>}
+   */
   #queue = [];
 
-  /** @type {boolean} */
+  /**
+   * Whether the watcher is holding events in the queue
+   * instead of sending them immediately.
+   * @type {boolean}
+   */
   #usingQueue = false;
 
-  /** @returns {boolean} */
+  /**
+   * Returns whether the watcher is currently queueing events.
+   * @returns {boolean}
+   */
   get usingQueue() {
     return this.#usingQueue;
   }
 
-  /** @param {boolean} value */
+  /**
+   * Enables or disables the use of the queue.
+   * When set to `false`, all queued events are sent immediately.
+   * @param {boolean} value
+   */
   set usingQueue(value) {
     if (typeof value !== 'boolean') throw new TypeError('');
     this.#usingQueue = value;
@@ -167,24 +181,39 @@ class TinyFileWatcher {
   }
 
   /**
+   * Callback function signature used for file events.
    * @callback TinyFileFn
    * @param {import('chokidar').EmitArgsWithName} args
    */
 
-  /** @type {TinyFileFn | null} */
+  /**
+   * Current callback executed when an event is sent.
+   * @type {TinyFileFn | null}
+   */
   #callback = null;
 
-  /** @returns {TinyFileFn} */
+  /**
+   * Returns the current event callback.
+   * @returns {TinyFileFn | null}
+   */
   get callback() {
     return this.#callback;
   }
 
-  /** @param {TinyFileFn} value */
+  /**
+   * Sets the callback executed for each file event.
+   * @param {TinyFileFn} value
+   */
   set callback(value) {
     if (typeof value !== 'function') throw new TypeError('');
     this.#callback = value;
   }
 
+  /**
+   * Sends all queued events to the callback.
+   * Clears the queue afterwards.
+   * @private
+   */
   _send() {
     this.#queue.forEach(([eventName, filePath, stats]) => {
       console.log(`[tiny-builder] [update] ${filePath}`);
@@ -193,7 +222,10 @@ class TinyFileWatcher {
     this.#queue = [];
   }
 
-  /** @param {Set<import('chokidar').EmitArgsWithName>} value */
+  /**
+   * Adds a file event to the queue.
+   * @param {import('chokidar').EmitArgsWithName} value
+   */
   add(value) {
     this.#queue.push(value);
   }
