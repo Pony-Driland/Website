@@ -23,9 +23,20 @@ http.root.use(express.static(path.join(__dirname, '../../dist/public')));
 // Enable "freeMode", which serves raw files from /public (non-bundled assets)
 http.freeMode(path.join(__dirname, '../../public'));
 
+/** @type {Record<string, string>} */
+const eventsEmoji = {
+  change: '✏️',      // arquivo modificado
+  add: '➕📄',         // arquivo novo
+  addDir: '📂✨',      // pasta nova
+  unlink: '🗑️',      // arquivo removido
+  unlinkDir: '📁❌'   // pasta removida
+};
+
 (async () => {
   // Start esbuild in watch mode (rebuilds automatically on file changes)
-  const ctx = await watchWebsite([
+  const ctx = await watchWebsite((eventName, pathFile) => {
+    console.log(`[tiny-builder] [${eventName}] ${pathFile}`);
+  },[
     {
       name: 'tiny-build-watcher',
       setup(build) {
