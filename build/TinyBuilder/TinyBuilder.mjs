@@ -36,7 +36,7 @@ class TinyBuilder {
   /** @type {null|WebSocketServer} */
   #WebSocketServer = null;
 
-/**
+  /**
    * Dynamically imports the `ws` module and stores it in the instance.
    * Ensures the module is loaded only once (lazy singleton).
    *
@@ -335,22 +335,22 @@ class TinyBuilder {
     return this.#ws;
   }
 
-  /** 
-   * Internal console tag. 
+  /**
+   * Internal console tag.
    * @type {string}
    */
   #tag = '[tiny-builder]';
 
-  /** 
-   * Internal console tag. 
+  /**
+   * Internal console tag.
    * @returns {string}
    */
   get tag() {
     return this.#tag;
   }
 
-  /** 
-   * Internal console tag. 
+  /**
+   * Internal console tag.
    * @param {string} value
    */
   set tag(value) {
@@ -509,11 +509,12 @@ class TinyBuilder {
   /**
    * Starts the watcher + builder process.
    * @param {Function} beforeCallback - Optional callback executed before build starts
-   * @returns {Promise<BuildContext>} Esbuild context
+   * @returns {Promise<boolean>} Esbuild context
    */
   async start(beforeCallback) {
     if (typeof this.#src !== 'string') throw new Error('Expected string for Tiny Builder src.');
     if (this.#wsClosing) throw new Error('Expected a ws closed server.');
+    let started = false;
 
     // Before callback
     if (!this.#ctx) {
@@ -531,6 +532,8 @@ class TinyBuilder {
         const filePath = file.startsWith('/') ? file.substring(1) : file;
         this._addFilePath([event, filePath, stats]);
       });
+      this.#emit('fsStarted');
+      started = true;
     }
 
     // File Builder
@@ -564,6 +567,8 @@ class TinyBuilder {
 
       console.log(`${this.#tag} Starting Esbuild context...`);
       this.#ctx = await context(tinyCfg);
+      this.#emit('ctxStarted');
+      started = true;
     }
 
     // WebSocket Hmr
@@ -589,11 +594,14 @@ class TinyBuilder {
           this.#wsClosing = false;
           this.#ws = null;
         });
+        this.#emit('wsStarted');
+        started = true;
       }
     }
 
     console.log(`${this.#tag} Started!`);
-    return this.#ctx;
+    this.#emit('started', started);
+    return started;
   }
 
   /**
@@ -609,6 +617,7 @@ class TinyBuilder {
       await this.#fsWatcher.close();
       this.#fsWatcher = null;
       console.log(`${this.#tag} File watcher stopped.`);
+      this.#emit('fsStopped');
       closed = true;
     }
 
@@ -617,6 +626,7 @@ class TinyBuilder {
       await this.#ctx.dispose();
       this.#ctx = null;
       console.log(`${this.#tag} Esbuild context disposed.`);
+      this.#emit('ctxStopped');
       closed = true;
     }
 
@@ -626,9 +636,11 @@ class TinyBuilder {
       this.#ws.close();
       this.#ws = null;
       console.log(`${this.#tag} WebSocket stopped.`);
+      this.#emit('wsStopped');
       closed = true;
     }
 
+    this.#emit('stopped', closed);
     return closed;
   }
 

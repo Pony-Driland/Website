@@ -27,9 +27,8 @@ http.freeMode(path.join(__dirname, '../../public'));
 
 (async () => {
   // Start esbuild in watch mode (rebuilds automatically on file changes)
-  const ctx = await watchWebsite();
-
-  await ctx.watch(); // begin watching for changes
+  await watchWebsite();
+  await tiny.ctx?.watch(); // begin watching for changes
   // Start HTTP server
   http.getServer().listen(port, () => {
     console.log(`Test app listening on port ${port}`);
