@@ -10,7 +10,7 @@ import TinyDices from 'tiny-dices';
 
 import { isNoNsfw, tinyLs, tinyNotification, appData, connStore } from '../important.mjs';
 import tinyLib from '../files/tinyLib.mjs';
-import { clearFicData, saveRoleplayFormat, urlUpdate } from '../start.mjs';
+import { saveRoleplayFormat } from '../start.mjs';
 import storyCfg from '../chapters/config.mjs';
 import TinyMap from './TinyMap.mjs';
 import aiTemplates from './values/templates.mjs';
@@ -25,6 +25,7 @@ import './values/jsonTemplate.mjs';
 import { canSandBox, tinyAi, tinyIo, tinyStorage } from './software/base.mjs';
 import { tinyAiScript } from './software/tinyAiScript.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
+import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
 
 export const AiScriptStart = async () => {
   let sessionEnabled = true;

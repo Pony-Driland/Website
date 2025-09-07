@@ -5,13 +5,13 @@ import paginateArray from 'paginate-array';
 
 import { isNoNsfw, tinyLs } from '../important.mjs';
 import tinyLib from '../files/tinyLib.mjs';
-import { clearFicData, urlUpdate } from '../start.mjs';
 import { storyData } from '../files/chapters.mjs';
 import cacheChapterUpdater from './updater.mjs';
 import musicManager from './music/index.mjs';
 import storyCfg from '../chapters/config.mjs';
 import BootstrapPaginator from '../modules/bootstrap-paginator.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
+import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
 
 /*  Rain made by Aaron Rickle */
 const rainConfig = {};

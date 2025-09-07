@@ -2,6 +2,16 @@ import { TinyHtml } from 'tiny-essentials';
 import PhotoSwipeLightbox from 'photoswipe';
 
 /**
+ * Fix file urls
+ *
+ * @param {(file: string|null) => void} callback
+ * @returns {(item: TinyHtml<any>) => void}
+ */
+export const fixFileUrl = (callback) => (item) => {
+  item.removeAttr('target').on('click', () => callback(item.attr('file')));
+};
+
+/**
  * Fix external page urls
  *
  * @param {TinyHtml<any>} item
