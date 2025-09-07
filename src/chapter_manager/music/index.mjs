@@ -197,7 +197,7 @@ storyData.youtube = {
         console.log(`Starting Youtube API...`, videoID);
         const tag = document.createElement('script');
         tag.src = 'https://www.youtube.com/iframe_api';
-        TinyHtml.query('head').append(tag);
+        TinyHtml.query('head')?.append(tag);
 
         // Current Time Detector
         setInterval(() => {
@@ -425,10 +425,10 @@ const musicManager = {
   disable: (react = true) => {
     if (react) {
       storyData.music.disabled = true;
-      TinyHtml.query('#music-player').addClass('disabled-player');
+      TinyHtml.query('#music-player')?.addClass('disabled-player');
     } else {
       storyData.music.disabled = false;
-      TinyHtml.query('#music-player').removeClass('disabled-player');
+      TinyHtml.query('#music-player')?.removeClass('disabled-player');
     }
   },
 
@@ -609,7 +609,7 @@ window.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady() {
 musicManager.updatePlayer = () => {
   if (storyData.music.nav) {
     // View
-    TinyHtml.query('#music-player').addClass('border').removeClass('d-none').addClass('me-3');
+    TinyHtml.query('#music-player')?.addClass('border').removeClass('d-none').addClass('me-3');
 
     // Buff
     if (
@@ -630,7 +630,7 @@ musicManager.updatePlayer = () => {
         TinyHtml.queryAll('#music-player > a').has(storyData.music.nav.info),
       );
 
-      if (divBase.data('bs-tooltip-data') !== newTitle) {
+      if (divBase.size > 0 && divBase.data('bs-tooltip-data') !== newTitle) {
         divBase.setData('bs-tooltip-data', newTitle);
         const bsToolTip = divBase.data('BootstrapToolTip');
         if (bsToolTip) bsToolTip.setContent({ '.tooltip-inner': newTitle });
@@ -668,7 +668,7 @@ musicManager.updatePlayer = () => {
 ttsManager.updatePlayer = () => {
   if (storyData.tts.nav) {
     // View
-    TinyHtml.query('#tts-player').addClass('border').removeClass('d-none').addClass('me-3');
+    TinyHtml.query('#tts-player')?.addClass('border').removeClass('d-none').addClass('me-3');
 
     // Tooltip
     TinyHtml.queryAll('#tts-player > a[title]').forEach((instance) => Tooltip(instance));

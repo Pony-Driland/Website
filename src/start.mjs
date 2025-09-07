@@ -272,7 +272,7 @@ rootApp.onReady(() => {
        */
       (fn, readme) => {
         // Custom Colors
-        TinyHtml.query('head').append(
+        TinyHtml.query('head')?.append(
           TinyHtml.createFrom('style', { id: 'custom_color' }).setText(`
 
             .alert .close span{
@@ -461,9 +461,10 @@ rootApp.onReady(() => {
           // Base Crypto Modal
           let offCanvasEl = null;
           const baseCryptoModal = (crypto_value, title) => {
-            return () => {
+            return /** @param {Event} e */ (e) => {
+              e.preventDefault();
               const qrcodeCanvas = TinyHtml.createFrom('canvas');
-              QRCode.toCanvas(qrcodeCanvas[0], storyCfg[crypto_value].address, (error) => {
+              QRCode.toCanvas(qrcodeCanvas.get(0), storyCfg[crypto_value].address, (error) => {
                 if (error) {
                   alert(error);
                 } else {
@@ -861,7 +862,7 @@ rootApp.onReady(() => {
               )
               .on('click', (e) => {
                 e.preventDefault();
-                TinyHtml.query('#top_page').addClass('d-none');
+                TinyHtml.query('#top_page')?.addClass('d-none');
                 openChapterMenu();
                 if (offCanvasEl) offCanvasEl.hide();
               }),
@@ -885,7 +886,7 @@ rootApp.onReady(() => {
         const tinyCollapse2 = tinyLib.bs.navbar.collapse('right', 'small mdMenu', 'fic-nav');
 
         // Insert Navbar
-        TinyHtml.query('body').prepend(
+        TinyHtml.query('body')?.prepend(
           // Navbar
           navbarOffCanvas,
           tinyLib.bs.navbar.root('md-navbar', 'dark', true).append(
@@ -935,7 +936,7 @@ rootApp.onReady(() => {
         checkWindowSize();
 
         // Insert Readme
-        TinyHtml.query('#app').append(tinyLib.bs.container('markdown-read'));
+        TinyHtml.query('#app')?.append(tinyLib.bs.container('markdown-read'));
 
         // Footer Base
         const tinyFooter = { 1: [], 2: [] };
@@ -1074,7 +1075,7 @@ rootApp.onReady(() => {
         );
 
         // Insert Footer
-        TinyHtml.query('body').append(
+        TinyHtml.query('body')?.append(
           TinyHtml.createFrom('footer', { class: 'page-footer font-small pt-4 clearfix' }).append(
             // Base
             TinyHtml.createFrom('div', {

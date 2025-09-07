@@ -8,11 +8,6 @@ import FirebaseAccount from './account/firebase.mjs';
 TinyHtml.elemDebug = true;
 TinyHtml.defaultDisplay = '';
 
-// Tiny HTML
-export const $ = TinyHtml.query;
-export const $$ = TinyHtml.queryAll;
-export const $$$ = TinyHtml.createFrom;
-
 // Start jsStore
 export const connStore = new JsStore.Connection(new Worker('jsstore.worker.min.js'));
 

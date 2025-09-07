@@ -17,7 +17,7 @@ let firstTime = true;
 let deferredPrompt;
 window.matchMedia('(display-mode: standalone)').addEventListener('change', (evt) => {
   const body = TinyHtml.query('body');
-  body.removeClass(['window-browser', 'window-standalone']);
+  body?.removeClass(['window-browser', 'window-standalone']);
 
   let displayMode = 'browser';
   if (evt.matches) {
@@ -27,7 +27,7 @@ window.matchMedia('(display-mode: standalone)').addEventListener('change', (evt)
   // Log display mode change to analytics
   console.log(`[PWA] DISPLAY_MODE_CHANGED`, displayMode);
   tinyPwa.emit('displayMode', displayMode);
-  body.addClass(`window-${displayMode}`);
+  body?.addClass(`window-${displayMode}`);
 });
 
 window.addEventListener('beforeinstallprompt', (e) => {

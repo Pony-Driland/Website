@@ -47,7 +47,7 @@ tinyLib.mdManager.removeMetadata = (text) => {
 // Alert
 tinyLib.alert = (where, alertType, icon, text) => {
   TinyHtml.query(where)
-    .empty()
+    ?.empty()
     .append(
       tinyLib.bs.alert(alertType, [TinyHtml.createFrom('i', { class: icon }), ' ', text], true),
     );
@@ -90,7 +90,7 @@ tinyLib.modal = (data) => {
       ),
     );
 
-  TinyHtml.query('body').prepend(modal);
+  TinyHtml.query('body')?.prepend(modal);
   return Modal(modal, undefined, true);
 };
 
@@ -360,7 +360,7 @@ tinyLib.bs.dropdownClick = (place, data, callbackInsert) => {
     placement: 'bottom-start',
     trigger: 'click',
     hideOnClick: true,
-    appendTo: () => TinyHtml.query('body > #root').get(0),
+    appendTo: () => TinyHtml.query('body > #root')?.get(0),
   });
 
   for (const index in data) {
