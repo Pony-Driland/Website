@@ -1,6 +1,5 @@
 import { Loader } from 'circle-loader';
 import {
-  formatDayTimer,
   TinyHtml,
   TinyDomReadyManager,
   installWindowHiddenScript,
@@ -29,6 +28,19 @@ import TinyButton from './modules/template/TinyButton.mjs';
 import { Tooltip } from './modules/TinyBootstrap.mjs';
 import { AiScriptStart } from './ai/aiSoftware.mjs';
 import { tinyAiScript } from './ai/software/tinyAiScript.mjs';
+
+import '@cryptofonts/cryptofont/cryptofont.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'tippy.js/dist/tippy.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'photoswipe/dist/photoswipe.css';
+import '../node_modules/tiny-dices/dist/TinyDices.min.css';
+import '../node_modules/tiny-essentials/dist/v1/css/aiMarker.min.css';
+
+import './scss/dark.scss';
+import './scss/main.scss';
+import './scss/carousel.scss';
+import './scss/rpg.scss';
 
 addAiMarkerShortcut();
 
@@ -372,7 +384,10 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
       // Main content
       const colMain = TinyHtml.createFrom('div');
 
-      colMain.append(TinyHtml.createFrom('h1').setText(metadata.name), data);
+      colMain.append(
+        TinyHtml.createFrom('h1').setText(metadata.name),
+        TinyHtml.createFromHTML(data),
+      );
 
       // Sidebar
       const colSidebar = TinyHtml.createFrom('div', {
@@ -441,7 +456,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
 
       // Complete
       row.append(colSidebar, colMain);
-      markdownBase.html(row);
+      markdownBase.append(row);
     },
   };
 
@@ -452,7 +467,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
     typeof metadata.mode !== 'string' ||
     typeof pageTypes[metadata.mode] !== 'function'
   )
-    markdownBase.html(data);
+    markdownBase.setHtml(data);
   else pageTypes[metadata.mode]();
 
   // Top Page
@@ -573,12 +588,14 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
 
   // Fix Image
   TinyHtml.queryAll('[id="markdown-read"] img').forEach((item) => {
-    if (item.parents('a').length < 1) {
+    if (item.parents('a').length > 0) {
       // New Image Item
       const src = item.attr('src');
+      const originalHeight = item.attrNumber('height');
+      const originalWidth = item.attrNumber('width');
       const newImage = TinyHtml.createFrom('img', { class: 'img-fluid' })
-        .setStyle('height', item.attr('height'))
-        .setStyle('width', item.attr('width'));
+        .setStyle('height', originalHeight)
+        .setStyle('width', originalWidth);
       item.replaceWith(newImage);
 
       // Load Image File
@@ -589,14 +606,24 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
           'pointer-events': 'none',
         })
         .on('load', () => {
+          newImage.setData('image-size', {
+            width: newImage.width(),
+            height: newImage.height(),
+          });
+
+          newImage.setStyle({
+            opacity: '100%',
+            'pointer-events': '',
+            height: originalHeight,
+            width: originalWidth,
+          });
+
           const newImg = new Image();
-          newImg.onload = () => {
-            newImg.setData('image-size', {
+          newImg.onload = () =>
+            newImage.setData('image-size', {
               width: newImg.width,
               height: newImg.height,
             });
-            newImg.setStyle({ opacity: '100%', 'pointer-events': '' });
-          };
 
           newImg.src = newImage.attr('src');
         })
@@ -1683,13 +1710,14 @@ rootApp.onReady(() => {
           // Image
           TinyHtml.createFrom('div', {
             class: 'img',
-            css: { 'background-image': 'url(' + slide.img + ')' },
-          }).appendTo(item);
+          })
+            .setStyle({ 'background-image': 'url(' + slide.img + ')' })
+            .appendTo(item);
 
           // Text
           const caption = TinyHtml.createFrom('div', { class: 'carousel-caption' }).appendTo(item);
           TinyHtml.createFrom('h5', { class: 'px-5', text: slide.title ?? null }).appendTo(caption);
-          TinyHtml.createFrom('p', { class: 'px-5' }).html(slide.text).appendTo(caption);
+          TinyHtml.createFrom('p', { class: 'px-5' }).setHtml(slide.text).appendTo(caption);
         });
 
         // Start Readme

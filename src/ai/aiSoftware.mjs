@@ -1606,7 +1606,7 @@ export const AiScriptStart = async () => {
             TinyHtml.createFrom('h5').addClass('text-danger').setText('Delete Room'),
             TinyHtml.createFrom('p')
               .addClass('text-muted mb-2')
-              .html(
+              .setHtml(
                 'This action <strong>cannot be undone</strong>. Deleting this room will remove all its data permanently.',
               ),
           );
@@ -1913,7 +1913,7 @@ export const AiScriptStart = async () => {
 
         // show error
         const showError = (msg) => {
-          $errorBox.html(msg).removeClass('d-none');
+          $errorBox.setHtml(msg).removeClass('d-none');
         };
 
         // Hide the error when the user starts to type
@@ -2033,7 +2033,7 @@ export const AiScriptStart = async () => {
 
           // Show error message
           const showError = (msg) => {
-            $errorBox.html(msg).removeClass('d-none');
+            $errorBox.setHtml(msg).removeClass('d-none');
           };
 
           // Clear error when typing
@@ -2214,31 +2214,31 @@ export const AiScriptStart = async () => {
     createButtonSidebar('fas fa-donate', 'Donate <3', () => {
       const $container = TinyHtml.createFrom('div').addClass('text-center');
       $container.append(
-        TinyHtml.createFrom('p', { class: 'made-by-ai' }).html(
+        TinyHtml.createFrom('p', { class: 'made-by-ai' }).setHtml(
           'This project took <strong>months of dedication</strong> and many <em>sleepless nights</em>.',
         ),
       );
 
       $container.append(
-        TinyHtml.createFrom('p', { class: 'made-by-ai m-0' }).html(
+        TinyHtml.createFrom('p', { class: 'made-by-ai m-0' }).setHtml(
           'If you enjoyed all the love and effort I put into this <strong>super AI roleplay project</strong>,',
         ),
       );
 
       $container.append(
-        TinyHtml.createFrom('p', { class: 'made-by-ai' }).html(
+        TinyHtml.createFrom('p', { class: 'made-by-ai' }).setHtml(
           'I warmly invite you to support it with a <strong>voluntary donation</strong>',
         ),
       );
 
       $container.append(
-        TinyHtml.createFrom('p', { class: 'made-by-ai m-0' }).html(
+        TinyHtml.createFrom('p', { class: 'made-by-ai m-0' }).setHtml(
           'I accept both <strong>traditional currencies</strong> and <strong>cryptocurrencies</strong> as donation methods',
         ),
       );
 
       $container.append(
-        TinyHtml.createFrom('p', { class: 'made-by-ai' }).html(
+        TinyHtml.createFrom('p', { class: 'made-by-ai' }).setHtml(
           'Thank you for helping this tiny magical project grow! 🎁💕',
         ),
       );

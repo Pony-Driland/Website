@@ -94,7 +94,7 @@ fs.readdir(folderPath, (err, files) => {
         <meta property="og:site_name" content="${ficData.config.title}">
         <meta property="og:site" content="${ficData.config.title}">
         <meta property="twitter:site" content="${ficData.config.title}">
-        <meta http-equiv="refresh" content="0; URL='https://${ficData.config.domain}/?path=read-fic&chapter=${data.count}'"/>
+        <meta http-equiv="refresh" content="0; URL='/?path=read-fic&chapter=${data.count}'"/>
 
         <!-- Script -->
         <script src="../bundle.js"></script>

@@ -13,12 +13,6 @@ import { TinyEvents } from 'tiny-essentials';
 /** @typedef {import('chokidar').EmitArgsWithName} ChokidarEmitArgsWithName */
 
 /**
- * Represents the loader configuration used by esbuild.
- * Keys are file extensions, values are loader types (e.g., "ts", "js").
- * @typedef {{ [ext: string]: Loader }} BuildOptionsLoader
- */
-
-/**
  * Callback function signature used for file events.
  * @callback TinyFileFn
  * @param {ChokidarEmitArgsWithName} args - Chokidar event arguments
@@ -482,31 +476,6 @@ class TinyBuilder {
   }
 
   /**
-   * Loader configuration.
-   * @type {BuildOptionsLoader|null}
-   */
-  #loader = null;
-
-  /**
-   * Returns the current loader configuration.
-   * @returns {BuildOptionsLoader|null}
-   */
-  get loader() {
-    return this.#loader;
-  }
-
-  /**
-   * Replaces the loader configuration.
-   * @param {BuildOptionsLoader|null} value
-   * @throws {TypeError} If value is not a plain object.
-   */
-  set loader(value) {
-    if (value !== null && (typeof value !== 'object' || value === null || Array.isArray(value)))
-      throw new TypeError('Expected plain object for loader.');
-    this.#loader = value;
-  }
-
-  /**
    * Starts the watcher + builder process.
    * @param {Function} beforeCallback - Optional callback executed before build starts
    * @returns {Promise<boolean>} Esbuild context
@@ -541,7 +510,6 @@ class TinyBuilder {
       /** @type {BuildOptions} */
       const tinyCfg = {
         ...this.#config,
-        loader: this.#loader ?? undefined, // allow TypeScript files
         plugins: [
           ...(this.#config.plugins ?? []),
           // Build sender

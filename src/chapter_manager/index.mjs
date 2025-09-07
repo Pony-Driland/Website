@@ -73,8 +73,8 @@ const rainConfig = {};
 const rainMode = {
   start: () => {
     TinyHtml.queryAll('.rain').empty();
-    TinyHtml.queryAll('.rain.front-row').append(rainConfig.drops);
-    TinyHtml.queryAll('.rain.back-row').append(rainConfig.backDrops);
+    TinyHtml.queryAll('.rain.front-row').append(TinyHtml.createFromHTML(rainConfig.drops));
+    TinyHtml.queryAll('.rain.back-row').append(TinyHtml.createFromHTML(rainConfig.backDrops));
   },
 
   on: () => {
@@ -369,7 +369,7 @@ export const openChapterMenu = (params = {}) => {
           // Scroll
           TinyHtml.setWinScrollTop(TinyHtml.getById('app').offset().top);
           pagination2.show(page);
-          TinyHtml.query(window).trigger('scroll');
+          new TinyHtml(window).trigger('scroll');
         },
       });
 
@@ -446,7 +446,7 @@ export const openChapterMenu = (params = {}) => {
       }
 
       TinyHtml.setWinScrollTop(TinyHtml.getById('app').offset().top);
-      TinyHtml.query(window).trigger('scroll');
+      new TinyHtml(window).trigger('scroll');
     };
 
     searchItems.character = TinyHtml.createFrom('input', {
@@ -525,7 +525,7 @@ export const openChapterMenu = (params = {}) => {
     TinyHtml.query('body').addClass('ficMode');
 
     // Complete
-    TinyHtml.query(window).trigger('scroll');
+    new TinyHtml(window).trigger('scroll');
     if (line !== null) {
       const tinyLine = TinyHtml.query('#markdown-read [line="' + line + '"]');
       if (tinyLine) TinyHtml.setWinScrollTop(tinyLine.offset().top);

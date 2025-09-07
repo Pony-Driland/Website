@@ -126,6 +126,7 @@ cacheChapterUpdater.scrollData = () => {
   const removeAllWeather = () => {
     storyData.sfx['heavy-rain'].hide();
     storyData.sfx['heavy-rain-little-thunder'].hide();
+    TinyHtml.query('body').removeClass('raining-sky', 'thunder-effect');
   };
 
   // Set Weather
@@ -138,8 +139,10 @@ cacheChapterUpdater.scrollData = () => {
     if (!storyData.chapter.blockLineSave) {
       if (storyData.chapter.weather === 'heavyrain') {
         storyData.sfx['heavy-rain'].show();
+        // TinyHtml.query('body').addClass('raining-sky');
       } else if (storyData.chapter.weather === 'bolt') {
         storyData.sfx['heavy-rain-little-thunder'].show();
+        // TinyHtml.query('body').addClass('raining-sky', 'thunder-effect');
       }
     }
   }

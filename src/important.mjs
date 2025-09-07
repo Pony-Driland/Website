@@ -6,6 +6,7 @@ import FirebaseAccount from './account/firebase.mjs';
 
 // Debug mode
 TinyHtml.elemDebug = true;
+TinyHtml.defaultDisplay = '';
 
 // Tiny HTML
 export const $ = TinyHtml.query;
