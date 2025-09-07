@@ -113,7 +113,7 @@ getDirectories(folderPath, (err, files) => {
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="${ficData.config.title}">
         <meta property="og:site" content="${ficData.config.title}">
-        <meta http-equiv="refresh" content="0; URL='https://${ficData.config.domain}/?path=%2Fdata%2Fcharacters%2F${file.name}%2FREADME.md&title=${encodeURIComponent(jsonFile.title)}'"/>
+        <meta http-equiv="refresh" content="0; URL='/?path=%2Fdata%2Fcharacters%2F${file.name}%2FREADME.md&title=${encodeURIComponent(jsonFile.title)}'"/>
 
         <meta name="twitter:card" content="summary">
         <meta name="twitter:site" content="@${ficData.config.twitter.username}">

@@ -8,6 +8,7 @@ import { promisify } from 'util';
 import { fileURLToPath } from 'url';
 
 // Import esbuild and plugins
+import { sassPlugin } from 'esbuild-sass-plugin';
 import { nodeModulesPolyfillPlugin } from 'esbuild-plugins-node-modules-polyfill';
 import TinyBuilder from './TinyBuilder.mjs';
 
@@ -31,7 +32,12 @@ const distTemp = path.join(__dirname, '../../dist/temp');
 const distPublic = path.join(__dirname, '../../dist/public');
 
 export const tiny = new TinyBuilder({
-  plugins: [nodeModulesPolyfillPlugin()], // adds Node.js polyfills for browser builds
+  plugins: [
+    nodeModulesPolyfillPlugin(),
+    sassPlugin({
+      type: 'css', // gera arquivo CSS separado
+    }),
+  ], // adds Node.js polyfills for browser builds
   entryPoints: ['start.mjs', 'redirect.mjs'], // main entry points
   format: 'esm', // output as ES modules
   define: {
@@ -43,6 +49,16 @@ export const tiny = new TinyBuilder({
   bundle: true, // bundle dependencies together
   splitting: true, // enable code splitting
   outdir: path.join(distPublic, 'vendor'), // output directory
+  loader: {
+    '.png': 'file',
+    '.jpg': 'file',
+    '.jpeg': 'file',
+    '.svg': 'file',
+    '.woff': 'file',
+    '.woff2': 'file',
+    '.ttf': 'file',
+    '.eot': 'file',
+  },
 });
 
 tiny.src = path.join(__dirname, '../../src');

@@ -626,9 +626,11 @@ musicManager.updatePlayer = () => {
     // Title
     if (typeof storyData.music.title === 'string' && storyData.music.title.length > 0) {
       const newTitle = `Youtube - ${storyData.music.author_name} - ${storyData.music.title}`;
-      const divBase = TinyHtml.queryAll('#music-player > a').has(storyData.music.nav.info);
+      const divBase = new TinyHtml(
+        TinyHtml.queryAll('#music-player > a').has(storyData.music.nav.info),
+      );
 
-      if (divBase && divBase.data('bs-tooltip-data') !== newTitle) {
+      if (divBase.data('bs-tooltip-data') !== newTitle) {
         divBase.setData('bs-tooltip-data', newTitle);
         const bsToolTip = divBase.data('BootstrapToolTip');
         if (bsToolTip) bsToolTip.setContent({ '.tooltip-inner': newTitle });
