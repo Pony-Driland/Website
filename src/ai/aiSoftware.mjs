@@ -34,8 +34,8 @@ export const AiScriptStart = async () => {
 
   // Clear page
   clearFicData();
-  TinyHtml.query('#markdown-read').empty();
-  TinyHtml.query('#top_page').addClass('d-none');
+  TinyHtml.query('#markdown-read')?.empty();
+  TinyHtml.query('#top_page')?.addClass('d-none');
 
   // Can use backup
   const rpgCfg = tinyStorage.getApiKey(tinyStorage.selectedAi()) || {};
@@ -958,7 +958,7 @@ export const AiScriptStart = async () => {
 
     submit.on('click', () => {
       config.submitCall(textarea.val());
-      TinyHtml.query(`#${config.id}`).data('BootstrapModal').hide();
+      TinyHtml.query(`#${config.id}`)?.data('BootstrapModal').hide();
     });
 
     if (config.readOnly) submit.addProp('disabled').addClass('disabled');
@@ -3023,11 +3023,11 @@ export const AiScriptStart = async () => {
             if (tinyCache.msgBallon) {
               tinyCache.msgBallon.removeClass('entering-ai-message');
               const ballonCache = tinyCache.msgBallon.data('tiny-ai-cache');
-              if (TinyHtml.query('body').hasClass('windowHidden')) {
+              if (TinyHtml.query('body')?.hasClass('windowHidden')) {
                 if (ballonCache) tinyNotification.send(ballonCache.role, { body: ballonCache.msg });
                 else notificationError();
               }
-            } else if (TinyHtml.query('body').hasClass('windowHidden')) notificationError();
+            } else if (TinyHtml.query('body')?.hasClass('windowHidden')) notificationError();
             completeTask();
           }
         })
@@ -3912,7 +3912,7 @@ export const AiScriptStart = async () => {
   }
 
   // Complete
-  TinyHtml.query('#markdown-read').append(container);
+  TinyHtml.query('#markdown-read')?.append(container);
   await rpgData.init().then(() => rpgData.finishOffCanvas(updateAiTokenCounterData));
 
   // Rpg mode

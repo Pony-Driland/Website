@@ -10,9 +10,9 @@ export const tinyStorage = new TinyAiStorage();
 
 appData.emitter.on('isUsingAI', (usingAI) => {
   if (usingAI) {
-    TinyHtml.query('body').addClass('is-using-ai');
+    TinyHtml.query('body')?.addClass('is-using-ai');
   } else {
-    TinyHtml.query('body').removeClass('is-using-ai');
+    TinyHtml.query('body')?.removeClass('is-using-ai');
   }
 });
 

@@ -30,14 +30,14 @@ export const clearFicData = () => {
   }
 
   TinyHtml.query('body')
-    .removeClass('ficMode')
+    ?.removeClass('ficMode')
     .removeClass(`fic-daycicle-morning`)
     .removeClass(`fic-daycicle-evening`)
     .removeClass(`fic-daycicle-night`)
     .removeClass(`fic-daycicle-lateAtNight`);
 
   new TinyHtml(storyData.nc.base.right.find(':scope > #status')).empty();
-  TinyHtml.query('#fic-chapter').empty();
+  TinyHtml.query('#fic-chapter')?.empty();
   storyData.readFic = false;
   storyData.chapter.html = {};
   storyData.chapter.line = null;
@@ -245,25 +245,25 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
 
       // Complete
       row.append(colSidebar, colMain);
-      markdownBase.append(row);
+      markdownBase?.append(row);
     },
   };
 
   // Insert Data
-  markdownBase.empty();
+  markdownBase?.empty();
   if (
     !metadata ||
     typeof metadata.mode !== 'string' ||
     typeof pageTypes[metadata.mode] !== 'function'
   )
-    markdownBase.setHtml(data);
+    markdownBase?.setHtml(data);
   else pageTypes[metadata.mode]();
 
   // Top Page
   if (isMainPage) {
-    TinyHtml.query('#top_page').removeClass('d-none');
+    TinyHtml.query('#top_page')?.removeClass('d-none');
   } else {
-    TinyHtml.query('#top_page').addClass('d-none');
+    TinyHtml.query('#top_page')?.addClass('d-none');
   }
 
   const markdownHid = (text) =>
@@ -275,10 +275,12 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
         .replace(/\(|\)|\?|\!/g, '_'),
     )}`;
 
-  const markdownItems = new TinyHtml(markdownBase.find(`h1,h2,h3,h4,h5`));
-  markdownItems.forEach((item) => {
-    item.setAttr('id', markdownHid(item.text()));
-  });
+  if (markdownBase) {
+    const markdownItems = new TinyHtml(markdownBase.find(`h1,h2,h3,h4,h5`));
+    markdownItems.forEach((item) => {
+      item.setAttr('id', markdownHid(item.text()));
+    });
+  }
 
   // Content List
   if (canContentList)

@@ -78,11 +78,11 @@ const rainMode = {
   },
 
   on: () => {
-    TinyHtml.query('body').addClass('raining-sky');
+    TinyHtml.query('body')?.addClass('raining-sky');
   },
 
   off: () => {
-    TinyHtml.query('body').addClass('raining-sky');
+    TinyHtml.query('body')?.addClass('raining-sky');
   },
 };
 
@@ -189,7 +189,7 @@ const storyDialogue = {
 export const openChapterMenu = (params = {}) => {
   // Prepare Data
   clearFicData();
-  TinyHtml.query('#markdown-read').empty();
+  TinyHtml.query('#markdown-read')?.empty();
   storyData.chapter.blockLineSave = false;
 
   // Get Page Data
@@ -273,7 +273,7 @@ export const openChapterMenu = (params = {}) => {
   // New Read
   const newRead = async (chapter = 1, selectedLine = null) => {
     // Clear Update Warn
-    TinyHtml.query('#fic-start').setText('Read Fic').prepend(tinyLib.icon('fab fa-readme me-2'));
+    TinyHtml.query('#fic-start')?.setText('Read Fic').prepend(tinyLib.icon('fab fa-readme me-2'));
 
     // Load Sounds
     if (storyCfg.sfx) {
@@ -320,11 +320,11 @@ export const openChapterMenu = (params = {}) => {
 
     // Set Selected
     storyData.readFic = true;
-    TinyHtml.query('#fic-chapter').setText(`Chapter ${chapter}`);
+    TinyHtml.query('#fic-chapter')?.setText(`Chapter ${chapter}`);
     storyData.chapter.selected = chapter;
 
     // Prepare Data
-    TinyHtml.query('#markdown-read').empty();
+    TinyHtml.query('#markdown-read')?.empty();
 
     // Detect Bookmark
     const { page, filtedItems, selectedLine: line } = getPageData(selectedLine, chapter);
@@ -467,7 +467,7 @@ export const openChapterMenu = (params = {}) => {
     searchItems.base.append(searchItems.character, searchItems.message);
 
     // Table
-    TinyHtml.query('#markdown-read').append(
+    TinyHtml.query('#markdown-read')?.append(
       // Info
       tinyLib.bs
         .alert('info')
@@ -522,7 +522,7 @@ export const openChapterMenu = (params = {}) => {
     );
 
     // Fic Mode
-    TinyHtml.query('body').addClass('ficMode');
+    TinyHtml.query('body')?.addClass('ficMode');
 
     // Complete
     new TinyHtml(window).trigger('scroll');
@@ -568,7 +568,7 @@ export const openChapterMenu = (params = {}) => {
     }
 
     // Prepare Choose
-    markdownRead.append(
+    markdownRead?.append(
       // Banner
       TinyHtml.createFrom('img', { class: 'img-fluid mb-2', src: '/img/external/banner1.jpg' }),
 

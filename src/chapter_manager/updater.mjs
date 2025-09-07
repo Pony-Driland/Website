@@ -71,7 +71,11 @@ new TinyHtml(window).on(['resize', 'scroll'], () => {
       // Detect Selected Item
       for (const item in storyData.chapter.html) {
         const tinyItem = storyData.chapter.html[item];
-        if (TinyHtml.isInViewport(tinyItem) && !TinyHtml.isCollWith(tinyItem, mdNavbar)) {
+        if (
+          mdNavbar &&
+          TinyHtml.isInViewport(tinyItem) &&
+          !TinyHtml.isCollWith(tinyItem, mdNavbar)
+        ) {
           selectedItem = Number(item);
           break;
         }
@@ -126,7 +130,7 @@ cacheChapterUpdater.scrollData = () => {
   const removeAllWeather = () => {
     storyData.sfx['heavy-rain'].hide();
     storyData.sfx['heavy-rain-little-thunder'].hide();
-    TinyHtml.query('body').removeClass('raining-sky', 'thunder-effect');
+    TinyHtml.query('body')?.removeClass('raining-sky', 'thunder-effect');
   };
 
   // Set Weather
@@ -139,10 +143,10 @@ cacheChapterUpdater.scrollData = () => {
     if (!storyData.chapter.blockLineSave) {
       if (storyData.chapter.weather === 'heavyrain') {
         storyData.sfx['heavy-rain'].show();
-        // TinyHtml.query('body').addClass('raining-sky');
+        // TinyHtml.query('body')?.addClass('raining-sky');
       } else if (storyData.chapter.weather === 'bolt') {
         storyData.sfx['heavy-rain-little-thunder'].show();
-        // TinyHtml.query('body').addClass('raining-sky', 'thunder-effect');
+        // TinyHtml.query('body')?.addClass('raining-sky', 'thunder-effect');
       }
     }
   }
@@ -308,7 +312,7 @@ cacheChapterUpdater.data = (lastPage) => {
     }
 
     const infoInsert = `Chapter ${storyData.chapter.selected} / Line ${storyData.chapter.line}`;
-    TinyHtml.query('#fic-chapter').setText(infoInsert);
+    TinyHtml.query('#fic-chapter')?.setText(infoInsert);
     document.title = `${storyData.title} - ${infoInsert}`;
   }
 };
@@ -364,7 +368,7 @@ const chapterSet = {
   dayNightCycle: (value, actionFromNow = false) => {
     if (actionFromNow) {
       TinyHtml.query('body')
-        .removeClass(`fic-daycicle-morning`)
+        ?.removeClass(`fic-daycicle-morning`)
         .removeClass(`fic-daycicle-evening`)
         .removeClass(`fic-daycicle-night`)
         .removeClass(`fic-daycicle-lateAtNight`)
