@@ -1,0 +1,136 @@
+/* AI Tab */
+body:not(.can-ai) .nav-ai {
+  display: none !important;
+}
+
+body.is-using-ai .page-footer {
+  display: none !important;
+}
+
+body.is-using-ai #root {
+  padding-top: 8px;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body.is-using-ai #markdown-read {
+  padding: 0px;
+  margin: 0px;
+  min-width: 100%;
+  min-height: 100%;
+  height: 100%;
+  position: absolute;
+  padding-bottom: 56px;
+}
+
+body.is-using-ai,
+body.is-using-ai #root,
+body.is-using-ai #app {
+  overflow: hidden !important;
+}
+
+/* AI Chatbox */
+#ai-chatbox.hide-msg-buttons .ai-text-editor > button {
+  pointer-events: none !important;
+}
+
+#ai-chatbox.hide-msg-buttons .ai-text-editor > button > * {
+  opacity: 0.6 !important;
+}
+
+#ai-chatbox .ai-text-editor {
+  text-align: end;
+  margin-bottom: -31px;
+  position: relative;
+  top: -31px;
+  right: 8px;
+}
+
+#ai-chatbox .ai-chat-data {
+  border: 1px solid transparent;
+}
+
+#ai-chatbox .ai-chat-data:hover {
+  border-color: #fff;
+}
+
+#ai-chatbox .ai-chat-data .ai-text-editor {
+  display: none;
+}
+
+#ai-chatbox .ai-chat-data:not(.entering-ai-message):hover .ai-text-editor {
+  display: block;
+}
+
+#ai-chatbox .ai-chat-data:not(.entering-ai-message) .final-ai-icon {
+  display: none;
+}
+
+#ai-chatbox .ai-chat-data:hover .btn-bg {
+  background-color: #1d1d1d;
+}
+
+#ai-chatbox .ai-chat-data:hover .btn-bg:hover {
+  background-color: #383838;
+}
+
+#ai-chatbox .ai-chat-data p:last-child,
+#ai-chatbox .ai-chat-data h1:last-child,
+#ai-chatbox .ai-chat-data h2:last-child,
+#ai-chatbox .ai-chat-data h3:last-child,
+#ai-chatbox .ai-chat-data h4:last-child,
+#ai-chatbox .ai-chat-data h5:last-child {
+  margin-bottom: 0px;
+}
+
+#ai-chatbox .ai-chat-data table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+#ai-chatbox .ai-chat-data thead th {
+  text-align: left;
+  font-weight: bold;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
+
+#ai-chatbox .ai-chat-data tbody td {
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+/* Ai Mode List */
+#ai-mode-list .btn.selected {
+  color: #e36b00;
+}
+
+/* Ai roleplay style */
+#ai-chatbox .ai-chat-data .bg-secondary em {
+  color: var(--gray);
+}
+
+#ai-chatbox .ai-chat-data .bg-primary em {
+  color: var(--bs-gray-300);
+}
+
+#ai-chatbox .ai-chat-data .alert {
+  background-color: #000 !important;
+}
+
+#ai-chatbox .ai-chat-data .alert .btn-close {
+  filter: var(--bs-btn-close-white-filter) !important;
+}
