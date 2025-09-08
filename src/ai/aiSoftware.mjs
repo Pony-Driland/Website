@@ -113,7 +113,10 @@ export const AiScriptStart = async () => {
     style: 'width: 250px; min-width: 250px; overflow-y: auto;',
   };
 
-  // Sidebar Button
+  /**
+   * Sidebar Button
+   * @returns {TinyHtml<HTMLElement>}
+   */
   const createButtonSidebar = (icon, text, callback, disabled = false, options = null) => {
     const tinyClass = `link btn-bg text-start w-100${disabled ? ' disabled' : ''}`;
     return tinyLib.bs

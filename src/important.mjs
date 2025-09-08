@@ -15,6 +15,7 @@ export const loaderScreen = new TinyLoadingScreen();
 loaderScreen.defaultMessage = 'Loading...';
 
 // Debug mode
+TinyHtml.classCanWhitespace = true;
 TinyHtml.elemDebug = true;
 TinyHtml.defaultDisplay = '';
 

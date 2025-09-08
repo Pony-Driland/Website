@@ -656,7 +656,7 @@ musicManager.updatePlayer = () => {
     if (typeof storyData.music.volume === 'number' && storyData.music.volume > 0) {
       storyData.music.nav.volume.addClass('fa-volume-up');
     } else {
-      storyData.music.nav.volume.addClass('fas fa-volume-mute');
+      storyData.music.nav.volume.addClass('fa-volume-mute');
     }
 
     // Tooltip
