@@ -1,9 +1,8 @@
-import { Loader } from 'circle-loader';
 import objHash from 'object-hash';
 import { countObj, toTitleCase, TinyHtml } from 'tiny-essentials';
 import paginateArray from 'paginate-array';
 
-import { isNoNsfw, tinyLs } from '../important.mjs';
+import { isNoNsfw, loaderScreen, tinyLs } from '../important.mjs';
 import tinyLib from '../files/tinyLib.mjs';
 import { storyData } from '../files/chapters.mjs';
 import cacheChapterUpdater from './updater.mjs';
@@ -278,15 +277,15 @@ export const openChapterMenu = (params = {}) => {
     // Load Sounds
     if (storyCfg.sfx) {
       console.log(`Loading Audio Data...`);
-      Loader.start(`Loading audio data...`);
+      loaderScreen.start(`Loading audio data...`);
 
       if (!storyData.sfx) storyData.sfx = {};
       const countAudioTotal = countObj(storyCfg.sfx);
       let countAudio = 0;
       for (const item in storyCfg.sfx) {
         countAudio++;
-        Loader.close();
-        Loader.start(`Loading audio data ${countAudio}/${countAudioTotal}...`);
+        loaderScreen.stop();
+        loaderScreen.start(`Loading audio data ${countAudio}/${countAudioTotal}...`);
         if (
           !storyData.sfx[item] &&
           typeof storyCfg.sfx[item].type === 'string' &&
@@ -314,7 +313,7 @@ export const openChapterMenu = (params = {}) => {
         }
       }
 
-      Loader.close();
+      loaderScreen.stop();
       console.log(`Audio Data Loaded!`);
     }
 

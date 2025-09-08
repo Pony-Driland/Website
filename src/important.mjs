@@ -1,8 +1,18 @@
 import { EventEmitter } from 'events';
 import * as JsStore from 'jsstore';
-import { getAge, TinyHtml, TinyLocalStorage, TinyNotifications } from 'tiny-essentials';
+import {
+  getAge,
+  TinyHtml,
+  TinyLoadingScreen,
+  TinyLocalStorage,
+  TinyNotifications,
+} from 'tiny-essentials';
 import storyCfg from './chapters/config.mjs';
 import FirebaseAccount from './account/firebase.mjs';
+
+// Loading
+export const loaderScreen = new TinyLoadingScreen();
+loaderScreen.defaultMessage = 'Loading...';
 
 // Debug mode
 TinyHtml.elemDebug = true;

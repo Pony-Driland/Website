@@ -1,10 +1,9 @@
 import { marked } from 'marked';
-import { Loader } from 'circle-loader';
 import { TinyHtml } from 'tiny-essentials';
 import tinyLib from '../files/tinyLib.mjs';
 
 import { storyData } from '../files/chapters.mjs';
-import { appData, gtag } from '../important.mjs';
+import { appData, gtag, loaderScreen } from '../important.mjs';
 import { tinyAiScript } from '../ai/software/tinyAiScript.mjs';
 import storyCfg from '../chapters/config.mjs';
 
@@ -410,7 +409,7 @@ export const openMDFile = async (url, isMain = false) => {
     if (url !== 'MAIN') {
       // Read Data Base
       console.log(`Opening MD file "${url}"...`);
-      Loader.start();
+      loaderScreen.start();
 
       // Load ajax
       const fileData = await fetch(
@@ -422,7 +421,7 @@ export const openMDFile = async (url, isMain = false) => {
       )
         .then((res) => res.text())
         .catch((err) => {
-          Loader.close();
+          loaderScreen.stop();
           console.error(err);
           alert(err.message);
         });
@@ -476,11 +475,11 @@ export const openMDFile = async (url, isMain = false) => {
         insertMarkdownFile(fileLines, metadata, isMain, url.endsWith('.md') ? false : true);
 
         TinyHtml.setWinScrollTop(0);
-        Loader.close();
+        loaderScreen.stop();
         urlUpdate(url, title);
       } catch (err) {
         // Error!
-        Loader.close();
+        loaderScreen.stop();
         console.error(err);
         alert(err.message);
       }

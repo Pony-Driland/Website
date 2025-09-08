@@ -1,4 +1,3 @@
-import { Loader } from 'circle-loader';
 import {
   TinyHtml,
   TinyDomReadyManager,
@@ -19,7 +18,7 @@ import tinyLib from './files/tinyLib.mjs';
 import { storyData } from './files/chapters.mjs';
 import storyCfg from './chapters/config.mjs';
 import { openChapterMenu } from './chapter_manager/index.mjs';
-import { tinyLs, fa, needsAgeVerification } from './important.mjs';
+import { tinyLs, fa, needsAgeVerification, loaderScreen } from './important.mjs';
 
 import TinyIcon from './modules/template/TinyIcon.mjs';
 import TinyButton from './modules/template/TinyButton.mjs';
@@ -34,6 +33,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'photoswipe/dist/photoswipe.css';
 import '../node_modules/tiny-dices/dist/TinyDices.min.css';
 import 'tiny-essentials/css/aiMarker.min.css';
+import 'tiny-essentials/css/TinyLoadingScreen.min.css';
 
 import './scss/dark.scss';
 import './scss/main.scss';
@@ -713,13 +713,13 @@ rootApp.onReady(() => {
 
             loginAccount.link.on('click', async () => {
               if (fa.currentUser) {
-                Loader.start(`Logging out...`);
+                loaderScreen.start(`Logging out...`);
                 await fa.logout();
               } else {
-                Loader.start(`Signing in...`);
+                loaderScreen.start(`Signing in...`);
                 await fa.login();
               }
-              Loader.close();
+              loaderScreen.stop();
             });
 
             const checkStatus = /** @type {import('./account/firebase.mjs').OnAuthStateChanged} */ (

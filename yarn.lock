@@ -3155,11 +3155,6 @@ chrome-trace-event@^1.0.2:
   resolved "https://registry.yarnpkg.com/chrome-trace-event/-/chrome-trace-event-1.0.4.tgz#05bffd7ff928465093314708c93bdfa9bd1f0f5b"
   integrity sha512-rNjApaLzuwaOTjCiT8lSDdGN1APCiqkChLMJxJPWLunPAt5fy8xgU9/jNOchV84wfIxrA0lRQB7oCT8jrn/wrQ==
 
-circle-loader@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/circle-loader/-/circle-loader-1.0.6.tgz#1a5073cbcdd5c64707f4a8848cb1b32392b63dc5"
-  integrity sha512-JSC+YwkKxaZ+ePBCrStq0QmC5TaMjKPZR3Ny8ge3VmO36Wv3TdOY9IIPtoFtbibdxT3DG5MvBlbaimNSziiQhA==
-
 clap@^1.0.9:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/clap/-/clap-1.2.3.tgz#4f36745b32008492557f46412d66d50cb99bce51"
@@ -7762,10 +7757,10 @@ tiny-essentials@^1.22.1:
   resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.22.1.tgz#319e17a601444fd509498a617a9572a07d00d277"
   integrity sha512-8ndZajE5FXEIknBsBzarDCj3ZCE6+ChZ6/VFBKQHAHYdat2nhm/3cmpD8KFNmFHweTRKCl4F+AMIiOOB67Ilrw==
 
-tiny-essentials@^1.22.15:
-  version "1.22.15"
-  resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.22.15.tgz#33828562e9e222a0f065f6bbc62b95bafec47504"
-  integrity sha512-Fjpy/3BpZJnz1ves/d8HOJq2Ajo59qdOBpkzGLR4FxwoO8J7QJP3zNlxiOkSPpQbJ40N48A9l19OFH1uYbQJUw==
+tiny-essentials@^1.23.1:
+  version "1.23.1"
+  resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.23.1.tgz#3c51a33836f84c8e80ec895c912d5f20d6225970"
+  integrity sha512-hIwUAR7p9c1bnwC7ZgKQ0tv/fK+52Zb8Sgyxys7+Z8IlUFS+2WhtRGiAQ090bJhy4xb31dBGkEWi+AyyHQ0gpw==
 
 tiny-server-essentials@^1.0.4:
   version "1.0.4"
