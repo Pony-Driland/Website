@@ -1,4 +1,3 @@
-import { Loader } from 'circle-loader';
 import moment from 'moment';
 import { marked } from 'marked';
 import clone from 'clone';
@@ -8,7 +7,14 @@ import { saveAs } from 'file-saver';
 import { objType, countObj, toTitleCase, TinyTextRangeEditor, TinyHtml } from 'tiny-essentials';
 import TinyDices from 'tiny-dices';
 
-import { isNoNsfw, tinyLs, tinyNotification, appData, connStore } from '../important.mjs';
+import {
+  isNoNsfw,
+  tinyLs,
+  tinyNotification,
+  appData,
+  connStore,
+  loaderScreen,
+} from '../important.mjs';
 import tinyLib from '../files/tinyLib.mjs';
 import { saveRoleplayFormat } from '../start.mjs';
 import storyCfg from '../chapters/config.mjs';
@@ -89,7 +95,7 @@ export const AiScriptStart = async () => {
     return;
   }
 
-  Loader.start();
+  loaderScreen.start();
   const contentEnabler = new EnablerAiContent();
   const rpgData = new RpgData();
 
@@ -429,7 +435,7 @@ export const AiScriptStart = async () => {
         })
         .catch((err) => {
           alert(err.message);
-          Loader.close();
+          loaderScreen.stop();
           reject(err);
         });
     });
@@ -2514,7 +2520,7 @@ export const AiScriptStart = async () => {
     'Load more models',
     async () => {
       if (!tinyAiScript.noai && !tinyAiScript.mpClient) {
-        Loader.start();
+        loaderScreen.start();
         await tinyAi.getModels(100);
 
         if (!tinyAi._nextModelsPageToken) {
@@ -2523,7 +2529,7 @@ export const AiScriptStart = async () => {
         }
 
         updateModelList();
-        Loader.close();
+        loaderScreen.stop();
       }
     },
     !tinyAi._nextModelsPageToken,
@@ -3988,23 +3994,23 @@ export const AiScriptStart = async () => {
           // Error
           else {
             sendSocketError(result);
-            Loader.close();
+            loaderScreen.stop();
           }
         });
 
         client.on('roomError', (result) => {
           sendSocketError(result);
-          Loader.close();
+          loaderScreen.stop();
         });
 
         client.on('roomNotFound', () => {
           makeTempMessage('The room was not found', rpgCfg.ip);
-          Loader.close();
+          loaderScreen.stop();
         });
 
         client.on('roomJoinned', (result) => {
           makeTempMessage(`You successfully entered the room **${result.roomId}**!`, rpgCfg.ip);
-          Loader.close();
+          loaderScreen.stop();
         });
 
         // Disconnected
@@ -4023,7 +4029,7 @@ export const AiScriptStart = async () => {
           // Prepare disconnect progress
           if (tinyAiScript.mpClient) {
             // Is active
-            if (client.isActive()) Loader.start();
+            if (client.isActive()) loaderScreen.start();
             // Disable page
             else {
               contentEnabler.deBase();
@@ -4134,5 +4140,5 @@ export const AiScriptStart = async () => {
 
   // Finished
   await tinyNotification.requestPerm();
-  Loader.close();
+  loaderScreen.stop();
 };

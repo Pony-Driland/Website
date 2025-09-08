@@ -1,11 +1,10 @@
-import { Loader } from 'circle-loader';
 import objHash from 'object-hash';
 
 import { toTitleCase, fetchJson, isJsonObject } from 'tiny-essentials';
 
 import tinyLib from './tinyLib.mjs';
 import storyCfg from '../chapters/config.mjs';
-import { connStore, tinyLs } from '../important.mjs';
+import { connStore, loaderScreen, tinyLs } from '../important.mjs';
 
 // Prepare Data
 export const storyData = {
@@ -52,7 +51,7 @@ export const storyData = {
     if (typeof startApp !== 'function') return failApp(new Error('Start App not found!'));
 
     // Start App
-    Loader.start('Loading readme...');
+    loaderScreen.start('Loading readme...');
 
     // Read Data Base
     const readme = await fetch('/readme.html' + window.fileVersion, {
@@ -62,7 +61,7 @@ export const storyData = {
       .then((res) => res.text())
       .catch((err) => {
         console.log(`README.md failed during the load!`);
-        Loader.close();
+        loaderScreen.stop();
         failApp(err);
       });
     if (!readme) throw new Error('No readme data to start the app.');
@@ -72,8 +71,8 @@ export const storyData = {
     for (let i = 0; i < storyData.chapter.amount; i++) {
       // Data
       const chapter = i + 1;
-      Loader.close();
-      Loader.start(`Loading chapter ${chapter}...`);
+      loaderScreen.stop();
+      loaderScreen.start(`Loading chapter ${chapter}...`);
       console.log(`Loading Chapter ${chapter}...`);
       console.log(
         './chapters/' + storyData.lang.active + '/' + chapter + '.json' + window.fileVersion,
@@ -82,7 +81,7 @@ export const storyData = {
         './chapters/' + storyData.lang.active + '/' + chapter + '.json' + window.fileVersion,
       ).catch((err) => {
         console.log(`Chapter ${chapter} failed during the load!`);
-        Loader.close();
+        loaderScreen.stop();
         failApp(err);
       });
       if (!data) throw new Error('No chapter data found.');
@@ -240,8 +239,8 @@ export const storyData = {
     };
 
     let dbError = false;
-    Loader.close();
-    Loader.start('Loading local database...');
+    loaderScreen.stop();
+    loaderScreen.start('Loading local database...');
     await connStore
       .initDb({
         name: 'pony-driland',
@@ -282,8 +281,8 @@ export const storyData = {
     console.log('App Started!');
     console.log('Loading UI...');
 
-    Loader.close();
-    Loader.start('Starting website...');
+    loaderScreen.stop();
+    loaderScreen.start('Starting website...');
     if (
       location.hostname !== 'localhost' &&
       location.hostname !== '127.0.0.1' &&
@@ -297,7 +296,7 @@ export const storyData = {
 
     // Start app now
     startApp(() => {
-      Loader.close();
+      loaderScreen.stop();
       console.log('UI loaded!');
     }, readme);
   },
