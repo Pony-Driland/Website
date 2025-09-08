@@ -170,21 +170,44 @@ alert = (text, title = 'Browser Warning!') => {
   });
 };
 
-// Remove AI tags
+/**
+ * Remove AI tags
+ * 
+ * @param {string} str
+ */
 tinyLib.removeAiTags = (str) => {
   return str.replace(/\<ai\>|\<\/ai\>/g, '');
 };
 
+/**
+ * @param {string} text
+ * @param {string} [type='g']
+ */
 tinyLib.getGitUrlPath = (text, type = 'g') => {
   const tinyUrl = `https\\:\\/\\/github.com\\/${storyCfg.github.account}\\/${storyCfg.github.repository}\\/blob\\/main\\/`;
   return new RegExp(typeof text === 'string' ? text.replace('{url}', tinyUrl) : tinyUrl, type);
 };
 
-// Icon
+/**
+ * Icon
+ * 
+ * @param {string} classItem
+ */
 tinyLib.icon = (classItem) => TinyHtml.createFrom('i', { class: classItem });
 
 // Files Upload button
 tinyLib.upload = {};
+
+/**
+ * @callback UploadCallback
+ * @param {Event} event
+ */
+
+/** 
+ * @param {{ multiple?: boolean; directory?: boolean; accept?: string; }} [configs]
+ * @param {TinyHtml<any>|null} button
+ * @param {UploadCallback | null} callback
+ */
 tinyLib.upload.button = (configs = {}, button = null, callback = null) => {
   // Create button
   const importButton = TinyHtml.createFrom('input', { type: 'file', style: 'display: none;' });
@@ -199,11 +222,19 @@ tinyLib.upload.button = (configs = {}, button = null, callback = null) => {
   // Prepare button functions
   importButton.on('change', callback);
   button.on('click', () => importButton.trigger('click'));
-  button.parent().append(importButton);
+  const parent = button.parent();
+  if (parent) new TinyHtml(parent).append(importButton);
   return button;
 };
 
-// File base64 selector template
+/**
+ * File base64 selector template
+ * 
+ * @param {TinyHtml<any>|null} button
+ * @param {string} [baseFormat='']
+ * @param {UploadCallback | null} callback
+ * @param {string} [accept='*']
+ */
 tinyLib.upload.dataUrl = (button = null, baseFormat = '', callback = null, accept = '*') =>
   tinyLib.upload.button({ accept: `${baseFormat}/${accept}` }, button, (event) => {
     const file = event.target.files[0];
@@ -219,11 +250,22 @@ tinyLib.upload.dataUrl = (button = null, baseFormat = '', callback = null, accep
       .catch((err) => callback(err, null));
   });
 
-// Image upload
+  /**
+ * Image upload
+ * 
+ * @param {TinyHtml<any>|null} button
+ * @param {UploadCallback | null} callback
+ * @param {string} [accept='*']
+ */
 tinyLib.upload.img = (button = null, callback = null, accept = '*') =>
   tinyLib.upload.dataUrl(button, 'image', callback, accept);
 
-// Json upload
+  /**
+ * Json upload
+ * 
+ * @param {TinyHtml<any>|null} button
+ * @param {UploadCallback | null} callback
+ */
 tinyLib.upload.json = (button = null, callback = null) =>
   tinyLib.upload.button({ accept: '.json' }, button, (event) => {
     const file = event.target.files[0];
@@ -236,7 +278,13 @@ tinyLib.upload.json = (button = null, callback = null) =>
 // Bootstrap
 tinyLib.bs = {};
 
-// Button
+/**
+ * Button
+ * 
+ * @param {string} [className='primary']
+ * @param {string} [tag='button']
+ * @param {boolean} [isButton=true]
+ */
 tinyLib.bs.button = (className = 'primary', tag = 'button', isButton = true) => {
   const buttonClass =
     typeof className === 'string'
@@ -262,7 +310,11 @@ tinyLib.bs.button = (className = 'primary', tag = 'button', isButton = true) => 
   });
 };
 
-// Btn Close
+/**
+ * Btn Close
+ * 
+ * @param {string|null} [dataDismiss=null]
+ */
 tinyLib.bs.closeButton = (dataDismiss = null) =>
   TinyHtml.createFrom('button', {
     class: 'btn-close',

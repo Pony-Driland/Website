@@ -9,7 +9,9 @@ import storyCfg from '../chapters/config.mjs';
 
 import { fixFileUrl, fixHref, fixImageSrc } from './urls.mjs';
 
-// Remove Fic Data
+/**
+ * Remove Fic Data
+ */
 export const clearFicData = () => {
   if (appData.ai.interval) {
     clearInterval(appData.ai.interval);
