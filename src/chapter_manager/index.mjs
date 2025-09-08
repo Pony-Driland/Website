@@ -284,8 +284,7 @@ export const openChapterMenu = (params = {}) => {
       let countAudio = 0;
       for (const item in storyCfg.sfx) {
         countAudio++;
-        loaderScreen.stop();
-        loaderScreen.start(`Loading audio data ${countAudio}/${countAudioTotal}...`);
+        loaderScreen.update(`Loading audio data ${countAudio}/${countAudioTotal}...`);
         if (
           !storyData.sfx[item] &&
           typeof storyCfg.sfx[item].type === 'string' &&
