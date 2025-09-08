@@ -282,8 +282,7 @@ tinyLib.bs.navbar.title = (text, href) =>
   TinyHtml.createFrom('a', {
     class: 'navbar-brand',
     href,
-    text,
-  });
+  }).setText(text);
 
 tinyLib.bs.navbar.collapse = (dir, className, id, content) =>
   TinyHtml.createFrom('div', {
