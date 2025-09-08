@@ -707,7 +707,7 @@ rootApp.onReady(() => {
               .setAttr('title', 'Sign in with Google');
             loginAccount.icon = new TinyIcon(['fa-solid', 'fa-right-to-bracket']);
 
-            Tooltip(loginAccount.link);
+            const tool = Tooltip(loginAccount.link);
             loginAccount.base.append(loginAccount.link);
             loginAccount.link.append(loginAccount.icon);
 
@@ -715,9 +715,11 @@ rootApp.onReady(() => {
               if (fa.currentUser) {
                 loaderScreen.start(`Logging out...`);
                 await fa.logout();
+                tool.hide();
               } else {
                 loaderScreen.start(`Signing in...`);
                 await fa.login();
+                tool.hide();
               }
               loaderScreen.stop();
             });

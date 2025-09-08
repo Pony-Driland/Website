@@ -335,12 +335,12 @@ https://mkrtchyan.ga
 }
 
 .stars {
-  background: #000 url('//img/bg/sky-stars/stars.png') repeat top center;
+  background: #000 url('./img/bg/sky-stars/stars.png') repeat top center;
   z-index: -3;
 }
 
 .twinkling {
-  background: transparent url('//img/bg/sky-stars/twinkling.png') repeat top center;
+  background: transparent url('./img/bg/sky-stars/twinkling.png') repeat top center;
   z-index: -2;
   -moz-animation: move-twink-back 200s linear infinite;
   -ms-animation: move-twink-back 200s linear infinite;
@@ -350,7 +350,7 @@ https://mkrtchyan.ga
 }
 
 .clouds {
-  background: transparent url('//img/bg/sky-stars/clouds3.png') repeat top center;
+  background: transparent url('./img/bg/sky-stars/clouds3.png') repeat top center;
   z-index: -1;
   -moz-animation: move-clouds-back 200s linear infinite;
   -ms-animation: move-clouds-back 200s linear infinite;
