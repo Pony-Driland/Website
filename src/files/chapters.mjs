@@ -71,8 +71,7 @@ export const storyData = {
     for (let i = 0; i < storyData.chapter.amount; i++) {
       // Data
       const chapter = i + 1;
-      loaderScreen.stop();
-      loaderScreen.start(`Loading chapter ${chapter}...`);
+      loaderScreen.update(`Loading chapter ${chapter}...`);
       console.log(`Loading Chapter ${chapter}...`);
       console.log(
         './chapters/' + storyData.lang.active + '/' + chapter + '.json' + window.fileVersion,
@@ -239,8 +238,7 @@ export const storyData = {
     };
 
     let dbError = false;
-    loaderScreen.stop();
-    loaderScreen.start('Loading local database...');
+    loaderScreen.update('Loading local database...');
     await connStore
       .initDb({
         name: 'pony-driland',
@@ -281,8 +279,7 @@ export const storyData = {
     console.log('App Started!');
     console.log('Loading UI...');
 
-    loaderScreen.stop();
-    loaderScreen.start('Starting website...');
+    loaderScreen.update('Starting website...');
     if (
       location.hostname !== 'localhost' &&
       location.hostname !== '127.0.0.1' &&

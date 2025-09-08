@@ -409,7 +409,7 @@ export const openMDFile = async (url, isMain = false) => {
     if (url !== 'MAIN') {
       // Read Data Base
       console.log(`Opening MD file "${url}"...`);
-      loaderScreen.start();
+      loaderScreen.start('Loading page...');
 
       // Load ajax
       const fileData = await fetch(
