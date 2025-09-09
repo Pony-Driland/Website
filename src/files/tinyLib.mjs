@@ -172,7 +172,7 @@ alert = (text, title = 'Browser Warning!') => {
 
 /**
  * Remove AI tags
- * 
+ *
  * @param {string} str
  */
 tinyLib.removeAiTags = (str) => {
@@ -190,7 +190,7 @@ tinyLib.getGitUrlPath = (text, type = 'g') => {
 
 /**
  * Icon
- * 
+ *
  * @param {string} classItem
  */
 tinyLib.icon = (classItem) => TinyHtml.createFrom('i', { class: classItem });
@@ -203,7 +203,7 @@ tinyLib.upload = {};
  * @param {Event} event
  */
 
-/** 
+/**
  * @param {{ multiple?: boolean; directory?: boolean; accept?: string; }} [configs]
  * @param {TinyHtml<any>|null} button
  * @param {UploadCallback | null} callback
@@ -229,7 +229,7 @@ tinyLib.upload.button = (configs = {}, button = null, callback = null) => {
 
 /**
  * File base64 selector template
- * 
+ *
  * @param {TinyHtml<any>|null} button
  * @param {string} [baseFormat='']
  * @param {UploadCallback | null} callback
@@ -250,9 +250,9 @@ tinyLib.upload.dataUrl = (button = null, baseFormat = '', callback = null, accep
       .catch((err) => callback(err, null));
   });
 
-  /**
+/**
  * Image upload
- * 
+ *
  * @param {TinyHtml<any>|null} button
  * @param {UploadCallback | null} callback
  * @param {string} [accept='*']
@@ -260,9 +260,9 @@ tinyLib.upload.dataUrl = (button = null, baseFormat = '', callback = null, accep
 tinyLib.upload.img = (button = null, callback = null, accept = '*') =>
   tinyLib.upload.dataUrl(button, 'image', callback, accept);
 
-  /**
+/**
  * Json upload
- * 
+ *
  * @param {TinyHtml<any>|null} button
  * @param {UploadCallback | null} callback
  */
@@ -280,7 +280,7 @@ tinyLib.bs = {};
 
 /**
  * Button
- * 
+ *
  * @param {string} [className='primary']
  * @param {string} [tag='button']
  * @param {boolean} [isButton=true]
@@ -312,7 +312,7 @@ tinyLib.bs.button = (className = 'primary', tag = 'button', isButton = true) => 
 
 /**
  * Btn Close
- * 
+ *
  * @param {string|null} [dataDismiss=null]
  */
 tinyLib.bs.closeButton = (dataDismiss = null) =>
