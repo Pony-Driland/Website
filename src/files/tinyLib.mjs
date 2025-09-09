@@ -4,10 +4,10 @@ import { readJsonBlob, readBase64Blob, TinyHtml, isJsonObject } from 'tiny-essen
 import storyCfg from '../chapters/config.mjs';
 import { Modal } from '../modules/TinyBootstrap.mjs';
 
-// Prepare Tiny Lib
+/** Tiny Lib */
 const tinyLib = {};
 
-// MD Data manager
+/** MD Data manager */
 tinyLib.mdManager = {};
 
 /**
@@ -247,19 +247,14 @@ tinyLib.getGitUrlPath = (text, type = 'g') => {
  */
 tinyLib.icon = (classItem) => TinyHtml.createFrom('i', { class: classItem });
 
-// Files Upload button
+/** Files Upload button */
 tinyLib.upload = {};
-
-/**
- * @callback UploadCallback
- * @param {Event} event
- */
 
 /**
  * @template {TinyHtml<any>} T
  * @param {{ multiple?: boolean; directory?: boolean; accept?: string; }} configs
  * @param {T} button
- * @param {UploadCallback} callback
+ * @param {(e: Event) => void} callback
  * @returns {T}
  */
 tinyLib.upload.button = (configs, button, callback) => {
@@ -275,10 +270,12 @@ tinyLib.upload.button = (configs, button, callback) => {
 
   // Prepare button functions
   importButton.on('change', callback);
-  button.on('click', () => importButton.trigger('click'));
-  const parent = button.parent();
-  if (!parent || !(parent instanceof HTMLElement)) throw new Error('Invalid parent value');
-  new TinyHtml(parent).append(importButton);
+  button.on('click', () => {
+    const elem = importButton.get(0);
+    if (elem instanceof HTMLInputElement) elem.click();
+  });
+
+  button.append(importButton);
   return button;
 };
 
@@ -295,7 +292,7 @@ tinyLib.upload.button = (configs, button, callback) => {
 tinyLib.upload.dataUrl = (button, callback, baseFormat, accept = '*') =>
   tinyLib.upload.button({ accept: `${baseFormat}/${accept}` }, button, (event) => {
     // Get File Element
-    const target = button.get(0);
+    const target = event.target;
     if (!(target instanceof HTMLInputElement)) return;
     const files = target?.files;
     const file = files ? files[0] : null;
@@ -306,7 +303,7 @@ tinyLib.upload.dataUrl = (button, callback, baseFormat, accept = '*') =>
       return;
     }
     // Complete
-    readBase64Blob(file, baseFormat)
+    readBase64Blob(file, file.type)
       .then((dataUrl) => callback(null, dataUrl))
       .catch((err) => callback(err, null));
   });
@@ -316,12 +313,12 @@ tinyLib.upload.dataUrl = (button, callback, baseFormat, accept = '*') =>
  *
  * @template {TinyHtml<any>} T
  * @param {T} button
- * @param {string} [baseFormat]
+ * @param {string} [baseFormat='image']
  * @param {(err: Error | null, data: any[] | string | null) => void} callback
  * @param {string} [accept='*']
  * @returns {T}
  */
-tinyLib.upload.img = (button, callback, baseFormat, accept = '*') =>
+tinyLib.upload.img = (button, callback, accept = '*', baseFormat = 'image') =>
   tinyLib.upload.dataUrl(button, callback, baseFormat, accept);
 
 /**
@@ -329,13 +326,13 @@ tinyLib.upload.img = (button, callback, baseFormat, accept = '*') =>
  *
  * @template {TinyHtml<any>} T
  * @param {T} button
- * @param {(err: Error | null, data: any[] | Record<string | number | symbol, any> | null)} callback
+ * @param {(err: Error | null, data: any[] | Record<string | number | symbol, any> | null) => void} callback
  * @returns {T}
  */
 tinyLib.upload.json = (button, callback) =>
   tinyLib.upload.button({ accept: '.json' }, button, (event) => {
     // Get File Element
-    const target = button.get(0);
+    const target = event.target;
     if (!(target instanceof HTMLInputElement)) return;
     const files = target?.files;
     const file = files ? files[0] : null;
@@ -346,7 +343,7 @@ tinyLib.upload.json = (button, callback) =>
         .catch((err) => callback(err, null));
   });
 
-// Bootstrap
+/** Bootstrap */
 tinyLib.bs = {};
 
 /**
@@ -371,13 +368,9 @@ tinyLib.bs.button = (className = 'primary', tag = 'button', isButton = true) => 
     role: isButton && (!isJsonObject(className) || !className.toggle) ? 'button' : null,
     type: isButton ? 'button' : null,
     'data-bs-toggle':
-      isJsonObject(className) && typeof className.toggle === 'string'
-        ? className.toggle
-        : null,
+      isJsonObject(className) && typeof className.toggle === 'string' ? className.toggle : null,
     'data-bs-target':
-      isJsonObject(className) && typeof className.target === 'string'
-        ? className.target
-        : null,
+      isJsonObject(className) && typeof className.target === 'string' ? className.target : null,
   });
 };
 
@@ -393,7 +386,7 @@ tinyLib.bs.closeButton = (dataDismiss = null) =>
     'data-bs-dismiss': dataDismiss,
   });
 
-// Navbar
+/** Navbar  */
 tinyLib.bs.navbar = {};
 
 /**
@@ -435,7 +428,7 @@ tinyLib.bs.navbar.collapse = (dir, className, id, content) =>
 
 /**
  * Offcanvas
- * 
+ *
  * @param {string} [where='start']
  * @param {string} [id='']
  * @param {string} [title='']
@@ -479,7 +472,7 @@ tinyLib.bs.offcanvas = (
 
 /**
  * Container
- * 
+ *
  * @param {string|null} [id]
  * @param {string|null} [classItems]
  * @param {string} [tag='div']
