@@ -1,6 +1,6 @@
 import { marked } from 'marked';
 import { TinyHtml } from 'tiny-essentials';
-import tinyLib from '../files/tinyLib.mjs';
+import tinyLib, { alert } from '../files/tinyLib.mjs';
 
 import { storyData } from '../files/chapters.mjs';
 import { appData, gtag, loaderScreen } from '../important.mjs';

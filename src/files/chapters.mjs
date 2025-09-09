@@ -2,7 +2,7 @@ import objHash from 'object-hash';
 
 import { toTitleCase, fetchJson, isJsonObject } from 'tiny-essentials';
 
-import tinyLib from './tinyLib.mjs';
+import tinyLib, { alert } from './tinyLib.mjs';
 import storyCfg from '../chapters/config.mjs';
 import { connStore, loaderScreen, tinyLs } from '../important.mjs';
 

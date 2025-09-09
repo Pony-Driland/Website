@@ -16,6 +16,7 @@
     "include": [
         "src/modules", 
         "src/account", 
+        "src/files/tinyLib.mjs",
         "build/TinyBuilder"
     ],
     "exclude": ["node_modules"]

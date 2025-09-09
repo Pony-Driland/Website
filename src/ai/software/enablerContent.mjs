@@ -1,3 +1,5 @@
+import { alert } from '../../files/tinyLib.mjs';
+
 class EnablerAiContent {
   #validateMultiplayer;
   #enabledFirstDialogue;

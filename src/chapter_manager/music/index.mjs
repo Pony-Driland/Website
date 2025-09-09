@@ -5,7 +5,7 @@ import { tinyLs, gtag, appData } from '../../important.mjs';
 import SeamlessLoop from '../../../build/bundle/SeamlessLoop.mjs';
 import BuffAudio from '../../../build/bundle/buffaudio.mjs';
 
-import tinyLib from '../../files/tinyLib.mjs';
+import tinyLib, { alert } from '../../files/tinyLib.mjs';
 import { storyData } from '../../files/chapters.mjs';
 import storyCfg from '../../chapters/config.mjs';
 import ttsManager from '../tts/tts.mjs';
