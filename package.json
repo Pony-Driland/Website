@@ -63,7 +63,7 @@
         "tiny-ai-api": "^1.1.7",
         "tiny-dices": "^1.0.6",
         "tiny-essentials": "^1.21.2",
-        "tiny-server-essentials": "^1.0.3",
+        "tiny-server-essentials": "^1.0.4",
         "tippy.js": "^6.3.7"
     },
     "devDependencies": {
