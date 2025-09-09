@@ -1,5 +1,6 @@
 import tippy from 'tippy.js';
-import { objType, readJsonBlob, readBase64Blob, TinyHtml } from 'tiny-essentials';
+import clone from 'clone';
+import { readJsonBlob, readBase64Blob, TinyHtml, isJsonObject } from 'tiny-essentials';
 import storyCfg from '../chapters/config.mjs';
 import { Modal } from '../modules/TinyBootstrap.mjs';
 
@@ -9,10 +10,14 @@ const tinyLib = {};
 // MD Data manager
 tinyLib.mdManager = {};
 
+/**
+ * @param {string} markdown
+ * @returns {Record<string, string>}
+ */
 tinyLib.mdManager.extractMetadata = (markdown) => {
   const charactersBetweenGroupedHyphens = /^\#---([\s\S]*?)\#---/;
   const metadataMatched = markdown.match(charactersBetweenGroupedHyphens);
-  const metadata = metadataMatched[1];
+  const metadata = metadataMatched ? metadataMatched[1] : null;
   if (!metadata) {
     return {};
   }
@@ -21,21 +26,30 @@ tinyLib.mdManager.extractMetadata = (markdown) => {
   const metadataObject = metadataLines.reduce((accumulator, line) => {
     const [key, ...value] = line.split(':').map((part) => part.trim());
 
+    const newValue = clone(accumulator);
     if (key) {
-      accumulator[key] = value[1] ? value.join(':') : value.join('');
+      // @ts-ignore
+      newValue[key] = value[1] ? value.join(':') : value.join('');
 
       if (
-        (accumulator[key].startsWith("'") && accumulator[key].endsWith("'")) ||
-        (accumulator[key].startsWith('"') && accumulator[key].endsWith('"'))
+        // @ts-ignore
+        (newValue[key].startsWith("'") && newValue[key].endsWith("'")) ||
+        // @ts-ignore
+        (newValue[key].startsWith('"') && newValue[key].endsWith('"'))
       )
-        accumulator[key] = accumulator[key].substring(1, accumulator[key].length - 1);
+        // @ts-ignore
+        newValue[key] = newValue[key].substring(1, newValue[key].length - 1);
     }
-    return accumulator;
+    return newValue;
   }, {});
 
   return metadataObject;
 };
 
+/**
+ * @param {string} text
+ * @returns {string}
+ */
 tinyLib.mdManager.removeMetadata = (text) => {
   let result = text.replace(/^\#---([\s\S]*?)\#---/, '');
   while (result.startsWith('\n')) {
@@ -44,7 +58,14 @@ tinyLib.mdManager.removeMetadata = (text) => {
   return result;
 };
 
-// Alert
+/**
+ * Alert
+ * @param {string} where
+ * @param {string} alertType
+ * @param {string} icon
+ * @param {string} text
+ *
+ */
 tinyLib.alert = (where, alertType, icon, text) => {
   TinyHtml.query(where)
     ?.empty()
@@ -53,14 +74,23 @@ tinyLib.alert = (where, alertType, icon, text) => {
     );
 };
 
-// Modal
-/** @returns {bootstrap.Modal} */
+/**
+ * Modal
+ * @param {Object} data
+ * @param {string} [data.dialog]
+ * @param {string} [data.id]
+ * @param {Function} [data.hidden]
+ * @param {TinyHtml<any>} [data.footer]
+ * @param {TinyHtml<any>} [data.title]
+ * @param {TinyHtml<any>} [data.body]
+ * @returns {bootstrap.Modal}
+ */
 tinyLib.modal = (data) => {
   if (typeof data.dialog !== 'string') data.dialog = '';
 
   const modal = TinyHtml.createFrom('div', {
     class: 'modal fade',
-    id: data.id,
+    id: data.id ?? null,
     tabindex: -1,
     role: 'dialog',
   })
@@ -94,6 +124,17 @@ tinyLib.modal = (data) => {
   return Modal(modal, undefined, true);
 };
 
+/**
+ * @param {Object} data
+ * @param {string} [data.class]
+ * @param {string} [data.title]
+ * @param {string} data.id
+ * @param {string} data.type
+ * @param {string} [data.value]
+ * @param {string} [data.placeholder]
+ * @param {string} [data.help]
+ * @param {{ enabled: boolean, value: any }} [data.checkbox]
+ */
 tinyLib.formGroup = (data) => {
   if (typeof data.class !== 'string') {
     data.class = '';
@@ -111,8 +152,8 @@ tinyLib.formGroup = (data) => {
       name: data.id,
       id: data.id + '_input',
       'aria-describedby': data.id + '_help',
-      value: data.value,
-      placeholder: data.placeholder,
+      value: data.value ?? null,
+      placeholder: data.placeholder ?? null,
     }),
   );
 
@@ -137,6 +178,13 @@ tinyLib.formGroup = (data) => {
   return result;
 };
 
+/**
+ * @param {Object} data
+ * @param {string} [data.class]
+ * @param {string} data.id
+ * @param {string} [data.title]
+ * @param {any} [data.value]
+ */
 tinyLib.formGroupCheck = (data) => {
   if (typeof data.class !== 'string') {
     data.class = '';
@@ -159,8 +207,12 @@ tinyLib.formGroupCheck = (data) => {
   );
 };
 
-// Alert
-alert = (text, title = 'Browser Warning!') => {
+/**
+ * Alert
+ * @param {string} text
+ * @param {string} title
+ */
+export const alert = (text, title = 'Browser Warning!') => {
   return tinyLib.modal({
     title: TinyHtml.createFrom('span').setText(title),
     body: TinyHtml.createFrom('div', { class: 'text-break' })
@@ -204,11 +256,13 @@ tinyLib.upload = {};
  */
 
 /**
- * @param {{ multiple?: boolean; directory?: boolean; accept?: string; }} [configs]
- * @param {TinyHtml<any>|null} button
- * @param {UploadCallback | null} callback
+ * @template {TinyHtml<any>} T
+ * @param {{ multiple?: boolean; directory?: boolean; accept?: string; }} configs
+ * @param {T} button
+ * @param {UploadCallback} callback
+ * @returns {T}
  */
-tinyLib.upload.button = (configs = {}, button = null, callback = null) => {
+tinyLib.upload.button = (configs, button, callback) => {
   // Create button
   const importButton = TinyHtml.createFrom('input', { type: 'file', style: 'display: none;' });
   importButton.setAttr('accept', configs.accept ?? null);
@@ -223,21 +277,28 @@ tinyLib.upload.button = (configs = {}, button = null, callback = null) => {
   importButton.on('change', callback);
   button.on('click', () => importButton.trigger('click'));
   const parent = button.parent();
-  if (parent) new TinyHtml(parent).append(importButton);
+  if (!parent || !(parent instanceof HTMLElement)) throw new Error('Invalid parent value');
+  new TinyHtml(parent).append(importButton);
   return button;
 };
 
 /**
  * File base64 selector template
  *
- * @param {TinyHtml<any>|null} button
- * @param {string} [baseFormat='']
- * @param {UploadCallback | null} callback
+ * @template {TinyHtml<any>} T
+ * @param {T} button
+ * @param {string} [baseFormat]
+ * @param {(err: Error | null, data: any[] | string | null) => void} callback
  * @param {string} [accept='*']
+ * @returns {T}
  */
-tinyLib.upload.dataUrl = (button = null, baseFormat = '', callback = null, accept = '*') =>
+tinyLib.upload.dataUrl = (button, callback, baseFormat, accept = '*') =>
   tinyLib.upload.button({ accept: `${baseFormat}/${accept}` }, button, (event) => {
-    const file = event.target.files[0];
+    // Get File Element
+    const target = button.get(0);
+    if (!(target instanceof HTMLInputElement)) return;
+    const files = target?.files;
+    const file = files ? files[0] : null;
     if (!file) return;
     // Image type validation
     if (!file.type.startsWith(`${baseFormat}/`)) {
@@ -245,7 +306,7 @@ tinyLib.upload.dataUrl = (button = null, baseFormat = '', callback = null, accep
       return;
     }
     // Complete
-    readBase64Blob(file, `${baseFormat}/${format}`)
+    readBase64Blob(file, baseFormat)
       .then((dataUrl) => callback(null, dataUrl))
       .catch((err) => callback(err, null));
   });
@@ -253,22 +314,32 @@ tinyLib.upload.dataUrl = (button = null, baseFormat = '', callback = null, accep
 /**
  * Image upload
  *
- * @param {TinyHtml<any>|null} button
- * @param {UploadCallback | null} callback
+ * @template {TinyHtml<any>} T
+ * @param {T} button
+ * @param {string} [baseFormat]
+ * @param {(err: Error | null, data: any[] | string | null) => void} callback
  * @param {string} [accept='*']
+ * @returns {T}
  */
-tinyLib.upload.img = (button = null, callback = null, accept = '*') =>
-  tinyLib.upload.dataUrl(button, 'image', callback, accept);
+tinyLib.upload.img = (button, callback, baseFormat, accept = '*') =>
+  tinyLib.upload.dataUrl(button, callback, baseFormat, accept);
 
 /**
  * Json upload
  *
- * @param {TinyHtml<any>|null} button
- * @param {UploadCallback | null} callback
+ * @template {TinyHtml<any>} T
+ * @param {T} button
+ * @param {(err: Error | null, data: any[] | Record<string | number | symbol, any> | null)} callback
+ * @returns {T}
  */
-tinyLib.upload.json = (button = null, callback = null) =>
+tinyLib.upload.json = (button, callback) =>
   tinyLib.upload.button({ accept: '.json' }, button, (event) => {
-    const file = event.target.files[0];
+    // Get File Element
+    const target = button.get(0);
+    if (!(target instanceof HTMLInputElement)) return;
+    const files = target?.files;
+    const file = files ? files[0] : null;
+    if (!file) return;
     if (file)
       readJsonBlob(file)
         .then((jsonData) => callback(null, jsonData))
@@ -281,7 +352,7 @@ tinyLib.bs = {};
 /**
  * Button
  *
- * @param {string} [className='primary']
+ * @param {string|Record<string, string>} [className='primary']
  * @param {string} [tag='button']
  * @param {boolean} [isButton=true]
  */
@@ -289,22 +360,22 @@ tinyLib.bs.button = (className = 'primary', tag = 'button', isButton = true) => 
   const buttonClass =
     typeof className === 'string'
       ? className
-      : objType(className, 'object') && typeof className.class === 'string'
+      : isJsonObject(className) && typeof className.class === 'string'
         ? className.class
         : null;
   const introClass = typeof className === 'string' || !className.dsBtn ? 'btn btn-' : '';
 
   return TinyHtml.createFrom(tag, {
-    id: objType(className, 'object') && typeof className.id === 'string' ? className.id : null,
+    id: isJsonObject(className) && typeof className.id === 'string' ? className.id : null,
     class: `${introClass}${buttonClass}`,
-    role: isButton && (!objType(className, 'object') || !className.toggle) ? 'button' : null,
+    role: isButton && (!isJsonObject(className) || !className.toggle) ? 'button' : null,
     type: isButton ? 'button' : null,
     'data-bs-toggle':
-      objType(className, 'object') && typeof className.toggle === 'string'
+      isJsonObject(className) && typeof className.toggle === 'string'
         ? className.toggle
         : null,
     'data-bs-target':
-      objType(className, 'object') && typeof className.target === 'string'
+      isJsonObject(className) && typeof className.target === 'string'
         ? className.target
         : null,
   });
@@ -324,18 +395,34 @@ tinyLib.bs.closeButton = (dataDismiss = null) =>
 
 // Navbar
 tinyLib.bs.navbar = {};
+
+/**
+ * @param {string} id
+ * @param {string} [theme='dark']
+ * @param {boolean} [isFixed=false]
+ */
 tinyLib.bs.navbar.root = (id, theme = 'dark', isFixed = false) =>
   TinyHtml.createFrom('nav', {
     class: `navbar navbar-expand-lg navbar-${theme} bg-${theme}${isFixed ? ' fixed-top' : ''} px-4 py-0 tiny-navabar-style`,
     id,
   });
 
+/**
+ * @param {string} text
+ * @param {string} href
+ */
 tinyLib.bs.navbar.title = (text, href) =>
   TinyHtml.createFrom('a', {
     class: 'navbar-brand',
     href,
   }).setText(text);
 
+/**
+ * @param {string} dir
+ * @param {string} className
+ * @param {string} id
+ * @param {TinyHtml<any>} content
+ */
 tinyLib.bs.navbar.collapse = (dir, className, id, content) =>
   TinyHtml.createFrom('div', {
     class: `collapse navbar-collapse navbar-nav-${dir}${className ? ` ${className}` : ''}`,
@@ -346,7 +433,16 @@ tinyLib.bs.navbar.collapse = (dir, className, id, content) =>
     }).append(content),
   );
 
-// Offcanvas
+/**
+ * Offcanvas
+ * 
+ * @param {string} [where='start']
+ * @param {string} [id='']
+ * @param {string} [title='']
+ * @param {TinyHtml<any>|null} [content]
+ * @param {boolean} [closeButtonInverse=false]
+ * @param {number} [tabIndex=-1]
+ */
 tinyLib.bs.offcanvas = (
   where = 'start',
   id = '',
@@ -381,14 +477,25 @@ tinyLib.bs.offcanvas = (
   );
 };
 
-// Container
+/**
+ * Container
+ * 
+ * @param {string|null} [id]
+ * @param {string|null} [classItems]
+ * @param {string} [tag='div']
+ */
 tinyLib.bs.container = (id = null, classItems = null, tag = 'div') =>
   TinyHtml.createFrom(tag, {
     id,
     class: `container${classItems ? ` ${classItems}` : ''}`,
   });
 
-// Alert
+/**
+ * Alert
+ * @param {string} type
+ * @param {TinyHtml<any>|string|(TinyHtml<any>|string)[]|null} content
+ * @param {boolean} isDismissible
+ */
 tinyLib.bs.alert = (type = 'primary', content = null, isDismissible = false) => {
   const result = TinyHtml.createFrom('div', {
     class: `alert alert-${type}${isDismissible ? ` alert-dismissible fade show` : ''}`,
@@ -399,10 +506,27 @@ tinyLib.bs.alert = (type = 'primary', content = null, isDismissible = false) => 
   return result;
 };
 
-// Dropdown
+/**
+ * @typedef {import('tippy.js').Props} TippyProps
+ */
+
+/**
+ * @template T
+ * @typedef {import('tippy.js').Instance<T>} TippyInstance
+ */
+
+/**
+ * Dropdown
+ * @param {TinyHtml<any>} place
+ * @param {any[]} data
+ * @param {(li: TinyHtml<HTMLElement>, props: TippyInstance<TippyProps>[] & TippyInstance<TippyProps>, item: any, index: number) => void} callbackInsert
+ */
 tinyLib.bs.dropdownClick = (place, data, callbackInsert) => {
+  const elem = place.get(0);
+  if (!(elem instanceof HTMLElement)) throw new Error('Invalid element type!');
   const rootBase = TinyHtml.createFrom('ul', { class: 'dropdown-menu show' });
-  const element = tippy(place.get(0), {
+  // @ts-ignore
+  const element = tippy(elem, {
     content: rootBase.get(0),
     allowHTML: true,
     interactive: true,
@@ -417,7 +541,7 @@ tinyLib.bs.dropdownClick = (place, data, callbackInsert) => {
   for (const index in data) {
     const li = TinyHtml.createFrom('li');
     rootBase.append(li);
-    callbackInsert(li, element, data[index], index);
+    callbackInsert(li, element, data[index], Number(index));
   }
 };
 

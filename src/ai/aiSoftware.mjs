@@ -15,7 +15,7 @@ import {
   connStore,
   loaderScreen,
 } from '../important.mjs';
-import tinyLib from '../files/tinyLib.mjs';
+import tinyLib, { alert } from '../files/tinyLib.mjs';
 import { saveRoleplayFormat } from '../start.mjs';
 import storyCfg from '../chapters/config.mjs';
 import TinyMap from './TinyMap.mjs';
@@ -444,7 +444,29 @@ export const AiScriptStart = async () => {
         });
     });
 
-  // When sId is used, it means that the request is coming from a session that is not active in the chat
+  /**
+   * When sId is used, it means that the request is coming from a session that is not active in the chat
+   * @param {{
+   *  parts: Array<Record<"text" | "inlineData", string | {
+   *     mime_type: string;
+   *     data: string;
+   *  } | null>>;
+   *  role?: string | undefined;
+   *  finishReason?: string | number | undefined;
+   * }[]} data
+   *
+   * @param {{
+   * [key: string]: any;
+   * data: Array<{
+   *     count: number | null;
+   *     hide?: boolean;
+   * }>;
+   * }} tokens
+   *
+   * @param {boolean} [readOnly=false]
+   * @param {string} [sId=undefined]
+   *
+   */
   const insertImportData = (data, tokens, readOnly = false, sId = undefined) => {
     // Insert data
     if (Array.isArray(data)) {
@@ -763,7 +785,7 @@ export const AiScriptStart = async () => {
     });
     textarea.setVal(config.textarea);
     if (config.readOnly) textarea.addProp('readOnly');
-    const textEditor = new TinyTextRangeEditor(textarea[0]);
+    const textEditor = new TinyTextRangeEditor(textarea.get(0));
 
     // Templates list
     if (
@@ -2958,7 +2980,7 @@ export const AiScriptStart = async () => {
             .append(TinyHtml.createFromHtml(makeMsgRenderer(msgData)));
           const tinyErrorAlert = tinyCache.msgBallon.data('tiny-ai-error-alert');
           if (tinyErrorAlert) tinyErrorAlert.updateText(finishReason);
-          scrollChatContainerToTop();
+          chatContainer.setScrollTop(999999999);
         }
       };
 
@@ -3332,17 +3354,9 @@ export const AiScriptStart = async () => {
     style: 'margin-bottom: 55px !important;',
   });
 
-  const scrollChatContainerToTop = (speed = 0) =>
-    chatContainer.animate(
-      {
-        scrollTop: chatContainer.prop('scrollHeight'),
-      },
-      speed,
-    );
-
   const addMessage = (item) => {
     msgList.append(item);
-    scrollChatContainerToTop();
+    chatContainer.setScrollTop(999999999);
   };
 
   const makeTempMessage = (msg, type) => addMessage(makeMessage({ message: msg }, type));

@@ -3,7 +3,7 @@ import { countObj, toTitleCase, TinyHtml } from 'tiny-essentials';
 import paginateArray from 'paginate-array';
 
 import { isNoNsfw, loaderScreen, tinyLs } from '../important.mjs';
-import tinyLib from '../files/tinyLib.mjs';
+import tinyLib, { alert } from '../files/tinyLib.mjs';
 import { storyData } from '../files/chapters.mjs';
 import cacheChapterUpdater from './updater.mjs';
 import musicManager from './music/index.mjs';

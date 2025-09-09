@@ -14,7 +14,7 @@ import './chapters/sound.mjs';
 import './chapters/counter.mjs';
 import './chapters/characters.mjs';
 
-import tinyLib from './files/tinyLib.mjs';
+import tinyLib, { alert } from './files/tinyLib.mjs';
 import { storyData } from './files/chapters.mjs';
 import storyCfg from './chapters/config.mjs';
 import { openChapterMenu } from './chapter_manager/index.mjs';
