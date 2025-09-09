@@ -419,6 +419,23 @@ export const AiScriptStart = async () => {
             msgInput.setVal(textBackup).trigger('input');
           }
 
+          // Set Model config
+          const aiCfg = {
+            outputTokens: tinyAi.getMaxOutputTokens(),
+            temperature: tinyAi.getTemperature(),
+            topP: tinyAi.getTopP(),
+            topK: tinyAi.getTopK(),
+            presencePenalty: tinyAi.getPresencePenalty(),
+            frequencyPenalty: tinyAi.getFrequencyPenalty(),
+          };
+
+          if (aiCfg.outputTokens !== null) outputLength.setVal(aiCfg.outputTokens);
+          if (aiCfg.temperature !== null) temperature.val(aiCfg.temperature);
+          if (aiCfg.topP !== null) topP.val(aiCfg.topP);
+          if (aiCfg.topK !== null) topK.val(aiCfg.topK);
+          if (aiCfg.presencePenalty !== null) presencePenalty.val(aiCfg.presencePenalty);
+          if (aiCfg.frequencyPenalty !== null) frequencyPenalty.val(aiCfg.frequencyPenalty);
+
           // Start system
           insertImportData(
             history.data,
