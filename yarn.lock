@@ -7733,12 +7733,7 @@ tiny-dices@^1.1.0:
   dependencies:
     tiny-essentials "^1.24.0"
 
-tiny-essentials@^1.20.0, tiny-essentials@^1.22.1, tiny-essentials@^1.23.2:
-  version "1.23.2"
-  resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.23.2.tgz#d95d791d44ac5dac6d4b96318d6eb97156a7fd32"
-  integrity sha512-8cdf0buWlT5sVyv0DpXvfJK4auwzpzbtdG5S8FhL75j5XiAaFBFV+NtskRwyzltCY4miyMybvblY7gXF83bA/g==
-
-tiny-essentials@^1.24.0:
+tiny-essentials@^1.20.0, tiny-essentials@^1.22.1, tiny-essentials@^1.24.0:
   version "1.24.0"
   resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.24.0.tgz#4576de85a20c89ab5d3c173dee110d81ff261055"
   integrity sha512-Kk8PzBobKV8l+R9UFHwDpQPka7dSlb6TvsMwYhbSEsDJNN3DOVTvJKadhTyss3jP15mxT7Ru0vs0h9EJHb89Rg==
