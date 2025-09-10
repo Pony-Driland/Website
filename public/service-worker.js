@@ -248,17 +248,14 @@ const canCacheExt = [
   ".flac",
   ".wav",
   ".m4a",
-  "/img/bg/sky-stars/clouds3.png",
-  "/img/bg/sky-stars/stars.png",
-  "/img/bg/sky-stars/twinkling.png",
 ];
-const versionedExts = ['.js', '.css', '.woff', '.woff2', '.ttf', '.otf', '.eot'];
+// const versionedExts = [];
 
 self.addEventListener('fetch', function (event) {
   const request = event.request;
   const origin = self?.origin || self.location?.origin;
 
-  if (
+  /** if (
     request.method === 'GET' &&
     request.url.includes('?v=') &&
     (
@@ -268,7 +265,7 @@ self.addEventListener('fetch', function (event) {
   ) {
     event.respondWith(handleVersionedStatic(caches, request));
     return;
-  }
+  } */
 
   if (
     request.method !== 'GET' ||
