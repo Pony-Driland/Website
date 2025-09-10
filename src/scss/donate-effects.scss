@@ -13,12 +13,12 @@
     0 0 40px rgba(0, 255, 255, 0.3),
     0 0 60px rgba(255, 255, 255, 0.2);
   margin: 30px;
-}
 
-.donation-highlight img {
-  border-radius: 15px;
-  z-index: 1;
-  position: relative;
+  img {
+    border-radius: 15px;
+    z-index: 1;
+    position: relative;
+  }
 }
 
 /* Animação do fundo */

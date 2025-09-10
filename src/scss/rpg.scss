@@ -1,112 +1,122 @@
-/* Offcanvas */
-#ai-element-root .offcanvas {
-  padding-top: 56px;
-  max-width: 650px;
-  width: 100%;
-}
+#ai-element-root {
+  /* Offcanvas */
+  .offcanvas {
+    padding-top: 56px;
+    max-width: 650px;
+    width: 100%;
 
-#ai-element-root .offcanvas .je-object__container .card {
-  background-color: transparent !important;
-  border-left: 0px;
-  border-right: 0px;
-  border-radius: 0;
-}
+    .je-object__container {
+      .card {
+        background-color: transparent !important;
+        border-left: 0px;
+        border-right: 0px;
+        border-radius: 0;
+      }
 
-#ai-element-root .offcanvas .je-object__container,
-#ai-element-root .offcanvas .je-object__container .card {
-  padding: 10px 0px !important;
-  padding-left: 3px !important;
-}
+      &,
+      .card {
+        padding: 10px 0px !important;
+        padding-left: 3px !important;
+      }
 
-#ai-element-root .offcanvas .je-object__container .h3 {
-  font-size: 21px !important;
-  margin: 0px;
-  display: inline-flex !important;
-  align-items: center;
-}
+      .h3 {
+        font-size: 21px !important;
+        margin: 0px;
+        display: inline-flex !important;
+        align-items: center;
+      }
 
-#ai-element-root .offcanvas .je-object__container .btn {
-  margin: 3px;
-  border-radius: 4px;
-}
+      .btn {
+        margin: 3px;
+        border-radius: 4px;
+      }
 
-#ai-element-root .offcanvas .je-modal {
-  padding: 9px !important;
-  background-color: #242424;
-}
+      .je-modal {
+        padding: 9px !important;
+        background-color: #242424;
+      }
+    }
+  }
 
-#ai-element-root .offcanvas-header,
-#ai-element-root .offcanvas-body {
-  height: 100%;
-}
+  .offcanvas-header,
+  .offcanvas-body {
+    height: 100%;
+  }
 
-#ai-element-root .offcanvas-header {
-  padding: 0px;
-}
+  .offcanvas-header {
+    padding: 0px;
+  }
 
-#ai-element-root .offcanvas-header {
-  align-items: start;
-}
+  .offcanvas-header {
+    align-items: start;
+  }
 
-#ai-element-root .offcanvas-title {
-  display: none;
-}
+  .offcanvas-title {
+    display: none;
+  }
 
-#ai-element-root #rpg_ai_base_1 .btn-close {
-  right: 10px;
-}
+  #rpg_ai_base_1 {
+    .btn-close {
+      right: 10px;
+    }
 
-#ai-element-root #rpg_ai_base_1 .offcanvas-body {
-  padding-right: 30px;
-}
+    .offcanvas-body {
+      padding-right: 30px;
+    }
+  }
 
-#ai-element-root #rpg_ai_base_2 .btn-close {
-  left: 0px;
-}
+  #rpg_ai_base_2 {
+    .btn-close {
+      left: 0px;
+    }
 
-#ai-element-root #rpg_ai_base_2 .offcanvas-body {
-  padding-left: 30px;
-}
+    .offcanvas-body {
+      padding-left: 30px;
+    }
+  }
 
-#ai-element-root .offcanvas-header .btn-close {
-  position: absolute;
-  z-index: 1;
-  font-size: 10px;
-  margin-top: 0px;
+  .offcanvas-header .btn-close {
+    position: absolute;
+    z-index: 1;
+    font-size: 10px;
+    margin-top: 0px;
+  }
 }
 
 /* Map */
-#tinyMaps table tr,
-#tinyMaps table td {
-  overflow: hidden;
-}
-
-#tinyMaps table tr {
-  vertical-align: middle;
-}
-
-#tinyMaps table td {
-  border-width: 1px;
-  text-align: center;
-}
-
-#tinyMaps table td[location_enabled='on'] {
-  box-shadow: 0 0 0 rgba(255, 0, 0, 0.7);
-  animation: tinymaps_pulse_mark 1.5s infinite;
-}
-
-@keyframes tinymaps_pulse_mark {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+#tinyMaps {
+  table tr,
+  table td {
+    overflow: hidden;
   }
-  70% {
-    box-shadow: 0 0 0 15px rgba(255, 0, 0, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
-  }
-}
 
-#tinyMaps table {
-  table-layout: fixed;
+  table tr {
+    vertical-align: middle;
+  }
+
+  table td {
+    border-width: 1px;
+    text-align: center;
+  }
+
+  table td[location_enabled='on'] {
+    box-shadow: 0 0 0 rgba(255, 0, 0, 0.7);
+    animation: tinymaps_pulse_mark 1.5s infinite;
+  }
+
+  @keyframes tinymaps_pulse_mark {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 15px rgba(255, 0, 0, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+    }
+  }
+
+  table {
+    table-layout: fixed;
+  }
 }
