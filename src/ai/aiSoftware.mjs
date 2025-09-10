@@ -408,6 +408,7 @@ export const AiScriptStart = async () => {
           if (sessionEnabled) {
             contentEnabler.enBase();
             contentEnabler.enMessageButtons();
+            contentEnabler.enRpgContent();
           }
           makeTempMessage(introduction, 'Introduction');
           const history = tinyAi.getData();
@@ -1462,8 +1463,10 @@ export const AiScriptStart = async () => {
     }),
   );
 
+  const rpgContentButtons = [];
+
   // RPG Data
-  leftMenu.push(
+  rpgContentButtons.push(
     createButtonSidebar('fa-solid fa-note-sticky', 'View Data', null, false, {
       toggle: 'offcanvas',
       target: '#rpg_ai_base_1',
@@ -1471,12 +1474,17 @@ export const AiScriptStart = async () => {
   );
 
   // Private RPG Data
-  leftMenu.push(
+  rpgContentButtons.push(
     createButtonSidebar('fa-solid fa-book', 'View Private', null, false, {
       toggle: 'offcanvas',
       target: '#rpg_ai_base_2',
     }),
   );
+
+  // Insert RPG Data
+  leftMenu.push(...rpgContentButtons);
+  contentEnabler.setRpgContentButton(rpgContentButtons);
+  contentEnabler.deRpgContent();
 
   // Classic Map
   leftMenu.push(
@@ -3659,6 +3667,7 @@ export const AiScriptStart = async () => {
           contentEnabler.deBase();
           contentEnabler.deModelChanger();
           contentEnabler.deModelSelector();
+          contentEnabler.deRpgContent();
         }
 
         const disableReadOnly = () => {
@@ -3668,6 +3677,7 @@ export const AiScriptStart = async () => {
             contentEnabler.enBase();
             contentEnabler.enModelChanger();
             contentEnabler.enModelSelector();
+            contentEnabler.enRpgContent();
           }
         };
         Promise.all([
