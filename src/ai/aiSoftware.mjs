@@ -420,21 +420,23 @@ export const AiScriptStart = async () => {
           }
 
           // Set Model config
-          const aiCfg = {
-            outputTokens: tinyAi.getMaxOutputTokens(),
-            temperature: tinyAi.getTemperature(),
-            topP: tinyAi.getTopP(),
-            topK: tinyAi.getTopK(),
-            presencePenalty: tinyAi.getPresencePenalty(),
-            frequencyPenalty: tinyAi.getFrequencyPenalty(),
-          };
+          if (id) {
+            const aiCfg = {
+              outputTokens: tinyAi.getMaxOutputTokens(id),
+              temperature: tinyAi.getTemperature(id),
+              topP: tinyAi.getTopP(id),
+              topK: tinyAi.getTopK(id),
+              presencePenalty: tinyAi.getPresencePenalty(id),
+              frequencyPenalty: tinyAi.getFrequencyPenalty(id),
+            };
 
-          if (aiCfg.outputTokens !== null) outputLength.setVal(aiCfg.outputTokens);
-          if (aiCfg.temperature !== null) temperature.val(aiCfg.temperature);
-          if (aiCfg.topP !== null) topP.val(aiCfg.topP);
-          if (aiCfg.topK !== null) topK.val(aiCfg.topK);
-          if (aiCfg.presencePenalty !== null) presencePenalty.val(aiCfg.presencePenalty);
-          if (aiCfg.frequencyPenalty !== null) frequencyPenalty.val(aiCfg.frequencyPenalty);
+            if (aiCfg.outputTokens !== null) outputLength.setVal(aiCfg.outputTokens);
+            if (aiCfg.temperature !== null) temperature.val(aiCfg.temperature);
+            if (aiCfg.topP !== null) topP.val(aiCfg.topP);
+            if (aiCfg.topK !== null) topK.val(aiCfg.topK);
+            if (aiCfg.presencePenalty !== null) presencePenalty.val(aiCfg.presencePenalty);
+            if (aiCfg.frequencyPenalty !== null) frequencyPenalty.val(aiCfg.frequencyPenalty);
+          }
 
           // Start system
           insertImportData(
@@ -559,13 +561,35 @@ export const AiScriptStart = async () => {
       }
 
       // Set model settings
-      if (typeof file.temperature === 'number') tinyAi.setTemperature(file.temperature);
-      if (typeof file.maxOutputTokens === 'number') tinyAi.setMaxOutputTokens(file.maxOutputTokens);
-      if (typeof file.topP === 'number') tinyAi.setTopP(file.topP);
-      if (typeof file.topK === 'number') tinyAi.setTopK(file.topK);
-      if (typeof file.presencePenalty === 'number') tinyAi.setPresencePenalty(file.presencePenalty);
-      if (typeof file.frequencyPenalty === 'number')
+      if (typeof file.temperature === 'number') {
+        tinyAi.setTemperature(file.temperature);
+        if (tinyAi.getId() === sessionId) temperature.val(file.temperature);
+      }
+
+      if (typeof file.maxOutputTokens === 'number') {
+        tinyAi.setMaxOutputTokens(file.maxOutputTokens);
+        if (tinyAi.getId() === sessionId) outputLength.setVal(file.maxOutputTokens);
+      }
+
+      if (typeof file.topP === 'number') {
+        tinyAi.setTopP(file.topP);
+        if (tinyAi.getId() === sessionId) topP.val(file.topP);
+      }
+
+      if (typeof file.topK === 'number') {
+        tinyAi.setTopK(file.topK);
+        if (tinyAi.getId() === sessionId) topK.val(file.topK);
+      }
+
+      if (typeof file.presencePenalty === 'number') {
+        tinyAi.setPresencePenalty(file.presencePenalty);
+        if (tinyAi.getId() === sessionId) presencePenalty.val(file.presencePenalty);
+      }
+
+      if (typeof file.frequencyPenalty === 'number') {
         tinyAi.setFrequencyPenalty(file.frequencyPenalty);
+        if (tinyAi.getId() === sessionId) frequencyPenalty.val(file.frequencyPenalty);
+      }
 
       // Set Instruction
       if (canSandBox(sessionId))
