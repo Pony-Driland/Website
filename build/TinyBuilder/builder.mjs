@@ -123,14 +123,7 @@ export const prettierSrc = async () => {
 };
 
 /**
- * Step 2b: Build and bundle CSS using Babel.
- */
-export const buildCss = async () => {
-  await run('npx babel-node build/bundle/css');
-};
-
-/**
- * Step 2c: Copy/install extra JS files and run update scripts.
+ * Step 2b: Copy/install extra JS files and run update scripts.
  */
 export const installMoreJsFiles = async () => {
   await run('npx babel-node build/bundle/files');
@@ -144,7 +137,6 @@ export const installMoreJsFiles = async () => {
  */
 export const firstWebBuild = async () => {
   await prepareFolders();
-  await buildCss();
   await installMoreJsFiles();
   await prettierSrc();
 };
