@@ -1,38 +1,42 @@
-/* Wiki Page */
-.wiki-page .character-wikicard .pswp-space {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .wiki-page .character-wikicard {
-    width: 400px;
+.wiki-page {
+  /* Wiki Page */
+  .character-wikicard .pswp-space {
+    display: none;
   }
-}
 
-.wiki-page h1,
-.wiki-page h2,
-.wiki-page h3,
-.wiki-page h4,
-.wiki-page h5 {
-  border-bottom: 1px solid #393a3c;
-  display: flex;
-  padding-bottom: 4px;
-}
+  @media (min-width: 768px) {
+    .character-wikicard {
+      width: 400px;
+    }
+  }
 
-.wiki-page .character-wikicard h1,
-.wiki-page .character-wikicard h2,
-.wiki-page .character-wikicard h3,
-.wiki-page .character-wikicard h4,
-.wiki-page .character-wikicard h5 {
-  display: block;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    border-bottom: 1px solid #393a3c;
+    display: flex;
+    padding-bottom: 4px;
+  }
 
-.wiki-page .character-wikicard h1,
-.wiki-page .character-wikicard h2,
-.wiki-page .character-wikicard h3,
-.wiki-page .character-wikicard h4,
-.wiki-page .character-wikicard h5,
-.wiki-page .content-list-data .collapse-content h5 {
-  border-bottom: 0px solid transparent;
-  padding-bottom: 0px;
+  .character-wikicard {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      display: block;
+    }
+  }
+
+  .character-wikicard h1,
+  .character-wikicard h2,
+  .character-wikicard h3,
+  .character-wikicard h4,
+  .character-wikicard h5,
+  .content-list-data .collapse-content h5 {
+    border-bottom: 0px solid transparent;
+    padding-bottom: 0px;
+  }
 }
