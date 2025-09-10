@@ -3,7 +3,8 @@ import { alert } from '../../files/tinyLib.mjs';
 class EnablerAiContent {
   #validateMultiplayer;
   #enabledFirstDialogue;
-  constructor() {}
+  
+  /////////////////////////////////////////////////
 
   setResetSettingsButton(resetSettingsButton) {
     this.resetSettingsButton = resetSettingsButton;
@@ -85,6 +86,12 @@ class EnablerAiContent {
     this.#enabledFirstDialogue = enabledFirstDialogue;
   }
 
+  setRpgContentButton(rpgContentButtons) {
+    this.rpgContentButtons = rpgContentButtons;
+  }
+
+  ////////////////////////////////////////////////////////////
+
   #readOnlyTemplate(item, value, needAi = true) {
     const isEnabled = this.#validateMultiplayer(value, needAi);
     item.toggleProp('disabled', isEnabled);
@@ -94,6 +101,22 @@ class EnablerAiContent {
       item.removeClass('disabled');
     }
   }
+
+  //////////////////////////////////////////////////////////
+
+  deRpgContent() {
+    this.rpgContentButtons.forEach((item) => {
+      item.addClass('disabled').addProp('disabled');
+    });
+  }
+
+  enRpgContent() {
+    this.rpgContentButtons.forEach((item) => {
+      item.removeClass('disabled').removeProp('disabled');
+    });
+  }
+
+  //////////////////////////////////////////////////////////
 
   #enableModelReadOnly(value = true) {
     const isEnabled = this.#validateMultiplayer(value);
@@ -126,6 +149,8 @@ class EnablerAiContent {
     this.#enableModelReadOnly(true);
   }
 
+  //////////////////////////////////////////////
+
   #disablePromptButtons(value = false) {
     const isDisabled = this.#validateMultiplayer(value, false);
     // Execute disable script
@@ -153,6 +178,8 @@ class EnablerAiContent {
     this.#disablePromptButtons(true);
   }
 
+  //////////////////////////////////////////////
+
   #enableMessageButtons(value = true) {
     const isEnabled = this.#validateMultiplayer(value, false);
     if (isEnabled) this.chatContainer.removeClass('hide-msg-buttons');
@@ -166,6 +193,8 @@ class EnablerAiContent {
   deMessageButtons() {
     this.#enableMessageButtons(false);
   }
+
+  ////////////////////////////////////////////////////////////
 
   #enableReadOnly(isEnabled = true, controller = null) {
     this.#readOnlyTemplate(this.msgSubmit, isEnabled, false);
@@ -200,6 +229,8 @@ class EnablerAiContent {
     this.#enableReadOnly(true, controller);
   }
 
+  ///////////////////////////////////////////////////////
+
   #modelChangerReadOnly(isEnabled = true) {
     for (const index in this.ficResets)
       this.#readOnlyTemplate(this.ficResets[index], isEnabled, false);
@@ -216,6 +247,8 @@ class EnablerAiContent {
   deModelChanger() {
     this.#modelChangerReadOnly(true);
   }
+
+  ///////////////////////////////////////////////////////
 
   #enableModelSelectorReadOnly(value = true) {
     const isEnabled = this.#validateMultiplayer(value);
