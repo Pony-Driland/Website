@@ -97,8 +97,6 @@ fs.readdir(folderPath, (err, files) => {
         <meta http-equiv="refresh" content="0; URL='/?path=read-fic&chapter=${data.count}'"/>
 
         <!-- Script -->
-        <script src="../bundle.js"></script>
-        <script src="../bundle2.js"></script>
         <script src="../redirect.js"></script>
     
     </head>
