@@ -181,7 +181,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
 
       // Sidebar
       const colSidebar = TinyHtml.createFrom('div', {
-        class: 'float-end character-wikicard ms-2 mb-2',
+        class: 'float-md-end character-wikicard ms-md-2 mb-3 mb-md-2',
       });
 
       const card = TinyHtml.createFrom('div', { class: 'card position-relative' });
