@@ -168,30 +168,32 @@ body:not(.browser-with-web3) .web3-element {
 
 /* Markdown */
 
-#markdown-read > h1,
-#markdown-read > h2,
-#markdown-read > h3,
-#markdown-read > h4,
-#markdown-read > h5,
-#markdown-read > h6 {
-  margin-top: 24px !important;
-  margin-bottom: 16px !important;
-  font-weight: 600 !important;
-  line-height: 1.25 !important;
-}
+#markdown-read {
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5,
+  & > h6 {
+    margin-top: 24px !important;
+    margin-bottom: 16px !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+  }
 
-#markdown-read > h1,
-#markdown-read > h2 {
-  border-bottom: 1px solid #303030;
-  padding-bottom: 6px;
-}
+  & > h1,
+  & > h2 {
+    border-bottom: 1px solid #303030;
+    padding-bottom: 6px;
+  }
 
-#markdown-read > hr {
-  height: 0.25em;
-  padding: 0;
-  margin: 24px 0;
-  background-color: #303030;
-  border: 0;
+  & > hr {
+    height: 0.25em;
+    padding: 0;
+    margin: 24px 0;
+    background-color: #303030;
+    border: 0;
+  }
 }
 
 /* Page Item */
@@ -250,25 +252,27 @@ body:not(.browser-with-web3) .web3-element {
   outline: 1px solid red;
 }
 
-#markdown-read pre,
-#markdown-read pre code {
-  font-family:
-    Lucida Console,
-    Lucida Sans Typewriter,
-    monaco,
-    Bitstream Vera Sans Mono,
-    monospace !important;
-}
+#markdown-read {
+  pre,
+  pre code {
+    font-family:
+      Lucida Console,
+      Lucida Sans Typewriter,
+      monaco,
+      Bitstream Vera Sans Mono,
+      monospace !important;
+  }
 
-#markdown-read pre {
-  background-color: #2d2d2d;
-  border: 1px solid #000;
-  padding: 15px;
-}
+  pre {
+    background-color: #2d2d2d;
+    border: 1px solid #000;
+    padding: 15px;
+  }
 
-#markdown-read pre code {
-  color: #fff;
-  white-space: pre-wrap;
+  pre code {
+    color: #fff;
+    white-space: pre-wrap;
+  }
 }
 
 .badge.chapter-notification:hover {
