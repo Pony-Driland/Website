@@ -121,8 +121,6 @@ getDirectories(folderPath, (err, files) => {
         <meta name="twitter:image" content="${imgUrl}">
 
         <!-- Script -->
-        <script src="../bundle.js"></script>
-        <script src="../bundle2.js"></script>
         <script src="../redirect.js"></script>
     
     </head>
