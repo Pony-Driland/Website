@@ -23,6 +23,9 @@ charTable_4_1: 'JasminDreasond'
 
 charTable_5_0: 'Design'
 charTable_5_1: '[Synth Sparkle](https://derpibooru.org/tags/artist-colon-synthsparkle)'
+
+charTable_6_0: 'Created At'
+charTable_6_1: '2021-08-19'
 #---
 
 Ariella is the founder of Pony Driland, and of her mysterious kingdom she ruled on her home planet before this planet has a cruel fate in an intergalactic war. Ariella follows the ethics of Christianity, the origin of her religious behavior is revealed only in history, where all her personality of goodness and love originates that she has for her kingdom inhabitants.

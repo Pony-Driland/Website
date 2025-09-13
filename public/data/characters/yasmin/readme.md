@@ -24,6 +24,9 @@ charTable_4_1: ''
 charTable_5_0: 'Development'
 charTable_5_1: 'JasminDreasond'
 
+charTable_7_0: 'Created At'
+charTable_7_1: '2021-11-13'
+
 #---
 
 The story of this Yasmin (Yasmin Seidel) separates from my original timeline on the date 24 jul, 2021. 

@@ -29,6 +29,12 @@ charTable_6_1: 'JasminDreasond'
 
 charTable_8_0: 'Generator'
 charTable_8_1: 'Stable Diffusion'
+
+charTable_9_0: 'Created At'
+charTable_9_1: '2022-03-20'
+
+charTable_10_0: 'Design Created At'
+charTable_10_1: '2025-02-18'
 #---
 
 <span class="made-by-ai">

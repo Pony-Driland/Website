@@ -43,8 +43,15 @@ charTable_11_1: 'JasminDreasond'
 
 charTable_12_0: 'Design'
 charTable_12_1: '[Blujetink](https://derpibooru.org/tags/artist-colon-acersiii)'
+
 charTable_13_0: ''
 charTable_13_1: 'JasminDreasond'
+
+charTable_14_0: 'Created At'
+charTable_14_1: '2018-??-??'
+
+charTable_15_0: 'Design Created At'
+charTable_15_1: '2021-10-06'
 
 contentList_0: 'Specie'
 contentList_1: 'Natural Habitat'
