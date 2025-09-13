@@ -26,6 +26,12 @@ charTable_6_1: '[Blujetink](https://derpibooru.org/tags/artist-colon-acersiii)'
 
 charTable_7_0: 'Ref Design'
 charTable_7_1: '[JasminDreasond](https://derpibooru.org/tags/artist-colon-jasmindreasond)'
+
+charTable_8_0: 'Created At'
+charTable_8_1: '2012-??-??'
+
+charTable_9_0: 'Joined At'
+charTable_9_1: '2021-11-13'
 #---
 
 <span class="made-by-ai">

@@ -26,6 +26,9 @@ charTable_5_1: 'Atrimy Redclouds'
 
 charTable_6_0: 'Design'
 charTable_6_1: '[Atrimy Redclouds](https://www.deviantart.com/atrimy-redclouds)'
+
+charTable_7_0: 'Created At'
+charTable_7_1: '2022-03-06'
 #---
 
 Coming Soon...

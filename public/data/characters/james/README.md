@@ -29,6 +29,12 @@ charTable_6_1: 'SuperBolinha2'
 
 charTable_8_0: 'Generator'
 charTable_8_1: 'Stable Diffusion'
+
+charTable_9_0: 'Created At'
+charTable_9_1: '2021-08-29'
+
+charTable_10_0: 'Design Created At'
+charTable_10_1: '2025-03-02'
 #---
 
 James is one of the scientists responsible for developing the source code that helped create the Pony Driland dimension. James' journey involves discovering what happened to the dimension, while sadly suffering from the loss of his original dimension.

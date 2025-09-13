@@ -27,6 +27,9 @@ charTable_5_1: 'JasminDreasond'
 charTable_6_0: 'Design'
 charTable_6_1: '[João the John](https://derpibooru.org/tags/artist-colon-joaothejohn)'
 
+charTable_7_0: 'Created At'
+charTable_7_1: '2021-10-29'
+
 contentList_1_0: 'Items'
 contentList_1_1: 'Collar'
 
