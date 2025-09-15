@@ -1064,7 +1064,7 @@ rootApp.onReady(() => {
           TinyHtml.createFrom('li')
             .prepend(
               TinyHtml.createFrom('a', {
-                href: '/?path=%2FLICENSE.md&title=License',
+                href: '/?path=%2FLICENSE.md',
                 id: 'license',
               })
                 .setText('License')
@@ -1073,6 +1073,22 @@ rootApp.onReady(() => {
             .on('click', (e) => {
               e.preventDefault();
               openMDFile('/LICENSE.md');
+            }),
+        );
+
+        tinyFooter[2].push(
+          TinyHtml.createFrom('li')
+            .prepend(
+              TinyHtml.createFrom('a', {
+                href: '/?path=%2FPRIVACY.md',
+                id: 'privacy-policy',
+              })
+                .setText('Privacy Policy')
+                .prepend(tinyLib.icon('fas fa-user-shield me-2')),
+            )
+            .on('click', (e) => {
+              e.preventDefault();
+              openMDFile('/PRIVACY.md');
             }),
         );
 
