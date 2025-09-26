@@ -51,8 +51,8 @@ export const fixImageSrc = (item) => {
       })
       .on('load', () => {
         newImage.setData('image-size', {
-          width: newImage.width(),
-          height: newImage.height(),
+          width: newImage.width,
+          height: newImage.height,
         });
 
         newImage.setStyle({
