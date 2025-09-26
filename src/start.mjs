@@ -1,7 +1,4 @@
-import {
-  installWindowHiddenScript,
-  addAiMarkerShortcut,
-} from 'tiny-essentials/basics';
+import { installWindowHiddenScript, addAiMarkerShortcut } from 'tiny-essentials/basics';
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import TinyDomReadyManager from 'tiny-essentials/libs/TinyDomReadyManager';
 import QRCode from 'qrcode';
