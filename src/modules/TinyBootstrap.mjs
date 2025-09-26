@@ -12,7 +12,7 @@ import {
   Tab as BsTab,
   Toast as BsToast,
 } from 'bootstrap';
-import { TinyHtml } from 'tiny-essentials';
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 
 /**
  * Initializes and returns a Bootstrap Modal instance bound to a TinyHtml element.

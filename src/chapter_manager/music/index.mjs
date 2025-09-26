@@ -1,6 +1,7 @@
 import Pizzicato from 'pizzicato';
 import objHash from 'object-hash';
-import { shuffleArray, ruleOfThree, TinyHtml } from 'tiny-essentials';
+import { shuffleArray, ruleOfThree } from 'tiny-essentials/basics';
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import { tinyLs, gtag, appData } from '../../important.mjs';
 import SeamlessLoop from '../../../build/bundle/SeamlessLoop.mjs';
 import BuffAudio from '../../../build/bundle/buffaudio.mjs';

@@ -9,9 +9,10 @@
         "declarationDir": "./dist",
         "emitDeclarationOnly": false,
         "allowSyntheticDefaultImports": true,
-        "target": "ESNext",
         "strict": true,
-        "moduleResolution": "node"
+        "target": "ESNext",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext"
     },
     "include": [
         "src/modules", 

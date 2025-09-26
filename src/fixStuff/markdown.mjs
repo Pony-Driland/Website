@@ -1,5 +1,5 @@
 import { marked } from 'marked';
-import { TinyHtml } from 'tiny-essentials';
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import tinyLib, { alert } from '../files/tinyLib.mjs';
 
 import { storyData } from '../files/chapters.mjs';

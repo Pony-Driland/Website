@@ -1,6 +1,6 @@
 import objHash from 'object-hash';
 
-import { toTitleCase, fetchJson, isJsonObject } from 'tiny-essentials';
+import { toTitleCase, fetchJson, isJsonObject } from 'tiny-essentials/basics';
 
 import tinyLib, { alert } from './tinyLib.mjs';
 import storyCfg from '../chapters/config.mjs';

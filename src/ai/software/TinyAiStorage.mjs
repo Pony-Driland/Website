@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events';
-import { isJsonObject } from 'tiny-essentials';
+import { isJsonObject } from 'tiny-essentials/basics';
 import { tinyLs } from '../../important.mjs';
 
 // Localstorage Manager

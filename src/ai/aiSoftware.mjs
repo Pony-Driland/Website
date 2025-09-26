@@ -4,7 +4,9 @@ import clone from 'clone';
 import objHash from 'object-hash';
 import { saveAs } from 'file-saver';
 
-import { objType, countObj, toTitleCase, TinyTextRangeEditor, TinyHtml } from 'tiny-essentials';
+import { objType, countObj, toTitleCase } from 'tiny-essentials/basics';
+import TinyTextRangeEditor from 'tiny-essentials/libs/TinyTextRangeEditor';
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import TinyDices from 'tiny-dices';
 
 import {

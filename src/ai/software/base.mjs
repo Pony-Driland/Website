@@ -1,5 +1,5 @@
 import { TinyAiInstance } from 'tiny-ai-api';
-import { TinyHtml } from 'tiny-essentials';
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import TinyAiStorage from './TinyAiStorage.mjs';
 import { appData } from '../../important.mjs';
 
