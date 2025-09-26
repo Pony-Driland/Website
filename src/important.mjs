@@ -1,12 +1,10 @@
 import { EventEmitter } from 'events';
 import * as JsStore from 'jsstore';
-import {
-  getAge,
-  TinyHtml,
-  TinyLoadingScreen,
-  TinyLocalStorage,
-  TinyNotifications,
-} from 'tiny-essentials';
+import { getAge } from 'tiny-essentials/basics';
+import TinyLoadingScreen from 'tiny-essentials/libs/TinyLoadingScreen';
+import TinyLocalStorage from 'tiny-essentials/libs/TinyLocalStorage';
+import TinyNotifications from 'tiny-essentials/libs/TinyNotifications';
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import storyCfg from './chapters/config.mjs';
 import FirebaseAccount from './account/firebase.mjs';
 

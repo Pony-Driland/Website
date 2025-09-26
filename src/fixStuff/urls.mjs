@@ -1,4 +1,4 @@
-import { TinyHtml } from 'tiny-essentials';
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import PhotoSwipeLightbox from 'photoswipe';
 
 /**

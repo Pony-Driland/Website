@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 import { io } from 'socket.io-client';
-import { objType } from 'tiny-essentials';
+import { objType } from 'tiny-essentials/basics';
 
 class TinyClientIo extends EventEmitter {
   #cfg;

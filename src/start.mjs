@@ -1,13 +1,14 @@
 import {
-  TinyHtml,
-  TinyDomReadyManager,
   installWindowHiddenScript,
   addAiMarkerShortcut,
-} from 'tiny-essentials';
+} from 'tiny-essentials/basics';
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyDomReadyManager from 'tiny-essentials/libs/TinyDomReadyManager';
 import QRCode from 'qrcode';
 import moment from 'moment';
 import { saveAs } from 'file-saver';
 import { Offcanvas } from 'bootstrap';
+import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
 
 import { vanillaPwa } from './pwa/installer.mjs';
 import './chapters/sound.mjs';
@@ -20,8 +21,6 @@ import storyCfg from './chapters/config.mjs';
 import { openChapterMenu } from './chapter_manager/index.mjs';
 import { tinyLs, fa, needsAgeVerification, loaderScreen } from './important.mjs';
 
-import TinyIcon from './modules/template/TinyIcon.mjs';
-import TinyButton from './modules/template/TinyButton.mjs';
 import { Tooltip } from './modules/TinyBootstrap.mjs';
 import { AiScriptStart } from './ai/aiSoftware.mjs';
 import { tinyAiScript } from './ai/software/tinyAiScript.mjs';
@@ -698,14 +697,14 @@ rootApp.onReady(() => {
             loginAccount.base = TinyHtml.createFrom('li', {
               className: 'nav-item font-weight-bold',
             });
-            loginAccount.link = new TinyButton({
+            loginAccount.link = new TinyHtmlElems.Button({
               label: '',
               tags: 'disabled',
               mainClass: 'nav-link',
             })
               .setAttr('id', 'login-start')
               .setAttr('title', 'Sign in with Google');
-            loginAccount.icon = new TinyIcon(['fa-solid', 'fa-right-to-bracket']);
+            loginAccount.icon = new TinyHtmlElems.Icon(['fa-solid', 'fa-right-to-bracket']);
 
             const tool = Tooltip(loginAccount.link);
             loginAccount.base.append(loginAccount.link);

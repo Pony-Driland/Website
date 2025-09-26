@@ -1,5 +1,6 @@
 import objHash from 'object-hash';
-import { countObj, toTitleCase, TinyHtml } from 'tiny-essentials';
+import { countObj, toTitleCase } from 'tiny-essentials/basics';
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import paginateArray from 'paginate-array';
 
 import { isNoNsfw, loaderScreen, tinyLs } from '../important.mjs';

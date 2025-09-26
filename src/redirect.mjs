@@ -1,5 +1,5 @@
-import { TinyHtml } from 'tiny-essentials';
-import { TinyDomReadyManager } from 'tiny-essentials';
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyDomReadyManager from 'tiny-essentials/libs/TinyDomReadyManager';
 import { loaderScreen } from './important.mjs';
 
 const readyPage = new TinyDomReadyManager();

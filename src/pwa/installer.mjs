@@ -1,6 +1,7 @@
 import { EventEmitter } from 'events';
 import forPromise from 'for-promise';
-import { TinyDomReadyManager, TinyHtml } from 'tiny-essentials';
+import TinyDomReadyManager from 'tiny-essentials/libs/TinyDomReadyManager';
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 
 const postMessage = (data) => {
   if (
