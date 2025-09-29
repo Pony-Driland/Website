@@ -58,6 +58,7 @@ Image seed: 24635
 
 Image Date: Thursday, July 29, 2021 at 12:14 AM
 
+:::collapse See images
 <img src="/img/demo/princess-ariella/seed24635.jpg" height="500">
 
 <img src="/img/demo/princess-ariella/new-pony.jpg" height="500">
@@ -65,3 +66,4 @@ Image Date: Thursday, July 29, 2021 at 12:14 AM
 <img src="/img/demo/princess-ariella/new-pony3.jpg" height="500">
 
 <img src="/img/demo/princess-ariella/cores.png" height="500">
+:::

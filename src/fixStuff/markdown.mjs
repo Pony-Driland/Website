@@ -9,6 +9,17 @@ import storyCfg from '../chapters/config.mjs';
 
 import { fixFileUrl, fixHref, fixImageSrc } from './urls.mjs';
 
+let contentId = 0;
+function preprocessDropdown(md) {
+  return md.replace(/:::collapse (.*?)\n([\s\S]*?):::/g, (match, label, content) => {
+    contentId++;
+    return `
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMdWiki${contentId}" aria-expanded="false">${label}</button>
+    <div class="collapse" id="collapseMdWiki${contentId}">${content}</div>
+    `;
+  });
+}
+
 /**
  * Remove Fic Data
  */
@@ -146,7 +157,10 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
   /** @type {string} */
   let data = '';
 
-  if (!isHTML) data = marked.parse(text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ''));
+  if (!isHTML)
+    data = preprocessDropdown(
+      marked.parse(text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, '')),
+    );
   else data = text;
 
   data = data

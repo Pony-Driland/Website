@@ -179,6 +179,7 @@ If you need an extra color effect, you can copy the original layer of the charac
 
 Mane Tips:
 
+:::collapse See images
 <img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-00.png" height="500">
 
 <img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-01.png" height="500">
@@ -186,22 +187,29 @@ Mane Tips:
 <img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-02_1.png" height="500">
 
 <img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-02.png" height="500">
+:::
 
 Lighting effects template to be used in the mane before applying the "Screen" layer:
 
+:::collapse See image
 <img src="/img/characters/rainbow-queen/drawing-examples/unknown (4).png" height="500">
+:::
 
 Eyes tips:
 
+:::collapse See images
 <img src="/img/characters/rainbow-queen/drawing-examples/2024-11-21_23-54.png" height="500">
 
 <img src="/img/characters/rainbow-queen/drawing-examples/2024-11-21_23-55.png" height="500">
 
 <img src="/img/characters/rainbow-queen/drawing-examples/2024-11-21_23-56.png" height="500">
+:::
 
 Mane solid colors:
 
+:::collapse See image
 <img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-37.png" height="500">
+:::
 
 ## Fun silly fact (SPOILERS!!)
 
