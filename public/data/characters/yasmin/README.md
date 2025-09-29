@@ -86,7 +86,17 @@ This image was inspired by real-life photos of the user, incorporating specific 
 
 <hr/>
 
+#### Normal Version
+
 <img src="/img/characters/yasmin/ai/unnamed.png" height="500">
+
+<hr/>
+
+#### Pet Mutation Version
+
+<img src="/img/characters/yasmin/ai/unnamed2.png" height="500">
+
+The pet collar and eyes colors is an official stuff of Fic Pony Driland and you can find it on <a href="/characters/amy.html" target="_blank">Amy</a>'s Wiki Page.
 
 ### Image References
 :::collapse See content

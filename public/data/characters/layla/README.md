@@ -89,4 +89,6 @@ Unfortunately I no longer own the image generator seed of the drawing, because I
 
 Date: Saturday, October 30, 2021 at 11:46 PM
 
+:::collapse See image
 <img src="/img/demo/Layla.jpg" height="500">
+:::
