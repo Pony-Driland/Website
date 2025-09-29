@@ -681,6 +681,11 @@ rootApp.onReady(() => {
             text: 'Whistler (Character WIP)',
           });
 
+          newItem.dbBase.characters.push({
+            file: '/data/characters/yasmin/README.md',
+            text: 'Yasmin (Character WIP)',
+          });
+
           tinyAiScript.checkTitle();
           tinyAiScript.aiLogin.base.prepend(tinyAiScript.aiLogin.button);
           tinyAiScript.aiLogin.button.on('click', (e) => {
