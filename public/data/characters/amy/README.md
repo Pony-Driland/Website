@@ -90,4 +90,6 @@ This was a glitch from the website generator, but I enjoyed this idea so much th
 
 Date: Thursday, July 29, 2021 at 11:21 PM
 
+:::collapse See image
 <img src="/img/demo/Amy.jpg" height="500">
+:::
