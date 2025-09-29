@@ -57,10 +57,14 @@ But by Vinny's decision, the situation accidentally came out of control, and I h
 This character will continue to be canonical, but will also continue to be secondary and will also remain treated as a secondary character, just appearing at times that really need to appear, always at risk of suffering consequences like any other character.
 
 ## AI Image (Generated at 09/29/2025)
-
+<span class="made-by-ai">
 To create the character design of Yasmin, we followed these steps in Gemini:
-
+</span>
+<span class="made-by-ai">
 **Initial Transformation Request:** The user provided two images of themselves and requested a transformation into an MLP pegasus character. Key visual characteristics were specified:
+</span>
+
+<span class="made-by-ai">
 
 * Feminine character
 * Hair style matching the original person's (long, dark brown)
@@ -70,9 +74,17 @@ To create the character design of Yasmin, we followed these steps in Gemini:
 * Personality traits: shy, fun, reserved, yet social.
 * Name: Yasmin
 
-Throughout this process, we iteratively refined the image based on user feedback to achieve the desired outcome, ensuring faithfulness to the original person's visual characteristics and the specific MLP character requirements.
+</span>
 
+<span class="made-by-ai">
+Throughout this process, we iteratively refined the image based on user feedback to achieve the desired outcome, ensuring faithfulness to the original person's visual characteristics and the specific MLP character requirements.
+</span>
+
+<span class="made-by-ai">
 This image was inspired by real-life photos of the user, incorporating specific details as described in line 1894 of Chapter 3.
+</span>
+
+<hr/>
 
 <img src="/img/characters/yasmin/ai/unnamed.png" height="500">
 
