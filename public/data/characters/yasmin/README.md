@@ -4,7 +4,7 @@ mode: 'wiki'
 
 name: 'Yasmin (Page WIP)'
 subName: 'T̷͕̺͈̲̋͗̓̈͗͌̅͛̚ͅi̴̩̝̠͖̥͕͊̄̊͑͗͐̌͐͊̃͘͜m̴̫͔͓̀͐̊̈́e̷̡̛͙̰͚̙̼̣̜͔̪̊̀̓̔̑̔̀͒͊̈́͘̚͘͝l̵̨͎̬̝̻͚͎̻̋͑i̶̛̯̮͚̗̼̗͖̺̤̥̤͙͇̱̒̆̂̌̑̈́́͑́͌́̀͝n̶̨̡̖̂͝ȩ̷̪̩̭͍͈̲̗̭̺̙͆͐͜ ̸̨̧̥͕̮͕̪͒̐̒͛͘ë̵͕̗̼̲̤̓̌̆̈́͠r̶̢̡̧͈͈̝͖̠̹̺̯̤͍̪̥̈́̈́̅͘͠͝ŕ̶͙͙̽o̴̘͝r̷͈̈̔̃͂͛̈́̈́̌͒͋͝'
-cardUrl: ''
+cardUrl: '/img/characters/yasmin/ai/unnamed.png'
 
 charTable_0_0: 'Kind'
 charTable_0_1: 'Pegasus'
@@ -18,14 +18,23 @@ charTable_2_1: 'Rainbow Queen's home'
 charTable_3_0: 'Family'
 charTable_3_1: 'Rainbow Queen's pet'
 
-charTable_4_0: 'Credits'
-charTable_4_1: ''
+charTable_4_0: 'Created At'
+charTable_4_1: '2021-11-13'
 
-charTable_5_0: 'Development'
-charTable_5_1: 'JasminDreasond'
+charTable_5_0: 'Credits'
+charTable_5_1: ''
 
-charTable_7_0: 'Created At'
-charTable_7_1: '2021-11-13'
+charTable_6_0: 'Development'
+charTable_6_1: 'JasminDreasond'
+
+charTable_7_0: 'Image'
+charTable_7_1: ''
+
+charTable_8_0: 'Prompter'
+charTable_8_1: 'JasminDreasond'
+
+charTable_9_0: 'Generator'
+charTable_9_1: 'Gemini'
 
 #---
 
@@ -46,3 +55,29 @@ The events of the Chapter 3 on Vinny's bet with Rainbow Queen to save Ivy really
 But by Vinny's decision, the situation accidentally came out of control, and I had no more choices, especially because the story had already created all the sense for the situation, and it would not be the same experience trying to create an alternative version of the situation. The best decision was to keep everything the way it was already, and I really had the end that happened to myself in the story.
 
 This character will continue to be canonical, but will also continue to be secondary and will also remain treated as a secondary character, just appearing at times that really need to appear, always at risk of suffering consequences like any other character.
+
+## AI Image (Generated at 09/29/2025)
+
+To create the character design of Yasmin, we followed these steps in Gemini:
+
+**Initial Transformation Request:** The user provided two images of themselves and requested a transformation into an MLP pegasus character. Key visual characteristics were specified:
+
+* Feminine character
+* Hair style matching the original person's (long, dark brown)
+* Brown eye color (initially, later changed to dark blue)
+* Pegasus type
+* Mane color: brown
+* Personality traits: shy, fun, reserved, yet social.
+* Name: Yasmin
+
+Throughout this process, we iteratively refined the image based on user feedback to achieve the desired outcome, ensuring faithfulness to the original person's visual characteristics and the specific MLP character requirements.
+
+This image was inspired by real-life photos of the user, incorporating specific details as described in line 1894 of Chapter 3.
+
+<img src="/img/characters/yasmin/ai/unnamed.png" height="500">
+
+### Image References
+
+<img src="/img/characters/yasmin/reference/20170523_103346.jpg" height="500">
+
+<img src="/img/characters/yasmin/reference/Discord_aDZboLdTd2.png" height="500">
