@@ -102,5 +102,5 @@ The pet collar and eyes colors is an official stuff of Fic Pony Driland and you 
 :::collapse See content
 <img src="/img/characters/yasmin/reference/20170523_103346.jpg" height="500">
 
-<img src="/img/characters/yasmin/reference/Discord_aDZboLdTd2.png" height="500">
+<img src="/img/characters/yasmin/reference/photo_2021-12-19_15-47-19.jpg" height="500">
 :::
