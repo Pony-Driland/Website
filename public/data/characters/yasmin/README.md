@@ -77,7 +77,8 @@ This image was inspired by real-life photos of the user, incorporating specific 
 <img src="/img/characters/yasmin/ai/unnamed.png" height="500">
 
 ### Image References
-
+:::collapse See content
 <img src="/img/characters/yasmin/reference/20170523_103346.jpg" height="500">
 
 <img src="/img/characters/yasmin/reference/Discord_aDZboLdTd2.png" height="500">
+:::

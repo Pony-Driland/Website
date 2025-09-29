@@ -58,4 +58,6 @@ Image seed: 68099
 
 Image Date: Tuesday, August 17, 2021 at 9:09 PM
 
+:::collapse See image
 <img src="/img/demo/Rayane-seed68099.jpg" height="500">
+:::
