@@ -1,6 +1,7 @@
 import objHash from 'object-hash';
 import { countObj, toTitleCase } from 'tiny-essentials/basics';
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
 import paginateArray from 'paginate-array';
 
 import { isNoNsfw, loaderScreen, tinyLs } from '../important.mjs';
@@ -13,6 +14,8 @@ import BootstrapPaginator from '../modules/bootstrap-paginator.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
 import { body } from '../html/query.mjs';
+
+const { Icon } = TinyHtmlElems;
 
 /*  Rain made by Aaron Rickle */
 const rainConfig = {};
@@ -274,7 +277,7 @@ export const openChapterMenu = (params = {}) => {
   // New Read
   const newRead = async (chapter = 1, selectedLine = null) => {
     // Clear Update Warn
-    TinyHtml.query('#fic-start')?.setText('Read Fic').prepend(tinyLib.icon('fab fa-readme me-2'));
+    TinyHtml.query('#fic-start')?.setText('Read Fic').prepend(new Icon('fab fa-readme me-2'));
 
     // Load Sounds
     if (storyCfg.sfx) {
@@ -474,7 +477,7 @@ export const openChapterMenu = (params = {}) => {
         .setText(
           'Bold texts are action texts, small texts are thoughts of characters, common texts are dialogues or telepathy. If you are using filters to keep your reading 100% SFW, some unnecessary text lines will be automatically skipped.',
         )
-        .prepend(tinyLib.icon('fas fa-info-circle me-3')),
+        .prepend(new Icon('fas fa-info-circle me-3')),
 
       // Title
       TinyHtml.createFrom('h3')
@@ -626,7 +629,7 @@ export const openChapterMenu = (params = {}) => {
 
             // Modal
             tinyLib.modal({
-              title: [tinyLib.icon('fa-solid fa-user me-3'), 'Character Statistics'],
+              title: [new Icon('fa-solid fa-user me-3'), 'Character Statistics'],
               body: TinyHtml.createFrom('span').append(newDiv.append(content)),
               dialog: 'modal-lg',
             });
@@ -678,7 +681,7 @@ export const openChapterMenu = (params = {}) => {
 
             // Modal
             tinyLib.modal({
-              title: [tinyLib.icon('fa-solid fa-a me-3'), 'Letter Statistics'],
+              title: [new Icon('fa-solid fa-a me-3'), 'Letter Statistics'],
               body: TinyHtml.createFrom('span').append(newDiv.append(content)),
               dialog: 'modal-lg',
             });
@@ -729,7 +732,7 @@ export const openChapterMenu = (params = {}) => {
 
             // Modal
             tinyLib.modal({
-              title: [tinyLib.icon('fa-solid fa-a me-3'), 'Word Statistics'],
+              title: [new Icon('fa-solid fa-a me-3'), 'Word Statistics'],
               body: TinyHtml.createFrom('span').append(newDiv.append(content)),
               dialog: 'modal-lg',
             });
@@ -743,7 +746,7 @@ export const openChapterMenu = (params = {}) => {
           .setText(
             'Each time you read a chapter, your progress is automatically saved. This checkpoint is stored in your browser. If you want to continue reading on another device, simply save the checkpoint URL that appears when you open a chapter.',
           )
-          .prepend(tinyLib.icon('fas fa-info-circle me-3'))
+          .prepend(new Icon('fas fa-info-circle me-3'))
           .addClass('made-by-ai'),
 
         tinyLib.bs
@@ -751,7 +754,7 @@ export const openChapterMenu = (params = {}) => {
           .setText(
             "Disclaimer: All songs on this page are streamed directly from YouTube. This means many tracks are not owned by me and are used solely to enhance the reading experience. I acknowledge that if any artist requests removal, the song will be replaced. All songs played count as views on the original creator's YouTube channel. You can find the official music page via the info icon on the player.",
           )
-          .prepend(tinyLib.icon('fas fa-info-circle me-3'))
+          .prepend(new Icon('fas fa-info-circle me-3'))
           .addClass('made-by-ai'),
 
         tinyLib.bs
@@ -759,13 +762,13 @@ export const openChapterMenu = (params = {}) => {
           .setText(
             'This site does not collect your personal access data. However, some third-party services used on this page — such as YouTube, Google, and Cloudflare — may collect browsing information.',
           )
-          .prepend(tinyLib.icon('fas fa-info-circle me-3'))
+          .prepend(new Icon('fas fa-info-circle me-3'))
           .addClass('made-by-ai'),
       ),
 
       TinyHtml.createFrom('h2')
         .setText(`Please select a chapter to read.`)
-        .prepend(tinyLib.icon('fas fa-book-open me-3'))
+        .prepend(new Icon('fas fa-book-open me-3'))
         .append(
           tinyLib.bs
             .button(`${!cantNsfw ? 'info' : 'danger'} btn-sm ms-3`)
@@ -879,7 +882,7 @@ export const openChapterMenu = (params = {}) => {
 
               // Modal
               tinyLib.modal({
-                title: [tinyLib.icon('fas fa-eye me-3'), 'Mature Content Settings'],
+                title: [new Icon('fas fa-eye me-3'), 'Mature Content Settings'],
                 body: TinyHtml.createFrom('center').append(
                   TinyHtml.createFrom('p', { class: 'text-danger made-by-ai' }).setText(
                     "Don't expect any explicit 18+ content here. The mature themes are not graphic and are only used to add depth to the story — for example, to make certain scenes feel more realistic. By enabling these settings, you confirm that you are over 18 and accept full responsibility for the content you choose to view.",

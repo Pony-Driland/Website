@@ -2,6 +2,7 @@ import Pizzicato from 'pizzicato';
 import objHash from 'object-hash';
 import { shuffleArray, ruleOfThree } from 'tiny-essentials/basics';
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
 import { tinyLs, gtag, appData } from '../../important.mjs';
 import SeamlessLoop from '../../../build/bundle/SeamlessLoop.mjs';
 import BuffAudio from '../../../build/bundle/buffaudio.mjs';
@@ -13,6 +14,8 @@ import ttsManager from '../tts/tts.mjs';
 import { Tooltip } from '../../modules/TinyBootstrap.mjs';
 import { head } from '../../html/query.mjs';
 import { yt } from '../../api/youtube.mjs';
+
+const { Icon } = TinyHtmlElems;
 
 // Base
 storyData.music = {
@@ -450,11 +453,11 @@ const musicManager = {
       }
 
       // Buttons
-      storyData.music.nav.info = tinyLib.icon('fas fa-info-circle');
-      storyData.music.nav.play = tinyLib.icon('fas fa-play');
-      storyData.music.nav.volume = tinyLib.icon('fas fa-volume-mute');
-      storyData.music.nav.stop = tinyLib.icon('fas fa-stop');
-      storyData.music.nav.disable = tinyLib.icon('fas fa-ban');
+      storyData.music.nav.info = new Icon('fas fa-info-circle');
+      storyData.music.nav.play = new Icon('fas fa-play');
+      storyData.music.nav.volume = new Icon('fas fa-volume-mute');
+      storyData.music.nav.stop = new Icon('fas fa-stop');
+      storyData.music.nav.disable = new Icon('fas fa-ban');
 
       // Fix Youtube Player
       //youtubePlayer.removeClass('hidden');
@@ -537,7 +540,7 @@ const musicManager = {
 
                 // Modal
                 tinyLib.modal({
-                  title: [tinyLib.icon('fas fa-volume me-3'), 'Song Volume'],
+                  title: [new Icon('fas fa-volume me-3'), 'Song Volume'],
                   body: TinyHtml.createFrom('center').append(
                     TinyHtml.createFrom('p').setText('Change the page music volume'),
                     input

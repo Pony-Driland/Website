@@ -1,5 +1,6 @@
 import { marked } from 'marked';
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
 import tinyLib, { alert } from '../files/tinyLib.mjs';
 
 import { storyData } from '../files/chapters.mjs';
@@ -10,6 +11,8 @@ import storyCfg from '../chapters/config.mjs';
 import { fixFileUrl, fixHref, fixImageSrc } from './urls.mjs';
 import { body, topPage } from '../html/query.mjs';
 import { yt } from '../api/youtube.mjs';
+
+const { Icon } = TinyHtmlElems;
 
 let contentId = 0;
 function preprocessDropdown(md) {
@@ -58,12 +61,7 @@ export const clearFicData = () => {
   storyData.chapter.nav = {};
   storyData.chapter.selected = 0;
 
-  if (
-    yt.player &&
-    yt.exists &&
-    storyData.youtube.state === YT.PlayerState.PLAYING
-  )
-    yt.player.stopVideo();
+  if (yt.exists && storyData.youtube.state === YT.PlayerState.PLAYING) yt.player.stopVideo();
 };
 
 /**
@@ -311,7 +309,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
       const openButton = TinyHtml.createFrom('h5', { class: 'm-0 p-2 w-100' });
       openButton
         .setText('Contents')
-        .prepend(tinyLib.icon('d-flex align-items-center fa-solid fa-list me-2 small'));
+        .prepend(new Icon('d-flex align-items-center fa-solid fa-list me-2 small'));
 
       const collapseButton = tinyLib.bs
         .button('link btn-bg p-2 d-flex justify-content-center align-items-center me-2')
@@ -322,7 +320,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
           width: 30,
           'font-size': '14px',
         })
-        .append(tinyLib.icon('fa-solid fa-square-minus'));
+        .append(new Icon('fa-solid fa-square-minus'));
 
       tinyBase.append(openButton, collapseButton);
 

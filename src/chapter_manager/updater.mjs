@@ -1,4 +1,5 @@
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
 import TinyAfterScrollWatcher from 'tiny-essentials/libs/TinyAfterScrollWatcher';
 
 import { tinyLs, gtag } from '../important.mjs';
@@ -9,6 +10,8 @@ import ttsManager from './tts/tts.mjs';
 import musicManager from './music/index.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { body } from '../html/query.mjs';
+
+const { Icon } = TinyHtmlElems;
 
 // Prepare Cache
 const cacheChapterUpdater = { soundCache: {} };
@@ -261,7 +264,7 @@ cacheChapterUpdater.data = (lastPage) => {
       });
       storyData.chapter.nav.bookmark
         .setAttr('title', 'Bookmark')
-        .append(tinyLib.icon('fas fa-bookmark'));
+        .append(new Icon('fas fa-bookmark'));
       Tooltip(storyData.chapter.nav.bookmark);
 
       // Action
@@ -413,7 +416,7 @@ const chapterSet = {
             .data('BootstrapToolTip')
             .setContent({ '.tooltip-inner': newTitle });
         }
-        obj.removeAttr('title').append(tinyLib.icon(types[value].icon));
+        obj.removeAttr('title').append(new Icon(types[value].icon));
       }
     }
   },
@@ -447,7 +450,7 @@ const chapterSet = {
       const obj = new TinyHtml(storyData.nc.base.right.find(':scope > #status #weather'));
       obj.empty();
       if (types[value]) {
-        obj.setAttr('title', types[value].title).append(tinyLib.icon(types[value].icon));
+        obj.setAttr('title', types[value].title).append(new Icon(types[value].icon));
         Tooltip(obj);
         obj.removeAttr('title');
       }

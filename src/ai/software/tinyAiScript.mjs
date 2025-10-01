@@ -1,11 +1,14 @@
 import { setTinyGoogleAi } from 'tiny-ai-api';
 import { formatDayTimer } from 'tiny-essentials/basics';
+import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 
 import tinyLib from '../../files/tinyLib.mjs';
 import { appData } from '../../important.mjs';
 import { tinyAi, tinyIo, tinyStorage } from './base.mjs';
 import { body } from '../../html/query.mjs';
+
+const { Icon } = TinyHtmlElems;
 
 export const tinyAiScript = {
   isEnabled: () => typeof tinyStorage.selectedAi() === 'string',
@@ -19,7 +22,7 @@ export const tinyAiScript = {
 
     button: tinyLib.bs
       .button({ id: 'ai-login', dsBtn: true, class: 'nav-link' })
-      .prepend(tinyLib.icon('fa-solid fa-robot me-2')),
+      .prepend(new Icon('fa-solid fa-robot me-2')),
 
     updateTitle: () => {
       if (tinyAiScript.aiLogin.button) {
