@@ -61,7 +61,7 @@ export const clearFicData = () => {
   storyData.chapter.nav = {};
   storyData.chapter.selected = 0;
 
-  if (yt.exists && storyData.youtube.state === YT.PlayerState.PLAYING) yt.player.stopVideo();
+  if (yt.exists && yt.state === YT.PlayerState.PLAYING) yt.player.stopVideo();
 };
 
 /**
