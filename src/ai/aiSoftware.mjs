@@ -35,6 +35,7 @@ import { tinyAiScript } from './software/tinyAiScript.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
 import { storyData } from '../files/chapters.mjs';
+import { body, topPage } from '../html/query.mjs';
 
 export const AiScriptStart = async () => {
   let sessionEnabled = true;
@@ -44,7 +45,7 @@ export const AiScriptStart = async () => {
   // Clear page
   clearFicData();
   TinyHtml.query('#markdown-read')?.empty();
-  TinyHtml.query('#top_page')?.addClass('d-none');
+  topPage.addClass('d-none');
 
   // Can use backup
   const rpgCfg = tinyStorage.getApiKey(tinyStorage.selectedAi()) || {};
@@ -3101,11 +3102,11 @@ export const AiScriptStart = async () => {
             if (tinyCache.msgBallon) {
               tinyCache.msgBallon.removeClass('entering-ai-message');
               const ballonCache = tinyCache.msgBallon.data('tiny-ai-cache');
-              if (TinyHtml.query('body')?.hasClass('windowHidden')) {
+              if (body.hasClass('windowHidden')) {
                 if (ballonCache) tinyNotification.send(ballonCache.role, { body: ballonCache.msg });
                 else notificationError();
               }
-            } else if (TinyHtml.query('body')?.hasClass('windowHidden')) notificationError();
+            } else if (body.hasClass('windowHidden')) notificationError();
             completeTask();
           }
         })

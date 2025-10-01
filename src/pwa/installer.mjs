@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import forPromise from 'for-promise';
 import TinyDomReadyManager from 'tiny-essentials/libs/TinyDomReadyManager';
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import { body } from '../html/query.mjs';
 
 const postMessage = (data) => {
   if (
@@ -17,8 +17,7 @@ const postMessage = (data) => {
 let firstTime = true;
 let deferredPrompt;
 window.matchMedia('(display-mode: standalone)').addEventListener('change', (evt) => {
-  const body = TinyHtml.query('body');
-  body?.removeClass(['window-browser', 'window-standalone']);
+  body.removeClass(['window-browser', 'window-standalone']);
 
   let displayMode = 'browser';
   if (evt.matches) {
@@ -303,11 +302,11 @@ export const tinyPwa = new TinyPwa();
 initDom.onReady(() => {
   if (window.matchMedia('(display-mode: standalone)').matches) {
     console.log(`[PWA] This is running as standalone.`);
-    TinyHtml.query('body').addClass(`window-standalone`);
+    body.addClass(`window-standalone`);
     tinyPwa.emit('displayMode', 'standalone');
   } else {
     console.log(`[PWA] This is running as browser.`);
-    TinyHtml.query('body').addClass(`window-browser`);
+    body.addClass(`window-browser`);
     tinyPwa.emit('displayMode', 'browser');
   }
 });
