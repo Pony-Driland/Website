@@ -242,13 +242,6 @@ tinyLib.getGitUrlPath = (text, type = 'g') => {
   return new RegExp(typeof text === 'string' ? text.replace('{url}', tinyUrl) : tinyUrl, type);
 };
 
-/**
- * Icon
- *
- * @param {string} classItem
- */
-tinyLib.icon = (classItem) => TinyHtml.createFrom('i', { class: classItem });
-
 /** Files Upload button */
 tinyLib.upload = {};
 

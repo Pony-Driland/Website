@@ -7,6 +7,7 @@ import { saveAs } from 'file-saver';
 import { objType, countObj, toTitleCase } from 'tiny-essentials/basics';
 import TinyTextRangeEditor from 'tiny-essentials/libs/TinyTextRangeEditor';
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
 import TinyDices from 'tiny-dices';
 
 import {
@@ -36,6 +37,8 @@ import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
 import { storyData } from '../files/chapters.mjs';
 import { body, topPage } from '../html/query.mjs';
+
+const { Icon } = TinyHtmlElems;
 
 export const AiScriptStart = async () => {
   let sessionEnabled = true;
@@ -126,7 +129,7 @@ export const AiScriptStart = async () => {
     return tinyLib.bs
       .button(!options ? tinyClass : { class: tinyClass, ...options })
       .setText(text)
-      .prepend(tinyLib.icon(`${icon} me-2`))
+      .prepend(new Icon(`${icon} me-2`))
       .on('click', callback)
       .toggleProp('disabled', disabled);
   };
@@ -2223,7 +2226,7 @@ export const AiScriptStart = async () => {
       body.append(
         TinyHtml.createFrom('h3')
           .setText(`Download Content`)
-          .prepend(tinyLib.icon('fa-solid fa-download me-3'))
+          .prepend(new Icon('fa-solid fa-download me-3'))
           .append(
             tinyLib.bs
               .button('info btn-sm ms-3')
@@ -2395,7 +2398,7 @@ export const AiScriptStart = async () => {
       modelSelector,
       TinyHtml.createFrom('label', { for: 'select-ai-model' })
         .setText('Select AI Model')
-        .prepend(tinyLib.icon(`fa-solid fa-atom me-2`)),
+        .prepend(new Icon(`fa-solid fa-atom me-2`)),
     ),
 
     // Token Counter
@@ -2405,7 +2408,7 @@ export const AiScriptStart = async () => {
     }).append(
       TinyHtml.createFrom('span')
         .setText('Token count')
-        .prepend(tinyLib.icon(`fa-solid fa-magnifying-glass me-2`)),
+        .prepend(new Icon(`fa-solid fa-magnifying-glass me-2`)),
       TinyHtml.createFrom('div', { class: 'mt-1 small' }).append(
         tokenCount.amount,
         TinyHtml.createFrom('span', { class: 'mx-1' }).setText('/'),
@@ -2420,7 +2423,7 @@ export const AiScriptStart = async () => {
     }).append(
       TinyHtml.createFrom('span', sidebarSettingTemplate.span)
         .setText('Temperature')
-        .prepend(tinyLib.icon(`fa-solid fa-temperature-three-quarters me-2`)),
+        .prepend(new Icon(`fa-solid fa-temperature-three-quarters me-2`)),
       temperature.insert(),
     ),
 
@@ -2431,7 +2434,7 @@ export const AiScriptStart = async () => {
     }).append(
       TinyHtml.createFrom('span', sidebarSettingTemplate.span)
         .setText('Output length')
-        .prepend(tinyLib.icon(`fa-solid fa-comment me-2`)),
+        .prepend(new Icon(`fa-solid fa-comment me-2`)),
       outputLength,
     ),
 
@@ -2442,7 +2445,7 @@ export const AiScriptStart = async () => {
     }).append(
       TinyHtml.createFrom('span', sidebarSettingTemplate.span)
         .setText('Top P')
-        .prepend(tinyLib.icon(`fa-solid fa-percent me-2`)),
+        .prepend(new Icon(`fa-solid fa-percent me-2`)),
       topP.insert(),
     ),
 
@@ -2453,7 +2456,7 @@ export const AiScriptStart = async () => {
     }).append(
       TinyHtml.createFrom('span', sidebarSettingTemplate.span)
         .setText('Top K')
-        .prepend(tinyLib.icon(`fa-solid fa-0 me-2`)),
+        .prepend(new Icon(`fa-solid fa-0 me-2`)),
       topK.insert(),
     ),
 
@@ -2465,7 +2468,7 @@ export const AiScriptStart = async () => {
     }).append(
       TinyHtml.createFrom('span', sidebarSettingTemplate.span)
         .setText('Presence penalty')
-        .prepend(tinyLib.icon(`fa-solid fa-hand me-2`)),
+        .prepend(new Icon(`fa-solid fa-hand me-2`)),
       presencePenalty.insert(),
     ),
 
@@ -2477,7 +2480,7 @@ export const AiScriptStart = async () => {
     }).append(
       TinyHtml.createFrom('span', sidebarSettingTemplate.span)
         .setText('Frequency penalty')
-        .prepend(tinyLib.icon(`fa-solid fa-hand me-2`)),
+        .prepend(new Icon(`fa-solid fa-hand me-2`)),
       frequencyPenalty.insert(),
     ),
   };
@@ -3365,7 +3368,7 @@ export const AiScriptStart = async () => {
       }),
   };
 
-  firstDialogueBase.button.append(tinyLib.icon('fa-solid fa-circle-play'));
+  firstDialogueBase.button.append(new Icon('fa-solid fa-circle-play'));
 
   firstDialogueBase.button.on('click', () => {
     enabledFirstDialogue(false);
@@ -3458,7 +3461,7 @@ export const AiScriptStart = async () => {
     const textBase = TinyHtml.createFrom('span');
     const result = tinyLib.bs.alert(
       'danger mt-2 mb-0 d-none',
-      [tinyLib.icon('fas fa-exclamation-triangle me-2'), textBase],
+      [new Icon('fas fa-exclamation-triangle me-2'), textBase],
       true,
     );
 
@@ -3500,7 +3503,7 @@ export const AiScriptStart = async () => {
       !isIgnore && tinyIndex > -1
         ? tinyLib.bs
             .button('bg btn-sm')
-            .append(tinyLib.icon('fa-solid fa-pen-to-square'))
+            .append(new Icon('fa-solid fa-pen-to-square'))
             .on('click', () => {
               // Text
               const textInput = TinyHtml.createFrom('textarea', { class: 'form-control' });
@@ -3558,7 +3561,7 @@ export const AiScriptStart = async () => {
       // Delete button
       tinyLib.bs
         .button('bg btn-sm')
-        .append(tinyLib.icon('fa-solid fa-trash-can'))
+        .append(new Icon('fa-solid fa-trash-can'))
         .on('click', () => {
           const tinyIndex = tinyAi.getIndexOfId(data.id);
           if (!isIgnore && tinyIndex > -1) {
@@ -4005,7 +4008,7 @@ export const AiScriptStart = async () => {
       const onlineStatus = {};
       onlineStatus.base = TinyHtml.createFrom('div').addClass('mb-1 small');
       onlineStatus.wrapper = TinyHtml.createFrom('div').addClass('d-flex align-items-center gap-1');
-      onlineStatus.icon = tinyLib.icon('fas fa-circle text-danger');
+      onlineStatus.icon = new Icon('fas fa-circle text-danger');
       onlineStatus.text = TinyHtml.createFrom('span').setText('Offline');
       onlineStatus.id = TinyHtml.createFrom('span');
       onlineStatus.wrapper.append(onlineStatus.icon, onlineStatus.text, onlineStatus.id);

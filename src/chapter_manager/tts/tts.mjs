@@ -1,7 +1,10 @@
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
 import tinyLib from '../../files/tinyLib.mjs';
 import { storyData } from '../../files/chapters.mjs';
 import cacheChapterUpdater from '../updater.mjs';
+
+const { Icon } = TinyHtmlElems;
 
 // Base
 storyData.tts = {};
@@ -49,8 +52,8 @@ const ttsManager = {
       if (!storyData.tts.nav) {
         storyData.tts.nav = {};
       }
-      storyData.tts.nav.play = tinyLib.icon('fas fa-play');
-      storyData.tts.nav.stop = tinyLib.icon('fas fa-stop');
+      storyData.tts.nav.play = new Icon('fas fa-play');
+      storyData.tts.nav.stop = new Icon('fas fa-stop');
 
       // Prepare
       if (!storyData.chapter.nav) {
