@@ -12,6 +12,7 @@ import storyCfg from '../chapters/config.mjs';
 import BootstrapPaginator from '../modules/bootstrap-paginator.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
+import { body } from '../html/query.mjs';
 
 /*  Rain made by Aaron Rickle */
 const rainConfig = {};
@@ -78,11 +79,11 @@ const rainMode = {
   },
 
   on: () => {
-    TinyHtml.query('body')?.addClass('raining-sky');
+    body.addClass('raining-sky');
   },
 
   off: () => {
-    TinyHtml.query('body')?.addClass('raining-sky');
+    body.addClass('raining-sky');
   },
 };
 
@@ -521,7 +522,7 @@ export const openChapterMenu = (params = {}) => {
     );
 
     // Fic Mode
-    TinyHtml.query('body')?.addClass('ficMode');
+    body.addClass('ficMode');
 
     // Complete
     new TinyHtml(window).trigger('scroll');

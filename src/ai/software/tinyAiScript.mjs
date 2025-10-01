@@ -5,6 +5,7 @@ import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import tinyLib from '../../files/tinyLib.mjs';
 import { appData } from '../../important.mjs';
 import { tinyAi, tinyIo, tinyStorage } from './base.mjs';
+import { body } from '../../html/query.mjs';
 
 export const tinyAiScript = {
   isEnabled: () => typeof tinyStorage.selectedAi() === 'string',
@@ -50,7 +51,7 @@ export const tinyAiScript = {
         'text-danger-emphasis',
       );
       tinyAiScript.aiLogin.title = 'AI/RP Enabled';
-      TinyHtml.query('body')?.addClass('can-ai');
+      body.addClass('can-ai');
 
       // Update Ai API script
       tinyAiScript.mpClient = false;
@@ -72,7 +73,7 @@ export const tinyAiScript = {
       // Update html
       new TinyHtml(tinyAiScript.aiLogin.button.find(':scope > i')).addClass('text-danger-emphasis');
       tinyAiScript.aiLogin.title = 'AI/RP Disabled';
-      TinyHtml.query('body')?.removeClass('can-ai');
+      body.removeClass('can-ai');
       tinyAiScript.enabled = false;
     }
 

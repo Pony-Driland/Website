@@ -4,6 +4,7 @@ import { readJsonBlob, readBase64Blob, isJsonObject } from 'tiny-essentials/basi
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import storyCfg from '../chapters/config.mjs';
 import { Modal } from '../modules/TinyBootstrap.mjs';
+import { body } from '../html/query.mjs';
 
 /** Tiny Lib */
 const tinyLib = {};
@@ -121,7 +122,7 @@ tinyLib.modal = (data) => {
       ),
     );
 
-  TinyHtml.query('body')?.prepend(modal);
+  body.prepend(modal);
   return Modal(modal, undefined, true);
 };
 

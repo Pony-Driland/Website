@@ -8,6 +8,7 @@ import storyCfg from '../chapters/config.mjs';
 import ttsManager from './tts/tts.mjs';
 import musicManager from './music/index.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
+import { body } from '../html/query.mjs';
 
 // Prepare Cache
 const cacheChapterUpdater = { soundCache: {} };
@@ -131,7 +132,7 @@ cacheChapterUpdater.scrollData = () => {
   const removeAllWeather = () => {
     storyData.sfx['heavy-rain'].hide();
     storyData.sfx['heavy-rain-little-thunder'].hide();
-    TinyHtml.query('body')?.removeClass('raining-sky', 'thunder-effect');
+    body.removeClass('raining-sky', 'thunder-effect');
   };
 
   // Set Weather
@@ -144,10 +145,10 @@ cacheChapterUpdater.scrollData = () => {
     if (!storyData.chapter.blockLineSave) {
       if (storyData.chapter.weather === 'heavyrain') {
         storyData.sfx['heavy-rain'].show();
-        // TinyHtml.query('body')?.addClass('raining-sky');
+        // body.addClass('raining-sky');
       } else if (storyData.chapter.weather === 'bolt') {
         storyData.sfx['heavy-rain-little-thunder'].show();
-        // TinyHtml.query('body')?.addClass('raining-sky', 'thunder-effect');
+        // body.addClass('raining-sky', 'thunder-effect');
       }
     }
   }
@@ -368,7 +369,7 @@ const chapterSet = {
 
   dayNightCycle: (value, actionFromNow = false) => {
     if (actionFromNow) {
-      TinyHtml.query('body')
+      body
         ?.removeClass(`fic-daycicle-morning`)
         .removeClass(`fic-daycicle-evening`)
         .removeClass(`fic-daycicle-night`)

@@ -36,6 +36,7 @@ import './scss/main.scss';
 import './scss/carousel.scss';
 import './scss/rpg.scss';
 import { openMDFile, openNewAddress, clearFicData } from './fixStuff/markdown.mjs';
+import { body, head, topPage } from './html/query.mjs';
 
 addAiMarkerShortcut();
 
@@ -268,7 +269,7 @@ rootApp.onReady(() => {
        */
       (fn, readme) => {
         // Custom Colors
-        TinyHtml.query('head')?.append(
+        head.append(
           TinyHtml.createFrom('style', { id: 'custom_color' }).setText(`
 
             .alert .close span{
@@ -865,7 +866,7 @@ rootApp.onReady(() => {
               )
               .on('click', (e) => {
                 e.preventDefault();
-                TinyHtml.query('#top_page')?.addClass('d-none');
+                topPage.addClass('d-none');
                 openChapterMenu();
                 if (offCanvasEl) offCanvasEl.hide();
               }),
@@ -889,7 +890,7 @@ rootApp.onReady(() => {
         const tinyCollapse2 = tinyLib.bs.navbar.collapse('right', 'small mdMenu', 'fic-nav');
 
         // Insert Navbar
-        TinyHtml.query('body')?.prepend(
+        body.prepend(
           // Navbar
           navbarOffCanvas,
           tinyLib.bs.navbar.root('md-navbar', 'dark', true).append(
@@ -1094,7 +1095,7 @@ rootApp.onReady(() => {
         );
 
         // Insert Footer
-        TinyHtml.query('body')?.append(
+        body.append(
           TinyHtml.createFrom('footer', { class: 'page-footer font-small pt-4 clearfix' }).append(
             // Base
             TinyHtml.createFrom('div', {

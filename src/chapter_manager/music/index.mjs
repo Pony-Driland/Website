@@ -11,6 +11,8 @@ import { storyData } from '../../files/chapters.mjs';
 import storyCfg from '../../chapters/config.mjs';
 import ttsManager from '../tts/tts.mjs';
 import { Tooltip } from '../../modules/TinyBootstrap.mjs';
+import { head } from '../../html/query.mjs';
+import { yt } from '../../api/youtube.mjs';
 
 // Base
 storyData.music = {
@@ -41,11 +43,6 @@ storyData.music = {
 
 // Youtube Player
 storyData.youtube = {
-  // Check Youtube Values
-  checkYT: () => {
-    return typeof YT !== 'undefined' && YT.PlayerState;
-  },
-
   // Volume
   volume: storyCfg.defaultYoutubeVolume,
   quality: null,
@@ -58,9 +55,9 @@ storyData.youtube = {
     // Ready API
     onReady: (event) => {
       // Get Data
-      storyData.youtube.volume = storyData.youtube.player.getVolume();
-      storyData.youtube.quality = storyData.youtube.player.getPlaybackQuality();
-      storyData.youtube.qualityList = storyData.youtube.player.getAvailableQualityLevels();
+      storyData.youtube.volume = yt.player.getVolume();
+      storyData.youtube.quality = yt.player.getPlaybackQuality();
+      storyData.youtube.qualityList = yt.player.getAvailableQualityLevels();
 
       // Storage Volume
       const storageVolume = Number(tinyLs.getItem('storyVolume'));
@@ -76,7 +73,7 @@ storyData.youtube = {
           !isFinite(storyData.youtube.volume)
         ) {
           storyData.youtube.volume = 100;
-          storyData.youtube.player.setVolume(100);
+          yt.player.setVolume(100);
           tinyLs.setItem('storyVolume', 100);
           storyData.music.volume = 100;
         } else {
@@ -84,19 +81,19 @@ storyData.youtube = {
         }
       } else {
         storyData.youtube.volume = storageVolume;
-        storyData.youtube.player.setVolume(storageVolume);
+        yt.player.setVolume(storageVolume);
         storyData.music.volume = storageVolume;
       }
 
       // Play Video
-      storyData.youtube.player.seekTo(0);
-      storyData.youtube.player.setLoop(true);
-      storyData.youtube.player.setShuffle(true);
+      yt.player.seekTo(0);
+      yt.player.setLoop(true);
+      yt.player.setShuffle(true);
 
       if (storyData.youtube.volume > 0) {
-        if (storyData.youtube.player.playVideo) storyData.youtube.player.playVideo();
+        if (yt.player.playVideo) yt.player.playVideo();
       } else {
-        if (storyData.youtube.player.pauseVideo) storyData.youtube.player.pauseVideo();
+        if (yt.player.pauseVideo) yt.player.pauseVideo();
       }
 
       // Send Data
@@ -110,7 +107,7 @@ storyData.youtube = {
       // Event
       if (event) {
         storyData.youtube.state = event.data;
-        storyData.youtube.qualityList = storyData.youtube.player.getAvailableQualityLevels();
+        storyData.youtube.qualityList = yt.player.getAvailableQualityLevels();
       }
 
       // Send Data
@@ -155,7 +152,7 @@ storyData.youtube = {
   setQuality: (value) => {
     if (storyData.youtube.qualityList.indexOf(value) > -1 || value === 'default') {
       storyData.youtube.quality = value;
-      storyData.youtube.player.setPlaybackQuality(value);
+      yt.player.setPlaybackQuality(value);
       return true;
     } else {
       return false;
@@ -166,7 +163,7 @@ storyData.youtube = {
   setVolume: (number) => {
     tinyLs.setItem('storyVolume', Number(number));
     storyData.youtube.volume = Number(number);
-    storyData.youtube.player.setVolume(Number(number));
+    yt.player.setVolume(Number(number));
     storyData.music.volume = Number(number);
     storyData.music.songVolumeUpdate();
   },
@@ -181,8 +178,7 @@ storyData.youtube = {
       console.log(`Loading youtube video embed...`, videoID);
 
       // Youtube Player
-      if (storyData.youtube.player && storyData.youtube.player.setVolume)
-        storyData.youtube.player.setVolume(storyData.music.volume);
+      if (yt.player && yt.player.setVolume) yt.player.setVolume(storyData.music.volume);
 
       storyData.music.loading = false;
       storyData.youtube.loading = false;
@@ -193,23 +189,23 @@ storyData.youtube = {
       storyData.youtube.duration = 0;
 
       // New Player
-      if (!storyData.youtube.player) {
+      if (!yt.player) {
         // 2. This code loads the IFrame Player API code asynchronously.
         console.log(`Starting Youtube API...`, videoID);
         const tag = document.createElement('script');
         tag.src = 'https://www.youtube.com/iframe_api';
-        TinyHtml.query('head')?.append(tag);
+        head.append(tag);
 
         // Current Time Detector
         setInterval(() => {
-          if (storyData.youtube.checkYT() && storyData.youtube.player) {
+          if (yt.exists && yt.player) {
             // Fix
             storyData.music.playing = false;
             storyData.music.paused = false;
             storyData.music.stoppabled = false;
             storyData.music.buffering = false;
 
-            if (storyData.youtube.checkYT()) {
+            if (yt.exists) {
               // Playing
               if (storyData.youtube.state === YT.PlayerState.PLAYING) {
                 // Set Embed
@@ -246,8 +242,7 @@ storyData.youtube = {
                       storyData.music.title = jsonVideo.title;
 
                       if (storyData.youtube.volume < 1) {
-                        if (storyData.youtube.player.pauseVideo)
-                          storyData.youtube.player.pauseVideo();
+                        if (yt.player.pauseVideo) yt.player.pauseVideo();
                       }
                     })
                     .catch((err) => {
@@ -257,8 +252,8 @@ storyData.youtube = {
                 }
 
                 storyData.music.playing = true;
-                storyData.youtube.duration = storyData.youtube.player.getDuration();
-                storyData.youtube.currentTime = storyData.youtube.player.getCurrentTime();
+                storyData.youtube.duration = yt.player.getDuration();
+                storyData.youtube.currentTime = yt.player.getCurrentTime();
                 if (typeof appData.youtube.onPlaying === 'function') {
                   appData.youtube.onPlaying();
                 }
@@ -271,8 +266,8 @@ storyData.youtube = {
               ) {
                 // Stopping
                 if (storyData.music.isStopping) {
-                  storyData.youtube.player.seekTo(0);
-                  if (storyData.youtube.player.pauseVideo) storyData.youtube.player.pauseVideo();
+                  yt.player.seekTo(0);
+                  if (yt.player.pauseVideo) yt.player.pauseVideo();
                   storyData.music.isStopping = false;
                 }
 
@@ -288,7 +283,7 @@ storyData.youtube = {
 
                 // Progress
                 storyData.music.stoppabled = true;
-                storyData.youtube.currentTime = storyData.youtube.player.getDuration();
+                storyData.youtube.currentTime = yt.player.getDuration();
               }
 
               // Paused
@@ -308,8 +303,8 @@ storyData.youtube = {
 
       // Reuse Player
       else {
-        if (storyData.youtube && storyData.youtube.player && storyData.youtube.player.loadVideoById)
-          storyData.youtube.player.loadVideoById({
+        if (storyData.youtube && yt.player && yt.player.loadVideoById)
+          yt.player.loadVideoById({
             videoId: videoID,
             startSeconds: 0,
           });
@@ -321,8 +316,8 @@ storyData.youtube = {
         typeof storyData.music.volume === 'number' &&
         storyData.youtube.volume !== storyData.music.volume
       ) {
-        if (storyData.youtube.player) {
-          storyData.youtube.player.setVolume(storyData.youtube.volume);
+        if (yt.player) {
+          yt.player.setVolume(storyData.youtube.volume);
         }
         storyData.music.volume = Number(storyData.youtube.volume);
       }
@@ -455,7 +450,6 @@ const musicManager = {
       }
 
       // Buttons
-      storyData.music.nav.youtube = TinyHtml.query('#youtubePlayer');
       storyData.music.nav.info = tinyLib.icon('fas fa-info-circle');
       storyData.music.nav.play = tinyLib.icon('fas fa-play');
       storyData.music.nav.volume = tinyLib.icon('fas fa-volume-mute');
@@ -463,7 +457,7 @@ const musicManager = {
       storyData.music.nav.disable = tinyLib.icon('fas fa-ban');
 
       // Fix Youtube Player
-      //storyData.music.nav.youtube.removeClass('hidden');
+      //youtubePlayer.removeClass('hidden');
 
       // Prepare
       if (!storyData.chapter.nav) {
@@ -490,7 +484,7 @@ const musicManager = {
           })
             .on('click', () => {
               if (!storyData.music.loading) {
-                open(storyData.youtube.player.getVideoUrl(), '_blank');
+                open(yt.player.getVideoUrl(), '_blank');
               }
             })
             .append(storyData.music.nav.info),
@@ -504,9 +498,9 @@ const musicManager = {
             .on('click', () => {
               if (!storyData.music.loading) {
                 if (storyData.youtube.state === YT.PlayerState.PLAYING) {
-                  if (storyData.youtube.player.pauseVideo) storyData.youtube.player.pauseVideo();
+                  if (yt.player.pauseVideo) yt.player.pauseVideo();
                 } else {
-                  if (storyData.youtube.player.playVideo) storyData.youtube.player.playVideo();
+                  if (yt.player.playVideo) yt.player.playVideo();
                 }
               }
             })
@@ -521,7 +515,7 @@ const musicManager = {
             .on('click', () => {
               if (!storyData.music.loading) {
                 storyData.music.isStopping = true;
-                storyData.youtube.player.stopVideo();
+                yt.player.stopVideo();
               }
             })
             .append(storyData.music.nav.stop),
@@ -583,27 +577,10 @@ const musicManager = {
         storyData.chapter.nav.music,
 
         // Youtube
-        //TinyHtml.createFrom('a', { class: 'nav-item nav-link mx-3 p-0', indexitem: '0', id: 'youtube-thumb' }).append(storyData.music.nav.youtube),
+        //TinyHtml.createFrom('a', { class: 'nav-item nav-link mx-3 p-0', indexitem: '0', id: 'youtube-thumb' }).append(youtubePlayer),
       ]);
     }
   },
-};
-
-// Youtube
-
-// 1. This function creates an <iframe> (and YouTube player)
-//    after the API code downloads.
-// https://developers.google.com/youtube/iframe_api_reference?hl=pt-br
-window.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady() {
-  console.log(`Youtube API started!`);
-  storyData.youtube.player = new YT.Player('youtubePlayer', {
-    height: 'auto',
-    width: 'auto',
-    playerVars: { controls: 0 },
-    videoId: storyData.youtube.videoID,
-    startSeconds: 0,
-    events: storyData.youtube.events,
-  });
 };
 
 // Music Updater
@@ -617,7 +594,7 @@ musicManager.updatePlayer = () => {
       storyData.music.buffering ||
       storyData.music.loading ||
       !storyData.music.usingSystem ||
-      !storyData.youtube.checkYT()
+      !yt.exists
     ) {
       TinyHtml.queryAll('#music-player > a').addClass('disabled');
     } else {
@@ -1465,17 +1442,14 @@ musicManager.stopPlaylist = async () => {
             volume--;
 
             // Youtube Player
-            if (
-              storyData.youtube.player &&
-              typeof storyData.youtube.player.setVolume === 'function'
-            ) {
-              storyData.youtube.player.setVolume(volume);
+            if (yt.player && typeof yt.player.setVolume === 'function') {
+              yt.player.setVolume(volume);
             }
 
             if (i === 100) {
               // Youtube Player
-              if (storyData.youtube.player) {
-                storyData.youtube.player.stopVideo();
+              if (yt.player) {
+                yt.player.stopVideo();
               }
             }
 

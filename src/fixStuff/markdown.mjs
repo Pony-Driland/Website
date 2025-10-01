@@ -8,6 +8,8 @@ import { tinyAiScript } from '../ai/software/tinyAiScript.mjs';
 import storyCfg from '../chapters/config.mjs';
 
 import { fixFileUrl, fixHref, fixImageSrc } from './urls.mjs';
+import { body, topPage } from '../html/query.mjs';
+import { yt } from '../api/youtube.mjs';
 
 let contentId = 0;
 function preprocessDropdown(md) {
@@ -41,8 +43,8 @@ export const clearFicData = () => {
     }
   }
 
-  TinyHtml.query('body')
-    ?.removeClass('ficMode')
+  body
+    .removeClass('ficMode')
     .removeClass(`fic-daycicle-morning`)
     .removeClass(`fic-daycicle-evening`)
     .removeClass(`fic-daycicle-night`)
@@ -57,12 +59,11 @@ export const clearFicData = () => {
   storyData.chapter.selected = 0;
 
   if (
-    storyData.youtube.player &&
-    storyData.youtube.checkYT() &&
+    yt.player &&
+    yt.exists &&
     storyData.youtube.state === YT.PlayerState.PLAYING
-  ) {
-    storyData.youtube.player.stopVideo();
-  }
+  )
+    yt.player.stopVideo();
 };
 
 /**
@@ -157,12 +158,14 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
   /** @type {string} */
   let data = '';
 
+  // Fix Html
   if (!isHTML)
     data = preprocessDropdown(
       marked.parse(text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, '')),
     );
   else data = text;
 
+  // Fix URLs
   data = data
     .replace(tinyLib.getGitUrlPath(`href\=\"{url}public\\/`), 'href="javascript:void(0)" file="../')
     .replace(tinyLib.getGitUrlPath(`src\=\"{url}public\\/`), 'src="../')
@@ -171,6 +174,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
       'src="https://cloudflare-ipfs.com/ipfs/',
     );
 
+  // Content List
   const canContentList =
     metadata && Array.isArray(metadata.contentList) && metadata.contentList.length > 0;
   if (canContentList)
@@ -276,9 +280,9 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
 
   // Top Page
   if (isMainPage) {
-    TinyHtml.query('#top_page')?.removeClass('d-none');
+    topPage.removeClass('d-none');
   } else {
-    TinyHtml.query('#top_page')?.addClass('d-none');
+    topPage.addClass('d-none');
   }
 
   const markdownHid = (text) =>
