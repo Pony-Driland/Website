@@ -10,6 +10,7 @@ import ttsManager from './tts/tts.mjs';
 import musicManager from './music/index.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { body } from '../html/query.mjs';
+import { markdownBase } from '../html/base.mjs';
 
 const { Icon } = TinyHtmlElems;
 
@@ -49,7 +50,7 @@ cacheChapterUpdater.setActiveItem = (item, scrollIntoView = false) => {
 
       let scrollTarget = document.querySelector(`tr[line="${selectedItem - 1}"]`);
       if (scrollTarget == null) {
-        scrollTarget = document.getElementById('markdown-read');
+        scrollTarget = markdownBase.get(0);
       }
       scrollTarget.scrollIntoView();
     }

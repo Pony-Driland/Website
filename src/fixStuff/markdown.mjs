@@ -11,6 +11,7 @@ import storyCfg from '../chapters/config.mjs';
 import { fixFileUrl, fixHref, fixImageSrc } from './urls.mjs';
 import { body, topPage } from '../html/query.mjs';
 import { yt } from '../api/youtube.mjs';
+import { markdownBase } from '../html/base.mjs';
 
 const { Icon } = TinyHtmlElems;
 
@@ -180,7 +181,6 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
   else data = data.replace('{{content_list}}', '');
 
   // Markdown page ways
-  const markdownBase = TinyHtml.query('#markdown-read');
   const pageTypes = {
     // Wiki
     wiki: () => {
@@ -262,18 +262,18 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
 
       // Complete
       row.append(colSidebar, colMain);
-      markdownBase?.append(row);
+      markdownBase.append(row);
     },
   };
 
   // Insert Data
-  markdownBase?.empty();
+  markdownBase.empty();
   if (
     !metadata ||
     typeof metadata.mode !== 'string' ||
     typeof pageTypes[metadata.mode] !== 'function'
   )
-    markdownBase?.setHtml(data);
+    markdownBase.setHtml(data);
   else pageTypes[metadata.mode]();
 
   // Top Page
@@ -292,16 +292,14 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
         .replace(/\(|\)|\?|\!/g, '_'),
     )}`;
 
-  if (markdownBase) {
-    const markdownItems = new TinyHtml(markdownBase.find(`h1,h2,h3,h4,h5`));
-    markdownItems.forEach((item) => {
-      item.setAttr('id', markdownHid(item.text()));
-    });
-  }
+  const markdownItems = new TinyHtml(markdownBase.find(`h1,h2,h3,h4,h5`));
+  markdownItems.forEach((item) => {
+    item.setAttr('id', markdownHid(item.text()));
+  });
 
   // Content List
   if (canContentList)
-    TinyHtml.queryAll('[id="markdown-read"] .content-list-data').forEach((item) => {
+    new TinyHtml(markdownBase.find('.content-list-data')).forEach((item) => {
       const tinyBase = TinyHtml.createFrom('div', {
         class: 'bg-black rounded-top collapse-content d-flex align-items-center',
       });
@@ -407,10 +405,10 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
     });
 
   // Convert File URLs
-  TinyHtml.queryAll('[id="markdown-read"] a[file]').forEach(fixFileUrl(openMDFile));
+  new TinyHtml(markdownBase.find('a[file]')).forEach(fixFileUrl(openMDFile));
 
-  TinyHtml.queryAll('[id="markdown-read"] a:not([file])').forEach(fixHref);
-  TinyHtml.queryAll('[id="markdown-read"] img').forEach(fixImageSrc);
+  new TinyHtml(markdownBase.find('a:not([file])')).forEach(fixHref);
+  new TinyHtml(markdownBase.find('img')).forEach(fixImageSrc);
 };
 
 /**

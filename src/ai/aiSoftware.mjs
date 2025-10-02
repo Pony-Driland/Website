@@ -37,6 +37,7 @@ import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
 import { storyData } from '../files/chapters.mjs';
 import { body, topPage } from '../html/query.mjs';
+import { markdownBase } from '../html/base.mjs';
 
 const { Icon } = TinyHtmlElems;
 
@@ -47,7 +48,7 @@ export const AiScriptStart = async () => {
 
   // Clear page
   clearFicData();
-  TinyHtml.query('#markdown-read')?.empty();
+  markdownBase.empty();
   topPage.addClass('d-none');
 
   // Can use backup
@@ -3988,7 +3989,7 @@ export const AiScriptStart = async () => {
   }
 
   // Complete
-  TinyHtml.query('#markdown-read')?.append(container);
+  markdownBase.append(container);
   await rpgData.init().then(() => rpgData.finishOffCanvas(updateAiTokenCounterData));
 
   // Rpg mode
