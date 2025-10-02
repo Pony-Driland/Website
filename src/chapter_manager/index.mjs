@@ -14,6 +14,7 @@ import BootstrapPaginator from '../modules/bootstrap-paginator.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
 import { body } from '../html/query.mjs';
+import { markdownBase } from '../html/base.mjs';
 
 const { Icon } = TinyHtmlElems;
 
@@ -193,7 +194,7 @@ const storyDialogue = {
 export const openChapterMenu = (params = {}) => {
   // Prepare Data
   clearFicData();
-  TinyHtml.query('#markdown-read')?.empty();
+  markdownBase.empty();
   storyData.chapter.blockLineSave = false;
 
   // Get Page Data
@@ -327,7 +328,7 @@ export const openChapterMenu = (params = {}) => {
     storyData.chapter.selected = chapter;
 
     // Prepare Data
-    TinyHtml.query('#markdown-read')?.empty();
+    markdownBase.empty();
 
     // Detect Bookmark
     const { page, filtedItems, selectedLine: line } = getPageData(selectedLine, chapter);
@@ -470,7 +471,7 @@ export const openChapterMenu = (params = {}) => {
     searchItems.base.append(searchItems.character, searchItems.message);
 
     // Table
-    TinyHtml.query('#markdown-read')?.append(
+    markdownBase.append(
       // Info
       tinyLib.bs
         .alert('info')
@@ -530,7 +531,7 @@ export const openChapterMenu = (params = {}) => {
     // Complete
     new TinyHtml(window).trigger('scroll');
     if (line !== null) {
-      const tinyLine = TinyHtml.query('#markdown-read [line="' + line + '"]');
+      const tinyLine = new TinyHtml(markdownBase.find('[line="' + line + '"]'));
       if (tinyLine) TinyHtml.setWinScrollTop(tinyLine.offset().top);
     }
     rainMode.start();
@@ -562,7 +563,6 @@ export const openChapterMenu = (params = {}) => {
 
   // Nope. Choose One
   else {
-    const markdownRead = TinyHtml.query('#markdown-read');
     const cantNsfw = isNoNsfw();
     if (cantNsfw) {
       for (const item in storyCfg.nsfw) {
@@ -571,7 +571,7 @@ export const openChapterMenu = (params = {}) => {
     }
 
     // Prepare Choose
-    markdownRead?.append(
+    markdownBase.append(
       // Banner
       TinyHtml.createFrom('img', { class: 'img-fluid mb-2', src: '/img/external/banner1.jpg' }),
 
@@ -942,7 +942,7 @@ export const openChapterMenu = (params = {}) => {
       });
 
       // Add Chapter
-      markdownRead.append(
+      markdownBase.append(
         TinyHtml.createFrom('div', { class: 'card mb-2' }).append(
           TinyHtml.createFrom('div', { class: 'card-body' }).append(
             TinyHtml.createFrom('h5', { class: 'card-title' })
