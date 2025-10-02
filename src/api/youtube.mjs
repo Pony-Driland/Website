@@ -139,6 +139,99 @@ class YoutubeApi extends EventEmitter {
     storyData.music.songVolumeUpdate();
   }
 
+  #usingAnimation = false;
+
+  #animationFrame() {
+    if (this.exists && storyData.readFic) {
+      // Fix
+      storyData.music.playing = false;
+      storyData.music.paused = false;
+      storyData.music.stoppabled = false;
+      storyData.music.buffering = false;
+
+      // Playing
+      if (this.#state === YT.PlayerState.PLAYING) {
+        // Set Embed
+        if (!this.#embed) {
+          this.#embed = {};
+          fetch(
+            'https://www.youtube.com/oembed?format=json&url=' +
+              encodeURIComponent(`https://www.youtube.com/watch?v=` + this.#videoId),
+            {
+              method: 'GET',
+              dataType: 'json',
+            },
+          )
+            .then((res) => res.json())
+            .then((jsonVideo) => {
+              console.log(`Youtube video embed loaded!`, this.#videoId);
+              this.#embed = jsonVideo;
+
+              if (typeof storyCfg.gtag === 'string' && gtag) {
+                gtag('event', 'chapter', {
+                  event_chapter: `Chapter ${storyData.chapter.selected}`,
+                  event_category: 'song_playing',
+                  song: `${jsonVideo.provider_name} - ${jsonVideo.author_name} - ${jsonVideo.title}`,
+                });
+              }
+
+              // Info
+              storyData.music.author_name = jsonVideo.author_name;
+              storyData.music.author_url = jsonVideo.author_url;
+              storyData.music.provider_name = jsonVideo.provider_name;
+              storyData.music.thumbnail_url = jsonVideo.thumbnail_url;
+              storyData.music.title = jsonVideo.title;
+
+              if (this.#volume < 1) {
+                if (this.player.pauseVideo) this.player.pauseVideo();
+              }
+            })
+            .catch((err) => {
+              console.error(err);
+              alert(err.message);
+            });
+        }
+
+        storyData.music.playing = true;
+        this.#duration = this.player.getDuration();
+        this.#currentTime = this.player.getCurrentTime();
+        this.#onPlaying();
+      }
+
+      // Ended
+      else if (this.#state === YT.PlayerState.ENDED || this.#state === YT.PlayerState.CUED) {
+        // Stopping
+        if (storyData.music.isStopping) {
+          this.player.seekTo(0);
+          if (this.player.pauseVideo) this.player.pauseVideo();
+          storyData.music.isStopping = false;
+        }
+
+        // Next
+        else if (!this.#loading && storyData.readFic && this.#embed) {
+          this.#embed = null;
+          musicManager.nextMusic();
+        }
+
+        // Progress
+        storyData.music.stoppabled = true;
+        this.#currentTime = this.player.getDuration();
+      }
+
+      // Paused
+      else if (this.#state === YT.PlayerState.PAUSED) {
+        storyData.music.paused = true;
+      }
+
+      // Buff
+      else if (this.#state === YT.PlayerState.BUFFERING) {
+        storyData.music.buffering = true;
+      }
+    }
+    musicManager.updatePlayer();
+    requestAnimationFrame(() => this.#animationFrame());
+  }
+
   /**
    * Start Youtube
    * @param {string} videoID
@@ -171,100 +264,10 @@ class YoutubeApi extends EventEmitter {
         head.append(tag);
 
         // Current Time Detector
-        setInterval(() => {
-          if (this.exists && this.player) {
-            // Fix
-            storyData.music.playing = false;
-            storyData.music.paused = false;
-            storyData.music.stoppabled = false;
-            storyData.music.buffering = false;
-
-            if (this.exists) {
-              // Playing
-              if (this.#state === YT.PlayerState.PLAYING) {
-                // Set Embed
-                if (!this.#embed) {
-                  this.#embed = {};
-                  fetch(
-                    'https://www.youtube.com/oembed?format=json&url=' +
-                      encodeURIComponent(`https://www.youtube.com/watch?v=` + this.#videoId),
-                    {
-                      method: 'GET',
-                      dataType: 'json',
-                    },
-                  )
-                    .then((res) => res.json())
-                    .then((jsonVideo) => {
-                      console.log(`Youtube video embed loaded!`, this.#videoId);
-                      this.#embed = jsonVideo;
-
-                      if (typeof storyCfg.gtag === 'string' && gtag) {
-                        gtag('event', 'chapter', {
-                          event_chapter: `Chapter ${storyData.chapter.selected}`,
-                          event_category: 'song_playing',
-                          song: `${jsonVideo.provider_name} - ${jsonVideo.author_name} - ${jsonVideo.title}`,
-                        });
-                      }
-
-                      // Info
-                      storyData.music.author_name = jsonVideo.author_name;
-                      storyData.music.author_url = jsonVideo.author_url;
-                      storyData.music.provider_name = jsonVideo.provider_name;
-                      storyData.music.thumbnail_url = jsonVideo.thumbnail_url;
-                      storyData.music.title = jsonVideo.title;
-
-                      if (this.#volume < 1) {
-                        if (this.player.pauseVideo) this.player.pauseVideo();
-                      }
-                    })
-                    .catch((err) => {
-                      console.error(err);
-                      alert(err.message);
-                    });
-                }
-
-                storyData.music.playing = true;
-                this.#duration = this.player.getDuration();
-                this.#currentTime = this.player.getCurrentTime();
-                this.#onPlaying();
-              }
-
-              // Ended
-              else if (
-                this.#state === YT.PlayerState.ENDED ||
-                this.#state === YT.PlayerState.CUED
-              ) {
-                // Stopping
-                if (storyData.music.isStopping) {
-                  this.player.seekTo(0);
-                  if (this.player.pauseVideo) this.player.pauseVideo();
-                  storyData.music.isStopping = false;
-                }
-
-                // Next
-                else if (!this.#loading && storyData.readFic && this.#embed) {
-                  this.#embed = null;
-                  musicManager.nextMusic();
-                }
-
-                // Progress
-                storyData.music.stoppabled = true;
-                this.#currentTime = this.player.getDuration();
-              }
-
-              // Paused
-              else if (this.#state === YT.PlayerState.PAUSED) {
-                storyData.music.paused = true;
-              }
-
-              // Buff
-              else if (this.#state === YT.PlayerState.BUFFERING) {
-                storyData.music.buffering = true;
-              }
-            }
-          }
-          musicManager.updatePlayer();
-        }, 100);
+        if (!this.#usingAnimation) {
+          this.#usingAnimation = true;
+          requestAnimationFrame(() => this.#animationFrame());
+        }
       }
 
       // Reuse Player
@@ -289,6 +292,7 @@ class YoutubeApi extends EventEmitter {
     storyData.music.currentTime = this.#currentTime;
     storyData.music.duration = this.#duration;
     musicManager.updatePlayer();
+    this.emit('onPlaying');
   }
 
   #events = {
