@@ -13,7 +13,7 @@ import storyCfg from '../chapters/config.mjs';
 import BootstrapPaginator from '../modules/bootstrap-paginator.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
-import { body } from '../html/query.mjs';
+import { body, tinyWin } from '../html/query.mjs';
 import { markdownBase } from '../html/base.mjs';
 
 const { Icon } = TinyHtmlElems;
@@ -373,7 +373,7 @@ export const openChapterMenu = (params = {}) => {
           // Scroll
           TinyHtml.setWinScrollTop(TinyHtml.getById('app').offset().top);
           pagination2.show(page);
-          new TinyHtml(window).trigger('scroll');
+          tinyWin.trigger('scroll');
         },
       });
 
@@ -450,7 +450,7 @@ export const openChapterMenu = (params = {}) => {
       }
 
       TinyHtml.setWinScrollTop(TinyHtml.getById('app').offset().top);
-      new TinyHtml(window).trigger('scroll');
+      tinyWin.trigger('scroll');
     };
 
     searchItems.character = TinyHtml.createFrom('input', {
@@ -529,10 +529,10 @@ export const openChapterMenu = (params = {}) => {
     body.addClass('ficMode');
 
     // Complete
-    new TinyHtml(window).trigger('scroll');
+    tinyWin.trigger('scroll');
     if (line !== null) {
       const tinyLine = new TinyHtml(markdownBase.find('[line="' + line + '"]'));
-      if (tinyLine) TinyHtml.setWinScrollTop(tinyLine.offset().top);
+      if (tinyLine.size > 0) TinyHtml.setWinScrollTop(tinyLine.offset().top);
     }
     rainMode.start();
     return;

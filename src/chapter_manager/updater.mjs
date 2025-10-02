@@ -9,7 +9,7 @@ import storyCfg from '../chapters/config.mjs';
 import ttsManager from './tts/tts.mjs';
 import musicManager from './music/index.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
-import { body } from '../html/query.mjs';
+import { body, tinyWin } from '../html/query.mjs';
 import { markdownBase } from '../html/base.mjs';
 
 const { Icon } = TinyHtmlElems;
@@ -62,7 +62,7 @@ cacheChapterUpdater.setActiveItem = (item, scrollIntoView = false) => {
 
 // Read Data on Scroll
 const winScroller = new TinyAfterScrollWatcher(window);
-new TinyHtml(window).on(['resize', 'scroll'], () => {
+tinyWin.on(['resize', 'scroll'], () => {
   if (ttsManager.enabled) {
     return;
   }

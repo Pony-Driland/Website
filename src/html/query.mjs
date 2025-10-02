@@ -1,5 +1,7 @@
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 
+export const tinyWin = new TinyHtml(window);
+
 // Base
 export const body = new TinyHtml('body');
 export const head = new TinyHtml('head');

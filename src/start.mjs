@@ -36,7 +36,7 @@ import './scss/main.scss';
 import './scss/carousel.scss';
 import './scss/rpg.scss';
 import { openMDFile, openNewAddress, clearFicData } from './fixStuff/markdown.mjs';
-import { app, body, head, topPage } from './html/query.mjs';
+import { app, body, head, tinyWin, topPage } from './html/query.mjs';
 import { markdownBase } from './html/base.mjs';
 
 const { Icon } = TinyHtmlElems;
@@ -219,7 +219,7 @@ const getParams = () => {
 };
 
 // Pop State
-new TinyHtml(window).on('popstate', () => {
+tinyWin.on('popstate', () => {
   // Remove Fic Data
   clearFicData();
 
