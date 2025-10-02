@@ -36,7 +36,7 @@ import './scss/main.scss';
 import './scss/carousel.scss';
 import './scss/rpg.scss';
 import { openMDFile, openNewAddress, clearFicData } from './fixStuff/markdown.mjs';
-import { body, head, topPage } from './html/query.mjs';
+import { app, body, head, topPage } from './html/query.mjs';
 
 const { Icon } = TinyHtmlElems;
 addAiMarkerShortcut();
@@ -941,7 +941,7 @@ rootApp.onReady(() => {
         checkWindowSize();
 
         // Insert Readme
-        TinyHtml.query('#app')?.append(tinyLib.bs.container('markdown-read'));
+        app.append(tinyLib.bs.container('markdown-read'));
 
         // Footer Base
         const tinyFooter = { 1: [], 2: [] };
