@@ -1,5 +1,7 @@
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import PhotoSwipeLightbox from 'photoswipe';
+import { Tooltip } from '../modules/TinyBootstrap.mjs';
+import { tinyLs } from '../important.mjs';
 
 /**
  * Fix file urls
@@ -118,4 +120,29 @@ export const fixImageSrc = (item) => {
     const newTinyPlace = TinyHtml.createFrom('p', { class: 'pswp-space mt-4' });
     newTinyPlace.insertAfter(newImage);
   }
+};
+
+/**
+ * Create spoiler items
+ *
+ * @param {TinyHtml<any>} item
+ */
+export const fixSpoilers = (item) => {
+  const chapter = item.attrNumber('data-chapter');
+  const line = item.attrNumber('data-line');
+  const storageLine = tinyLs.getNumber(`bookmark${chapter}`);
+
+  item.setAttr(
+    'title',
+    `You need to read the line ${line} in the chapter ${chapter} for this information to be revealed automatically.`,
+  );
+  const tooltip = Tooltip(item);
+
+  item.on('click', () => {
+    tooltip.hide();
+    tooltip.disable();
+    item.replaceWith(...item.children());
+  });
+
+  if (storageLine >= line) item.trigger('click');
 };

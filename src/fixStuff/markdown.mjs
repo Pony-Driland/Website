@@ -8,23 +8,15 @@ import { appData, gtag, loaderScreen } from '../important.mjs';
 import { tinyAiScript } from '../ai/software/tinyAiScript.mjs';
 import storyCfg from '../chapters/config.mjs';
 
-import { fixFileUrl, fixHref, fixImageSrc } from './urls.mjs';
+import { fixFileUrl, fixHref, fixImageSrc, fixSpoilers } from './urls.mjs';
 import { body, topPage } from '../html/query.mjs';
 import { yt } from '../api/youtube.mjs';
 import { markdownBase } from '../html/base.mjs';
 
-const { Icon } = TinyHtmlElems;
+import '../markdown/dropdown.mjs';
+import '../markdown/spoiler.mjs';
 
-let contentId = 0;
-function preprocessDropdown(md) {
-  return md.replace(/:::collapse (.*?)\n([\s\S]*?):::/g, (match, label, content) => {
-    contentId++;
-    return `
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMdWiki${contentId}" aria-expanded="false">${label}</button>
-    <div class="collapse" id="collapseMdWiki${contentId}">${content}</div>
-    `;
-  });
-}
+const { Icon } = TinyHtmlElems;
 
 /**
  * Remove Fic Data
@@ -158,10 +150,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
   let data = '';
 
   // Fix Html
-  if (!isHTML)
-    data = preprocessDropdown(
-      marked.parse(text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, '')),
-    );
+  if (!isHTML) data = marked.parse(text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ''));
   else data = text;
 
   // Fix URLs
@@ -409,6 +398,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
 
   new TinyHtml(markdownBase.find('a:not([file])')).forEach(fixHref);
   new TinyHtml(markdownBase.find('img')).forEach(fixImageSrc);
+  new TinyHtml(markdownBase.find('.book-spoiler')).forEach(fixSpoilers);
 };
 
 /**

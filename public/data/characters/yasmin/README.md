@@ -41,11 +41,12 @@ charTable_9_1: 'Gemini'
 The story of this Yasmin (Yasmin Seidel) separates from my original timeline on the date 24 jul, 2021. 
 That means everything that happened to me after this date no longer belongs to the timeline of this character.
 
-Although this Yasmin has very small knowledge about crypto, already has some specialties as programming, but knows nothing of what happened after the emergence of 
+Although this Yasmin has very small knowledge about coding stuff (others stuffs like crypto), already has some specialties as programming, but knows nothing of what happened after the emergence of 
 the 2024 AI age, in this timeline Yasmin knows absolutely nothing about the existence of Pony Driland. Apart from these factors, all the other canonical things happened in the life of this Yasmin.
 
 All this makes you understand that this story is a timeline of a parallel universe of our reality. What does that mean?
 
+[spoiler:3:1901]
 ### Chapter 3
 
 Pony Driland has 2 people contributing to writing the story. The first person is me, and the second person is who plays the character Vinny.
@@ -55,6 +56,7 @@ The events of the Chapter 3 on Vinny's bet with Rainbow Queen to save Ivy really
 But by Vinny's decision, the situation accidentally came out of control, and I had no more choices, especially because the story had already created all the sense for the situation, and it would not be the same experience trying to create an alternative version of the situation. The best decision was to keep everything the way it was already, and I really had the end that happened to myself in the story.
 
 This character will continue to be canonical, but will also continue to be secondary and will also remain treated as a secondary character, just appearing at times that really need to appear, always at risk of suffering consequences like any other character.
+[/spoiler]
 
 ## AI Image (Generated at 09/29/2025)
 <span class="made-by-ai">
@@ -92,15 +94,19 @@ This image was inspired by real-life photos of the user, incorporating specific 
 
 <hr/>
 
+[spoiler:3:1901]
 #### Pet Mutation Version
 
 <img src="/img/characters/yasmin/ai/unnamed2.png" height="500">
 
 The pet collar and eyes colors is an official stuff of Fic Pony Driland and you can find it on <a href="/characters/amy.html" target="_blank">Amy</a>'s Wiki Page.
+[/spoiler]
 
 ### Image References
 :::collapse See content
+[spoiler:3:1901]
 <img src="/img/characters/yasmin/reference/20170523_103346.jpg" height="500">
 
 <img src="/img/characters/yasmin/reference/photo_2021-12-19_15-47-19.jpg" height="500">
+[/spoiler]
 :::

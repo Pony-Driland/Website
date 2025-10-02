@@ -2,7 +2,6 @@ import Pizzicato from 'pizzicato';
 import objHash from 'object-hash';
 import { shuffleArray, ruleOfThree } from 'tiny-essentials/basics';
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
-import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
 
 import SeamlessLoop from '../../../build/bundle/SeamlessLoop.mjs';
 import BuffAudio from '../../../build/bundle/buffaudio.mjs';
@@ -13,8 +12,6 @@ import storyCfg from '../../chapters/config.mjs';
 import ttsManager from '../tts/tts.mjs';
 import { Tooltip } from '../../modules/TinyBootstrap.mjs';
 import { musicApp, musicBase } from './html.mjs';
-
-const { Icon } = TinyHtmlElems;
 
 // Music Manager
 const musicManager = {
