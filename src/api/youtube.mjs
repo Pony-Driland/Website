@@ -1,4 +1,5 @@
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import { EventEmitter } from 'events';
 import { storyData } from '../files/chapters.mjs';
 import musicManager from '../chapter_manager/music/index.mjs';
 import storyCfg from '../chapters/config.mjs';
@@ -6,7 +7,7 @@ import { tinyLs, gtag } from '../important.mjs';
 import { head } from '../html/query.mjs';
 import { alert } from '../files/tinyLib.mjs';
 
-import { EventEmitter } from 'events';
+import { musicApp } from '../chapter_manager/music/html.mjs';
 
 const ytElemId = 'youtubePlayer';
 
@@ -135,8 +136,8 @@ class YoutubeApi extends EventEmitter {
     tinyLs.setItem('storyVolume', Number(number));
     this.#volume = Number(number);
     this.player.setVolume(Number(number));
-    storyData.music.volume = Number(number);
-    storyData.music.songVolumeUpdate();
+    musicApp.volume = Number(number);
+    musicApp.songVolumeUpdate();
   }
 
   #usingAnimation = false;
@@ -144,10 +145,10 @@ class YoutubeApi extends EventEmitter {
   #animationFrame() {
     if (this.exists && storyData.readFic) {
       // Fix
-      storyData.music.playing = false;
-      storyData.music.paused = false;
-      storyData.music.stoppabled = false;
-      storyData.music.buffering = false;
+      musicApp.playing = false;
+      musicApp.paused = false;
+      musicApp.stoppabled = false;
+      musicApp.buffering = false;
 
       // Playing
       if (this.#state === YT.PlayerState.PLAYING) {
@@ -176,11 +177,11 @@ class YoutubeApi extends EventEmitter {
               }
 
               // Info
-              storyData.music.author_name = jsonVideo.author_name;
-              storyData.music.author_url = jsonVideo.author_url;
-              storyData.music.provider_name = jsonVideo.provider_name;
-              storyData.music.thumbnail_url = jsonVideo.thumbnail_url;
-              storyData.music.title = jsonVideo.title;
+              musicApp.author_name = jsonVideo.author_name;
+              musicApp.author_url = jsonVideo.author_url;
+              musicApp.provider_name = jsonVideo.provider_name;
+              musicApp.thumbnail_url = jsonVideo.thumbnail_url;
+              musicApp.title = jsonVideo.title;
 
               if (this.#volume < 1) {
                 if (this.player.pauseVideo) this.player.pauseVideo();
@@ -192,7 +193,7 @@ class YoutubeApi extends EventEmitter {
             });
         }
 
-        storyData.music.playing = true;
+        musicApp.playing = true;
         this.#duration = this.player.getDuration();
         this.#currentTime = this.player.getCurrentTime();
         this.#onPlaying();
@@ -201,10 +202,10 @@ class YoutubeApi extends EventEmitter {
       // Ended
       else if (this.#state === YT.PlayerState.ENDED || this.#state === YT.PlayerState.CUED) {
         // Stopping
-        if (storyData.music.isStopping) {
+        if (musicApp.isStopping) {
           this.player.seekTo(0);
           if (this.player.pauseVideo) this.player.pauseVideo();
-          storyData.music.isStopping = false;
+          musicApp.isStopping = false;
         }
 
         // Next
@@ -214,18 +215,18 @@ class YoutubeApi extends EventEmitter {
         }
 
         // Progress
-        storyData.music.stoppabled = true;
+        musicApp.stoppabled = true;
         this.#currentTime = this.player.getDuration();
       }
 
       // Paused
       else if (this.#state === YT.PlayerState.PAUSED) {
-        storyData.music.paused = true;
+        musicApp.paused = true;
       }
 
       // Buff
       else if (this.#state === YT.PlayerState.BUFFERING) {
-        storyData.music.buffering = true;
+        musicApp.buffering = true;
       }
     }
     musicManager.updatePlayer();
@@ -239,15 +240,15 @@ class YoutubeApi extends EventEmitter {
   play(videoID) {
     // Read Data Base
     if (!this.#loading && storyData.readFic) {
-      storyData.music.loading = true;
+      musicApp.loading = true;
       this.#loading = true;
       this.#embed = null;
       console.log(`Loading youtube video embed...`, videoID);
 
       // Youtube Player
-      if (this.player && this.player.setVolume) this.player.setVolume(storyData.music.volume);
+      if (this.player && this.player.setVolume) this.player.setVolume(musicApp.volume);
 
-      storyData.music.loading = false;
+      musicApp.loading = false;
       this.#loading = false;
 
       // Prepare Video ID
@@ -278,19 +279,19 @@ class YoutubeApi extends EventEmitter {
         });
 
       // Prepare Volume
-      if (typeof storyData.music.volume === 'number' && this.#volume !== storyData.music.volume) {
+      if (typeof musicApp.volume === 'number' && this.#volume !== musicApp.volume) {
         if (this.player) {
           this.player.setVolume(this.#volume);
         }
-        storyData.music.volume = this.#volume;
+        musicApp.volume = this.#volume;
       }
     }
   }
 
   // Add Youtube Playing Detector
   #onPlaying() {
-    storyData.music.currentTime = this.#currentTime;
-    storyData.music.duration = this.#duration;
+    musicApp.currentTime = this.#currentTime;
+    musicApp.duration = this.#duration;
     musicManager.updatePlayer();
     this.emit('onPlaying');
   }
@@ -315,14 +316,14 @@ class YoutubeApi extends EventEmitter {
           this.#volume = 100;
           this.player.setVolume(100);
           tinyLs.setItem('storyVolume', 100);
-          storyData.music.volume = 100;
+          musicApp.volume = 100;
         } else {
           tinyLs.setItem('storyVolume', this.#volume);
         }
       } else {
         this.#volume = storageVolume;
         this.player.setVolume(storageVolume);
-        storyData.music.volume = storageVolume;
+        musicApp.volume = storageVolume;
       }
 
       // Play Video

@@ -7,7 +7,7 @@ import { yt } from '../../api/youtube.mjs';
 const { Icon } = TinyHtmlElems;
 
 // Base
-storyData.music = {
+export const musicApp = {
   isStopping: false,
   useThis: true,
   value: null,
@@ -22,6 +22,14 @@ storyData.music = {
   playlist: [],
   playlistPlaying: [null],
 
+  nav: {
+    info: new Icon('fas fa-info-circle'),
+    play: new Icon('fas fa-play'),
+    volume: new Icon('fas fa-volume-mute'),
+    stop: new Icon('fas fa-stop'),
+    disable: new Icon('fas fa-ban'),
+  },
+
   songVolumeUpdate: () => {
     setTimeout(() => {
       for (const item in storyData.sfx) {
@@ -32,15 +40,6 @@ storyData.music = {
     }, 100);
   },
 };
-
-storyData.music.nav = {};
-
-// Buttons
-storyData.music.nav.info = new Icon('fas fa-info-circle');
-storyData.music.nav.play = new Icon('fas fa-play');
-storyData.music.nav.volume = new Icon('fas fa-volume-mute');
-storyData.music.nav.stop = new Icon('fas fa-stop');
-storyData.music.nav.disable = new Icon('fas fa-ban');
 
 // Base
 export const musicBase = TinyHtml.createFrom('div', { id: 'music-player', class: 'd-none' });
@@ -62,11 +61,11 @@ musicBaseItems.push(
     title: 'Source',
   })
     .on('click', () => {
-      if (!storyData.music.loading) {
+      if (!musicApp.loading) {
         open(yt.player.getVideoUrl(), '_blank');
       }
     })
-    .append(storyData.music.nav.info),
+    .append(musicApp.nav.info),
 
   // Play
   TinyHtml.createFrom('a', {
@@ -75,7 +74,7 @@ musicBaseItems.push(
     title: 'Play/Pause',
   })
     .on('click', () => {
-      if (!storyData.music.loading) {
+      if (!musicApp.loading) {
         if (yt.state === YT.PlayerState.PLAYING) {
           if (yt.player.pauseVideo) yt.player.pauseVideo();
         } else {
@@ -83,7 +82,7 @@ musicBaseItems.push(
         }
       }
     })
-    .append(storyData.music.nav.play),
+    .append(musicApp.nav.play),
 
   // Stop
   TinyHtml.createFrom('a', {
@@ -92,12 +91,12 @@ musicBaseItems.push(
     title: 'Stop',
   })
     .on('click', () => {
-      if (!storyData.music.loading) {
-        storyData.music.isStopping = true;
+      if (!musicApp.loading) {
+        musicApp.isStopping = true;
         yt.player.stopVideo();
       }
     })
-    .append(storyData.music.nav.stop),
+    .append(musicApp.nav.stop),
 
   // Volume
   TinyHtml.createFrom('a', {
@@ -106,7 +105,7 @@ musicBaseItems.push(
     title: 'Volume',
   })
     .on('click', () => {
-      if (!storyData.music.loading) {
+      if (!musicApp.loading) {
         const input = TinyHtml.createFrom('input', {
           class: 'form-control range',
           type: 'range',
@@ -119,31 +118,29 @@ musicBaseItems.push(
           title: [new Icon('fas fa-volume me-3'), 'Song Volume'],
           body: TinyHtml.createFrom('center').append(
             TinyHtml.createFrom('p').setText('Change the page music volume'),
-            input
-              .on('change', () => yt.setVolume(input.val()))
-              .setVal(storyData.music.volume ?? null),
+            input.on('change', () => yt.setVolume(input.val())).setVal(musicApp.volume ?? null),
           ),
           dialog: 'modal-lg',
         });
       }
     })
-    .append(storyData.music.nav.volume),
+    .append(musicApp.nav.volume),
 
   // Disable
   disableButton
     .on('click', () => {
-      if (!storyData.music.loading) {
+      if (!musicApp.loading) {
         disableButton.removeClass('');
-        if (storyData.music.useThis) {
-          storyData.music.useThis = false;
-          storyData.music.nav.disable.addClass('text-danger');
+        if (musicApp.useThis) {
+          musicApp.useThis = false;
+          musicApp.nav.disable.addClass('text-danger');
         } else {
-          storyData.music.useThis = true;
-          storyData.music.nav.disable.removeClass('text-danger');
+          musicApp.useThis = true;
+          musicApp.nav.disable.removeClass('text-danger');
         }
       }
     })
-    .append(storyData.music.nav.disable),
+    .append(musicApp.nav.disable),
 );
 
 // Insert Items

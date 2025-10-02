@@ -12,7 +12,7 @@ import { storyData } from '../../files/chapters.mjs';
 import storyCfg from '../../chapters/config.mjs';
 import ttsManager from '../tts/tts.mjs';
 import { Tooltip } from '../../modules/TinyBootstrap.mjs';
-import { musicBase } from './html.mjs';
+import { musicApp, musicBase } from './html.mjs';
 
 const { Icon } = TinyHtmlElems;
 
@@ -79,19 +79,19 @@ const musicManager = {
   // Next Song
   nextMusic: () => {
     if (
-      typeof storyData.music.now.index === 'number' &&
-      !isNaN(storyData.music.now.index) &&
-      isFinite(storyData.music.now.index) &&
-      storyData.music.now.index > -1 &&
+      typeof musicApp.now.index === 'number' &&
+      !isNaN(musicApp.now.index) &&
+      isFinite(musicApp.now.index) &&
+      musicApp.now.index > -1 &&
       storyData.readFic
     ) {
-      storyData.music.now.index++;
-      if (!storyData.music.playlist[storyData.music.now.index]) {
-        storyData.music.now.index = 0;
+      musicApp.now.index++;
+      if (!musicApp.playlist[musicApp.now.index]) {
+        musicApp.now.index = 0;
       }
 
       // Play
-      const song = storyData.music.playlist[storyData.music.now.index];
+      const song = musicApp.playlist[musicApp.now.index];
       if (
         song &&
         typeof song.id === 'string' &&
@@ -109,10 +109,10 @@ const musicManager = {
 
   disable: (react = true) => {
     if (react) {
-      storyData.music.disabled = true;
+      musicApp.disabled = true;
       TinyHtml.query('#music-player')?.addClass('disabled-player');
     } else {
-      storyData.music.disabled = false;
+      musicApp.disabled = false;
       TinyHtml.query('#music-player')?.removeClass('disabled-player');
     }
   },
@@ -122,7 +122,7 @@ const musicManager = {
     // Add Item Base
     if (storyData.nc.base.right.find(':scope > #status #music').length < 1) {
       // Update
-      storyData.music.songVolumeUpdate();
+      musicApp.songVolumeUpdate();
 
       // Fix Youtube Player
       //youtubePlayer.removeClass('hidden');
@@ -156,23 +156,16 @@ musicManager.updatePlayer = () => {
   TinyHtml.query('#music-player')?.addClass('border').removeClass('d-none').addClass('me-3');
 
   // Buff
-  if (
-    storyData.music.buffering ||
-    storyData.music.loading ||
-    !storyData.music.usingSystem ||
-    !yt.exists
-  ) {
+  if (musicApp.buffering || musicApp.loading || !musicApp.usingSystem || !yt.exists) {
     TinyHtml.queryAll('#music-player > a').addClass('disabled');
   } else {
     TinyHtml.queryAll('#music-player > a').removeClass('disabled');
   }
 
   // Title
-  if (typeof storyData.music.title === 'string' && storyData.music.title.length > 0) {
-    const newTitle = `Youtube - ${storyData.music.author_name} - ${storyData.music.title}`;
-    const divBase = new TinyHtml(
-      TinyHtml.queryAll('#music-player > a').has(storyData.music.nav.info),
-    );
+  if (typeof musicApp.title === 'string' && musicApp.title.length > 0) {
+    const newTitle = `Youtube - ${musicApp.author_name} - ${musicApp.title}`;
+    const divBase = new TinyHtml(TinyHtml.queryAll('#music-player > a').has(musicApp.nav.info));
 
     if (divBase.size > 0 && divBase.data('bs-tooltip-data') !== newTitle) {
       divBase.setData('bs-tooltip-data', newTitle);
@@ -182,25 +175,25 @@ musicManager.updatePlayer = () => {
   }
 
   // Playing
-  if (storyData.music.playing) {
-    storyData.music.nav.play.addClass('fa-pause').removeClass('fa-play');
-  } else if (storyData.music.paused) {
-    storyData.music.nav.play.addClass('fa-play').removeClass('fa-pause');
+  if (musicApp.playing) {
+    musicApp.nav.play.addClass('fa-pause').removeClass('fa-play');
+  } else if (musicApp.paused) {
+    musicApp.nav.play.addClass('fa-play').removeClass('fa-pause');
   } else if (
-    storyData.music.stoppabled ||
-    typeof storyData.music.currentTime !== 'number' ||
-    typeof storyData.music.duration !== 'number' ||
-    storyData.music.currentTime === storyData.music.duration
+    musicApp.stoppabled ||
+    typeof musicApp.currentTime !== 'number' ||
+    typeof musicApp.duration !== 'number' ||
+    musicApp.currentTime === musicApp.duration
   ) {
-    storyData.music.nav.play.addClass('fa-play').removeClass('fa-pause');
+    musicApp.nav.play.addClass('fa-play').removeClass('fa-pause');
   }
 
   // Volume
-  storyData.music.nav.volume.removeClass('fa-volume-mute').removeClass('fa-volume-up');
-  if (typeof storyData.music.volume === 'number' && storyData.music.volume > 0) {
-    storyData.music.nav.volume.addClass('fa-volume-up');
+  musicApp.nav.volume.removeClass('fa-volume-mute').removeClass('fa-volume-up');
+  if (typeof musicApp.volume === 'number' && musicApp.volume > 0) {
+    musicApp.nav.volume.addClass('fa-volume-up');
   } else {
-    storyData.music.nav.volume.addClass('fa-volume-mute');
+    musicApp.nav.volume.addClass('fa-volume-mute');
   }
 
   // Tooltip
@@ -298,7 +291,7 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
         tinyValue = 0;
       }
 
-      let newVolume = ruleOfThree(tinyValue, 100, storyData.music.volume);
+      let newVolume = ruleOfThree(tinyValue, 100, musicApp.volume);
       if (newVolume > 100) {
         newVolume = 100;
       }
@@ -487,7 +480,7 @@ musicManager.start.seamlessloop = (item, newSound) => {
         tinyValue = 0;
       }
 
-      let newVolume = ruleOfThree(tinyValue, 100, storyData.music.volume);
+      let newVolume = ruleOfThree(tinyValue, 100, musicApp.volume);
       if (newVolume > 100) {
         newVolume = 100;
       }
@@ -669,7 +662,7 @@ musicManager.start.vanilla = (item, newSound) => {
         tinyValue = 0;
       }
 
-      let newVolume = ruleOfThree(tinyValue, 100, storyData.music.volume);
+      let newVolume = ruleOfThree(tinyValue, 100, musicApp.volume);
       if (newVolume > 100) {
         newVolume = 100;
       }
@@ -987,20 +980,20 @@ musicManager.insertSFX = (item, loop = true, type = 'all') => {
 
 // Stop Playlist
 musicManager.stopPlaylist = async () => {
-  if (storyData.music.usingSystem) {
+  if (musicApp.usingSystem) {
     // Playing Used
-    if (storyData.music.playing) {
-      storyData.music.playingUsed = true;
+    if (musicApp.playing) {
+      musicApp.playingUsed = true;
     }
 
     // Using System
-    storyData.music.usingSystem = false;
+    musicApp.usingSystem = false;
 
     // Hide Progress
     const hideTimeout = 50;
-    let volume = storyData.music.volume;
+    let volume = musicApp.volume;
     for (let i = 0; i < 100; i++) {
-      if (!storyData.music.usingSystem) {
+      if (!musicApp.usingSystem) {
         await new Promise((resolve) => {
           setTimeout(() => {
             // Volume
@@ -1029,27 +1022,24 @@ musicManager.stopPlaylist = async () => {
 
 // Start Playlist
 musicManager.startPlaylist = () => {
-  if (
-    storyData.readFic &&
-    objHash(storyData.music.playlist) !== objHash(storyData.music.playlistPlaying)
-  ) {
+  if (storyData.readFic && objHash(musicApp.playlist) !== objHash(musicApp.playlistPlaying)) {
     // Check Status
-    if (Array.isArray(storyData.music.playlist) && storyData.music.playlist.length > 0) {
+    if (Array.isArray(musicApp.playlist) && musicApp.playlist.length > 0) {
       // Play Song
-      shuffleArray(storyData.music.playlist);
+      shuffleArray(musicApp.playlist);
 
       const playSong = () => {
         if (
-          typeof storyData.music.now.index === 'number' &&
-          !isNaN(storyData.music.now.index) &&
-          isFinite(storyData.music.now.index) &&
-          storyData.music.now.index > -1
+          typeof musicApp.now.index === 'number' &&
+          !isNaN(musicApp.now.index) &&
+          isFinite(musicApp.now.index) &&
+          musicApp.now.index > -1
         ) {
           // Update Cache
-          storyData.music.playlistPlaying = storyData.music.playlist;
+          musicApp.playlistPlaying = musicApp.playlist;
 
           // Play
-          const song = storyData.music.playlist[storyData.music.now.index];
+          const song = musicApp.playlist[musicApp.now.index];
           if (
             song &&
             typeof song.id === 'string' &&
@@ -1067,37 +1057,34 @@ musicManager.startPlaylist = () => {
 
       // Exist
       if (
-        storyData.music.now.playlist === null ||
-        storyData.music.now.index === -1 ||
-        storyData.music.now.playlist !== storyData.music.value
+        musicApp.now.playlist === null ||
+        musicApp.now.index === -1 ||
+        musicApp.now.playlist !== musicApp.value
       ) {
         // Fix Index
-        if (
-          storyData.music.now.index < 0 ||
-          storyData.music.now.playlist !== storyData.music.value
-        ) {
-          storyData.music.now.index = 0;
+        if (musicApp.now.index < 0 || musicApp.now.playlist !== musicApp.value) {
+          musicApp.now.index = 0;
         }
 
         // Now
-        storyData.music.now.playlist = storyData.music.value;
+        musicApp.now.playlist = musicApp.value;
 
         // Play
         playSong();
       }
 
       // Resume
-      else if (storyData.music.playingUsed) {
-        if (storyData.music.playingUsed) {
+      else if (musicApp.playingUsed) {
+        if (musicApp.playingUsed) {
           playSong();
         }
 
-        storyData.music.playingUsed = false;
+        musicApp.playingUsed = false;
       }
     }
 
     // Check Data
-    storyData.music.usingSystem = true;
+    musicApp.usingSystem = true;
   }
 };
 

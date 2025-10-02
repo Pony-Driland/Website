@@ -11,6 +11,7 @@ import musicManager from './music/index.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { body, tinyWin } from '../html/query.mjs';
 import { markdownBase } from '../html/base.mjs';
+import { musicApp } from './music/html.mjs';
 
 const { Icon } = TinyHtmlElems;
 
@@ -102,18 +103,18 @@ tinyWin.on(['resize', 'scroll'], () => {
 
 cacheChapterUpdater.scrollData = () => {
   // Set Playlist
-  if (Array.isArray(storyData.music.playlist)) {
+  if (Array.isArray(musicApp.playlist)) {
     musicManager.disable(false);
   } else {
-    storyData.music.playlist = [];
+    musicApp.playlist = [];
   }
 
   // Exist Playlist
   if (
     !storyData.chapter.blockLineSave &&
-    !storyData.music.disabled &&
-    Array.isArray(storyData.music.playlist) &&
-    storyData.music.playlist.length > 0
+    !musicApp.disabled &&
+    Array.isArray(musicApp.playlist) &&
+    musicApp.playlist.length > 0
   ) {
     musicManager.startPlaylist();
   }
@@ -341,11 +342,11 @@ const chapterSet = {
       // Set Playlist
       const playlist = storyCfg.playlist[value];
       if (Array.isArray(playlist)) {
-        storyData.music.value = value;
-        storyData.music.playlist = playlist;
+        musicApp.value = value;
+        musicApp.playlist = playlist;
       } else {
-        storyData.music.value = null;
-        storyData.music.playlist = [];
+        musicApp.value = null;
+        musicApp.playlist = [];
       }
     }
   },
