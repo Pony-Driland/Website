@@ -45,11 +45,13 @@ charTable_11_1: '2025-03-02'
 
 <span class="made-by-ai">
 
+[spoiler:2:3101]
 Prisma is a commander within the Elite Color organization, one of the oldest unicorns in all Pony Driland. She's story has a direct involvement with the Royal Color and she is one of the closest ponies to the Rainbow Queen within the Royal Color family.
 
 Despite her high rank and power, Prisma expresses frustration with the draining nature of her work and a dislike for long hours or extraneous tasks. However, she also upholds the Elite Color's secrecy and is demonstrably ruthless towards those who get in the organization's way. Her sarcasm and occasional dry humor are also notable traits of her personality.
 
 It is hinted that Prisma and Rayane have a history, possibly even a prior friendship, which seemingly dissolved due to their conflicting loyalties or differing viewpoints. However, the exact nature of their relationship is not fully detailed.
+[/spoiler]
 
 </span>
 
