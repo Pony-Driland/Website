@@ -81,7 +81,7 @@ Rainbow Queen is a majestic and enigmatic figure in the world of Pony Driland, a
 
 </span>
 
-It is a Pony Driland native pony, created by Princess Ariella, which makes it an artificial intelligence due to the nature of the dimension not allowing to create creatures organically. Although organic lives can be born through combinations of organic creatures, Rainbow Queen does not follow this very principle.
+She is a Pony Driland native pony, created by Princess Ariella, which makes it an artificial intelligence due to the nature of the dimension not allowing to create creatures organically. Although organic lives can be born through combinations of organic creatures, Rainbow Queen does not follow this very principle.
 
 {{content_list}}
 
@@ -211,6 +211,7 @@ Mane solid colors:
 <img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-37.png" height="500">
 :::
 
+[spoiler:3:2238]
 ## Fun silly fact (SPOILERS!!)
 
 When Pony Driland was in the first chapter, the first characters drawing made were Rainbow Queen and Rayane.
@@ -218,3 +219,4 @@ When Pony Driland was in the first chapter, the first characters drawing made we
 Rayane's design was made by a human artist, but her design was inspired by an AI drawing.
 
 Rainbow Queen is canonically an AI, but Rainbow Queen's entire design creation never had any AI involvement.
+[/spoiler]
