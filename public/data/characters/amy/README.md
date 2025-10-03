@@ -41,6 +41,8 @@ Her accident happened right during her childhood when she ran away from home, wh
 
 {{content_list}}
 
+[spoiler:3:4637]
+
 Amy has always tried to rediscover the things she lost as a child, which ended up making her more difficult to survive due to her depression. Amy then had a hard time socializing, getting a good job, which ended up making her feel more depressed.
 
 Due to her depression, she lost everything, and fled to the forest, looking to be alone, but she accidentally got lost in the forest and cannot return home. She was very hungry, and sad due to the fear of her possible end of life.
@@ -62,6 +64,8 @@ Since then many years have passed and Amy no longer knows her true age, as she a
 Amy was no longer a depressed pony, feeling loved like the pet she is, she developed her new personality very sweet and cute. She came to be protected by Rainbow Queen through her magical collar. This made Amy develop a huge dependence on Rainbow Queen for her to feel safe while she maintained her shy personality.
 
 She knew that through the magical collar, she could be teleported, or ask for Rainbow Queen's help. Then she continued the new lifestyle that made her feel better, making her forget about her sad past, but still sometimes she was a little worried about what happened to her family, as now she was extremely far away from home.
+
+[/spoiler]
 
 <img src="/img/characters/amy/ref.jpg" height="500">
 <a href="https://derpibooru.org/images/2734116" target="_blank">Derpibooru Page</a>

@@ -26440,7 +26440,7 @@
   }, 
 
   {
-    "value": "Rainbow Queen then looked again at Amy and smirks in response, caressing Amy's mane gently.",
+    "value": "Rainbow Queen looks at Amy again then smirks in response, caressing Amy's mane gently.",
     "type": "action"
   },  
 
@@ -26484,7 +26484,7 @@
   }, 
 
   {
-    "value": "Rainbow Queen then looked at the door in front of her and then Amy again.",
+    "value": "Rainbow Queen looks at the door in front of her and then looks Amy again.",
     "type": "action"
   },  
 
@@ -26492,7 +26492,7 @@
     "set": {
       "playlistPlay": null
     },
-    "value": "I just came to visit some memories. Seeing information about the Earth for the first time reminded me of her existence.",
+    "value": "I just came to visit some memories. Seeing information about the Earth for the first time reminded me her existence.",
     "character": "Rainbow Queen",
     "type": "dialogue"
   },  
