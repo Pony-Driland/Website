@@ -144,5 +144,5 @@ export const fixSpoilers = (item) => {
     item.replaceWith(...item.children());
   });
 
-  if (storageLine >= line) item.trigger('click');
+  if (storageLine >= line || tinyLs.getBool(`bookmarkCanSpoiler${chapter}`)) item.trigger('click');
 };

@@ -16,7 +16,7 @@ import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
 import { body, tinyWin } from '../html/query.mjs';
 import { markdownBase } from '../html/base.mjs';
 
-const { Icon } = TinyHtmlElems;
+const { Icon, Button, Anchor } = TinyHtmlElems;
 
 /*  Rain made by Aaron Rickle */
 const rainConfig = {};
@@ -570,6 +570,34 @@ export const openChapterMenu = (params = {}) => {
       }
     }
 
+    /** @type {TinyHtmlElems.Button[]} */
+    const spoilersButton = [];
+
+    /** @param {number} chapter */
+    const getCanSpoilerMsg = (chapter) => {
+      const canSpoiler = tinyLs.getBool(`bookmarkCanSpoiler${chapter}`);
+      return canSpoiler ? 'Disable spoiler auto-reveal' : 'Enable spoiler auto-reveal';
+    };
+
+    // All Spoilers Button
+    const allSpoilersButton = new Button({
+      mainClass: 'btn',
+      tags: 'btn-secondary flex-fill mx-3',
+      label: `Change spoiler auto-reveal for all`,
+    }).on('click', () => {
+      /** @type {boolean|null} */
+      let valueToSet = null;
+      for (let i = 0; i < storyData.chapter.amount; i++) {
+        const bmValueName = `bookmarkCanSpoiler${i}`;
+        if (valueToSet === null) valueToSet = !tinyLs.getBool(bmValueName);
+        tinyLs.setBool(bmValueName, valueToSet);
+      }
+
+      for (const item of spoilersButton) {
+        item.setLabel(getCanSpoilerMsg(item.attrNumber('chapter')));
+      }
+    });
+
     // Prepare Choose
     markdownBase.append(
       // Banner
@@ -897,7 +925,8 @@ export const openChapterMenu = (params = {}) => {
         .addClass('made-by-ai')
         .setText(
           `When you open a chapter, look at the top of the page. You'll find extra tools, including a bookmark manager to save your progress directly in your browser.`,
-        ),
+        )
+        .append(allSpoilersButton),
     );
 
     // Read More Data
@@ -935,16 +964,47 @@ export const openChapterMenu = (params = {}) => {
       }
 
       // Chapter Button
-      const chapterButton = TinyHtml.createFrom('a', {
-        class: 'btn btn-primary m-2 ms-0',
+      const chapterButton = new Anchor({
+        mainClass: 'btn',
+        tags: 'btn-primary flex-fill mx-3',
         href: `/chapter/${chapter}.html`,
-        chapter: chapter,
-      });
+        label: 'Load Chapter',
+      })
+        .setAttr('chapter', chapter)
+        .on('click', (e) => {
+          e.preventDefault();
+          // Start Chapter
+          urlUpdate(`read-fic`, null, false, { chapter });
+          newRead(Number(chapterButton.attr('chapter')));
+        });
+
+      // Spoiler Button
+      const bmValueName = `bookmarkCanSpoiler${chapter}`;
+      const chapterSpoiler = new Button({
+        mainClass: 'btn',
+        tags: 'btn-secondary flex-fill mx-3',
+        label: getCanSpoilerMsg(chapter),
+      })
+        .setAttr('chapter', chapter)
+        .on('click', () => {
+          tinyLs.setBool(bmValueName, !tinyLs.getBool(bmValueName) ?? true);
+          chapterSpoiler.setLabel(getCanSpoilerMsg(chapter));
+        });
+
+      spoilersButton.push(chapterSpoiler);
+
+      new Tooltip(
+        chapterSpoiler.setAttr(
+          'title',
+          'Do you want every spoiler of this chapter to be automatically revealed on the website?',
+        ),
+      );
 
       // Add Chapter
       markdownBase.append(
         TinyHtml.createFrom('div', { class: 'card mb-2' }).append(
           TinyHtml.createFrom('div', { class: 'card-body' }).append(
+            // Info
             TinyHtml.createFrom('h5', { class: 'card-title' })
               .setText('Chapter ' + chapter)
               .append(isNewValue),
@@ -966,15 +1026,10 @@ export const openChapterMenu = (params = {}) => {
             TinyHtml.createFrom('p', { class: 'card-text small' }).setText(
               storyCfg.chapterName[chapter].description,
             ),
-            TinyHtml.createFrom('div', { class: 'd-grid gap-2 col-6 mx-auto' }).append(
-              chapterButton
-                .on('click', (e) => {
-                  e.preventDefault();
-                  // Start Chapter
-                  urlUpdate(`read-fic`, null, false, { chapter });
-                  newRead(Number(chapterButton.attr('chapter')));
-                })
-                .setText('Load Chapter'),
+            // Load Chapter
+            TinyHtml.createFrom('div', { class: 'd-flex justify-content-between px-3' }).append(
+              chapterButton,
+              chapterSpoiler,
             ),
           ),
         ),
