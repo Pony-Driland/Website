@@ -36,7 +36,8 @@ charTable_9_1: '2021/10/10'
 
 <span class="made-by-ai">
 
-**Description:** A gentle and somewhat timid pony, Ivy finds herself lost in Pony Driland and entangled in its conflicts. She is characterized by her kindness, shyness, and a deep-seated loneliness stemming from a difficult past.
+## Description
+A gentle and somewhat timid pony, Ivy finds herself lost in Pony Driland and entangled in its conflicts. She is characterized by her kindness, shyness, and a deep-seated loneliness stemming from a difficult past.
 
 *   **Key Traits:**
 
@@ -69,6 +70,12 @@ charTable_9_1: '2021/10/10'
 
 </span>
 
-### Character Reference
+## Character Reference
 
 <img src="/img/characters/ivy/ai/unnamed.jpg" height="500">
+
+This image was generated with the goal of creating **Ivy**, the sister of your original character, **Amy**.
+
+To maintain a strong family resemblance and indicate they are sisters, Ivy's design was directly **based on Amy's original image**, using it as the primary reference for the color palette, style, and overall essence.
+
+Ivy shares Amy's kindness but is portrayed with a more **mature** expression.
