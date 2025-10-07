@@ -665,6 +665,11 @@ rootApp.onReady(() => {
           });
 
           newItem.dbBase.characters.push({
+            file: '/data/characters/ivy/README.md',
+            text: 'Ivy (Character WIP)',
+          });
+
+          newItem.dbBase.characters.push({
             file: '/data/characters/prisma/README.md',
             text: 'Prisma (Character WIP)',
           });
