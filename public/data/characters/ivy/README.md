@@ -25,13 +25,13 @@ charTable_5_0: 'Generator'
 charTable_5_1: 'Gemini'
 
 charTable_6_0: 'Credits'
-charTable_46_1: ''
+charTable_6_1: ''
 
 charTable_7_0: 'Development'
 charTable_7_1: 'JasminDreasond'
 
 charTable_8_0: 'Created At'
-charTable_9_1: '2021/10/10'
+charTable_8_1: '2021/10/10'
 #---
 
 <span class="made-by-ai">
