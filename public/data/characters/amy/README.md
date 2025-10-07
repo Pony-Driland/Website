@@ -41,7 +41,7 @@ Her accident happened right during her childhood when she ran away from home, wh
 
 {{content_list}}
 
-[spoiler:3:4637]
+[spoiler:3:1268]
 
 Amy has always tried to rediscover the things she lost as a child, which ended up making her more difficult to survive due to her depression. Amy then had a hard time socializing, getting a good job, which ended up making her feel more depressed.
 
