@@ -24,14 +24,17 @@ charTable_4_1: 'JasminDreasond'
 charTable_5_0: 'Generator'
 charTable_5_1: 'Gemini'
 
-charTable_6_0: 'Credits'
-charTable_6_1: ''
+charTable_6_0: 'Made At'
+charTable_6_1: '2025-06-10'
 
-charTable_7_0: 'Development'
-charTable_7_1: 'JasminDreasond'
+charTable_7_0: 'Credits'
+charTable_7_1: ''
 
-charTable_8_0: 'Created At'
-charTable_8_1: '2021/10/10'
+charTable_8_0: 'Development'
+charTable_8_1: 'JasminDreasond'
+
+charTable_9_0: 'Created At'
+charTable_9_1: '2021/10/10'
 #---
 
 <ai>
