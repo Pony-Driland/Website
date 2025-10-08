@@ -90,3 +90,9 @@ export function isNoNsfw(biggerAge = 18) {
   }
   return isNoNsfw;
 }
+
+// Fic Data
+export const ficCache = {
+  charPrompts: '',
+  charListPrompts: [],
+};

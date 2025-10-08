@@ -1,4 +1,11 @@
-import { fileEnd, fileStart, officialFileEnd, officialFileStart, userFileEnd, userFileStart } from './defaults.mjs';
+import {
+  fileEnd,
+  fileStart,
+  officialFileEnd,
+  officialFileStart,
+  userFileEnd,
+  userFileStart,
+} from './defaults.mjs';
 
 const aiTemplates = { funcs: {}, instructions: {}, helpers: {}, prompts: [] };
 
@@ -7,11 +14,6 @@ const aiTemplates = { funcs: {}, instructions: {}, helpers: {}, prompts: [] };
 // Max Tokens warning
 aiTemplates.funcs.maxTokensWarn = (maxOutputTokens, isTextContinue = false) =>
   `${typeof maxOutputTokens === 'number' ? `${!isTextContinue ? 'A' : 'a'}ll your new responses must respect a maximum output length of ${String(maxOutputTokens)} characters without losing any content.` : ''}`;
-
-// Native Language
-aiTemplates.helpers.ficNativeUserLanguage = `
-If the user is sending messages in another language, translate the messages to the language of the user's message.
-`;
 
 // Tell lines
 aiTemplates.helpers.ficTellLines = `Tell which lines of fic you are referring to tell your answers to help the user search the source of your answers.`;
@@ -70,7 +72,6 @@ ${aiTemplates.helpers.ficTimeCheckerCuriosities}`;
 
 // Full Talk
 aiTemplates.instructions.talkToFic = `${aiTemplates.helpers.talkToFic}
-${aiTemplates.helpers.ficNativeUserLanguage}
 ${aiTemplates.helpers.ficTimeChecker}
 ${aiTemplates.helpers.ficTimeCheckerLine}
 ${aiTemplates.helpers.ficTimeCheckerDayCounter}
@@ -146,13 +147,6 @@ aiTemplates.prompts.push({
   name: 'Use emojis in the messages',
   value: 'emoji-in-messages',
   text: aiTemplates.helpers.messageEmojis,
-});
-
-aiTemplates.prompts.push({
-  name: 'Use the user native language',
-  value: 'user-native-language',
-  sandboxOnly: true,
-  text: aiTemplates.helpers.ficNativeUserLanguage,
 });
 
 /* aiTemplates.prompts.push({

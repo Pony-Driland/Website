@@ -1,3 +1,4 @@
+import { ficCache } from '../../important.mjs';
 import { saveRoleplayFormat } from '../../start.mjs';
 
 const ficConfigs = {
@@ -25,7 +26,7 @@ const ficConfigs = {
       getData: async () => {
         /** @type {{ data: string; mine: string; }} */
         const data = saveRoleplayFormat(null, false) ?? { data: '', mine: 'text/plain' };
-
+        data.data = `${ficCache.charPrompts}\n\n${data.data}`;
         return data;
       },
     },
@@ -39,7 +40,7 @@ const ficConfigs = {
       getData: async () => {
         /** @type {{ data: string; mine: string; }} */
         const data = saveRoleplayFormat(null, false) ?? { data: '', mine: 'text/plain' };
-
+        data.data = `${ficCache.charPrompts}\n\n${data.data}`;
         return data;
       },
     },
@@ -56,7 +57,7 @@ const ficConfigs = {
           ficLine: false,
           dayNumber: false,
         }) ?? { data: '', mine: 'text/plain' };
-
+        data.data = `${ficCache.charPrompts}\n\n${data.data}`;
         return data;
       },
     },

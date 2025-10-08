@@ -1,10 +1,10 @@
 import objHash from 'object-hash';
 
-import { toTitleCase, fetchJson, isJsonObject } from 'tiny-essentials/basics';
+import { toTitleCase, fetchJson, isJsonObject, fetchText } from 'tiny-essentials/basics';
 
 import tinyLib, { alert } from './tinyLib.mjs';
 import storyCfg from '../chapters/config.mjs';
-import { connStore, loaderScreen, tinyLs } from '../important.mjs';
+import { connStore, ficCache, loaderScreen, tinyLs } from '../important.mjs';
 
 // Prepare Data
 export const storyData = {
@@ -192,6 +192,10 @@ export const storyData = {
       // Complete
       storyData.count++;
     }
+
+    loaderScreen.update(`Loading character content...`);
+    ficCache.charListPrompts = await fetchJson('/prompts/prompts.json');
+    ficCache.charPrompts = await fetchText('/prompts/prompts.txt');
 
     // Ai page database
     const aiPage = { room: {}, hash: {}, tokens: {}, data: {} };
