@@ -3,7 +3,6 @@ const path = require('path');
 const fs = require('fs');
 const { glob } = require("glob");
 const { writeJsonFile, ensureDirectory } = require('tiny-essentials');
-const { fileStart, fileEnd } = require('../../src/ai/values/defaults.mjs');
 
 const getDirectories = (src, callback) => glob(src + '/**/*')
     .then((data) => callback(null, data)).catch((err) => callback(err));
@@ -22,7 +21,7 @@ getDirectories(folderPath, (err, files) => {
         const customURLs = {};
 
         const promptsList = [];
-        let globalCharsData = `${fileStart}\n\n`;
+        let globalCharsData = `\n\n`;
 
         // Read Files
         files.forEach(async file => {
@@ -171,7 +170,7 @@ getDirectories(folderPath, (err, files) => {
             }
         });
 
-        globalCharsData += `\n\n${fileEnd}`;
+        globalCharsData += `\n\n`;
 
         // Custom List
         console.log('Creating JS...');
