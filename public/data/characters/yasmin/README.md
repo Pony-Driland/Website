@@ -59,14 +59,14 @@ This character will continue to be canonical, but will also continue to be secon
 [/spoiler]
 
 ## AI Image (Generated at 09/29/2025)
-<span class="made-by-ai">
+<ai>
 To create the character design of Yasmin, we followed these steps in Gemini:
-</span>
-<span class="made-by-ai">
+</ai>
+<ai>
 **Initial Transformation Request:** The user provided two images of themselves and requested a transformation into an MLP pegasus character. Key visual characteristics were specified:
-</span>
+</ai>
 
-<span class="made-by-ai">
+<ai>
 
 * Feminine character
 * Hair style matching the original person's (long, dark brown)
@@ -76,21 +76,22 @@ To create the character design of Yasmin, we followed these steps in Gemini:
 * Personality traits: shy, fun, reserved, yet social.
 * Name: Yasmin
 
-</span>
+</ai>
 
-<span class="made-by-ai">
+<ai>
 Throughout this process, we iteratively refined the image based on user feedback to achieve the desired outcome, ensuring faithfulness to the original person's visual characteristics and the specific MLP character requirements.
-</span>
+</ai>
 
-<span class="made-by-ai">
+<ai>
 This image was inspired by real-life photos of the user, incorporating specific details as described in line 1894 of Chapter 3.
-</span>
+</ai>
 
 <hr/>
 
 #### Normal Version
 
 <img src="/img/characters/yasmin/ai/unnamed.png" height="500">
+<a href="https://tantabus.ai/images/60145" target="_blank">Tantabus Page</a>
 
 <hr/>
 

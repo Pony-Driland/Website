@@ -11,6 +11,7 @@ module.exports = function() {
     eval(fs.readFileSync(path.join(publicFolder, './chapters/config.mjs'), 'utf8').replace(/const storyCfg \=/, 'var storyCfg =').replace('export default storyCfg;', ''));
     ensureDirectory(path.join(__dirname, '../dist'));
     ensureDirectory(path.join(__dirname, '../dist/public'));
+    ensureDirectory(path.join(__dirname, '../dist/public/prompts'));
 
     return { 
         src: publicFolder, 

@@ -38,6 +38,7 @@ import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
 import { storyData } from '../files/chapters.mjs';
 import { body, topPage } from '../html/query.mjs';
 import { markdownBase } from '../html/base.mjs';
+import { officialFileEnd, officialFileStart, userFileEnd, userFileStart } from './values/defaults.mjs';
 
 const { Icon } = TinyHtmlElems;
 
@@ -2717,9 +2718,9 @@ export const AiScriptStart = async () => {
         if (typeof tinyRpgData.properties.allowAiSchemaUse !== 'undefined')
           delete tinyRpgData.properties.allowAiSchemaUse;
 
-        let tinyText = '---------- RPG User Official Data ----------\n\n';
+        let tinyText = `${userFileStart}\n\n`;
         tinyText += JSON.stringify({ schema: tinyRpgData });
-        tinyText += '\n\n---------- The User end RPG Official Data ----------';
+        tinyText += `\n\n${userFileEnd}`;
 
         rpgSchema = {
           role: 'user',
@@ -2733,9 +2734,9 @@ export const AiScriptStart = async () => {
         rpgData.oldHash.public = tinyAi.getHash('rpgData');
         const tinyRpgData = clone(history.rpgData);
         if (typeof tinyRpgData.allowAiUse !== 'undefined') delete tinyRpgData.allowAiUse;
-        let tinyText = '---------- RPG User Official Data ----------\n\n';
+        let tinyText = `${userFileStart}\n\n`;
         tinyText += JSON.stringify({ database: tinyRpgData });
-        tinyText += '\n\n---------- The User end RPG Official Data ----------';
+        tinyText += `\n\n${userFileEnd}`;
 
         rpgContentData = {
           role: 'user',
@@ -2749,9 +2750,9 @@ export const AiScriptStart = async () => {
         rpgData.oldHash.private = tinyAi.getHash('rpgPrivateData');
         const tinyRpgData = clone(history.rpgPrivateData);
         if (typeof tinyRpgData.allowAiUse !== 'undefined') delete tinyRpgData.allowAiUse;
-        let tinyText = '---------- RPG Official Data ----------\n\n';
+        let tinyText = `${officialFileStart}\n\n`;
         tinyText += JSON.stringify({ database: tinyRpgData });
-        tinyText += '\n\n---------- The end RPG Official Data ----------';
+        tinyText += `\n\n${officialFileEnd}`;
 
         rpgPrivateContentData = {
           role: 'user',

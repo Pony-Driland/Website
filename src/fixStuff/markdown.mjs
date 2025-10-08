@@ -15,6 +15,7 @@ import { markdownBase } from '../html/base.mjs';
 
 import '../markdown/dropdown.mjs';
 import '../markdown/spoiler.mjs';
+import '../markdown/ai-tag.mjs';
 
 const { Icon } = TinyHtmlElems;
 

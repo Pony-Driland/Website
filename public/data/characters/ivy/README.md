@@ -34,7 +34,7 @@ charTable_8_0: 'Created At'
 charTable_8_1: '2021/10/10'
 #---
 
-<span class="made-by-ai">
+<ai>
 
 ## Description
 A gentle and somewhat timid pony, Ivy finds herself lost in Pony Driland and entangled in its conflicts. She is characterized by her kindness, shyness, and a deep-seated loneliness stemming from a difficult past.
@@ -56,7 +56,7 @@ A gentle and somewhat timid pony, Ivy finds herself lost in Pony Driland and ent
 
     *   **Vinny:** She is grateful to Vinny for his kindness and protection, seeing him as a source of hope and friendship.
     *   **Rayane:** She is initially intimidated by Rayane's power and mysterious nature, but gradually comes to trust her as she witnesses her compassion.
-    *   **Amy:** She shares a deep bond with Amy, her younger sister (though due to Pony Driland's time distortions, Amy appears older), who acts as a caretaker and protector, offering her a sense of belonging and purpose.
+    *   **Amy:** She shares a deep bond with Amy, her younger sister (though due to Pony Driland's time distortions, Amy appears older). Despite Amy's apparent maturity, Ivy often feels protective of her, seeing Amy as someone who needs to be shielded from the harsh realities of Pony Driland. Ivy views Amy as sweet, innocent and needs her protect.
 
 *   **Story Arcs:**
 
@@ -68,14 +68,17 @@ A gentle and somewhat timid pony, Ivy finds herself lost in Pony Driland and ent
     *   Ivy is described as a pegasus with a long mane.
     *   She also has two golden earrings on her ear.
 
-</span>
+</ai>
 
 ## Character Reference
 
 <img src="/img/characters/ivy/ai/unnamed.jpg" height="500">
+<a href="https://tantabus.ai/images/60751" target="_blank">Tantabus Page</a>
 
-This image was generated with the goal of creating **Ivy**, the sister of your original character, **Amy**.
+<ai>
+This image was generated with the goal of creating **Ivy**, the sister of **<a href="/characters/amy.html" target="_blank">Amy</a>**.
 
 To maintain a strong family resemblance and indicate they are sisters, Ivy's design was directly **based on Amy's original image**, using it as the primary reference for the color palette, style, and overall essence.
 
 Ivy shares Amy's kindness but is portrayed with a more **mature** expression.
+</ai>

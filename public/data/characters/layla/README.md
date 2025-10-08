@@ -36,7 +36,7 @@ contentList_1_1: 'Collar'
 contentList_2: 'Image Reference'
 #---
 
-<span class="made-by-ai">
+<ai>
 
 [spoiler:4:1]
 
@@ -66,7 +66,7 @@ No longer trapped in depression, Layla found happiness in her role as a beloved 
 
 [/spoiler]
 
-</span>
+</ai>
 
 She knew that through the magical collar, she could be teleported, or ask for Rainbow Queen's help. Then she continued the new lifestyle that made her feel better, making her forget about her sad past, but still sometimes she feel a little worried about what happened to her family, as now she is extremely far away from home.
 

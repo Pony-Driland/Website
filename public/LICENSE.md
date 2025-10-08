@@ -5,7 +5,7 @@ title: 'License'
 ## Pony Driland License  
 ### Copyright (c) 2020 Yasmin Seidel 
 
-<span class="made-by-ai">
+<ai>
 
 #### 1. Permission for Unofficial Content  
 You are permitted to create and distribute any form of **unofficial content** related to *Pony Driland*, including but not limited to:  
@@ -41,7 +41,7 @@ When incorporating elements from the *Pony Driland* project into your works, you
 #### 6. License Updates and Modifications  
 This license may be updated in the future to ensure the protection and integrity of the project. Any modifications will be officially published, and continued use of the elements implies acceptance of the new terms.  
 
-</span>
+</ai>
 
 <hr/>
 

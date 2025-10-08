@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const { glob } = require("glob");
 const { writeJsonFile, ensureDirectory } = require('tiny-essentials');
+const { fileStart, fileEnd } = require('../../src/ai/values/defaults.mjs');
 
 const getDirectories = (src, callback) => glob(src + '/**/*')
     .then((data) => callback(null, data)).catch((err) => callback(err));
@@ -20,20 +21,39 @@ getDirectories(folderPath, (err, files) => {
         // Prepare Custom URL
         const customURLs = {};
 
+        const promptsList = [];
+        let globalCharsData = `${fileStart}\n\n`;
+
         // Read Files
         files.forEach(async file => {
             if (!fs.lstatSync(`${file}`).isDirectory()) {
 
                 // File Name
-                file = path.parse(file);
+                const f = path.parse(file);
 
                 // Start Group
-                console.group(file.base);
+                console.group(f.base);
 
                 // Get JSON
-                const jsonFilePath = path.join(file.dir, './' + file.name + '.json');
+                const jsonFilePath = path.join(f.dir, './' + f.name + '.json');
                 const jsonFile = require(jsonFilePath);
                 console.log('JSON File', jsonFilePath);
+
+                // Write prompt files
+                if (f.ext.endsWith('.md')) {
+                    const fileData = fs.readFileSync(file, 'utf8');
+                    if (!fileData) return;
+
+                    globalCharsData += `----- Character "${jsonFile.title}" Data -----\n\n`;
+                    globalCharsData += fileData.replace(/\<ai\>|\<\/ai\>/g, '');
+                    fs.writeFileSync(path.join(ficData.dist, `./prompts/${f.name}.md`), fileData, 'utf-8');
+                    globalCharsData += `\n\n----- The end Character "${jsonFile.title}" Data -----`;
+                    promptsList.push(f.name);
+
+                    // End Group
+                    console.groupEnd();
+                    return;
+                }
 
                 const imgUrl = selectedType === 'ipfs' && ficData.config.ipfs.files[jsonFile.image] ? ficData.config.ipfs.host.replace('{cid}', ficData.config.ipfs.files[jsonFile.image]) :
                     selectedType === 'ario' && ficData.config.ario.files[jsonFile.image] ? ficData.config.ario.host.replace('{cid}', ficData.config.ario.files[jsonFile.image]) :
@@ -51,7 +71,7 @@ getDirectories(folderPath, (err, files) => {
                     console.log('Creating JSON oEmbed...');
                     ensureDirectory(path.join(ficData.dist, './oEmbed'));
                     ensureDirectory(path.join(ficData.dist, './oEmbed/characters'));
-                    writeJsonFile(path.join(ficData.dist, './oEmbed/characters/' + file.name + '.json'), {
+                    writeJsonFile(path.join(ficData.dist, './oEmbed/characters/' + f.name + '.json'), {
                         author_name: jsonFile.author_name,
                         url: imgUrl,
                         cache_age: 7200,
@@ -68,7 +88,7 @@ getDirectories(folderPath, (err, files) => {
                     // Create HTML File
                     console.log('Creating HTML...');
                     ensureDirectory(path.join(ficData.dist, './characters'));
-                    fs.writeFileSync(path.join(ficData.dist, './characters/' + file.name + '.html'), `
+                    fs.writeFileSync(path.join(ficData.dist, './characters/' + f.name + '.html'), `
 <!doctype html>
 <html lang="en">
     <head>
@@ -92,17 +112,17 @@ getDirectories(folderPath, (err, files) => {
 
         <!-- Page Info -->
         <meta content="${jsonFile.title}" property="og:title">
-        <meta content="https://${ficData.config.domain}/characters/${file.name}.html" property="og:url">
-        <meta property="url" content="https://${ficData.config.domain}/characters/${file.name}.html">
+        <meta content="https://${ficData.config.domain}/characters/${f.name}.html" property="og:url">
+        <meta property="url" content="https://${ficData.config.domain}/characters/${f.name}.html">
         <meta content="${jsonFile.author_name}" property="dc:creator">
         <meta content="website" property="og:type">
         <meta content="${jsonFile.description}" property="og:description">
         <meta content="${jsonFile.description}" property="description">
 
         <!-- Embed -->
-        <link href="../oEmbed/characters/${file.name}.json" rel="alternate" title="oEmbed JSON Profile" type="application/json+oembed">
+        <link href="../oEmbed/characters/${f.name}.json" rel="alternate" title="oEmbed JSON Profile" type="application/json+oembed">
         <meta content="${imgUrl}" property="og:image">
-        <link href="https://${ficData.config.domain}/characters/${file.name}.html" rel="canonical">
+        <link href="https://${ficData.config.domain}/characters/${f.name}.html" rel="canonical">
         
         <!-- Theme -->
         <meta name="theme-color" content="${jsonFile.color}">
@@ -113,7 +133,7 @@ getDirectories(folderPath, (err, files) => {
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="${ficData.config.title}">
         <meta property="og:site" content="${ficData.config.title}">
-        <meta http-equiv="refresh" content="0; URL='/?path=%2Fdata%2Fcharacters%2F${file.name}%2FREADME.md&title=${encodeURIComponent(jsonFile.title)}'"/>
+        <meta http-equiv="refresh" content="0; URL='/?path=%2Fdata%2Fcharacters%2F${f.name}%2FREADME.md&title=${encodeURIComponent(jsonFile.title)}'"/>
 
         <meta name="twitter:card" content="summary">
         <meta name="twitter:site" content="@${ficData.config.twitter.username}">
@@ -124,7 +144,7 @@ getDirectories(folderPath, (err, files) => {
         <script src="../redirect.js"></script>
     
     </head>
-    <body><div id="newURL" href="/?path=%2Fdata%2Fcharacters%2F${file.name}%2FREADME.md&title=${encodeURIComponent(jsonFile.title)}"></div></body>
+    <body><div id="newURL" href="/?path=%2Fdata%2Fcharacters%2F${f.name}%2FREADME.md&title=${encodeURIComponent(jsonFile.title)}"></div></body>
 
 </html>
             `);
@@ -132,8 +152,8 @@ getDirectories(folderPath, (err, files) => {
                 }
 
                 // Create Custom URL
-                const fileId = file.dir.endsWith('/characters/data') ? file.name :
-                    `${path.basename(file.dir)}/${file.name}`;
+                const fileId = f.dir.endsWith('/characters/data') ? f.name :
+                    `${path.basename(f.dir)}/${f.name}`;
 
                 customURLs[fileId] = {};
 
@@ -151,6 +171,8 @@ getDirectories(folderPath, (err, files) => {
             }
         });
 
+        globalCharsData += `\n\n${fileEnd}`;
+
         // Custom List
         console.log('Creating JS...');
         fs.writeFileSync(path.join(ficData.src, './chapters/characters.mjs'), `
@@ -165,6 +187,8 @@ for(const item in storyCfg.characters) {
     };
 }
 `);
+        fs.writeFileSync(path.join(ficData.dist, './prompts/prompts.txt'), globalCharsData, 'utf-8');
+        fs.writeFileSync(path.join(ficData.dist, './prompts/prompts.json'), JSON.stringify(promptsList), 'utf-8');
         console.log('Done!');
 
     } else {
