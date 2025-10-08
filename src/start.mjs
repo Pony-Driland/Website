@@ -180,7 +180,7 @@ export const saveRoleplayFormat = (chapter, saveAsFile = true, tinyCfg = {}) => 
           : ` - Chapter ${typeof chapter === 'number' ? String(chapter) : chapter.join('-')}`
       }.txt`,
     );
-  else return { data: finalData, mime: 'text/plain' };
+  else return { data: `${info}\n\n${file}`, mime: 'text/plain' };
 };
 
 // Get Params

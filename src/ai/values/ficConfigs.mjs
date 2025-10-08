@@ -25,7 +25,10 @@ const ficConfigs = {
         'Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this). I will try to hide some explicit details from fic, but if you insist, I will try to say in a few details.',
       getData: async () => {
         /** @type {{ data: string; mine: string; }} */
-        const data = saveRoleplayFormat(null, false) ?? { data: '', mine: 'text/plain' };
+        const data = saveRoleplayFormat(null, false) ?? {
+          data: '',
+          mine: 'text/plain',
+        };
         data.data = `${ficCache.charPrompts}\n\n${data.data}`;
         return data;
       },
@@ -39,7 +42,10 @@ const ficConfigs = {
         'Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this), but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes (but i will do this respecting the limitations of my selected model).',
       getData: async () => {
         /** @type {{ data: string; mine: string; }} */
-        const data = saveRoleplayFormat(null, false) ?? { data: '', mine: 'text/plain' };
+        const data = saveRoleplayFormat(null, false) ?? {
+          data: '',
+          mine: 'text/plain',
+        };
         data.data = `${ficCache.charPrompts}\n\n${data.data}`;
         return data;
       },
