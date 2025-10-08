@@ -37,7 +37,7 @@ charTable_10_0: 'Design Created At'
 charTable_10_1: '2025-02-18'
 #---
 
-<span class="made-by-ai">
+<ai>
 
 Aniya is a fortune teller operating out of a hut in Blackburn Village. She uses a crystal ball and "temporal energy" to offer glimpses into the future, though her services come at a steep price (1000 bits per session). She has a flamboyant and theatrical personality, often exaggerating her reactions and making dramatic pronouncements. Despite her greed and tendency toward the theatrical, Aniya demonstrates genuine insight and offers valuable advice to Vinny regarding Rainbow Queen, Rainbow Queen's pets, and the dangers of Pony Driland. 
 
@@ -49,7 +49,7 @@ Aniya seems to feel a little of her past when listening the Ivy's story, it help
 It's implied that there might be more to Aniya's story and her reasons for leaving Rainbow Queen's home than she initially lets on. Her unusual knowledge of Rainbow Queen's activities, combined with her ability to perceive Vinny's "temporal energy", hints at an intriguing backstory and unexplored magical capabilities.
 [/spoiler]
 
-</span>
+</ai>
 
 ### Image Reference
 

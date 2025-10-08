@@ -38,6 +38,7 @@ import './scss/rpg.scss';
 import { openMDFile, openNewAddress, clearFicData } from './fixStuff/markdown.mjs';
 import { app, body, head, tinyWin, topPage } from './html/query.mjs';
 import { markdownBase } from './html/base.mjs';
+import { fileEnd, fileStart } from './ai/values/defaults.mjs';
 
 const { Icon } = TinyHtmlElems;
 addAiMarkerShortcut();
@@ -129,8 +130,6 @@ export const saveRoleplayFormat = (chapter, saveAsFile = true, tinyCfg = {}) => 
   }
 
   // File start and end
-  const fileStart = `---------- Official Pony Driland fic file ----------`;
-  const fileEnd = `---------- The end Official Pony Driland fic file ----------`;
   let file = ``;
 
   // Insert chapter
@@ -167,40 +166,12 @@ export const saveRoleplayFormat = (chapter, saveAsFile = true, tinyCfg = {}) => 
 
   // Info data
   let info = `Title: ${storyData.title}\nDescription: ${storyData.description}\nAuthor: ${storyCfg.creator}\nAuthor Page: ${storyCfg.creator_url}`;
-  if (
-    (storyCfg.bitcoin && storyCfg.bitcoin.address) ||
-    (storyCfg.dogecoin && storyCfg.dogecoin.address) ||
-    (storyCfg.ethereum && storyCfg.ethereum.address) ||
-    (storyCfg.polygon && storyCfg.polygon.address) ||
-    (storyCfg.bnb && storyCfg.bnb.address)
-  ) {
-    info += `\n`;
-  }
-
-  if (storyCfg.bitcoin && storyCfg.bitcoin.address) {
-    info += `\nBitcoin Donations: ${storyCfg.bitcoin.address}`;
-  }
-
-  if (storyCfg.dogecoin && storyCfg.dogecoin.address) {
-    info += `\nDogecoin Donations: ${storyCfg.dogecoin.address}`;
-  }
-
-  if (storyCfg.ethereum && storyCfg.ethereum.address) {
-    info += `\nEthereum Donations: ${storyCfg.ethereum.address}`;
-  }
-
-  if (storyCfg.polygon && storyCfg.polygon.address) {
-    info += `\nPolygon Donations: ${storyCfg.polygon.address}`;
-  }
-
-  if (storyCfg.bnb && storyCfg.bnb.address) {
-    info += `\nBNB Donations: ${storyCfg.bnb.address}`;
-  }
+  const finalData = `${fileStart}\n\n${info}\n\n${file}\n\n${fileEnd}`;
 
   // Save file
   if (saveAsFile)
     saveAs(
-      new Blob([`${fileStart}\n\n${info}\n\n${file}\n\n${fileEnd}`], {
+      new Blob([finalData], {
         type: 'text/plain',
       }),
       `Pony Driland${
@@ -209,7 +180,7 @@ export const saveRoleplayFormat = (chapter, saveAsFile = true, tinyCfg = {}) => 
           : ` - Chapter ${typeof chapter === 'number' ? String(chapter) : chapter.join('-')}`
       }.txt`,
     );
-  else return { data: `${info}\n\n${file}`, mime: 'text/plain' };
+  else return { data: finalData, mime: 'text/plain' };
 };
 
 // Get Params

@@ -75,11 +75,11 @@ contentList_8: 'Fun silly fact (SPOILERS!!)'
 
 #---
 
-<span class="made-by-ai">
+<ai>
 
 Rainbow Queen is a majestic and enigmatic figure in the world of Pony Driland, a powerful being with a complex personality, she is known for both her benevolence and her darkness side. While she demonstrates care for the souls of the deceased and a desire to protect Pony Driland, her methods are sometimes questionable. Her ability to manipulate divine energies further contribute to her enigma.
 
-</span>
+</ai>
 
 She is a Pony Driland native pony, created by Princess Ariella, which makes it an artificial intelligence due to the nature of the dimension not allowing to create creatures organically. Although organic lives can be born through combinations of organic creatures, Rainbow Queen does not follow this very principle.
 
@@ -87,13 +87,7 @@ She is a Pony Driland native pony, created by Princess Ariella, which makes it a
 
 ### Specie
 
-<span class="made-by-ai">
-
-Rainbow Queen is a unique blend of alicorn, sphinx, and kirin, with a white body and a vibrant, flowing rainbow mane and tail that stand out against the dark background. She has a fierce, intense expression, with eyes that appear white at first glance but are actually a mesmerizing blend of many colors. Black markings around her eyes resemble a mask, enhancing her striking appearance. Her horn features black accents, adding to her mystical and intimidating aura. 
-
-She has large white wings and wears a glowing blue necklace with a central gem. On her foreleg, she has a golden bracelet adorned with two additional smaller gems. On her ear, she wears a golden accessory that adds an elegant touch. In her possession is a magical scythe that glows with multiple colors, though with a lower intensity compared to the vibrant glow of her body.
-
-</span>
+{{prompts}}
 
 Due to the mixture of sphinx essence, Rainbow Queen also has paws like a cat.
 
