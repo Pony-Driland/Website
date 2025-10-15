@@ -2,7 +2,15 @@ import { TinyAiInstance } from 'tiny-ai-api';
 import TinyAiStorage from './TinyAiStorage.mjs';
 import { appData } from '../../important.mjs';
 import { body } from '../../html/query.mjs';
+import TinyClientIo from '../socketClient.mjs';
 
+/**
+ * @typedef {Object} TinyIo
+ * @property {null|TinyClientIo} client
+ * @property {boolean} firstTime
+ */
+
+/** @type {TinyIo} */
 export const tinyIo = { client: null, firstTime: true };
 
 export const tinyAi = new TinyAiInstance();
