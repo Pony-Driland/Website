@@ -1748,7 +1748,7 @@ export const AiScriptStart = async () => {
             dialog: 'modal-lg',
             id: 'user-manager',
             body: $root,
-          });
+          }).modal;
 
           $editForm.on('submit', (e) => {
             e.preventDefault();
@@ -1812,7 +1812,7 @@ export const AiScriptStart = async () => {
           const $root = TinyHtml.createFrom('div');
 
           // Start modal
-          const modal = tinyLib.modal({
+          const { html } = tinyLib.modal({
             title: 'User manager',
             dialog: 'modal-lg',
             id: 'user-manager',
@@ -1832,7 +1832,7 @@ export const AiScriptStart = async () => {
           });
 
           const mods = tinyIo.client.getMods() || [];
-          for (userId of mods) userManager.promoteModerator(userId);
+          for (const userId of mods) userManager.promoteModerator(userId);
 
           userManager.setRoomStatus(!room.disabled);
 
@@ -1856,7 +1856,7 @@ export const AiScriptStart = async () => {
           tinyIo.client.on('roomUpdates', roomStatusUpdate);
 
           // Close modal
-          modal.on('hidden.bs.modal', () => {
+          html.on('hidden.bs.modal', () => {
             tinyIo.client.off('userPing', usersAdded);
             tinyIo.client.off('userJoined', usersAdded);
             tinyIo.client.off('userLeft', usersRemoved);
@@ -1931,14 +1931,14 @@ export const AiScriptStart = async () => {
           });
 
           // Start modal
-          const modal = tinyLib.modal({
+          const { html } = tinyLib.modal({
             title: title,
             dialog: 'modal-lg',
             id,
             body: $root,
           });
 
-          modal.on('shown.bs.modal', () => $input.trigger('focus'));
+          html.on('shown.bs.modal', () => $input.trigger('focus'));
         }),
       );
     };
@@ -2052,14 +2052,14 @@ export const AiScriptStart = async () => {
         });
 
         // Create modal
-        const modal = tinyLib.modal({
+        const { modal, html } = tinyLib.modal({
           title: 'Change Password',
           dialog: 'modal-lg',
           id: 'modal-password-change',
           body: $root,
         });
 
-        modal.on('shown.bs.modal', () => {
+        html.on('shown.bs.modal', () => {
           current.input.trigger('focus');
         });
       }),
@@ -2178,14 +2178,14 @@ export const AiScriptStart = async () => {
           });
 
           // Launch modal with focus on first input
-          const modal = tinyLib.modal({
+          const { modal, html } = tinyLib.modal({
             title: 'Create Account',
             dialog: 'modal-lg',
             id: 'modal-create-account',
             body: $root,
           });
 
-          modal.on('shown.bs.modal', () => {
+          html.on('shown.bs.modal', () => {
             user.input.trigger('focus');
           });
         }

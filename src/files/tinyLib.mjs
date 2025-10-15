@@ -85,7 +85,7 @@ tinyLib.alert = (where, alertType, icon, text) => {
  * @param {TinyHtml<any>} [data.footer]
  * @param {TinyHtml<any>} [data.title]
  * @param {TinyHtml<any>} [data.body]
- * @returns {bootstrap.Modal}
+ * @returns {{ modal: bootstrap.Modal, html: TinyHtml<HTMLElement> }}
  */
 tinyLib.modal = (data) => {
   if (typeof data.dialog !== 'string') data.dialog = '';
@@ -123,7 +123,7 @@ tinyLib.modal = (data) => {
     );
 
   body.prepend(modal);
-  return Modal(modal, undefined, true);
+  return { modal: Modal(modal, undefined, true), html: modal };
 };
 
 /**
