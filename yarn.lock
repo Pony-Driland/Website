@@ -6590,10 +6590,10 @@ proxy-addr@^2.0.7:
     forwarded "0.2.0"
     ipaddr.js "1.9.1"
 
-puddysql@^1.0.0-beta-2:
-  version "1.0.0-beta-2"
-  resolved "https://registry.yarnpkg.com/puddysql/-/puddysql-1.0.0-beta-2.tgz#0028e93c79b1622c99c12304b5969e13c761d0ed"
-  integrity sha512-HfVyFHi9ceoYrkz3VlRnj+hr7s1xtGWSC43lID26y9RY2OlgGC7l8+L28QaiGTudPatpxhVv/LJsQxZ2+MHpWQ==
+puddysql@^1.0.0-beta-3:
+  version "1.0.0-beta-3"
+  resolved "https://registry.yarnpkg.com/puddysql/-/puddysql-1.0.0-beta-3.tgz#fc82d7027d0e565afbc82d6e8a367d4e2af82c1c"
+  integrity sha512-/vT+RmQUY0dXrZaN4HzMn74f36BC1U8tD43InP52g5pNLlr0lUSX6pgTBJxzuTgeZ41aB9M/lDqPhLwC4KT6lA==
   dependencies:
     "@types/lodash" "^4.17.19"
     "@types/pg" "^8.15.4"
@@ -6602,7 +6602,7 @@ puddysql@^1.0.0-beta-2:
     pg "^8.16.3"
     sqlite "^5.1.1"
     sqlite3 "^5.1.7"
-    tiny-essentials "^1.22.1"
+    tiny-essentials "^1.24.2"
 
 pump@^3.0.0:
   version "3.0.3"
@@ -7743,7 +7743,7 @@ tiny-essentials@^1.24.0:
   resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.24.0.tgz#4576de85a20c89ab5d3c173dee110d81ff261055"
   integrity sha512-Kk8PzBobKV8l+R9UFHwDpQPka7dSlb6TvsMwYhbSEsDJNN3DOVTvJKadhTyss3jP15mxT7Ru0vs0h9EJHb89Rg==
 
-tiny-essentials@^1.24.3:
+tiny-essentials@^1.24.2, tiny-essentials@^1.24.3:
   version "1.24.3"
   resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.24.3.tgz#92a6ff376e594fbcaed62f6f0033b547da51142c"
   integrity sha512-4bH/2vFC42L9hMML0WvgmEnrJ6uEWA8IeEX4+vlksWWp0FTRiFthNOniMOnPpmyfjVy4MASq7p8llqXmsfL83g==

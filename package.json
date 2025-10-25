@@ -59,7 +59,7 @@
         "paginate-array": "^2.1.0",
         "photoswipe": "^5.4.4",
         "pizzicato": "^0.6.4",
-        "puddysql": "^1.0.0-beta-2",
+        "puddysql": "^1.0.0-beta-3",
         "qrcode": "^1.5.0",
         "sitemap": "^8.0.0",
         "socket.io": "^4.8.1",
