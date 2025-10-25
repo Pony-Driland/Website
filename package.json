@@ -61,7 +61,7 @@
         "pizzicato": "^0.6.4",
         "puddysql": "^1.0.0-beta-3",
         "qrcode": "^1.5.0",
-        "sitemap": "^8.0.0",
+        "sitemap": "^8.0.1",
         "socket.io": "^4.8.1",
         "socket.io-client": "^4.8.1",
         "tiny-ai-api": "^1.1.7",
