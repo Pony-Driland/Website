@@ -1588,6 +1588,13 @@ export const AiScriptStart = async () => {
           const $editForm = TinyHtml.createFrom('form').addClass('mb-4');
           $editForm.append(TinyHtml.createFrom('h5').setText('Edit Room Info'));
 
+          const roomEditDetector = (data) => {
+            if (typeof data.title === 'string') $roomTitle.setVal(data.title);
+            if (typeof data.maxUsers === 'number') $maxUsers.setVal(data.maxUsers);
+          };
+
+          tinyIo.client.on('roomUpdates', roomEditDetector);
+
           const $roomId = TinyHtml.createFrom('input')
             .setAttr({
               type: 'text',
@@ -1609,6 +1616,18 @@ export const AiScriptStart = async () => {
             })
             .addClass('form-control')
             .setVal(room.title)
+            .toggleProp('disabled', cantEdit);
+
+          const $maxUsers = TinyHtml.createFrom('input')
+            .setAttr({
+              type: 'number',
+              id: 'maxUsers',
+              min: 1,
+              max: ratelimit.limit.roomUsers,
+              placeholder: 'Maximum number of users',
+            })
+            .addClass('form-control')
+            .setVal(room.maxUsers)
             .toggleProp('disabled', cantEdit);
 
           $editForm.append(
@@ -1645,17 +1664,7 @@ export const AiScriptStart = async () => {
                   .setAttr('for', 'maxUsers')
                   .addClass('form-label')
                   .setText('Max Users'),
-                TinyHtml.createFrom('input')
-                  .setAttr({
-                    type: 'number',
-                    id: 'maxUsers',
-                    min: 1,
-                    max: ratelimit.limit.roomUsers,
-                    placeholder: 'Maximum number of users',
-                  })
-                  .addClass('form-control')
-                  .setVal(room.maxUsers)
-                  .toggleProp('disabled', cantEdit),
+                $maxUsers,
               ),
           );
 
@@ -1743,12 +1752,12 @@ export const AiScriptStart = async () => {
           $deleteForm.append($deleteError);
 
           // Start modal
-          const modal = tinyLib.modal({
+          const { modal, html } = tinyLib.modal({
             title: 'Room Settings',
             dialog: 'modal-lg',
             id: 'user-manager',
             body: $root,
-          }).modal;
+          });
 
           $editForm.on('submit', (e) => {
             e.preventDefault();
@@ -1801,6 +1810,11 @@ export const AiScriptStart = async () => {
                 else alert('Your room has been deleted successfully!');
               });
             }
+          });
+
+          // Close modal
+          html.on('hidden.bs.modal', () => {
+            tinyIo.client.off('roomUpdates', roomEditDetector);
           });
         }
       }),
