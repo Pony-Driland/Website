@@ -172,10 +172,11 @@ export default function userManager(socket, io) {
     if (!userId) return accountNotDetected(fn); // Only logged-in users can use it
     if (userIsRateLimited(socket, fn)) return;
     const users = db.getTable('users');
-    const user = await users.get(userId);
 
     // Change nickname
     await users.update(userId, { nickname: nickname.substring(0, getIniConfig('NICKNAME_SIZE')) });
+    const user = await users.get(userId);
+
     userSession.setNickname(socket, user.nickname);
     userSession.eachRooms(socket, (roomId) =>
       io.to(roomId).emit('user-updated', { roomId, userId, data: { nickname: user.nickname } }),

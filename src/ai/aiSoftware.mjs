@@ -1847,6 +1847,8 @@ export const AiScriptStart = async () => {
             userManager.setRoomStatus(!roomData.disabled);
           };
 
+          // const userUpdated = (data) => console.log(data);
+
           tinyIo.client.on('userPing', usersAdded);
           tinyIo.client.on('userJoined', usersAdded);
           tinyIo.client.on('userLeft', usersRemoved);
@@ -1854,6 +1856,7 @@ export const AiScriptStart = async () => {
           tinyIo.client.on('userBanned', usersRemoved);
           tinyIo.client.on('roomModChange', userModUpdated);
           tinyIo.client.on('roomUpdates', roomStatusUpdate);
+          // tinyIo.client.on('userUpdated', userUpdated);
 
           // Close modal
           html.on('hidden.bs.modal', () => {
@@ -1864,6 +1867,7 @@ export const AiScriptStart = async () => {
             tinyIo.client.off('userBanned', usersRemoved);
             tinyIo.client.off('roomModChange', userModUpdated);
             tinyIo.client.off('roomUpdates', roomStatusUpdate);
+            // tinyIo.client.off('userUpdated', userUpdated);
             userManager.destroy();
           });
         }
@@ -1931,7 +1935,7 @@ export const AiScriptStart = async () => {
           });
 
           // Start modal
-          const { html } = tinyLib.modal({
+          const { html, modal } = tinyLib.modal({
             title: title,
             dialog: 'modal-lg',
             id,
