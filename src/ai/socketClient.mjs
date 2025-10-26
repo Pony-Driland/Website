@@ -796,6 +796,7 @@ class TinyClientIo extends EventEmitter {
 
   install(tinyAiScript) {
     const client = this;
+    // window.tinyClient = client;
     // Dice
     client.onDiceRoll((result) => {
       if (client.checkRoomId(result)) {
@@ -831,7 +832,7 @@ class TinyClientIo extends EventEmitter {
         if (result.userId === client.getUserId()) this.user.nickname = result.data.nickname;
 
         if (data) client.emit('userUpdated', data);
-        console.log('[socket-io] [user-data]', client.getUser());
+        console.log('[socket-io] [user-data]', result);
       }
     });
 
