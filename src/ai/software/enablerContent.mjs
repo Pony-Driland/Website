@@ -180,8 +180,8 @@ class EnablerAiContent {
     }
 
     for (const index in this.ficPromptItems) {
-      this.ficPromptItems[index].toggleProp('disabled', isDisabled);
-      if (isDisabled) this.ficPromptItems[index].addClass('disabled');
+      this.ficPromptItems[index].toggleProp('disabled', value);
+      if (value) this.ficPromptItems[index].addClass('disabled');
       else this.ficPromptItems[index].removeClass('disabled');
     }
     // First dialogue script
