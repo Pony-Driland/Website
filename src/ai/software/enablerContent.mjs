@@ -1,10 +1,28 @@
 import { alert } from '../../files/tinyLib.mjs';
+import { tinyIo, tinyStorage } from './base.mjs';
+import RpgData from './rpgData.mjs';
+
+export const isOnline = () => (!canUseJsStore() && tinyIo.client ? true : false);
+export const canUseJsStore = () => {
+  return (
+    contentEnabler.rpgCfg &&
+    (typeof contentEnabler.rpgCfg.ip !== 'string' || contentEnabler.rpgCfg.ip.length < 1)
+  );
+};
 
 class EnablerAiContent {
   #validateMultiplayer;
   #enabledFirstDialogue;
 
+  /** @type {undefined|RpgData} */
+  rpgData;
+
   /////////////////////////////////////////////////
+
+  setRpgCfg() {
+    this.rpgCfg = tinyStorage.getApiKey(tinyStorage.selectedAi()) || {};
+    return this.rpgCfg;
+  }
 
   setResetSettingsButton(resetSettingsButton) {
     this.resetSettingsButton = resetSettingsButton;
@@ -266,4 +284,4 @@ class EnablerAiContent {
   }
 }
 
-export default EnablerAiContent;
+export const contentEnabler = new EnablerAiContent();
