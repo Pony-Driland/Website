@@ -8,7 +8,6 @@ import { objType, countObj, toTitleCase } from 'tiny-essentials/basics';
 import TinyTextRangeEditor from 'tiny-essentials/libs/TinyTextRangeEditor';
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
-import TinyDices from 'tiny-dices';
 
 import {
   isNoNsfw,
@@ -21,12 +20,10 @@ import {
 import tinyLib, { alert } from '../files/tinyLib.mjs';
 import { saveRoleplayFormat } from '../start.mjs';
 import storyCfg from '../chapters/config.mjs';
-import TinyMap from './TinyMap.mjs';
 import aiTemplates from './values/templates.mjs';
 import TinyClientIo from './socketClient.mjs';
-import UserRoomManager from './RoomUserManagerUI.mjs';
 import RpgData from './software/rpgData.mjs';
-import EnablerAiContent from './software/enablerContent.mjs';
+import { canUseJsStore, contentEnabler } from './software/enablerContent.mjs';
 import ficConfigs from './values/ficConfigs.mjs';
 
 import './values/jsonTemplate.mjs';
@@ -44,6 +41,10 @@ import {
   userFileEnd,
   userFileStart,
 } from './values/defaults.mjs';
+import { userButtonActions } from './buttons/users.mjs';
+import { roomSettingsMenu } from './buttons/roomSettings.mjs';
+import { openClassicMap } from './buttons/map.mjs';
+import { openTinyDices } from './buttons/dice.mjs';
 
 const { Icon } = TinyHtmlElems;
 
@@ -58,8 +59,8 @@ export const AiScriptStart = async () => {
   topPage.addClass('d-none');
 
   // Can use backup
-  const rpgCfg = tinyStorage.getApiKey(tinyStorage.selectedAi()) || {};
-  const canUsejsStore = typeof rpgCfg.ip !== 'string' || rpgCfg.ip.length < 1;
+  const rpgCfg = contentEnabler.setRpgCfg();
+  const canUsejsStore = canUseJsStore();
 
   // Try to prevent user browser from deactivating the page accidentally in browsers that have tab auto deactivator
   const aiTimeScriptUpdate = () => {
@@ -110,7 +111,7 @@ export const AiScriptStart = async () => {
   }
 
   loaderScreen.start();
-  const contentEnabler = new EnablerAiContent();
+
   const rpgData = new RpgData();
 
   // Get RPG Template
@@ -720,6 +721,7 @@ export const AiScriptStart = async () => {
     );
     ficConfigs.buttons.push(newButton);
     ficTemplates.push(newButton);
+    newButton.setData('tiny-fic-id', ficConfigs.data[index].id);
   }
 
   const importItems = [
@@ -1061,10 +1063,13 @@ export const AiScriptStart = async () => {
     });
   };
 
-  const isOnline = () => (!canUsejsStore && tinyIo.client ? true : false);
   const leftMenu = [];
 
-  if (!tinyAiScript.mpClient) {
+  /** @type {null|import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} */
+  let autoSelectChatMode = null;
+
+  // Insert menu
+  if (canUsejsStore) {
     // Reset
     leftMenu.push(TinyHtml.createFrom('h5').setText('Reset'));
     leftMenu.push(...ficResets);
@@ -1074,7 +1079,8 @@ export const AiScriptStart = async () => {
 
     // Fic Talk
     leftMenu.push(...ficTemplates);
-  }
+  } else
+    autoSelectChatMode = ficTemplates.find((item) => item.data('tiny-fic-id') === 'noData') ?? null;
 
   // Settings
   leftMenu.push(TinyHtml.createFrom('h5').setText('Settings'));
@@ -1083,398 +1089,7 @@ export const AiScriptStart = async () => {
   // RPG
   leftMenu.push(TinyHtml.createFrom('h5').setText('RPG'));
   // Dice
-  leftMenu.push(
-    createButtonSidebar('fa-solid fa-dice', 'Roll Dice', () => {
-      // Root
-      const $root = TinyHtml.createFrom('div');
-      const $formRow = TinyHtml.createFrom('div').addClass('row g-3');
-      const $totalBase = TinyHtml.createFrom('center', { class: 'fw-bold mt-3' }).setText(0);
-
-      // Config
-      const tinyCfg = {
-        isOnline: isOnline(),
-        data: {},
-        rateLimit: {},
-      };
-
-      if (tinyCfg.isOnline) {
-        tinyCfg.data = tinyIo.client.getDice() || {};
-        const ratelimit = tinyIo.client.getRateLimit() || { dice: {}, size: {} };
-        if (objType(ratelimit.dice, 'object')) tinyCfg.rateLimit = ratelimit.dice;
-      } else {
-        tinyCfg.data.img = tinyLs.getItem(`tiny-dice-img`) || undefined;
-        tinyCfg.data.bg = tinyLs.getItem(`tiny-dice-bg`) || 'white';
-        tinyCfg.data.text = tinyLs.getItem(`tiny-dice-text`) || 'black';
-        tinyCfg.data.border = tinyLs.getItem(`tiny-dice-border`) || '2px solid rgba(0, 0, 0, 0.05)';
-        tinyCfg.data.selectionBg = tinyLs.getItem(`tiny-dice-selection-bg`) || 'black';
-        tinyCfg.data.selectionText = tinyLs.getItem(`tiny-dice-selection-text`) || 'white';
-      }
-
-      // Form template
-      const configs = {};
-      const genLabel = (id, text) =>
-        TinyHtml.createFrom('label')
-          .addClass('form-label')
-          .setAttr('for', `tiny-dice_${id}`)
-          .setText(text);
-
-      const genInput = (id, type, value, min) =>
-        TinyHtml.createFrom('input')
-          .addClass('form-control text-center')
-          .setAttr({ id: `tiny-dice_${id}`, type, min })
-          .setAttr('placeholder', min)
-          .setVal(value);
-
-      const genConfig = (id, text, type, value, min) => {
-        configs[id] = genInput(id, type, value, min);
-        return [genLabel(id, text), configs[id]];
-      };
-
-      // Form
-      const $perDieCol = TinyHtml.createFrom('div')
-        .addClass('col-md-12')
-        .append(genConfig('perDieValues', 'Per-Die Values', 'text', '6', 'e.g., 6,12,20'));
-
-      const $allow0input = TinyHtml.createFrom('input')
-        .addClass('form-check-input')
-        .setAttr({ type: 'checkbox', id: 'tiny-dice_allow0' });
-      const $allow0Col = TinyHtml.createFrom('div')
-        .addClass('d-flex justify-content-center align-items-center mt-2')
-        .append(
-          TinyHtml.createFrom('div')
-            .addClass('form-check')
-            .append(
-              $allow0input,
-              TinyHtml.createFrom('label')
-                .addClass('form-check-label')
-                .setAttr('for', 'tiny-dice_allow0')
-                .setText('Allow zero values'),
-            ),
-        );
-
-      $formRow.append($perDieCol);
-
-      // Roll button
-      const $rollButton = tinyLib.bs.button('primary w-100 mb-4 mt-2').setText('Roll Dice');
-
-      // Add container
-      const $diceContainer = TinyHtml.createFrom('div');
-      const $diceError = TinyHtml.createFrom('div');
-      /** @type {Array<[string, string]>} */
-      const readSkinValues = [
-        ['bgSkin', 'bg'],
-        ['textSkin', 'text'],
-        ['borderSkin', 'border'],
-        ['bgImg', 'img'],
-        ['selectionBgSkin', 'selectionBg'],
-        ['selectionTextSkin', 'selectionText'],
-      ];
-
-      // TinyDices logic
-      const dice = new TinyDices($diceContainer.get(0));
-      let updateTotalBase = null;
-      $rollButton.on('click', async () => {
-        // Get values
-        const perDieRaw = configs.perDieValues.val().trim();
-        const perDie = perDieRaw.length > 0 ? perDieRaw : null;
-        const canZero = $allow0input.is(':checked');
-        $totalBase.setText(0);
-        if (updateTotalBase) {
-          clearTimeout(updateTotalBase);
-          updateTotalBase = null;
-        }
-
-        // Offline
-        if (!tinyCfg.isOnline) {
-          const result = dice.roll(perDie, canZero);
-          let total = 0;
-          for (const item of result) total += item.result;
-          updateTotalBase = setTimeout(() => {
-            $totalBase.setText(total);
-            updateTotalBase = null;
-          }, 2000);
-        }
-        // Online
-        else {
-          // Prepare data
-          const diceParse = dice.parseRollConfig(perDie);
-          const sides = [];
-          for (const index in diceParse) sides.push(diceParse[index]);
-
-          // Get result
-          $rollButton.addProp('disabled').addClass('disabled');
-          const result = await tinyIo.client.rollDice(sides, canZero);
-          $rollButton.removeProp('disabled').removeClass('disabled');
-
-          // Proccess Results
-          if (!result.error) {
-            dice.clearDiceArea();
-            $totalBase.removeClass('text-danger');
-            if (Array.isArray(result.results) && typeof result.total === 'number') {
-              for (const index in result.results) {
-                if (
-                  typeof result.results[index].sides === 'number' &&
-                  typeof result.results[index].roll === 'number'
-                )
-                  dice.insertDiceElement(
-                    result.results[index].roll,
-                    result.results[index].sides,
-                    canZero,
-                  );
-              }
-              updateTotalBase = setTimeout(() => {
-                $totalBase.setText(result.total);
-                updateTotalBase = null;
-              }, 2000);
-            }
-          } else $totalBase.addClass('text-danger').setText(result.msg);
-        }
-      });
-
-      // Skin form
-      const createInputField = (label, id, placeholder, value) => {
-        configs[id] = TinyHtml.createFrom('input')
-          .addClass('form-control text-center')
-          .setAttr({ type: 'text', placeholder })
-          .setVal(value);
-
-        return TinyHtml.createFrom('div')
-          .addClass('col-md-4 text-center')
-          .append(
-            TinyHtml.createFrom('label').addClass('form-label').setAttr('for', id).setText(label),
-            configs[id],
-          );
-      };
-
-      configs.bgImg = TinyHtml.createFrom('input')
-        .addClass('form-control')
-        .addClass('d-none')
-        .setAttr('type', 'text')
-        .setVal(tinyCfg.data.img);
-      const bgImgUploadButton = tinyLib.bs.button('info w-100');
-      const uploadImgButton = tinyLib.upload.img(
-        bgImgUploadButton.setText('Select Image').on('contextmenu', (e) => {
-          e.preventDefault();
-          configs.bgImg.setVal('').removeClass('text-danger').trigger('change');
-        }),
-        (err, dataUrl) => {
-          console.log(`[dice-file] [upload] Image length: ${dataUrl.length}`);
-
-          // Error
-          bgImgUploadButton.removeClass('text-danger');
-          if (err) {
-            console.error(err);
-            bgImgUploadButton.addClass('text-danger');
-            return;
-          }
-
-          const maxSize = tinyCfg.rateLimit.img || 0;
-          const base64String = dataUrl.split(',')[1];
-          const padding = (base64String.match(/=+$/) || [''])[0].length;
-          const sizeInBytes = (base64String.length * 3) / 4 - padding;
-
-          const convertToMb = (tinyBytes) => `${(tinyBytes / (1024 * 1024)).toFixed(2)} MB`;
-          console.log(`[dice-file] [upload] Image size: ${convertToMb(sizeInBytes)}`);
-          console.log(`[dice-file] [upload] Upload limit: ${convertToMb(maxSize)}`);
-
-          // Big Image
-          $diceError.empty();
-          if (maxSize > 0 && sizeInBytes > maxSize) {
-            bgImgUploadButton.addClass('text-danger');
-            tinyLib.alert(
-              $diceError,
-              'danger',
-              'bi bi-exclamation-triangle-fill',
-              `Image is too large: ${convertToMb(sizeInBytes)} (max allowed: ${convertToMb(maxSize)})`,
-            );
-            return;
-          }
-
-          // OK
-          configs.bgImg.setVal(dataUrl).removeClass('text-danger').trigger('change');
-        },
-      );
-
-      const importDiceButton = tinyLib.upload.json(
-        tinyLib.bs.button('info w-100').setText('Import'),
-        (err, jsonData) => {
-          // Error
-          if (err) {
-            console.error(err);
-            alert(err.message);
-            return;
-          }
-
-          // Insert data
-          if (objType(jsonData, 'object') && objType(jsonData.data, 'object')) {
-            for (const index in readSkinValues) {
-              const readSkinData = readSkinValues[index];
-              const name = readSkinData[1];
-              const item = jsonData.data[name];
-              if (typeof item === 'string' || typeof item === 'number') {
-                const newValue =
-                  typeof tinyCfg.rateLimit[name] !== 'number' ||
-                  item.length <= tinyCfg.rateLimit[name]
-                    ? item
-                    : null;
-                configs[readSkinData[0]].setVal(newValue).trigger('change');
-              }
-            }
-          }
-        },
-      );
-
-      const $formRow2 = TinyHtml.createFrom('div', { class: 'd-none' })
-        .addClass('row g-3 mb-4')
-        .append(
-          // Background skin
-          createInputField(
-            'Background Skin',
-            'bgSkin',
-            'e.g. red or rgb(200,0,0)',
-            tinyCfg.data.bg,
-          ),
-          // Text skin
-          createInputField('Text Skin', 'textSkin', 'e.g. white or #fff', tinyCfg.data.text),
-          // Border skin
-          createInputField(
-            'Border Skin',
-            'borderSkin',
-            'e.g. 2px solid rgba(255, 255, 255, 0.2)',
-            tinyCfg.data.border,
-          ),
-          // Bg skin
-          createInputField(
-            'Select Bg Skin',
-            'selectionBgSkin',
-            'e.g. black or #000',
-            tinyCfg.data.selectionBg,
-          ),
-          // Text skin
-          createInputField(
-            'Select Text Skin',
-            'selectionTextSkin',
-            'e.g. white or #fff',
-            tinyCfg.data.selectionText,
-          ),
-          // Image upload
-          configs.bgImg,
-          TinyHtml.createFrom('div', { class: 'col-md-4 text-center' }).append(
-            TinyHtml.createFrom('label').addClass('form-label').setText('Custom Image'),
-            uploadImgButton,
-          ),
-          // Export
-          TinyHtml.createFrom('div', { class: 'col-md-6' }).append(
-            tinyLib.bs
-              .button('info w-100')
-              .setText('Export')
-              .on('click', () => {
-                // Data base
-                const fileData = { data: {} };
-                for (const index in readSkinValues) {
-                  const readSkinData = readSkinValues[index];
-                  fileData.data[readSkinData[1]] = configs[readSkinData[0]].val().trim();
-                }
-
-                // Date
-                fileData.date = Date.now();
-                // Save
-                saveAs(
-                  new Blob([JSON.stringify(fileData)], { type: 'text/plain' }),
-                  `tiny_dice_skin_ponydriland.json`,
-                );
-              }),
-          ),
-          // Import
-          TinyHtml.createFrom('div', { class: 'col-md-6' }).append(importDiceButton),
-        );
-
-      const updateDiceData = (where, dataName, value) => {
-        dice[where] = value;
-        if (!tinyIo.client) {
-          if (value) tinyLs.setItem(`tiny-dice-${dataName}`, value);
-          else tinyLs.removeItem(`tiny-dice-${dataName}`);
-        }
-        dice.updateDicesSkin();
-      };
-
-      for (const index in readSkinValues) {
-        const tinySkin = configs[readSkinValues[index][0]];
-        tinySkin.on('change', () => {
-          updateDiceData(
-            readSkinValues[index][0],
-            readSkinValues[index][1],
-            tinySkin.val().trim() || null,
-          );
-        });
-      }
-
-      const updateAllSkins = () => {
-        for (const index in readSkinValues) configs[readSkinValues[index][0]].trigger('change');
-      };
-
-      // Root insert
-      $root.append(TinyHtml.createFrom('center').append($formRow), $allow0Col, $formRow2);
-
-      // Main button of the skin editor
-      const $applyBtn = tinyLib.bs.button('success w-100').setText('Edit Skin Data');
-      $applyBtn.on('click', async () => {
-        // Show content
-        if ($formRow2.hasClass('d-none')) {
-          $applyBtn.setText(tinyIo.client ? 'Apply Dice Skins' : 'Hide Skin Data');
-        }
-        // Hide Content
-        else {
-          $applyBtn.setText('Edit Skin Data');
-          if (tinyCfg.isOnline) {
-            updateAllSkins();
-
-            // Disable buttons
-            $applyBtn.addProp('disabled').addClass('disabled');
-            const diceSkin = {};
-            importDiceButton.addProp('disabled').addClass('disabled');
-            uploadImgButton.addProp('disabled').addClass('disabled');
-
-            // Send dice data
-            for (const index in readSkinValues)
-              diceSkin[readSkinValues[index][1]] = configs[readSkinValues[index][0]]
-                .addProp('disabled')
-                .addClass('disabled')
-                .val()
-                .trim();
-
-            const result = await tinyIo.client.setAccountDice(diceSkin);
-            if (result.error) $totalBase.addClass('text-danger').setText(result.msg);
-            else {
-              $totalBase.removeClass('text-danger').setText(0);
-              tinyIo.client.setDice(diceSkin);
-            }
-
-            // Enable buttons again
-            for (const index in readSkinValues)
-              configs[readSkinValues[index][0]].removeProp('disabled').removeClass('disabled');
-            uploadImgButton.removeProp('disabled').removeClass('disabled');
-            importDiceButton.removeProp('disabled').removeClass('disabled');
-            $applyBtn.removeProp('disabled').removeClass('disabled');
-          }
-        }
-        // Change class mode
-        $formRow2.toggleClass('d-none');
-      });
-
-      $root.append($applyBtn, $rollButton, $diceError, $diceContainer, $totalBase);
-      updateAllSkins();
-      dice.roll([0, 0, 0]);
-
-      // Start modal
-      tinyLib.modal({
-        title: 'Dice Roll',
-        dialog: 'modal-lg',
-        id: 'dice-roll',
-        body: $root,
-      });
-    }),
-  );
+  leftMenu.push(createButtonSidebar('fa-solid fa-dice', 'Roll Dice', openTinyDices));
 
   const rpgContentButtons = [];
 
@@ -1500,393 +1115,13 @@ export const AiScriptStart = async () => {
   contentEnabler.deRpgContent();
 
   // Classic Map
-  leftMenu.push(
-    createButtonSidebar('fa-solid fa-map', 'Classic Map', () => {
-      const startTinyMap = (place) => {
-        // Get Map Data
-        let maps;
-        let location;
-        try {
-          maps = rpgData.data[place].getEditor('root.settings.maps').getValue();
-          location = rpgData.data[place].getEditor('root.location').getValue();
-        } catch (e) {
-          maps = null;
-        }
-
-        // Exist Map
-        tinyHtml.empty();
-        try {
-          if (Array.isArray(maps)) {
-            for (const index in maps) {
-              const map = new TinyMap(maps[index]);
-              map.setLocation(location);
-              map.buildMap(true);
-              tinyHtml.append(
-                map.getMapBaseHtml(),
-                TinyHtml.createFrom('center').append(map.getMapButton()),
-              );
-            }
-          }
-        } catch (e) {
-          // No Map
-          console.error(e);
-          tinyHtml.empty();
-        }
-      };
-
-      const tinyHtml = TinyHtml.createFrom('span');
-      const tinyHr = TinyHtml.createFrom('hr', { class: 'my-5 d-none' });
-      tinyLib.modal({
-        title: 'Maps',
-        dialog: 'modal-lg',
-        id: 'tinyMaps',
-        body: [
-          tinyHtml,
-          tinyHr,
-          TinyHtml.createFrom('center').append(
-            // Public Maps
-            tinyLib.bs
-              .button('secondary m-2')
-              .setText('Public')
-              .on('click', () => {
-                tinyHr.removeClass('d-none');
-                startTinyMap('public');
-              }),
-            // Private Maps
-            tinyLib.bs
-              .button('secondary m-2')
-              .setText('Private')
-              .on('click', () => {
-                tinyHr.removeClass('d-none');
-                startTinyMap('private');
-              }),
-          ),
-        ],
-      });
-    }),
-  );
+  leftMenu.push(createButtonSidebar('fa-solid fa-map', 'Classic Map', openClassicMap));
 
   // Online Mode options
   if (!canUsejsStore) {
     leftMenu.push(TinyHtml.createFrom('h5').setText('Online'));
-
-    leftMenu.push(
-      createButtonSidebar('fas fa-users', 'Room settings', () => {
-        if (tinyIo.client) {
-          const room = tinyIo.client.getRoom() || {};
-          const ratelimit = tinyIo.client.getRateLimit() || { size: {}, limit: {} };
-          const user = tinyIo.client.getUser() || {};
-          const cantEdit = room.ownerId !== tinyIo.client.getUserId() && !user.isOwner;
-
-          const $root = TinyHtml.createFrom('div');
-
-          const $formContainer = TinyHtml.createFrom('div').addClass('mb-4');
-          const $editError = TinyHtml.createFrom('div').addClass('text-danger small mt-2');
-          const $deleteError = TinyHtml.createFrom('div').addClass('text-danger small mt-2');
-
-          // ─── Edit room ───────────────────────────────
-          const $editForm = TinyHtml.createFrom('form').addClass('mb-4');
-          $editForm.append(TinyHtml.createFrom('h5').setText('Edit Room Info'));
-
-          const roomEditDetector = (data) => {
-            if (typeof data.title === 'string') $roomTitle.setVal(data.title);
-            if (typeof data.maxUsers === 'number') $maxUsers.setVal(data.maxUsers);
-          };
-
-          tinyIo.client.on('roomUpdates', roomEditDetector);
-
-          const $roomId = TinyHtml.createFrom('input')
-            .setAttr({
-              type: 'text',
-              id: 'roomId',
-              placeholder: 'Enter new room title',
-              maxLength: ratelimit.size.roomId,
-            })
-            .addProp('disabled')
-            .addClass('form-control')
-            .addClass('form-control')
-            .setVal(tinyIo.client.getRoomId());
-
-          const $roomTitle = TinyHtml.createFrom('input')
-            .setAttr({
-              type: 'text',
-              id: 'roomTitle',
-              placeholder: 'Enter new room title',
-              maxLength: ratelimit.size.roomTitle,
-            })
-            .addClass('form-control')
-            .setVal(room.title)
-            .toggleProp('disabled', cantEdit);
-
-          const $maxUsers = TinyHtml.createFrom('input')
-            .setAttr({
-              type: 'number',
-              id: 'maxUsers',
-              min: 1,
-              max: ratelimit.limit.roomUsers,
-              placeholder: 'Maximum number of users',
-            })
-            .addClass('form-control')
-            .setVal(room.maxUsers)
-            .toggleProp('disabled', cantEdit);
-
-          $editForm.append(
-            TinyHtml.createFrom('div')
-              .addClass('row mb-3')
-              .append(
-                TinyHtml.createFrom('div')
-                  .addClass('col-md-6')
-                  .append(
-                    TinyHtml.createFrom('label')
-                      .setAttr('for', 'roomId')
-                      .addClass('form-label')
-                      .setText('Room ID'),
-                    $roomId,
-                  ),
-                TinyHtml.createFrom('div')
-                  .addClass('col-md-6')
-                  .append(
-                    TinyHtml.createFrom('label')
-                      .setAttr('for', 'roomTitle')
-                      .addClass('form-label')
-                      .setText('Room Title'),
-                    $roomTitle,
-                  ),
-              ),
-          );
-
-          // Max users
-          $editForm.append(
-            TinyHtml.createFrom('div')
-              .addClass('mb-3')
-              .append(
-                TinyHtml.createFrom('label')
-                  .setAttr('for', 'maxUsers')
-                  .addClass('form-label')
-                  .setText('Max Users'),
-                $maxUsers,
-              ),
-          );
-
-          // New password
-          $editForm.append(
-            TinyHtml.createFrom('div')
-              .addClass('mb-3')
-              .append(
-                TinyHtml.createFrom('label')
-                  .setAttr('for', 'roomPassword')
-                  .addClass('form-label')
-                  .setText('New Room Password'),
-                TinyHtml.createFrom('input')
-                  .setAttr({
-                    type: 'password',
-                    id: 'roomPassword',
-                    placeholder: 'Leave empty to keep current password',
-                    maxLength: ratelimit.size.password,
-                  })
-                  .addClass('form-control')
-                  .toggleProp('disabled', cantEdit),
-              ),
-          );
-
-          // Submit
-          $editForm.append(
-            TinyHtml.createFrom('button')
-              .setAttr('type', 'submit')
-              .addClass('btn btn-primary')
-              .setText('Save Changes')
-              .toggleProp('disabled', cantEdit),
-          );
-
-          // ─── Delete room ─────────────────────────────
-          const $deleteSection = TinyHtml.createFrom('div').addClass('border-top pt-4');
-
-          $deleteSection.append(
-            TinyHtml.createFrom('h5').addClass('text-danger').setText('Delete Room'),
-            TinyHtml.createFrom('p')
-              .addClass('text-muted mb-2')
-              .setHtml(
-                'This action <strong>cannot be undone</strong>. Deleting this room will remove all its data permanently.',
-              ),
-          );
-
-          const $deleteForm = TinyHtml.createFrom('form').addClass('d-flex flex-column gap-2');
-
-          // Your password
-          $deleteForm.append(
-            TinyHtml.createFrom('div').append(
-              TinyHtml.createFrom('label')
-                .setAttr('for', 'ownerPassword')
-                .addClass('form-label')
-                .setText('Enter your current password to confirm:'),
-              TinyHtml.createFrom('input')
-                .setAttr({
-                  type: 'password',
-                  id: 'ownerPassword',
-                  placeholder: 'Current account password',
-                  maxLength: ratelimit.size.password,
-                })
-                .addClass('form-control')
-                .toggleProp('disabled', cantEdit),
-            ),
-          );
-
-          // Delete now
-          $deleteForm.append(
-            TinyHtml.createFrom('button')
-              .setAttr('type', 'submit')
-              .addClass('btn btn-danger mt-2')
-              .setText('Delete Room Permanently')
-              .toggleProp('disabled', cantEdit),
-          );
-
-          $deleteSection.append($deleteForm);
-
-          // ─── Container time ───────────────────────────────
-          $formContainer.append($editForm, $deleteSection);
-
-          // ─── Add into the DOM ───
-          $root.append($formContainer);
-
-          $editForm.append($editError);
-          $deleteForm.append($deleteError);
-
-          // Start modal
-          const { modal, html } = tinyLib.modal({
-            title: 'Room Settings',
-            dialog: 'modal-lg',
-            id: 'user-manager',
-            body: $root,
-          });
-
-          $editForm.on('submit', (e) => {
-            e.preventDefault();
-            if (!cantEdit) {
-              $editError.empty(); // limpa erros anteriores
-
-              const title = $roomTitle.val().trim();
-              const maxUsers = parseInt(new TinyHtml($editForm.find('#maxUsers')).val(), 10);
-              const password = new TinyHtml($editForm.find('#roomPassword')).val().trim();
-
-              if (Number.isNaN(maxUsers) || maxUsers <= 0) {
-                $editError.setText('Max users must be a positive number.');
-                return;
-              }
-
-              if (maxUsers > 50) {
-                $editError.setText('Max users cannot exceed 50.');
-                return;
-              }
-
-              const newSettings = { title, maxUsers };
-              if (typeof password === 'string' && password.length > 0)
-                newSettings.password = password;
-
-              modal.hide();
-              tinyIo.client.updateRoomSettings(newSettings).then((result) => {
-                if (result.error) alert(`${result.msg}\nCode ${result.code}`);
-                else alert('Your room settings has been changed successfully!');
-              });
-            }
-          });
-
-          $deleteForm.on('submit', (e) => {
-            e.preventDefault();
-            if (!cantEdit) {
-              $deleteError.empty(); // limpa erros anteriores
-
-              const password = new TinyHtml($deleteForm.find('#ownerPassword')).val().trim();
-
-              if (!password) {
-                $deleteError.setText('Please enter your current password.');
-                return;
-              }
-
-              if (!confirm('Are you absolutely sure? This cannot be undone.')) return;
-
-              modal.hide();
-              tinyIo.client.deleteRoom(password).then((result) => {
-                if (result.error) alert(`${result.msg}\nCode ${result.code}`);
-                else alert('Your room has been deleted successfully!');
-              });
-            }
-          });
-
-          // Close modal
-          html.on('hidden.bs.modal', () => {
-            tinyIo.client.off('roomUpdates', roomEditDetector);
-          });
-        }
-      }),
-    );
-
-    leftMenu.push(
-      createButtonSidebar('fas fa-users', 'User manager', () => {
-        if (tinyIo.client) {
-          const $root = TinyHtml.createFrom('div');
-
-          // Start modal
-          const { html } = tinyLib.modal({
-            title: 'User manager',
-            dialog: 'modal-lg',
-            id: 'user-manager',
-            body: $root,
-          });
-
-          // Start user room data
-          const user = tinyIo.client.getUser() || {};
-          const room = tinyIo.client.getRoom() || {};
-          const userManager = new UserRoomManager({
-            client: tinyIo.client,
-            currentUserId: user.userId,
-            isOwner: user.userId === room.ownerId,
-            root: $root,
-            users: clone(tinyIo.client.getUsers()),
-            moderators: [],
-          });
-
-          const mods = tinyIo.client.getMods() || [];
-          for (const userId of mods) userManager.promoteModerator(userId);
-
-          userManager.setRoomStatus(!room.disabled);
-
-          // Add events
-          const usersAdded = (data) => userManager.addUser(data.userId, clone(data.data));
-          const usersRemoved = (userId) => userManager.removeUser(userId);
-          const userModUpdated = (type, userId) => {
-            if (type === 'add') userManager.promoteModerator(userId);
-            if (type === 'remove') userManager.demoteModerator(userId);
-          };
-          const roomStatusUpdate = (roomData) => {
-            userManager.setRoomStatus(!roomData.disabled);
-          };
-
-          // const userUpdated = (data) => console.log(data);
-
-          tinyIo.client.on('userPing', usersAdded);
-          tinyIo.client.on('userJoined', usersAdded);
-          tinyIo.client.on('userLeft', usersRemoved);
-          tinyIo.client.on('userKicked', usersRemoved);
-          tinyIo.client.on('userBanned', usersRemoved);
-          tinyIo.client.on('roomModChange', userModUpdated);
-          tinyIo.client.on('roomUpdates', roomStatusUpdate);
-          // tinyIo.client.on('userUpdated', userUpdated);
-
-          // Close modal
-          html.on('hidden.bs.modal', () => {
-            tinyIo.client.off('userPing', usersAdded);
-            tinyIo.client.off('userJoined', usersAdded);
-            tinyIo.client.off('userLeft', usersRemoved);
-            tinyIo.client.off('userKicked', usersRemoved);
-            tinyIo.client.off('userBanned', usersRemoved);
-            tinyIo.client.off('roomModChange', userModUpdated);
-            tinyIo.client.off('roomUpdates', roomStatusUpdate);
-            // tinyIo.client.off('userUpdated', userUpdated);
-            userManager.destroy();
-          });
-        }
-      }),
-    );
+    leftMenu.push(createButtonSidebar('fas fa-users', 'Room settings', roomSettingsMenu));
+    leftMenu.push(createButtonSidebar('fas fa-users', 'User manager', userButtonActions));
 
     const templateChangeInfo = (
       id,
@@ -4018,6 +3253,7 @@ export const AiScriptStart = async () => {
 
   // Rpg mode
   if (!canUsejsStore) {
+    if (autoSelectChatMode) autoSelectChatMode.trigger('click');
     tinyIo.client = new TinyClientIo(rpgCfg);
     const socket = tinyIo.client.getSocket();
     if (socket)
