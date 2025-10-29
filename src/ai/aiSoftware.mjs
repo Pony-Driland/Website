@@ -18,8 +18,6 @@ import {
   loaderScreen,
 } from '../important.mjs';
 import tinyLib, { alert } from '../files/tinyLib.mjs';
-import { saveRoleplayFormat } from '../start.mjs';
-import storyCfg from '../chapters/config.mjs';
 import aiTemplates from './values/templates.mjs';
 import TinyClientIo from './socketClient.mjs';
 import RpgData from './software/rpgData.mjs';
@@ -28,23 +26,28 @@ import ficConfigs from './values/ficConfigs.mjs';
 
 import './values/jsonTemplate.mjs';
 
-import { canSandBox, tinyAi, tinyIo, tinyStorage } from './software/base.mjs';
+import { canSandBox, tinyAi, tinyIo } from './software/base.mjs';
 import { tinyAiScript } from './software/tinyAiScript.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
-import { storyData } from '../files/chapters.mjs';
 import { body, topPage } from '../html/query.mjs';
 import { markdownBase } from '../html/base.mjs';
+
 import {
   officialFileEnd,
   officialFileStart,
   userFileEnd,
   userFileStart,
 } from './values/defaults.mjs';
+
 import { userButtonActions } from './buttons/users.mjs';
 import { roomSettingsMenu } from './buttons/roomSettings.mjs';
 import { openClassicMap } from './buttons/map.mjs';
 import { openTinyDices } from './buttons/dice.mjs';
+import { openDonatePage } from './buttons/donate.mjs';
+import { openDownloadsList } from './buttons/downloads.mjs';
+import { openCreateAccount } from './buttons/createAccount.mjs';
+import { openChangePassword } from './buttons/changePassword.mjs';
 
 const { Icon } = TinyHtmlElems;
 
@@ -1218,241 +1221,8 @@ export const AiScriptStart = async () => {
       },
     );
 
-    leftMenu.push(
-      createButtonSidebar('fas fa-key', 'Change password', () => {
-        // Root
-        const ratelimit = tinyIo.client.getRateLimit() || { size: {} };
-        const $root = TinyHtml.createFrom('div');
-
-        // Error place
-        const $errorBox = tinyLib.bs.alert('danger', '', false).addClass('d-none');
-
-        // Create label and input
-        const createInputGroup = (labelText, inputId, type = 'password') => {
-          const $group = TinyHtml.createFrom('div').addClass('mb-3');
-          const $label = TinyHtml.createFrom('label')
-            .addClass('form-label')
-            .setAttr('for', inputId)
-            .setText(labelText);
-          const $input = TinyHtml.createFrom('input').addClass('form-control').setAttr({
-            type,
-            id: inputId,
-            placeholder: labelText,
-            maxLength: ratelimit.size.password,
-          });
-          $group.append($label, $input);
-          return { group: $group, input: $input };
-        };
-
-        const current = createInputGroup('Current Password', 'current-password');
-        const newPass = createInputGroup('New Password', 'new-password');
-        const confirmPass = createInputGroup('Confirm New Password', 'confirm-password');
-
-        // Change password button
-        const $button = tinyLib.bs.button('primary').addClass('w-100').setText('Change Password');
-
-        // Build all
-        $root.append($errorBox, current.group, newPass.group, confirmPass.group, $button);
-
-        // show error
-        const showError = (msg) => {
-          $errorBox.setHtml(msg).removeClass('d-none');
-        };
-
-        // Hide the error when the user starts to type
-        [current.input, newPass.input, confirmPass.input].forEach(($input) => {
-          $input.on('input', () => $errorBox.addClass('d-none'));
-        });
-
-        // Enter button
-        [current.input, newPass.input, confirmPass.input].forEach(($input) => {
-          $input.on('keydown', (e) => {
-            if (e.key === 'Enter') {
-              e.preventDefault();
-              $button.trigger('click');
-            }
-          });
-        });
-
-        // Button click
-        $button.on('click', () => {
-          const currentVal = current.input.val().trim();
-          const newVal = newPass.input.val().trim();
-          const confirmVal = confirmPass.input.val().trim();
-
-          if (!currentVal || !newVal || !confirmVal) {
-            showError('Please fill in all fields.');
-            return;
-          }
-
-          if (newVal !== confirmVal) {
-            showError('New passwords do not match.');
-            return;
-          }
-
-          if (newVal.length < ratelimit.size.minPassword) {
-            showError(`New password must be at least ${ratelimit.size.minPassword} characters.`);
-            return;
-          }
-
-          // Tiny okay!
-          $errorBox.addClass('d-none');
-          modal.hide();
-          tinyIo.client.changePassword(currentVal, newVal).then((result) => {
-            if (result.error) alert(`${result.msg}\nCode ${result.code}`);
-            else alert('Your password has been changed successfully!');
-          });
-        });
-
-        // Create modal
-        const { modal, html } = tinyLib.modal({
-          title: 'Change Password',
-          dialog: 'modal-lg',
-          id: 'modal-password-change',
-          body: $root,
-        });
-
-        html.on('shown.bs.modal', () => {
-          current.input.trigger('focus');
-        });
-      }),
-    );
-
-    leftMenu.push(
-      createButtonSidebar('fas fa-user-plus', 'Create account', () => {
-        // Get data
-        const ratelimit = tinyIo.client.getRateLimit() || { size: {} };
-        const userData = tinyIo.client.getUser() || {};
-        if (ratelimit.openRegistration || userData.isAdmin) {
-          // Root container
-          const $root = TinyHtml.createFrom('div');
-
-          // Error alert box (initially hidden)
-          const $errorBox = tinyLib.bs.alert('danger', '', false).addClass('d-none');
-
-          // Helper to build input fields
-          const createInputGroup = (labelText, inputId, maxLength = null, type = 'text') => {
-            const $group = TinyHtml.createFrom('div').addClass('mb-3');
-            const $label = TinyHtml.createFrom('label')
-              .addClass('form-label')
-              .setAttr('for', inputId)
-              .setText(labelText);
-            const $input = TinyHtml.createFrom('input')
-              .addClass('form-control')
-              .setAttr({ maxLength, type, id: inputId, placeholder: labelText });
-            $group.append($label, $input);
-            return { group: $group, input: $input };
-          };
-
-          // Input fields
-          const user = createInputGroup(
-            'User ID (no spaces)',
-            'register-user-id',
-            ratelimit.size.userId,
-          );
-          const pass = createInputGroup(
-            'Password',
-            'register-password',
-            ratelimit.size.password,
-            'password',
-          );
-          const confirm = createInputGroup(
-            'Confirm Password',
-            'register-confirm-password',
-            ratelimit.size.password,
-            'password',
-          );
-          const nick = createInputGroup(
-            'Nickname (optional)',
-            'register-nickname',
-            ratelimit.size.nickname,
-          );
-
-          // Submit button
-          const $button = tinyLib.bs.button('success').addClass('w-100').setText('Create Account');
-
-          // Build the form
-          $root.append($errorBox, user.group, pass.group, confirm.group, nick.group, $button);
-
-          // Show error message
-          const showError = (msg) => {
-            $errorBox.setHtml(msg).removeClass('d-none');
-          };
-
-          // Clear error when typing
-          [user.input, pass.input, confirm.input, nick.input].forEach(($input) => {
-            $input.on('input', () => $errorBox.addClass('d-none'));
-          });
-
-          // Handle Enter key
-          [user.input, pass.input, confirm.input, nick.input].forEach(($input) => {
-            $input.on('keydown', (e) => {
-              if (e.key === 'Enter') {
-                e.preventDefault();
-                $button.trigger('click');
-              }
-            });
-          });
-
-          // Submit action
-          $button.on('click', () => {
-            const userId = user.input.val().trim();
-            const password = pass.input.val().trim();
-            const confirmPassword = confirm.input.val().trim();
-            const nickname = nick.input.val().trim();
-
-            if (!userId || !password || !confirmPassword) {
-              showError('User ID and both password fields are required.');
-              return;
-            }
-
-            if (/\s/.test(userId)) {
-              showError('User ID must not contain spaces.');
-              return;
-            }
-
-            if (password.length < ratelimit.size.minPassword) {
-              showError(`Password must be at least ${ratelimit.size.minPassword} characters long.`);
-              return;
-            }
-
-            if (password !== confirmPassword) {
-              showError('Passwords do not match.');
-              return;
-            }
-
-            // Tiny okay!
-            $errorBox.addClass('d-none');
-            modal.hide();
-            tinyIo.client.register(userId, password, nickname).then((result) => {
-              if (result.error) alert(`${result.msg}\nCode ${result.code}`);
-              else alert(`The new account was successfully created!`);
-            });
-          });
-
-          // Launch modal with focus on first input
-          const { modal, html } = tinyLib.modal({
-            title: 'Create Account',
-            dialog: 'modal-lg',
-            id: 'modal-create-account',
-            body: $root,
-          });
-
-          html.on('shown.bs.modal', () => {
-            user.input.trigger('focus');
-          });
-        }
-
-        // No Perm
-        else
-          tinyLib.modal({
-            title: 'Create Account',
-            dialog: 'modal-lg',
-            id: 'modal-create-account',
-            body: TinyHtml.createFrom('center').setText('You are not allowed to do this.'),
-          });
-      }),
-    );
+    leftMenu.push(createButtonSidebar('fas fa-key', 'Change password', openChangePassword));
+    leftMenu.push(createButtonSidebar('fas fa-user-plus', 'Create account', openCreateAccount));
   }
 
   // Import
@@ -1480,145 +1250,11 @@ export const AiScriptStart = async () => {
   );
 
   // Downloads
-  leftMenu.push(
-    createButtonSidebar('fa-solid fa-download', 'Downloads', () => {
-      const body = TinyHtml.createFrom('div');
-      body.append(
-        TinyHtml.createFrom('h3')
-          .setText(`Download Content`)
-          .prepend(new Icon('fa-solid fa-download me-3'))
-          .append(
-            tinyLib.bs
-              .button('info btn-sm ms-3')
-              .setText('Save As all chapters')
-              .on('click', () => saveRoleplayFormat()),
-          ),
-        TinyHtml.createFrom('h5')
-          .setText(
-            `Here you can download the official content of fic to produce unofficial content dedicated to artificial intelligence.`,
-          )
-          .append(
-            TinyHtml.createFrom('br'),
-            TinyHtml.createFrom('small').setText(
-              'Remember that you are downloading the uncensored version.',
-            ),
-          ),
-      );
-
-      for (let i = 0; i < storyData.chapter.amount; i++) {
-        // Chapter Number
-        const chapter = String(i + 1);
-        const tinyClick = TinyHtml.createFrom('a', {
-          class: 'btn btn-primary m-2 me-0 btn-sm',
-          href: `/chapter/${chapter}.html`,
-          chapter: chapter,
-        });
-
-        // Add Chapter
-        body.append(
-          TinyHtml.createFrom('div', { class: 'card' }).append(
-            TinyHtml.createFrom('div', { class: 'card-body' }).append(
-              TinyHtml.createFrom('h5', { class: 'card-title m-0' })
-                .setText(`Chapter ${chapter} - `)
-                .append(
-                  TinyHtml.createFrom('small').setText(storyCfg.chapterName[chapter].title),
-
-                  tinyClick
-                    .on('click', (e) => {
-                      e.preventDefault();
-                      // Save Chapter
-                      saveRoleplayFormat(Number(tinyClick.attr('chapter')));
-                    })
-                    .setText('Save as'),
-                ),
-            ),
-          ),
-        );
-      }
-
-      body.append(
-        TinyHtml.createFrom('p', { class: 'm-0' }).setText(
-          `This content is ready for AI to know which lines of text, chapters, day number, weather, location on any part of the fic you ask. The website script will convert all content to be easily understood by AI languages.`,
-        ),
-      );
-
-      tinyLib.modal({
-        id: 'ai_downloads',
-        title: 'AI Downloads',
-        dialog: 'modal-lg',
-        body,
-      });
-    }),
-  );
+  leftMenu.push(createButtonSidebar('fa-solid fa-download', 'Downloads', openDownloadsList));
 
   // Donate
   leftMenu.push(TinyHtml.createFrom('h5').setText('Donate'));
-  leftMenu.push(
-    createButtonSidebar('fas fa-donate', 'Donate <3', () => {
-      const $container = TinyHtml.createFrom('div').addClass('text-center');
-      $container.append(
-        TinyHtml.createFrom('p', { class: 'made-by-ai' }).setHtml(
-          'This project took <strong>months of dedication</strong> and many <em>sleepless nights</em>.',
-        ),
-      );
-
-      $container.append(
-        TinyHtml.createFrom('p', { class: 'made-by-ai m-0' }).setHtml(
-          'If you enjoyed all the love and effort I put into this <strong>super AI roleplay project</strong>,',
-        ),
-      );
-
-      $container.append(
-        TinyHtml.createFrom('p', { class: 'made-by-ai' }).setHtml(
-          'I warmly invite you to support it with a <strong>voluntary donation</strong>',
-        ),
-      );
-
-      $container.append(
-        TinyHtml.createFrom('p', { class: 'made-by-ai m-0' }).setHtml(
-          'I accept both <strong>traditional currencies</strong> and <strong>cryptocurrencies</strong> as donation methods',
-        ),
-      );
-
-      $container.append(
-        TinyHtml.createFrom('p', { class: 'made-by-ai' }).setHtml(
-          'Thank you for helping this tiny magical project grow! 🎁💕',
-        ),
-      );
-
-      const patreonNames = ['Jimm'];
-
-      const $thankYouBox = TinyHtml.createFrom('div').addClass('patreon-thankyou');
-
-      const $thankYouText = TinyHtml.createFrom('p').setText(
-        'Tiny magic moment to thank these magical patreons which supports the tiny fic:',
-      );
-      const $ul = TinyHtml.createFrom('ul', { class: 'list-unstyled' });
-
-      patreonNames.forEach((name) => {
-        const $nameSpan = TinyHtml.createFrom('span').addClass('magic-name').setText(name);
-        const $li = TinyHtml.createFrom('li').append($nameSpan);
-        $ul.append($li);
-      });
-
-      $thankYouBox.append($thankYouText, $ul);
-      $container.append($thankYouBox);
-
-      tinyLib.modal({
-        title: 'Tiny Donations!',
-        dialog: 'modal-lg',
-        id: 'modal-donate',
-        body: $container.append(
-          TinyHtml.createFrom('div', { class: 'donation-highlight' }).append(
-            TinyHtml.createFrom('img', {
-              class: 'd-block w-100',
-              src: '/img/ai-example/2025-04-09_06-48.jpg',
-            }),
-          ),
-        ),
-      });
-    }),
-  );
+  leftMenu.push(createButtonSidebar('fas fa-donate', 'Donate <3', openDonatePage));
 
   // Left
   const connectionInfoBar = TinyHtml.createFrom('span');
