@@ -94,7 +94,7 @@ export const AiScriptStart = async () => {
   appData.ai.interval = setInterval(aiTimeScriptUpdate, 1000);
   aiTimeScriptUpdate();
 
-  // Start loading page
+  // TITLE: Start loading page
   let isFirstTime = true;
   if (!tinyAiScript.isEnabled()) {
     alert(
@@ -104,7 +104,7 @@ export const AiScriptStart = async () => {
     return;
   }
 
-  // Check if mature content is allowed
+  // TITLE: Check if mature content is allowed
   if (isNoNsfw()) {
     alert(
       'Access to this content is restricted in your region or settings. You will need to verify your age to continue. The "Sign in with Google" button is located at the top right of the page.',
@@ -112,6 +112,8 @@ export const AiScriptStart = async () => {
     );
     return;
   }
+
+  // TITLE: Start page loading...
 
   loaderScreen.start();
 
@@ -355,7 +357,8 @@ export const AiScriptStart = async () => {
     .getBase2()
     .on('change', () => tinyAi.setFrequencyPenalty(convertToNumber(frequencyPenalty.val())));
 
-  // Get fic cache
+  // TITLE: Get fic cache
+  let isFirstFicCache = true;
   const getFicCache = (
     id,
     instructionId,
@@ -472,6 +475,8 @@ export const AiScriptStart = async () => {
               ficConfigs.buttons[index].removeClass('selected');
             else ficConfigs.buttons[index].addClass('selected');
           }
+          contentEnabler.emit('ficCacheLoaded', isFirstFicCache);
+          isFirstFicCache = false;
           resolve();
         })
         .catch((err) => {
@@ -480,6 +485,8 @@ export const AiScriptStart = async () => {
           reject(err);
         });
     });
+
+  // TITLE: Import Data
 
   /**
    * When sId is used, it means that the request is coming from a session that is not active in the chat
@@ -669,7 +676,7 @@ export const AiScriptStart = async () => {
 
   rpgData.setFicConfigs(ficConfigs);
 
-  // Reset buttons
+  // TITLE: Reset buttons
   const resetEntireData = (resetAll = false) => {
     const index = ficConfigs.data.findIndex((item) => item.id === ficConfigs.selected);
     if (index > -1) {
@@ -702,7 +709,7 @@ export const AiScriptStart = async () => {
   ];
   contentEnabler.setFicResets(ficResets);
 
-  // Fic Templates
+  // TITLE: Fic Templates
   const ficTemplates = [];
   contentEnabler.setFicTemplates(ficTemplates);
   for (const index in ficConfigs.data) {
@@ -743,6 +750,7 @@ export const AiScriptStart = async () => {
   ];
   contentEnabler.setImportItems(importItems);
 
+  // TITLE: Prompt Buttons
   const ficPromptItems = [
     // System Instructions
     createButtonSidebar('fa-solid fa-toolbox', 'System Instructions', () => {
@@ -849,7 +857,7 @@ export const AiScriptStart = async () => {
   leftMenu.push(TinyHtml.createFrom('h5').setText('Settings'));
   leftMenu.push(...ficPromptItems);
 
-  // RPG
+  // TITLE: RPG
   leftMenu.push(TinyHtml.createFrom('h5').setText('RPG'));
   // Dice
   leftMenu.push(createButtonSidebar('fa-solid fa-dice', 'Roll Dice', openTinyDices));
@@ -880,7 +888,7 @@ export const AiScriptStart = async () => {
   // Classic Map
   leftMenu.push(createButtonSidebar('fa-solid fa-map', 'Classic Map', openClassicMap));
 
-  // Online Mode options
+  // TITLE: Online Mode options
   if (!canUsejsStore) {
     leftMenu.push(TinyHtml.createFrom('h5').setText('Online'));
     leftMenu.push(createButtonSidebar('fas fa-users', 'Room settings', roomSettingsMenu));
@@ -986,37 +994,39 @@ export const AiScriptStart = async () => {
   }
 
   // Import
-  leftMenu.push(TinyHtml.createFrom('h5').setText('Data'));
-  leftMenu.push(...importItems);
+  if (canUsejsStore) {
+    leftMenu.push(TinyHtml.createFrom('h5').setText('Data'));
+    leftMenu.push(...importItems);
 
-  // Export
-  leftMenu.push(
-    createButtonSidebar('fa-solid fa-file-export', 'Export', () => {
-      const exportData = {
-        file: clone(tinyAi.getData()),
-        id: tinyAi.getId(),
-      };
+    // Export
+    leftMenu.push(
+      createButtonSidebar('fa-solid fa-file-export', 'Export', () => {
+        const exportData = {
+          file: clone(tinyAi.getData()),
+          id: tinyAi.getId(),
+        };
 
-      if (exportData.file) {
-        if (!canSandBox(ficConfigs.selected)) delete exportData.file.systemInstruction;
-        if (exportData.file.file) delete exportData.file.file;
-      }
+        if (exportData.file) {
+          if (!canSandBox(ficConfigs.selected)) delete exportData.file.systemInstruction;
+          if (exportData.file.file) delete exportData.file.file;
+        }
 
-      saveAs(
-        new Blob([JSON.stringify(exportData)], { type: 'text/plain' }),
-        `Pony Driland - ${tinyAi.getId()} - AI Export.json`,
-      );
-    }),
-  );
+        saveAs(
+          new Blob([JSON.stringify(exportData)], { type: 'text/plain' }),
+          `Pony Driland - ${tinyAi.getId()} - AI Export.json`,
+        );
+      }),
+    );
 
-  // Downloads
-  leftMenu.push(createButtonSidebar('fa-solid fa-download', 'Downloads', openDownloadsList));
+    // Downloads
+    leftMenu.push(createButtonSidebar('fa-solid fa-download', 'Downloads', openDownloadsList));
+  }
 
-  // Donate
+  // TITLE: Donate
   leftMenu.push(TinyHtml.createFrom('h5').setText('Donate'));
   leftMenu.push(createButtonSidebar('fas fa-donate', 'Donate <3', openDonatePage));
 
-  // Left
+  // TITLE: Left Side
   const connectionInfoBar = TinyHtml.createFrom('span');
   const sidebarLeft = TinyHtml.createFrom('div', sidebarStyle)
     .removeClass('d-md-block')
@@ -1043,7 +1053,7 @@ export const AiScriptStart = async () => {
       ),
     );
 
-  // Right
+  // TITLE: Right Side
   const sidebarSettingTemplate = { span: { class: 'pb-2 d-inline-block' } };
   const sidebarRightBase = {
     // Model Selector
@@ -1150,7 +1160,7 @@ export const AiScriptStart = async () => {
   Tooltip(sidebarRightBase.presencePenalty);
   Tooltip(sidebarRightBase.frequencyPenalty);
 
-  // Models list
+  // TITLE: Models list
   const updateModelList = () => {
     if (!tinyAiScript.noai && !tinyAiScript.mpClient) {
       const models = tinyAi.getModelsList();
@@ -1302,7 +1312,7 @@ export const AiScriptStart = async () => {
     ),
   );
 
-  // Execute messages
+  // TITLE: Execute messages
   const prepareContentList = (addIndexList = false) => {
     // Prepare history
     const history = tinyAi.getData();
@@ -1586,7 +1596,7 @@ export const AiScriptStart = async () => {
       }
     });
 
-  // Get Ai Tokens
+  // TITLE: Get Ai Tokens
   let usingUpdateToken = false;
   const updateAiTokenCounterData = (hashItems, forceReset = false) => {
     if (!usingUpdateToken) {
@@ -1642,7 +1652,7 @@ export const AiScriptStart = async () => {
     }
   };
 
-  // Execute AI script
+  // TITLE: Execute AI script
   const executeAi = (tinyCache = {}, tinyController = undefined) =>
     new Promise((resolve, reject) => {
       const { content } = prepareContentList();
@@ -1819,7 +1829,7 @@ export const AiScriptStart = async () => {
         .catch(reject);
     });
 
-  // Textarea input edition
+  // TITLE: Textarea input edition
   const createTextareaInputExition = (
     minHeight = 38,
     maxHeight = 150,
@@ -2059,7 +2069,7 @@ export const AiScriptStart = async () => {
 
   firstDialogueBase.base.append(firstDialogueBase.button);
 
-  // Message List
+  // TITLE: Message List
   const msgList = TinyHtml.createFrom('div', {
     class: 'p-3',
     style: 'margin-bottom: 55px !important;',
@@ -2253,7 +2263,7 @@ export const AiScriptStart = async () => {
     return msgContent;
   };
 
-  // Container
+  // TITLE: Container
   const chatContainer = TinyHtml.createFrom('div', {
     id: 'ai-chatbox',
     class: 'h-100 body-background',
@@ -2289,7 +2299,7 @@ export const AiScriptStart = async () => {
 
   Tooltip(firstDialogueBase.button);
 
-  // Prepare events
+  // TITLE: Prepare events
   tinyAi.removeAllListeners('setMaxOutputTokens');
   tinyAi.removeAllListeners('setTemperature');
   tinyAi.removeAllListeners('setTopP');
@@ -2360,7 +2370,7 @@ export const AiScriptStart = async () => {
       } else resolve(null);
     });
 
-  // Save backup
+  // TITLE: Save backup
   const saveSessionTimeout = {};
   const saveSessionBackup = (sessionSelected, where) => {
     if (sessionSelected) {
@@ -2427,7 +2437,7 @@ export const AiScriptStart = async () => {
         return { roomSaveData, model, tokens, hash, customList };
       };
 
-      // jsStore (offline)
+      // TITLE: jsStore (offline)
       if (canUsejsStore) {
         if (saveSessionTimeout[sessionSelected]) clearTimeout(saveSessionTimeout[sessionSelected]);
         saveSessionTimeout[sessionSelected] = setTimeout(() => {
@@ -2466,22 +2476,30 @@ export const AiScriptStart = async () => {
         }, 1000);
       }
 
-      // Database (online)
+      // TITLE: Database (online)
       else if (typeof where === 'string' && !tinyAiScript.mpClient) {
         const timeoutId = `${sessionSelected}_${where}`;
         if (saveSessionTimeout[timeoutId]) clearTimeout(saveSessionTimeout[timeoutId]);
         saveSessionTimeout[timeoutId] = setTimeout(() => {
           const { roomSaveData } = getSessionData();
 
-          // Send data
+          // Prepare data
           const newSettings = {};
           if (roomSaveData[where] !== null) newSettings[where] = roomSaveData[where];
-          tinyIo.client.updateRoomSettings(newSettings).then((result) => {
-            if (result.error)
-              alert(
-                `⚠️ Your data was not saved! Please try again.\nError Message:${result.msg}\nCode: ${result.code}`,
-              );
-          });
+          let canSave = false;
+
+          // Detect Diff
+          const oldData = tinyIo.client.getRoom();
+          for (const name in newSettings) if (newSettings[name] !== oldData[name]) canSave = true;
+
+          // Send data
+          if (canSave)
+            tinyIo.client.updateRoomSettings(newSettings).then((result) => {
+              if (result.error)
+                alert(
+                  `⚠️ Your data was not saved! Please try again.\nError Message:${result.msg}\nCode: ${result.code}`,
+                );
+            });
 
           // Complete
           saveSessionTimeout[timeoutId] = null;
@@ -2647,7 +2665,7 @@ export const AiScriptStart = async () => {
   markdownBase.append(container);
   await rpgData.init().then(() => rpgData.finishOffCanvas(updateAiTokenCounterData));
 
-  // Rpg mode
+  // TITLE: Rpg mode
   if (!canUsejsStore) {
     if (autoSelectChatMode) autoSelectChatMode.trigger('click');
     tinyIo.client = new TinyClientIo(rpgCfg);
@@ -2688,6 +2706,15 @@ export const AiScriptStart = async () => {
 
         // Install scripts
         client.install(tinyAiScript);
+
+        const onlineRoomUpdates = (allowEdit, roomData) => {
+          if (!allowEdit) return;
+          tinyAi.setFirstDialogue(roomData.firstDialogue);
+          tinyAi.setPrompt(roomData.prompt, 0);
+          tinyAi.setSystemInstruction(roomData.systemInstruction, 0);
+        };
+
+        client.on('roomUpdates', (roomData) => onlineRoomUpdates(true, roomData));
 
         // Connected
         client.on('connect', (connectionId) => {
@@ -2736,6 +2763,12 @@ export const AiScriptStart = async () => {
         });
 
         client.on('roomJoinned', (result) => {
+          if (isFirstFicCache)
+            contentEnabler.once('ficCacheLoaded', (isFirstFicCache) =>
+              onlineRoomUpdates(isFirstFicCache, tinyIo.client.getRoom()),
+            );
+          else onlineRoomUpdates(true, tinyIo.client.getRoom());
+
           makeTempMessage(`You successfully entered the room **${result.roomId}**!`, rpgCfg.ip);
           loaderScreen.stop();
         });
@@ -2796,7 +2829,7 @@ export const AiScriptStart = async () => {
     }
   }
 
-  // Load backup
+  // TITLE: Load backup
   else {
     const sessionData = {
       rooms: await connStore.select({ from: 'aiSessionsRoom' }),
