@@ -1,8 +1,12 @@
+import { EventEmitter } from 'events';
 import { alert } from '../../files/tinyLib.mjs';
 import { tinyIo, tinyStorage } from './base.mjs';
 import RpgData from './rpgData.mjs';
 
+/** Used to detect if you're online in a server */
 export const isOnline = () => (!canUseJsStore() && tinyIo.client ? true : false);
+
+/** Used to detect if you're in a server */
 export const canUseJsStore = () => {
   return (
     contentEnabler.rpgCfg &&
@@ -10,12 +14,16 @@ export const canUseJsStore = () => {
   );
 };
 
-class EnablerAiContent {
+class EnablerAiContent extends EventEmitter {
   #validateMultiplayer;
   #enabledFirstDialogue;
 
   /** @type {undefined|RpgData} */
   rpgData;
+
+  constructor() {
+    super();
+  }
 
   /////////////////////////////////////////////////
 
