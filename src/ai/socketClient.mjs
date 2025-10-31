@@ -1,19 +1,44 @@
 import { EventEmitter } from 'events';
-import { io } from 'socket.io-client';
-import { objType } from 'tiny-essentials/basics';
+import { io as Io } from 'socket.io-client';
+import { isJsonObject } from 'tiny-essentials/basics';
 
 class TinyClientIo extends EventEmitter {
-  #cfg;
+  #cfg = {
+    /** @type {string|null} */
+    roomId: null,
+    /** @type {string|null} */
+    username: null,
+    /** @type {string|null} */
+    password: null,
+    /** @type {string|null} */
+    roomPassword: null,
+  };
+
+  /** @type {string|null} */
+  id = null;
+
+  ratelimit = {};
+  room = {};
+  roomData = {};
+  roomPrivateData = {};
+  user = {};
+  users = {};
+  history = [];
+
+  /** @type {string[]} */
+  mods = [];
+
+  connected = false;
+  active = false;
 
   constructor(cfg) {
     super();
     const tinyThis = this;
     this.#cfg = cfg;
-    this.socket = typeof cfg.ip === 'string' && cfg.ip.length > 0 ? new io(cfg.ip) : null;
 
-    this.id = null;
-    this.connected = false;
-    this.active = false;
+    /** @type {Io|null} */
+    this.socket = typeof cfg.ip === 'string' && cfg.ip.length > 0 ? new Io(cfg.ip) : null;
+
     this.resetData();
 
     if (this.socket) {
@@ -56,12 +81,34 @@ class TinyClientIo extends EventEmitter {
     }
   }
 
+  /**
+   * @param {string} userId
+   * @returns {boolean}
+   */
+  isRoomMod(userId = this.getUserId()) {
+    if (this.isRoomOwner(userId)) return true;
+    for (const modId of this.getMods()) if (modId === userId) return true;
+    return false;
+  }
+
+  /**
+   * @param {string} userId
+   * @returns {boolean}
+   */
+  isRoomOwner(userId = this.getUserId()) {
+    if (this.room.ownerId === userId) return true;
+    return false;
+  }
+
   // Is Active
   isActive() {
     return this.active;
   }
 
-  // Get user id
+  /**
+   * Get user id
+   * @returns {string|null}
+   */
   getUserId() {
     return this.#cfg.username;
   }
@@ -71,7 +118,10 @@ class TinyClientIo extends EventEmitter {
     return this.connected;
   }
 
-  // Get room id
+  /**
+   * Get room id
+   * @returns {string|null}
+   */
   getRoomId() {
     return this.#cfg.roomId;
   }
@@ -91,14 +141,14 @@ class TinyClientIo extends EventEmitter {
   // Rate limit
   setRateLimit(result) {
     this.ratelimit = { limit: {}, size: {}, time: null, loadAllHistory: null };
-    if (objType(result, 'object')) {
+    if (isJsonObject(result)) {
       this.ratelimit.loadAllHistory =
         typeof result.loadAllHistory === 'boolean' ? result.loadAllHistory : true;
       this.ratelimit.time = typeof result.time === 'number' ? result.time : 0;
       this.ratelimit.openRegistration =
         typeof result.openRegistration === 'boolean' ? result.openRegistration : false;
 
-      if (objType(result.limit, 'object')) {
+      if (isJsonObject(result.limit)) {
         this.ratelimit.limit = {
           events: typeof result.limit.events === 'number' ? result.limit.events : 0,
           diceRolls: typeof result.limit.diceRolls === 'number' ? result.limit.diceRolls : 0,
@@ -107,7 +157,7 @@ class TinyClientIo extends EventEmitter {
           roomUsers: typeof result.limit.roomUsers === 'number' ? result.limit.roomUsers : 0,
         };
       }
-      if (objType(result.size, 'object')) {
+      if (isJsonObject(result.size)) {
         this.ratelimit.size = {
           modelId: typeof result.size.modelId === 'number' ? result.size.modelId : 0,
           history: typeof result.size.history === 'number' ? result.size.history : 0,
@@ -125,7 +175,7 @@ class TinyClientIo extends EventEmitter {
             typeof result.size.firstDialogue === 'number' ? result.size.firstDialogue : 0,
         };
       }
-      if (objType(result.dice, 'object')) {
+      if (isJsonObject(result.dice)) {
         this.ratelimit.dice = {
           img: typeof result.dice.img === 'number' ? result.dice.img : 0,
           border: typeof result.dice.border === 'number' ? result.dice.border : 0,
@@ -148,7 +198,7 @@ class TinyClientIo extends EventEmitter {
   // Dice
   setDice(result) {
     this.dice = {};
-    if (objType(result, 'object')) {
+    if (isJsonObject(result)) {
       const ratelimit = this.getRateLimit()?.dice;
       this.dice.img =
         typeof result.img === 'string'
@@ -184,9 +234,9 @@ class TinyClientIo extends EventEmitter {
     return this.dice;
   }
 
-  // User
+  // User (local)
   setUser(result) {
-    if (objType(result, 'object')) {
+    if (isJsonObject(result)) {
       this.user = {
         isAdmin: typeof result.isAdmin === 'boolean' ? result.isAdmin : false,
         isMod: typeof result.isMod === 'boolean' ? result.isMod : false,
@@ -208,12 +258,13 @@ class TinyClientIo extends EventEmitter {
 
   // Users
   setUsers(result) {
-    this.users = objType(result, 'object') ? result : {};
+    this.users = isJsonObject(result) ? result : {};
   }
 
+  // Add user (Local)
   addUser(result) {
     if (!this.users) this.users = {};
-    if (objType(result, 'object') && typeof result.userId === 'string') {
+    if (isJsonObject(result) && typeof result.userId === 'string') {
       this.users[result.userId] = {
         ping: typeof result.ping === 'number' ? result.ping : 0,
         nickname: typeof result.nickname === 'string' ? result.nickname : null,
@@ -222,17 +273,19 @@ class TinyClientIo extends EventEmitter {
     }
   }
 
+  // Edit user (Local)
   editUser(result) {
     if (!this.users) this.users = {};
-    if (objType(result, 'object') && typeof result.userId === 'string') {
+    if (isJsonObject(result) && typeof result.userId === 'string') {
       if (typeof result.ping === 'number') this.users[result.userId].ping = result.ping;
       if (typeof result.nickname === 'string') this.users[result.userId].nickname = result.nickname;
       return this.users[result.userId];
     }
   }
 
+  // Remove user (Local)
   removeUser(result) {
-    if (objType(result, 'object') && this.users) {
+    if (isJsonObject(result) && this.users) {
       if (typeof result.userId === 'string' && this.users[result.userId]) {
         delete this.users[result.userId];
         return result.userId;
@@ -245,9 +298,9 @@ class TinyClientIo extends EventEmitter {
     return this.users || {};
   }
 
-  // Room
+  // Set Room (Local)
   setRoom(result) {
-    if (objType(result, 'object')) {
+    if (isJsonObject(result)) {
       this.room = {
         title: typeof result.title === 'string' ? result.title : '',
         ownerId: typeof result.ownerId === 'string' ? result.ownerId : '',
@@ -270,10 +323,11 @@ class TinyClientIo extends EventEmitter {
     }
   }
 
+  // Set Room Data (Local)
   setRoomData(result) {
     if (
-      objType(result, 'object') &&
-      objType(result.values, 'object') &&
+      isJsonObject(result) &&
+      isJsonObject(result.values) &&
       typeof result.isPrivate === 'boolean'
     ) {
       if (result.isPrivate) this.roomPrivateData = result.values?.data;
@@ -282,14 +336,14 @@ class TinyClientIo extends EventEmitter {
     }
   }
 
+  // Set room base (Local)
   setRoomBase(result) {
     if (
-      objType(result, 'object') &&
-      objType(result.data, 'object') &&
-      objType(result.users, 'object') &&
-      objType(result.roomData, 'object') &&
-      objType(result.roomPrivateData, 'object') &&
-      Array.isArray(result.history) &&
+      isJsonObject(result) &&
+      isJsonObject(result.data) &&
+      isJsonObject(result.users) &&
+      isJsonObject(result.roomData) &&
+      isJsonObject(result.roomPrivateData) &&
       Array.isArray(result.mods)
     ) {
       // Room data
@@ -305,10 +359,6 @@ class TinyClientIo extends EventEmitter {
         if (typeof result.mods[index].userId === 'string')
           this.addModUser(result.mods[index].userId);
 
-      // History
-      this.setHistory([]);
-      for (const index in result.history) this.addHistory(result.history[index]);
-
       // Room Data
       this.setRoomData({ values: result.roomData, isPrivate: false });
       this.setRoomData({ values: result.roomPrivateData, isPrivate: true });
@@ -320,7 +370,6 @@ class TinyClientIo extends EventEmitter {
     else {
       this.setRoom({});
       this.setUsers({});
-      this.setHistory([]);
       this.setMods([]);
       return false;
     }
@@ -338,57 +387,32 @@ class TinyClientIo extends EventEmitter {
     return this.room || {};
   }
 
-  // History
-  setHistory(result) {
-    this.history = Array.isArray(result) ? result : [];
-  }
-
-  getHistory() {
-    return this.history || [];
-  }
-
-  #filterHistoryData(data) {
-    return data;
-  }
-
-  addHistory(data) {
-    if (this.history.findIndex((item) => item.id === data.id) < 0) {
-      const newData = this.#filterHistoryData(item);
-      this.history.push(newData);
-      return newData;
-    }
-  }
-
-  editHistory(data) {
-    const index = this.history.findIndex((item) => item.id === data.id);
-    if (index > -1) {
-      this.history[index] = this.#filterHistoryData(data);
-      return this.history[index];
-    }
-  }
-
-  removeHistory(id) {
-    const index = this.history.findIndex((item) => item.id === id);
-    if (index > -1) {
-      const id = this.history[index].id;
-      this.history.splice(index, 1);
-      return id;
-    }
-  }
-
-  // Mods
+  /**
+   * Mods
+   * @returns {string[]}
+   */
   getMods() {
-    return this.mods || [];
+    return this.mods ?? [];
   }
 
+  /**
+   * (Local)
+   * @param {string[]} result
+   */
   setMods(result) {
     this.mods = Array.isArray(result) ? result : [];
   }
 
+  /**
+   * (Local)
+   */
   addModUser(userId) {
     if (this.mods.indexOf(userId) < 0) this.mods.push(userId);
   }
 
+  /**
+   * (Local)
+   */
   removeModUser(userId) {
     const index = this.mods.indexOf(userId);
     if (index > -1) this.mods.splice(index, 1);
@@ -685,6 +709,20 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
+  // Is moderator
+  accountIsMod(userId = '') {
+    return this.#socketEmitApi('user-is-mod', {
+      userId,
+    });
+  }
+
+  // Is Owner
+  accountIsOwner(userId = '') {
+    return this.#socketEmitApi('user-is-owner', {
+      userId,
+    });
+  }
+
   // Ban a server account
   banAccount(userId = '', reason = '') {
     return this.#socketEmitApi('ban', {
@@ -790,8 +828,9 @@ class TinyClientIo extends EventEmitter {
     if (this.socket) this.socket.destroy();
   }
 
+  /** @returns {boolean} */
   checkRoomId(result) {
-    return objType(result, 'object') && result.roomId === this.getRoomId();
+    return isJsonObject(result) && result.roomId === this.getRoomId();
   }
 
   install(tinyAiScript) {
@@ -824,7 +863,7 @@ class TinyClientIo extends EventEmitter {
     client.onUserUpdated((result) => {
       if (
         client.checkRoomId(result) &&
-        objType(result.data, 'object') &&
+        isJsonObject(result.data) &&
         typeof result.userId === 'string' &&
         typeof result.data.nickname === 'string'
       ) {
@@ -845,7 +884,7 @@ class TinyClientIo extends EventEmitter {
 
     // Room updates
     client.onRoomUpdates((result) => {
-      if (client.checkRoomId(result) && objType(result.data, 'object')) {
+      if (client.checkRoomId(result) && isJsonObject(result.data)) {
         const data = client.setRoom(result.data);
         if (data) client.emit('roomUpdates', data);
         console.log('[socket-io] [room]', client.getRoom());
@@ -899,27 +938,25 @@ class TinyClientIo extends EventEmitter {
 
     // New message
     client.onNewMessage((result) => {
-      const data = client.addHistory(result);
-      if (data) client.emit('newMessage', data);
-      console.log('[socket-io] [message-add]', client.getHistory());
+      if (client.checkRoomId(result)) {
+        client.emit('newMessage', data);
+        console.log('[socket-io] [message-add]');
+      }
     });
 
     // Message delete
     client.onMessageDelete((result) => {
       if (client.checkRoomId(result)) {
-        const data = client.removeHistory(result.id);
-
-        if (data) client.emit('messageDelete', data);
-        console.log('[socket-io] [message-delete]', client.getHistory());
+        client.emit('messageDelete', data);
+        console.log('[socket-io] [message-delete]');
       }
     });
 
     // Message edit
     client.onMessageEdit((result) => {
       if (client.checkRoomId(result)) {
-        const data = client.editHistory(result);
-        if (data) client.emit('messageEdit', data);
-        console.log('[socket-io] [message-edit]', client.getHistory());
+        client.emit('messageEdit', data);
+        console.log('[socket-io] [message-edit]');
       }
     });
 
@@ -931,7 +968,6 @@ class TinyClientIo extends EventEmitter {
 
         client.emit('roomEnter');
         console.log('[socket-io] [room-data]', {
-          history: client.getHistory(),
           room: client.getRoom(),
           users: client.getUsers(),
           mods: client.getMods(),

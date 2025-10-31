@@ -4,10 +4,10 @@ import { tinyIo, tinyStorage } from './base.mjs';
 import RpgData from './rpgData.mjs';
 
 /** Used to detect if you're online in a server */
-export const isOnline = () => (!canUseJsStore() && tinyIo.client ? true : false);
+export const isOnline = () => (!usingOnlineRpg() && tinyIo.client ? true : false);
 
 /** Used to detect if you're in a server */
-export const canUseJsStore = () => {
+export const usingOnlineRpg = () => {
   return (
     contentEnabler.rpgCfg &&
     (typeof contentEnabler.rpgCfg.ip !== 'string' || contentEnabler.rpgCfg.ip.length < 1)

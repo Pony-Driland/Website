@@ -1,5 +1,5 @@
 import EventEmitter from 'events';
-import { objType } from 'tiny-essentials/basics';
+import { isJsonObject } from 'tiny-essentials/basics';
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import { Offcanvas } from 'bootstrap';
 import JSONEditor from '../../../build/bundle/JSONEditor.mjs';
@@ -24,12 +24,12 @@ class RpgData extends EventEmitter {
     this.offcanvas = { public: null, private: null };
     this.ready = { public: false, private: false };
 
-    /**
-     * @type {Object}
-     * @property {null|JSONEditor} public
-     * @property {null|JSONEditor} private
-     */
-    this.data = { public: null, private: null };
+    this.data = {
+      /** @type {null|JSONEditor} */
+      public: null,
+      /** @type {null|JSONEditor} */
+      private: null,
+    };
 
     this.base = {
       public: TinyHtml.createFrom('div', { id: 'info_box' }),
@@ -112,7 +112,7 @@ class RpgData extends EventEmitter {
 
       // Add custom Schema
       const customSchema = tinyAi.getCustomValue('rpgSchema');
-      if (objType(customSchema, 'object')) this.template.schema = customSchema;
+      if (isJsonObject(customSchema)) this.template.schema = customSchema;
       // Default schema
       else {
         this.template.schema = aiTemplates.funcs.jsonTemplate();
@@ -134,7 +134,7 @@ class RpgData extends EventEmitter {
             if (isFirstTime) rpgEditor.off('ready', funcExecStart);
             // Get data
             loadData[where] = tinyAi.getCustomValue(valueName);
-            if (!objType(loadData[where], 'object')) loadData[where] = {};
+            if (!isJsonObject(loadData[where])) loadData[where] = {};
 
             // Insert data
             rpgEditor.setValue(this.filter(loadData[where]));

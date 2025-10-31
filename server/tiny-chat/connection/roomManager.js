@@ -1,4 +1,4 @@
-import { objType } from 'tiny-essentials';
+import { isJsonObject } from 'tiny-essentials/basics';
 import db from './sql';
 
 import {
@@ -600,8 +600,7 @@ export default function roomManager(socket, io, appStorage) {
     if (noDataInfo(data, fn)) return;
     const { roomId, newSettings } = data;
     // Validate values
-    if (typeof roomId !== 'string' || !objType(newSettings, 'object'))
-      return sendIncompleteDataInfo(fn);
+    if (typeof roomId !== 'string' || !isJsonObject(newSettings)) return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);
@@ -724,7 +723,7 @@ export default function roomManager(socket, io, appStorage) {
     if (noDataInfo(data, fn)) return;
     const { roomId, isPrivate, values } = data;
     // Validate values
-    if (typeof roomId !== 'string' || !objType(values, 'object') || typeof isPrivate !== 'boolean')
+    if (typeof roomId !== 'string' || !isJsonObject(values) || typeof isPrivate !== 'boolean')
       return sendIncompleteDataInfo(fn);
 
     // Get user

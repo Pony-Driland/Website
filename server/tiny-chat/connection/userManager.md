@@ -1,8 +1,10 @@
 # API Documentation
 
-This document provides an overview of the events handled by the server, including user management actions like ban, unban, kick, login, and registration.
+This document provides an overview of the events handled by the server, including user management actions such as banning, unbanning, kicking, logging in, and registration.
 
 Documentation written with the assistance of OpenAI's ChatGPT.
+
+---
 
 ## Events Overview
 
@@ -177,6 +179,65 @@ This event allows an existing user to log in using their credentials.
 
 ---
 
+### 8. `user-is-mod`
+
+#### Description:
+
+This event checks if a specific user is a moderator.
+It can also return additional moderator details when requested by another moderator or the server owner.
+
+#### Arguments:
+
+- `userId` (string): The ID of the user to check.
+
+#### Callback:
+
+- Success (user is moderator):
+  `{ result: true, isOwner: boolean, date?: string, reason?: string }`
+  The optional `date` and `reason` fields are only returned if the requester is a moderator or the server owner.
+- Success (user is not moderator):
+  `{ result: false, isOwner: boolean }`
+- Error: `{ error: true, msg: string, code: number }`
+
+#### Behavior:
+
+- Validates the `userId`.
+- Ensures the requester is logged in and not rate-limited.
+- Queries the `moderators` table for both the requester and the target user.
+- If the target user is a moderator, returns `{ result: true, isOwner: boolean }`.
+- If the requester is a moderator or the owner, includes `date` and `reason` metadata about the moderator status.
+- Otherwise, returns `{ result: false, isOwner: boolean }` if the user is not found among moderators.
+
+---
+
+### 9. `user-is-owner`
+
+#### Description:
+
+This event checks if a given user is the server owner.
+
+#### Arguments:
+
+- `userId` (string): The ID of the user to check.
+
+#### Callback:
+
+- Success: `{ result: boolean }`
+  - `true` if the user is the owner.
+  - `false` otherwise.
+
+- Error: `{ error: true, msg: string, code: number }`
+
+#### Behavior:
+
+- Validates the `userId`.
+- Ensures the requester is logged in and not rate-limited.
+- Compares the `userId` against the configured `OWNER_ID` from the server settings.
+- Returns the result as a boolean flag.
+
+---
+
 ## Conclusion
 
-This API provides basic user management functionality, including account creation, login, banning, unbanning, kicking, and changing user details such as password and nickname. It also includes validation and permissions checks to ensure that only authorized users (such as server owners and moderators) can perform certain actions.
+This API provides comprehensive user management functionality, covering registration, authentication, moderation tools (ban, unban, kick), and permission checks (owner/moderator detection).
+All operations include input validation, rate-limiting protection, and role-based access control to maintain a secure and consistent environment for both users and administrators.
