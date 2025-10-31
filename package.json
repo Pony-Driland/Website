@@ -37,6 +37,7 @@
         "@types/bootstrap": "^5.2.10",
         "@types/clone": "^2.1.4",
         "@types/fs-extra": "^11.0.4",
+        "@types/json-editor": "^0.0.10",
         "@types/ws": "^8.18.1",
         "bootstrap": "^5.3.7",
         "buffer": "^6.0.3",

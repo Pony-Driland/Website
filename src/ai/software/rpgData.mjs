@@ -1,3 +1,4 @@
+import EventEmitter from 'events';
 import { objType } from 'tiny-essentials/basics';
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import { Offcanvas } from 'bootstrap';
@@ -6,8 +7,14 @@ import JSONEditor from '../../../build/bundle/JSONEditor.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import aiTemplates from '../values/templates.mjs';
 
-class RpgData {
+import { tinyAi } from './base.mjs';
+import ficConfigs from '../values/ficConfigs.mjs';
+
+/** @typedef {import("json-editor")} JSONEditor */
+
+class RpgData extends EventEmitter {
   constructor() {
+    super();
     this.schemaHash = null;
     this.allowAiUse = { public: false, private: false };
     this.allowAiSchemaUse = { public: false, private: false };
@@ -16,22 +23,21 @@ class RpgData {
     this.html = { public: null, private: null };
     this.offcanvas = { public: null, private: null };
     this.ready = { public: false, private: false };
+
+    /**
+     * @type {Object}
+     * @property {null|JSONEditor} public
+     * @property {null|JSONEditor} private
+     */
     this.data = { public: null, private: null };
+
     this.base = {
       public: TinyHtml.createFrom('div', { id: 'info_box' }),
       private: TinyHtml.createFrom('div', { id: 'privateInfo' }),
     };
   }
 
-  setTinyAi(tinyAi) {
-    this.tinyAi = tinyAi;
-  }
-
-  setFicConfigs(ficConfigs) {
-    this.ficConfigs = ficConfigs;
-  }
-
-  // Data Filter
+  // TITLE: Data Filter
   filter(value) {
     if (typeof value === 'string') {
       try {
@@ -45,6 +51,7 @@ class RpgData {
     return value;
   }
 
+  // TITLE: Config
   setAllowAiUse(value, type) {
     if (typeof this.allowAiUse[type] === 'boolean')
       this.allowAiUse[type] = typeof value === 'boolean' ? value : false;
@@ -54,24 +61,30 @@ class RpgData {
       this.allowAiSchemaUse[type] = typeof value === 'boolean' ? value : false;
   }
 
+  // TITLE: Close canvas
   finishOffCanvas(updateAiTokenCounterData) {
-    const rpgData = this;
-    const tinyAi = this.tinyAi;
-    // offCanvas closed
+    /**
+     * @param {'public'|'private'} where
+     * @param {string} type
+     */
     const onOffCanvasClosed = (where, type) => () => {
       setTimeout(() => {
-        const tinyData = rpgData.data[where].getValue();
+        // Data
+        const tinyData = this.data[where].getValue();
         if (tinyData) {
-          rpgData.setAllowAiUse(tinyData.allowAiUse, where);
-          rpgData.setAllowAiSchemaUse(tinyData.allowAiSchemaUse, where);
-          if (rpgData.data[where].isEnabled() && rpgData.hash[where] !== rpgData.oldHash[where]) {
-            rpgData.oldHash[where] = rpgData.hash[where];
+          this.setAllowAiUse(tinyData.allowAiUse, where);
+          this.setAllowAiSchemaUse(tinyData.allowAiSchemaUse, where);
+
+          if (this.data[where].isEnabled() && this.hash[where] !== this.oldHash[where]) {
+            this.oldHash[where] = this.hash[where];
             tinyAi.setCustomValue(type, null, 0);
             updateAiTokenCounterData();
+            this.emit('save', { data: tinyData, type: where });
           }
         }
       }, 300);
     };
+
     this.html.public.on('hide.bs.offcanvas', onOffCanvasClosed('public', 'rpgData'));
     this.html.private.on('hide.bs.offcanvas', onOffCanvasClosed('private', 'rpgPrivateData'));
   }
@@ -86,12 +99,9 @@ class RpgData {
   }
 
   init(forceRestart = false) {
-    const rpgData = this;
-    const tinyAi = this.tinyAi;
-    const ficConfigs = this.ficConfigs;
     return new Promise((resolve, reject) => {
       // Get template
-      rpgData.template = {
+      this.template = {
         // Seed the form with a starting value
         startval: {},
         // Disable additional properties
@@ -102,11 +112,11 @@ class RpgData {
 
       // Add custom Schema
       const customSchema = tinyAi.getCustomValue('rpgSchema');
-      if (objType(customSchema, 'object')) rpgData.template.schema = customSchema;
+      if (objType(customSchema, 'object')) this.template.schema = customSchema;
       // Default schema
       else {
-        rpgData.template.schema = aiTemplates.funcs.jsonTemplate();
-        if (ficConfigs.selected) tinyAi.setCustomValue('rpgSchema', rpgData.template.schema, 0);
+        this.template.schema = aiTemplates.funcs.jsonTemplate();
+        if (ficConfigs.selected) tinyAi.setCustomValue('rpgSchema', this.template.schema, 0);
       }
 
       const schemaHash = tinyAi.getHash('rpgSchema');
@@ -119,7 +129,7 @@ class RpgData {
         try {
           // The tiny start script
           const executeTinyStart = (isFirstTime = false) => {
-            const rpgEditor = rpgData.data[where];
+            const rpgEditor = this.data[where];
             // Remove first time
             if (isFirstTime) rpgEditor.off('ready', funcExecStart);
             // Get data
@@ -127,7 +137,7 @@ class RpgData {
             if (!objType(loadData[where], 'object')) loadData[where] = {};
 
             // Insert data
-            rpgEditor.setValue(rpgData.filter(loadData[where]));
+            rpgEditor.setValue(this.filter(loadData[where]));
             rpgEditor.validate();
 
             // Change events
@@ -140,10 +150,11 @@ class RpgData {
                     const tinyData = rpgEditor.getValue();
                     if (tinyData) {
                       tinyAi.setCustomValue(valueName, tinyData);
-                      rpgData.hash[where] = tinyAi.getHash(valueName);
-                      rpgData.setAllowAiUse(tinyData.allowAiUse, where);
-                      rpgData.setAllowAiSchemaUse(tinyData.allowAiSchemaUse, where);
+                      this.hash[where] = tinyAi.getHash(valueName);
+                      this.setAllowAiUse(tinyData.allowAiUse, where);
+                      this.setAllowAiSchemaUse(tinyData.allowAiSchemaUse, where);
                     }
+                    this.emit('change', { data: tinyData, type: where });
                   } catch (err) {
                     console.error(err);
                   }
@@ -153,25 +164,26 @@ class RpgData {
 
             // Complete
             if (!failed) {
-              rpgData.ready[where] = true;
+              this.ready[where] = true;
               amountStarted++;
               if (amountStarted >= 2) {
-                rpgData.schemaHash = schemaHash;
+                this.schemaHash = schemaHash;
                 resolve(loadData);
+                this.emit('ready', { isFirstTime, type: where });
               }
             }
           };
           const funcExecStart = () => executeTinyStart(true);
 
           // Start json data
-          if (rpgData.schemaHash !== schemaHash || !rpgData.data[where] || forceRestart) {
+          if (this.schemaHash !== schemaHash || !this.data[where] || forceRestart) {
             // Remove Old
-            if (rpgData.data[where]) rpgData.data[where].destroy();
+            if (this.data[where]) this.data[where].destroy();
             // Insert template
-            rpgData.data[where] = new JSONEditor(rpgData.base[where].get(0), rpgData.template);
+            this.data[where] = new JSONEditor(this.base[where].get(0), this.template);
 
             // Start scripts now
-            rpgData.data[where].on('ready', funcExecStart);
+            this.data[where].on('ready', funcExecStart);
           } else executeTinyStart(false);
         } catch (err) {
           // Error!

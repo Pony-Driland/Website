@@ -749,25 +749,25 @@ export default function roomManager(socket, io, appStorage) {
     // Update the room data
     if (isPrivate) {
       const privateRoomData = db.getTable('privateRoomData');
-      let privateData = await privateRoomData.get(roomId);
-      if (!privateData) privateData = {};
-      await privateRoomData.set(roomId, Object.assign(privateData, values));
+      await privateRoomData.set(roomId, { data: values });
+      const result = await privateRoomData.get(roomId);
       // Notify all users in the room about the updated data
       socket.emit('room-data-updated', {
         roomId,
         isPrivate: true,
-        values: await privateRoomData.get(roomId),
+        values: result?.data ?? {},
       });
     }
     // Nope
     else {
       const roomData = db.getTable('roomData');
-      await roomData.set(roomId, Object.assign(await roomData.get(roomId), values));
+      await roomData.set(roomId, { data: values });
       // Notify all users in the room about the updated data
+      const result = await roomData.get(roomId);
       socket.to(roomId).emit('room-data-updated', {
         roomId,
         isPrivate: false,
-        values: await roomData.get(roomId),
+        values: result?.data ?? {},
       });
     }
 
