@@ -276,9 +276,9 @@ class TinyClientIo extends EventEmitter {
       objType(result.values, 'object') &&
       typeof result.isPrivate === 'boolean'
     ) {
-      if (result.isPrivate) this.roomPrivateData = result.values;
-      else this.roomData = result.values;
-      return { isPrivate: result.isPrivate, values: result.values };
+      if (result.isPrivate) this.roomPrivateData = result.values?.data;
+      else this.roomData = result.values?.data;
+      return { isPrivate: result.isPrivate, values: result.values?.data };
     }
   }
 
@@ -678,7 +678,7 @@ class TinyClientIo extends EventEmitter {
 
   // Update room data
   updateRoomData(values = {}, isPrivate = false) {
-    return this.#socketEmitApi('update-room', {
+    return this.#socketEmitApi('update-room-data', {
       roomId: this.#cfg.roomId,
       isPrivate,
       values,
@@ -796,7 +796,7 @@ class TinyClientIo extends EventEmitter {
 
   install(tinyAiScript) {
     const client = this;
-    // window.tinyClient = client;
+    window.tinyClient = client;
     // Dice
     client.onDiceRoll((result) => {
       if (client.checkRoomId(result)) {
@@ -892,7 +892,8 @@ class TinyClientIo extends EventEmitter {
     client.onRoomData((result) => {
       if (client.checkRoomId(result)) {
         const data = client.setRoomData(result);
-        console.log('[socket-io] [room-data]', data);
+        if (data) client.emit('roomDataUpdates', data);
+        console.log('[socket-io] [room-json-data]', data);
       }
     });
 

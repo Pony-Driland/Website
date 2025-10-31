@@ -4,7 +4,7 @@ import clone from 'clone';
 import objHash from 'object-hash';
 import { saveAs } from 'file-saver';
 
-import { objType, countObj, toTitleCase } from 'tiny-essentials/basics';
+import { objType, countObj, toTitleCase, isJsonObject } from 'tiny-essentials/basics';
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
 
@@ -120,7 +120,6 @@ export const AiScriptStart = async () => {
   const rpgData = new RpgData();
 
   // Get RPG Template
-  rpgData.setTinyAi(tinyAi);
   contentEnabler.setRpgData(rpgData);
 
   // Load Models
@@ -673,8 +672,6 @@ export const AiScriptStart = async () => {
     }
     return false;
   };
-
-  rpgData.setFicConfigs(ficConfigs);
 
   // TITLE: Reset buttons
   const resetEntireData = (resetAll = false) => {
@@ -2707,14 +2704,67 @@ export const AiScriptStart = async () => {
         // Install scripts
         client.install(tinyAiScript);
 
-        const onlineRoomUpdates = (allowEdit, roomData) => {
+        // Install prompts
+        const onlineRoomUpdates = (allowEdit, roomData, updateTokens = true) => {
           if (!allowEdit) return;
-          tinyAi.setFirstDialogue(roomData.firstDialogue);
-          tinyAi.setPrompt(roomData.prompt, 0);
-          tinyAi.setSystemInstruction(roomData.systemInstruction, 0);
+
+          // First dialogue
+          if (roomData.firstDialogue !== tinyAi.getFirstDialogue())
+            tinyAi.setFirstDialogue(roomData.firstDialogue);
+
+          // Prompt
+          if (roomData.prompt !== tinyAi.getPrompt()) tinyAi.setPrompt(roomData.prompt, 0);
+
+          // System Instruction
+          if (roomData.systemInstruction !== tinyAi.getSystemInstruction())
+            tinyAi.setSystemInstruction(roomData.systemInstruction, 0);
+
+          // Update tokens
+          if (updateTokens) updateAiTokenCounterData();
         };
 
+        // Install Room data
+        const onlineRoomDataUpdates = (allowEdit, roomData, updateTokens = true) => {
+          if (!allowEdit) return;
+          const { public: tinyRpgData, private: tinyRpgPrivateData } = roomData;
+
+          // RPG Data
+          if (isJsonObject(tinyRpgData)) {
+            rpgData.data.public.setValue(rpgData.filter(tinyRpgData));
+            rpgData.setAllowAiUse(tinyRpgData.allowAiUse, 'public');
+            rpgData.setAllowAiSchemaUse(tinyRpgData.allowAiSchemaUse, 'public');
+          }
+
+          // Private Rpg Data
+          if (isJsonObject(tinyRpgPrivateData)) {
+            rpgData.data.private.setValue(rpgData.filter(tinyRpgPrivateData));
+            rpgData.setAllowAiUse(tinyRpgPrivateData.allowAiUse, 'private');
+            rpgData.setAllowAiSchemaUse(tinyRpgPrivateData.allowAiSchemaUse, 'private');
+          }
+
+          // Update tokens
+          if (updateTokens) updateAiTokenCounterData();
+        };
+
+        rpgData.on('save', (result) => {
+          const resultHash = objHash(result.data);
+
+          if (
+            (result.type === 'public' && resultHash !== objHash(tinyIo.client.getRoomData())) ||
+            (result.type === 'private' &&
+              resultHash !== objHash(tinyIo.client.getRoomPrivateData()))
+          ) {
+            tinyIo.client.updateRoomData(result.data, result.type === 'private');
+          }
+        });
+
         client.on('roomUpdates', (roomData) => onlineRoomUpdates(true, roomData));
+        client.on('roomDataUpdates', (roomData) => {
+          const finalData = {};
+          if (roomData.isPrivate) finalData.private = roomData.values;
+          else finalData.public = roomData.values;
+          onlineRoomDataUpdates(true, finalData);
+        });
 
         // Connected
         client.on('connect', (connectionId) => {
@@ -2764,12 +2814,31 @@ export const AiScriptStart = async () => {
 
         client.on('roomJoinned', (result) => {
           if (isFirstFicCache)
-            contentEnabler.once('ficCacheLoaded', (isFirstFicCache) =>
-              onlineRoomUpdates(isFirstFicCache, tinyIo.client.getRoom()),
+            contentEnabler.once('ficCacheLoaded', (isFirstFicCache) => {
+              onlineRoomUpdates(isFirstFicCache, tinyIo.client.getRoom(), false);
+              onlineRoomDataUpdates(
+                isFirstFicCache,
+                {
+                  public: tinyIo.client.getRoomData(),
+                  private: tinyIo.client.getRoomPrivateData(),
+                },
+                false,
+              );
+            });
+          else {
+            onlineRoomUpdates(true, tinyIo.client.getRoom(), false);
+            onlineRoomDataUpdates(
+              true,
+              {
+                public: tinyIo.client.getRoomData(),
+                private: tinyIo.client.getRoomPrivateData(),
+              },
+              false,
             );
-          else onlineRoomUpdates(true, tinyIo.client.getRoom());
+          }
 
           makeTempMessage(`You successfully entered the room **${result.roomId}**!`, rpgCfg.ip);
+          updateAiTokenCounterData();
           loaderScreen.stop();
         });
 

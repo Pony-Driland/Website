@@ -1801,6 +1801,11 @@
   resolved "https://registry.yarnpkg.com/@types/http-errors/-/http-errors-2.0.5.tgz#5b749ab2b16ba113423feb1a64a95dcd30398472"
   integrity sha512-r8Tayk8HJnX0FztbZN7oVqGccWgw98T/0neJphO91KkmOzug1KkofZURD4UaD5uH8AqcFLfdPErnBod0u71/qg==
 
+"@types/json-editor@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@types/json-editor/-/json-editor-0.0.10.tgz#fc596a6beb1a78150a0d4574ae8a8557367f936e"
+  integrity sha512-zVE3AH4z5+kCxOcxwORNNpsCtvf+PWDijUsnYpfpoWmk5AxPqiEPOYkszWosrkHcPaK5+StOv4iuJ/ygXlGeFQ==
+
 "@types/json-schema@*", "@types/json-schema@^7.0.15", "@types/json-schema@^7.0.9":
   version "7.0.15"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.15.tgz#596a1747233694d50f6ad8a7869fcb6f56cf5841"
