@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import { objType } from 'tiny-essentials';
+import { isJsonObject } from 'tiny-essentials/basics';
 import db from './sql';
 
 export const userSockets = new Map(); // Socket users
@@ -227,7 +227,7 @@ export const sendIncompleteDataInfo = (fn, code = 0) => {
 
 // Incomplete data
 export const noDataInfo = (data, fn, code = 0) => {
-  if (!objType(data, 'object')) {
+  if (!isJsonObject(data)) {
     fn({
       error: true,
       msg: `Your data does not respect the requirements for this request. Your request has been cancelled.`,

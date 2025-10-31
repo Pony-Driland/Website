@@ -1,4 +1,4 @@
-import { countObj, objType } from 'tiny-essentials';
+import { countObj, isJsonObject } from 'tiny-essentials/basics';
 import db from './sql';
 import {
   userMsgIsRateLimited,
@@ -209,7 +209,7 @@ export default function messageManager(socket, io) {
 
   // Dice data
   const getDiceData = (diceSkin = {}) =>
-    objType(diceSkin, 'object')
+    isJsonObject(diceSkin)
       ? {
           img:
             typeof diceSkin.img === 'string'
@@ -244,7 +244,7 @@ export default function messageManager(socket, io) {
     if (noDataInfo(data, fn)) return;
     const { diceSkin } = data;
     // Validate input data
-    if (!objType(diceSkin, 'object')) return sendIncompleteDataInfo(fn);
+    if (!isJsonObject(diceSkin)) return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);

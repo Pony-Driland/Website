@@ -20,7 +20,7 @@ import tinyLib, { alert } from '../files/tinyLib.mjs';
 import aiTemplates from './values/templates.mjs';
 import TinyClientIo from './socketClient.mjs';
 import RpgData from './software/rpgData.mjs';
-import { canUseJsStore, contentEnabler } from './software/enablerContent.mjs';
+import { usingOnlineRpg, contentEnabler } from './software/enablerContent.mjs';
 import ficConfigs from './values/ficConfigs.mjs';
 
 import './values/jsonTemplate.mjs';
@@ -63,7 +63,7 @@ export const AiScriptStart = async () => {
 
   // Can use backup
   const rpgCfg = contentEnabler.setRpgCfg();
-  const canUsejsStore = canUseJsStore();
+  const isOnlineRpg = usingOnlineRpg();
 
   // Try to prevent user browser from deactivating the page accidentally in browsers that have tab auto deactivator
   const aiTimeScriptUpdate = () => {
@@ -541,7 +541,7 @@ export const AiScriptStart = async () => {
   };
 
   const importFileSession = async (jsonData, forceLoad = false) => {
-    if (objType(jsonData, 'object') && jsonData.file && typeof jsonData.id === 'string') {
+    if (isJsonObject(jsonData) && jsonData.file && typeof jsonData.id === 'string') {
       const { file } = jsonData;
       let sessionId = jsonData.id;
       // Migration to sandbox mode
@@ -560,7 +560,7 @@ export const AiScriptStart = async () => {
       if (Array.isArray(file.customList)) {
         for (const i in file.customList) {
           if (
-            objType(file.customList[i], 'object') &&
+            isJsonObject(file.customList[i]) &&
             typeof file.customList[i].name === 'string' &&
             typeof file.customList[i].type === 'string'
           ) {
@@ -837,7 +837,7 @@ export const AiScriptStart = async () => {
   let autoSelectChatMode = null;
 
   // Insert menu
-  if (canUsejsStore) {
+  if (isOnlineRpg) {
     // Reset
     leftMenu.push(TinyHtml.createFrom('h5').setText('Reset'));
     leftMenu.push(...ficResets);
@@ -886,7 +886,7 @@ export const AiScriptStart = async () => {
   leftMenu.push(createButtonSidebar('fa-solid fa-map', 'Classic Map', openClassicMap));
 
   // TITLE: Online Mode options
-  if (!canUsejsStore) {
+  if (!isOnlineRpg) {
     leftMenu.push(TinyHtml.createFrom('h5').setText('Online'));
     leftMenu.push(createButtonSidebar('fas fa-users', 'Room settings', roomSettingsMenu));
     leftMenu.push(createButtonSidebar('fas fa-users', 'User manager', userButtonActions));
@@ -991,7 +991,7 @@ export const AiScriptStart = async () => {
   }
 
   // Import
-  if (canUsejsStore) {
+  if (isOnlineRpg) {
     leftMenu.push(TinyHtml.createFrom('h5').setText('Data'));
     leftMenu.push(...importItems);
 
@@ -1327,17 +1327,15 @@ export const AiScriptStart = async () => {
     if (history) {
       // RPG Data
       const canPublicRPG =
-        rpgData.allowAiUse.public &&
-        objType(history.rpgData, 'object') &&
-        countObj(history.rpgData) > 0;
+        rpgData.allowAiUse.public && isJsonObject(history.rpgData) && countObj(history.rpgData) > 0;
 
       const canPrivateRPG =
         rpgData.allowAiUse.private &&
-        objType(history.rpgPrivateData, 'object') &&
+        isJsonObject(history.rpgPrivateData) &&
         countObj(history.rpgPrivateData) > 0;
 
       const existsRpgSchema =
-        objType(rpgData.template.schema, 'object') && countObj(rpgData.template.schema) > 0;
+        isJsonObject(rpgData.template.schema) && countObj(rpgData.template.schema) > 0;
 
       const canPublicSchemaRPG = rpgData.allowAiSchemaUse.public && existsRpgSchema;
 
@@ -2329,7 +2327,7 @@ export const AiScriptStart = async () => {
   // Reset session
   const resetSession = (id, useReadOnly = false) =>
     new Promise((resolve, reject) => {
-      if (canUsejsStore) {
+      if (isOnlineRpg) {
         if (useReadOnly) {
           contentEnabler.dePromptButtons();
           contentEnabler.deMessageButtons();
@@ -2386,11 +2384,9 @@ export const AiScriptStart = async () => {
           firstDialogue: typeof tinyData.firstDialogue === 'string' ? tinyData.firstDialogue : null,
           systemInstruction:
             typeof tinyData.systemInstruction === 'string' ? tinyData.systemInstruction : null,
-          rpgSchema: objType(tinyData.rpgSchema, 'object') ? tinyData.rpgSchema : null,
-          rpgData: objType(tinyData.rpgData, 'object') ? tinyData.rpgData : null,
-          rpgPrivateData: objType(tinyData.rpgPrivateData, 'object')
-            ? tinyData.rpgPrivateData
-            : null,
+          rpgSchema: isJsonObject(tinyData.rpgSchema) ? tinyData.rpgSchema : null,
+          rpgData: isJsonObject(tinyData.rpgData) ? tinyData.rpgData : null,
+          rpgPrivateData: isJsonObject(tinyData.rpgPrivateData) ? tinyData.rpgPrivateData : null,
           maxOutputTokens:
             typeof tinyData.maxOutputTokens === 'number'
               ? tinyData.maxOutputTokens
@@ -2435,7 +2431,7 @@ export const AiScriptStart = async () => {
       };
 
       // TITLE: jsStore (offline)
-      if (canUsejsStore) {
+      if (isOnlineRpg) {
         if (saveSessionTimeout[sessionSelected]) clearTimeout(saveSessionTimeout[sessionSelected]);
         saveSessionTimeout[sessionSelected] = setTimeout(() => {
           const { roomSaveData, tokens, hash, customList } = getSessionData();
@@ -2532,13 +2528,13 @@ export const AiScriptStart = async () => {
 
   // Delete session
   tinyAi.on('stopDataId', (id) => {
-    if (canUsejsStore && id) resetSession(id).catch(console.error);
+    if (isOnlineRpg && id) resetSession(id).catch(console.error);
   });
 
   // Delete message
   tinyAi.on('deleteIndex', (index, id, sId) => {
     if (typeof id === 'number' || typeof id === 'string') {
-      if (canUsejsStore)
+      if (isOnlineRpg)
         connStore
           .remove({
             from: 'aiSessionsData',
@@ -2555,7 +2551,7 @@ export const AiScriptStart = async () => {
     const tokens = tinyAi.getMsgTokensByIndex(index);
     const hash = tinyAi.getMsgHashByIndex(index);
     if (typeof id === 'number' || typeof id === 'string') {
-      if (canUsejsStore)
+      if (isOnlineRpg)
         tinyInsertDb('aiSessionsData', {
           session: sId,
           msg_id: tinyMsgIdDb(sId, id),
@@ -2569,7 +2565,7 @@ export const AiScriptStart = async () => {
 
   // Add message
   tinyAi.on('addData', (newId, data, tokenData, hash, sId) => {
-    if (canUsejsStore)
+    if (isOnlineRpg)
       tinyInsertDb('aiSessionsData', {
         session: sId,
         msg_id: tinyMsgIdDb(sId, newId),
@@ -2663,7 +2659,7 @@ export const AiScriptStart = async () => {
   await rpgData.init().then(() => rpgData.finishOffCanvas(updateAiTokenCounterData));
 
   // TITLE: Rpg mode
-  if (!canUsejsStore) {
+  if (!isOnlineRpg) {
     if (autoSelectChatMode) autoSelectChatMode.trigger('click');
     tinyIo.client = new TinyClientIo(rpgCfg);
     const socket = tinyIo.client.getSocket();
@@ -2766,6 +2762,23 @@ export const AiScriptStart = async () => {
           onlineRoomDataUpdates(true, finalData);
         });
 
+        // User Update
+        const updateIsMod = (isMod, isAdmin = false) => {
+          console.log(`You're admin?`, isAdmin);
+          console.log(`You're mod?`, isMod);
+        };
+
+        client.on('roomModChange', (type, userId) => {
+          if (userId === client.getUserId() && (type === 'add' || type === 'remove')) {
+            updateIsMod(type === 'add');
+          }
+        });
+
+        client.on('roomEnter', () => {
+          const user = client.getUser();
+          updateIsMod(user.isMod, user.isAdmin);
+        });
+
         // Connected
         client.on('connect', (connectionId) => {
           // Prepare online status
@@ -2824,6 +2837,7 @@ export const AiScriptStart = async () => {
                 },
                 false,
               );
+              updateAiTokenCounterData();
             });
           else {
             onlineRoomUpdates(true, tinyIo.client.getRoom(), false);
@@ -2835,10 +2849,10 @@ export const AiScriptStart = async () => {
               },
               false,
             );
+            updateAiTokenCounterData();
           }
 
           makeTempMessage(`You successfully entered the room **${result.roomId}**!`, rpgCfg.ip);
-          updateAiTokenCounterData();
           loaderScreen.stop();
         });
 
@@ -2851,7 +2865,7 @@ export const AiScriptStart = async () => {
 
           // Message
           makeTempMessage(
-            `You are disconected${objType(details, 'object') && typeof details.description === 'string' ? ` (${details.description})` : ''}${typeof reason === 'string' ? `: ${reason}` : ''}`,
+            `You are disconected${isJsonObject(details) && typeof details.description === 'string' ? ` (${details.description})` : ''}${typeof reason === 'string' ? `: ${reason}` : ''}`,
             rpgCfg.ip,
           );
 
@@ -2887,7 +2901,7 @@ export const AiScriptStart = async () => {
           if (userId === client.getUserId()) client.disconnect();
         });
 
-        // Dice rool
+        // Dice roll
         client.on('diceRoll', () => {});
       }
 
@@ -2956,11 +2970,11 @@ export const AiScriptStart = async () => {
       // Insert hash
       file.hash.data.push(typeof item.hash === 'string' ? item.hash : null);
       // Insert tokens
-      const tokens = objType(item.tokens, 'object') ? item.tokens : { count: null };
+      const tokens = isJsonObject(item.tokens) ? item.tokens : { count: null };
       if (typeof tokens.count !== 'number') tokens.count = null;
       file.tokens.data.push(tokens);
       // Insert data
-      if (objType(item.data, 'object')) file.data.push(item.data);
+      if (isJsonObject(item.data)) file.data.push(item.data);
     });
 
     // Import data

@@ -15,6 +15,59 @@ import {
 } from './values';
 
 export default function userManager(socket, io) {
+  socket.on('user-is-mod', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
+    const { userId } = data;
+    // Validate values
+    if (typeof userId !== 'string') return sendIncompleteDataInfo(fn);
+
+    // Get user
+    const yourId = userSession.getUserId(socket);
+    if (!yourId) return accountNotDetected(fn); // Only logged-in users can use it
+    if (userIsRateLimited(socket, fn)) return;
+
+    // Check if user exists
+    const moderators = db.getTable('moderators');
+    const users = await moderators.search({
+      q: {
+        group: 'OR',
+        conditions: [
+          { column: 'userId', value: userId },
+          { column: 'userId', value: yourId },
+        ],
+      },
+    });
+
+    const userIsOwner = userId === getIniConfig('OWNER_ID');
+    const mod = users.find((item) => item.userId === userId);
+    if (!mod) return fn({ result: false, isOwner: userIsOwner });
+    const result = { result: true, isOwner: userIsOwner };
+
+    // Check if user is server owner or server mod
+    if (yourId === getIniConfig('OWNER_ID') || users.find((item) => item.userId === yourId)) {
+      result.date = mod.date;
+      result.reason = mod.reason;
+    }
+
+    // User detected successfully.
+    fn(result);
+  });
+
+  socket.on('user-is-owner', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
+    const { userId } = data;
+    // Validate values
+    if (typeof userId !== 'string') return sendIncompleteDataInfo(fn);
+
+    // Get user
+    const yourId = userSession.getUserId(socket);
+    if (!yourId) return accountNotDetected(fn); // Only logged-in users can use it
+    if (userIsRateLimited(socket, fn)) return;
+
+    // Check if user is owner
+    fn({ result: userId === getIniConfig('OWNER_ID') });
+  });
+
   socket.on('ban', async (data, fn) => {
     if (noDataInfo(data, fn)) return;
     const { userId, reason } = data;
