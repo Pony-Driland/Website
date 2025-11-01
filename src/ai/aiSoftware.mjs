@@ -862,20 +862,18 @@ export const AiScriptStart = async () => {
   const rpgContentButtons = [];
 
   // RPG Data
-  rpgContentButtons.push(
-    createButtonSidebar('fa-solid fa-note-sticky', 'View Data', null, false, {
-      toggle: 'offcanvas',
-      target: '#rpg_ai_base_1',
-    }),
-  );
+  const rpgPublicButton = createButtonSidebar('fa-solid fa-note-sticky', 'View Data', null, false, {
+    toggle: 'offcanvas',
+    target: '#rpg_ai_base_1',
+  });
+  rpgContentButtons.push(rpgPublicButton);
 
   // Private RPG Data
-  rpgContentButtons.push(
-    createButtonSidebar('fa-solid fa-book', 'View Private', null, false, {
-      toggle: 'offcanvas',
-      target: '#rpg_ai_base_2',
-    }),
-  );
+  const rpgPrivateButton = createButtonSidebar('fa-solid fa-book', 'View Private', null, false, {
+    toggle: 'offcanvas',
+    target: '#rpg_ai_base_2',
+  });
+  rpgContentButtons.push(rpgPrivateButton);
 
   // Insert RPG Data
   leftMenu.push(...rpgContentButtons);
@@ -2640,6 +2638,8 @@ export const AiScriptStart = async () => {
     contentEnabler.deModelSelector();
   }
 
+  if (tinyAiScript.noai) sidebarRight.addClass('d-none', 'd-md-block');
+
   // Welcome
   if (!tinyAiScript.mpClient) {
     makeTempMessage(
@@ -2699,6 +2699,19 @@ export const AiScriptStart = async () => {
 
         // Install scripts
         client.install(tinyAiScript);
+
+        const userStatus = {
+          isMod: false,
+          isAdmin: false,
+          room: {
+            isAdmin: false,
+            isMod: false,
+          },
+          server: {
+            isAdmin: false,
+            isMod: false,
+          },
+        };
 
         // Install prompts
         const onlineRoomUpdates = (allowEdit, roomData, updateTokens = true) => {
@@ -2764,8 +2777,20 @@ export const AiScriptStart = async () => {
 
         // User Update
         const updateIsMod = (isMod, isAdmin = false) => {
+          userStatus.room.isAdmin = isAdmin;
+          userStatus.room.isMod = isMod;
           container.toggleClass('is-room-admin', isAdmin);
           container.toggleClass('is-room-mod', isMod);
+
+          userStatus.isMod = userStatus.room.isMod || userStatus.server.isMod;
+          userStatus.isAdmin = userStatus.room.isAdmin || userStatus.server.isAdmin;
+
+          rpgPrivateButton.toggleClass('d-none', !userStatus.isAdmin);
+
+          if (!tinyAiScript.noai) {
+            sidebarRight.toggleClass('d-none', !userStatus.isAdmin);
+            sidebarRight.toggleClass('d-md-block', userStatus.isAdmin);
+          }
         };
 
         client.on('roomModChange', (type, userId) => {
@@ -2778,6 +2803,9 @@ export const AiScriptStart = async () => {
           const user = client.getUser();
           const room = client.getRoom();
           const userId = client.getUserId();
+
+          userStatus.server.isAdmin = user.isAdmin;
+          userStatus.server.isMod = user.isMod;
 
           container.toggleClass('is-admin', user.isAdmin);
           container.toggleClass('is-mod', user.isMod);
