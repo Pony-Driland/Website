@@ -113,14 +113,68 @@ export const openTinyDices = () => {
     }
 
     /**
-     * Insert Total
+     * Insert Total Value (Bootstrap 5 styled display)
      * @param {Object} config
-     * @param {number} config.total
-     * @param {{ result: number; total: number; total: number; tokens: string[]; }} config.results
+     * @param {number} config.total - Final total value.
+     * @param {{ result: number; tokens: string[]; }[]} config.results - Step results from applyDiceModifiers().
      */
     const insertTotal = ({ total, results }) => {
-      console.log(total, results);
-      $totalBase.setText(total);
+      $totalBase.empty();
+
+      // Create main container
+      const container = TinyHtml.createFrom('div');
+      container.addClass('card', 'shadow-sm', 'mt-3');
+
+      // Card body
+      const body = TinyHtml.createFrom('div');
+      body.addClass('card-body');
+      container.append(body);
+
+      // Total display
+      $totalBase.append(total);
+
+      // Table for steps
+      const table = TinyHtml.createFrom('table');
+      table.addClass('table', 'table-striped', 'table-bordered', 'align-middle');
+      body.append(table);
+
+      const thead = TinyHtml.createFrom('thead');
+      thead.setHtml(`
+    <tr class="text-center">
+      <th scope="col">Dice</th>
+      <th scope="col">Expression Tokens</th>
+      <th scope="col">Result</th>
+    </tr>
+  `);
+      table.append(thead);
+
+      const tbody = TinyHtml.createFrom('tbody');
+      table.append(tbody);
+
+      results.forEach((step, index) => {
+        const tr = TinyHtml.createFrom('tr');
+        tr.addClass('text-center');
+
+        const tdIndex = TinyHtml.createFrom('td');
+        tdIndex.setText(index + 1);
+
+        const tdTokens = TinyHtml.createFrom('td');
+        tdTokens.addClass('text-start');
+        tdTokens.setHtml(
+          step.tokens.map((t) => `<span class="badge bg-secondary mx-1">${t}</span>`).join(''),
+        );
+
+        const tdResult = TinyHtml.createFrom('td');
+        tdResult.setHtml(`<span class="fw-bold">${step.total}</span>`);
+
+        tr.append(tdIndex);
+        tr.append(tdTokens);
+        tr.append(tdResult);
+        tbody.append(tr);
+      });
+
+      // Insert into page
+      $totalBase.append(container);
     };
 
     // Offline

@@ -93,7 +93,7 @@ function tokenizeExpression(expr) {
  * @param {{ expression: string }[]} modifiers - Parsed modifiers from parseDiceString.
  * @returns {{
  *   final: number,
- *   steps: { replaced: string[], result: number }[]
+ *   steps: { tokens: string[], result: number }[]
  * }}
  *
  * @example
