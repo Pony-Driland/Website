@@ -873,6 +873,7 @@ export const AiScriptStart = async () => {
     toggle: 'offcanvas',
     target: '#rpg_ai_base_2',
   });
+  rpgPrivateButton.addClass('d-hide');
   rpgContentButtons.push(rpgPrivateButton);
 
   // Insert RPG Data
@@ -882,6 +883,9 @@ export const AiScriptStart = async () => {
 
   // Classic Map
   leftMenu.push(createButtonSidebar('fa-solid fa-map', 'Classic Map', openClassicMap));
+
+  /** @type {null|import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} */
+  let createAccountButton = null;
 
   // TITLE: Online Mode options
   if (!isOnlineRpg) {
@@ -985,7 +989,13 @@ export const AiScriptStart = async () => {
     );
 
     leftMenu.push(createButtonSidebar('fas fa-key', 'Change password', openChangePassword));
-    leftMenu.push(createButtonSidebar('fas fa-user-plus', 'Create account', openCreateAccount));
+    createAccountButton = createButtonSidebar(
+      'fas fa-user-plus',
+      'Create account',
+      openCreateAccount,
+    );
+    createAccountButton.addClass('d-hide');
+    leftMenu.push(createAccountButton);
   }
 
   // Import
@@ -2786,6 +2796,11 @@ export const AiScriptStart = async () => {
           userStatus.isAdmin = userStatus.room.isAdmin || userStatus.server.isAdmin;
 
           rpgPrivateButton.toggleClass('d-none', !userStatus.isAdmin);
+
+          createAccountButton?.toggleClass(
+            'd-none',
+            !userStatus.server.isAdmin && !client.getRateLimit()?.openRegistration,
+          );
 
           if (!tinyAiScript.noai) {
             sidebarRight.toggleClass('d-none', !userStatus.isAdmin);
