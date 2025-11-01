@@ -2741,6 +2741,21 @@ export const AiScriptStart = async () => {
           if (roomData.systemInstruction !== tinyAi.getSystemInstruction())
             tinyAi.setSystemInstruction(roomData.systemInstruction, 0);
 
+          // Ai Config
+          if (roomData.frequencyPenalty !== tinyAi.getFrequencyPenalty())
+            tinyAi.setFrequencyPenalty(roomData.frequencyPenalty);
+          if (roomData.presencePenalty !== tinyAi.getPresencePenalty())
+            tinyAi.setPresencePenalty(roomData.presencePenalty);
+
+          if (roomData.maxOutputTokens !== tinyAi.getMaxOutputTokens())
+            tinyAi.setMaxOutputTokens(roomData.maxOutputTokens);
+          if (roomData.model !== tinyAi.getModel()) tinyAi.setModel(roomData.model);
+
+          if (roomData.temperature !== tinyAi.getTemperature())
+            tinyAi.setTemperature(roomData.temperature);
+          if (roomData.topK !== tinyAi.getTopK()) tinyAi.setTopK(roomData.topK);
+          if (roomData.topP !== tinyAi.getTopP()) tinyAi.setTopP(roomData.topP);
+
           // Update tokens
           if (updateTokens) updateAiTokenCounterData();
         };
@@ -2804,11 +2819,6 @@ export const AiScriptStart = async () => {
             'd-none',
             !userStatus.server.isAdmin && !client.getRateLimit()?.openRegistration,
           );
-
-          if (!tinyAiScript.noai) {
-            sidebarRight.toggleClass('d-none', !userStatus.isAdmin);
-            sidebarRight.toggleClass('d-md-block', userStatus.isAdmin);
-          }
         };
 
         client.on('roomModChange', (type, userId) => {
