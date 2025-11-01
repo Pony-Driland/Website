@@ -290,7 +290,7 @@ export default function messageManager(socket, io) {
 
     // Dice skin
     const skin = getDiceData(diceSkin);
-    if (countObj(skin) < 1) {
+    if (!Object.values(skin).every((value) => typeof value === 'string')) {
       const usersDice = db.getTable('usersDice');
       const userDice = getDiceData(await usersDice.get(userId));
       if (userDice) for (const name in userDice) skin[name] = userDice[name];
@@ -321,7 +321,7 @@ export default function messageManager(socket, io) {
     }
 
     // Complete
-    socket.to(roomId).emit('roll-result', { results, total, skin, canZero });
+    socket.to(roomId).emit('roll-result', { results, total, skin, canZero, userId, roomId });
     fn({ success: true, results, total });
   });
 }

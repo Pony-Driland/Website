@@ -768,10 +768,12 @@ export const AiScriptStart = async () => {
       };
 
       if (canSandBox(ficConfigs.selected)) {
-        tinyModalData.addTemplates = {
-          data: aiTemplates.prompts,
-          title: 'Select a prompt to be added',
-        };
+        tinyModalData.addTemplates = isOfflineMode
+          ? {
+              data: aiTemplates.prompts,
+              title: 'Select a prompt to be added',
+            }
+          : undefined;
       } else tinyModalData.readOnly = true;
 
       tinyModalTextarea(tinyModalData, ['instructionText', 'text']);
@@ -786,10 +788,12 @@ export const AiScriptStart = async () => {
           size: 200,
           textarea: tinyAi.getPrompt(),
           submitName: 'Set Prompt',
-          addTemplates: {
-            data: aiTemplates.prompts,
-            title: 'Select a prompt to be added',
-          },
+          addTemplates: isOfflineMode
+            ? {
+                data: aiTemplates.prompts,
+                title: 'Select a prompt to be added',
+              }
+            : undefined,
           readOnly: tinyAiScript.mpClient,
           submitCall: (value) => {
             const oldValue = tinyAi.getPrompt();
@@ -812,10 +816,12 @@ export const AiScriptStart = async () => {
           size: 200,
           textarea: tinyAi.getFirstDialogue(),
           submitName: 'Set First Message',
-          addTemplates: {
-            data: aiTemplates.prompts,
-            title: 'Select a prompt to be added',
-          },
+          addTemplates: isOfflineMode
+            ? {
+                data: aiTemplates.prompts,
+                title: 'Select a prompt to be added',
+              }
+            : undefined,
           readOnly: tinyAiScript.mpClient,
           submitCall: (value) => {
             const oldValue = tinyAi.getFirstDialogue();
@@ -2970,7 +2976,9 @@ export const AiScriptStart = async () => {
         });
 
         // Dice roll
-        client.on('diceRoll', () => {});
+        client.on('diceRoll', () => {
+          
+        });
       }
 
       // No server

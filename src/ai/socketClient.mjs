@@ -839,7 +839,22 @@ class TinyClientIo extends EventEmitter {
     // Dice
     client.onDiceRoll((result) => {
       if (client.checkRoomId(result)) {
-        const data = { total: null, results: null };
+        const data = { total: null, results: null, userId: null, skin: null };
+
+        if (isJsonObject(result.skin)) {
+          data.skin = {
+            bg: typeof result.skin.bg === 'string' ? result.skin.bg : null,
+            border: typeof result.skin.border === 'string' ? result.skin.border : null,
+            img: typeof result.skin.img === 'string' ? result.skin.img : null,
+            selectionBg:
+              typeof result.skin.selectionBg === 'string' ? result.skin.selectionBg : null,
+            selectionText:
+              typeof result.skin.selectionText === 'string' ? result.skin.selectionText : null,
+            text: typeof result.skin.text === 'string' ? result.skin.text : null,
+          };
+        }
+
+        if (typeof result.userId === 'string') data.userId = result.userId;
         if (typeof result.total === 'number') data.total = result.total;
         if (Array.isArray(result.results)) {
           data.results = [];
