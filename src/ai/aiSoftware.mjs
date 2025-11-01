@@ -2764,8 +2764,8 @@ export const AiScriptStart = async () => {
 
         // User Update
         const updateIsMod = (isMod, isAdmin = false) => {
-          console.log(`You're admin?`, isAdmin);
-          console.log(`You're mod?`, isMod);
+          container.toggleClass('is-room-admin', isAdmin);
+          container.toggleClass('is-room-mod', isMod);
         };
 
         client.on('roomModChange', (type, userId) => {
@@ -2776,7 +2776,12 @@ export const AiScriptStart = async () => {
 
         client.on('roomEnter', () => {
           const user = client.getUser();
-          updateIsMod(user.isMod, user.isAdmin);
+          const room = client.getRoom();
+          const userId = client.getUserId();
+
+          container.toggleClass('is-admin', user.isAdmin);
+          container.toggleClass('is-mod', user.isMod);
+          updateIsMod(client.getMods().indexOf(userId) > -1, room.ownerId === userId);
         });
 
         // Connected
