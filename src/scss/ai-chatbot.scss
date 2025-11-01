@@ -139,4 +139,13 @@ body.is-using-ai {
   #ai-mode-list .btn.selected {
     color: #e36b00;
   }
+
+  // Online
+  #ai-element-root {
+    .is-admin,
+    .is-mod,
+    .is-room-admin,
+    .is-room-mod {
+    }
+  }
 }
