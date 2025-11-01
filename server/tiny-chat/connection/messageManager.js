@@ -356,7 +356,6 @@ export default function messageManager(socket, io) {
       canZero,
       userId,
       roomId,
-      modifiers: finalMods,
     });
 
     fn({ success: true, results, total });

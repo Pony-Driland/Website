@@ -839,7 +839,7 @@ class TinyClientIo extends EventEmitter {
     // Dice
     client.onDiceRoll((result) => {
       if (client.checkRoomId(result)) {
-        const data = { total: null, results: null, userId: null, skin: null, tokens: [] };
+        const data = { total: null, results: null, userId: null, skin: null };
 
         // Skin
         if (isJsonObject(result.skin)) {
@@ -876,14 +876,6 @@ class TinyClientIo extends EventEmitter {
                 total: result.results[index].total,
                 tokens: result.results[index].tokens,
               });
-        }
-
-        // Modifiers
-        if (Array.isArray(result.modifiers)) {
-          data.modifiers = result.modifiers.map((item) => ({
-            index: typeof item.index === 'number' ? item.index : -1,
-            expression: typeof item.expression === 'string' ? item.expression : '',
-          }));
         }
 
         // Complete
