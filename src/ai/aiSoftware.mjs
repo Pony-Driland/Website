@@ -20,7 +20,7 @@ import tinyLib, { alert } from '../files/tinyLib.mjs';
 import aiTemplates from './values/templates.mjs';
 import TinyClientIo from './socketClient.mjs';
 import RpgData from './software/rpgData.mjs';
-import { usingOnlineRpg, contentEnabler } from './software/enablerContent.mjs';
+import { noOnlineMode, contentEnabler } from './software/enablerContent.mjs';
 import ficConfigs from './values/ficConfigs.mjs';
 
 import './values/jsonTemplate.mjs';
@@ -63,7 +63,7 @@ export const AiScriptStart = async () => {
 
   // Can use backup
   const rpgCfg = contentEnabler.setRpgCfg();
-  const isOnlineRpg = usingOnlineRpg();
+  const isOfflineMode = noOnlineMode();
 
   // Try to prevent user browser from deactivating the page accidentally in browsers that have tab auto deactivator
   const aiTimeScriptUpdate = () => {
@@ -423,13 +423,13 @@ export const AiScriptStart = async () => {
           if (oldFileHash === newFileHash) tinyAi.setFileData(null, null, null, fileTokens || 0);
 
           // Clear data
-          clearMessages();
+          if (isOfflineMode) clearMessages();
           if (sessionEnabled) {
             contentEnabler.enBase();
             contentEnabler.enMessageButtons();
             contentEnabler.enRpgContent();
           }
-          makeTempMessage(introduction, 'Introduction');
+          if (isOfflineMode) makeTempMessage(introduction, 'Introduction');
           const history = tinyAi.getData();
 
           // Restore textarea
@@ -641,7 +641,7 @@ export const AiScriptStart = async () => {
 
       if (forceLoad) {
         // Clear messages
-        clearMessages();
+        if (isOfflineMode) clearMessages();
         contentEnabler.enBase();
         contentEnabler.enMessageButtons();
       }
@@ -837,7 +837,7 @@ export const AiScriptStart = async () => {
   let autoSelectChatMode = null;
 
   // Insert menu
-  if (isOnlineRpg) {
+  if (isOfflineMode) {
     // Reset
     leftMenu.push(TinyHtml.createFrom('h5').setText('Reset'));
     leftMenu.push(...ficResets);
@@ -888,7 +888,7 @@ export const AiScriptStart = async () => {
   let createAccountButton = null;
 
   // TITLE: Online Mode options
-  if (!isOnlineRpg) {
+  if (!isOfflineMode) {
     leftMenu.push(TinyHtml.createFrom('h5').setText('Online'));
     leftMenu.push(createButtonSidebar('fas fa-users', 'Room settings', roomSettingsMenu));
     leftMenu.push(createButtonSidebar('fas fa-users', 'User manager', userButtonActions));
@@ -999,7 +999,7 @@ export const AiScriptStart = async () => {
   }
 
   // Import
-  if (isOnlineRpg) {
+  if (isOfflineMode) {
     leftMenu.push(TinyHtml.createFrom('h5').setText('Data'));
     leftMenu.push(...importItems);
 
@@ -2335,7 +2335,7 @@ export const AiScriptStart = async () => {
   // Reset session
   const resetSession = (id, useReadOnly = false) =>
     new Promise((resolve, reject) => {
-      if (isOnlineRpg) {
+      if (isOfflineMode) {
         if (useReadOnly) {
           contentEnabler.dePromptButtons();
           contentEnabler.deMessageButtons();
@@ -2439,7 +2439,7 @@ export const AiScriptStart = async () => {
       };
 
       // TITLE: jsStore (offline)
-      if (isOnlineRpg) {
+      if (isOfflineMode) {
         if (saveSessionTimeout[sessionSelected]) clearTimeout(saveSessionTimeout[sessionSelected]);
         saveSessionTimeout[sessionSelected] = setTimeout(() => {
           const { roomSaveData, tokens, hash, customList } = getSessionData();
@@ -2536,13 +2536,13 @@ export const AiScriptStart = async () => {
 
   // Delete session
   tinyAi.on('stopDataId', (id) => {
-    if (isOnlineRpg && id) resetSession(id).catch(console.error);
+    if (isOfflineMode && id) resetSession(id).catch(console.error);
   });
 
   // Delete message
   tinyAi.on('deleteIndex', (index, id, sId) => {
     if (typeof id === 'number' || typeof id === 'string') {
-      if (isOnlineRpg)
+      if (isOfflineMode)
         connStore
           .remove({
             from: 'aiSessionsData',
@@ -2559,7 +2559,7 @@ export const AiScriptStart = async () => {
     const tokens = tinyAi.getMsgTokensByIndex(index);
     const hash = tinyAi.getMsgHashByIndex(index);
     if (typeof id === 'number' || typeof id === 'string') {
-      if (isOnlineRpg)
+      if (isOfflineMode)
         tinyInsertDb('aiSessionsData', {
           session: sId,
           msg_id: tinyMsgIdDb(sId, id),
@@ -2573,7 +2573,7 @@ export const AiScriptStart = async () => {
 
   // Add message
   tinyAi.on('addData', (newId, data, tokenData, hash, sId) => {
-    if (isOnlineRpg)
+    if (isOfflineMode)
       tinyInsertDb('aiSessionsData', {
         session: sId,
         msg_id: tinyMsgIdDb(sId, newId),
@@ -2655,15 +2655,17 @@ export const AiScriptStart = async () => {
 
   // Welcome
   if (!tinyAiScript.mpClient) {
-    makeTempMessage(
-      `Welcome to Pony Driland's chatbot! This is a chatbot developed exclusively to interact with the content of fic`,
-      'Website',
-    );
-    makeTempMessage(
-      'This means that whenever the story is updated, I am automatically updated for you to always view the answers of the latest content, because the algorithm of this website converts the content of fic to prompts.' +
-        '\n\nChoose something to be done here so we can start our conversation! The chat will not work until you choose an activity to do here',
-      'Website',
-    );
+    if (isOfflineMode) {
+      makeTempMessage(
+        `Welcome to Pony Driland's chatbot! This is a chatbot developed exclusively to interact with the content of fic`,
+        'Website',
+      );
+      makeTempMessage(
+        'This means that whenever the story is updated, I am automatically updated for you to always view the answers of the latest content, because the algorithm of this website converts the content of fic to prompts.' +
+          '\n\nChoose something to be done here so we can start our conversation! The chat will not work until you choose an activity to do here',
+        'Website',
+      );
+    }
     updateModelList();
   }
 
@@ -2672,7 +2674,7 @@ export const AiScriptStart = async () => {
   await rpgData.init().then(() => rpgData.finishOffCanvas(updateAiTokenCounterData));
 
   // TITLE: Rpg mode
-  if (!isOnlineRpg) {
+  if (!isOfflineMode) {
     if (autoSelectChatMode) autoSelectChatMode.trigger('click');
     tinyIo.client = new TinyClientIo(rpgCfg);
     const socket = tinyIo.client.getSocket();
@@ -2819,6 +2821,11 @@ export const AiScriptStart = async () => {
             'd-none',
             !userStatus.server.isAdmin && !client.getRateLimit()?.openRegistration,
           );
+
+          if (!tinyAiScript.noai) {
+            sidebarRight.toggleClass('d-none', !userStatus.isAdmin);
+            sidebarRight.toggleClass('d-md-block', userStatus.isAdmin);
+          }
         };
 
         client.on('roomModChange', (type, userId) => {
