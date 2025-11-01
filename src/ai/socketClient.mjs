@@ -804,11 +804,12 @@ class TinyClientIo extends EventEmitter {
   }
 
   // Roll Dice
-  rollDice(dice = [], canZero = false) {
+  rollDice(dice = [], canZero = false, modifiers = {}) {
     return this.#socketEmitApi('roll-dice', {
       roomId: this.#cfg.roomId,
       canZero,
       dice,
+      modifiers,
     });
   }
 
@@ -835,12 +836,12 @@ class TinyClientIo extends EventEmitter {
 
   install(tinyAiScript) {
     const client = this;
-    window.tinyClient = client;
     // Dice
     client.onDiceRoll((result) => {
       if (client.checkRoomId(result)) {
-        const data = { total: null, results: null, userId: null, skin: null };
+        const data = { total: null, results: null, userId: null, skin: null, tokens: [] };
 
+        // Skin
         if (isJsonObject(result.skin)) {
           data.skin = {
             bg: typeof result.skin.bg === 'string' ? result.skin.bg : null,
@@ -854,21 +855,38 @@ class TinyClientIo extends EventEmitter {
           };
         }
 
+        // UserId
         if (typeof result.userId === 'string') data.userId = result.userId;
+
+        // Results
         if (typeof result.total === 'number') data.total = result.total;
         if (Array.isArray(result.results)) {
           data.results = [];
           for (const index in result.results)
             if (
               typeof result.results[index].sides === 'number' &&
-              typeof result.results[index].roll === 'number'
+              typeof result.results[index].roll === 'number' &&
+              typeof result.results[index].total === 'number' &&
+              Array.isArray(result.results[index].tokens) &&
+              result.results[index].tokens.every((item) => typeof item === 'string')
             )
               data.results.push({
                 sides: result.results[index].sides,
                 roll: result.results[index].roll,
+                total: result.results[index].total,
+                tokens: result.results[index].tokens,
               });
         }
 
+        // Modifiers
+        if (Array.isArray(result.modifiers)) {
+          data.modifiers = result.modifiers.map((item) => ({
+            index: typeof item.index === 'number' ? item.index : -1,
+            expression: typeof item.expression === 'string' ? item.expression : '',
+          }));
+        }
+
+        // Complete
         client.emit('diceRoll', data);
         console.log('[socket-io] [dice]', data);
       }
