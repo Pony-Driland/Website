@@ -157,6 +157,8 @@ Rolls one or more virtual dice in a chat room. Users can configure whether dice 
   ],
   "canZero": false,
   "total": 11,
+  "userId": "string",
+  "roomId": "string",
   "skin": {
     "img": "string",
     "border": "string",
