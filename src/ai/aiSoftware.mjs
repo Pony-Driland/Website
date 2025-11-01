@@ -851,7 +851,7 @@ export const AiScriptStart = async () => {
     autoSelectChatMode = ficTemplates.find((item) => item.data('tiny-fic-id') === 'noData') ?? null;
 
   // Settings
-  leftMenu.push(TinyHtml.createFrom('h5').setText('Settings'));
+  if (!tinyAiScript.noai) leftMenu.push(TinyHtml.createFrom('h5').setText('Settings'));
   leftMenu.push(...ficPromptItems);
 
   // TITLE: RPG
@@ -2648,7 +2648,10 @@ export const AiScriptStart = async () => {
     contentEnabler.deModelSelector();
   }
 
-  if (tinyAiScript.noai) sidebarRight.addClass('d-none', 'd-md-block');
+  if (tinyAiScript.noai) {
+    sidebarRight.removeClass('d-md-block').addClass('d-none');
+    ficPromptItems.forEach((button) => button.addClass('d-none'));
+  }
 
   // Welcome
   if (!tinyAiScript.mpClient) {
