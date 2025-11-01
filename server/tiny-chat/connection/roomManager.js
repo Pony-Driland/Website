@@ -108,10 +108,10 @@ export default function roomManager(socket, io, appStorage) {
       users,
       history: historyData || [],
       mods: (await roomModerators.getAll()) || [],
-      roomData: (await roomData.get(roomId)) || {},
+      roomData: (await roomData.get(roomId))?.data || {},
       roomPrivateData:
         userId === room.ownerId || userId === getIniConfig('OWNER_ID')
-          ? (await privateRoomData.get(roomId)) || {}
+          ? (await privateRoomData.get(roomId))?.data || {}
           : {},
       data: room || {},
     });

@@ -330,9 +330,9 @@ class TinyClientIo extends EventEmitter {
       isJsonObject(result.values) &&
       typeof result.isPrivate === 'boolean'
     ) {
-      if (result.isPrivate) this.roomPrivateData = result.values?.data;
-      else this.roomData = result.values?.data;
-      return { isPrivate: result.isPrivate, values: result.values?.data };
+      if (result.isPrivate) this.roomPrivateData = result.values;
+      else this.roomData = result.values;
+      return { isPrivate: result.isPrivate, values: result.values };
     }
   }
 
