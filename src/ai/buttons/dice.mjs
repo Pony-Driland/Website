@@ -7,6 +7,7 @@ import { tinyIo } from '../software/base.mjs';
 import { isOnline } from '../software/enablerContent.mjs';
 import { tinyLs } from '../../important.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
+import { applyDiceModifiers, parseDiceString } from './diceUtils.mjs';
 
 export const openTinyDices = () => {
   // Root
@@ -100,7 +101,10 @@ export const openTinyDices = () => {
   $rollButton.on('click', async () => {
     // Get values
     const perDieRaw = configs.perDieValues.val().trim();
-    const perDie = perDieRaw.length > 0 ? perDieRaw : null;
+    const parsedPerDie = parseDiceString(perDieRaw);
+    const perDieRaw2 = parsedPerDie.sides.map((value) => String(value)).join(', ');
+    const perDie = perDieRaw2.length > 0 ? perDieRaw2 : null;
+
     const canZero = $allow0input.is(':checked');
     $totalBase.setText(0);
     if (updateTotalBase) {
@@ -108,13 +112,43 @@ export const openTinyDices = () => {
       updateTotalBase = null;
     }
 
+    /**
+     * Insert Total
+     * @param {Object} config
+     * @param {number} config.total
+     * @param {{ result: number; total: number; total: number; tokens: string[]; }} config.results
+     */
+    const insertTotal = ({ total, results }) => {
+      console.log(total, results);
+      $totalBase.setText(total);
+    };
+
     // Offline
     if (!tinyCfg.isOnline) {
       const result = dice.roll(perDie, canZero);
-      let total = 0;
-      for (const item of result) total += item.result;
+      const data = { total: 0, results: [] };
+      for (const index in result) {
+        const item = result[index];
+        const tinyItem = {
+          result: item.result,
+          sides: parsedPerDie.sides[index],
+          total: item.result,
+          tokens: [String(item.result)],
+        };
+        const mod = parsedPerDie.modifiers.find((ti) => ti.index === Number(index));
+
+        if (mod) {
+          const modResult = applyDiceModifiers(item.result, [mod]);
+          tinyItem.total = modResult.final;
+          tinyItem.tokens = modResult.steps[0].tokens;
+        }
+
+        data.results.push(tinyItem);
+        data.total += tinyItem.total;
+      }
+
       updateTotalBase = setTimeout(() => {
-        $totalBase.setText(total);
+        insertTotal(data);
         updateTotalBase = null;
       }, 2000);
     }
@@ -127,7 +161,7 @@ export const openTinyDices = () => {
 
       // Get result
       $rollButton.addProp('disabled').addClass('disabled');
-      const result = await tinyIo.client.rollDice(sides, canZero);
+      const result = await tinyIo.client.rollDice(sides, canZero, parsedPerDie.modifiers);
       $rollButton.removeProp('disabled').removeClass('disabled');
 
       // Proccess Results
@@ -135,19 +169,29 @@ export const openTinyDices = () => {
         dice.clearDiceArea();
         $totalBase.removeClass('text-danger');
         if (Array.isArray(result.results) && typeof result.total === 'number') {
+          const data = { total: result.total, results: [] };
+
           for (const index in result.results) {
             if (
               typeof result.results[index].sides === 'number' &&
               typeof result.results[index].roll === 'number'
-            )
+            ) {
               dice.insertDiceElement(
                 result.results[index].roll,
                 result.results[index].sides,
                 canZero,
               );
+
+              data.results.push({
+                result: result.results[index].roll,
+                sides: result.results[index].sides,
+                total: result.results[index].total,
+                tokens: result.results[index].tokens,
+              });
+            }
           }
           updateTotalBase = setTimeout(() => {
-            $totalBase.setText(result.total);
+            insertTotal(data);
             updateTotalBase = null;
           }, 2000);
         }
