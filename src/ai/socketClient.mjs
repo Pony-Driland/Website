@@ -835,11 +835,10 @@ class TinyClientIo extends EventEmitter {
   }
 
   install(tinyAiScript) {
-    const client = this;
     // Dice
-    client.onDiceRoll((result) => {
-      if (client.checkRoomId(result)) {
-        const data = { total: null, results: null, userId: null, skin: null };
+    this.onDiceRoll((result) => {
+      if (this.checkRoomId(result)) {
+        const data = { total: null, results: null, userId: null, canZero: null, skin: null };
 
         // Skin
         if (isJsonObject(result.skin)) {
@@ -857,6 +856,7 @@ class TinyClientIo extends EventEmitter {
 
         // UserId
         if (typeof result.userId === 'string') data.userId = result.userId;
+        if (typeof result.canZero === 'boolean') data.canZero = result.canZero;
 
         // Results
         if (typeof result.total === 'number') data.total = result.total;
@@ -879,186 +879,186 @@ class TinyClientIo extends EventEmitter {
         }
 
         // Complete
-        client.emit('diceRoll', data);
+        this.emit('diceRoll', data);
         console.log('[socket-io] [dice]', data);
       }
     });
 
     // Get user updated
-    client.onUserUpdated((result) => {
+    this.onUserUpdated((result) => {
       if (
-        client.checkRoomId(result) &&
+        this.checkRoomId(result) &&
         isJsonObject(result.data) &&
         typeof result.userId === 'string' &&
         typeof result.data.nickname === 'string'
       ) {
-        const data = client.editUser({ userId: result.userId, nickname: result.data.nickname });
-        if (result.userId === client.getUserId()) this.user.nickname = result.data.nickname;
+        const data = this.editUser({ userId: result.userId, nickname: result.data.nickname });
+        if (result.userId === this.getUserId()) this.user.nickname = result.data.nickname;
 
-        if (data) client.emit('userUpdated', data);
+        if (data) this.emit('userUpdated', data);
         console.log('[socket-io] [user-data]', result);
       }
     });
 
     // Get ratelimit data
-    client.onGetRateLimit((result) => {
-      client.setRateLimit(result);
-      client.emit('getRateLimit', client.getRateLimit());
-      console.log('[socket-io] [ratelimit]', client.getRateLimit());
+    this.onGetRateLimit((result) => {
+      this.setRateLimit(result);
+      this.emit('getRateLimit', this.getRateLimit());
+      console.log('[socket-io] [ratelimit]', this.getRateLimit());
     });
 
     // Room updates
-    client.onRoomUpdates((result) => {
-      if (client.checkRoomId(result) && isJsonObject(result.data)) {
-        const data = client.setRoom(result.data);
-        if (data) client.emit('roomUpdates', data);
-        console.log('[socket-io] [room]', client.getRoom());
+    this.onRoomUpdates((result) => {
+      if (this.checkRoomId(result) && isJsonObject(result.data)) {
+        const data = this.setRoom(result.data);
+        if (data) this.emit('roomUpdates', data);
+        console.log('[socket-io] [room]', this.getRoom());
       }
     });
 
     // User ban
-    client.onRoomBan((result) => {
-      if (client.checkRoomId(result)) {
+    this.onRoomBan((result) => {
+      if (this.checkRoomId(result)) {
         const data = typeof result.userId === 'string' ? result.userId : null;
-        client.emit('userBanned', data);
+        this.emit('userBanned', data);
         console.log('[socket-io] [room-ban]', data);
       }
     });
 
     // User kick
-    client.onRoomKick((result) => {
-      if (client.checkRoomId(result)) {
+    this.onRoomKick((result) => {
+      if (this.checkRoomId(result)) {
         const data = typeof result.userId === 'string' ? result.userId : null;
-        client.emit('userKicked', data);
+        this.emit('userKicked', data);
         console.log('[socket-io] [room-kick]', data);
       }
     });
 
     // User left
-    client.onUserLeft((result) => {
-      if (client.checkRoomId(result)) {
-        const data = client.removeUser(result);
-        if (data) client.emit('userLeft', data);
-        console.log('[socket-io] [room-users]', client.getUsers());
+    this.onUserLeft((result) => {
+      if (this.checkRoomId(result)) {
+        const data = this.removeUser(result);
+        if (data) this.emit('userLeft', data);
+        console.log('[socket-io] [room-users]', this.getUsers());
       }
     });
 
     // User join
-    client.onUserJoin((result) => {
-      if (client.checkRoomId(result)) {
-        const data = client.addUser(result);
-        if (data) client.emit('userJoined', data);
-        console.log('[socket-io] [room-users]', client.getUsers());
+    this.onUserJoin((result) => {
+      if (this.checkRoomId(result)) {
+        const data = this.addUser(result);
+        if (data) this.emit('userJoined', data);
+        console.log('[socket-io] [room-users]', this.getUsers());
       }
     });
 
     // Room data
-    client.onRoomData((result) => {
-      if (client.checkRoomId(result)) {
-        const data = client.setRoomData(result);
-        if (data) client.emit('roomDataUpdates', data);
+    this.onRoomData((result) => {
+      if (this.checkRoomId(result)) {
+        const data = this.setRoomData(result);
+        if (data) this.emit('roomDataUpdates', data);
         console.log('[socket-io] [room-json-data]', data);
       }
     });
 
     // New message
-    client.onNewMessage((result) => {
-      if (client.checkRoomId(result)) {
-        client.emit('newMessage', data);
+    this.onNewMessage((result) => {
+      if (this.checkRoomId(result)) {
+        this.emit('newMessage', data);
         console.log('[socket-io] [message-add]');
       }
     });
 
     // Message delete
-    client.onMessageDelete((result) => {
-      if (client.checkRoomId(result)) {
-        client.emit('messageDelete', data);
+    this.onMessageDelete((result) => {
+      if (this.checkRoomId(result)) {
+        this.emit('messageDelete', data);
         console.log('[socket-io] [message-delete]');
       }
     });
 
     // Message edit
-    client.onMessageEdit((result) => {
-      if (client.checkRoomId(result)) {
-        client.emit('messageEdit', data);
+    this.onMessageEdit((result) => {
+      if (this.checkRoomId(result)) {
+        this.emit('messageEdit', data);
         console.log('[socket-io] [message-edit]');
       }
     });
 
     // Get room data
-    client.onRoomEnter((result) => {
-      if (client.checkRoomId(result)) {
-        if (!client.setRoomBase(result)) client.emit('roomEntered', false);
-        else client.emit('roomEntered', true);
+    this.onRoomEnter((result) => {
+      if (this.checkRoomId(result)) {
+        if (!this.setRoomBase(result)) this.emit('roomEntered', false);
+        else this.emit('roomEntered', true);
 
-        client.emit('roomEnter');
+        this.emit('roomEnter');
         console.log('[socket-io] [room-data]', {
-          room: client.getRoom(),
-          users: client.getUsers(),
-          mods: client.getMods(),
-          roomData: client.getRoomData(),
-          roomPrivateData: client.getRoomPrivateData(),
+          room: this.getRoom(),
+          users: this.getUsers(),
+          mods: this.getMods(),
+          roomData: this.getRoomData(),
+          roomPrivateData: this.getRoomPrivateData(),
         });
       }
     });
 
     // Mod list update
-    client.onRoomModChange((result) => {
-      if (client.checkRoomId(result)) {
+    this.onRoomModChange((result) => {
+      if (this.checkRoomId(result)) {
         if (Array.isArray(result.result)) {
           for (const index in result.result) {
             if (typeof result.result[index] === 'string') {
               if (result.type === 'add') {
-                client.addModUser(result.result[index]);
-                client.emit('roomModChange', 'add', result.result[index]);
+                this.addModUser(result.result[index]);
+                this.emit('roomModChange', 'add', result.result[index]);
               }
               if (result.type === 'remove') {
-                client.removeModUser(result.result[index]);
-                client.emit('roomModChange', 'remove', result.result[index]);
+                this.removeModUser(result.result[index]);
+                this.emit('roomModChange', 'remove', result.result[index]);
               }
             }
           }
         }
 
-        console.log('[socket-io] [mod-data]', client.getMods());
+        console.log('[socket-io] [mod-data]', this.getMods());
       }
     });
 
     // Connect
-    client.onConnect(() => {
-      client.resetData();
-      client.emit('connect', client.getSocket()?.id);
+    this.onConnect(() => {
+      this.resetData();
+      this.emit('connect', this.getSocket()?.id);
       // Login
-      client.login().then((result) => {
+      this.login().then((result) => {
         // Check room
-        client.emit('join', result);
+        this.emit('join', result);
         if (!result.error) {
           // Insert data
-          client.setUser(result);
-          console.log('[socket-io] [user-data]', client.getUser());
-          console.log('[socket-io] [dice]', client.getDice());
-          console.log('[socket-io] [ratelimit]', client.getRateLimit());
-          client.existsRoom().then((result2) => {
+          this.setUser(result);
+          console.log('[socket-io] [user-data]', this.getUser());
+          console.log('[socket-io] [dice]', this.getDice());
+          console.log('[socket-io] [ratelimit]', this.getRateLimit());
+          this.existsRoom().then((result2) => {
             // Join room
             const joinRoom = () =>
-              client.joinRoom().then((result4) => {
+              this.joinRoom().then((result4) => {
                 // Error
-                if (result4.error) client.emit('roomError', result4);
+                if (result4.error) this.emit('roomError', result4);
                 // Complete
-                else client.emit('roomJoinned', result4);
+                else this.emit('roomJoinned', result4);
               });
 
             // Error
-            if (result2.error) client.emit('roomError', result2);
+            if (result2.error) this.emit('roomError', result2);
             // Exists?
             else if (result2.exists) joinRoom();
             else {
               if (!tinyAiScript.mpClient)
-                client.createRoom().then((result3) => {
+                this.createRoom().then((result3) => {
                   if (!result3.error) joinRoom();
-                  else client.emit('roomError', result3);
+                  else this.emit('roomError', result3);
                 });
-              else client.emit('roomNotFound', result2);
+              else this.emit('roomNotFound', result2);
             }
           });
         }
@@ -1066,8 +1066,8 @@ class TinyClientIo extends EventEmitter {
     });
 
     // Disconnect
-    client.onDisconnect((reason, details) => {
-      client.emit('disconnect', reason, details);
+    this.onDisconnect((reason, details) => {
+      this.emit('disconnect', reason, details);
     });
   }
 }

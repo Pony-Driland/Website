@@ -13,7 +13,7 @@ import { applyDiceModifiers, parseDiceString } from './diceUtils.mjs';
  * @param {import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} $totalBase
  * @returns {NodeJS.Timeout}
  */
-export const createDiceResults = ($totalBase, data, callback) => {
+export const createDiceResults = ($totalBase, data, callback = () => undefined) => {
   /**
    * Insert Total Value (Bootstrap 5 styled display)
    * @param {Object} config
@@ -98,6 +98,66 @@ export const createDiceResults = ($totalBase, data, callback) => {
     insertTotal(data);
     callback();
   }, 2000);
+};
+
+/**
+ * Generate a random ID.
+ * @param {number} [length=8] - Length of the generated ID.
+ * @returns {string} Randomly generated ID.
+ */
+function generateRandomId(length = 8) {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let id = '';
+  for (let i = 0; i < length; i++) {
+    id += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return id;
+}
+
+/**
+ * @param {Object} data
+ * @param {number} data.total
+ * @param {string} data.userId
+ * @param {{ sides: number; roll: number; tokens: string[]; total: number; canZero: boolean; }[]} data.results
+ * @param {{ bg: string; border: string; img: string; selectionBg: string; selectionText: string; text: string; }} data.skin
+ */
+export const openDiceSpecialModal = (data) => {
+  const $root = TinyHtml.createFrom('div');
+  const $diceContainer = TinyHtml.createFrom('div');
+  const dice = new TinyDices($diceContainer.get(0));
+
+  if (isJsonObject(data.skin)) {
+    if (data.skin.img) dice.bgImg = data.skin.img;
+    if (data.skin.bg) dice.bgSkin = data.skin.bg;
+    if (data.skin.selectionBg) dice.selectionBgSkin = data.skin.selectionBg;
+    if (data.skin.selectionText) dice.selectionTextSkin = data.skin.selectionText;
+    if (data.skin.border) dice.borderSkin = data.skin.border;
+    if (data.skin.text) dice.textSkin = data.skin.text;
+  }
+
+  const $totalBase = TinyHtml.createFrom('center', { class: 'fw-bold mt-3' }).setText(0);
+
+  for (const item of data.results) {
+    dice.insertDiceElement(item.roll, item.sides, data.canZero);
+  }
+
+  const user = tinyIo.client.getUsers()[data.userId] ?? null;
+
+  $root.append(
+    TinyHtml.createFrom('center', { class: 'fw-bold h3 mb-2' }).setText(user?.nickname ?? data.userId),
+    $diceContainer, 
+    $totalBase
+  );
+
+  createDiceResults($totalBase, data);
+
+  // Start modal
+  tinyLib.modal({
+    title: 'Dice Roll Result',
+    dialog: 'modal-lg',
+    id: `dice-roll-${generateRandomId()}`,
+    body: $root,
+  });
 };
 
 export const openTinyDices = () => {
