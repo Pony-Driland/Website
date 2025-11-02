@@ -35,15 +35,21 @@ export const createDiceResults = ($totalBase, data, callback) => {
     // Total display
     $totalBase.append(total);
 
+    const tableWrapper = TinyHtml.createFrom('div');
+    tableWrapper.addClass('table-responsive');
+    body.append(tableWrapper);
+
     // Table for steps
     const table = TinyHtml.createFrom('table');
-    table.addClass('table', 'table-striped', 'table-bordered', 'align-middle');
-    body.append(table);
+    table.addClass('table', 'table-striped', 'table-bordered', 'align-middle', 'm-0');
+    tableWrapper.append(table);
+    body.append(tableWrapper);
 
     const thead = TinyHtml.createFrom('thead');
     thead.setHtml(`
     <tr class="text-center">
       <th scope="col">Dice</th>
+      <th scope="col">Sides</th>
       <th scope="col">Expression Tokens</th>
       <th scope="col">Result</th>
     </tr>
@@ -60,16 +66,25 @@ export const createDiceResults = ($totalBase, data, callback) => {
       const tdIndex = TinyHtml.createFrom('td');
       tdIndex.setText(index + 1);
 
+      const tdSides = TinyHtml.createFrom('td');
+      tdSides.setText(step.sides);
+
       const tdTokens = TinyHtml.createFrom('td');
       tdTokens.addClass('text-start');
       tdTokens.setHtml(
-        step.tokens.map((t) => `<span class="badge bg-secondary mx-1">${t}</span>`).join(''),
+        step.tokens
+          .map(
+            (t, index) =>
+              `<span class="badge bg-${index > 0 ? 'secondary' : 'primary'} mx-1">${t}</span>`,
+          )
+          .join(''),
       );
 
       const tdResult = TinyHtml.createFrom('td');
       tdResult.setHtml(`<span class="fw-bold">${step.total}</span>`);
 
       tr.append(tdIndex);
+      tr.append(tdSides);
       tr.append(tdTokens);
       tr.append(tdResult);
       tbody.append(tr);
