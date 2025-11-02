@@ -42,7 +42,7 @@ import {
 import { userButtonActions } from './buttons/users.mjs';
 import { roomSettingsMenu } from './buttons/roomSettings.mjs';
 import { openClassicMap } from './buttons/map.mjs';
-import { openTinyDices } from './buttons/dice.mjs';
+import { openDiceSpecialModal, openTinyDices } from './buttons/dice.mjs';
 import { openDonatePage } from './buttons/donate.mjs';
 import { openDownloadsList } from './buttons/downloads.mjs';
 import { openCreateAccount } from './buttons/createAccount.mjs';
@@ -2976,9 +2976,7 @@ export const AiScriptStart = async () => {
         });
 
         // Dice roll
-        client.on('diceRoll', () => {
-          
-        });
+        client.on('diceRoll', (data) => openDiceSpecialModal(data));
       }
 
       // No server
