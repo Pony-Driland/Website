@@ -24,7 +24,14 @@ function safeEvaluate(expression) {
 
 /**
  * Parses a dice configuration string that may include full mathematical expressions.
- * Example input: "6, 3*2+1, (1+5+3/6), 8/2-1, 4*(2+1)"
+ * It isolates all numeric values (even inside parentheses) into `sides`
+ * and preserves the full expression as a modifier.
+ *
+ * Example:
+ *   Input: "(6 + (7+2)) * 2"
+ *   Output:
+ *     sides: [6, 7, 2, 2]
+ *     modifiers: [{ index: 0, original: "(6 + (7+2)) * 2", expression: "(6 + (7+2)) * 2" }]
  *
  * @param {string} input - Comma-separated dice expressions.
  * @returns {{
@@ -46,42 +53,32 @@ export function parseDiceString(input) {
   const modifiers = [];
 
   parts.forEach((part, i) => {
-    // Match first numeric-like token (handles negatives and decimals)
-    const baseMatch = part.match(/^[-+]?\d+(\.\d+)?/);
-    if (!baseMatch) {
+    // ✅ Match numbers correctly (integers or decimals)
+    // - Allows negatives only if preceded by "(" or start of string
+    // - Prevents capturing operators next to numbers like "+2"
+    const numbers = [];
+    const regex = /(?<=^|[^\d)])-?\d+(\.\d+)?/g;
+    let match;
+    while ((match = regex.exec(part)) !== null) {
+      numbers.push(parseFloat(match[0]));
+    }
+
+    if (numbers.length === 0) {
       throw new Error(`Invalid dice expression at position ${i + 1}: "${part}"`);
     }
 
-    const base = parseFloat(baseMatch[0]);
+    // Convert found numbers to floats and add to sides
+    sides.push(String(numbers[0]));
 
-    if (part !== String(base)) {
-      modifiers.push({
-        index: i,
-        original: part,
-        expression: part,
-      });
-    }
-
-    sides.push(base);
+    // Always store the full expression as a modifier
+    modifiers.push({
+      index: i,
+      original: part,
+      expression: part,
+    });
   });
 
   return { sides, modifiers };
-}
-
-/**
- * Tokenizes a mathematical expression string into an array of parts.
- * Example: "10*2+(5/2)" => ["10", "*", "2", "+", "(", "5", "/", "2", ")"]
- *
- * @param {string} expr - Expression string.
- * @returns {string[]} Array of expression tokens.
- */
-function tokenizeExpression(expr) {
-  return (
-    expr
-      .match(/[-+]?\d+(\.\d+)?|[+\-*/%^()]/g)
-      ?.map((t) => t.trim())
-      .filter(Boolean) || []
-  );
 }
 
 /**
@@ -116,11 +113,11 @@ export function applyDiceModifiers(base, modifiers) {
       throw new Error('Each modifier must include an expression string.');
     }
 
-    // Replace only the first numeric literal in the expression with current base
-    const replacedExpr = mod.expression.replace(/^\s*[-+]?\d+(\.\d+)?/, String(result));
+    // ✅ Replace the first numeric literal (integer/decimal) that may be inside parentheses
+    const replacedExpr = mod.expression.replace(/(?<=^|[^\d)])-?\d+(\.\d+)?/, String(result));
 
-    // Tokenize for later manipulation
-    const tokens = tokenizeExpression(replacedExpr);
+    // Tokenize for manipulation or display
+    const tokens = replacedExpr.match(/[-+]?\d+(\.\d+)?|[+\-*/%^()]/g) || [];
 
     let evaluated;
     try {

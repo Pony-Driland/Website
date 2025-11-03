@@ -71,12 +71,21 @@ export const createDiceResults = ($totalBase, data, callback = () => undefined) 
 
       const tdTokens = TinyHtml.createFrom('td');
       tdTokens.addClass('text-start');
+      let firstNumberUsed = false;
+
       tdTokens.setHtml(
         step.tokens
-          .map(
-            (t, index) =>
-              `<span class="badge bg-${index > 0 ? 'secondary' : 'primary'} mx-1">${t}</span>`,
-          )
+          .map((t, index) => {
+            let isPrimary = false;
+            if (!firstNumberUsed) {
+              if (!Number.isNaN(parseFloat(t))) {
+                isPrimary = true;
+                firstNumberUsed = true;
+              }
+            }
+
+            return `<span class="badge bg-${!isPrimary ? 'secondary' : 'primary'} mx-1">${t}</span>`;
+          })
           .join(''),
       );
 
@@ -144,9 +153,11 @@ export const openDiceSpecialModal = (data) => {
   const user = tinyIo.client.getUsers()[data.userId] ?? null;
 
   $root.append(
-    TinyHtml.createFrom('center', { class: 'fw-bold h3 mb-2' }).setText(user?.nickname ?? data.userId),
-    $diceContainer, 
-    $totalBase
+    TinyHtml.createFrom('center', { class: 'fw-bold h3 mb-2' }).setText(
+      user?.nickname ?? data.userId,
+    ),
+    $diceContainer,
+    $totalBase,
   );
 
   createDiceResults($totalBase, data);
