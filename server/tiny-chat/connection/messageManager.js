@@ -11,7 +11,6 @@ import {
   roomUsers,
   userUpdateDiceIsRateLimited,
 } from './values';
-import { applyDiceModifiers } from '../../../src/ai/buttons/diceUtils.mjs';
 
 export default function messageManager(socket, io) {
   socket.on('send-message', async (data, fn) => {
@@ -306,8 +305,6 @@ export default function messageManager(socket, io) {
     }
 
     // Prepare results
-    const results = [];
-    let total = 0;
 
     const finalMods = modifiers.map((item) => ({
       index: item.index,
@@ -326,18 +323,10 @@ export default function messageManager(socket, io) {
         tinyFix--;
       }
 
-      const mods = finalMods.find((item) => item.index === index);
-      const roll = Math.floor(Math.random() * max) + tinyFix;
-      const resultRoll = { sides, roll, total: roll, tokens: [String(roll)] };
-      if (mods) {
-        const modResult = applyDiceModifiers(resultRoll.total, [mods]);
-        resultRoll.total = modResult.final;
-        resultRoll.tokens = modResult.steps[0].tokens ?? [String(resultRoll.roll)];
-      }
-
-      results.push(resultRoll);
-      total += resultRoll.total;
+      return Math.floor(Math.random() * max) + tinyFix;
     };
+
+    const diceResults = [];
 
     // Roll dice with different number of sides
     // Iterate over each die and roll with its respective number of sides
@@ -345,19 +334,19 @@ export default function messageManager(socket, io) {
       const sides = dice[index];
       if (typeof sides !== 'number' || sides < 0)
         return fn({ error: true, code: 3, msg: 'Invalid dice of diff sides configuration' });
-      rollDice(sides, Number(index));
+      diceResults.push({ value: rollDice(sides, Number(index)), sides });
     }
 
     // Complete
     socket.to(roomId).emit('roll-result', {
-      results,
-      total,
+      results: diceResults,
+      modifiers: finalMods,
       skin,
       canZero,
       userId,
       roomId,
     });
 
-    fn({ success: true, results, total });
+    fn({ success: true, results: diceResults });
   });
 }

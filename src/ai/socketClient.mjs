@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 import { io as Io } from 'socket.io-client';
-import { isJsonObject } from 'tiny-essentials/basics';
+import { countObj, isJsonObject } from 'tiny-essentials/basics';
 
 class TinyClientIo extends EventEmitter {
   #cfg = {
@@ -838,7 +838,7 @@ class TinyClientIo extends EventEmitter {
     // Dice
     this.onDiceRoll((result) => {
       if (this.checkRoomId(result)) {
-        const data = { total: null, results: null, userId: null, canZero: null, skin: null };
+        const data = { results: null, modifiers: null, userId: null, canZero: null, skin: null };
 
         // Skin
         if (isJsonObject(result.skin)) {
@@ -859,23 +859,24 @@ class TinyClientIo extends EventEmitter {
         if (typeof result.canZero === 'boolean') data.canZero = result.canZero;
 
         // Results
-        if (typeof result.total === 'number') data.total = result.total;
-        if (Array.isArray(result.results)) {
-          data.results = [];
-          for (const index in result.results)
-            if (
-              typeof result.results[index].sides === 'number' &&
-              typeof result.results[index].roll === 'number' &&
-              typeof result.results[index].total === 'number' &&
-              Array.isArray(result.results[index].tokens) &&
-              result.results[index].tokens.every((item) => typeof item === 'string')
-            )
-              data.results.push({
-                sides: result.results[index].sides,
-                roll: result.results[index].roll,
-                total: result.results[index].total,
-                tokens: result.results[index].tokens,
-              });
+        if (
+          Array.isArray(result.results) &&
+          result.results.every(
+            (item) => typeof item.value === 'number' && typeof item.sides === 'number',
+          )
+        )
+          data.results = result.results;
+
+        if (
+          !Array.isArray(result.modifiers) ||
+          !result.modifiers.every(
+            (item) =>
+              countObj(item) === 3 &&
+              typeof item.index === 'number' &&
+              typeof item.expression === 'string',
+          )
+        ) {
+          data.modifiers = result.modifiers;
         }
 
         // Complete
