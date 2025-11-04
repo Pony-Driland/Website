@@ -11,16 +11,15 @@ import { applyDiceModifiers, parseDiceString } from './diceUtils.mjs';
 
 /**
  * @param {import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} $totalBase
+ * @param {import('./diceUtils.mjs').ApplyDiceModifiersResult} data
  * @returns {NodeJS.Timeout}
  */
 export const createDiceResults = ($totalBase, data, callback = () => undefined) => {
   /**
    * Insert Total Value (Bootstrap 5 styled display)
-   * @param {Object} config
-   * @param {number} config.total - Final total value.
-   * @param {{ result: number; tokens: string[]; }[]} config.results - Step results from applyDiceModifiers().
    */
-  const insertTotal = ({ total, results }) => {
+  const insertTotal = () => {
+    const { final, steps } = data;
     $totalBase.empty();
 
     // Create main container
@@ -33,7 +32,7 @@ export const createDiceResults = ($totalBase, data, callback = () => undefined) 
     container.append(body);
 
     // Total display
-    $totalBase.append(total);
+    $totalBase.append(final);
 
     const tableWrapper = TinyHtml.createFrom('div');
     tableWrapper.addClass('table-responsive');
@@ -48,8 +47,6 @@ export const createDiceResults = ($totalBase, data, callback = () => undefined) 
     const thead = TinyHtml.createFrom('thead');
     thead.setHtml(`
     <tr class="text-center">
-      <th scope="col">Dice</th>
-      <th scope="col">Sides</th>
       <th scope="col">Expression Tokens</th>
       <th scope="col">Result</th>
     </tr>
@@ -59,41 +56,49 @@ export const createDiceResults = ($totalBase, data, callback = () => undefined) 
     const tbody = TinyHtml.createFrom('tbody');
     table.append(tbody);
 
-    results.forEach((step, index) => {
+    steps.forEach((step, index) => {
       const tr = TinyHtml.createFrom('tr');
       tr.addClass('text-center');
 
-      const tdIndex = TinyHtml.createFrom('td');
-      tdIndex.setText(index + 1);
-
-      const tdSides = TinyHtml.createFrom('td');
-      tdSides.setText(step.sides);
-
       const tdTokens = TinyHtml.createFrom('td');
-      tdTokens.addClass('text-start');
-      let firstNumberUsed = false;
+      tdTokens.addClass('text-center dice-exp');
 
-      tdTokens.setHtml(
-        step.tokens
-          .map((t, index) => {
-            let isPrimary = false;
-            if (!firstNumberUsed) {
-              if (!Number.isNaN(parseFloat(t))) {
-                isPrimary = true;
-                firstNumberUsed = true;
-              }
-            }
+      const result = [];
+      const rawResult = [];
+      let rawMode = true;
 
-            return `<span class="badge bg-${!isPrimary ? 'secondary' : 'primary'} mx-1">${t}</span>`;
-          })
-          .join(''),
+      step.tokens.forEach((t, index) =>
+        result.push(
+          TinyHtml.createFrom('span', {
+            class: `badge bg-${step.diceTokenSlots.indexOf(index) < 0 ? 'secondary' : 'primary'} mx-1`,
+          }).setText(t),
+        ),
       );
+
+      step.rawTokens.forEach((t, index) =>
+        rawResult.push(
+          TinyHtml.createFrom('span', {
+            class: `badge bg-${step.rawDiceTokenSlots.indexOf(index) < 0 ? 'secondary' : 'primary'} mx-1`,
+          }).setText(t),
+        ),
+      );
+
+      tdTokens.append(...rawResult);
+
+      tdTokens.on('click', () => {
+        tdTokens.empty();
+        if (rawMode) {
+          rawMode = false;
+          tdTokens.append(...result);
+        } else {
+          rawMode = true;
+          tdTokens.append(...rawResult);
+        }
+      });
 
       const tdResult = TinyHtml.createFrom('td');
       tdResult.setHtml(`<span class="fw-bold">${step.total}</span>`);
 
-      tr.append(tdIndex);
-      tr.append(tdSides);
       tr.append(tdTokens);
       tr.append(tdResult);
       tbody.append(tr);
@@ -104,7 +109,7 @@ export const createDiceResults = ($totalBase, data, callback = () => undefined) 
   };
 
   return setTimeout(() => {
-    insertTotal(data);
+    insertTotal();
     callback();
   }, 2000);
 };
@@ -147,7 +152,7 @@ export const openDiceSpecialModal = (data) => {
   const $totalBase = TinyHtml.createFrom('center', { class: 'fw-bold mt-3' }).setText(0);
 
   for (const item of data.results) {
-    dice.insertDiceElement(item.roll, item.sides, data.canZero);
+    dice.insertDiceElement(item.value, item.sides, data.canZero);
   }
 
   const user = tinyIo.client.getUsers()[data.userId] ?? null;
@@ -160,7 +165,7 @@ export const openDiceSpecialModal = (data) => {
     $totalBase,
   );
 
-  createDiceResults($totalBase, data);
+  createDiceResults($totalBase, applyDiceModifiers(data.results, data.modifiers));
 
   // Start modal
   tinyLib.modal({
@@ -220,7 +225,7 @@ export const openTinyDices = () => {
   // Form
   const $perDieCol = TinyHtml.createFrom('div')
     .addClass('col-md-12')
-    .append(genConfig('perDieValues', 'Per-Die Values', 'text', '6', 'e.g., 6,12,20'));
+    .append(genConfig('perDieValues', 'Per-Die Values', 'text', 'd6', 'e.g., 6,12,20'));
 
   const $allow0input = TinyHtml.createFrom('input')
     .addClass('form-check-input')
@@ -264,10 +269,19 @@ export const openTinyDices = () => {
     // Get values
     const perDieRaw = configs.perDieValues.val().trim();
     const parsedPerDie = parseDiceString(perDieRaw);
-    const perDieRaw2 = parsedPerDie.sides.map((value) => String(value)).join(', ');
+
+    // Get sides amount
+    const sidesAmount = [];
+    parsedPerDie.sides.forEach((item) => {
+      for (let i = 0; i < item.count; i++) sidesAmount.push(item.sides);
+    });
+    const perDieRaw2 = sidesAmount.join(', ');
     const perDie = perDieRaw2.length > 0 ? perDieRaw2 : null;
 
+    // Can Zero
     const canZero = $allow0input.is(':checked');
+
+    // Prepare total base and reset timeout
     $totalBase.setText(0);
     if (updateTotalBase) {
       clearTimeout(updateTotalBase);
@@ -277,28 +291,14 @@ export const openTinyDices = () => {
     // Offline
     if (!tinyCfg.isOnline) {
       const result = dice.roll(perDie, canZero);
-      const data = { total: 0, results: [] };
-      for (const index in result) {
-        const item = result[index];
-        const tinyItem = {
-          result: item.result,
-          sides: parsedPerDie.sides[index],
-          total: item.result,
-          tokens: [String(item.result)],
-        };
-        const mod = parsedPerDie.modifiers.find((ti) => ti.index === Number(index));
-
-        if (mod) {
-          const modResult = applyDiceModifiers(item.result, [mod]);
-          tinyItem.total = modResult.final;
-          tinyItem.tokens = modResult.steps[0].tokens;
-        }
-
-        data.results.push(tinyItem);
-        data.total += tinyItem.total;
-      }
-
-      updateTotalBase = createDiceResults($totalBase, data, () => (updateTotalBase = null));
+      /** @type {number[]} */
+      const diceResults = [];
+      for (const item of result) diceResults.push(item.result);
+      updateTotalBase = createDiceResults(
+        $totalBase,
+        applyDiceModifiers(diceResults, parsedPerDie.modifiers),
+        () => (updateTotalBase = null),
+      );
     }
     // Online
     else {
@@ -316,29 +316,25 @@ export const openTinyDices = () => {
       if (!result.error) {
         dice.clearDiceArea();
         $totalBase.removeClass('text-danger');
-        if (Array.isArray(result.results) && typeof result.total === 'number') {
-          const data = { total: result.total, results: [] };
-
+        if (
+          Array.isArray(result.results) &&
+          result.results.every(
+            (item) => typeof item.value === 'number' && typeof item.sides === 'number',
+          )
+        ) {
           for (const index in result.results) {
-            if (
-              typeof result.results[index].sides === 'number' &&
-              typeof result.results[index].roll === 'number'
-            ) {
-              dice.insertDiceElement(
-                result.results[index].roll,
-                result.results[index].sides,
-                canZero,
-              );
-
-              data.results.push({
-                result: result.results[index].roll,
-                sides: result.results[index].sides,
-                total: result.results[index].total,
-                tokens: result.results[index].tokens,
-              });
-            }
+            dice.insertDiceElement(
+              result.results[index].value,
+              result.results[index].sides,
+              canZero,
+            );
           }
-          updateTotalBase = createDiceResults($totalBase, data, () => (updateTotalBase = null));
+
+          updateTotalBase = createDiceResults(
+            $totalBase,
+            applyDiceModifiers(result.results, parsedPerDie.modifiers),
+            () => (updateTotalBase = null),
+          );
         }
       } else $totalBase.addClass('text-danger').setText(result.msg);
     }

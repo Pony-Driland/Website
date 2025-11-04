@@ -144,22 +144,10 @@ Rolls one or more virtual dice in a chat room. Users can configure whether dice 
 {
   "success": true,
   "results": [
-    { "sides": 4, "roll": 4 },
-    { "sides": 4, "roll": 2 },
-    { "sides": 4, "roll": 3 }
-  ],
-  "total": 11,
-  "skin": {
-    "bg": "string",
-    "border": "string",
-    "img": "string",
-    "selectionBg": "string",
-    "selectionText": "string",
-    "text": "string"
-  },
-  "canZero": false,
-  "userId": "string",
-  "roomId": "string"
+    { "value": 4, "sides": 6 },
+    { "value": 5, "sides": 6 },
+    { "value": 2, "sides": 6 }
+  ]
 }
 ```
 
@@ -168,12 +156,17 @@ Rolls one or more virtual dice in a chat room. Users can configure whether dice 
 ```json
 {
   "results": [
-    { "sides": 4, "roll": 4 },
-    { "sides": 4, "roll": 2 },
-    { "sides": 4, "roll": 3 }
+    { "value": 4, "sides": 6 },
+    { "value": 5, "sides": 6 },
+    { "value": 2, "sides": 6 }
+  ],
+  "modifiers": [
+    {
+      "index": "number",
+      "expression": "string"
+    }
   ],
   "canZero": false,
-  "total": 11,
   "userId": "string",
   "roomId": "string",
   "skin": {

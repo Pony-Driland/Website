@@ -1,3 +1,5 @@
+import { isJsonObject } from 'tiny-essentials/basics';
+
 /**
  * Safely evaluates a mathematical expression (supports +, -, *, /, %, **, parentheses, fractions and decimals).
  * This function ensures only valid math characters are processed.
@@ -103,26 +105,53 @@ export function parseDiceString(input) {
 }
 
 /**
+ * @typedef {Object} ApplyDiceModifiersResult
+ * @property {number} final
+ * @property {ApplyDiceModifiersStep[]} steps
+ */
+
+/**
+ * @typedef {Object} ApplyDiceModifiersStep
+ * @property {string[]} tokens
+ * @property {string[]} rawTokens
+ * @property {number[]} rawDiceTokenSlots
+ * @property {number[]} diceTokenSlots
+ * @property {number} result
+ * @property {Array<number[]>} dicesResult
+ */
+
+/**
  * Applies parsed modifiers (expressions) to a base number.
  * Replaces only the first number in the expression with the current result
  * before evaluation. Returns an object containing a step-by-step history.
  *
- * @param {number[]} list - Starting number (e.g., dice base value).
+ * @param {number[]|{ value: number;  sides: number }[]} values - Starting number (e.g., dice base value).
  * @param {{ expression: string }[]} modifiers - Parsed modifiers from parseDiceString.
- * @returns {{
- *   final: number,
- *   steps: { tokens: string[], rawTokens: string[], result: number, dices: Array<number[]> }[]
- * }}
+ * @returns {ApplyDiceModifiersResult}
  */
 export function applyDiceModifiers(values, modifiers) {
-  if (!Array.isArray(values) || !values.every((n) => typeof n === 'number' && !Number.isNaN(n)))
+  if (
+    !Array.isArray(values) ||
+    !values.every(
+      (n) =>
+        (typeof n === 'number' && !Number.isNaN(n)) ||
+        (isJsonObject(n) &&
+          typeof n.value === 'number' &&
+          !Number.isNaN(n.value) &&
+          typeof n.sides === 'number' &&
+          !Number.isNaN(n.sides)),
+    )
+  )
     throw new TypeError('Bases must be a valid numbers.');
 
   if (!Array.isArray(modifiers))
     throw new TypeError('Modifiers must be an array of modifier objects.');
 
   let result = 0;
+
+  /** @type {ApplyDiceModifiersStep[]} */
   const steps = [];
+  /** @type {number[]|{ value: number;  sides: number }[]} */
   const iv = [...values];
 
   for (const index in modifiers) {
@@ -131,44 +160,70 @@ export function applyDiceModifiers(values, modifiers) {
       throw new Error('Each modifier must include an expression string.');
     }
 
+    const expression = mod.expression;
+
     /** @type {Array<number[]>} */
     const dices = [];
+
+    /** @type {number} */
     const diceTokenSlots = [];
+    /** @type {number} */
     const rawDiceTokenSlots = [];
 
-    // Tokenize for manipulation or display
+    /**
+     * Tokenize for manipulation or display
+     * @param {string} value
+     * @returns {string[]}
+     */
     const matchTokens = (value) => value.match(/\b\d*d\d+\b|[-+]?\d+(?:\.\d+)?|[+\-*/%^()]/g) || [];
-    const rawTokens = matchTokens(mod.expression);
+    const rawTokens = matchTokens(expression);
     const tokens = [...rawTokens];
+    const rawSlotsUsed = [];
 
     // ✅ Replace the first numeric literal (integer/decimal) that may be inside parentheses
-    const replacedExpr = mod.expression.replace(/\b\d*d\d+\b/g, (m0) => {
+    const replacedExpr = expression.replace(/\b\d*d\d+\b/g, (m0) => {
       // Parse dice numbers
       const diceParsed = m0.split('d');
       const getRawTokenSlot = () => {
         for (const index in rawTokens) {
-          if (rawTokens[index] === m0) {
+          if (rawTokens[index] === m0 && rawSlotsUsed.indexOf(index) < 0) {
+            rawSlotsUsed.push(index);
             rawDiceTokenSlots.push(Number(index));
             break;
           }
         }
       };
 
+      /**
+       * Validates that the dice value does not exceed the number of sides.
+       * @param {{ value: number; sides: number }} r - The dice roll result and the number of sides.
+       * @throws {Error} If the value is greater than the number of sides.
+       */
+      const diceValidator = (r) => {
+        if (r.value > r.sides)
+          throw new Error(
+            `Invalid dice roll: value (${r.value}) must be between 1 and ${r.sides}.`,
+          );
+      };
+
       // 1dn
       if (diceParsed[0].trim().length === 0) {
         const r = iv.shift();
-        dices.push([r]);
+        const rv = typeof r === 'number' ? r : r.value;
+        if (isJsonObject(r)) diceValidator(r);
+
+        dices.push([rv]);
 
         for (const index in tokens) {
           if (tokens[index] === m0) {
-            tokens[index] = String(r);
+            tokens[index] = String(rv);
             diceTokenSlots.push(Number(index));
             break;
           }
         }
 
         getRawTokenSlot();
-        return r;
+        return rv;
       }
 
       // ndn
@@ -180,13 +235,16 @@ export function applyDiceModifiers(values, modifiers) {
       let total = '(';
       for (let i = 0; i < diceAmount; i++) {
         const r = iv.shift();
-        newTokensInsert.push(String(r));
+        const rv = typeof r === 'number' ? r : r.value;
+        if (isJsonObject(r)) diceValidator(r);
+
+        newTokensInsert.push(String(rv));
 
         const finishSpace = i < diceAmount - 1 ? ' + ' : ')';
         newTokensInsert.push(finishSpace);
 
-        total += `${r}${finishSpace}`;
-        dices2.push(r);
+        total += `${rv}${finishSpace}`;
+        dices2.push(rv);
       }
 
       for (const index in tokens) {
@@ -212,7 +270,7 @@ export function applyDiceModifiers(values, modifiers) {
       evaluated = safeEvaluate(replacedExpr);
     } catch (err) {
       throw new Error(
-        `Error evaluating expression "${replacedExpr}" (from "${mod.expression}"): ${err.message}`,
+        `Error evaluating expression "${replacedExpr}" (from "${expression}"): ${err.message}`,
       );
     }
 
@@ -221,18 +279,14 @@ export function applyDiceModifiers(values, modifiers) {
       tokens,
       rawDiceTokenSlots,
       diceTokenSlots,
-      dicesResults: dices,
-      result: evaluated,
+      dicesResult: dices,
+      total: evaluated,
     });
 
     result += evaluated;
   }
 
   // Complete
-  console.log({
-    final: result,
-    steps,
-  });
   return {
     final: result,
     steps,
