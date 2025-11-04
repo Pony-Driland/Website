@@ -23,19 +23,28 @@ function safeEvaluate(expression) {
 }
 
 /**
- * Parses a dice configuration string that may include full mathematical expressions.
- * It isolates all numeric values (even inside parentheses) into `sides`
- * and preserves the full expression as a modifier.
+ * Replaces all dice patterns like `d5`, `d32`, etc. with corresponding values from an array.
  *
- * Example:
- *   Input: "(6 + (7+2)) * 2"
- *   Output:
- *     sides: [6, 7, 2, 2]
- *     modifiers: [{ index: 0, original: "(6 + (7+2)) * 2", expression: "(6 + (7+2)) * 2" }]
+ * @param {string} input - The input string containing dice patterns.
+ * @param {number[]} values - Array of numeric values to replace each dice pattern.
+ * @returns {string} The resulting string with dice replaced by the provided values.
+ */
+export function replaceDiceValues(input, values) {
+  let index = 0;
+
+  return input.replace(/d\d+/g, () => {
+    const value = values[index++];
+    return value !== undefined ? value : 0; // Default to 0 if not enough values
+  });
+}
+
+/**
+ * Parses a dice configuration string supporting notations like "6d" (one d6) or "3d6" (three d6).
+ * Extracts all valid dice expressions and keeps their full context as modifiers.
  *
  * @param {string} input - Comma-separated dice expressions.
  * @returns {{
- *   sides: number[],
+ *   sides: { count: number, sides: number }[],
  *   modifiers: { index: number, original: string, expression: string }[]
  * }}
  */
@@ -49,28 +58,40 @@ export function parseDiceString(input) {
     .map((p) => p.trim())
     .filter(Boolean);
 
+  /** @type {{ count: number, sides: number }[]} */
   const sides = [];
+
+  /** @type {{ index: number, original: string, expression: string }[]} */
   const modifiers = [];
 
   parts.forEach((part, i) => {
-    // ✅ Match numbers correctly (integers or decimals)
-    // - Allows negatives only if preceded by "(" or start of string
-    // - Prevents capturing operators next to numbers like "+2"
-    const numbers = [];
-    const regex = /(?<=^|[^\d)])-?\d+(\.\d+)?/g;
+    // ✅ Match dice patterns:
+    // - 6d  → one d6
+    // - 3d6 → three d6
+    // - 12d100 → twelve d100
+    const regex = /\b(?:(\d+)?d(\d+))\b/g;
     let match;
+    const foundDice = [];
+
     while ((match = regex.exec(part)) !== null) {
-      numbers.push(parseFloat(match[0]));
+      const count = parseInt(match[1] || '1', 10); // Default to 1 if not specified (e.g. "d6" or "6d")
+      const sidesCount = parseInt(match[2], 10);
+
+      if (isNaN(sidesCount)) {
+        throw new Error(`Invalid dice sides in expression "${match[0]}" at position ${i + 1}.`);
+      }
+
+      foundDice.push({ count, sides: sidesCount });
     }
 
-    if (numbers.length === 0) {
+    if (foundDice.length === 0) {
       throw new Error(`Invalid dice expression at position ${i + 1}: "${part}"`);
     }
 
-    // Convert found numbers to floats and add to sides
-    sides.push(String(numbers[0]));
+    // Add all found dice
+    sides.push(...foundDice);
 
-    // Always store the full expression as a modifier
+    // Store full expression
     modifiers.push({
       index: i,
       original: part,
@@ -86,38 +107,105 @@ export function parseDiceString(input) {
  * Replaces only the first number in the expression with the current result
  * before evaluation. Returns an object containing a step-by-step history.
  *
- * @param {number} base - Starting number (e.g., dice base value).
+ * @param {number[]} list - Starting number (e.g., dice base value).
  * @param {{ expression: string }[]} modifiers - Parsed modifiers from parseDiceString.
  * @returns {{
  *   final: number,
- *   steps: { tokens: string[], result: number }[]
+ *   steps: { tokens: string[], rawTokens: string[], result: number, dices: Array<number[]> }[]
  * }}
- *
- * @example
- * const mods = [{ expression: "(3 + 2) * (5 - 1)" }, { expression: "x * 2" }];
- * const output = applyDiceModifiers(4, mods);
  */
-export function applyDiceModifiers(base, modifiers) {
-  if (typeof base !== 'number' || isNaN(base)) {
-    throw new TypeError('Base must be a valid number.');
-  }
-  if (!Array.isArray(modifiers)) {
+export function applyDiceModifiers(values, modifiers) {
+  if (!Array.isArray(values) || !values.every((n) => typeof n === 'number' && !Number.isNaN(n)))
+    throw new TypeError('Bases must be a valid numbers.');
+
+  if (!Array.isArray(modifiers))
     throw new TypeError('Modifiers must be an array of modifier objects.');
-  }
 
-  let result = base;
+  let result = 0;
   const steps = [];
+  const iv = [...values];
 
-  for (const mod of modifiers) {
+  for (const index in modifiers) {
+    const mod = modifiers[index];
     if (typeof mod.expression !== 'string') {
       throw new Error('Each modifier must include an expression string.');
     }
 
-    // ✅ Replace the first numeric literal (integer/decimal) that may be inside parentheses
-    const replacedExpr = mod.expression.replace(/(?<=^|[^\d)])-?\d+(\.\d+)?/, String(result));
+    /** @type {Array<number[]>} */
+    const dices = [];
+    const diceTokenSlots = [];
+    const rawDiceTokenSlots = [];
 
     // Tokenize for manipulation or display
-    const tokens = replacedExpr.match(/[-+]?\d+(\.\d+)?|[+\-*/%^()]/g) || [];
+    const matchTokens = (value) => value.match(/\b\d*d\d+\b|[-+]?\d+(?:\.\d+)?|[+\-*/%^()]/g) || [];
+    const rawTokens = matchTokens(mod.expression);
+    const tokens = [...rawTokens];
+
+    // ✅ Replace the first numeric literal (integer/decimal) that may be inside parentheses
+    const replacedExpr = mod.expression.replace(/\b\d*d\d+\b/g, (m0) => {
+      // Parse dice numbers
+      const diceParsed = m0.split('d');
+      const getRawTokenSlot = () => {
+        for (const index in rawTokens) {
+          if (rawTokens[index] === m0) {
+            rawDiceTokenSlots.push(Number(index));
+            break;
+          }
+        }
+      };
+
+      // 1dn
+      if (diceParsed[0].trim().length === 0) {
+        const r = iv.shift();
+        dices.push([r]);
+
+        for (const index in tokens) {
+          if (tokens[index] === m0) {
+            tokens[index] = String(r);
+            diceTokenSlots.push(Number(index));
+            break;
+          }
+        }
+
+        getRawTokenSlot();
+        return r;
+      }
+
+      // ndn
+      /** @type {number[]} */
+      const dices2 = [];
+      const diceAmount = Number(diceParsed[0]);
+
+      const newTokensInsert = ['('];
+      let total = '(';
+      for (let i = 0; i < diceAmount; i++) {
+        const r = iv.shift();
+        newTokensInsert.push(String(r));
+
+        const finishSpace = i < diceAmount - 1 ? ' + ' : ')';
+        newTokensInsert.push(finishSpace);
+
+        total += `${r}${finishSpace}`;
+        dices2.push(r);
+      }
+
+      for (const index in tokens) {
+        if (tokens[index] === m0) {
+          tokens.splice(index, 1, ...newTokensInsert);
+          // Each new item a new string is added
+          let amount = 1;
+          for (let i2 = 0; i2 < diceAmount; i2++) {
+            diceTokenSlots.push(Number(index) + i2 + amount);
+            amount++;
+          }
+          break;
+        }
+      }
+      dices.push(dices2);
+
+      getRawTokenSlot();
+      return total;
+    });
 
     let evaluated;
     try {
@@ -129,13 +217,22 @@ export function applyDiceModifiers(base, modifiers) {
     }
 
     steps.push({
+      rawTokens,
       tokens,
+      rawDiceTokenSlots,
+      diceTokenSlots,
+      dicesResults: dices,
       result: evaluated,
     });
 
-    result = evaluated;
+    result += evaluated;
   }
 
+  // Complete
+  console.log({
+    final: result,
+    steps,
+  });
   return {
     final: result,
     steps,
