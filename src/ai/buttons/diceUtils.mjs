@@ -75,7 +75,20 @@ export function parseDiceString(input) {
     let match;
     const foundDice = [];
 
-    while ((match = regex.exec(part)) !== null) {
+    // --- 🔸 Resolve random choice groups like (0 | 1 | d1)
+    const finalPart = part.replace(/\(([^()]+?\|[^()]+?)\)/g, (match, inner) => {
+      const options = inner
+        .split('|')
+        .map((s) => s.trim())
+        .filter(Boolean);
+
+      if (options.length === 0) throw new Error(`Invalid random-choice group: "${match}"`);
+
+      const chosen = options[Math.floor(Math.random() * options.length)];
+      return chosen;
+    });
+
+    while ((match = regex.exec(finalPart)) !== null) {
       const count = parseInt(match[1] || '1', 10); // Default to 1 if not specified (e.g. "d6" or "6d")
       const sidesCount = parseInt(match[2], 10);
 
@@ -86,7 +99,7 @@ export function parseDiceString(input) {
       foundDice.push({ count, sides: sidesCount });
     }
 
-    if (foundDice.length === 0) {
+    if (foundDice.length === 0 && Number.isNaN(parseFloat(finalPart))) {
       throw new Error(`Invalid dice expression at position ${i + 1}: "${part}"`);
     }
 
@@ -97,20 +110,11 @@ export function parseDiceString(input) {
     modifiers.push({
       index: i,
       original: part,
-      // --- 🔸 Resolve random choice groups like (0 | 1 | d1)
-      expression: part.replace(/\(([^()]+?\|[^()]+?)\)/g, (match, inner) => {
-        const options = inner
-          .split('|')
-          .map((s) => s.trim())
-          .filter(Boolean);
-
-        if (options.length === 0) throw new Error(`Invalid random-choice group: "${match}"`);
-
-        const chosen = options[Math.floor(Math.random() * options.length)];
-        return chosen;
-      }),
+      expression: finalPart,
     });
   });
+
+  if (sides.length === 0) throw new Error(`Invalid dice amount.`);
 
   return { sides, modifiers };
 }
