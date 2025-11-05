@@ -58,7 +58,7 @@ export const createDiceResults = ($totalBase, data, callback = () => undefined) 
     table.append(tbody);
 
     // Read steps
-    steps.forEach((step, index) => {
+    steps.forEach((step) => {
       const tr = TinyHtml.createFrom('tr');
       tr.addClass('text-center');
 
@@ -238,7 +238,7 @@ export const openTinyDices = () => {
   // Form
   const $perDieCol = TinyHtml.createFrom('div')
     .addClass('col-md-12')
-    .append(genConfig('perDieValues', 'Per-Die Values', 'text', 'd6', 'e.g., 6,12,20'));
+    .append(genConfig('perDieValues', 'Per-Die Values', 'text', 'd6', 'e.g.: 6, (0 | 1 | d6) + d6 + 1'));
 
   const $allow0input = TinyHtml.createFrom('input')
     .addClass('form-check-input')

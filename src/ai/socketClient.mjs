@@ -868,8 +868,8 @@ class TinyClientIo extends EventEmitter {
           data.results = result.results;
 
         if (
-          !Array.isArray(result.modifiers) ||
-          !result.modifiers.every(
+          Array.isArray(result.modifiers) ||
+          result.modifiers.every(
             (item) =>
               countObj(item) === 3 &&
               typeof item.index === 'number' &&
@@ -879,6 +879,7 @@ class TinyClientIo extends EventEmitter {
         ) {
           data.modifiers = result.modifiers;
           data.original = result.original;
+          data.index = result.index;
         }
 
         // Complete
