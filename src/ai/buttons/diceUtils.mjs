@@ -97,7 +97,18 @@ export function parseDiceString(input) {
     modifiers.push({
       index: i,
       original: part,
-      expression: part,
+      // --- 🔸 Resolve random choice groups like (0 | 1 | d1)
+      expression: part.replace(/\(([^()]+?\|[^()]+?)\)/g, (match, inner) => {
+        const options = inner
+          .split('|')
+          .map((s) => s.trim())
+          .filter(Boolean);
+
+        if (options.length === 0) throw new Error(`Invalid random-choice group: "${match}"`);
+
+        const chosen = options[Math.floor(Math.random() * options.length)];
+        return chosen;
+      }),
     });
   });
 
@@ -113,6 +124,7 @@ export function parseDiceString(input) {
 /**
  * @typedef {Object} ApplyDiceModifiersStep
  * @property {string[]} tokens
+ * @property {string[]} rawTokensP
  * @property {string[]} rawTokens
  * @property {number[]} rawDiceTokenSlots
  * @property {number[]} diceTokenSlots
@@ -160,23 +172,29 @@ export function applyDiceModifiers(values, modifiers) {
       throw new Error('Each modifier must include an expression string.');
     }
 
+    const originalExp = mod.original;
     const expression = mod.expression;
 
     /** @type {Array<number[]>} */
     const dices = [];
 
-    /** @type {number} */
+    /** @type {number[]} */
     const diceTokenSlots = [];
-    /** @type {number} */
+    /** @type {number[]} */
     const rawDiceTokenSlots = [];
 
     /**
-     * Tokenize for manipulation or display
+     * Tokenize expression for manipulation or display.
+     * Supports dice, numbers, parentheses, math ops, and choice groups.
+     * Ensures (0 | 1 | d1) is treated as ONE token.
      * @param {string} value
      * @returns {string[]}
      */
-    const matchTokens = (value) => value.match(/\b\d*d\d+\b|[-+]?\d+(?:\.\d+)?|[+\-*/%^()]/g) || [];
+    const matchTokens = (value) =>
+      value.match(/\(\s*[^()]+\|\s*[^()]+\s*\)|\b\d*d\d+\b|[-+]?\d+(?:\.\d+)?|[+\-*/%^()]/g) || [];
+
     const rawTokens = matchTokens(expression);
+    const rawTokensOriginal = matchTokens(originalExp);
     const tokens = [...rawTokens];
     const rawSlotsUsed = [];
 
@@ -275,7 +293,8 @@ export function applyDiceModifiers(values, modifiers) {
     }
 
     steps.push({
-      rawTokens,
+      rawTokensP: rawTokens,
+      rawTokens: rawTokensOriginal,
       tokens,
       rawDiceTokenSlots,
       diceTokenSlots,
