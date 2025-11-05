@@ -8,6 +8,7 @@ import { isOnline } from '../software/enablerContent.mjs';
 import { tinyLs } from '../../important.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import { applyDiceModifiers, parseDiceString } from './diceUtils.mjs';
+import { Tooltip } from '../../modules/TinyBootstrap.mjs';
 
 /**
  * @param {import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} $totalBase
@@ -56,49 +57,61 @@ export const createDiceResults = ($totalBase, data, callback = () => undefined) 
     const tbody = TinyHtml.createFrom('tbody');
     table.append(tbody);
 
+    // Read steps
     steps.forEach((step, index) => {
       const tr = TinyHtml.createFrom('tr');
       tr.addClass('text-center');
 
+      // Tokens Base
       const tdTokens = TinyHtml.createFrom('td');
       tdTokens.addClass('text-center dice-exp');
 
+      /** @type {TinyHtml<HTMLElement>} */
       const result = [];
+      /** @type {TinyHtml<HTMLElement>} */
       const rawResult = [];
       let rawMode = true;
 
-      step.tokens.forEach((t, index) =>
-        result.push(
-          TinyHtml.createFrom('span', {
-            class: `badge bg-${step.diceTokenSlots.indexOf(index) < 0 ? 'secondary' : 'primary'} mx-1`,
-          }).setText(t),
-        ),
-      );
+      // Tokens
+      step.tokens.forEach((t, index) => {
+        const item = TinyHtml.createFrom('span', {
+          class: `badge bg-${step.diceTokenSlots.indexOf(index) < 0 ? 'secondary' : 'primary'} mx-1`,
+        }).setText(t);
+        result.push(item);
+      });
 
-      step.rawTokens.forEach((t, index) =>
-        rawResult.push(
-          TinyHtml.createFrom('span', {
-            class: `badge bg-${step.rawDiceTokenSlots.indexOf(index) < 0 ? 'secondary' : 'primary'} mx-1`,
-          }).setText(t),
-        ),
-      );
+      // Raw Tokens
+      step.rawTokens.forEach((t, index) => {
+        const item = TinyHtml.createFrom('span', {
+          class: `badge bg-${step.rawDiceTokenSlots.indexOf(index) < 0 ? 'secondary' : 'primary'} mx-1`,
+        })
+          .setText(t)
+          .setAttr('title', step.rawTokensP[index]);
+        new Tooltip(item);
+        rawResult.push(item);
+      });
 
       tdTokens.append(...rawResult);
 
+      // Token change viewer
       tdTokens.on('click', () => {
         tdTokens.empty();
         if (rawMode) {
           rawMode = false;
+          rawResult.forEach((item) => item.data('BootstrapToolTip')?.hide());
           tdTokens.append(...result);
         } else {
           rawMode = true;
+          result.forEach((item) => item.data('BootstrapToolTip')?.hide());
           tdTokens.append(...rawResult);
         }
       });
 
+      // Total
       const tdResult = TinyHtml.createFrom('td');
       tdResult.setHtml(`<span class="fw-bold">${step.total}</span>`);
 
+      // Add tds
       tr.append(tdTokens);
       tr.append(tdResult);
       tbody.append(tr);

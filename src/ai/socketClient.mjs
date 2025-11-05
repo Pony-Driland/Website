@@ -873,10 +873,12 @@ class TinyClientIo extends EventEmitter {
             (item) =>
               countObj(item) === 3 &&
               typeof item.index === 'number' &&
-              typeof item.expression === 'string',
+              typeof item.expression === 'string' &&
+              typeof item.original === 'string',
           )
         ) {
           data.modifiers = result.modifiers;
+          data.original = result.original;
         }
 
         // Complete

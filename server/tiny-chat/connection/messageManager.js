@@ -272,7 +272,7 @@ export default function messageManager(socket, io) {
         (item) =>
           countObj(item) === 3 &&
           typeof item.index === 'number' &&
-          (typeof item.original === 'string' || typeof item.original === 'undefined') &&
+          typeof item.original === 'string' &&
           typeof item.expression === 'string',
       )
     )
@@ -309,6 +309,7 @@ export default function messageManager(socket, io) {
     const finalMods = modifiers.map((item) => ({
       index: item.index,
       expression: item.expression.substring(0, getIniConfig('MESSAGE_SIZE')),
+      original: item.original.substring(0, getIniConfig('MESSAGE_SIZE')),
     }));
 
     /**
