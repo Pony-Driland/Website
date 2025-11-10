@@ -15,7 +15,7 @@ import {
 export default function messageManager(socket, io) {
   socket.on('send-message', async (data, fn) => {
     if (noDataInfo(data, fn)) return;
-    const { message, roomId, tokens, model, errorCode } = data;
+    const { message, roomId, tokens, model, hash, errorCode } = data;
     // Validate values
     if (typeof message !== 'string' || message.trim() === '' || typeof roomId !== 'string')
       return sendIncompleteDataInfo(fn);
@@ -43,28 +43,29 @@ export default function messageManager(socket, io) {
 
     const msgDate = Date.now();
     const roomHistories = db.getTable('history');
-    const msg = await roomHistories.set(roomId, {
+    const msgData = {
       userId,
       text: message,
       date: msgDate,
       edited: 0,
-      tokens: typeof tokens === 'number' ? tokens : undefined,
-      model:
-        typeof model === 'string' ? model.substring(0, getIniConfig('MESSAGE_SIZE')) : undefined,
-      errorCode:
-        typeof errorCode === 'string'
-          ? errorCode.substring(0, getIniConfig('MESSAGE_SIZE'))
-          : undefined,
-    });
+    };
+
+    if (typeof errorCode === 'string')
+      msgData.errorCode = errorCode.substring(0, getIniConfig('MESSAGE_SIZE'));
+    if (typeof model === 'string') msgData.model = model.substring(0, getIniConfig('MESSAGE_SIZE'));
+    if (typeof tokens === 'number') msgData.tokens = tokens;
+
+    const msg = await roomHistories.set(roomId, msgData);
 
     // Emit to the room that the user joined (based on roomId)
     socket.to(roomId).emit('new-message', {
       roomId,
-      id: msg.id,
+      id: msg.historyId,
       userId,
       text: message,
       date: msgDate,
       tokens: typeof tokens === 'number' ? tokens : null,
+      hash: typeof hash === 'string' ? hash.substring(0, getIniConfig('MESSAGE_SIZE')) : null,
       model: typeof model === 'string' ? model.substring(0, getIniConfig('MESSAGE_SIZE')) : null,
       errorCode:
         typeof errorCode === 'string' ? errorCode.substring(0, getIniConfig('MESSAGE_SIZE')) : null,
@@ -72,7 +73,7 @@ export default function messageManager(socket, io) {
     });
 
     // Complete
-    fn({ id: msgIndex, date: msgDate });
+    fn({ id: msg.historyId, date: msgDate });
   });
 
   socket.on('edit-message', async (data, fn) => {

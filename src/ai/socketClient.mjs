@@ -779,18 +779,23 @@ class TinyClientIo extends EventEmitter {
   }
 
   // Send room message
-  sendMessage(message = '') {
+  sendMessage(message = '', { tokens, model, hash }) {
     return this.#socketEmitApi('send-message', {
       roomId: this.#cfg.roomId,
+      tokens,
+      model,
+      hash,
       message,
     });
   }
 
   // Edit room message
-  editMessage(message = '', msgId = '') {
+  editMessage({ message = '', hash = null, tokens = null }, msgId = '') {
     return this.#socketEmitApi('edit-message', {
       roomId: this.#cfg.roomId,
       messageId: msgId,
+      hash,
+      tokens,
       newText: message,
     });
   }

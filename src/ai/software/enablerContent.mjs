@@ -3,10 +3,16 @@ import { alert } from '../../files/tinyLib.mjs';
 import { tinyIo, tinyStorage } from './base.mjs';
 import RpgData from './rpgData.mjs';
 
-/** Used to detect if you're online in a server */
+/**
+ * Used to detect if you're online in a server
+ * @returns {boolean}
+ */
 export const isOnline = () => (!noOnlineMode() && tinyIo.client ? true : false);
 
-/** Used to detect if you're in a server */
+/**
+ * Used to detect if you're in a server
+ * @returns {boolean}
+ */
 export const noOnlineMode = () => {
   return (
     contentEnabler.rpgCfg &&

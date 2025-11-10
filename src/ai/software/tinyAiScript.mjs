@@ -275,6 +275,7 @@ export const tinyAiScript = {
           tinyStorage.setApiKey('google-generative', result);
           tinyAiScript.checkTitle();
           TinyHtml.query('#ai_connection')?.data('BootstrapModal').hide();
+          window.location.reload();
         })
         .toggleProp('disabled', appData.ai.using);
 

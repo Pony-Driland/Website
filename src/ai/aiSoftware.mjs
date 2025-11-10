@@ -1928,12 +1928,14 @@ export const AiScriptStart = async () => {
     .setText('Cancel');
   contentEnabler.setCancelSubmit(cancelSubmit);
 
+  // TITLE: Send message
   const submitMessage = async () => {
     // Prepare to get data
     msgInput.trigger('blur');
     const msg = msgInput.val();
     msgInput.setVal('').trigger('input');
 
+    // Disable stuff
     const controller = new AbortController();
     contentEnabler.deBase();
     contentEnabler.deMessageButtons();
@@ -1941,6 +1943,7 @@ export const AiScriptStart = async () => {
     contentEnabler.dePromptButtons();
     contentEnabler.deModelSelector();
 
+    // Start loading
     let points = '.';
     let secondsWaiting = -1;
     const loadingMoment = () => {
@@ -1980,22 +1983,37 @@ export const AiScriptStart = async () => {
         resolve(false);
       }
     });
-    if (canContinue) {
-      contentEnabler.deBase(controller);
-      addMessage(
-        makeMessage({
-          message: msg,
-          id: sentId,
-        }),
-      );
 
-      // Execute Ai
-      if (!tinyAiScript.noai && !tinyAiScript.mpClient && sessionEnabled)
-        await executeAi(submitCache, controller).catch((err) => {
-          if (submitCache.cancel) submitCache.cancel();
-          console.error(err);
-          alert(err.message);
+    // Offline mode
+    if (canContinue) {
+      if (isOfflineMode) {
+        contentEnabler.deBase(controller);
+        addMessage(
+          makeMessage({
+            message: msg,
+            id: sentId,
+          }),
+        );
+
+        // Execute Ai
+        if (!tinyAiScript.noai && !tinyAiScript.mpClient && sessionEnabled)
+          await executeAi(submitCache, controller).catch((err) => {
+            if (submitCache.cancel) submitCache.cancel();
+            console.error(err);
+            alert(err.message);
+          });
+      }
+
+      // Online mode
+      else {
+        const isNoAi = tinyAiScript.noai || tinyAiScript.mpClient;
+        const msgData = await tinyIo.client.sendMessage(msg, {
+          model: (!isNoAi ? tinyAi.getModel() : '') ?? '',
+          tokens: (!isNoAi ? tinyAi.getMsgTokensById(sentId).count : 0) ?? 0,
+          hash: (!isNoAi ? tinyAi.getMsgHashById(sentId) ?? '' : '') ?? '',
         });
+        console.log(msgData);
+      }
     }
 
     // Complete
