@@ -104,9 +104,12 @@ export const startDatabase = async (appStorage) => {
       ['userId', 'TEXT', 'NOT NULL'],
       ['text', 'TEXT', 'NOT NULL'],
       ['date', 'INTEGER', 'NOT NULL'],
+      ['model', 'TEXT'],
+      ['hash', 'TEXT'],
       ['edited', 'INTEGER'],
       ['tokens', 'INTEGER'],
       ['errorCode', 'TEXT'],
+      ['PRIMARY KEY (roomId, historyId)'],
       ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
     ];
 
@@ -119,7 +122,7 @@ export const startDatabase = async (appStorage) => {
         subId: 'historyId',
       },
       [
-        ['historyId', 'TEXT', 'PRIMARY KEY DEFAULT (lower(hex(randomblob(16))))'],
+        ['historyId', 'TEXT', 'DEFAULT (lower(hex(randomblob(16))))'],
         ...historyTemplate,
       ],
     );
@@ -132,7 +135,7 @@ export const startDatabase = async (appStorage) => {
         id: 'roomId',
         subId: 'historyId',
       },
-      [['historyId', 'TEXT', 'PRIMARY KEY'], ...historyTemplate],
+      [['historyId', 'TEXT'], ...historyTemplate],
     );
 
     // Stores user credentials
