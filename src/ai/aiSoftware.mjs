@@ -2010,7 +2010,7 @@ export const AiScriptStart = async () => {
         const msgData = await tinyIo.client.sendMessage(msg, {
           model: (!isNoAi ? tinyAi.getModel() : '') ?? '',
           tokens: (!isNoAi ? tinyAi.getMsgTokensById(sentId).count : 0) ?? 0,
-          hash: (!isNoAi ? tinyAi.getMsgHashById(sentId) ?? '' : '') ?? '',
+          hash: (!isNoAi ? tinyAi.getMsgHashById(sentId) : '') ?? '',
         });
         console.log(msgData);
       }

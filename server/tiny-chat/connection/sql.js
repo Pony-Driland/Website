@@ -121,10 +121,7 @@ export const startDatabase = async (appStorage) => {
         id: 'roomId',
         subId: 'historyId',
       },
-      [
-        ['historyId', 'TEXT', 'DEFAULT (lower(hex(randomblob(16))))'],
-        ...historyTemplate,
-      ],
+      [['historyId', 'TEXT', 'DEFAULT (lower(hex(randomblob(16))))'], ...historyTemplate],
     );
 
     // Stores room deleted histories

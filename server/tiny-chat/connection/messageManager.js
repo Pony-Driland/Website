@@ -54,6 +54,7 @@ export default function messageManager(socket, io) {
       msgData.errorCode = errorCode.substring(0, getIniConfig('MESSAGE_SIZE'));
     if (typeof model === 'string') msgData.model = model.substring(0, getIniConfig('MESSAGE_SIZE'));
     if (typeof tokens === 'number') msgData.tokens = tokens;
+    if (typeof hash === 'string') msgData.hash = hash.substring(0, getIniConfig('MESSAGE_SIZE'));
 
     const msg = await roomHistories.set(roomId, msgData);
 
@@ -64,11 +65,10 @@ export default function messageManager(socket, io) {
       userId,
       text: message,
       date: msgDate,
-      tokens: typeof tokens === 'number' ? tokens : null,
-      hash: typeof hash === 'string' ? hash.substring(0, getIniConfig('MESSAGE_SIZE')) : null,
-      model: typeof model === 'string' ? model.substring(0, getIniConfig('MESSAGE_SIZE')) : null,
-      errorCode:
-        typeof errorCode === 'string' ? errorCode.substring(0, getIniConfig('MESSAGE_SIZE')) : null,
+      tokens: typeof tokens === 'number' ? msgData.tokens : null,
+      hash: typeof msgData.hash === 'string' ? msgData.hash : null,
+      model: typeof model === 'string' ? msgData.model : null,
+      errorCode: typeof errorCode === 'string' ? msgData.errorCode : null,
       edited: 0,
     });
 
