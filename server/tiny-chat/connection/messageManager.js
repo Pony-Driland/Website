@@ -49,11 +49,12 @@ export default function messageManager(socket, io) {
     const moderators = db.getTable('moderators');
     const roomModerators = db.getTable('roomModerators');
     if (
-      room.readOnly &&
-      userId !== getIniConfig('OWNER_ID') &&
-      !(await moderators.has(userId)) &&
-      room.ownerId !== userId &&
-      !(await roomModerators.has(roomId, userId))
+      !rUsers.get(room.ownerId) ||
+      (room.readOnly &&
+        userId !== getIniConfig('OWNER_ID') &&
+        !(await moderators.has(userId)) &&
+        room.ownerId !== userId &&
+        !(await roomModerators.has(roomId, userId)))
     )
       return fn({
         error: true,
@@ -144,11 +145,12 @@ export default function messageManager(socket, io) {
     const moderators = db.getTable('moderators');
     const roomModerators = db.getTable('roomModerators');
     if (
-      (room.readOnly || msg.userId !== userId) &&
-      userId !== getIniConfig('OWNER_ID') &&
-      !(await moderators.has(userId)) &&
-      room.ownerId !== userId &&
-      !(await roomModerators.has(roomId, userId))
+      !rUsers.get(room.ownerId) ||
+      ((room.readOnly || msg.userId !== userId) &&
+        userId !== getIniConfig('OWNER_ID') &&
+        !(await moderators.has(userId)) &&
+        room.ownerId !== userId &&
+        !(await roomModerators.has(roomId, userId)))
     )
       return fn({
         error: true,

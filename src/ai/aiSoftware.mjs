@@ -2774,7 +2774,12 @@ export const AiScriptStart = async () => {
 
         // Read Only Mode
         const updateReadOnlyMode = (roomData) => {
-          const isReadOnly = roomData.readOnly && !userStatus.isAdmin && !userStatus.isMod;
+          const isReadOnly =
+            !client.getUsers()[client.getRoom().ownerId] ||
+            (roomData.readOnly && !userStatus.isAdmin && !userStatus.isMod)
+              ? true
+              : false;
+
           container.toggleClass('read-only', isReadOnly);
           textInputWrapper.blur().toggleClass('d-none', isReadOnly);
         };
@@ -3036,9 +3041,15 @@ export const AiScriptStart = async () => {
           }
         });
 
-        // You was kicked
+        // User Status
         client.on('userLeft', (userId) => {
+          // You was kicked
           if (userId === client.getUserId()) client.disconnect();
+          else updateReadOnlyMode(tinyIo.client.getRoom());
+        });
+
+        client.on('userJoined', () => {
+          updateReadOnlyMode(tinyIo.client.getRoom());
         });
 
         // Dice roll
