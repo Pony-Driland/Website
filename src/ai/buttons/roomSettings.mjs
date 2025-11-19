@@ -1,4 +1,6 @@
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtmlNumberInput from 'tiny-essentials/libs/TinyHtmlElems/Input/Number';
+
 import { tinyIo } from '../software/base.mjs';
 import tinyLib, { alert } from '../../files/tinyLib.mjs';
 
@@ -22,6 +24,7 @@ export const roomSettingsMenu = () => {
     const roomEditDetector = (data) => {
       if (typeof data.title === 'string') $roomTitle.setVal(data.title);
       if (typeof data.maxUsers === 'number') $maxUsers.setVal(data.maxUsers);
+      if (typeof data.chapter === 'number') $chapter.setVal(data.chapter);
     };
 
     tinyIo.client.on('roomUpdates', roomEditDetector);
@@ -49,17 +52,20 @@ export const roomSettingsMenu = () => {
       .setVal(room.title)
       .toggleProp('disabled', cantEdit);
 
-    const $maxUsers = TinyHtml.createFrom('input')
-      .setAttr({
-        type: 'number',
-        id: 'maxUsers',
-        min: 1,
-        max: ratelimit.limit.roomUsers,
-        placeholder: 'Maximum number of users',
-      })
-      .addClass('form-control')
-      .setVal(room.maxUsers)
-      .toggleProp('disabled', cantEdit);
+    const $maxUsers = new TinyHtmlNumberInput({
+      value: room.maxUsers,
+      min: 1,
+      max: ratelimit.limit.roomUsers,
+      placeholder: 'Maximum number of users',
+      mainClass: 'form-control',
+    }).toggleProp('disabled', cantEdit);
+
+    const $chapter = new TinyHtmlNumberInput({
+      value: room.chapter,
+      min: 1,
+      placeholder: 'The chapter number',
+      mainClass: 'form-control',
+    }).toggleProp('disabled', cantEdit);
 
     $editForm.append(
       TinyHtml.createFrom('div')
@@ -86,16 +92,31 @@ export const roomSettingsMenu = () => {
         ),
     );
 
-    // Max users
     $editForm.append(
       TinyHtml.createFrom('div')
-        .addClass('mb-3')
+        .addClass('row mb-3')
         .append(
-          TinyHtml.createFrom('label')
-            .setAttr('for', 'maxUsers')
-            .addClass('form-label')
-            .setText('Max Users'),
-          $maxUsers,
+          // Max users
+          TinyHtml.createFrom('div')
+            .addClass('col-md-6')
+            .append(
+              TinyHtml.createFrom('label')
+                .setAttr('for', 'maxUsers')
+                .addClass('form-label')
+                .setText('Max Users'),
+              $maxUsers,
+            ),
+
+          // Max users
+          TinyHtml.createFrom('div')
+            .addClass('col-md-6')
+            .append(
+              TinyHtml.createFrom('label')
+                .setAttr('for', 'chapter')
+                .addClass('form-label')
+                .setText('Chapter'),
+              $chapter,
+            ),
         ),
     );
 
@@ -196,7 +217,8 @@ export const roomSettingsMenu = () => {
         $editError.empty(); // limpa erros anteriores
 
         const title = $roomTitle.val().trim();
-        const maxUsers = parseInt(new TinyHtml($editForm.find('#maxUsers')).val(), 10);
+        const maxUsers = $maxUsers.valNb();
+        const chapter = $chapter.valNb();
         const password = new TinyHtml($editForm.find('#roomPassword')).val().trim();
 
         if (Number.isNaN(maxUsers) || maxUsers <= 0) {
@@ -209,7 +231,12 @@ export const roomSettingsMenu = () => {
           return;
         }
 
-        const newSettings = { title, maxUsers };
+        if (chapter < 1) {
+          $editError.setText('Chapter must be a positive number.');
+          return;
+        }
+
+        const newSettings = { title, maxUsers, chapter };
         if (typeof password === 'string' && password.length > 0) newSettings.password = password;
 
         modal.hide();

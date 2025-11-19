@@ -88,12 +88,6 @@ export default function roomManager(socket, io, appStorage) {
       return fn({ error: true, msg: "You're banned.", code: 5 });
     }
 
-    // Send chat history and settings only to the joined user
-    const roomHistories = db.getTable('history');
-    const historyData = getIniConfig('LOAD_ALL_HISTORY')
-      ? await roomHistories.getAll(roomId)
-      : await roomHistories.getAmount(roomId, getIniConfig('HISTORY_SIZE'));
-
     // Emit chat history and settings to the user
     if (typeof room.password !== 'undefined') delete room.password;
     const usersList = roomUsers.get(roomId);
@@ -106,7 +100,6 @@ export default function roomManager(socket, io, appStorage) {
     socket.emit('room-entered', {
       roomId,
       users,
-      history: historyData || [],
       mods: (await roomModerators.getAll()) || [],
       roomData: (await roomData.get(roomId))?.data || {},
       roomPrivateData:
@@ -425,6 +418,103 @@ export default function roomManager(socket, io, appStorage) {
     fn({ success: true });
   });
 
+  socket.on('disable-readonly-room', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
+    const { roomId } = data;
+    // Validate values
+    if (typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
+
+    // Get user
+    const userId = userSession.getUserId(socket);
+    if (!userId) return accountNotDetected(fn); // Only logged-in users can use it
+    if (userIsRateLimited(socket, fn)) return;
+
+    // Check if the room exists
+    const rooms = db.getTable('rooms');
+    const rUsers = roomUsers.get(roomId);
+    const room = await rooms.get(roomId);
+    if (!rUsers || !room) {
+      return fn({
+        error: true,
+        msg: 'Room not found.',
+        code: 1,
+      });
+    }
+
+    // Check if user is server owner or server mod
+    const moderators = db.getTable('moderators');
+    if (
+      userId !== getIniConfig('OWNER_ID') &&
+      !(await moderators.has(userId)) &&
+      room.ownerId !== userId
+    ) {
+      return fn({
+        error: true,
+        msg: 'You are not allowed to do this.',
+        code: 2,
+      });
+    }
+
+    // Change room status
+    await rooms.update(roomId, { readOnly: false });
+
+    // Notify all users in the room about the updated settings
+    const newRoom = await rooms.get(roomId);
+    if (typeof newRoom.password !== 'undefined') delete newRoom.password;
+    io.to(roomId).emit('room-updated', { data: newRoom, roomId });
+
+    // Room disabled successfully.
+    fn({ success: true });
+  });
+
+  socket.on('enable-readonly-room', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
+    const { roomId } = data;
+    // Validate values
+    if (typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
+
+    // Get user
+    const userId = userSession.getUserId(socket);
+    if (!userId) return accountNotDetected(fn); // Only logged-in users can use it
+    if (userIsRateLimited(socket, fn)) return;
+
+    // Check if the room exists
+    const rooms = db.getTable('rooms');
+    const room = await rooms.get(roomId);
+    if (!room) {
+      return fn({
+        error: true,
+        msg: 'Room not found.',
+        code: 1,
+      });
+    }
+
+    // Check if user is server owner or server mod
+    const moderators = db.getTable('moderators');
+    if (
+      userId !== getIniConfig('OWNER_ID') &&
+      !(await moderators.has(userId)) &&
+      room.ownerId !== userId
+    ) {
+      return fn({
+        error: true,
+        msg: 'You are not allowed to do this.',
+        code: 2,
+      });
+    }
+
+    // Enable room back
+    await rooms.update(roomId, { readOnly: true });
+
+    // Notify all users in the room about the updated settings
+    const newRoom = await rooms.get(roomId);
+    if (typeof newRoom.password !== 'undefined') delete newRoom.password;
+    io.to(roomId).emit('room-updated', { data: newRoom, roomId });
+
+    // Room enabled successfully.
+    fn({ success: true });
+  });
+
   socket.on('disable-room', async (data, fn) => {
     if (noDataInfo(data, fn)) return;
     const { roomId } = data;
@@ -463,7 +553,7 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Change room status
-    rooms.update(roomId, { disabled: true });
+    await rooms.update(roomId, { disabled: true });
 
     // Disconnect user from rooms
     rUsers.forEach((userData, tUser) => {
@@ -512,7 +602,7 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Enable room back
-    rooms.update(roomId, { disabled: false });
+    await rooms.update(roomId, { disabled: false });
 
     // Room enabled successfully.
     fn({ success: true });
@@ -702,6 +792,17 @@ export default function roomManager(socket, io, appStorage) {
         if (allowedUpdates.maxUsers > getIniConfig('MAX_USERS_PER_ROOM'))
           allowedUpdates.maxUsers = getIniConfig('MAX_USERS_PER_ROOM');
         else if (allowedUpdates.maxUsers < 1) allowedUpdates.maxUsers = 1;
+      }
+    }
+
+    if ('chapter' in newSettings) {
+      if (
+        typeof newSettings.chapter === 'number' &&
+        !Number.isNaN(newSettings.chapter) &&
+        Number.isFinite(newSettings.chapter) &&
+        newSettings.chapter >= 1
+      ) {
+        allowedUpdates.chapter = newSettings.chapter;
       }
     }
 

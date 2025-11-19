@@ -1,8 +1,9 @@
 import moment from 'moment';
 import objHash from 'object-hash';
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
-import tinyLib from '../files/tinyLib.mjs';
+import tinyLib, { alert } from '../files/tinyLib.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
+import TinyClientIo from './socketClient.mjs';
 
 /**
  * UserRoomManager
@@ -29,6 +30,8 @@ import { Tooltip } from '../modules/TinyBootstrap.mjs';
  */
 class UserRoomManager {
   #usersHtml = [];
+
+  /** @type {TinyClientIo} */
   #client;
 
   /**
@@ -52,6 +55,7 @@ class UserRoomManager {
     this.isOwner = isOwner === true;
     this.isModerator = false;
 
+    this.readOnly = false;
     this.roomActive = true;
     this.isWaitingRoomStatus = false;
 
@@ -112,10 +116,19 @@ class UserRoomManager {
   checkPerms() {
     const room = this.#client.getRoom() || {};
     const user = this.#client.getUser() || {};
+
     if (this.$unbanInput)
       this.$unbanInput.toggleProp('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
+
+    if (this.$remveModInput)
+      this.$remveModInput.toggleProp(
+        'disabled',
+        !this.isModerator && !this.isOwner && !user.isOwner,
+      );
+
     if (this.$kickAll)
       this.$kickAll.toggleProp('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
+
     for (const item of this.#usersHtml) {
       const needDisable =
         item.userId === room.ownerId ||
@@ -132,6 +145,7 @@ class UserRoomManager {
    * Includes:
    * - A "Kick all" button to remove all users except the current user and the room owner.
    * - A room status toggle button to enable or disable the room.
+   * - A ReadOnly toggle button to enable or disable read-only mode.
    * - A search input to filter users in real-time.
    *
    * Appends the constructed elements to the root and initializes their events.
@@ -173,6 +187,27 @@ class UserRoomManager {
         });
     });
 
+    // ReadOnly status
+    const $readonlyBtn = tinyLib.bs.button('secondary');
+    this.$readonlyButton = $readonlyBtn;
+    $readonlyBtn.on('click', () => {
+      if (this.isWaitingReadonly) return;
+
+      this.isWaitingReadonly = true;
+      this.updateReadonlyButton();
+
+      if (this.readonlyActive)
+        this.#client.disableReadOnlyRoom().then((result) => {
+          if (!result.error) this.setReadonly(false);
+          else this.setReadonly(true);
+        });
+      else
+        this.#client.enableReadOnlyRoom().then((result) => {
+          if (!result.error) this.setReadonly(true);
+          else this.setReadonly(false);
+        });
+    });
+
     // Search input
     this.$searchInput = TinyHtml.createFrom('input', {
       type: 'text',
@@ -186,10 +221,52 @@ class UserRoomManager {
     const $searchWrapper = TinyHtml.createFrom('div')
       .addClass('flex-grow-1')
       .append(this.$searchInput);
-    this.$header.append(this.$kickAll, $roomStatus, $searchWrapper);
+
+    this.$header.append(this.$kickAll, $readonlyBtn, $roomStatus, $searchWrapper);
     this.$root.append(this.$header, this.$userList);
 
     this.updateRoomStatusButton();
+    this.updateReadonlyButton();
+  }
+
+  /**
+   * Updates the visual state and label of the ReadOnly toggle button.
+   *
+   * Changes the button style and text based on the current read-only state:
+   * - Green ("Disable ReadOnly") when read-only mode is active.
+   * - Red ("Enable ReadOnly") when read-only mode is inactive.
+   * - Yellow ("Waiting...") while the state is updating.
+   *
+   * Disables the button if the current user is not the room owner.
+   */
+  updateReadonlyButton() {
+    const $btn = this.$readonlyButton;
+    if (!$btn) return;
+
+    $btn
+      .removeClass('btn-success btn-danger btn-warning')
+      .addClass(
+        this.isWaitingReadonly ? 'btn-warning' : this.readonlyActive ? 'btn-success' : 'btn-danger',
+      )
+      .setText(
+        this.isWaitingReadonly
+          ? 'Waiting...'
+          : this.readonlyActive
+            ? 'Disable ReadOnly'
+            : 'Enable ReadOnly',
+      )
+      .toggleProp('disabled', !this.isOwner);
+  }
+
+  /**
+   * Updates the read-only state and resets the waiting flag.
+   *
+   * @param {boolean} active - Indicates whether read-only mode is active.
+   */
+  setReadonly(active) {
+    this.readonlyActive = active;
+    this.isWaitingReadonly = false;
+    this.updateReadonlyButton();
   }
 
   /**
@@ -207,6 +284,11 @@ class UserRoomManager {
     const $unbanWrapper = TinyHtml.createFrom('div').addClass(
       'd-flex mt-4 gap-2 align-items-center',
     );
+
+    const $removeModWrapper = TinyHtml.createFrom('div').addClass(
+      'd-flex mt-4 gap-2 align-items-center',
+    );
+
     this.$unbanInput = TinyHtml.createFrom('input')
       .addClass('form-control')
       .setAttr('type', 'text')
@@ -215,6 +297,17 @@ class UserRoomManager {
         if (e.key === 'Enter') {
           e.preventDefault();
           $unbanButton.trigger('click');
+        }
+      });
+
+    this.$remveModInput = TinyHtml.createFrom('input')
+      .addClass('form-control')
+      .setAttr('type', 'text')
+      .setAttr('placeholder', 'Enter user ID to remove mod')
+      .on('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          $removeModButton.trigger('click');
         }
       });
 
@@ -229,9 +322,20 @@ class UserRoomManager {
       }
     });
 
+    const $removeModButton = tinyLib.bs.button('danger').setText('Remove Mod');
+    $removeModButton.on('click', () => {
+      if (!this.$remveModInput.hasProp('disabled')) {
+        const userId = this.$remveModInput.val().trim();
+        if (userId) {
+          this.$remveModInput.setVal('');
+          this.reqDemoteModerator(userId).catch((err) => alert(err.message));
+        }
+      }
+    });
+
     $unbanWrapper.append(this.$unbanInput, $unbanButton);
-    this.$userList.append();
-    this.$footer.append($unbanWrapper);
+    $removeModWrapper.append(this.$remveModInput, $removeModButton);
+    this.$footer.append($unbanWrapper, $removeModWrapper);
     this.$root.append(this.$footer);
   }
 
@@ -479,11 +583,11 @@ class UserRoomManager {
    *
    * @param {string} userId - The user ID to promote.
    */
-  reqPromoteModerator(userId) {
+  async reqPromoteModerator(userId) {
     if (!this.moderators.find((m) => m.userId === userId)) {
       const html = this.#usersHtml.find((item) => item.userId === userId);
       if (html) html.actions.mod.addProp('disabled');
-      this.#client.addMod([userId]).then((result) => {
+      await this.#client.addMod([userId]).then((result) => {
         if (html) html.actions.mod.removeProp('disabled').removeClass('disabled');
         if (!result.error) this.promoteModerator(userId);
       });
@@ -496,10 +600,10 @@ class UserRoomManager {
    *
    * @param {string} userId - The user ID to demote.
    */
-  reqDemoteModerator(userId) {
+  async reqDemoteModerator(userId) {
     const html = this.#usersHtml.find((item) => item.userId === userId);
     if (html) html.actions.mod.addProp('disabled');
-    this.#client.removeMod([userId]).then((result) => {
+    return this.#client.removeMod([userId]).then((result) => {
       if (html) html.actions.mod.removeProp('disabled').removeClass('disabled');
       if (!result.error) this.demoteModerator(userId);
     });
@@ -530,12 +634,15 @@ class UserRoomManager {
    */
   unbanUser(userId) {
     this.$unbanInput.addProp('disabled');
-    this.#client.unbanUser(userId).then((result) => {
-      this.$unbanInput.removeProp('disabled').removeClass('disabled');
-      if (result.error)
-        this.$unbanInput.setVal(typeof result.msg === 'string' ? result.msg : 'Unknown error');
-      this.$unbanInput.trigger('focus').trigger('select');
-    });
+    this.#client
+      .unbanUser(userId)
+      .then((result) => {
+        this.$unbanInput.removeProp('disabled').removeClass('disabled');
+        if (result.error)
+          this.$unbanInput.setVal(typeof result.msg === 'string' ? result.msg : 'Unknown error');
+        this.$unbanInput.trigger('focus').trigger('select');
+      })
+      .catch((err) => alert(err.message));
   }
 
   /**

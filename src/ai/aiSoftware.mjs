@@ -2013,6 +2013,15 @@ export const AiScriptStart = async () => {
           hash: (!isNoAi ? tinyAi.getMsgHashById(sentId) : '') ?? '',
         });
         console.log(msgData);
+
+        addMessage(
+          makeMessage({
+            message: msg,
+            date: msgData.date,
+            id: sentId,
+            msgId: msgData.id,
+          }),
+        );
       }
     }
 
@@ -2035,6 +2044,8 @@ export const AiScriptStart = async () => {
   msgSubmit.on('click', async () => {
     if (!msgInput.hasProp('disabled')) submitMessage();
   });
+
+  window.tinyIo = tinyIo;
 
   msgInput.on('keydown', (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
@@ -2303,6 +2314,10 @@ export const AiScriptStart = async () => {
     class: 'input-group pb-3 body-background',
   }).append(msgInput, cancelSubmit, msgSubmit);
 
+  const textInputWrapper = TinyHtml.createFrom('div', {
+    class: 'px-3 d-inline-block w-100',
+  }).append(textInputContainer);
+
   const container = TinyHtml.createFrom('div', {
     class: 'd-flex h-100 y-100',
     id: 'ai-element-root',
@@ -2316,9 +2331,7 @@ export const AiScriptStart = async () => {
         chatContainer.append(msgList),
 
         // Input Area
-        TinyHtml.createFrom('div', { class: 'px-3 d-inline-block w-100' }).append(
-          textInputContainer,
-        ),
+        textInputWrapper,
       ),
     ),
     sidebarRight,
@@ -2752,37 +2765,64 @@ export const AiScriptStart = async () => {
           },
         };
 
+        // Read Only Mode
+        const updateReadOnlyMode = (roomData) => {
+          const isReadOnly = roomData.readOnly && !userStatus.isAdmin && !userStatus.isMod;
+          container.toggleClass('read-only', isReadOnly);
+          textInputWrapper.blur().toggleClass('d-none', isReadOnly);
+        };
+
         // Install prompts
         const onlineRoomUpdates = (allowEdit, roomData, updateTokens = true) => {
           if (!allowEdit) return;
 
           // First dialogue
-          if (roomData.firstDialogue !== tinyAi.getFirstDialogue())
+          if (
+            roomData.firstDialogue !== null &&
+            roomData.firstDialogue !== tinyAi.getFirstDialogue()
+          )
             tinyAi.setFirstDialogue(roomData.firstDialogue);
 
           // Prompt
-          if (roomData.prompt !== tinyAi.getPrompt()) tinyAi.setPrompt(roomData.prompt, 0);
+          if (roomData.prompt !== null && roomData.prompt !== tinyAi.getPrompt())
+            tinyAi.setPrompt(roomData.prompt, 0);
 
           // System Instruction
-          if (roomData.systemInstruction !== tinyAi.getSystemInstruction())
+          if (
+            roomData.systemInstruction !== null &&
+            roomData.systemInstruction !== tinyAi.getSystemInstruction()
+          )
             tinyAi.setSystemInstruction(roomData.systemInstruction, 0);
 
           // Ai Config
-          if (roomData.frequencyPenalty !== tinyAi.getFrequencyPenalty())
+          if (
+            roomData.frequencyPenalty !== null &&
+            roomData.frequencyPenalty !== tinyAi.getFrequencyPenalty()
+          )
             tinyAi.setFrequencyPenalty(roomData.frequencyPenalty);
-          if (roomData.presencePenalty !== tinyAi.getPresencePenalty())
+          if (
+            roomData.presencePenalty !== null &&
+            roomData.presencePenalty !== tinyAi.getPresencePenalty()
+          )
             tinyAi.setPresencePenalty(roomData.presencePenalty);
 
-          if (roomData.maxOutputTokens !== tinyAi.getMaxOutputTokens())
+          if (
+            roomData.maxOutputTokens !== null &&
+            roomData.maxOutputTokens !== tinyAi.getMaxOutputTokens()
+          )
             tinyAi.setMaxOutputTokens(roomData.maxOutputTokens);
-          if (roomData.model !== tinyAi.getModel()) tinyAi.setModel(roomData.model);
+          if (roomData.model !== null && roomData.model !== tinyAi.getModel())
+            tinyAi.setModel(roomData.model);
 
-          if (roomData.temperature !== tinyAi.getTemperature())
+          if (roomData.temperature !== null && roomData.temperature !== tinyAi.getTemperature())
             tinyAi.setTemperature(roomData.temperature);
-          if (roomData.topK !== tinyAi.getTopK()) tinyAi.setTopK(roomData.topK);
-          if (roomData.topP !== tinyAi.getTopP()) tinyAi.setTopP(roomData.topP);
+          if (roomData.topK !== null && roomData.topK !== tinyAi.getTopK())
+            tinyAi.setTopK(roomData.topK);
+          if (roomData.topP !== null && roomData.topP !== tinyAi.getTopP())
+            tinyAi.setTopP(roomData.topP);
 
           // Update tokens
+          updateReadOnlyMode(roomData);
           if (updateTokens) updateAiTokenCounterData();
         };
 
@@ -2850,6 +2890,7 @@ export const AiScriptStart = async () => {
             sidebarRight.toggleClass('d-none', !userStatus.isAdmin);
             sidebarRight.toggleClass('d-md-block', userStatus.isAdmin);
           }
+          updateReadOnlyMode(tinyIo.client.getRoom());
         };
 
         client.on('roomModChange', (type, userId) => {

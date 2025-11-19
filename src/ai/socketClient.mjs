@@ -33,7 +33,6 @@ class TinyClientIo extends EventEmitter {
 
   constructor(cfg) {
     super();
-    const tinyThis = this;
     this.#cfg = cfg;
 
     /** @type {Io|null} */
@@ -44,9 +43,9 @@ class TinyClientIo extends EventEmitter {
     if (this.socket) {
       console.log('[socket.io] Starting...');
       this.socket.on('disconnect', (reason, details) => {
-        tinyThis.active = tinyThis.socket.active;
-        tinyThis.id = null;
-        tinyThis.connected = tinyThis.socket.connected;
+        this.active = this.socket.active;
+        this.id = null;
+        this.connected = this.socket.connected;
 
         console.log(
           `[socket-io] [disconnect]${typeof reason === 'string' ? ` ${reason}` : ''}`,
@@ -55,27 +54,27 @@ class TinyClientIo extends EventEmitter {
       });
 
       this.socket.on('connect_error', (err) => {
-        tinyThis.active = tinyThis.socket.active;
-        if (!tinyThis.socket.active) {
+        this.active = this.socket.active;
+        if (!this.socket.active) {
           // the connection was denied by the server
           // in that case, `socket.connect()` must be manually called in order to reconnect
         }
       });
 
       this.socket.on('connect', () => {
-        tinyThis.active = tinyThis.socket.active;
-        console.log(`[socket.io] Connected! Id: ${tinyThis.socket.id}`);
-        tinyThis.id = tinyThis.socket.id;
-        tinyThis.connected = tinyThis.socket.connected;
+        this.active = this.socket.active;
+        console.log(`[socket.io] Connected! Id: ${this.socket.id}`);
+        this.id = this.socket.id;
+        this.connected = this.socket.connected;
       });
 
       this.socket.io.on('reconnect_attempt', () => {
-        tinyThis.active = tinyThis.socket.active;
+        this.active = this.socket.active;
         console.log('[socket.io] Trying to reconnect...');
       });
 
       this.socket.io.on('reconnect', () => {
-        tinyThis.active = tinyThis.socket.active;
+        this.active = this.socket.active;
         console.log('[socket.io] Reconnecting...');
       });
     }
@@ -305,6 +304,7 @@ class TinyClientIo extends EventEmitter {
         title: typeof result.title === 'string' ? result.title : '',
         ownerId: typeof result.ownerId === 'string' ? result.ownerId : '',
         maxUsers: typeof result.maxUsers === 'number' ? result.maxUsers : 0,
+        chapter: typeof result.chapter === 'number' ? result.chapter : 0,
         model: typeof result.model === 'string' ? result.model : null,
         prompt: typeof result.prompt === 'string' ? result.prompt : null,
         firstDialogue: typeof result.firstDialogue === 'string' ? result.firstDialogue : null,
@@ -317,7 +317,24 @@ class TinyClientIo extends EventEmitter {
         presencePenalty: typeof result.presencePenalty === 'number' ? result.presencePenalty : null,
         frequencyPenalty:
           typeof result.frequencyPenalty === 'number' ? result.frequencyPenalty : null,
-        disabled: typeof result.disabled === 'number' ? (result.disabled ? true : false) : false,
+
+        disabled:
+          typeof result.disabled === 'number'
+            ? result.disabled
+              ? true
+              : false
+            : typeof result.disabled === 'boolean'
+              ? result.disabled
+              : false,
+
+        readOnly:
+          typeof result.readOnly === 'number'
+            ? result.readOnly
+              ? true
+              : false
+            : typeof result.readOnly === 'boolean'
+              ? result.readOnly
+              : false,
       };
       return this.room;
     }
@@ -420,8 +437,7 @@ class TinyClientIo extends EventEmitter {
 
   // Socket emit
   #socketEmitApi(where, data) {
-    const tinyThis = this;
-    return new Promise((resolve) => tinyThis.socket.emit(where, data, (result) => resolve(result)));
+    return new Promise((resolve) => this.socket.emit(where, data, (result) => resolve(result)));
   }
 
   // On connection
@@ -644,16 +660,42 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
+  // Disable readOnly room
+  disableReadOnlyRoom() {
+    return new Promise((resolve, reject) =>
+      this.#socketEmitApi('disable-readonly-room', {
+        roomId: this.#cfg.roomId,
+      })
+        .then((result) => {
+          if (!result.error) this.room.readOnly = false;
+          resolve(result);
+        })
+        .catch(reject),
+    );
+  }
+
+  // Enable readOnly room
+  enableReadOnlyRoom() {
+    return new Promise((resolve, reject) =>
+      this.#socketEmitApi('enable-readonly-room', {
+        roomId: this.#cfg.roomId,
+      })
+        .then((result) => {
+          if (!result.error) this.room.readOnly = true;
+          resolve(result);
+        })
+        .catch(reject),
+    );
+  }
+
   // Disable room
   disableRoom() {
-    const tinyThis = this;
     return new Promise((resolve, reject) =>
-      tinyThis
-        .#socketEmitApi('disable-room', {
-          roomId: this.#cfg.roomId,
-        })
+      this.#socketEmitApi('disable-room', {
+        roomId: this.#cfg.roomId,
+      })
         .then((result) => {
-          if (!result.error) tinyThis.room.disabled = true;
+          if (!result.error) this.room.disabled = true;
           resolve(result);
         })
         .catch(reject),
@@ -662,14 +704,12 @@ class TinyClientIo extends EventEmitter {
 
   // Enable room
   enableRoom() {
-    const tinyThis = this;
     return new Promise((resolve, reject) =>
-      tinyThis
-        .#socketEmitApi('enable-room', {
-          roomId: this.#cfg.roomId,
-        })
+      this.#socketEmitApi('enable-room', {
+        roomId: this.#cfg.roomId,
+      })
         .then((result) => {
-          if (!result.error) tinyThis.room.disabled = false;
+          if (!result.error) this.room.disabled = false;
           resolve(result);
         })
         .catch(reject),
@@ -755,14 +795,12 @@ class TinyClientIo extends EventEmitter {
 
   // Change your nickname
   changeNickname(nickname = '') {
-    const tinyThis = this;
     return new Promise((resolve, reject) =>
-      tinyThis
-        .#socketEmitApi('change-nickname', {
-          nickname,
-        })
+      this.#socketEmitApi('change-nickname', {
+        nickname,
+      })
         .then((result) => {
-          if (!result.error) tinyThis.user.nickname = nickname;
+          if (!result.error) this.user.nickname = nickname;
           resolve(result);
         })
         .catch(reject),
@@ -778,34 +816,80 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
+  // Load messages
+  loadMessages({
+    text = null,
+    chapter = null,
+    userId = null,
+    start = null,
+    end = null,
+    page = 1,
+    perPage = this.getRateLimit().size.history ?? null,
+  }) {
+    return new Promise((resolve, reject) =>
+      this.#socketEmitApi('load-messages', {
+        roomId: this.#cfg.roomId,
+        page,
+        perPage,
+        text,
+        chapter,
+        start,
+        end,
+        userId,
+      })
+        .then((result) => {
+          resolve(result);
+        })
+        .catch(reject),
+    );
+  }
+
   // Send room message
   sendMessage(message = '', { tokens, model, hash }) {
-    return this.#socketEmitApi('send-message', {
-      roomId: this.#cfg.roomId,
-      tokens,
-      model,
-      hash,
-      message,
-    });
+    return new Promise((resolve, reject) =>
+      this.#socketEmitApi('send-message', {
+        roomId: this.#cfg.roomId,
+        tokens,
+        model,
+        hash,
+        message,
+      })
+        .then((result) => {
+          resolve(result);
+        })
+        .catch(reject),
+    );
   }
 
   // Edit room message
   editMessage({ message = '', hash = null, tokens = null }, msgId = '') {
-    return this.#socketEmitApi('edit-message', {
-      roomId: this.#cfg.roomId,
-      messageId: msgId,
-      hash,
-      tokens,
-      newText: message,
-    });
+    return new Promise((resolve, reject) =>
+      this.#socketEmitApi('edit-message', {
+        roomId: this.#cfg.roomId,
+        messageId: msgId,
+        hash,
+        tokens,
+        newText: message,
+      })
+        .then((result) => {
+          resolve(result);
+        })
+        .catch(reject),
+    );
   }
 
   // Delete room message
   deleteMessage(msgId = '') {
-    return this.#socketEmitApi('delete-message', {
-      roomId: this.#cfg.roomId,
-      messageId: msgId,
-    });
+    return new Promise((resolve, reject) =>
+      this.#socketEmitApi('delete-message', {
+        roomId: this.#cfg.roomId,
+        messageId: msgId,
+      })
+        .then((result) => {
+          resolve(result);
+        })
+        .catch(reject),
+    );
   }
 
   // Roll Dice
@@ -973,24 +1057,24 @@ class TinyClientIo extends EventEmitter {
     // New message
     this.onNewMessage((result) => {
       if (this.checkRoomId(result)) {
-        this.emit('newMessage', data);
-        console.log('[socket-io] [message-add]');
+        this.emit('newMessage', result);
+        console.log('[socket-io] [message-add]', result);
       }
     });
 
     // Message delete
     this.onMessageDelete((result) => {
       if (this.checkRoomId(result)) {
-        this.emit('messageDelete', data);
-        console.log('[socket-io] [message-delete]');
+        this.emit('messageDelete', result);
+        console.log('[socket-io] [message-delete]', result);
       }
     });
 
     // Message edit
     this.onMessageEdit((result) => {
       if (this.checkRoomId(result)) {
-        this.emit('messageEdit', data);
-        console.log('[socket-io] [message-edit]');
+        this.emit('messageEdit', result);
+        console.log('[socket-io] [message-edit]', result);
       }
     });
 

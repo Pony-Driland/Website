@@ -38,7 +38,8 @@ Sends a message to a specific room, updating the message history and notifying o
 
 - `1`: Message exceeds size limit.
 - `2`: Room not found.
-- `3`: The message Id is already being used.
+- `3`: You are not in this room.
+- `4`: User lacks permission.
 
 ---
 
@@ -71,9 +72,10 @@ Edits an existing message in a room, provided the user has the necessary permiss
 **Error Codes:**
 
 - `1`: Room not found.
-- `2`: Message exceeds size limit.
-- `3`: Message not found.
-- `4`: User lacks permission.
+- `2`: You are not in this room.
+- `3`: Message exceeds size limit.
+- `4`: Message not found.
+- `5`: User lacks permission.
 
 ---
 
@@ -102,8 +104,9 @@ Deletes a message from the room history if the user has the necessary permission
 **Error Codes:**
 
 - `1`: Room not found.
-- `2`: Message not found.
-- `3`: User lacks permission.
+- `2`: You are not in this room.
+- `3`: Message not found.
+- `4`: User lacks permission.
 
 ---
 
