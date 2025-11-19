@@ -927,7 +927,14 @@ class TinyClientIo extends EventEmitter {
     // Dice
     this.onDiceRoll((result) => {
       if (this.checkRoomId(result)) {
-        const data = { results: null, modifiers: null, userId: null, canZero: null, skin: null };
+        const data = {
+          results: null,
+          modifiers: null,
+          userId: null,
+          canZero: null,
+          skin: null,
+          date: 0,
+        };
 
         // Skin
         if (isJsonObject(result.skin)) {
@@ -970,6 +977,8 @@ class TinyClientIo extends EventEmitter {
           data.original = result.original;
           data.index = result.index;
         }
+
+        data.date = typeof result.date === 'number' ? new Date(result.date) : null;
 
         // Complete
         this.emit('diceRoll', data);
