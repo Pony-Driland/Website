@@ -1058,7 +1058,9 @@ export const AiScriptStart = async () => {
           TinyHtml.createFrom('hr', { class: 'border-white mt-0 mb-2' }),
           connectionInfoBar,
           TinyHtml.createFrom('span').setText(
-            'AI makes mistakes, so double-check it. AI does not replace the fic literature (Careful! AI can type spoilers!).',
+            !tinyAi.noai
+              ? 'AI makes mistakes, so double-check it. AI does not replace the fic literature (Careful! AI can type spoilers!).'
+              : '',
           ),
         ),
       ),
@@ -2625,7 +2627,12 @@ export const AiScriptStart = async () => {
   rpgData.initOffCanvas(container);
 
   // Enable Read Only
-  const validateMultiplayer = (value = null, needAi = true, isInverse = false) =>
+  const validateMultiplayer = (
+    value = null,
+    needAi = true,
+    allowMulti = false,
+    isInverse = false,
+  ) =>
     // Normal mode
     !tinyAiScript.mpClient
       ? // Ai enabled
@@ -2636,7 +2643,7 @@ export const AiScriptStart = async () => {
           ? true
           : false
       : // Multiplayer
-        !isInverse
+        !allowMulti && !isInverse
         ? true
         : false;
 
@@ -2644,7 +2651,7 @@ export const AiScriptStart = async () => {
 
   // First Dialogue script
   const enabledFirstDialogue = (value = true) => {
-    const isEnabled = validateMultiplayer(value, false, true);
+    const isEnabled = validateMultiplayer(value, false, false, true);
     // Insert First Dialogue
     const insertAddFirstDialogue = () => {
       firstDialogueBase.base.removeClass('d-none');

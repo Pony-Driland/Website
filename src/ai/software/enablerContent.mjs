@@ -124,8 +124,8 @@ class EnablerAiContent extends EventEmitter {
 
   ////////////////////////////////////////////////////////////
 
-  #readOnlyTemplate(item, value, needAi = true) {
-    const isEnabled = this.#validateMultiplayer(value, needAi);
+  #readOnlyTemplate(item, value, needAi = true, allowMulti = false) {
+    const isEnabled = this.#validateMultiplayer(value, needAi, allowMulti);
     item.toggleProp('disabled', isEnabled);
     if (isEnabled) {
       item.addClass('disabled');
@@ -229,8 +229,8 @@ class EnablerAiContent extends EventEmitter {
   ////////////////////////////////////////////////////////////
 
   #enableReadOnly(isEnabled = true, controller = null) {
-    this.#readOnlyTemplate(this.msgSubmit, isEnabled, false);
-    this.#readOnlyTemplate(this.msgInput, isEnabled, false);
+    this.#readOnlyTemplate(this.msgSubmit, isEnabled, false, true);
+    this.#readOnlyTemplate(this.msgInput, isEnabled, false, true);
     this.#readOnlyTemplate(this.cancelSubmit, !isEnabled || !controller, false);
     if (controller) {
       this.msgSubmit.addClass('d-none');
