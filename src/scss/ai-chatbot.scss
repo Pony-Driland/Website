@@ -146,6 +146,8 @@ body.is-using-ai {
     .is-mod,
     .is-room-admin,
     .is-room-mod {
+      &.read-only {
+      }
     }
   }
 }

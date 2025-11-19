@@ -99,7 +99,6 @@ Allows a user to join a specific room. Validates room credentials, room availabi
    - If all checks pass, the user is added to the room.
 
 10. **Send Room History and Settings:**
-    - The room's chat history is retrieved. If no history exists, a new one is created and associated with the room.
     - The user is sent the following data:
       - `room-entered`: Data received to load the room on the user page.
 
@@ -108,7 +107,7 @@ Allows a user to join a specific room. Validates room credentials, room availabi
 
 #### Response
 
-- Success: Emits the room user list, history, and settings to the user.
+- Success: Emits the room user list, and settings to the user.
 - Failure: Returns an error object with a code:
   - `1`: Room not found.
   - `2`: Incorrect room password.

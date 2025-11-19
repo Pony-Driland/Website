@@ -41,12 +41,33 @@ export default function messageManager(socket, io) {
     const room = await rooms.get(roomId);
     if (!room) return fn({ error: true, msg: 'Room not found.', code: 2 });
 
+    // Check if the user is in the room
+    const rUsers = roomUsers.get(roomId);
+    if (!rUsers || !rUsers.get(userId))
+      return fn({ error: true, code: 3, msg: 'You are not in this room.' });
+
+    const moderators = db.getTable('moderators');
+    const roomModerators = db.getTable('roomModerators');
+    if (
+      room.readOnly &&
+      userId !== getIniConfig('OWNER_ID') &&
+      !(await moderators.has(userId)) &&
+      room.ownerId !== userId &&
+      !(await roomModerators.has(roomId, userId))
+    )
+      return fn({
+        error: true,
+        msg: `You don't have enough permissions.`,
+        code: 4,
+      });
+
     const msgDate = Date.now();
     const roomHistories = db.getTable('history');
     const msgData = {
       userId,
       text: message,
       date: msgDate,
+      chapter: room.chapter,
       edited: 0,
     };
 
@@ -63,6 +84,7 @@ export default function messageManager(socket, io) {
       roomId,
       id: msg.historyId,
       userId,
+      chapter: room.chapter,
       text: message,
       date: msgDate,
       tokens: typeof tokens === 'number' ? msgData.tokens : null,
@@ -93,13 +115,18 @@ export default function messageManager(socket, io) {
     const room = await rooms.get(roomId);
     if (!room) return fn({ error: true, msg: 'Room not found.', code: 1 });
 
+    // Check if the user is in the room
+    const rUsers = roomUsers.get(roomId);
+    if (!rUsers || !rUsers.get(userId))
+      return fn({ error: true, code: 2, msg: 'You are not in this room.' });
+
     // Check text size
     if (newText.length > getIniConfig('MESSAGE_SIZE')) {
       // The text reached the limit size
       return fn({
         error: true,
         msg: `The text reached the limit size of ${getIniConfig('MESSAGE_SIZE')}.`,
-        code: 2,
+        code: 3,
         numbers: [getIniConfig('MESSAGE_SIZE')],
       });
     }
@@ -111,13 +138,13 @@ export default function messageManager(socket, io) {
       return fn({
         error: true,
         msg: `The original message was not found.`,
-        code: 3,
+        code: 4,
       });
 
     const moderators = db.getTable('moderators');
     const roomModerators = db.getTable('roomModerators');
     if (
-      msg.userId !== userId &&
+      (room.readOnly || msg.userId !== userId) &&
       userId !== getIniConfig('OWNER_ID') &&
       !(await moderators.has(userId)) &&
       room.ownerId !== userId &&
@@ -126,7 +153,7 @@ export default function messageManager(socket, io) {
       return fn({
         error: true,
         msg: `You don't have enough permissions.`,
-        code: 4,
+        code: 5,
       });
 
     // Edit message
@@ -173,6 +200,11 @@ export default function messageManager(socket, io) {
     const room = await rooms.get(roomId);
     if (!room) return fn({ error: true, msg: 'Room not found.', code: 1 });
 
+    // Check if the user is in the room
+    const rUsers = roomUsers.get(roomId);
+    if (!rUsers || !rUsers.get(userId))
+      return fn({ error: true, code: 2, msg: 'You are not in this room.' });
+
     // Get message
     const roomHistories = db.getTable('history');
     const msg = await roomHistories.get(roomId, messageId);
@@ -180,7 +212,7 @@ export default function messageManager(socket, io) {
       return fn({
         error: true,
         msg: `The original message was not found.`,
-        code: 2,
+        code: 3,
       });
 
     const moderators = db.getTable('moderators');
@@ -195,7 +227,7 @@ export default function messageManager(socket, io) {
       return fn({
         error: true,
         msg: `You don't have enough permissions.`,
-        code: 3,
+        code: 4,
       });
 
     // Delete message
@@ -240,6 +272,138 @@ export default function messageManager(socket, io) {
               : null,
         }
       : {};
+
+  socket.on('load-messages', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
+    const { roomId, page, perPage, text, chapter, start, end, userId } = data;
+
+    // Validate input
+    if (
+      (typeof text !== 'string' && text !== null) ||
+      ((typeof chapter !== 'number' || Number.isNaN(chapter) || !Number.isFinite(chapter)) &&
+        chapter !== null) ||
+      ((typeof start !== 'number' || Number.isNaN(start) || !Number.isFinite(start)) &&
+        start !== null) ||
+      ((typeof end !== 'number' || Number.isNaN(end) || !Number.isFinite(end)) && end !== null) ||
+      typeof roomId !== 'string' ||
+      typeof page !== 'number' ||
+      (typeof userId !== 'string' && userId !== null) ||
+      (typeof perPage !== 'number' && perPage !== null) ||
+      page < 1 ||
+      perPage < 1
+    )
+      return sendIncompleteDataInfo(fn);
+
+    // Get user
+    const yourId = userSession.getUserId(socket);
+    if (!yourId) return accountNotDetected(fn);
+    if (userMsgIsRateLimited(socket, fn)) return;
+
+    const loadLimit = getIniConfig('HISTORY_SIZE');
+    const canLoadAll = getIniConfig('LOAD_ALL_HISTORY');
+
+    // Check if room exists
+    const rooms = db.getTable('rooms');
+    const room = await rooms.get(roomId);
+    if (!room) return fn({ error: true, msg: 'Room not found.', code: 1 });
+
+    // Check if the user is in the room
+    const rUsers = roomUsers.get(roomId);
+    if (!rUsers || !rUsers.get(yourId))
+      return fn({ error: true, code: 2, msg: 'You are not in this room.' });
+
+    let allMessages = [];
+    const history = db.getTable('history');
+    const order = 'date DESC';
+
+    // Query
+    const query = {
+      group: 'AND',
+      conditions: [{ column: 'roomId', value: roomId }],
+    };
+
+    // Text
+    if (typeof text === 'string') {
+      // Check text size
+      if (text.length > getIniConfig('MESSAGE_SIZE')) {
+        // The text reached the limit size
+        return fn({
+          error: true,
+          msg: `The text reached the limit size of ${getIniConfig('MESSAGE_SIZE')}.`,
+          code: 3,
+          numbers: [getIniConfig('MESSAGE_SIZE')],
+        });
+      }
+      query.conditions.push({ column: 'text', operator: 'LIKE', value: `%${text}%` });
+    }
+
+    // Message owner
+    if (typeof userId === 'string') {
+      // Check text size
+      if (userId.length > getIniConfig('USER_ID_SIZE')) {
+        // The userId reached the limit size
+        return fn({
+          error: true,
+          msg: `The userId reached the limit size of ${getIniConfig('USER_ID_SIZE')}.`,
+          code: 3,
+          numbers: [getIniConfig('USER_ID_SIZE')],
+        });
+      }
+
+      query.conditions.push({ column: 'userId', value: userId });
+    }
+
+    // Chapter
+    if (typeof chapter === 'number' && chapter > 0)
+      query.conditions.push({ column: 'chapter', value: chapter });
+
+    // Date
+    const existsStart = typeof start === 'number' && start > 0;
+    const existsEnd = typeof end === 'number' && end > 0;
+
+    if (existsStart || existsEnd) {
+      const dateData = [];
+      query.conditions.push({ group: 'OR', conditions: dateData });
+      if (existsStart) dateData.push({ column: 'date', operator: '>=', value: start });
+      if (existsEnd) dateData.push({ column: 'date', operator: '<=', value: end });
+    }
+
+    // Load Limit
+    if (perPage !== null) {
+      if (perPage > loadLimit)
+        return fn({
+          error: true,
+          code: 4,
+          msg: `You can\'t load a number bigger than ${loadLimit}!`,
+        });
+
+      if (perPage < 1)
+        return fn({ error: true, code: 5, msg: `You can\'t load a number smaller than 1!` });
+      allMessages = await history.search({ perPage, page, order, q: query });
+    } else {
+      if (!canLoadAll) return fn({ error: true, code: 6, msg: `Invalid result format!` });
+      allMessages = await history.search({ order, q: query });
+    }
+
+    // Complete
+    if (Array.isArray(allMessages)) {
+      fn({
+        success: true,
+        page: 1,
+        totalItems: allMessages.length,
+        totalPages: 1,
+        messages: allMessages,
+      });
+    } else {
+      fn({
+        success: true,
+        page,
+        totalItems: allMessages.totalItems,
+        totalPages: allMessages.totalPages,
+        messages: allMessages.items,
+      });
+    }
+  });
 
   socket.on('set-dice', async (data, fn) => {
     if (noDataInfo(data, fn)) return;

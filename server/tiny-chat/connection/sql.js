@@ -53,6 +53,8 @@ export const startDatabase = async (appStorage) => {
       ['maxUsers', 'INTEGER', 'DEFAULT 50'],
       ['ownerId', 'TEXT', 'NOT NULL'],
       ['disabled', 'BOOLEAN', 'DEFAULT 0'],
+      ['readOnly', 'BOOLEAN', 'DEFAULT 0'],
+      ['chapter', 'INTEGER', 'NOT NULL DEFAULT 1'],
     ]);
 
     // Stores room tokens data
@@ -104,6 +106,7 @@ export const startDatabase = async (appStorage) => {
       ['userId', 'TEXT', 'NOT NULL'],
       ['text', 'TEXT', 'NOT NULL'],
       ['date', 'INTEGER', 'NOT NULL'],
+      ['chapter', 'INTEGER', 'NOT NULL'],
       ['model', 'TEXT'],
       ['hash', 'TEXT'],
       ['edited', 'INTEGER'],

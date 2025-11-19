@@ -33,6 +33,7 @@ export const userButtonActions = () => {
     for (const userId of mods) userManager.promoteModerator(userId);
 
     userManager.setRoomStatus(!room.disabled);
+    userManager.setReadonly(room.readOnly);
 
     // Add events
     const usersAdded = (data) => userManager.addUser(data.userId, clone(data.data));
@@ -43,6 +44,7 @@ export const userButtonActions = () => {
     };
     const roomStatusUpdate = (roomData) => {
       userManager.setRoomStatus(!roomData.disabled);
+      userManager.setReadonly(roomData.readOnly);
     };
 
     // const userUpdated = (data) => console.log(data);
