@@ -505,6 +505,7 @@ export default function messageManager(socket, io) {
 
     // Complete
     socket.to(roomId).emit('roll-result', {
+      date: Date.now(),
       results: diceResults,
       modifiers: finalMods,
       skin,

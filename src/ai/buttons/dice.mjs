@@ -169,10 +169,25 @@ export const openDiceSpecialModal = (data) => {
   }
 
   const user = tinyIo.client.getUsers()[data.userId] ?? null;
+  /** @type {Date|null} */
+  const date = data.date instanceof Date ? data.date : null;
+
+  function formatDate24h(date) {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+
+    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+  }
 
   $root.append(
-    TinyHtml.createFrom('center', { class: 'fw-bold h3 mb-2' }).setText(
-      user?.nickname ?? data.userId,
+    TinyHtml.createFrom('center', { class: 'fw-bold mb-2' }).append(
+      TinyHtml.createFrom('h3').setText(user?.nickname ?? data.userId),
+      date ? TinyHtml.createFrom('h5').setText(formatDate24h(date)) : null,
     ),
     $diceContainer,
     $totalBase,
