@@ -16,7 +16,7 @@ import tinyLib, { alert } from './files/tinyLib.mjs';
 import { storyData } from './files/chapters.mjs';
 import storyCfg from './chapters/config.mjs';
 import { openChapterMenu } from './chapter_manager/index.mjs';
-import { tinyLs, fa, needsAgeVerification, loaderScreen } from './important.mjs';
+import { tinyLs, fa, needsAgeVerification, loaderScreen, tinyNotification } from './important.mjs';
 
 import { Tooltip } from './modules/TinyBootstrap.mjs';
 import { AiScriptStart } from './ai/aiSoftware.mjs';
@@ -30,6 +30,7 @@ import 'photoswipe/dist/photoswipe.css';
 import '../node_modules/tiny-dices/dist/TinyDices.min.css';
 import 'tiny-essentials/css/aiMarker.min.css';
 import 'tiny-essentials/css/TinyLoadingScreen.min.css';
+import 'tiny-essentials/css/TinyNotify.min.css';
 
 import './scss/dark.scss';
 import './scss/main.scss';
@@ -240,7 +241,7 @@ rootApp.onReady(() => {
        * @param {Function} fn
        * @param {string} readme
        */
-      (fn, readme) => {
+      async (fn, readme) => {
         // Custom Colors
         head.append(
           TinyHtml.createFrom('style', { id: 'custom_color' }).setText(`
@@ -804,8 +805,11 @@ rootApp.onReady(() => {
               })
                 .setText('AI Page')
                 .prepend(new Icon('fa-solid fa-server me-2'))
-                .on('click', (e) => {
+                .on('click', async (e) => {
                   e.preventDefault();
+                  loaderScreen.start();
+                  await tinyNotification.requestPerm();
+                  loaderScreen.stop();
                   AiScriptStart();
                   if (offCanvasEl) offCanvasEl.hide();
                 }),
@@ -1163,8 +1167,12 @@ rootApp.onReady(() => {
         // Start Readme
         const params = getParams();
         if (params.path === 'read-fic') openChapterMenu(params);
-        else if (params.path === 'ai') AiScriptStart();
-        else openNewAddress(params, true, true);
+        else if (params.path === 'ai') {
+          loaderScreen.start();
+          await tinyNotification.requestPerm();
+          loaderScreen.stop();
+          AiScriptStart();
+        } else openNewAddress(params, true, true);
 
         // Final part
         fn();
