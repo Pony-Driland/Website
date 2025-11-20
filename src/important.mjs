@@ -4,6 +4,8 @@ import { getAge } from 'tiny-essentials/basics';
 import TinyLoadingScreen from 'tiny-essentials/libs/TinyLoadingScreen';
 import TinyLocalStorage from 'tiny-essentials/libs/TinyLocalStorage';
 import TinyNotifications from 'tiny-essentials/libs/TinyNotifications';
+import TinyToastNotify from 'tiny-essentials/libs/TinyToastNotify';
+
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import storyCfg from './chapters/config.mjs';
 import FirebaseAccount from './account/firebase.mjs';
@@ -50,6 +52,8 @@ export const tinyNotification = new TinyNotifications({
   audio: '/audio/notification.ogg',
   defaultIcon: '/img/icon/192.png',
 });
+
+export const tinyToast = new TinyToastNotify('bottom', 'right', 3000, 60);
 
 // Firebase
 export const fa = new FirebaseAccount({

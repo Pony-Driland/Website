@@ -15,6 +15,7 @@ import {
   appData,
   connStore,
   loaderScreen,
+  tinyToast,
 } from '../important.mjs';
 import tinyLib, { alert } from '../files/tinyLib.mjs';
 import aiTemplates from './values/templates.mjs';
@@ -3042,14 +3043,26 @@ export const AiScriptStart = async () => {
         });
 
         // User Status
-        client.on('userLeft', (userId) => {
+        client.on('userLeft', (data) => {
+          const isYou = data.userId === client.getUserId();
           // You was kicked
-          if (userId === client.getUserId()) client.disconnect();
-          else updateReadOnlyMode(tinyIo.client.getRoom());
+          if (isYou) return client.disconnect();
+          updateReadOnlyMode(tinyIo.client.getRoom());
+
+          const text = `${!isYou ? (data?.data.nickname ?? data.userId) : 'You'} left the room.`;
+
+          if (body.hasClass('windowVisible')) tinyToast.show(text);
+          if (body.hasClass('windowHidden')) tinyNotification.send('User', { body: text });
         });
 
-        client.on('userJoined', () => {
+        client.on('userJoined', (data) => {
+          const isYou = data.userId === client.getUserId();
           updateReadOnlyMode(tinyIo.client.getRoom());
+
+          const text = `${!isYou ? (data?.data.nickname ?? data.userId) : 'You'} joined the room.`;
+
+          if (body.hasClass('windowVisible')) tinyToast.show(text);
+          if (body.hasClass('windowHidden')) tinyNotification.send('User', { body: text });
         });
 
         // Dice roll
