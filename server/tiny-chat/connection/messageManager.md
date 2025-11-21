@@ -30,6 +30,7 @@ Sends a message to a specific room, updating the message history and notifying o
 ```json
 {
   "id": "number", // The message index
+  "chapter": "number", // The message chapter
   "date": "number" // Timestamp of the message
 }
 ```

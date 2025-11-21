@@ -2015,15 +2015,19 @@ export const AiScriptStart = async () => {
           tokens: (!isNoAi ? tinyAi.getMsgTokensById(sentId).count : 0) ?? 0,
           hash: (!isNoAi ? tinyAi.getMsgHashById(sentId) : '') ?? '',
         });
-        console.log(msgData);
 
         addMessage(
-          makeMessage({
-            message: msg,
-            date: msgData.date,
-            id: sentId,
-            msgId: msgData.id,
-          }),
+          makeMessage(
+            {
+              message: msg,
+              date: msgData.date,
+              id: sentId,
+              msgId: msgData.id,
+              chapter: msgData.chapter,
+              edited: 0,
+            },
+            tinyIo.client.getUserId(),
+          ),
         );
       }
     }
@@ -2184,106 +2188,145 @@ export const AiScriptStart = async () => {
     return { textBase, result, updateText };
   };
 
-  const makeMessage = (data = { message: null, id: -1 }, username = null) => {
+  // TITLE : Message Maker
+  const makeMessage = (
+    data = {
+      message: null,
+      id: -1,
+      date: null,
+      msgId: null,
+      chapter: null,
+      edited: null,
+    },
+    username = null,
+  ) => {
     // Prepare renderer
     const tinyCache = {
+      chapter: data.chapter,
+      msgId: data.msgId,
+      edited: data.edited,
+      date: data.date,
       msg: data.message,
       role: username ? toTitleCase(username) : 'User',
     };
 
+    const isNotYou = !tinyIo.client || tinyIo.client.getUserId() !== username;
+
     const msgBase = TinyHtml.createFrom('div', {
-      class: `p-3${typeof username !== 'string' ? ' d-flex flex-column align-items-end' : ''} ai-chat-data`,
+      class: `p-3${typeof username !== 'string' || !isNotYou ? ' d-flex flex-column align-items-end' : ''} ai-chat-data`,
+      msgid: data.msgId ?? null,
+      edited: data.edited ?? null,
+      date: data.date ?? null,
+      chapter: data.chapter ?? null,
     });
 
     const msgBallon = TinyHtml.createFrom('div', {
-      class: `bg-${typeof username === 'string' ? 'secondary d-inline-block' : 'primary'} text-white p-2 rounded ai-msg-ballon`,
+      class: `bg-${typeof username === 'string' && isNotYou ? 'secondary d-inline-block' : 'primary'} text-white p-2 rounded ai-msg-ballon`,
     });
 
     msgBase.setData('tiny-ai-cache', tinyCache);
     const isIgnore = typeof data.id !== 'number' || data.id < 0;
     const tinyIndex = tinyAi.getIndexOfId(data.id);
 
+    const deleteButton = tinyLib.bs.button('bg btn-sm').append(new Icon('fa-solid fa-trash-can'));
+    const editButton = tinyLib.bs.button('bg btn-sm').append(new Icon('fa-solid fa-pen-to-square'));
+
     // Edit message panel
     const editPanel = TinyHtml.createFrom('div', { class: 'ai-text-editor' });
     editPanel.append(
       // Edit button
       !isIgnore && tinyIndex > -1
-        ? tinyLib.bs
-            .button('bg btn-sm')
-            .append(new Icon('fa-solid fa-pen-to-square'))
-            .on('click', () => {
-              // Text
-              const textInput = TinyHtml.createFrom('textarea', { class: 'form-control' });
-              textInput.setVal(tinyCache.msg ?? null);
-              const oldMsg = tinyCache.msg;
+        ? editButton.on('click', () => {
+            // Text
+            const textInput = TinyHtml.createFrom('textarea', { class: 'form-control' });
+            textInput.setVal(tinyCache.msg ?? null);
+            const oldMsg = tinyCache.msg;
 
-              // Submit
-              const submitButton = tinyLib.bs
-                .button(
-                  `${typeof username !== 'string' ? 'secondary d-inline-block' : 'primary'} mt-2 w-100 me-2`,
-                )
-                .setText('Submit');
+            // Submit
+            const submitButton = tinyLib.bs
+              .button(
+                `${typeof username !== 'string' || !isNotYou ? 'secondary d-inline-block' : 'primary'} mt-2 w-100 me-2`,
+              )
+              .setText('Submit');
 
-              const cancelButton = tinyLib.bs
-                .button(
-                  `${typeof username !== 'string' ? 'secondary d-inline-block' : 'primary'} mt-2 w-100`,
-                )
-                .setText('Cancel');
+            // Cancel
+            const cancelButton = tinyLib.bs
+              .button(
+                `${typeof username !== 'string' || !isNotYou ? 'secondary d-inline-block' : 'primary'} mt-2 w-100`,
+              )
+              .setText('Cancel');
 
-              const closeReplace = () => {
-                msgBallon.removeClass('w-100').empty();
-                msgBallon.append(TinyHtml.createFromHtml(makeMsgRenderer(tinyCache.msg)));
-                const msg = tinyAi.getMsgById();
-                tinyErrorAlert.updateText(msg ? msg.finishReason : null);
-              };
+            // Close Replace
+            const closeReplace = () => {
+              msgBallon.removeClass('w-100').empty();
+              msgBallon.append(TinyHtml.createFromHtml(makeMsgRenderer(tinyCache.msg)));
+              const msg = tinyAi.getMsgById();
+              tinyErrorAlert.updateText(msg ? msg.finishReason : null);
+            };
 
-              submitButton.on('click', () => {
-                tinyCache.msg = textInput.val();
-                const newMsg = tinyCache.msg;
-                if (typeof oldMsg !== 'string' || oldMsg !== newMsg) {
-                  const newContent = tinyAi.getMsgByIndex(tinyIndex);
-                  newContent.parts[0].text = tinyCache.msg;
-                  tinyAi.replaceIndex(tinyIndex, newContent, { count: null });
-                  closeReplace();
-                  updateAiTokenCounterData();
-                } else closeReplace();
-              });
+            // Submit
+            submitButton.on('click', async () => {
+              submitButton.addClass('disabled').addProp('disabled');
+              cancelButton.addClass('disabled').addProp('disabled');
 
-              cancelButton.on('click', () => closeReplace());
+              // New message
+              tinyCache.msg = textInput.val();
+              textInput.addClass('disabled').addProp('disabled');
 
-              // Complete
-              msgBallon
-                .empty()
-                .addClass('w-100')
-                .append(
-                  textInput,
-                  TinyHtml.createFrom('div', { class: 'd-flex mx-5' }).append(
-                    submitButton,
-                    cancelButton,
-                  ),
-                );
-            })
+              const newMsg = tinyCache.msg;
+              // Check message
+              if (typeof oldMsg !== 'string' || oldMsg !== newMsg) {
+                // New content and insert
+                const newContent = tinyAi.getMsgByIndex(tinyIndex);
+                newContent.parts[0].text = tinyCache.msg;
+                // Replace content
+                tinyAi.replaceIndex(tinyIndex, newContent, { count: null });
+                if (tinyIo.client) await tinyIo.client.editMessage({ message: newMsg }, data.msgId);
+
+                // Complete
+                closeReplace();
+                updateAiTokenCounterData();
+              } else closeReplace();
+            });
+
+            // On click cancel
+            cancelButton.on('click', () => closeReplace());
+
+            // Complete
+            msgBallon
+              .empty()
+              .addClass('w-100')
+              .append(
+                textInput,
+                TinyHtml.createFrom('div', { class: 'd-flex mx-5' }).append(
+                  submitButton,
+                  cancelButton,
+                ),
+              );
+          })
         : null,
 
       // Delete button
-      tinyLib.bs
-        .button('bg btn-sm')
-        .append(new Icon('fa-solid fa-trash-can'))
-        .on('click', () => {
-          const tinyIndex = tinyAi.getIndexOfId(data.id);
-          if (!isIgnore && tinyIndex > -1) {
-            const tinyTokens = tinyAi.getMsgTokensByIndex(tinyIndex);
-            tinyAi.deleteIndex(tinyIndex);
-            const amount = tokenCount.getValue('amount');
-            tokenCount.updateValue(
-              'amount',
-              amount - Number(tinyTokens && tinyTokens.count ? tinyTokens.count : 0),
-            );
-          }
+      deleteButton.on('click', async () => {
+        deleteButton.addClass('disabled').addProp('disabled');
+        editButton.addClass('disabled').addProp('disabled');
 
-          msgBase.remove();
-          enabledFirstDialogue();
-        }),
+        const tinyIndex = tinyAi.getIndexOfId(data.id);
+        if (!isIgnore && tinyIndex > -1) {
+          const tinyTokens = tinyAi.getMsgTokensByIndex(tinyIndex);
+          tinyAi.deleteIndex(tinyIndex);
+          const amount = tokenCount.getValue('amount');
+          tokenCount.updateValue(
+            'amount',
+            amount - Number(tinyTokens && tinyTokens.count ? tinyTokens.count : 0),
+          );
+        }
+
+        if (tinyIo.client) await tinyIo.client.deleteMessage(data.msgId);
+
+        msgBase.remove();
+        enabledFirstDialogue();
+      }),
     );
 
     const msg = tinyAi.getMsgById(data.id);
@@ -2294,9 +2337,8 @@ export const AiScriptStart = async () => {
       editPanel,
       msgBallon.append(TinyHtml.createFromHtml(makeMsgRenderer(tinyCache.msg))),
       TinyHtml.createFrom('div', {
-        class: `text-muted small mt-1${typeof username !== 'string' ? ' text-end' : ''}`,
-        text: typeof username === 'string' ? username : 'User',
-      }),
+        class: `text-muted small mt-1${typeof username !== 'string' || !isNotYou ? ' text-end' : ''}`,
+      }).setText(typeof username === 'string' ? username : 'User'),
       tinyErrorAlert.result,
     );
 
@@ -2834,6 +2876,8 @@ export const AiScriptStart = async () => {
           if (roomData.topP !== null && roomData.topP !== tinyAi.getTopP())
             tinyAi.setTopP(roomData.topP);
 
+          if (roomData.model === null) modelSelector.setVal('');
+
           // Update tokens
           updateReadOnlyMode(roomData);
           if (updateTokens) updateAiTokenCounterData();
@@ -3037,9 +3081,22 @@ export const AiScriptStart = async () => {
         });
 
         // New message
-        client.on('newMessage', () => {
-          if (tinyAiScript.mpClient) {
-          }
+        client.on('newMessage', (msgData) => {
+          const sentId = tinyAi.addData(msgData.text, { count: msgData.tokens });
+
+          addMessage(
+            makeMessage(
+              {
+                message: msgData.text,
+                date: msgData.date,
+                id: sentId,
+                msgId: msgData.id,
+                chapter: msgData.chapter,
+                edited: msgData.edited,
+              },
+              msgData.userId,
+            ),
+          );
         });
 
         // User Status
