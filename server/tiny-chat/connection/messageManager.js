@@ -96,7 +96,7 @@ export default function messageManager(socket, io) {
     });
 
     // Complete
-    fn({ id: msg.historyId, date: msgDate });
+    fn({ id: msg.historyId, date: msgDate, chapter: room.chapter });
   });
 
   socket.on('edit-message', async (data, fn) => {
@@ -166,7 +166,11 @@ export default function messageManager(socket, io) {
     if (typeof errorCode === 'string')
       msg.errorCode = errorCode.substring(0, getIniConfig('MESSAGE_SIZE'));
     msg.edited = msgDate;
-    await history.set(messageId, msg);
+
+    await roomHistories.advancedUpdate(msg, {
+      historyId: { value: messageId },
+      roomId: { value: roomId },
+    });
 
     // Emit the event only to logged-in users in the room
     socket.to(roomId).emit('message-updated', {
@@ -235,7 +239,11 @@ export default function messageManager(socket, io) {
     // Delete message
     const roomHistoriesDeleted = db.getTable('historyDeleted');
     await roomHistoriesDeleted.set(roomId, msg);
-    await history.delete(messageId);
+
+    await roomHistories.advancedDelete({
+      historyId: { value: messageId },
+      roomId: { value: roomId },
+    });
 
     // Emit the event only to logged-in users in the room
     socket.to(roomId).emit('message-deleted', { roomId, id: messageId });
