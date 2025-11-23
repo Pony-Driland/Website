@@ -90,6 +90,10 @@ class EnablerAiContent extends EventEmitter {
     this.cancelSubmit = cancelSubmit;
   }
 
+  setAiSubmit(aiSubmit) {
+    this.aiSubmit = aiSubmit;
+  }
+
   setSubmitCache(submitCache) {
     this.submitCache = submitCache;
   }
@@ -231,9 +235,11 @@ class EnablerAiContent extends EventEmitter {
   #enableReadOnly(isEnabled = true, controller = null) {
     this.#readOnlyTemplate(this.msgSubmit, isEnabled, false, true);
     this.#readOnlyTemplate(this.msgInput, isEnabled, false, true);
+    this.#readOnlyTemplate(this.aiSubmit, isEnabled, false, true);
     this.#readOnlyTemplate(this.cancelSubmit, !isEnabled || !controller, false);
     if (controller) {
       this.msgSubmit.addClass('d-none');
+      this.aiSubmit.addClass('d-none');
       this.cancelSubmit.removeClass('d-none');
       this.cancelSubmit.on('click', () => {
         enableReadOnly(false);
@@ -248,6 +254,7 @@ class EnablerAiContent extends EventEmitter {
       });
     } else {
       this.msgSubmit.removeClass('d-none');
+      this.aiSubmit.removeClass('d-none');
       this.cancelSubmit.addClass('d-none');
       this.cancelSubmit.off('click');
     }
