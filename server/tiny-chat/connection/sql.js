@@ -112,6 +112,7 @@ export const startDatabase = async (appStorage) => {
       ['edited', 'INTEGER'],
       ['tokens', 'INTEGER'],
       ['errorCode', 'TEXT'],
+      ['isModel', 'BOOLEAN', 'DEFAULT 0'],
       ['PRIMARY KEY (roomId, historyId)'],
       ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
     ];

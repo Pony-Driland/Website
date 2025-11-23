@@ -21,7 +21,7 @@ import tinyLib, { alert } from '../files/tinyLib.mjs';
 import aiTemplates from './values/templates.mjs';
 import TinyClientIo from './socketClient.mjs';
 import RpgData from './software/rpgData.mjs';
-import { noOnlineMode, contentEnabler } from './software/enablerContent.mjs';
+import { noOnlineMode, contentEnabler, isOnline } from './software/enablerContent.mjs';
 import ficConfigs from './values/ficConfigs.mjs';
 
 import './values/jsonTemplate.mjs';
@@ -968,7 +968,7 @@ export const AiScriptStart = async () => {
             body: $root,
           });
 
-          html.on('shown.bs.modal', () => $input.trigger('focus'));
+          html.on('shown.bs.modal', () => $input.focus());
         }),
       );
     };
@@ -1597,7 +1597,18 @@ export const AiScriptStart = async () => {
               tinyAi.getMsgHashByIndex(index),
               typeof hashItems.data[index] === 'string' ? hashItems.data[index] : null,
               tinyAi.getMsgTokensByIndex(index) || { count: null },
-              (newCount) => tinyAi.replaceIndex(index, null, { count: newCount }),
+              (newCount) => {
+                const hash = tinyAi.getMsgHashByIndex(index);
+                const tokenData = tinyAi.getMsgTokensByIndex(index);
+                const message = tinyAi.getMsgByIndex(index);
+                tinyIo.client
+                  .editMessage({ message, hash, tokens: newCount }, tokenData.msgId)
+                  .catch((err) => {
+                    alert(err.message, 'ERROR!');
+                    console.error(err);
+                  });
+                tinyAi.replaceIndex(index, null, { count: newCount, msgId: tokenData.msgId });
+              },
             );
           }
 
@@ -1644,7 +1655,7 @@ export const AiScriptStart = async () => {
             contentEnabler.enModel();
             contentEnabler.enMessageButtons();
           }
-          msgInput.trigger('focus');
+          msgInput.focus();
         };
 
         getAiTokens(hashItems || undefined, forceReset)
@@ -1934,7 +1945,7 @@ export const AiScriptStart = async () => {
   // TITLE: Send message
   const submitMessage = async () => {
     // Prepare to get data
-    msgInput.trigger('blur');
+    msgInput.blur();
     const msg = msgInput.val();
     msgInput.setVal('').trigger('input');
 
@@ -1963,6 +1974,7 @@ export const AiScriptStart = async () => {
     let sentId = null;
     const canContinue = await new Promise(async (resolve) => {
       try {
+        // Exist message
         if (typeof msg === 'string' && msg.length > 0) {
           const newMsg = tinyAi.buildContents(
             null,
@@ -1970,6 +1982,7 @@ export const AiScriptStart = async () => {
             'user',
           );
 
+          // Get tokens
           const newTokens =
             !tinyAiScript.noai && !tinyAiScript.mpClient
               ? await tinyAi.countTokens([newMsg])
@@ -1977,15 +1990,27 @@ export const AiScriptStart = async () => {
           const newToken =
             newTokens && typeof newTokens.totalTokens === 'number' ? newTokens.totalTokens : null;
 
+          // Get id
           sentId = tinyAi.addData(newMsg, { count: newToken });
+          // Complete
           resolve(true);
         } else resolve(false);
       } catch (err) {
+        // Delete error message
+        tinyAi.deleteIndex(tinyAi.getIndexOfId(sentId));
+
+        // Send error log
         console.error(err);
         alert(err.message);
+
+        // Complete
+        sentId = null;
         resolve(false);
       }
     });
+
+    // Result is error?
+    let isError = false;
 
     // Offline mode
     if (canContinue) {
@@ -2010,25 +2035,39 @@ export const AiScriptStart = async () => {
       // Online mode
       else {
         const isNoAi = tinyAiScript.noai || tinyAiScript.mpClient;
-        const msgData = await tinyIo.client.sendMessage(msg, {
+        const sendData = {
           model: (!isNoAi ? tinyAi.getModel() : '') ?? '',
           tokens: (!isNoAi ? tinyAi.getMsgTokensById(sentId).count : 0) ?? 0,
           hash: (!isNoAi ? tinyAi.getMsgHashById(sentId) : '') ?? '',
+        };
+
+        const msgData = await tinyIo.client.sendMessage(msg, sendData).catch((err) => {
+          alert(err.message, 'ERROR!');
+          console.error(err);
         });
 
-        addMessage(
-          makeMessage(
-            {
-              message: msg,
-              date: msgData.date,
-              id: sentId,
-              msgId: msgData.id,
-              chapter: msgData.chapter,
-              edited: 0,
-            },
-            tinyIo.client.getUserId(),
-          ),
-        );
+        if (!msgData.error) {
+          tinyAi.replaceIndex(tinyAi.getIndexOfId(sentId), null, {
+            count: sendData.tokens,
+            msgId: msgData.id,
+          });
+          addMessage(
+            makeMessage(
+              {
+                message: msg,
+                date: msgData.date,
+                id: sentId,
+                msgId: msgData.id,
+                chapter: msgData.chapter,
+                edited: 0,
+              },
+              tinyIo.client.getUserId(),
+            ),
+          );
+        } else {
+          isError = true;
+          alert(msgData.msg, 'ERROR!');
+        }
       }
     }
 
@@ -2043,7 +2082,13 @@ export const AiScriptStart = async () => {
       contentEnabler.enModelChanger();
       contentEnabler.enModelSelector();
     }
-    msgInput.trigger('focus');
+    msgInput.focus();
+
+    // Error
+    if (isError) {
+      msgInput.setVal(msg).trigger('input');
+      tinyAi.deleteIndex(tinyAi.getIndexOfId(sentId));
+    }
   };
 
   const submitCache = {};
@@ -2053,6 +2098,7 @@ export const AiScriptStart = async () => {
   });
 
   window.tinyIo = tinyIo;
+  window.tinyAi = tinyAi;
 
   msgInput.on('keydown', (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
@@ -2208,9 +2254,10 @@ export const AiScriptStart = async () => {
       date: data.date,
       msg: data.message,
       role: username ? toTitleCase(username) : 'User',
+      dataid: data.id,
     };
 
-    const isNotYou = !tinyIo.client || tinyIo.client.getUserId() !== username;
+    const isNotYou = !isOnline() || tinyIo.client.getUserId() !== username;
 
     const msgBase = TinyHtml.createFrom('div', {
       class: `p-3${typeof username !== 'string' || !isNotYou ? ' d-flex flex-column align-items-end' : ''} ai-chat-data`,
@@ -2218,6 +2265,7 @@ export const AiScriptStart = async () => {
       edited: data.edited ?? null,
       date: data.date ?? null,
       chapter: data.chapter ?? null,
+      dataid: data.id ?? null,
     });
 
     const msgBallon = TinyHtml.createFrom('div', {
@@ -2280,8 +2328,16 @@ export const AiScriptStart = async () => {
                 const newContent = tinyAi.getMsgByIndex(tinyIndex);
                 newContent.parts[0].text = tinyCache.msg;
                 // Replace content
-                tinyAi.replaceIndex(tinyIndex, newContent, { count: null });
-                if (tinyIo.client) await tinyIo.client.editMessage({ message: newMsg }, data.msgId);
+                tinyAi.replaceIndex(tinyIndex, newContent, { count: null, msgId: data.msgId });
+                if (isOnline()) {
+                  const result = await tinyIo.client
+                    .editMessage({ message: newMsg }, data.msgId)
+                    .catch((err) => {
+                      alert(err.message, 'ERROR!');
+                      console.error(err);
+                    });
+                  if (result.error) alert(result.msg, 'ERROR');
+                }
 
                 // Complete
                 closeReplace();
@@ -2322,7 +2378,13 @@ export const AiScriptStart = async () => {
           );
         }
 
-        if (tinyIo.client) await tinyIo.client.deleteMessage(data.msgId);
+        if (isOnline()) {
+          const result = await tinyIo.client.deleteMessage(data.msgId).catch((err) => {
+            alert(err.message, 'ERROR!');
+            console.error(err);
+          });
+          if (result.error) alert(result.msg, 'ERROR');
+        }
 
         msgBase.remove();
         enabledFirstDialogue();
@@ -3082,7 +3144,10 @@ export const AiScriptStart = async () => {
 
         // New message
         client.on('newMessage', (msgData) => {
-          const sentId = tinyAi.addData(msgData.text, { count: msgData.tokens });
+          const sentId = tinyAi.addData(
+            tinyAi.buildContents(null, { role: 'user', parts: [{ text: msgData.text }] }, 'user'),
+            { count: msgData.tokens, msgId: msgData.id },
+          );
 
           addMessage(
             makeMessage(
