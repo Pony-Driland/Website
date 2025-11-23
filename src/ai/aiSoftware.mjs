@@ -2153,6 +2153,7 @@ export const AiScriptStart = async () => {
       );
 
       let isError = false;
+      const msgData = {};
       if (isOnline()) {
         const isNoAi = tinyAiScript.noai || tinyAiScript.mpClient;
         const sendData = {
@@ -2170,6 +2171,14 @@ export const AiScriptStart = async () => {
               alert(result.msg, 'ERROR!');
               isError = true;
             }
+
+            msgData.id = result.id;
+            msgData.date = result.date;
+            msgData.chapter = result.chapter;
+            tinyAi.replaceIndex(tinyAi.getIndexOfId(msgId), null, {
+              count: sendData.tokens,
+              msgId: result.id,
+            });
           })
           .catch((err) => {
             alert(err.message, 'ERROR!');
@@ -2188,7 +2197,11 @@ export const AiScriptStart = async () => {
         makeMessage(
           {
             message: history.firstDialogue,
+            date: msgData.date,
             id: msgId,
+            msgId: msgData.id,
+            chapter: msgData.chapter,
+            edited: 0,
           },
           'Model',
         ),
@@ -2399,6 +2412,7 @@ export const AiScriptStart = async () => {
                   cancelButton.removeClass('disabled').removeProp('disabled');
                   textInput.removeClass('disabled').removeProp('disabled');
                   newContent.parts[0].text = oldMsg;
+                  tinyCache.msg = oldMsg;
                   tinyAi.replaceIndex(tinyIndex, newContent, {
                     count: oldTokens,
                     msgId: data.msgId,
