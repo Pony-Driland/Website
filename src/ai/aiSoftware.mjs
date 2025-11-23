@@ -1598,16 +1598,24 @@ export const AiScriptStart = async () => {
               typeof hashItems.data[index] === 'string' ? hashItems.data[index] : null,
               tinyAi.getMsgTokensByIndex(index) || { count: null },
               (newCount) => {
-                const hash = tinyAi.getMsgHashByIndex(index);
                 const tokenData = tinyAi.getMsgTokensByIndex(index);
-                const message = tinyAi.getMsgByIndex(index);
-                tinyIo.client
-                  .editMessage({ message, hash, tokens: newCount }, tokenData.msgId)
-                  .catch((err) => {
-                    alert(err.message, 'ERROR!');
-                    console.error(err);
-                  });
                 tinyAi.replaceIndex(index, null, { count: newCount, msgId: tokenData.msgId });
+                if (isOnline()) {
+                  const hash = tinyAi.getMsgHashByIndex(index);
+                  const message = tinyAi.getMsgByIndex(index);
+                  tinyIo.client
+                    .editMessage(
+                      { message: message.parts[0].text, hash, tokens: newCount },
+                      tokenData.msgId,
+                    )
+                    .then((result) => {
+                      if (result.error) alert(result.msg, 'ERROR!');
+                    })
+                    .catch((err) => {
+                      alert(err.message, 'ERROR!');
+                      console.error(err);
+                    });
+                }
               },
             );
           }
@@ -2127,7 +2135,7 @@ export const AiScriptStart = async () => {
 
   firstDialogueBase.button.append(new Icon('fa-solid fa-circle-play'));
 
-  firstDialogueBase.button.on('click', () => {
+  firstDialogueBase.button.on('click', async () => {
     enabledFirstDialogue(false);
     const history = tinyAi.getData();
 
@@ -2143,6 +2151,38 @@ export const AiScriptStart = async () => {
           'model',
         ),
       );
+
+      let isError = false;
+      if (isOnline()) {
+        const isNoAi = tinyAiScript.noai || tinyAiScript.mpClient;
+        const sendData = {
+          model: (!isNoAi ? tinyAi.getModel() : '') ?? '',
+          tokens: (!isNoAi ? tinyAi.getMsgTokensById(msgId).count : 0) ?? 0,
+          hash: (!isNoAi ? tinyAi.getMsgHashById(msgId) : '') ?? '',
+          isModel: true,
+        };
+
+        loaderScreen.start();
+        await tinyIo.client
+          .sendMessage(history.firstDialogue, sendData)
+          .then((result) => {
+            if (result.error) {
+              alert(result.msg, 'ERROR!');
+              isError = true;
+            }
+          })
+          .catch((err) => {
+            alert(err.message, 'ERROR!');
+            console.error(err);
+            isError = true;
+          });
+        loaderScreen.stop();
+      }
+
+      if (isError) {
+        tinyAi.deleteIndex(tinyAi.getIndexOfId(msgId));
+        return;
+      }
 
       addMessage(
         makeMessage(
@@ -2325,18 +2365,45 @@ export const AiScriptStart = async () => {
               // Check message
               if (typeof oldMsg !== 'string' || oldMsg !== newMsg) {
                 // New content and insert
+                const oldTokens = tinyAi.getMsgTokensByIndex(tinyIndex).count;
                 const newContent = tinyAi.getMsgByIndex(tinyIndex);
                 newContent.parts[0].text = tinyCache.msg;
+
                 // Replace content
                 tinyAi.replaceIndex(tinyIndex, newContent, { count: null, msgId: data.msgId });
+                let isError = false;
                 if (isOnline()) {
-                  const result = await tinyIo.client
-                    .editMessage({ message: newMsg }, data.msgId)
+                  const isNoAi = tinyAiScript.noai || tinyAiScript.mpClient;
+                  const sendData = {
+                    message: newMsg,
+                    model: (!isNoAi ? tinyAi.getModel() : '') ?? '',
+                  };
+
+                  await tinyIo.client
+                    .editMessage(sendData, data.msgId)
+                    .then((result) => {
+                      if (result.error) {
+                        alert(result.msg, 'ERROR!');
+                        isError = true;
+                      }
+                    })
                     .catch((err) => {
                       alert(err.message, 'ERROR!');
                       console.error(err);
+                      isError = true;
                     });
-                  if (result.error) alert(result.msg, 'ERROR');
+                }
+
+                if (isError) {
+                  submitButton.removeClass('disabled').removeProp('disabled');
+                  cancelButton.removeClass('disabled').removeProp('disabled');
+                  textInput.removeClass('disabled').removeProp('disabled');
+                  newContent.parts[0].text = oldMsg;
+                  tinyAi.replaceIndex(tinyIndex, newContent, {
+                    count: oldTokens,
+                    msgId: data.msgId,
+                  });
+                  return;
                 }
 
                 // Complete
@@ -2366,6 +2433,29 @@ export const AiScriptStart = async () => {
       deleteButton.on('click', async () => {
         deleteButton.addClass('disabled').addProp('disabled');
         editButton.addClass('disabled').addProp('disabled');
+        let isError = false;
+
+        if (isOnline()) {
+          await tinyIo.client
+            .deleteMessage(data.msgId)
+            .then((result) => {
+              if (result.error) {
+                alert(result.msg, 'ERROR!');
+                isError = true;
+              }
+            })
+            .catch((err) => {
+              alert(err.message, 'ERROR!');
+              console.error(err);
+              isError = true;
+            });
+        }
+
+        if (isError) {
+          deleteButton.removeClass('disabled').removeProp('disabled');
+          editButton.removeClass('disabled').removeProp('disabled');
+          return;
+        }
 
         const tinyIndex = tinyAi.getIndexOfId(data.id);
         if (!isIgnore && tinyIndex > -1) {
@@ -2376,14 +2466,6 @@ export const AiScriptStart = async () => {
             'amount',
             amount - Number(tinyTokens && tinyTokens.count ? tinyTokens.count : 0),
           );
-        }
-
-        if (isOnline()) {
-          const result = await tinyIo.client.deleteMessage(data.msgId).catch((err) => {
-            alert(err.message, 'ERROR!');
-            console.error(err);
-          });
-          if (result.error) alert(result.msg, 'ERROR');
         }
 
         msgBase.remove();
