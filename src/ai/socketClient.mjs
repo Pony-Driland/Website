@@ -847,7 +847,7 @@ class TinyClientIo extends EventEmitter {
   }
 
   // Send room message
-  sendMessage(message = '', { tokens, model, hash }) {
+  sendMessage(message = '', { tokens, model, hash, isModel = false }) {
     return new Promise((resolve, reject) =>
       this.#socketEmitApi('send-message', {
         roomId: this.#cfg.roomId,
@@ -855,6 +855,7 @@ class TinyClientIo extends EventEmitter {
         model,
         hash,
         message,
+        isModel,
       })
         .then((result) => {
           resolve(result);

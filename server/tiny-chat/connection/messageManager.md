@@ -17,6 +17,7 @@ Sends a message to a specific room, updating the message history and notifying o
 
 ```json
 {
+  "isModel": "boolean", // The message owner is the AI model
   "message": "string", // The text of the message
   "roomId": "string", // The room where the message should be sent
   "tokens": "number", // Number of content tokens

@@ -15,9 +15,14 @@ import {
 export default function messageManager(socket, io) {
   socket.on('send-message', async (data, fn) => {
     if (noDataInfo(data, fn)) return;
-    const { message, roomId, tokens, model, hash, errorCode } = data;
+    const { message, roomId, tokens, model, hash, isModel, errorCode } = data;
     // Validate values
-    if (typeof message !== 'string' || message.trim() === '' || typeof roomId !== 'string')
+    if (
+      typeof message !== 'string' ||
+      message.trim() === '' ||
+      typeof roomId !== 'string' ||
+      typeof isModel !== 'boolean'
+    )
       return sendIncompleteDataInfo(fn);
 
     // Get user
@@ -54,7 +59,8 @@ export default function messageManager(socket, io) {
         userId !== getIniConfig('OWNER_ID') &&
         !(await moderators.has(userId)) &&
         room.ownerId !== userId &&
-        !(await roomModerators.has(roomId, userId)))
+        !(await roomModerators.has(roomId, userId))) ||
+      (isModel && userId !== getIniConfig('OWNER_ID'))
     )
       return fn({
         error: true,
@@ -65,6 +71,7 @@ export default function messageManager(socket, io) {
     const msgDate = Date.now();
     const roomHistories = db.getTable('history');
     const msgData = {
+      isModel,
       userId,
       text: message,
       date: msgDate,
@@ -85,6 +92,7 @@ export default function messageManager(socket, io) {
       roomId,
       id: msg.historyId,
       userId,
+      isModel,
       chapter: room.chapter,
       text: message,
       date: msgDate,
