@@ -1686,6 +1686,7 @@ export const AiScriptStart = async () => {
   // TITLE: Execute AI script
   const executeAi = (tinyCache = {}, tinyController = undefined) =>
     new Promise((resolve, reject) => {
+      const ballon = {};
       const { content } = prepareContentList();
 
       // Insert tokens
@@ -1726,6 +1727,7 @@ export const AiScriptStart = async () => {
             role === 'user' ? null : toTitleCase(role),
           );
           addMessage(tinyCache.msgBallon);
+          ballon.msgBallon = tinyCache.msgBallon;
         } else {
           new TinyHtml(tinyCache.msgBallon.find('.ai-msg-ballon'))
             .empty()
@@ -1767,11 +1769,12 @@ export const AiScriptStart = async () => {
           if (chuck.contents) {
             for (const index in chuck.contents) {
               // Update history
-              if (typeof tinyCache.msgId === 'undefined')
+              if (typeof tinyCache.msgId === 'undefined') {
                 tinyCache.msgId = tinyAi.addData(chuck.contents[index], {
                   count: promptTokens || null,
                 });
-              else
+                ballon.msgId = tinyCache.msgId;
+              } else
                 tinyAi.replaceIndex(tinyAi.getIndexOfId(tinyCache.msgId), chuck.contents[index], {
                   count: promptTokens || null,
                 });
@@ -1788,6 +1791,7 @@ export const AiScriptStart = async () => {
               const oldBallonCache = tinyCache.msgBallon.data('tiny-ai-cache');
               oldBallonCache.msg = chuck.contents[index].parts[0].text;
               tinyCache.msgBallon.setData('tiny-ai-cache', oldBallonCache);
+              ballon.cache = oldBallonCache;
 
               // Add class
               tinyCache.msgBallon.addClass('entering-ai-message');
@@ -1827,9 +1831,10 @@ export const AiScriptStart = async () => {
                 msg.parts[0].text.length > 0
               ) {
                 // Update history
-                if (typeof tinyCache.msgId === 'undefined')
+                if (typeof tinyCache.msgId === 'undefined') {
                   tinyCache.msgId = tinyAi.addData(msg, { count: promptTokens || null });
-                else
+                  ballon.msgId = tinyCache.msgId;
+                } else
                   tinyAi.replaceIndex(tinyAi.getIndexOfId(tinyCache.msgId), msg, {
                     count: promptTokens || null,
                   });
@@ -1841,6 +1846,7 @@ export const AiScriptStart = async () => {
                 const oldBallonCache = tinyCache.msgBallon.data('tiny-ai-cache');
                 oldBallonCache.msg = msg.parts[0].text;
                 tinyCache.msgBallon.setData('tiny-ai-cache', oldBallonCache);
+                ballon.cache = oldBallonCache;
               }
             }
           }
@@ -1855,7 +1861,7 @@ export const AiScriptStart = async () => {
 
           // Complete
           completeTask();
-          resolve(result);
+          resolve({ result, ballon });
         })
         .catch(reject);
     });
@@ -1943,12 +1949,14 @@ export const AiScriptStart = async () => {
 
   // Submit
   const msgSubmit = tinyLib.bs.button('primary input-group-text-dark').setText('Send');
+  const aiSubmit = tinyLib.bs.button('primary input-group-text-dark').setText('AI');
   contentEnabler.setMsgSubmit(msgSubmit);
 
   const cancelSubmit = tinyLib.bs
     .button('primary input-group-text-dark rounded-end')
     .setText('Cancel');
   contentEnabler.setCancelSubmit(cancelSubmit);
+  contentEnabler.setAiSubmit(aiSubmit);
 
   // TITLE: Send message
   const submitMessage = async () => {
@@ -2101,8 +2109,103 @@ export const AiScriptStart = async () => {
 
   const submitCache = {};
   contentEnabler.setSubmitCache(submitCache);
+
+  // Submit Button
   msgSubmit.on('click', async () => {
     if (!msgInput.hasProp('disabled')) submitMessage();
+  });
+
+  // AI moment
+  aiSubmit.on('click', async () => {
+    if (
+      !msgInput.hasProp('disabled') &&
+      !tinyAiScript.noai &&
+      !tinyAiScript.mpClient &&
+      sessionEnabled
+    ) {
+      // Disable stuff
+      const controller = new AbortController();
+      contentEnabler.deBase();
+      contentEnabler.deMessageButtons();
+      contentEnabler.deModelChanger();
+      contentEnabler.dePromptButtons();
+      contentEnabler.deModelSelector();
+
+      const yourMsg = msgInput.val();
+
+      // Start loading
+      let points = '.';
+      let secondsWaiting = -1;
+      const loadingMoment = () => {
+        points += '.';
+        if (points === '....') points = '.';
+
+        secondsWaiting++;
+        msgInput.setVal(`(${secondsWaiting}s) Waiting response${points}`);
+      };
+      const loadingMessage = setInterval(loadingMoment, 1000);
+      loadingMoment();
+
+      // Execute Ai
+      contentEnabler.deBase(controller);
+      await executeAi(submitCache, controller)
+        .catch((err) => {
+          if (submitCache.cancel) submitCache.cancel();
+          console.error(err);
+          alert(err.message);
+        })
+        .then(async (data) => {
+          console.log(data);
+          // Online
+          if (isOnline()) {
+            let isError = false;
+            const sendData = {
+              model: tinyAi.getModel() ?? '',
+              tokens: tinyAi.getMsgTokensById(data.ballon.msgId).count ?? 0,
+              hash: tinyAi.getMsgHashById(data.ballon.msgId) ?? '',
+              isModel: true,
+            };
+
+            const theMsg = tinyAi.getMsgById(data.ballon.msgId);
+            await tinyIo.client
+              .sendMessage(theMsg.parts[0].text, sendData)
+              .then((result) => {
+                if (result.error) {
+                  alert(result.msg, 'ERROR!');
+                  isError = true;
+                }
+
+                data.ballon.cache.msgId = result.id;
+                data.ballon.cache.date = result.date;
+                data.ballon.cache.chapter = result.chapter;
+                data.ballon.cache.edited = 0;
+                data.ballon.cache.update();
+                tinyAi.replaceIndex(tinyAi.getIndexOfId(data.ballon.msgId), null, {
+                  count: sendData.tokens,
+                  msgId: result.id,
+                });
+              })
+              .catch((err) => {
+                alert(err.message, 'ERROR!');
+                console.error(err);
+                isError = true;
+              });
+          }
+        });
+
+      // Complete
+      clearInterval(loadingMessage);
+      if (sessionEnabled) contentEnabler.enPromptButtons();
+      msgInput.setVal(yourMsg);
+
+      if (sessionEnabled) {
+        contentEnabler.enMessageButtons();
+        contentEnabler.enBase();
+        contentEnabler.enModelChanger();
+        contentEnabler.enModelSelector();
+      }
+      msgInput.focus();
+    }
   });
 
   window.tinyIo = tinyIo;
@@ -2190,6 +2293,7 @@ export const AiScriptStart = async () => {
 
       if (isError) {
         tinyAi.deleteIndex(tinyAi.getIndexOfId(msgId));
+        enabledFirstDialogue(true);
         return;
       }
 
@@ -2308,17 +2412,20 @@ export const AiScriptStart = async () => {
       msg: data.message,
       role: username ? toTitleCase(username) : 'User',
       dataid: data.id,
+      update: () => {
+        msgBase.setAttr('msgid', tinyCache.msgId ?? null);
+        msgBase.setAttr('edited', tinyCache.edited ?? null);
+        msgBase.setAttr('date', tinyCache.date ?? null);
+        msgBase.setAttr('chapter', tinyCache.chapter ?? null);
+        msgBase.setAttr('dataid', tinyCache.dataid ?? null);
+        msgBase.setAttr('role', tinyCache.role ?? null);
+      },
     };
 
     const isNotYou = !isOnline() || tinyIo.client.getUserId() !== username;
 
     const msgBase = TinyHtml.createFrom('div', {
       class: `p-3${typeof username !== 'string' || !isNotYou ? ' d-flex flex-column align-items-end' : ''} ai-chat-data`,
-      msgid: data.msgId ?? null,
-      edited: data.edited ?? null,
-      date: data.date ?? null,
-      chapter: data.chapter ?? null,
-      dataid: data.id ?? null,
     });
 
     const msgBallon = TinyHtml.createFrom('div', {
@@ -2326,6 +2433,7 @@ export const AiScriptStart = async () => {
     });
 
     msgBase.setData('tiny-ai-cache', tinyCache);
+    tinyCache.update();
     const isIgnore = typeof data.id !== 'number' || data.id < 0;
     const tinyIndex = tinyAi.getIndexOfId(data.id);
 
@@ -2515,7 +2623,12 @@ export const AiScriptStart = async () => {
 
   const textInputContainer = TinyHtml.createFrom('div', {
     class: 'input-group pb-3 body-background',
-  }).append(msgInput, cancelSubmit, msgSubmit);
+  }).append(
+    msgInput,
+    cancelSubmit,
+    !tinyAiScript.noai && !tinyAiScript.mpClient ? aiSubmit : null,
+    msgSubmit,
+  );
 
   const textInputWrapper = TinyHtml.createFrom('div', {
     class: 'px-3 d-inline-block w-100',
