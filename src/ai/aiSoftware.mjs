@@ -2426,7 +2426,7 @@ export const AiScriptStart = async () => {
          * @param {() => (string|null|undefined)} result
          */
         const numberInsert = (base, value, result) => {
-          base.removeClass('ms-2').empty();
+          base.removeClass('ms-2').removeClass('me-2').empty();
           if (
             typeof value === 'number' &&
             !Number.isNaN(value) &&
@@ -2434,25 +2434,22 @@ export const AiScriptStart = async () => {
             value > 0
           ) {
             const text = result();
-            if (typeof text === 'string') base.addClass('ms-2').setText(text);
+            if (typeof text === 'string') base.setText(text);
           }
         };
 
-        /**
-         * @param {import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} base
-         * @param {number|null} value
-         */
-        const insertTime = (base, value) =>
-          numberInsert(base, value, () => {
-            const time = moment(value);
-            if (time.isValid()) return time.calendar();
-          });
+        numberInsert(dateBase, tinyCache.date, () => {
+          const time = moment(tinyCache.date);
+          if (time.isValid()) {
+            dateBase.addClass('me-2');
+            return time.calendar();
+          }
+        });
 
-        // insertTime(editedBase, tinyCache.edited);
-        editedBase.empty().removeClass('ms-2');
-
-        insertTime(dateBase, tinyCache.date);
-        numberInsert(chapterBase, tinyCache.chapter, () => `Chapter ${tinyCache.chapter}`);
+        numberInsert(chapterBase, tinyCache.chapter, () => {
+          chapterBase.addClass('ms-2');
+          return `Chapter ${tinyCache.chapter}`;
+        });
       },
     };
 
@@ -2466,7 +2463,6 @@ export const AiScriptStart = async () => {
       class: `bg-${typeof username === 'string' && isNotYou ? 'secondary d-inline-block' : 'primary'} text-white p-2 rounded ai-msg-ballon`,
     });
 
-    const editedBase = TinyHtml.createFrom('span');
     const dateBase = TinyHtml.createFrom('span');
     const chapterBase = TinyHtml.createFrom('span');
 
@@ -2646,7 +2642,8 @@ export const AiScriptStart = async () => {
       msgBallon.append(TinyHtml.createFromHtml(makeMsgRenderer(tinyCache.msg))),
       usernameBase
         .setText(typeof username === 'string' ? username : 'User')
-        .append(editedBase, dateBase, chapterBase),
+        .append(chapterBase)
+        .prepend(dateBase),
       tinyErrorAlert.result,
     );
 
