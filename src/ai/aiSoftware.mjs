@@ -2419,6 +2419,40 @@ export const AiScriptStart = async () => {
         msgBase.setAttr('chapter', tinyCache.chapter ?? null);
         msgBase.setAttr('dataid', tinyCache.dataid ?? null);
         msgBase.setAttr('role', tinyCache.role ?? null);
+
+        /**
+         * @param {import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} base
+         * @param {number|null} value
+         * @param {() => (string|null|undefined)} result
+         */
+        const numberInsert = (base, value, result) => {
+          base.removeClass('ms-2').empty();
+          if (
+            typeof value === 'number' &&
+            !Number.isNaN(value) &&
+            Number.isFinite(value) &&
+            value > 0
+          ) {
+            const text = result();
+            if (typeof text === 'string') base.addClass('ms-2').setText(text);
+          }
+        };
+
+        /**
+         * @param {import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} base
+         * @param {number|null} value
+         */
+        const insertTime = (base, value) =>
+          numberInsert(base, value, () => {
+            const time = moment(value);
+            if (time.isValid()) return time.calendar();
+          });
+
+        // insertTime(editedBase, tinyCache.edited);
+        editedBase.empty().removeClass('ms-2');
+
+        insertTime(dateBase, tinyCache.date);
+        numberInsert(chapterBase, tinyCache.chapter, () => `Chapter ${tinyCache.chapter}`);
       },
     };
 
@@ -2431,6 +2465,10 @@ export const AiScriptStart = async () => {
     const msgBallon = TinyHtml.createFrom('div', {
       class: `bg-${typeof username === 'string' && isNotYou ? 'secondary d-inline-block' : 'primary'} text-white p-2 rounded ai-msg-ballon`,
     });
+
+    const editedBase = TinyHtml.createFrom('span');
+    const dateBase = TinyHtml.createFrom('span');
+    const chapterBase = TinyHtml.createFrom('span');
 
     msgBase.setData('tiny-ai-cache', tinyCache);
     tinyCache.update();
@@ -2598,13 +2636,17 @@ export const AiScriptStart = async () => {
     const msg = tinyAi.getMsgById(data.id);
     const tinyErrorAlert = makeMsgWarning(msg ? msg.finishReason : null);
 
+    const usernameBase = TinyHtml.createFrom('div', {
+      class: `text-muted small mt-1${typeof username !== 'string' || !isNotYou ? ' text-end' : ''}`,
+    });
+
     // Send message
     const msgContent = msgBase.append(
       editPanel,
       msgBallon.append(TinyHtml.createFromHtml(makeMsgRenderer(tinyCache.msg))),
-      TinyHtml.createFrom('div', {
-        class: `text-muted small mt-1${typeof username !== 'string' || !isNotYou ? ' text-end' : ''}`,
-      }).setText(typeof username === 'string' ? username : 'User'),
+      usernameBase
+        .setText(typeof username === 'string' ? username : 'User')
+        .append(editedBase, dateBase, chapterBase),
       tinyErrorAlert.result,
     );
 
