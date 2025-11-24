@@ -3280,7 +3280,14 @@ export const AiScriptStart = async () => {
         });
 
         // Connected
+        let msgChecker = null;
+
         client.on('connect', (connectionId) => {
+          msgChecker = setInterval(() => {
+            const msgs = new TinyHtml(chatContainer.find('.ai-chat-data'));
+            msgs.forEach((elem) => elem.data('tiny-ai-cache')?.update());
+          }, 1000);
+
           // Prepare online status
           onlineStatus.icon.removeClass('text-danger').addClass('text-success');
           onlineStatus.text.setText('Online');
@@ -3358,6 +3365,11 @@ export const AiScriptStart = async () => {
 
         // Disconnected
         client.on('disconnect', (reason, details) => {
+          if (msgChecker) {
+            clearInterval(msgChecker);
+            msgChecker = null;
+          }
+
           // Offline!
           onlineStatus.icon.addClass('text-danger').removeClass('text-success');
           onlineStatus.text.setText('Offline');
