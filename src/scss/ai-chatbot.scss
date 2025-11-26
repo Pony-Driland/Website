@@ -142,10 +142,19 @@ body.is-using-ai {
 
   // Online
   #ai-element-root {
-    .is-admin,
-    .is-mod,
-    .is-room-admin,
-    .is-room-mod {
+    &:not(.is-admin):not(.is-mod):not(.is-room-admin):not(.is-room-mod) {
+      #ai-chatbox.is-online {
+        .delete-button,
+        .edit-button {
+          display: none !important;
+        }
+      }
+    }
+
+    &.is-admin,
+    &.is-mod,
+    &.is-room-admin,
+    &.is-room-mod {
       &.read-only {
       }
     }
