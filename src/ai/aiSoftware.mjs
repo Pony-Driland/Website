@@ -2471,12 +2471,46 @@ export const AiScriptStart = async () => {
     const isIgnore = typeof data.id !== 'number' || data.id < 0;
     const tinyIndex = tinyAi.getIndexOfId(data.id);
 
-    const deleteButton = tinyLib.bs.button('bg btn-sm').append(new Icon('fa-solid fa-trash-can'));
-    const editButton = tinyLib.bs.button('bg btn-sm').append(new Icon('fa-solid fa-pen-to-square'));
+    const deleteButton = tinyLib.bs.button('bg btn-sm').append(new Icon('fa-solid fa-trash-can')).addClass('delete-button');
+    const editButton = tinyLib.bs.button('bg btn-sm').append(new Icon('fa-solid fa-pen-to-square')).addClass('edit-button');
+    const infoButton = tinyLib.bs.button('bg btn-sm').append(new Icon('fa-solid fa-circle-info')).addClass('info-button');
+
+    const createTableContent = (title, value) =>
+      value !== null
+        ? TinyHtml.createFrom('tr').append(
+            TinyHtml.createFrom('td').setText(title),
+            TinyHtml.createFrom('td').setText(value),
+          )
+        : null;
 
     // Edit message panel
     const editPanel = TinyHtml.createFrom('div', { class: 'ai-text-editor' });
     editPanel.append(
+      infoButton.on('click', () => {
+        tinyLib.modal({
+          title: 'Message Data',
+          dialog: 'modal-lg',
+          id: `msg-rpg-info`,
+          body: TinyHtml.createFrom('table', {
+            class: 'table table-striped table-bordered',
+          }).append(
+            TinyHtml.createFrom('thead').append(
+              TinyHtml.createFrom('tr').append(
+                TinyHtml.createFrom('th', { scope: 'col' }).setText('Title'),
+                TinyHtml.createFrom('th', { scope: 'col' }).setText('Value'),
+              ),
+            ),
+            TinyHtml.createFrom('tbody').append(
+              createTableContent('msgid', tinyCache.msgId ?? null),
+              createTableContent('edited', tinyCache.edited ?? null),
+              createTableContent('date', tinyCache.date ?? null),
+              createTableContent('chapter', tinyCache.chapter ?? null),
+              createTableContent('dataid', tinyCache.dataid ?? null),
+              createTableContent('role', tinyCache.role ?? null),
+            ),
+          ),
+        });
+      }),
       // Edit button
       !isIgnore && tinyIndex > -1
         ? editButton.on('click', () => {
@@ -3094,6 +3128,7 @@ export const AiScriptStart = async () => {
       onlineStatus.wrapper.append(onlineStatus.icon, onlineStatus.text, onlineStatus.id);
       onlineStatus.base.append(onlineStatus.wrapper, onlineStatus.id);
       connectionInfoBar.replaceWith(onlineStatus.base);
+      chatContainer.addClass('is-online');
 
       // Socket client
       if (socket) {
