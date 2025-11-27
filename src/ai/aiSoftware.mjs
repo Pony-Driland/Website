@@ -2412,6 +2412,24 @@ export const AiScriptStart = async () => {
       msg: data.message,
       role: username ? toTitleCase(username) : 'User',
       dataid: data.id,
+      updateText: (text = tinyCache.msg ?? '') =>
+        msgBallon.empty().append(TinyHtml.createFromHtml(makeMsgRenderer(text))),
+      delete: () => deleteButton.trigger('click'),
+      remove: () => {
+        const tinyIndex = tinyAi.getIndexOfId(data.id);
+        if (!isIgnore && tinyIndex > -1) {
+          const tinyTokens = tinyAi.getMsgTokensByIndex(tinyIndex);
+          tinyAi.deleteIndex(tinyIndex);
+          const amount = tokenCount.getValue('amount');
+          tokenCount.updateValue(
+            'amount',
+            amount - Number(tinyTokens && tinyTokens.count ? tinyTokens.count : 0),
+          );
+        }
+
+        msgBase.remove();
+        enabledFirstDialogue();
+      },
       update: () => {
         msgBase.setAttr('msgid', tinyCache.msgId ?? null);
         msgBase.setAttr('edited', tinyCache.edited ?? null);
@@ -2471,9 +2489,18 @@ export const AiScriptStart = async () => {
     const isIgnore = typeof data.id !== 'number' || data.id < 0;
     const tinyIndex = tinyAi.getIndexOfId(data.id);
 
-    const deleteButton = tinyLib.bs.button('bg btn-sm').append(new Icon('fa-solid fa-trash-can')).addClass('delete-button');
-    const editButton = tinyLib.bs.button('bg btn-sm').append(new Icon('fa-solid fa-pen-to-square')).addClass('edit-button');
-    const infoButton = tinyLib.bs.button('bg btn-sm').append(new Icon('fa-solid fa-circle-info')).addClass('info-button');
+    const deleteButton = tinyLib.bs
+      .button('bg btn-sm')
+      .append(new Icon('fa-solid fa-trash-can'))
+      .addClass('delete-button');
+    const editButton = tinyLib.bs
+      .button('bg btn-sm')
+      .append(new Icon('fa-solid fa-pen-to-square'))
+      .addClass('edit-button');
+    const infoButton = tinyLib.bs
+      .button('bg btn-sm')
+      .append(new Icon('fa-solid fa-circle-info'))
+      .addClass('info-button');
 
     const createTableContent = (title, value) =>
       value !== null
@@ -2485,8 +2512,11 @@ export const AiScriptStart = async () => {
 
     // Edit message panel
     const editPanel = TinyHtml.createFrom('div', { class: 'ai-text-editor' });
+
     editPanel.append(
       infoButton.on('click', () => {
+        const date = moment(tinyCache.date);
+        const edited = moment(tinyCache.edited);
         tinyLib.modal({
           title: 'Message Data',
           dialog: 'modal-lg',
@@ -2502,8 +2532,14 @@ export const AiScriptStart = async () => {
             ),
             TinyHtml.createFrom('tbody').append(
               createTableContent('msgid', tinyCache.msgId ?? null),
-              createTableContent('edited', tinyCache.edited ?? null),
-              createTableContent('date', tinyCache.date ?? null),
+              createTableContent(
+                'edited',
+                edited.isValid() ? `${edited.calendar()} (${edited.valueOf()})` : null,
+              ),
+              createTableContent(
+                'date',
+                date.isValid() ? `${date.calendar()} (${date.valueOf()})` : null,
+              ),
               createTableContent('chapter', tinyCache.chapter ?? null),
               createTableContent('dataid', tinyCache.dataid ?? null),
               createTableContent('role', tinyCache.role ?? null),
@@ -2536,7 +2572,7 @@ export const AiScriptStart = async () => {
             // Close Replace
             const closeReplace = () => {
               msgBallon.removeClass('w-100').empty();
-              msgBallon.append(TinyHtml.createFromHtml(makeMsgRenderer(tinyCache.msg)));
+              tinyCache.updateText();
               const msg = tinyAi.getMsgById();
               tinyErrorAlert.updateText(msg ? msg.finishReason : null);
             };
@@ -2574,6 +2610,8 @@ export const AiScriptStart = async () => {
                       if (result.error) {
                         alert(result.msg, 'ERROR!');
                         isError = true;
+                      } else {
+                        tinyCache.edited = result.edited;
                       }
                     })
                     .catch((err) => {
@@ -2647,19 +2685,7 @@ export const AiScriptStart = async () => {
           return;
         }
 
-        const tinyIndex = tinyAi.getIndexOfId(data.id);
-        if (!isIgnore && tinyIndex > -1) {
-          const tinyTokens = tinyAi.getMsgTokensByIndex(tinyIndex);
-          tinyAi.deleteIndex(tinyIndex);
-          const amount = tokenCount.getValue('amount');
-          tokenCount.updateValue(
-            'amount',
-            amount - Number(tinyTokens && tinyTokens.count ? tinyTokens.count : 0),
-          );
-        }
-
-        msgBase.remove();
-        enabledFirstDialogue();
+        tinyCache.remove();
       }),
     );
 
@@ -2673,7 +2699,7 @@ export const AiScriptStart = async () => {
     // Send message
     const msgContent = msgBase.append(
       editPanel,
-      msgBallon.append(TinyHtml.createFromHtml(makeMsgRenderer(tinyCache.msg))),
+      msgBallon,
       usernameBase
         .setText(typeof username === 'string' ? username : 'User')
         .append(chapterBase)
@@ -2681,6 +2707,7 @@ export const AiScriptStart = async () => {
       tinyErrorAlert.result,
     );
 
+    tinyCache.updateText();
     msgContent.setData('tiny-ai-error-alert', tinyErrorAlert);
     return msgContent;
   };
@@ -3457,6 +3484,38 @@ export const AiScriptStart = async () => {
               msgData.userId,
             ),
           );
+        });
+
+        client.on('messageDelete', (msgData) => {
+          const html = new TinyHtml(
+            `#ai-element-root #ai-chatbox .ai-chat-data[msgid="${msgData.id}"]`,
+          );
+          if (html.size < 1) return;
+          const cfg = html.data('tiny-ai-cache');
+          if (cfg) cfg.remove();
+        });
+
+        client.on('messageEdit', (msgData) => {
+          const html = new TinyHtml(
+            `#ai-element-root #ai-chatbox .ai-chat-data[msgid="${msgData.id}"]`,
+          );
+          if (html.size < 1) return;
+          const cfg = html.data('tiny-ai-cache');
+          if (!cfg) return;
+          cfg.edited = msgData.edited;
+          cfg.date = msgData.date;
+          cfg.msg = msgData.text;
+
+          const newContent = tinyAi.getMsgById(cfg.dataid);
+          newContent.parts[0].text = msgData.text;
+
+          tinyAi.replaceIndex(tinyAi.getIndexOfId(cfg.dataid), newContent, {
+            count: msgData.tokens,
+            msgId: msgData.id,
+          });
+
+          cfg.update();
+          cfg.updateText();
         });
 
         // User Status
