@@ -10,6 +10,9 @@ import {
   userDiceIsRateLimited,
   roomUsers,
   userUpdateDiceIsRateLimited,
+  userMsgEditIsRateLimited,
+  userMsgDeleteIsRateLimited,
+  userMsgLoadIsRateLimited,
 } from './values';
 
 export default function messageManager(socket, io) {
@@ -117,7 +120,7 @@ export default function messageManager(socket, io) {
     // Get user
     const userId = userSession.getUserId(socket);
     if (!userId) return accountNotDetected(fn); // Only logged-in users can edit
-    if (userMsgIsRateLimited(socket, fn)) return;
+    if (userMsgEditIsRateLimited(socket, fn)) return;
 
     // Get room
     const rooms = db.getTable('rooms');
@@ -207,7 +210,7 @@ export default function messageManager(socket, io) {
     // Get user
     const userId = userSession.getUserId(socket);
     if (!userId) return accountNotDetected(fn); // Only logged-in users can delete
-    if (userMsgIsRateLimited(socket, fn)) return;
+    if (userMsgDeleteIsRateLimited(socket, fn)) return;
 
     // Get room
     const rooms = db.getTable('rooms');
@@ -315,7 +318,7 @@ export default function messageManager(socket, io) {
     // Get user
     const yourId = userSession.getUserId(socket);
     if (!yourId) return accountNotDetected(fn);
-    if (userMsgIsRateLimited(socket, fn)) return;
+    if (userMsgLoadIsRateLimited(socket, fn)) return;
 
     const loadLimit = getIniConfig('HISTORY_SIZE');
     const canLoadAll = getIniConfig('LOAD_ALL_HISTORY');
@@ -410,7 +413,7 @@ export default function messageManager(socket, io) {
         page: 1,
         totalItems: allMessages.length,
         totalPages: 1,
-        messages: allMessages,
+        messages: allMessages.reverse(),
       });
     } else {
       fn({
@@ -418,7 +421,7 @@ export default function messageManager(socket, io) {
         page,
         totalItems: allMessages.totalItems,
         totalPages: allMessages.totalPages,
-        messages: allMessages.items,
+        messages: allMessages.items.reverse(),
       });
     }
   });
