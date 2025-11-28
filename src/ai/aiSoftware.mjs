@@ -2589,7 +2589,7 @@ export const AiScriptStart = async () => {
               // Check message
               if (typeof oldMsg !== 'string' || oldMsg !== newMsg) {
                 // New content and insert
-                const oldTokens = tinyAi.getMsgTokensByIndex(tinyIndex).count;
+                const oldTokens = tinyAi.getMsgTokensByIndex(tinyIndex)?.count ?? 0;
                 const newContent = tinyAi.getMsgByIndex(tinyIndex);
                 newContent.parts[0].text = tinyCache.msg;
 

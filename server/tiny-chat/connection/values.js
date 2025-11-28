@@ -162,6 +162,7 @@ export const createRateLimit = (limitCountName = '', itemName = 'items', code = 
   // Track the events for rate limiting
   const userEventCounts = new Map();
   return (socket, fn, isUnknown = false) => {
+    /** @type {number} */
     const limitCount = getIniConfig(limitCountName) || 5;
 
     // Is a user
@@ -174,7 +175,9 @@ export const createRateLimit = (limitCountName = '', itemName = 'items', code = 
 
     // Rate limiting logic
     const currentTime = Date.now();
+    /** @type {number} */
     const userTimestamp = userMessageTimestamps.get(userId) || 0;
+    /** @type {number} */
     const userMessageCount = userEventCounts.get(userId) || 0;
 
     // Check if rate limit is exceeded based on RATE_LIMIT_TIME
@@ -212,9 +215,9 @@ export const createRateLimit = (limitCountName = '', itemName = 'items', code = 
 
 export const userIsRateLimited = createRateLimit('EVENT', 'events', 1);
 export const roomUpdateIsRateLimited = createRateLimit('ROOM_UPDATES', 'room updates', 1);
-export const userMsgLoadIsRateLimited = createRateLimit('MESSAGES', 'messages', 2);
-export const userMsgDeleteIsRateLimited = createRateLimit('MESSAGES', 'messages', 2);
-export const userMsgEditIsRateLimited = createRateLimit('MESSAGES', 'messages', 2);
+export const userMsgLoadIsRateLimited = createRateLimit('MESSAGE', 'message loads', 4);
+export const userMsgDeleteIsRateLimited = createRateLimit('MESSAGES', 'message deletes', 5);
+export const userMsgEditIsRateLimited = createRateLimit('MESSAGES', 'message edits', 6);
 export const userMsgIsRateLimited = createRateLimit('MESSAGES', 'messages', 2);
 export const userDiceIsRateLimited = createRateLimit('DICE_ROLLS', 'dice rolls', 3);
 export const userUpdateDiceIsRateLimited = createRateLimit('DICE_ROLLS', 'dice changes', 3);
