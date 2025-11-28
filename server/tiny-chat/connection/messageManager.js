@@ -524,8 +524,10 @@ export default function messageManager(socket, io) {
       diceResults.push({ value: rollDice(sides, Number(index)), sides });
     }
 
-    // Complete
-    socket.to(roomId).emit('roll-result', {
+    // Result
+    const diceHistory = db.getTable('diceHistory');
+
+    const result = {
       date: Date.now(),
       results: diceResults,
       modifiers: finalMods,
@@ -533,8 +535,21 @@ export default function messageManager(socket, io) {
       canZero,
       userId,
       roomId,
+    };
+
+    const diceData = await diceHistory.set(roomId, {
+      results: diceResults,
+      modifiers: finalMods,
+      date: result.date,
+      canZero,
+      userId,
     });
 
-    fn({ success: true, results: diceResults });
+    result.id = diceData.id;
+
+    // Complete
+    socket.to(roomId).emit('roll-result', result);
+
+    fn({ success: true, results: diceResults, id: diceData.id });
   });
 }

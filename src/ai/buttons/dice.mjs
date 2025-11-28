@@ -11,17 +11,17 @@ import { applyDiceModifiers, parseDiceString } from './diceUtils.mjs';
 import { Tooltip } from '../../modules/TinyBootstrap.mjs';
 
 /**
- * @param {import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} $totalBase
+ * @param {import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} $totalBaseNumber
  * @param {import('./diceUtils.mjs').ApplyDiceModifiersResult} data
  * @returns {NodeJS.Timeout}
  */
-export const createDiceResults = ($totalBase, data, callback = () => undefined) => {
+export const createDiceResults = ($totalBaseNumber, data, callback = () => undefined) => {
   /**
    * Insert Total Value (Bootstrap 5 styled display)
    */
   const insertTotal = () => {
     const { final, steps } = data;
-    $totalBase.empty();
+    $totalBaseNumber.empty();
 
     // Create main container
     const container = TinyHtml.createFrom('div');
@@ -33,7 +33,7 @@ export const createDiceResults = ($totalBase, data, callback = () => undefined) 
     container.append(body);
 
     // Total display
-    $totalBase.append(final);
+    $totalBaseNumber.append(final);
 
     const tableWrapper = TinyHtml.createFrom('div');
     tableWrapper.addClass('table-responsive');
@@ -118,7 +118,7 @@ export const createDiceResults = ($totalBase, data, callback = () => undefined) 
     });
 
     // Insert into page
-    $totalBase.append(container);
+    $totalBaseNumber.append(container);
   };
 
   return setTimeout(() => {
@@ -162,7 +162,14 @@ export const openDiceSpecialModal = (data) => {
     if (data.skin.text) dice.textSkin = data.skin.text;
   }
 
-  const $totalBase = TinyHtml.createFrom('center', { class: 'fw-bold mt-3' }).setText(0);
+  const $totalBaseNumber = TinyHtml.createFrom('div').setText(0);
+  const $idBase = TinyHtml.createFrom('small');
+  if (typeof data.id === 'string') $idBase.setText(data.id);
+
+  const $totalBase = TinyHtml.createFrom('center', { class: 'fw-bold mt-3' }).append(
+    $totalBaseNumber,
+    $idBase,
+  );
 
   for (const item of data.results) {
     dice.insertDiceElement(item.value, item.sides, data.canZero);
@@ -193,7 +200,7 @@ export const openDiceSpecialModal = (data) => {
     $totalBase,
   );
 
-  createDiceResults($totalBase, applyDiceModifiers(data.results, data.modifiers));
+  createDiceResults($totalBaseNumber, applyDiceModifiers(data.results, data.modifiers));
 
   // Start modal
   tinyLib.modal({
@@ -208,7 +215,13 @@ export const openTinyDices = () => {
   // Root
   const $root = TinyHtml.createFrom('div');
   const $formRow = TinyHtml.createFrom('div').addClass('row g-3');
-  const $totalBase = TinyHtml.createFrom('center', { class: 'fw-bold mt-3' }).setText(0);
+
+  const $totalBaseNumber = TinyHtml.createFrom('div').setText(0);
+  const $idBase = TinyHtml.createFrom('small');
+  const $totalBase = TinyHtml.createFrom('center', { class: 'fw-bold mt-3' }).append(
+    $totalBaseNumber,
+    $idBase,
+  );
 
   // Config
   const tinyCfg = {
@@ -312,7 +325,7 @@ export const openTinyDices = () => {
     const canZero = $allow0input.is(':checked');
 
     // Prepare total base and reset timeout
-    $totalBase.setText(0);
+    $totalBaseNumber.setText(0);
     if (updateTotalBase) {
       clearTimeout(updateTotalBase);
       updateTotalBase = null;
@@ -325,7 +338,7 @@ export const openTinyDices = () => {
       const diceResults = [];
       for (const item of result) diceResults.push(item.result);
       updateTotalBase = createDiceResults(
-        $totalBase,
+        $totalBaseNumber,
         applyDiceModifiers(diceResults, parsedPerDie.modifiers),
         () => (updateTotalBase = null),
       );
@@ -340,12 +353,13 @@ export const openTinyDices = () => {
       // Get result
       $rollButton.addProp('disabled').addClass('disabled');
       const result = await tinyIo.client.rollDice(sides, canZero, parsedPerDie.modifiers);
+      $idBase.setText(result.id);
       $rollButton.removeProp('disabled').removeClass('disabled');
 
       // Proccess Results
       if (!result.error) {
         dice.clearDiceArea();
-        $totalBase.removeClass('text-danger');
+        $totalBaseNumber.removeClass('text-danger');
         if (
           Array.isArray(result.results) &&
           result.results.every(
@@ -361,12 +375,12 @@ export const openTinyDices = () => {
           }
 
           updateTotalBase = createDiceResults(
-            $totalBase,
+            $totalBaseNumber,
             applyDiceModifiers(result.results, parsedPerDie.modifiers),
             () => (updateTotalBase = null),
           );
         }
-      } else $totalBase.addClass('text-danger').setText(result.msg);
+      } else $totalBaseNumber.addClass('text-danger').setText(result.msg);
     }
   });
 
@@ -577,9 +591,9 @@ export const openTinyDices = () => {
             .trim();
 
         const result = await tinyIo.client.setAccountDice(diceSkin);
-        if (result.error) $totalBase.addClass('text-danger').setText(result.msg);
+        if (result.error) $totalBaseNumber.addClass('text-danger').setText(result.msg);
         else {
-          $totalBase.removeClass('text-danger').setText(0);
+          $totalBaseNumber.removeClass('text-danger').setText(0);
           tinyIo.client.setDice(diceSkin);
         }
 

@@ -139,6 +139,26 @@ export const startDatabase = async (appStorage) => {
       [['historyId', 'TEXT'], ...historyTemplate],
     );
 
+    // Stores dice histories
+    await db.initTable(
+      {
+        name: 'diceHistory',
+        id: 'roomId',
+        subId: 'id',
+      },
+      [
+        ['id', 'TEXT', 'DEFAULT (lower(hex(randomblob(16))))'],
+        ['roomId', 'TEXT', 'NOT NULL'],
+        ['userId', 'TEXT', 'NOT NULL'],
+        ['date', 'INTEGER', 'NOT NULL'],
+        ['canZero', 'BOOLEAN', 'NOT NULL'],
+        ['results', 'JSON', 'NOT NULL'],
+        ['modifiers', 'JSON', 'NOT NULL'],
+        ['PRIMARY KEY (roomId, id)'],
+        ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
+      ],
+    );
+
     // Stores user credentials
     console.log(`[APP] [${config.database.type}] [table] Loading users...`);
     await db.initTable({ name: 'users', id: 'userId' }, [
