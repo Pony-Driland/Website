@@ -2325,13 +2325,19 @@ export const AiScriptStart = async () => {
 
   const addMessage = (item) => {
     msgList.append(item);
+    // Protect online mode history
     if (isOnline()) {
       const ratelimit = tinyIo.client.getRateLimit();
       if (ratelimit.size) {
         const limit = ratelimit.size.history ?? null;
         if (typeof limit === 'number') {
           const msgs = new TinyHtml(msgList.find(':scope > .ai-chat-data[msgid]'));
-          if (msgs.size > limit) new TinyHtml(msgs.get(0)).remove();
+          if (msgs.size > limit) {
+            new TinyHtml(msgs.get(0)).remove();
+            // Protect history cache
+            if (tinyAiScript.mpClient && !tinyIo.client.getRateLimit().loadAllHistory)
+              tinyAi.deleteIndex(0);
+          }
         }
       }
     }
