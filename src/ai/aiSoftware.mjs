@@ -1630,6 +1630,7 @@ export const AiScriptStart = async () => {
   // TITLE: Get Ai Tokens
   let usingUpdateToken = false;
   const updateAiTokenCounterData = (hashItems, forceReset = false) => {
+    if (tinyAiScript.mpClient) return;
     if (!usingUpdateToken) {
       usingUpdateToken = true;
       const history = tinyAi.getData();
@@ -3443,8 +3444,12 @@ export const AiScriptStart = async () => {
           const startMsgSystem = async () => {
             let msgCount = 0;
             let isError = false;
+            const loadCfg = { page: 1 };
+            if (!tinyAiScript.mpClient || client.getRateLimit().loadAllHistory)
+              loadCfg.perPage = null;
+
             await client
-              .loadMessages({ page: 1 })
+              .loadMessages(loadCfg)
               .then((result) => {
                 if (!isLoadingMsgs) {
                   isError = true;
@@ -3457,6 +3462,14 @@ export const AiScriptStart = async () => {
                   return;
                 }
 
+                const resetData = () => {
+                  const data = tinyAi.getData();
+                  while (data.ids.length > 0) {
+                    tinyAi.deleteIndex(0);
+                  }
+                };
+
+                resetData();
                 clearMessages();
                 msgCount = result.messages.length;
                 for (const msg of result.messages) addNewMsg(msg, msg.historyId);
@@ -3471,7 +3484,7 @@ export const AiScriptStart = async () => {
 
             if (isError) return;
             enabledFirstDialogue(msgCount < 1);
-            if (!tinyAiScript.mpClient) updateAiTokenCounterData();
+            updateAiTokenCounterData();
           };
           startMsgSystem();
         });
@@ -3540,7 +3553,7 @@ export const AiScriptStart = async () => {
 
         client.on('newMessage', (msgData) => {
           addNewMsg(msgData, msgData.id);
-          if (!tinyAiScript.mpClient) updateAiTokenCounterData();
+          updateAiTokenCounterData();
         });
 
         client.on('messageDelete', (msgData) => {

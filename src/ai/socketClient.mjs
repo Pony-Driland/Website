@@ -140,10 +140,10 @@ class TinyClientIo extends EventEmitter {
 
   // Rate limit
   setRateLimit(result) {
-    this.ratelimit = { limit: {}, size: {}, time: null, loadAllHistory: null };
+    this.ratelimit = { limit: {}, size: {}, time: null, loadAllHistory: false };
     if (isJsonObject(result)) {
       this.ratelimit.loadAllHistory =
-        typeof result.loadAllHistory === 'boolean' ? result.loadAllHistory : true;
+        typeof result.loadAllHistory === 'boolean' ? result.loadAllHistory : false;
       this.ratelimit.time = typeof result.time === 'number' ? result.time : 0;
       this.ratelimit.openRegistration =
         typeof result.openRegistration === 'boolean' ? result.openRegistration : false;
