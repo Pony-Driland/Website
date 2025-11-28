@@ -936,6 +936,7 @@ class TinyClientIo extends EventEmitter {
           userId: null,
           canZero: null,
           skin: null,
+          id: null,
           date: 0,
         };
 
@@ -954,6 +955,7 @@ class TinyClientIo extends EventEmitter {
         }
 
         // UserId
+        if (typeof result.id === 'string') data.id = result.id;
         if (typeof result.userId === 'string') data.userId = result.userId;
         if (typeof result.canZero === 'boolean') data.canZero = result.canZero;
 

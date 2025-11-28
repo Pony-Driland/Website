@@ -128,6 +128,7 @@ Rolls one or more virtual dice in a chat room. Users can configure whether dice 
       "expression": "string"
     }
   ],
+  "id": "string",
   "canZero": false, // (Required) If true, rolls can include zero (e.g., 0 to N-1)
   "dice": [4, 4, 4], // (Required) Array of numbers indicating dice sides or count
   "roomId": "abc123", // (Required) The ID of the room where the roll occurs
@@ -148,6 +149,7 @@ Rolls one or more virtual dice in a chat room. Users can configure whether dice 
 ```json
 {
   "success": true,
+  "id": "string",
   "results": [
     { "value": 4, "sides": 6 },
     { "value": 5, "sides": 6 },
