@@ -11,7 +11,7 @@ const LIMITS = {
 
 export const getIniConfig = (where) => LIMITS[where];
 export const _setIniConfig = (where, value) => {
-  LIMITS[where] = value || 0;
+  LIMITS[where] = value ?? 0;
 };
 
 // Track the users in rooms
@@ -215,9 +215,9 @@ export const createRateLimit = (limitCountName = '', itemName = 'items', code = 
 
 export const userIsRateLimited = createRateLimit('EVENT', 'events', 1);
 export const roomUpdateIsRateLimited = createRateLimit('ROOM_UPDATES', 'room updates', 1);
-export const userMsgLoadIsRateLimited = createRateLimit('MESSAGE', 'message loads', 4);
-export const userMsgDeleteIsRateLimited = createRateLimit('MESSAGES', 'message deletes', 5);
-export const userMsgEditIsRateLimited = createRateLimit('MESSAGES', 'message edits', 6);
+export const userMsgLoadIsRateLimited = createRateLimit('MESSAGES_LOAD', 'message loads', 4);
+export const userMsgDeleteIsRateLimited = createRateLimit('MESSAGES_DELETE', 'message deletes', 5);
+export const userMsgEditIsRateLimited = createRateLimit('MESSAGES_EDIT', 'message edits', 6);
 export const userMsgIsRateLimited = createRateLimit('MESSAGES', 'messages', 2);
 export const userDiceIsRateLimited = createRateLimit('DICE_ROLLS', 'dice rolls', 3);
 export const userUpdateDiceIsRateLimited = createRateLimit('DICE_ROLLS', 'dice changes', 3);

@@ -309,9 +309,8 @@ export default function messageManager(socket, io) {
       typeof roomId !== 'string' ||
       typeof page !== 'number' ||
       (typeof userId !== 'string' && userId !== null) ||
-      (typeof perPage !== 'number' && perPage !== null) ||
-      page < 1 ||
-      perPage < 1
+      ((typeof perPage !== 'number' || perPage < 1) && perPage !== null) ||
+      page < 1
     )
       return sendIncompleteDataInfo(fn);
 
@@ -402,7 +401,8 @@ export default function messageManager(socket, io) {
         return fn({ error: true, code: 5, msg: `You can\'t load a number smaller than 1!` });
       allMessages = await history.search({ perPage, page, order, q: query });
     } else {
-      if (!canLoadAll) return fn({ error: true, code: 6, msg: `Invalid result format!` });
+      if (!canLoadAll && room.ownerId !== yourId)
+        return fn({ error: true, code: 6, msg: `You can\'t load all messages!` });
       allMessages = await history.search({ order, q: query });
     }
 
