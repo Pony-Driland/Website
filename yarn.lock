@@ -7721,15 +7721,15 @@ timed-out@^4.0.1:
   resolved "https://registry.yarnpkg.com/timed-out/-/timed-out-4.0.1.tgz#f32eacac5a175bea25d7fab565ab3ed8741ef56f"
   integrity sha512-G7r3AhovYtr5YKOWQkta8RKAPb+J9IsO4uVmzjl8AZwfhs8UcUwTiD6gcJYSgOtzyjvQKrKYn41syHbUWMkafA==
 
-tiny-ai-api@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/tiny-ai-api/-/tiny-ai-api-1.1.7.tgz#185ac91193b3c1c63d275822f7c932a5ac34c12a"
-  integrity sha512-xKzk2QfJlSCsIZcAduYBm5/vZCrQyJ1JvKrBMjV1cpjOexOrwvHSEA0XeQuLP4EZOC5mMKchvJuTE68mV/PiNw==
+tiny-ai-api@^1.1.9:
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/tiny-ai-api/-/tiny-ai-api-1.1.9.tgz#f284f315adf1c63f8268d8a13fb8fbb02786204b"
+  integrity sha512-sTf9KWpoWiiii/Uc0JpwiGNGtLST5/O/L7Ci+bsxwQICLAH6KZ5CPK5YErRY0acsctkwTrtc7LfRzSlHzC11kQ==
   dependencies:
     js-base64 "^3.7.8"
     jsonrepair "^3.12.0"
     object-hash "^3.0.0"
-    tiny-essentials "^1.20.0"
+    tiny-essentials "^1.24.3"
 
 tiny-dices@^1.1.0:
   version "1.1.0"
@@ -7738,7 +7738,7 @@ tiny-dices@^1.1.0:
   dependencies:
     tiny-essentials "^1.24.0"
 
-tiny-essentials@^1.20.0, tiny-essentials@^1.22.1:
+tiny-essentials@^1.22.1:
   version "1.23.2"
   resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.23.2.tgz#d95d791d44ac5dac6d4b96318d6eb97156a7fd32"
   integrity sha512-8cdf0buWlT5sVyv0DpXvfJK4auwzpzbtdG5S8FhL75j5XiAaFBFV+NtskRwyzltCY4miyMybvblY7gXF83bA/g==
