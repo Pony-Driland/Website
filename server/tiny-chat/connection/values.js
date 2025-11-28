@@ -212,6 +212,9 @@ export const createRateLimit = (limitCountName = '', itemName = 'items', code = 
 
 export const userIsRateLimited = createRateLimit('EVENT', 'events', 1);
 export const roomUpdateIsRateLimited = createRateLimit('ROOM_UPDATES', 'room updates', 1);
+export const userMsgLoadIsRateLimited = createRateLimit('MESSAGES', 'messages', 2);
+export const userMsgDeleteIsRateLimited = createRateLimit('MESSAGES', 'messages', 2);
+export const userMsgEditIsRateLimited = createRateLimit('MESSAGES', 'messages', 2);
 export const userMsgIsRateLimited = createRateLimit('MESSAGES', 'messages', 2);
 export const userDiceIsRateLimited = createRateLimit('DICE_ROLLS', 'dice rolls', 3);
 export const userUpdateDiceIsRateLimited = createRateLimit('DICE_ROLLS', 'dice changes', 3);

@@ -2155,7 +2155,6 @@ export const AiScriptStart = async () => {
           alert(err.message);
         })
         .then(async (data) => {
-          console.log(data);
           // Online
           if (isOnline()) {
             let isError = false;
@@ -2595,7 +2594,7 @@ export const AiScriptStart = async () => {
                 newContent.parts[0].text = tinyCache.msg;
 
                 // Replace content
-                tinyAi.replaceIndex(tinyIndex, newContent, { count: null, msgId: data.msgId });
+                tinyAi.replaceIndex(tinyIndex, newContent, { count: null, msgId: tinyCache.msgId });
                 let isError = false;
                 if (isOnline()) {
                   const isNoAi = tinyAiScript.noai || tinyAiScript.mpClient;
@@ -2605,7 +2604,7 @@ export const AiScriptStart = async () => {
                   };
 
                   await tinyIo.client
-                    .editMessage(sendData, data.msgId)
+                    .editMessage(sendData, tinyCache.msgId)
                     .then((result) => {
                       if (result.error) {
                         alert(result.msg, 'ERROR!');
@@ -2629,7 +2628,7 @@ export const AiScriptStart = async () => {
                   tinyCache.msg = oldMsg;
                   tinyAi.replaceIndex(tinyIndex, newContent, {
                     count: oldTokens,
-                    msgId: data.msgId,
+                    msgId: tinyCache.msgId,
                   });
                   return;
                 }
@@ -2665,7 +2664,7 @@ export const AiScriptStart = async () => {
 
         if (isOnline()) {
           await tinyIo.client
-            .deleteMessage(data.msgId)
+            .deleteMessage(tinyCache.msgId)
             .then((result) => {
               if (result.error) {
                 alert(result.msg, 'ERROR!');
@@ -3174,6 +3173,11 @@ export const AiScriptStart = async () => {
         // Install scripts
         client.install(tinyAiScript);
 
+        let isLoadingMsgs = false;
+        const clearIsLoadingMsgs = () => {
+          isLoadingMsgs = false;
+        };
+
         const userStatus = {
           isMod: false,
           isAdmin: false,
@@ -3329,6 +3333,7 @@ export const AiScriptStart = async () => {
         });
 
         client.on('roomEnter', () => {
+          clearIsLoadingMsgs();
           const user = client.getUser();
           const room = client.getRoom();
           const userId = client.getUserId();
@@ -3344,7 +3349,9 @@ export const AiScriptStart = async () => {
         // Connected
         let msgChecker = null;
 
+        // Connection
         client.on('connect', (connectionId) => {
+          clearIsLoadingMsgs();
           msgChecker = setInterval(() => {
             const msgs = new TinyHtml(chatContainer.find('.ai-chat-data'));
             msgs.forEach((elem) => elem.data('tiny-ai-cache')?.update());
@@ -3369,7 +3376,9 @@ export const AiScriptStart = async () => {
           );
         });
 
+        // Login progress
         client.on('login', (result) => {
+          clearIsLoadingMsgs();
           // Message
           if (!result.error) {
             makeTempMessage(
@@ -3384,17 +3393,24 @@ export const AiScriptStart = async () => {
           }
         });
 
+        // Error
         client.on('roomError', (result) => {
+          clearIsLoadingMsgs();
           sendSocketError(result);
           loaderScreen.stop();
         });
 
+        // Not found
         client.on('roomNotFound', () => {
+          clearIsLoadingMsgs();
           makeTempMessage('The room was not found', rpgCfg.ip);
           loaderScreen.stop();
         });
 
+        // Room Loaded
         client.on('roomJoinned', (result) => {
+          clearIsLoadingMsgs();
+          // Update Fic Cache
           if (isFirstFicCache)
             contentEnabler.once('ficCacheLoaded', (isFirstFicCache) => {
               onlineRoomUpdates(isFirstFicCache, tinyIo.client.getRoom(), false);
@@ -3423,6 +3439,41 @@ export const AiScriptStart = async () => {
 
           makeTempMessage(`You successfully entered the room **${result.roomId}**!`, rpgCfg.ip);
           loaderScreen.stop();
+          isLoadingMsgs = true;
+          const startMsgSystem = async () => {
+            let msgCount = 0;
+            let isError = false;
+            await client
+              .loadMessages({ page: 1 })
+              .then((result) => {
+                if (!isLoadingMsgs) {
+                  isError = true;
+                  return;
+                }
+                isLoadingMsgs = false;
+                if (result.error) {
+                  alert(result.msg, 'ERROR!');
+                  isError = true;
+                  return;
+                }
+
+                clearMessages();
+                msgCount = result.messages.length;
+                for (const msg of result.messages) addNewMsg(msg, msg.historyId);
+              })
+              .catch((err) => {
+                isError = true;
+                if (!isLoadingMsgs) return;
+                isLoadingMsgs = false;
+                alert(err.message, 'ERROR!');
+                console.error(err);
+              });
+
+            if (isError) return;
+            enabledFirstDialogue(msgCount < 1);
+            if (!tinyAiScript.mpClient) updateAiTokenCounterData();
+          };
+          startMsgSystem();
         });
 
         // Disconnected
@@ -3465,10 +3516,11 @@ export const AiScriptStart = async () => {
         });
 
         // New message
-        client.on('newMessage', (msgData) => {
+        const addNewMsg = (msgData, msgId) => {
+          const role = msgData.isModel ? 'model' : 'user';
           const sentId = tinyAi.addData(
-            tinyAi.buildContents(null, { role: 'user', parts: [{ text: msgData.text }] }, 'user'),
-            { count: msgData.tokens, msgId: msgData.id },
+            tinyAi.buildContents(null, { role, parts: [{ text: msgData.text }] }, role),
+            { count: msgData.tokens, msgId },
           );
 
           addMessage(
@@ -3477,13 +3529,18 @@ export const AiScriptStart = async () => {
                 message: msgData.text,
                 date: msgData.date,
                 id: sentId,
-                msgId: msgData.id,
+                msgId,
                 chapter: msgData.chapter,
                 edited: msgData.edited,
               },
-              msgData.userId,
+              !msgData.isModel ? msgData.userId : 'Model',
             ),
           );
+        };
+
+        client.on('newMessage', (msgData) => {
+          addNewMsg(msgData, msgData.id);
+          if (!tinyAiScript.mpClient) updateAiTokenCounterData();
         });
 
         client.on('messageDelete', (msgData) => {
