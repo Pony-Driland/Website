@@ -243,7 +243,10 @@ export const openTinyDices = () => {
     tinyCfg.data.selectionText = tinyLs.getItem(`tiny-dice-selection-text`) || 'white';
   }
 
-  // Form template
+  /**
+   * Form template
+   * @type {Record<string, TinyHtml<HTMLElement>>}
+   */
   const configs = {};
   const genLabel = (id, text) =>
     TinyHtml.createFrom('label')
@@ -258,17 +261,28 @@ export const openTinyDices = () => {
       .setAttr('placeholder', min)
       .setVal(value);
 
+  /** @returns {[TinyHtml<HTMLElement>, TinyHtml<HTMLElement>]} */
   const genConfig = (id, text, type, value, min) => {
     configs[id] = genInput(id, type, value, min);
     return [genLabel(id, text), configs[id]];
   };
 
   // Form
-  const $perDieCol = TinyHtml.createFrom('div')
-    .addClass('col-md-12')
-    .append(
-      genConfig('perDieValues', 'Per-Die Values', 'text', 'd6', 'e.g.: 6, (0 | 1 | d6) + d6 + 1'),
-    );
+  const $perDieConfig = genConfig(
+    'perDieValues',
+    'Per-Die Values',
+    'text',
+    'd6',
+    'e.g.: 6, (0 | 1 | d6) + d6 + 1',
+  );
+  const $perDieCol = TinyHtml.createFrom('div').addClass('col-md-12').append($perDieConfig);
+
+  $perDieConfig[1].on('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      $rollButton.trigger('click');
+    }
+  });
 
   const $allow0input = TinyHtml.createFrom('input')
     .addClass('form-check-input')
