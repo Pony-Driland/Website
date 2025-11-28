@@ -2325,6 +2325,17 @@ export const AiScriptStart = async () => {
 
   const addMessage = (item) => {
     msgList.append(item);
+    if (isOnline()) {
+      const ratelimit = tinyIo.client.getRateLimit();
+      if (ratelimit.size) {
+        const limit = ratelimit.size.history ?? null;
+        if (typeof limit === 'number') {
+          const msgs = new TinyHtml(msgList.find(':scope > .ai-chat-data[msgid]'));
+          if (msgs.size > limit) new TinyHtml(msgs.get(0)).remove();
+        }
+      }
+    }
+
     chatContainer.setScrollTop(999999999);
   };
 
@@ -3462,14 +3473,7 @@ export const AiScriptStart = async () => {
                   return;
                 }
 
-                const resetData = () => {
-                  const data = tinyAi.getData();
-                  while (data.ids.length > 0) {
-                    tinyAi.deleteIndex(0);
-                  }
-                };
-
-                resetData();
+                tinyAi.resetContentData();
                 clearMessages();
                 msgCount = result.messages.length;
                 for (const msg of result.messages) addNewMsg(msg, msg.historyId);
