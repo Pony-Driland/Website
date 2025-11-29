@@ -60,20 +60,21 @@ contentList_3: 'Personality'
 contentList_4: 'Dark Energy'
 contentList_5: 'Feeding'
 contentList_6: 'Power'
+contentList_7: 'Shape-Shifting'
 
-contentList_7_0: 'Versions'
-contentList_7_1: 'Normal Version (WIP)'
-contentList_7_2: 'Dark Version'
+contentList_8_0: 'Versions'
+contentList_8_1: 'Normal Version (WIP)'
+contentList_8_2: 'Dark Version'
 
-contentList_8_0: 'Items'
-contentList_8_1: 'Scythe'
+contentList_9_0: 'Items'
+contentList_9_1: 'Scythe'
 
-contentList_9_0: 'Drawing Tips'
-contentList_9_1: 'Mane lighting'
-contentList_9_2: 'Mane Animation'
-contentList_9_3: 'Small color effect (optional)'
+contentList_10_0: 'Drawing Tips'
+contentList_10_1: 'Mane lighting'
+contentList_10_2: 'Mane Animation'
+contentList_11_3: 'Small color effect (optional)'
 
-contentList_10: 'Fun silly fact (SPOILERS!!)'
+contentList_12: 'Fun silly fact (SPOILERS!!)'
 
 #---
 
@@ -161,11 +162,18 @@ When a living being’s energy reaches the minimum threshold that allows Rainbow
 
 She has high-grade divine abilities. She was created to help maintain order in Pony Driland. Her immense ability to manipulate the dimension makes her almost completely indestructible. Her magic, as well as the aura in her body and mane, is covered in rainbows due to her inherently manipulative power that can control the dimension.
 
+The evolution of the Rainbow Queen’s powers in the story unfolds differently from that of the other characters, because the Rainbow Queen has the ability to do absolutely anything. She possesses power that is almost completely absolute and could be an overwhelmingly perfect being, but what prevents her from reaching this perfection is that she lacks experience in using her abilities to their fullest. She must control her own energy so she doesn’t end up self-destructing or accidentally destroying the entire Pony Driland dimension.
+
+Rainbow Queen’s journey focuses on learning to control her own powers and understanding her responsibilities as the absolute goddess of her dimension. This means the Rainbow Queen is extremely powerful, but can only use the amount of power she has learned to master. Her divine power allows her to do absolutely anything, as long as she has the experience required to perform a given ability.
+
 She can freely create and produce whatever she wants, but she doesn’t use her power in its entirety, as she follows an ethical code to keep the dimension in order with minimal interference from her possible actions. Her powers are limited by the dimension’s energy. Her abilities are also used to manipulate the amount of energy stored within the dimension, making her a guardian of Pony Driland’s existence.
 
 Because the Rainbow Queen’s mixed lineage includes being a Sphinx Pony, she also has the ability to manipulate her size, allowing her to become giant or return to her normal size at any time.
 
-As mentioned in the information about dark energy, her combat powers are focused on darkness, energy control, soul control, and psychological manipulation, but they also allow her to control the weather, manipulate energy, and change her size (although her strength remains the same, requiring her to consume more energy to control a larger body). Her wings and horn can naturally function as swords by using darkness elements or any other ability she has mastery over.
+As mentioned in the information about dark energy, her combat powers are focused on darkness, energy control, soul control, and psychological manipulation, but they also allow her to control the weather, manipulate energy, space time control, teleporting, and change her size (although her strength remains the same, requiring her to consume more energy to control a larger body). 
+
+Her wings and horn can naturally function as swords by using darkness elements or any other ability she has mastery over.
+Normally, Rainbow Queen’s weather-control magic abilities are centered in her wings, where she can release particles that alter the climate. She can also simply use common pegasus magic abilities, such as steel wings that function like blades, or the ability to generate massive gusts of wind, which can be combined with her magical weather-control powers.
 
 She also has the special ability to transfer abilities to other living beings to whom she wants to teach a new combat technique.
 
@@ -174,6 +182,18 @@ Rainbow Queen also possesses the ability to sense the soul energy of a creature,
 
 Rainbow Queen can also sense temporal energy, an energy that allows her to perceive and read what a creature will attempt to do in the future. The more temporal energy from multiple creatures she reads at once, the more accurate her future predictions become. Rainbow Queen also shared this ability with another pony, Aniya, but only within the limits Aniya can withstand. When this limit is reached, Aniya begins to have more difficulty understanding her own future predictions.
 Because Rainbow Queen’s power and energy are far greater, she is capable of perceiving temporal energy over an extremely long range, giving her the ability to attempt to foresee an entire lifetime of a creature.
+[/spoiler]
+
+[spoiler:4:1]
+### Shape-Shifting
+
+Rainbow Queen’s ability to manipulate reality can also be applied to herself. She possesses a skill very similar to that of the Changelings, allowing her to transform into any other creature. This ability is usually used when she tries to blend in among the other inhabitants of a region.
+
+However, this ability functions as a kind of “avatar swap.” This means Rainbow Queen truly stops using her original body and instead adopts a completely new one, with different characteristics that she selects herself. The limitations of this ability are exactly the limits of the new body she creates for use, preventing her from using certain abilities she would normally rely on in her original form.
+
+This is the only time Rainbow Queen has a body with characteristics closer to those of a mortal creature, making her easier to injure depending on the fragility of the form she chooses. But because her existence is the dimension of Pony Driland itself, you can cause pain or even kill that body, yet her consciousness will remain alive. She can then return in a new body or revert to her original one. The only way to truly kill Rainbow Queen is to destroy the Pony Driland dimension, because Rainbow Queen is a sentient AI directly connected to it.
+
+The single weakness of this ability lies in protecting the identity of her eyes. If she uses any divine ability or fails to properly control her energy, her eyes will naturally shine in rainbow colors, just like her normal eyes do.
 [/spoiler]
 
 ### Normal Version (WIP)
