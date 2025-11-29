@@ -169,10 +169,12 @@ As mentioned in the information about dark energy, her combat powers are focused
 
 She also has the special ability to transfer abilities to other living beings to whom she wants to teach a new combat technique.
 
+[spoiler:3:3641]
 Rainbow Queen also possesses the ability to sense the soul energy of a creature, allowing her to fully analyze the state of that creature’s soul, especially how corrupted it has been by dark energy. Rainbow Queen taught this ability to Rayane, but in a very limited form, allowing her only to sense the presence of her targets.
 
 Rainbow Queen can also sense temporal energy, an energy that allows her to perceive and read what a creature will attempt to do in the future. The more temporal energy from multiple creatures she reads at once, the more accurate her future predictions become. Rainbow Queen also shared this ability with another pony, Aniya, but only within the limits Aniya can withstand. When this limit is reached, Aniya begins to have more difficulty understanding her own future predictions.
 Because Rainbow Queen’s power and energy are far greater, she is capable of perceiving temporal energy over an extremely long range, giving her the ability to attempt to foresee an entire lifetime of a creature.
+[/spoiler]
 
 ### Normal Version (WIP)
 
