@@ -846,6 +846,30 @@ class TinyClientIo extends EventEmitter {
     );
   }
 
+  // Load Dice History
+  loadDiceHistory({
+    userId = null,
+    start = null,
+    end = null,
+    page = 1,
+    perPage = this.getRateLimit().size.history ?? null,
+  }) {
+    return new Promise((resolve, reject) =>
+      this.#socketEmitApi('load-dice-history', {
+        roomId: this.#cfg.roomId,
+        page,
+        perPage,
+        start,
+        end,
+        userId,
+      })
+        .then((result) => {
+          resolve(result);
+        })
+        .catch(reject),
+    );
+  }
+
   // Send room message
   sendMessage(message = '', { tokens, model, hash, isModel = false }) {
     return new Promise((resolve, reject) =>

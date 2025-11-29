@@ -426,6 +426,109 @@ export default function messageManager(socket, io) {
     }
   });
 
+  socket.on('load-dice-history', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
+
+    const { roomId, page, perPage, userId, start, end } = data;
+
+    // Validate input
+    if (
+      typeof roomId !== 'string' ||
+      typeof page !== 'number' ||
+      page < 1 ||
+      (typeof perPage !== 'number' && perPage !== null) ||
+      (typeof perPage === 'number' && perPage < 1 && perPage !== null) ||
+      (typeof userId !== 'string' && userId !== null) ||
+      ((typeof start !== 'number' || Number.isNaN(start) || !Number.isFinite(start)) &&
+        start !== null) ||
+      ((typeof end !== 'number' || Number.isNaN(end) || !Number.isFinite(end)) && end !== null)
+    ) {
+      return sendIncompleteDataInfo(fn);
+    }
+
+    // User authentication
+    const yourId = userSession.getUserId(socket);
+    if (!yourId) return accountNotDetected(fn);
+    if (userMsgLoadIsRateLimited(socket, fn)) return;
+
+    const loadLimit = getIniConfig('HISTORY_SIZE');
+
+    // Check if room exists
+    const rooms = db.getTable('rooms');
+    const room = await rooms.get(roomId);
+    if (!room) return fn({ error: true, msg: 'Room not found.', code: 1 });
+
+    // Check if user is in the room
+    const rUsers = roomUsers.get(roomId);
+    if (!rUsers || !rUsers.get(yourId))
+      return fn({ error: true, code: 2, msg: 'You are not in this room.' });
+
+    // Prepare query
+    const order = 'date DESC';
+    const diceHistory = db.getTable('diceHistory');
+
+    const query = {
+      group: 'AND',
+      conditions: [{ column: 'roomId', value: roomId }],
+    };
+
+    // Message owner filter
+    if (typeof userId === 'string') {
+      if (userId.length > getIniConfig('USER_ID_SIZE')) {
+        return fn({
+          error: true,
+          msg: `The userId reached the limit size of ${getIniConfig('USER_ID_SIZE')}.`,
+          code: 3,
+          numbers: [getIniConfig('USER_ID_SIZE')],
+        });
+      }
+
+      query.conditions.push({ column: 'userId', value: userId });
+    }
+
+    // Date range
+    const existsStart = typeof start === 'number' && start > 0;
+    const existsEnd = typeof end === 'number' && end > 0;
+
+    if (existsStart || existsEnd) {
+      const dateData = [];
+      query.conditions.push({ group: 'OR', conditions: dateData });
+
+      if (existsStart) dateData.push({ column: 'date', operator: '>=', value: start });
+      if (existsEnd) dateData.push({ column: 'date', operator: '<=', value: end });
+    }
+
+    // Run search
+    let allData = [];
+
+    if (perPage !== null) {
+      if (perPage > loadLimit) {
+        return fn({
+          error: true,
+          code: 4,
+          msg: `You can\'t load a number bigger than ${loadLimit}!`,
+        });
+      }
+
+      if (perPage < 1) {
+        return fn({ error: true, code: 5, msg: `You can\'t load a number smaller than 1!` });
+      }
+
+      allData = await diceHistory.search({ perPage, page, order, q: query });
+    } else return fn({ error: true, code: 6, msg: `You can\'t load all history!` });
+
+    // Output
+    if (!Array.isArray(allData)) {
+      fn({
+        success: true,
+        page,
+        totalItems: allData.totalItems,
+        totalPages: allData.totalPages,
+        history: allData.items.reverse(),
+      });
+    } else return fn({ error: true, code: 6, msg: `You can\'t load all history!` });
+  });
+
   socket.on('set-dice', async (data, fn) => {
     if (noDataInfo(data, fn)) return;
     const { diceSkin } = data;
