@@ -1,5 +1,7 @@
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinySimpleDice from 'tiny-essentials/libs/TinySimpleDice';
 import { isJsonObject } from 'tiny-essentials/basics';
+
 import TinyDices from 'tiny-dices';
 import { saveAs } from 'file-saver';
 
@@ -7,12 +9,11 @@ import { tinyIo } from '../software/base.mjs';
 import { isOnline } from '../software/enablerContent.mjs';
 import { tinyLs } from '../../important.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
-import { applyDiceModifiers, parseDiceString } from './diceUtils.mjs';
 import { Tooltip } from '../../modules/TinyBootstrap.mjs';
 
 /**
  * @param {import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} $totalBaseNumber
- * @param {import('./diceUtils.mjs').ApplyDiceModifiersResult} data
+ * @param {import('tiny-essentials/libs/TinySimpleDice').ApplyDiceModifiersResult} data
  * @returns {NodeJS.Timeout}
  */
 export const createDiceResults = ($totalBaseNumber, data, callback = () => undefined) => {
@@ -200,7 +201,7 @@ export const openDiceSpecialModal = (data) => {
     $totalBase,
   );
 
-  createDiceResults($totalBaseNumber, applyDiceModifiers(data.results, data.modifiers));
+  createDiceResults($totalBaseNumber, TinySimpleDice.applyModifiers(data.results, data.modifiers));
 
   // Start modal
   tinyLib.modal({
@@ -325,7 +326,7 @@ export const openTinyDices = () => {
   $rollButton.on('click', async () => {
     // Get values
     const perDieRaw = configs.perDieValues.val().trim();
-    const parsedPerDie = parseDiceString(perDieRaw);
+    const parsedPerDie = TinySimpleDice.parseString(perDieRaw);
 
     // Get sides amount
     const sidesAmount = [];
@@ -353,7 +354,7 @@ export const openTinyDices = () => {
       for (const item of result) diceResults.push(item.result);
       updateTotalBase = createDiceResults(
         $totalBaseNumber,
-        applyDiceModifiers(diceResults, parsedPerDie.modifiers),
+        TinySimpleDice.applyModifiers(diceResults, parsedPerDie.modifiers),
         () => (updateTotalBase = null),
       );
     }
@@ -390,7 +391,7 @@ export const openTinyDices = () => {
 
           updateTotalBase = createDiceResults(
             $totalBaseNumber,
-            applyDiceModifiers(result.results, parsedPerDie.modifiers),
+            TinySimpleDice.applyModifiers(result.results, parsedPerDie.modifiers),
             () => (updateTotalBase = null),
           );
         }
