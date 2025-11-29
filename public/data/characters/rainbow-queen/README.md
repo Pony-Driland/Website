@@ -19,7 +19,7 @@ charTable_3_0: ''
 charTable_3_1: 'Kirin'
 
 charTable_4_0: ''
-charTable_4_1: 'AI Pony'
+charTable_4_1: 'Sentient AI'
 
 charTable_5_0: 'Sex'
 charTable_5_1: 'Female'
