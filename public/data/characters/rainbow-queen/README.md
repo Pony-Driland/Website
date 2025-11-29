@@ -56,22 +56,24 @@ charTable_15_1: '2021-10-06'
 contentList_0: 'Specie'
 contentList_1: 'Natural Habitat'
 contentList_2: 'Hobby'
-contentList_3: 'Personality (Incomplete)'
-contentList_4: 'Power'
+contentList_3: 'Personality'
+contentList_4: 'Dark Energy'
+contentList_5: 'Feeding'
+contentList_6: 'Power'
 
-contentList_5_0: 'Versions'
-contentList_5_1: 'Normal Version (WIP)'
-contentList_5_2: 'Dark Version'
+contentList_7_0: 'Versions'
+contentList_7_1: 'Normal Version (WIP)'
+contentList_7_2: 'Dark Version'
 
-contentList_6_0: 'Items'
-contentList_6_1: 'Scythe'
+contentList_8_0: 'Items'
+contentList_8_1: 'Scythe'
 
-contentList_7_0: 'Drawing Tips'
-contentList_7_1: 'Mane lighting'
-contentList_7_2: 'Mane Animation'
-contentList_7_3: 'Small color effect (optional)'
+contentList_9_0: 'Drawing Tips'
+contentList_9_1: 'Mane lighting'
+contentList_9_2: 'Mane Animation'
+contentList_9_3: 'Small color effect (optional)'
 
-contentList_8: 'Fun silly fact (SPOILERS!!)'
+contentList_10: 'Fun silly fact (SPOILERS!!)'
 
 #---
 
@@ -107,28 +109,70 @@ She uses her divine elemental manipulation abilities to raise or lower her body 
 
 Her favorite activity is helping the souls of the ponies who have recently died in Pony Driland. She has the ability to interact with souls, which other ponies cannot do that. She helps souls find acceptance of death to be safe and rest in peace. All the souls she collect are kept in a mysterious safe place, but it is unknown what secret place is.
 
-### Personality (Incomplete)
+### Personality
 
 Her personality is naturally malignant and dominant, but that doesn't make her a villain. She also has a good heart and is concerned with taking care of the creatures and her family who live in her dimension.
-All her kind personality evolved with the help the mysterious pony she calls master.
+This mixture of an evil personality with a kind one comes from the consequences of how she was raised in her past by her mother, whom she calls her master.
 
-Rainbow Queen has a personal affection for her pets. She likes to play with her pets' fantasy a lot to feel calmer through her evil personality, especially when she's in giant sphinx form.
+Rainbow Queen has a personal affection for her pets. She likes to play with her pets’ fantasies a lot to feel calmer through her evil personality, especially when she's in her giant sphinx form.
 
-Her personality is currently very unstable. She want to save Pony Driland and her life that depends exclusively on this dimension.
+This mixture of personalities turns her into a being whose actions are difficult to predict, especially when this blends with her desire to protect Pony Driland and her own existence, since she depends on the existence of this dimension.
 
-As she grew angrier, and her heart filled with hate and fear, it manifested in her powers, making her more and more somber. If an extremely large reality shock occurs along this path, she can literally lose control of her powers and end up destroying herself due to the large concentration of energy released by her feelings out of control due to her emotional instability.
+As she grew angrier and her heart filled with hate and fear, it manifested in her powers, making her more and more somber. If an extremely large reality shock occurs along this path, she can literally lose control of her powers and end up destroying herself due to the large concentration of energy released by her feelings, which spiral out of control because of her emotional instability.
 
 Divine powers are naturally increased through determination, fury, hatred, or love.
-When she feel sad, as her feelings become unstable, her powers also become unstable.
-If something serious like depression occurs, this instability can be greater, causing other dangerous negative feelings that can increase the power wildly while leaving the creature totally unstable and terrifying. her physical appearance becomes sinister as the negative personality becomes sinister, resulting in a frightening and intimidating appearance.
+When she feels sad, as her feelings become unstable, her powers also become unstable.
+If something serious like depression occurs, this instability can be even greater, causing other dangerous negative feelings that can increase her power wildly while leaving the creature totally unstable and terrifying. Her physical appearance becomes sinister as the negative personality becomes dominant, resulting in a frightening and intimidating appearance.
+
+[spoiler:3:3641]
+Rainbow Queen’s habit of consuming dark energy from various living beings to use it for her own existence and for Pony Driland has specialized her in several psychological manipulation abilities. This directly influences her skills, which extend far beyond combat, turning her into a dangerous being who enjoys playing with hazardous emotions such as fear, sanity, anxiety, and other negative feelings.
+Because of this, Rainbow Queen is far more familiar with dark energy than the other creatures who live in Pony Driland, and she uses her divine abilities to transform this personality into special magical powers, allowing her to explore the souls of all living beings in Pony Driland in a much deeper way.
+[/spoiler]
+
+[spoiler:3:3641]
+### Dark Energy
+
+Dark energy is a power-based energy produced by negative feelings accumulated within a soul, capable of causing variations in the sanity, mood, and abilities of a living being.
+
+One of Rainbow Queen’s tasks is to prevent any living being from losing total control of their own dark energy. Through her powers of omnipresence, Rainbow Queen must relive the same day multiple times as needed (since her energy-control nature allows her to choose when she can sleep), constantly monitoring the dark energy of every living creature in Pony Driland.
+
+Each creature can have different reactions to dark energy, including Rainbow Queen herself, who uses her scythe to regulate the amount of dark energy within her own body. Rainbow Queen literally feeds on dark energy, opening her mouth to begin the draining process, absorbing the dark energy of her victims into her own body, where she can then use it to her advantage.
+
+Rainbow Queen also has the option of devouring a victim to trap them inside her own belly (either when she uses her Sphinx ability to increase her size, or when she drains enough energy from a living being to shrink them). In this state, a black liquid will put the trapped victim to sleep, making the process of draining dark energy much easier, faster, and safer.
+
+### Feeding
+
+As mentioned in *Dark Energy*, Rainbow Queen’s main source of nourishment is dark energy itself. She uses this energy to sustain both her own body’s energy and the energy of the Pony Driland dimension, since she is a creature directly connected to that world. This allows a natural cycle to exist, where the emotional suffering of everyone in Pony Driland helps sustain the existence of the world itself.
+
+Rainbow Queen’s body has no natural ability to digest food, as her nature is very different from the living beings who inhabit Pony Driland. The inside of her body is designed specifically to handle dark energy or anything related to the essence-energy of something.
+
+Rainbow Queen can also feed on energy from powers, magic, and any other type of energizing element from living beings. Essentially, any kind of energy can be consumed by her. However, she prefers Dark Energy because it is the type she is most familiar with, and especially because it is her responsibility to keep the Pony Driland dimension safe.
+
+She *can* consume normal food just like other living creatures, but due to the nature of her body, this food is not digested and remains trapped inside her forever, unless she converts it into energy so her body can drain this newly transformed energy. However, this is not something practical, because it would be extremely destructive to try to obtain the same amount of energy that Dark Energy provides through this feeding method. So Rainbow Queen uses this style of feeding as a hobby when she is doing something outside her normal routine.
+
+This process of controlling normal food is very simple for Rainbow Queen, since everything inside her body is completely under her control (including living beings she has trapped inside herself). So anything inside her belly can easily be turned into energy at any moment she decides it should happen, and any living being trapped inside her can be directly affected with no chance of escape by any ability Rainbow Queen wishes to use.
+
+The process of converting food into energy is not limited to food, as she has the ability to transform practically anything into energy (and the ability to restore it or try to turn it into something else). The object will dematerialize once it no longer has enough energy to maintain its structure. This ability also works on living beings, but it is much harder to perform because the energy contained within a living being’s soul is much greater than that of a common object.
+
+When a living being’s energy reaches the minimum threshold that allows Rainbow Queen to manipulate or erase the body of that being, she gains the ability to induce mutations or control the being’s size (either shrinking or enlarging it). If the creature is trapped inside her body, Rainbow Queen can perform these abilities far more easily, since the energy of her own body is extremely concentrated, allowing her to strike her victim directly.
+[/spoiler]
 
 ### Power
 
-She has high grade divine abilities. She was created to help keep order in Pony Driland. Her immense ability to manipulate the dimension allowed her to be almost completely indestructible. Her magic and the aura in her body and mane are covered in rainbows due to her nature of manipulative power that can control the dimension.
+She has high-grade divine abilities. She was created to help maintain order in Pony Driland. Her immense ability to manipulate the dimension makes her almost completely indestructible. Her magic, as well as the aura in her body and mane, is covered in rainbows due to her inherently manipulative power that can control the dimension.
 
-She can freely create and produce whatever she wants. But she doesn't use her power in its entirety for she has an ethical conduct to keep the dimension in order with less interference from her possible actions. Her powers are limited to the dimension energy. Her abilities are also used to manipulate the amount of energy stored in the dimension, making her a guardian of Pony Driland's existence.
+She can freely create and produce whatever she wants, but she doesn’t use her power in its entirety, as she follows an ethical code to keep the dimension in order with minimal interference from her possible actions. Her powers are limited by the dimension’s energy. Her abilities are also used to manipulate the amount of energy stored within the dimension, making her a guardian of Pony Driland’s existence.
 
-Due to the fact that the Rainbow Queen has in its mix of races being a Sphinx Pony, she also has the ability to manipulate she size, being able to become giant or normal size at any time.
+Because the Rainbow Queen’s mixed lineage includes being a Sphinx Pony, she also has the ability to manipulate her size, allowing her to become giant or return to her normal size at any time.
+
+As mentioned in the information about dark energy, her combat powers are focused on darkness, energy control, soul control, and psychological manipulation, but they also allow her to control the weather, manipulate energy, and change her size (although her strength remains the same, requiring her to consume more energy to control a larger body). Her wings and horn can naturally function as swords by using darkness elements or any other ability she has mastery over.
+
+She also has the special ability to transfer abilities to other living beings to whom she wants to teach a new combat technique.
+
+Rainbow Queen also possesses the ability to sense the soul energy of a creature, allowing her to fully analyze the state of that creature’s soul, especially how corrupted it has been by dark energy. Rainbow Queen taught this ability to Rayane, but in a very limited form, allowing her only to sense the presence of her targets.
+
+Rainbow Queen can also sense temporal energy, an energy that allows her to perceive and read what a creature will attempt to do in the future. The more temporal energy from multiple creatures she reads at once, the more accurate her future predictions become. Rainbow Queen also shared this ability with another pony, Aniya, but only within the limits Aniya can withstand. When this limit is reached, Aniya begins to have more difficulty understanding her own future predictions.
+Because Rainbow Queen’s power and energy are far greater, she is capable of perceiving temporal energy over an extremely long range, giving her the ability to attempt to foresee an entire lifetime of a creature.
 
 ### Normal Version (WIP)
 
