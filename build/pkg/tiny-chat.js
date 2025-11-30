@@ -1,7 +1,7 @@
 const { execSync } = require('child_process');
 const path = require('path');
 const os = require('os');
-const fs = require('fs');
+const fs = require('fs-extra');
 
 // Detecta o sistema operacional padrão caso não seja especificado
 const targetNodeVersion = 'node18';
@@ -22,6 +22,7 @@ const selectedTarget = defaultTarget(userTarget ? userTarget.split('=')[1] : os.
 
 // Configurações
 const config = {
+    root: 'server/tiny-chat',
     inputFile: 'server/tiny-chat/index.js',       // Arquivo principal de entrada
     outputDir: 'dist',                            // Diretório de saída
     nodeModulesDir: 'node_modules',               // Diretório de node_modules
@@ -30,13 +31,16 @@ const config = {
 };
 
 // Função para copiar a pasta node_modules para o diretório de saída
-const copyNodeModules = () => {
+const copyNodeModules = async () => {
     const sourceDir = path.resolve(config.nodeModulesDir);
-    const destDir = path.resolve(`dist/${config.inputFile}`, 'node_modules');
+    const destDir = path.resolve(`dist/${config.root}`, 'node_modules');
 
     if (!fs.existsSync(destDir)) {
         console.log('📂 Copying node_modules to the output directory...');
-        execSync(`cp -r ${sourceDir} ${destDir}`);
+        await fs.copy(sourceDir, destDir, {
+            overwrite: true,
+            errorOnExist: false
+        });
     }
 };
 
@@ -53,7 +57,7 @@ const packageWithPkg = () => {
 };
 
 // Função principal
-const buildApp = () => {
+const buildApp = async () => {
     // Exibir informações sobre a execução
     console.log('🎯 Build Information:');
     console.log(`   - Input File: ${config.inputFile}`);
@@ -61,7 +65,7 @@ const buildApp = () => {
     console.log(`   - Target Platform: ${config.targets}`);
 
     // Copiar node_modules
-    // copyNodeModules();
+    // await copyNodeModules();
 
     // Transpilar código com Babel
     transpileWithBabel();
