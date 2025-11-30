@@ -21,6 +21,7 @@ import { tinyLs, fa, needsAgeVerification, loaderScreen, tinyNotification } from
 import { Tooltip } from './modules/TinyBootstrap.mjs';
 import { AiScriptStart } from './ai/aiSoftware.mjs';
 import { tinyAiScript } from './ai/software/tinyAiScript.mjs';
+import './api/pony-time.mjs';
 
 import '@cryptofonts/cryptofont/cryptofont.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
