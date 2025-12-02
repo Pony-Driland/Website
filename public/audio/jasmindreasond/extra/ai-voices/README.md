@@ -1,3 +1,7 @@
+<center>
+    <img src="./info.jpg" alt="info">
+</center>
+
 # Voice Clips – Modified by AI
 
 This folder contains audio files originally recorded by me, **Yasmin Seidel**.
@@ -15,5 +19,5 @@ Enjoy!
 
 ## Softwares
 
-- Audacity (Record the raw audio)
+- <a href="https://www.audacityteam.org/download/" target="_blank">Audacity</a> (Record the raw audio)
 - <a href="https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI" target="_blank">RVC WebUI</a> (Voice Changer)
