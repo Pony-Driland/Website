@@ -11,3 +11,9 @@ These files are for personal, creative, or fan-related use only.
 Please do not redistribute them as official content or claim the character voices are real.
 
 Enjoy!
+
+
+## Softwares
+
+- Audacity (Record the raw audio)
+- <a href="https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI" target="_blank">RVC WebUI</a> (Voice Changer)
