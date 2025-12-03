@@ -6,6 +6,7 @@ import { isOnline } from '../software/enablerContent.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import { loaderScreen } from '../../important.mjs';
 import moment from 'moment/moment';
+import { createDiceSpecialHtml } from './dice.mjs';
 
 const { Form, Button, TextInput, DateTimeInput, NumberInput, Textarea } = TinyHtmlElems;
 
@@ -114,11 +115,12 @@ export const openDiceHistory = () => {
             new Promise(async (resolve, reject) => {
               try {
                 const date = moment(item.date);
-                const msgBase = TinyHtml.createFrom('span', { class: 'msg-data' });
+                const msgBase = TinyHtml.createFrom('span', {
+                  class: 'msg-data',
+                  id: `dice-roll-${item.id}`,
+                });
                 const colMessage = TinyHtml.createFrom('td', { class: 'p-3' });
-                // msgBase.append();
-
-                console.log(item)
+                msgBase.append(createDiceSpecialHtml(item));
 
                 colMessage.append(
                   msgBase,
