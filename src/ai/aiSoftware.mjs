@@ -1636,7 +1636,7 @@ export const AiScriptStart = async () => {
   // TITLE: Get Ai Tokens
   let usingUpdateToken = false;
   const updateAiTokenCounterData = (hashItems, forceReset = false) => {
-    if (tinyAiScript.mpClient) return;
+    if (tinyAiScript.mpClient || tinyAiScript.noai) return;
     if (!usingUpdateToken) {
       usingUpdateToken = true;
       const history = tinyAi.getData();
