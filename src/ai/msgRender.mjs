@@ -1,5 +1,18 @@
 import { marked } from 'marked';
 
+export const userStatus = {
+  isMod: false,
+  isAdmin: false,
+  room: {
+    isAdmin: false,
+    isMod: false,
+  },
+  server: {
+    isAdmin: false,
+    isMod: false,
+  },
+};
+
 /**
  * @param {string} msg
  */
