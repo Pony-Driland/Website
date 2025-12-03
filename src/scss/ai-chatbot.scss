@@ -1,3 +1,77 @@
+@mixin ai-chat-base-style {
+  .ai-text-editor {
+    display: none;
+  }
+
+  &:not(.entering-ai-message):hover .ai-text-editor {
+    display: block;
+  }
+
+  &:not(.entering-ai-message) .final-ai-icon {
+    display: none;
+  }
+
+  &:hover .btn-bg {
+    background-color: #1d1d1d;
+  }
+
+  &:hover .btn-bg:hover {
+    background-color: #383838;
+  }
+
+  p:last-child,
+  h1:last-child,
+  h2:last-child,
+  h3:last-child,
+  h4:last-child,
+  h5:last-child {
+    margin-bottom: 0px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  thead th {
+    text-align: left;
+    font-weight: bold;
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+  }
+
+  tbody td {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+  }
+
+  /* Ai roleplay style */
+  .bg-secondary em {
+    color: var(--gray);
+  }
+
+  .bg-primary em {
+    color: var(--bs-gray-300);
+  }
+
+  .alert {
+    background-color: #000 !important;
+  }
+
+  .alert .btn-close {
+    filter: var(--bs-btn-close-white-filter) !important;
+  }
+}
+
 /* AI Tab */
 body:not(.can-ai) {
   .nav-ai {
@@ -41,6 +115,14 @@ body.is-using-ai {
     .modal-dialog {
       max-width: none;
       width: 80%;
+
+      .msg-hr {
+        border-color: var(--bs-gray-300);
+      }
+
+      .msg-data {
+        @include ai-chat-base-style;
+      }
     }
     @media (max-width: 767px) {
       .modal-dialog {
@@ -79,77 +161,7 @@ body.is-using-ai {
         border-color: #fff;
       }
 
-      .ai-text-editor {
-        display: none;
-      }
-
-      &:not(.entering-ai-message):hover .ai-text-editor {
-        display: block;
-      }
-
-      &:not(.entering-ai-message) .final-ai-icon {
-        display: none;
-      }
-
-      &:hover .btn-bg {
-        background-color: #1d1d1d;
-      }
-
-      &:hover .btn-bg:hover {
-        background-color: #383838;
-      }
-
-      p:last-child,
-      h1:last-child,
-      h2:last-child,
-      h3:last-child,
-      h4:last-child,
-      h5:last-child {
-        margin-bottom: 0px;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        font-family: Arial, sans-serif;
-        font-size: 16px;
-        line-height: 1.5;
-        margin-bottom: 8px;
-      }
-
-      thead th {
-        text-align: left;
-        font-weight: bold;
-        padding: 8px;
-        border-bottom: 1px solid #ccc;
-        border-left: 1px solid #ccc;
-        border-right: 1px solid #ccc;
-        border-top: 1px solid #ccc;
-      }
-
-      tbody td {
-        padding: 8px;
-        border-bottom: 1px solid #ccc;
-        border-left: 1px solid #ccc;
-        border-right: 1px solid #ccc;
-      }
-
-      /* Ai roleplay style */
-      .bg-secondary em {
-        color: var(--gray);
-      }
-
-      .bg-primary em {
-        color: var(--bs-gray-300);
-      }
-
-      .alert {
-        background-color: #000 !important;
-      }
-
-      .alert .btn-close {
-        filter: var(--bs-btn-close-white-filter) !important;
-      }
+      @include ai-chat-base-style;
     }
   }
 

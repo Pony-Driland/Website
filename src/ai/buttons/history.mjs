@@ -109,7 +109,7 @@ export const openHistory = () => {
 
         // Table
         const table = TinyHtml.createFrom('table', {
-          class: 'table table-bordered table-striped table-sm align-middle',
+          class: 'table table-hover table-bordered table-striped table-sm align-middle',
         });
 
         // Thead
@@ -238,11 +238,12 @@ export const openHistory = () => {
                   mainClass: 'btn',
                   tags: 'btn-sm btn-link p-0 me-2',
                   type: 'button',
+                  label: 'More Info',
+                }).setAttr({
                   'data-bs-toggle': 'collapse',
                   'data-bs-target': `#${buttonId}`,
                   'aria-expanded': 'false',
                   'aria-controls': buttonId,
-                  label: 'More Info',
                 });
 
                 // Collapse box
@@ -275,10 +276,14 @@ export const openHistory = () => {
                     ),
                 );
 
-                const colMessage = TinyHtml.createFrom('td');
+                const msgBase = TinyHtml.createFrom('span', { class: 'msg-data' });
+                const colMessage = TinyHtml.createFrom('td', { class: 'p-3' });
                 const msgFormat = await makeMsgRenderer(item.text ?? '');
+                msgBase.append(TinyHtml.createFromHtml(msgFormat));
+
                 colMessage.append(
-                  TinyHtml.createFromHtml(msgFormat),
+                  msgBase,
+                  TinyHtml.createFrom('hr', { class: 'msg-hr m-0 mt-2' }),
                   TinyHtml.createFrom('div').append(
                     btn,
                     TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
