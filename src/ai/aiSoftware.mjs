@@ -3545,23 +3545,37 @@ export const AiScriptStart = async () => {
           const html = new TinyHtml(
             `#ai-element-root #ai-chatbox .ai-chat-data[msgid="${msgData.id}"]`,
           );
-          if (html.size < 1) return;
-          const cfg = html.data('tiny-ai-cache');
-          if (!cfg) return;
-          cfg.edited = msgData.edited;
-          cfg.date = msgData.date;
-          cfg.msg = msgData.text;
 
-          const newContent = tinyAi.getMsgById(cfg.dataid);
-          newContent.parts[0].text = msgData.text;
-
-          tinyAi.replaceIndex(tinyAi.getIndexOfId(cfg.dataid), newContent, {
+          const newMsgCfg = {
             count: msgData.tokens,
             msgId: msgData.id,
-          });
+          };
 
-          cfg.update();
-          cfg.updateText();
+          if (html.size > 0) {
+            const cfg = html.data('tiny-ai-cache');
+
+            if (!cfg) return;
+            cfg.edited = msgData.edited;
+            cfg.date = msgData.date;
+            cfg.msg = msgData.text;
+
+            const newContent = tinyAi.getMsgById(cfg.dataid);
+            newContent.parts[0].text = msgData.text;
+            tinyAi.replaceIndex(tinyAi.getIndexOfId(cfg.dataid), newContent, newMsgCfg);
+
+            cfg.update();
+            cfg.updateText();
+          } else {
+            const data = tinyAi.getData();
+            if (!isJsonObject(data)) return;
+            const index = data.tokens.data.findIndex((token) => token.msgId === msgData.id);
+            if (index < 0) return;
+
+            const newContent = tinyAi.getMsgByIndex(index);
+            newContent.parts[0].text = msgData.text;
+            tinyAi.replaceIndex(index, newContent, newMsgCfg);
+          }
+          updateAiTokenCounterData();
         });
 
         // User Status
