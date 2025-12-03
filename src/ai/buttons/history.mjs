@@ -289,9 +289,9 @@ export const openHistory = () => {
                     TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
                       date.isValid() ? date.calendar() : '',
                     ),
-                    TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
-                      !item.isModel ? (item.userId ?? '') : 'Model',
-                    ),
+                    TinyHtml.createFrom('small', {
+                      class: `${item.isModel || item.userId !== tinyIo.client.getUserId() ? (!item.isModel ? `text-muted` : 'text-info') : 'text-primary'} me-2`,
+                    }).setText(!item.isModel ? (item.userId ?? '') : 'Model'),
                     TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
                       `Chapter ${item.chapter}` ?? '',
                     ),
