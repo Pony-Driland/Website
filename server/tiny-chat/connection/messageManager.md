@@ -67,7 +67,15 @@ Edits an existing message in a room, provided the user has the necessary permiss
 
 ```json
 {
-  "edited": "number" // Timestamp of the edit
+  "roomId": "string",
+  "id": "string",
+  "userId": "string",
+  "text": "string",
+  "date": "number",
+  "edited": "number",
+  "tokens": "number or null",
+  "model": "string or null",
+  "errorCode": "string or null",
 }
 ```
 
