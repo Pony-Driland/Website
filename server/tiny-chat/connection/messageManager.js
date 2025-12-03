@@ -260,7 +260,7 @@ export default function messageManager(socket, io) {
 
     // Emit the event only to logged-in users in the room
     socket.to(roomId).emit('message-deleted', { roomId, id: messageId });
-    fn({ success: true });
+    fn({ success: true, roomId, id: messageId });
   });
 
   // Dice data

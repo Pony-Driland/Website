@@ -205,8 +205,8 @@ export const openHistory = () => {
                           isError = true;
                         });
 
-                      if (isError) return;
                       loaderScreen.stop();
+                      if (isError) return;
                       closeEditor();
                     });
 
@@ -229,33 +229,35 @@ export const openHistory = () => {
                   deleteBtn.on('click', () => {
                     const confirmBtn = new Button({
                       mainClass: 'btn',
-                      tags: 'btn-danger mt-3',
+                      tags: 'btn-sm btn-outline-danger',
                       type: 'button',
                       label: 'Confirm Delete',
+                      disabled: true,
                     });
+
+                    deleteBtn.replaceWith(confirmBtn);
+                    setTimeout(() => confirmBtn.removeProp('disabled'), 3000);
 
                     confirmBtn.on('click', async () => {
                       loaderScreen.start();
-                      try {
-                        await tinyIo.client.deleteMessage(item.historyId);
-                        deleteModal.hide();
-                        form.trigger('submit'); // reload
-                      } catch (err) {
-                        alert(err.message);
-                      }
+                      let isError = false;
+                      await tinyIo.client
+                        .deleteMessage(item.historyId)
+                        .then((result) => {
+                          if (result.error) {
+                            alert(result.msg, 'ERROR!');
+                            isError = true;
+                          } else tinyIo.client.emit('messageDelete', result);
+                        })
+                        .catch((err) => {
+                          alert(err.message, 'ERROR!');
+                          console.error(err);
+                          isError = true;
+                        });
                       loaderScreen.stop();
+                      if (isError) return;
+                      row.remove();
                     });
-
-                    deleteModal.updateBody(
-                      TinyHtml.createFrom('div').append(
-                        TinyHtml.createFrom('p').setText(
-                          'Are you sure you want to delete this message?',
-                        ),
-                        confirmBtn,
-                      ),
-                    );
-
-                    deleteModal.show();
                   });
 
                   colActions.append(editBtn, deleteBtn);
