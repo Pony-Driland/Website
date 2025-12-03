@@ -75,7 +75,7 @@ Edits an existing message in a room, provided the user has the necessary permiss
   "edited": "number",
   "tokens": "number or null",
   "model": "string or null",
-  "errorCode": "string or null",
+  "errorCode": "string or null"
 }
 ```
 
