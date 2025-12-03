@@ -1,5 +1,4 @@
 import moment from 'moment';
-import { marked } from 'marked';
 import clone from 'clone';
 import objHash from 'object-hash';
 import { saveAs } from 'file-saver';
@@ -23,6 +22,7 @@ import TinyClientIo from './socketClient.mjs';
 import RpgData from './software/rpgData.mjs';
 import { noOnlineMode, contentEnabler, isOnline } from './software/enablerContent.mjs';
 import ficConfigs from './values/ficConfigs.mjs';
+import { makeMsgRenderer } from './msgRender.mjs';
 
 import './values/jsonTemplate.mjs';
 
@@ -49,6 +49,8 @@ import { openDownloadsList } from './buttons/downloads.mjs';
 import { openCreateAccount } from './buttons/createAccount.mjs';
 import { openChangePassword } from './buttons/changePassword.mjs';
 import { tinyModalTextarea } from './buttons/modalTextarea.mjs';
+import { openHistory } from './buttons/history.mjs';
+import { openDiceHistory } from './buttons/diceHistory.mjs';
 
 const { Icon } = TinyHtmlElems;
 
@@ -994,6 +996,9 @@ export const AiScriptStart = async () => {
         });
       },
     );
+
+    leftMenu.push(createButtonSidebar('fa-solid fa-timeline', 'Room History', openHistory));
+    leftMenu.push(createButtonSidebar('fa-solid fa-timeline', 'Dice History', openDiceHistory));
 
     leftMenu.push(createButtonSidebar('fas fa-key', 'Change password', openChangePassword));
     createAccountButton = createButtonSidebar(
@@ -2346,47 +2351,6 @@ export const AiScriptStart = async () => {
   };
 
   const makeTempMessage = (msg, type) => addMessage(makeMessage({ message: msg }, type));
-
-  // Message Maker
-  const makeMsgRenderer = (msg) => {
-    const renderer = new marked.Renderer();
-    const final = '<span class="final-ai-icon">';
-    // | █ ▌▐ _
-
-    // Remove links and html
-    renderer.link = (href, title, text) => `<span>${text}</span>`;
-    renderer.image = () => ``;
-    renderer.html = (data) => {
-      if (data.raw !== final || data.text !== final) return ``;
-      else return `${final}█</span>`;
-    };
-
-    // Fix del
-    renderer.del = function (data) {
-      if (data.raw.startsWith('~') && data.raw.endsWith('~') && !data.raw.startsWith('~~')) {
-        return data.raw;
-      }
-      return `<del>${data.text}</del>`;
-    };
-
-    // Complete
-    let newMsg = `${msg}`;
-    while (newMsg.endsWith('\n')) {
-      newMsg = newMsg.slice(0, -1);
-    }
-
-    while (newMsg.startsWith('\n')) {
-      newMsg = newMsg.slice(1);
-    }
-
-    return marked.parse(
-      `${newMsg}${final}`.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ''),
-      {
-        renderer: renderer,
-        breaks: true,
-      },
-    );
-  };
 
   const makeMsgWarning = (finishReason) => {
     const textBase = TinyHtml.createFrom('span');
