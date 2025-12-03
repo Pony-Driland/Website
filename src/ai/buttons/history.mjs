@@ -1,6 +1,5 @@
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
-import { isJsonObject } from 'tiny-essentials/basics';
 
 import { tinyIo } from '../software/base.mjs';
 import { isOnline } from '../software/enablerContent.mjs';
@@ -112,19 +111,6 @@ export const openHistory = () => {
           class: 'table table-hover table-bordered table-striped table-sm align-middle',
         });
 
-        // Thead
-        const thead = TinyHtml.createFrom('thead');
-        const theadRow = TinyHtml.createFrom('tr');
-
-        const tableContent = ['Message'];
-        if (userStatus.isAdmin || userStatus.isMod) tableContent.push('Settings');
-
-        tableContent.forEach((label) => {
-          theadRow.append(TinyHtml.createFrom('th').setText(label));
-        });
-
-        thead.append(theadRow);
-
         // Tbody
         const tbody = TinyHtml.createFrom('tbody');
 
@@ -195,6 +181,15 @@ export const openHistory = () => {
                             item.text = newText;
                             msgFormat = await makeMsgRenderer(newText ?? '');
                             item.edited = result.edited;
+
+                            const edited = moment(item.edited);
+                            editedAtBase.setText(
+                              edited.isValid() && edited.valueOf() > 0
+                                ? `${edited.calendar()} (${edited.valueOf()})`
+                                : 'never',
+                            );
+
+                            tokensContainer.empty();
                             tinyIo.client.emit('messageEdit', result);
                             tinyIo.client.emit('needUpdateTokens');
                           }
@@ -287,28 +282,27 @@ export const openHistory = () => {
                   id: buttonId,
                 });
 
+                const editedAtBase = TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
+                  edited.isValid() && edited.valueOf() > 0
+                    ? `${edited.calendar()} (${edited.valueOf()})`
+                    : 'never',
+                );
+
+                const tokensContainer = TinyHtml.createFrom('div', { class: 'small' });
+                const tokensBase = TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
+                  item.tokens > 0 ? item.tokens : '0',
+                );
+
                 collapse.append(
                   TinyHtml.createFrom('div', { class: 'small' })
                     .setText(`Id: `)
                     .append(
                       TinyHtml.createFrom('span', { class: 'text-muted' }).setText(item.historyId),
                     ),
-                  TinyHtml.createFrom('div', { class: 'small' })
-                    .setText(`Tokens: `)
-                    .append(
-                      TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
-                        item.tokens > 0 ? item.tokens : '0',
-                      ),
-                    ),
+                  tokensContainer.setText(`Tokens: `).append(tokensBase),
                   TinyHtml.createFrom('div', { class: 'small' })
                     .setText(`Edited at: `)
-                    .append(
-                      TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
-                        edited.isValid() && edited.valueOf() > 0
-                          ? `${edited.calendar()} (${edited.valueOf()})`
-                          : 'never',
-                      ),
-                    ),
+                    .append(editedAtBase),
                 );
 
                 const msgBase = TinyHtml.createFrom('span', { class: 'msg-data' });
@@ -347,7 +341,7 @@ export const openHistory = () => {
 
         // Assemble
         await Promise.all(promises);
-        table.append(thead, tbody);
+        table.append(tbody);
         tableWrapper.append(table);
 
         resultsBox.append(tableWrapper);
@@ -369,7 +363,6 @@ export const openHistory = () => {
         console.error(err);
         loaderScreen.stop();
       });
-    console.log(result);
   });
 
   // --- Text Search ---
