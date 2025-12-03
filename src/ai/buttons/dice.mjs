@@ -149,7 +149,7 @@ function generateRandomId(length = 8) {
  * @param {{ sides: number; roll: number; tokens: string[]; total: number; canZero: boolean; }[]} data.results
  * @param {{ bg: string; border: string; img: string; selectionBg: string; selectionText: string; text: string; }} data.skin
  */
-export const openDiceSpecialModal = (data) => {
+export const createDiceSpecialHtml = (data) => {
   const $root = TinyHtml.createFrom('div');
   const $diceContainer = TinyHtml.createFrom('div');
   const dice = new TinyDices($diceContainer.get(0));
@@ -203,12 +203,23 @@ export const openDiceSpecialModal = (data) => {
 
   createDiceResults($totalBaseNumber, TinySimpleDice.applyModifiers(data.results, data.modifiers));
 
+  return $root;
+};
+
+/**
+ * @param {Object} data
+ * @param {number} data.total
+ * @param {string} data.userId
+ * @param {{ sides: number; roll: number; tokens: string[]; total: number; canZero: boolean; }[]} data.results
+ * @param {{ bg: string; border: string; img: string; selectionBg: string; selectionText: string; text: string; }} data.skin
+ */
+export const openDiceSpecialModal = (data) => {
   // Start modal
   tinyLib.modal({
     title: 'Dice Roll Result',
     dialog: 'modal-lg',
     id: `dice-roll-${generateRandomId()}`,
-    body: $root,
+    body: createDiceSpecialHtml(data),
   });
 };
 
