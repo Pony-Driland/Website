@@ -109,7 +109,7 @@ export const openDiceHistory = () => {
         const tbody = TinyHtml.createFrom('tbody');
 
         const promises = [];
-        data.history.forEach((item) => {
+        data.history.reverse().forEach((item) => {
           const row = TinyHtml.createFrom('tr');
           promises.push(
             new Promise(async (resolve, reject) => {
@@ -120,6 +120,14 @@ export const openDiceHistory = () => {
                   id: `dice-roll-${item.id}`,
                 });
                 const colMessage = TinyHtml.createFrom('td', { class: 'p-3' });
+                /**const openDice = new Button({
+                    mainClass: 'btn',
+                    tags: 'w-100 btn-md btn-outline-info',
+                    type: 'button',
+                    label: `Show Data`,
+                  }).on('click', () => openDice.replaceWith(createDiceSpecialHtml(item)));
+                  
+                msgBase.append(openDice); */
                 msgBase.append(createDiceSpecialHtml(item));
 
                 colMessage.append(
