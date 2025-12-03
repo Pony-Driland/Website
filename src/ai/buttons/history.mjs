@@ -88,6 +88,7 @@ export const openHistory = () => {
               TinyHtml.createFrom('div', { class: 'text-danger' }).setText(result.msg),
               TinyHtml.createFrom('div', { class: 'small' }).setText(result.code),
             );
+            pagesCount.empty();
             loaderScreen.stop();
             return;
           }
@@ -97,6 +98,7 @@ export const openHistory = () => {
             resultsBox.append(
               TinyHtml.createFrom('p', { class: 'text-muted m-0' }).setText('No results found.'),
             );
+            pagesCount.empty();
             loaderScreen.stop();
             return;
           }
@@ -113,7 +115,7 @@ export const openHistory = () => {
           const thead = TinyHtml.createFrom('thead');
           const theadRow = TinyHtml.createFrom('tr');
 
-          ['Message', 'Chapter', 'User'].forEach((label) => {
+          ['Message', 'Settings'].forEach((label) => {
             theadRow.append(TinyHtml.createFrom('th').setText(label));
           });
 
@@ -129,23 +131,72 @@ export const openHistory = () => {
               new Promise(async (resolve, reject) => {
                 try {
                   const date = moment(item.date);
+                  const edited = moment(item.edited);
+                  // Container
+                  const buttonId = `history_collapse_${item.historyId}`;
+
+                  // Button that toggles collapse
+                  const btn = TinyHtml.createFrom('button', {
+                    class: 'btn btn-sm btn-link p-0 me-2',
+                    type: 'button',
+                    'data-bs-toggle': 'collapse',
+                    'data-bs-target': `#${buttonId}`,
+                    'aria-expanded': 'false',
+                    'aria-controls': buttonId,
+                  }).setText('More Info');
+
+                  // Collapse box
+                  const collapse = TinyHtml.createFrom('div', {
+                    class: 'collapse',
+                    id: buttonId,
+                  });
+
+                  collapse.append(
+                    TinyHtml.createFrom('div', { class: 'small' })
+                      .setText(`Id: `)
+                      .append(
+                        TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
+                          item.historyId,
+                        ),
+                      ),
+                    TinyHtml.createFrom('div', { class: 'small' })
+                      .setText(`Tokens: `)
+                      .append(
+                        TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
+                          item.tokens > 0 ? item.tokens : '0',
+                        ),
+                      ),
+                    TinyHtml.createFrom('div', { class: 'small' })
+                      .setText(`Edited at: `)
+                      .append(
+                        TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
+                          edited.isValid() && edited.valueOf() > 0
+                            ? `${edited.calendar()} (${edited.valueOf()})`
+                            : 'never',
+                        ),
+                      ),
+                  );
 
                   const colMessage = TinyHtml.createFrom('td');
                   const msgFormat = await makeMsgRenderer(item.text ?? '');
                   colMessage.append(
                     TinyHtml.createFromHtml(msgFormat),
-                    TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
-                      date.isValid() ? date.calendar() : '',
+                    TinyHtml.createFrom('div').append(
+                      btn,
+                      TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
+                        date.isValid() ? date.calendar() : '',
+                      ),
+                      TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
+                        !item.isModel ? (item.userId ?? '') : 'Model',
+                      ),
+                      TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
+                        `Chapter ${item.chapter}` ?? '',
+                      ),
+                      collapse,
                     ),
-                    TinyHtml.createFrom('small', { class: 'text-muted' }).setText(item.historyId),
                   );
 
-                  const colChapter = TinyHtml.createFrom('td').setText(item.chapter ?? '');
-                  const colRole = TinyHtml.createFrom('td').setText(
-                    !item.isModel ? (item.userId ?? '') : 'Model',
-                  );
-
-                  row.append(colMessage, colChapter, colRole);
+                  row.append(colMessage);
                   resolve(undefined);
                 } catch (err) {
                   reject(err);
@@ -163,7 +214,9 @@ export const openHistory = () => {
           resultsBox.append(tableWrapper);
           pagesCount
             .empty()
-            .setText(`Pages: ${data.totalPages} | Page: ${data.page} | Items: ${data.totalItems}`);
+            .setText(
+              `Pages: ${data.totalPages} | Page: ${result.page ?? data.page} | Items: ${data.totalItems}`,
+            );
 
           // Success
           loaderScreen.stop();
@@ -174,6 +227,7 @@ export const openHistory = () => {
           resultsBox
             .empty()
             .append(TinyHtml.createFrom('div', { class: 'text-danger' }).setText(err.message));
+          pagesCount.empty();
           console.error(err);
           loaderScreen.stop();
         });

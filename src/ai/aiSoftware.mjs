@@ -532,6 +532,7 @@ export const AiScriptStart = async () => {
               makeMessage(
                 {
                   message: msg.parts[0].text,
+                  tokens: tokens[index],
                   id: msgId,
                 },
                 msg.role === 'user' ? null : toTitleCase(msg.role),
@@ -1723,10 +1724,11 @@ export const AiScriptStart = async () => {
 
       // Insert message
       let isComplete = false;
-      const insertMessage = (msgData, role, finishReason) => {
+      const insertMessage = (msgData, tokens, role, finishReason) => {
         if (!tinyCache.msgBallon) {
           tinyCache.msgBallon = makeMessage(
             {
+              tokens,
               message: msgData,
               id: tinyCache.msgId,
             },
@@ -1789,6 +1791,7 @@ export const AiScriptStart = async () => {
               if (typeof chuck.contents[index].parts[0].text === 'string')
                 insertMessage(
                   chuck.contents[index].parts[0].text,
+                  promptTokens,
                   chuck.contents[index].role,
                   chuck.contents[index].finishReason,
                 );
@@ -1846,7 +1849,7 @@ export const AiScriptStart = async () => {
                   });
 
                 // Send message request
-                insertMessage(msg.parts[0].text, msg.role, msg.finishReason);
+                insertMessage(msg.parts[0].text, promptTokens, msg.role, msg.finishReason);
 
                 // Update message data
                 const oldBallonCache = tinyCache.msgBallon.data('tiny-ai-cache');
@@ -1994,6 +1997,7 @@ export const AiScriptStart = async () => {
 
     // Add new message
     let sentId = null;
+    let newToken = null;
     const canContinue = await new Promise(async (resolve) => {
       try {
         // Exist message
@@ -2009,7 +2013,7 @@ export const AiScriptStart = async () => {
             !tinyAiScript.noai && !tinyAiScript.mpClient
               ? await tinyAi.countTokens([newMsg])
               : { totalTokens: 0 };
-          const newToken =
+          newToken =
             newTokens && typeof newTokens.totalTokens === 'number' ? newTokens.totalTokens : null;
 
           // Get id
@@ -2041,6 +2045,7 @@ export const AiScriptStart = async () => {
         addMessage(
           makeMessage({
             message: msg,
+            tokens: newToken,
             id: sentId,
           }),
         );
@@ -2076,6 +2081,7 @@ export const AiScriptStart = async () => {
           addMessage(
             makeMessage(
               {
+                tokens: sendData.tokens,
                 message: msg,
                 date: msgData.date,
                 id: sentId,
@@ -2381,6 +2387,7 @@ export const AiScriptStart = async () => {
       msgId: null,
       chapter: null,
       edited: null,
+      tokens: null,
     },
     username = null,
   ) => {
@@ -2392,6 +2399,7 @@ export const AiScriptStart = async () => {
       date: data.date,
       msg: data.message,
       role: username ? toTitleCase(username) : 'User',
+      tokens: data.tokens,
       dataid: data.id,
       updateText: (text = tinyCache.msg ?? '') =>
         msgBallon.empty().append(TinyHtml.createFromHtml(makeMsgRenderer(text))),
@@ -2417,6 +2425,7 @@ export const AiScriptStart = async () => {
         msgBase.setAttr('date', tinyCache.date ?? null);
         msgBase.setAttr('chapter', tinyCache.chapter ?? null);
         msgBase.setAttr('dataid', tinyCache.dataid ?? null);
+        msgBase.setAttr('tokens', tinyCache.tokens ?? null);
         msgBase.setAttr('role', tinyCache.role ?? null);
 
         /**
@@ -2515,8 +2524,11 @@ export const AiScriptStart = async () => {
               createTableContent('msgid', tinyCache.msgId ?? null),
               createTableContent(
                 'edited',
-                edited.isValid() ? `${edited.calendar()} (${edited.valueOf()})` : null,
+                edited.isValid() && edited.valueOf() > 0
+                  ? `${edited.calendar()} (${edited.valueOf()})`
+                  : null,
               ),
+              createTableContent('tokens', tinyCache.tokens > 0 ? tinyCache.tokens : null),
               createTableContent(
                 'date',
                 date.isValid() ? `${date.calendar()} (${date.valueOf()})` : null,
@@ -3519,6 +3531,7 @@ export const AiScriptStart = async () => {
                 msgId,
                 chapter: msgData.chapter,
                 edited: msgData.edited,
+                tokens: msgData.tokens,
               },
               !msgData.isModel ? msgData.userId : 'Model',
             ),
