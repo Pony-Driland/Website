@@ -135,7 +135,7 @@ export const openDiceHistory = () => {
                   TinyHtml.createFrom('hr', { class: 'msg-hr m-0 mt-2' }),
                   TinyHtml.createFrom('div').append(
                     TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
-                      date.isValid() ? date.calendar() : '',
+                      date.isValid() ? date.format('YYYY-MM-DD HH:mm:ss') : '',
                     ),
                     TinyHtml.createFrom('small', {
                       class: `${item.userId !== tinyIo.client.getUserId() ? `text-muted` : 'text-primary'} me-2`,

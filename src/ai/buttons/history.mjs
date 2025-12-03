@@ -185,7 +185,7 @@ export const openHistory = () => {
                             const edited = moment(item.edited);
                             editedAtBase.setText(
                               edited.isValid() && edited.valueOf() > 0
-                                ? `${edited.calendar()} (${edited.valueOf()})`
+                                ? `${edited.format('YYYY-MM-DD HH:mm:ss')} (${edited.valueOf()})`
                                 : 'never',
                             );
 
@@ -284,7 +284,7 @@ export const openHistory = () => {
 
                 const editedAtBase = TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
                   edited.isValid() && edited.valueOf() > 0
-                    ? `${edited.calendar()} (${edited.valueOf()})`
+                    ? `${edited.format('YYYY-MM-DD HH:mm:ss')} (${edited.valueOf()})`
                     : 'never',
                 );
 
@@ -316,7 +316,7 @@ export const openHistory = () => {
                   TinyHtml.createFrom('div').append(
                     btn,
                     TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
-                      date.isValid() ? date.calendar() : '',
+                      date.isValid() ? date.format('YYYY-MM-DD HH:mm:ss') : '',
                     ),
                     TinyHtml.createFrom('small', {
                       class: `${item.isModel || item.userId !== tinyIo.client.getUserId() ? (!item.isModel ? `text-muted` : 'text-info') : 'text-primary'} me-2`,
