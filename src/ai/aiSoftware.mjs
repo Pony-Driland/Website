@@ -3539,6 +3539,8 @@ export const AiScriptStart = async () => {
           if (cfg) cfg.remove();
         });
 
+        client.on('needUpdateTokens', () => updateAiTokenCounterData());
+
         client.on('messageEdit', (msgData) => {
           const html = new TinyHtml(
             `#ai-element-root #ai-chatbox .ai-chat-data[msgid="${msgData.id}"]`,

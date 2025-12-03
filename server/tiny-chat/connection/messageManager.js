@@ -183,8 +183,7 @@ export default function messageManager(socket, io) {
       roomId: { value: roomId },
     });
 
-    // Emit the event only to logged-in users in the room
-    socket.to(roomId).emit('message-updated', {
+    const newEvent = {
       roomId,
       id: messageId,
       userId: msg,
@@ -194,10 +193,13 @@ export default function messageManager(socket, io) {
       tokens: typeof tokens === 'number' ? tokens : null,
       model: typeof model === 'string' ? model : null,
       errorCode: typeof errorCode === 'string' ? errorCode : null,
-    });
+    };
+
+    // Emit the event only to logged-in users in the room
+    socket.to(roomId).emit('message-updated', newEvent);
 
     // Complete
-    fn({ edited: msgDate });
+    fn(newEvent);
   });
 
   socket.on('delete-message', async (data, fn) => {

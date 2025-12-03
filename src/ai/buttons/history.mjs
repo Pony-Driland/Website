@@ -146,11 +146,13 @@ export const openHistory = () => {
                   });
 
                   editBtn.on('click', () => {
+                    msgBase.empty();
+
                     const editor = new Textarea({
                       mainClass: 'form-control',
                     })
                       .setStyle('height', '180px')
-                      .setText(item.text);
+                      .setVal(item.text);
 
                     const saveBtn = new Button({
                       mainClass: 'btn',
@@ -159,30 +161,61 @@ export const openHistory = () => {
                       label: 'Save',
                     });
 
+                    const cancelBtn = new Button({
+                      mainClass: 'btn',
+                      tags: 'btn-danger mt-3 me-2',
+                      type: 'button',
+                      label: 'Cancel',
+                    });
+
+                    const closeEditor = () => {
+                      msgBase.empty();
+                      msgBase.append(TinyHtml.createFromHtml(msgFormat));
+                    };
+
+                    cancelBtn.on('click', closeEditor);
+
                     saveBtn.on('click', async () => {
                       const newText = editor.valTxt();
                       loaderScreen.start();
 
-                      try {
-                        await tinyIo.client.editMessage(item.historyId, newText);
-                        editModal.hide();
-                        form.trigger('submit'); // reload page
-                      } catch (err) {
-                        alert(err.message);
-                      }
+                      let isError = false;
+                      await tinyIo.client
+                        .editMessage(
+                          {
+                            message: newText,
+                          },
+                          item.historyId,
+                        )
+                        .then(async (result) => {
+                          if (result.error) {
+                            alert(result.msg, 'ERROR!');
+                            isError = true;
+                          } else {
+                            item.text = newText;
+                            msgFormat = await makeMsgRenderer(newText ?? '');
+                            item.edited = result.edited;
+                            tinyIo.client.emit('messageEdit', result);
+                            tinyIo.client.emit('needUpdateTokens');
+                          }
+                        })
+                        .catch((err) => {
+                          alert(err.message, 'ERROR!');
+                          console.error(err);
+                          isError = true;
+                        });
 
+                      if (isError) return;
                       loaderScreen.stop();
+                      closeEditor();
                     });
 
-                    editModal.updateBody(
-                      TinyHtml.createFrom('div').append(
-                        TinyHtml.createFrom('label').setText('Edit the message:'),
-                        editor,
-                        saveBtn,
-                      ),
+                    msgBase.append(
+                      TinyHtml.createFrom('label').setText('Edit the message:'),
+                      editor,
+                      cancelBtn,
+                      saveBtn,
                     );
-
-                    editModal.show();
                   });
 
                   // DELETE BUTTON
@@ -278,7 +311,7 @@ export const openHistory = () => {
 
                 const msgBase = TinyHtml.createFrom('span', { class: 'msg-data' });
                 const colMessage = TinyHtml.createFrom('td', { class: 'p-3' });
-                const msgFormat = await makeMsgRenderer(item.text ?? '');
+                let msgFormat = await makeMsgRenderer(item.text ?? '');
                 msgBase.append(TinyHtml.createFromHtml(msgFormat));
 
                 colMessage.append(
