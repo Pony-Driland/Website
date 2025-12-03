@@ -1,4 +1,5 @@
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
 import { isJsonObject } from 'tiny-essentials/basics';
 
 import { tinyIo } from '../software/base.mjs';
@@ -6,7 +7,9 @@ import { isOnline } from '../software/enablerContent.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import { loaderScreen } from '../../important.mjs';
 import moment from 'moment/moment';
-import { makeMsgRenderer } from '../msgRender.mjs';
+import { makeMsgRenderer, userStatus } from '../msgRender.mjs';
+
+const { Form, Button, TextInput, DateTimeInput, NumberInput, Textarea } = TinyHtmlElems;
 
 export const openHistory = () => {
   if (!isOnline()) return;
@@ -19,228 +22,321 @@ export const openHistory = () => {
   const cardBody = TinyHtml.createFrom('div', { class: 'card-body' });
 
   // Form
-  const form = TinyHtml.createFrom('form', { id: 'searchForm', class: 'row g-3' }).on(
-    'submit',
-    (e) => {
-      e.preventDefault();
+  const form = new Form({ id: 'searchForm', mainClass: 'row', tags: 'g-3' }).on('submit', (e) => {
+    e.preventDefault();
 
-      const result = {
-        text: textInput.valTxt(),
-        userId: userInput.valTxt(),
-        chapter: null,
-        perPage: null,
-        page: null,
-        start: null,
-        end: null,
-      };
+    const result = {
+      text: textInput.valTxt(),
+      userId: userInput.valTxt(),
+      chapter: null,
+      perPage: null,
+      page: null,
+      start: null,
+      end: null,
+    };
 
-      /**
-       * @param {string} name
-       * @param {import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} input
-       */
-      const dateValidator = (name, input) => {
-        try {
-          result[name] = input.valDate()?.valueOf() ?? null;
-        } catch {
-          result[name] = null;
+    /**
+     * @param {string} name
+     * @param {import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} input
+     */
+    const dateValidator = (name, input) => {
+      try {
+        result[name] = input.valDate()?.valueOf() ?? null;
+      } catch {
+        result[name] = null;
+      }
+    };
+
+    /**
+     * @param {string} name
+     * @param {import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} input
+     */
+    const numberValidator = (name, input) => {
+      try {
+        result[name] = input.valNb();
+      } catch {
+        result[name] = null;
+      }
+    };
+
+    dateValidator('start', dateStartInput);
+    dateValidator('end', dateEndInput);
+
+    numberValidator('chapter', chapterInput);
+    numberValidator('perPage', perPageInput);
+    numberValidator('page', pageInput);
+
+    if (result.userId.length < 1) result.userId = null;
+    if (result.text.length < 1) result.text = null;
+    loaderScreen.start();
+
+    // Receive results
+    tinyIo.client
+      .loadMessages({
+        page: result.page,
+        perPage: result.perPage,
+        text: result.text,
+        chapter: result.chapter,
+        userId: result.userId,
+        start: result.start,
+        end: result.end,
+      })
+      .then(async (data) => {
+        resultsBox.empty();
+        // Error
+        if (data.error) {
+          resultsBox.append(
+            TinyHtml.createFrom('div', { class: 'text-danger' }).setText(result.msg),
+            TinyHtml.createFrom('div', { class: 'small' }).setText(result.code),
+          );
+          pagesCount.empty();
+          loaderScreen.stop();
+          return;
         }
-      };
 
-      /**
-       * @param {string} name
-       * @param {import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} input
-       */
-      const numberValidator = (name, input) => {
-        try {
-          result[name] = input.valNb();
-        } catch {
-          result[name] = null;
+        // No results
+        if (!data.messages.length) {
+          resultsBox.append(
+            TinyHtml.createFrom('p', { class: 'text-muted m-0' }).setText('No results found.'),
+          );
+          pagesCount.empty();
+          loaderScreen.stop();
+          return;
         }
-      };
 
-      dateValidator('start', dateStartInput);
-      dateValidator('end', dateEndInput);
+        // Table wrapper
+        const tableWrapper = TinyHtml.createFrom('div', { class: 'table-responsive' });
 
-      numberValidator('chapter', chapterInput);
-      numberValidator('perPage', perPageInput);
-      numberValidator('page', pageInput);
+        // Table
+        const table = TinyHtml.createFrom('table', {
+          class: 'table table-bordered table-striped table-sm align-middle',
+        });
 
-      if (result.userId.length < 1) result.userId = null;
-      if (result.text.length < 1) result.text = null;
-      loaderScreen.start();
+        // Thead
+        const thead = TinyHtml.createFrom('thead');
+        const theadRow = TinyHtml.createFrom('tr');
 
-      // Receive results
-      tinyIo.client
-        .loadMessages({
-          page: result.page,
-          perPage: result.perPage,
-          text: result.text,
-          chapter: result.chapter,
-          userId: result.userId,
-          start: result.start,
-          end: result.end,
-        })
-        .then(async (data) => {
-          resultsBox.empty();
-          // Error
-          if (data.error) {
-            resultsBox.append(
-              TinyHtml.createFrom('div', { class: 'text-danger' }).setText(result.msg),
-              TinyHtml.createFrom('div', { class: 'small' }).setText(result.code),
-            );
-            pagesCount.empty();
-            loaderScreen.stop();
-            return;
-          }
+        const tableContent = ['Message'];
+        if (userStatus.isAdmin || userStatus.isMod) tableContent.push('Settings');
 
-          // No results
-          if (!data.messages.length) {
-            resultsBox.append(
-              TinyHtml.createFrom('p', { class: 'text-muted m-0' }).setText('No results found.'),
-            );
-            pagesCount.empty();
-            loaderScreen.stop();
-            return;
-          }
+        tableContent.forEach((label) => {
+          theadRow.append(TinyHtml.createFrom('th').setText(label));
+        });
 
-          // Table wrapper
-          const tableWrapper = TinyHtml.createFrom('div', { class: 'table-responsive' });
+        thead.append(theadRow);
 
-          // Table
-          const table = TinyHtml.createFrom('table', {
-            class: 'table table-bordered table-striped table-sm align-middle',
-          });
+        // Tbody
+        const tbody = TinyHtml.createFrom('tbody');
 
-          // Thead
-          const thead = TinyHtml.createFrom('thead');
-          const theadRow = TinyHtml.createFrom('tr');
-
-          ['Message', 'Settings'].forEach((label) => {
-            theadRow.append(TinyHtml.createFrom('th').setText(label));
-          });
-
-          thead.append(theadRow);
-
-          // Tbody
-          const tbody = TinyHtml.createFrom('tbody');
-
-          const promises = [];
-          data.messages.forEach((item) => {
-            const row = TinyHtml.createFrom('tr');
-            promises.push(
-              new Promise(async (resolve, reject) => {
-                try {
-                  const date = moment(item.date);
-                  const edited = moment(item.edited);
-                  // Container
-                  const buttonId = `history_collapse_${item.historyId}`;
-
-                  // Button that toggles collapse
-                  const btn = TinyHtml.createFrom('button', {
-                    class: 'btn btn-sm btn-link p-0 me-2',
+        const promises = [];
+        const isStaff = userStatus.isAdmin || userStatus.isMod;
+        data.messages.forEach((item) => {
+          const row = TinyHtml.createFrom('tr');
+          promises.push(
+            new Promise(async (resolve, reject) => {
+              try {
+                const colActions = TinyHtml.createFrom('td', { class: 'text-center' });
+                if (isStaff) {
+                  // EDIT BUTTON
+                  const editBtn = new Button({
+                    mainClass: 'btn',
+                    tags: 'btn-sm btn-outline-primary me-2',
                     type: 'button',
-                    'data-bs-toggle': 'collapse',
-                    'data-bs-target': `#${buttonId}`,
-                    'aria-expanded': 'false',
-                    'aria-controls': buttonId,
-                  }).setText('More Info');
-
-                  // Collapse box
-                  const collapse = TinyHtml.createFrom('div', {
-                    class: 'collapse',
-                    id: buttonId,
+                    label: 'Edit',
                   });
 
-                  collapse.append(
-                    TinyHtml.createFrom('div', { class: 'small' })
-                      .setText(`Id: `)
-                      .append(
-                        TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
-                          item.historyId,
-                        ),
-                      ),
-                    TinyHtml.createFrom('div', { class: 'small' })
-                      .setText(`Tokens: `)
-                      .append(
-                        TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
-                          item.tokens > 0 ? item.tokens : '0',
-                        ),
-                      ),
-                    TinyHtml.createFrom('div', { class: 'small' })
-                      .setText(`Edited at: `)
-                      .append(
-                        TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
-                          edited.isValid() && edited.valueOf() > 0
-                            ? `${edited.calendar()} (${edited.valueOf()})`
-                            : 'never',
-                        ),
-                      ),
-                  );
+                  editBtn.on('click', () => {
+                    const editor = new Textarea({
+                      mainClass: 'form-control',
+                    })
+                      .setStyle('height', '180px')
+                      .setText(item.text);
 
-                  const colMessage = TinyHtml.createFrom('td');
-                  const msgFormat = await makeMsgRenderer(item.text ?? '');
-                  colMessage.append(
-                    TinyHtml.createFromHtml(msgFormat),
-                    TinyHtml.createFrom('div').append(
-                      btn,
-                      TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
-                        date.isValid() ? date.calendar() : '',
-                      ),
-                      TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
-                        !item.isModel ? (item.userId ?? '') : 'Model',
-                      ),
-                      TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
-                        `Chapter ${item.chapter}` ?? '',
-                      ),
-                      collapse,
-                    ),
-                  );
+                    const saveBtn = new Button({
+                      mainClass: 'btn',
+                      tags: 'btn-primary mt-3',
+                      type: 'button',
+                      label: 'Save',
+                    });
 
-                  row.append(colMessage);
-                  resolve(undefined);
-                } catch (err) {
-                  reject(err);
+                    saveBtn.on('click', async () => {
+                      const newText = editor.valTxt();
+                      loaderScreen.start();
+
+                      try {
+                        await tinyIo.client.editMessage(item.historyId, newText);
+                        editModal.hide();
+                        form.trigger('submit'); // reload page
+                      } catch (err) {
+                        alert(err.message);
+                      }
+
+                      loaderScreen.stop();
+                    });
+
+                    editModal.updateBody(
+                      TinyHtml.createFrom('div').append(
+                        TinyHtml.createFrom('label').setText('Edit the message:'),
+                        editor,
+                        saveBtn,
+                      ),
+                    );
+
+                    editModal.show();
+                  });
+
+                  // DELETE BUTTON
+                  const deleteBtn = new Button({
+                    mainClass: 'btn',
+                    tags: 'btn-sm btn-outline-danger',
+                    type: 'button',
+                    label: 'Delete',
+                  });
+
+                  deleteBtn.on('click', () => {
+                    const confirmBtn = new Button({
+                      mainClass: 'btn',
+                      tags: 'btn-danger mt-3',
+                      type: 'button',
+                      label: 'Confirm Delete',
+                    });
+
+                    confirmBtn.on('click', async () => {
+                      loaderScreen.start();
+                      try {
+                        await tinyIo.client.deleteMessage(item.historyId);
+                        deleteModal.hide();
+                        form.trigger('submit'); // reload
+                      } catch (err) {
+                        alert(err.message);
+                      }
+                      loaderScreen.stop();
+                    });
+
+                    deleteModal.updateBody(
+                      TinyHtml.createFrom('div').append(
+                        TinyHtml.createFrom('p').setText(
+                          'Are you sure you want to delete this message?',
+                        ),
+                        confirmBtn,
+                      ),
+                    );
+
+                    deleteModal.show();
+                  });
+
+                  colActions.append(editBtn, deleteBtn);
                 }
-              }),
-            );
-            tbody.append(row);
-          });
 
-          // Assemble
-          await Promise.all(promises);
-          table.append(thead, tbody);
-          tableWrapper.append(table);
+                const date = moment(item.date);
+                const edited = moment(item.edited);
+                // Container
+                const buttonId = `history_collapse_${item.historyId}`;
 
-          resultsBox.append(tableWrapper);
-          pagesCount
-            .empty()
-            .setText(
-              `Pages: ${data.totalPages} | Page: ${result.page ?? data.page} | Items: ${data.totalItems}`,
-            );
+                // Button that toggles collapse
+                const btn = new Button({
+                  mainClass: 'btn',
+                  tags: 'btn-sm btn-link p-0 me-2',
+                  type: 'button',
+                  'data-bs-toggle': 'collapse',
+                  'data-bs-target': `#${buttonId}`,
+                  'aria-expanded': 'false',
+                  'aria-controls': buttonId,
+                  label: 'More Info',
+                });
 
-          // Success
-          loaderScreen.stop();
-          console.log(data);
-        })
-        // Error
-        .catch((err) => {
-          resultsBox
-            .empty()
-            .append(TinyHtml.createFrom('div', { class: 'text-danger' }).setText(err.message));
-          pagesCount.empty();
-          console.error(err);
-          loaderScreen.stop();
+                // Collapse box
+                const collapse = TinyHtml.createFrom('div', {
+                  class: 'collapse',
+                  id: buttonId,
+                });
+
+                collapse.append(
+                  TinyHtml.createFrom('div', { class: 'small' })
+                    .setText(`Id: `)
+                    .append(
+                      TinyHtml.createFrom('span', { class: 'text-muted' }).setText(item.historyId),
+                    ),
+                  TinyHtml.createFrom('div', { class: 'small' })
+                    .setText(`Tokens: `)
+                    .append(
+                      TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
+                        item.tokens > 0 ? item.tokens : '0',
+                      ),
+                    ),
+                  TinyHtml.createFrom('div', { class: 'small' })
+                    .setText(`Edited at: `)
+                    .append(
+                      TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
+                        edited.isValid() && edited.valueOf() > 0
+                          ? `${edited.calendar()} (${edited.valueOf()})`
+                          : 'never',
+                      ),
+                    ),
+                );
+
+                const colMessage = TinyHtml.createFrom('td');
+                const msgFormat = await makeMsgRenderer(item.text ?? '');
+                colMessage.append(
+                  TinyHtml.createFromHtml(msgFormat),
+                  TinyHtml.createFrom('div').append(
+                    btn,
+                    TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
+                      date.isValid() ? date.calendar() : '',
+                    ),
+                    TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
+                      !item.isModel ? (item.userId ?? '') : 'Model',
+                    ),
+                    TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
+                      `Chapter ${item.chapter}` ?? '',
+                    ),
+                    collapse,
+                  ),
+                );
+
+                row.append(colMessage);
+                if (isStaff) row.append(colActions);
+                resolve(undefined);
+              } catch (err) {
+                reject(err);
+              }
+            }),
+          );
+          tbody.append(row);
         });
-      console.log(result);
-    },
-  );
+
+        // Assemble
+        await Promise.all(promises);
+        table.append(thead, tbody);
+        tableWrapper.append(table);
+
+        resultsBox.append(tableWrapper);
+        pagesCount
+          .empty()
+          .setText(
+            `Pages: ${data.totalPages} | Page: ${result.page ?? data.page} | Items: ${data.totalItems}`,
+          );
+
+        // Success
+        loaderScreen.stop();
+      })
+      // Error
+      .catch((err) => {
+        resultsBox
+          .empty()
+          .append(TinyHtml.createFrom('div', { class: 'text-danger' }).setText(err.message));
+        pagesCount.empty();
+        console.error(err);
+        loaderScreen.stop();
+      });
+    console.log(result);
+  });
 
   // --- Text Search ---
   const textGroup = TinyHtml.createFrom('div', { class: 'col-md-6' });
   const textLabel = TinyHtml.createFrom('label', { class: 'form-label' }).setText('Text Contains');
-  const textInput = TinyHtml.createFrom('input', {
-    type: 'text',
-    class: 'form-control',
+  const textInput = new TextInput({
+    mainClass: 'form-control',
     id: 'searchText',
     placeholder: 'Search text...',
   });
@@ -251,9 +347,8 @@ export const openHistory = () => {
   const userLabel = TinyHtml.createFrom('label', { class: 'form-label' }).setText(
     'Sent By (User ID)',
   );
-  const userInput = TinyHtml.createFrom('input', {
-    type: 'text',
-    class: 'form-control',
+  const userInput = new TextInput({
+    mainClass: 'form-control',
     id: 'searchUser',
     placeholder: 'User ID',
   });
@@ -264,18 +359,16 @@ export const openHistory = () => {
   const dateStartLabel = TinyHtml.createFrom('label', { class: 'form-label' }).setText(
     'Start Date',
   );
-  const dateStartInput = TinyHtml.createFrom('input', {
-    type: 'datetime-local',
-    class: 'form-control',
+  const dateStartInput = new DateTimeInput({
+    mainClass: 'form-control',
     id: 'searchStart',
   });
   dateStartGroup.append(dateStartLabel, dateStartInput);
 
   const dateEndGroup = TinyHtml.createFrom('div', { class: 'col-md-6' });
   const dateEndLabel = TinyHtml.createFrom('label', { class: 'form-label' }).setText('End Date');
-  const dateEndInput = TinyHtml.createFrom('input', {
-    type: 'datetime-local',
-    class: 'form-control',
+  const dateEndInput = new DateTimeInput({
+    mainClass: 'form-control',
     id: 'searchEnd',
   });
   dateEndGroup.append(dateEndLabel, dateEndInput);
@@ -283,11 +376,11 @@ export const openHistory = () => {
   // --- Chapter Filter ---
   const chapterGroup = TinyHtml.createFrom('div', { class: 'col-md-4' });
   const chapterLabel = TinyHtml.createFrom('label', { class: 'form-label' }).setText('Chapter');
-  const chapterInput = TinyHtml.createFrom('input', {
-    type: 'number',
-    class: 'form-control',
+  const chapterInput = new NumberInput({
+    mainClass: 'form-control',
     id: 'searchChapter',
     placeholder: 'Number',
+    min: 1,
   });
   chapterGroup.append(chapterLabel, chapterInput);
   chapterInput.setVal(room.chapter);
@@ -297,31 +390,31 @@ export const openHistory = () => {
   const perPageLabel = TinyHtml.createFrom('label', { class: 'form-label' }).setText(
     'Results Per Page',
   );
-  const perPageInput = TinyHtml.createFrom('input', {
-    type: 'number',
-    class: 'form-control',
+  const perPageInput = new NumberInput({
+    mainClass: 'form-control',
     id: 'searchPerPage',
-    min: '1',
+    min: 1,
   }).setVal(tinyIo.client.getRateLimit().size.history);
   perPageGroup.append(perPageLabel, perPageInput);
 
   // --- Page Number ---
   const pageGroup = TinyHtml.createFrom('div', { class: 'col-md-4' });
   const pageLabel = TinyHtml.createFrom('label', { class: 'form-label' }).setText('Page');
-  const pageInput = TinyHtml.createFrom('input', {
-    type: 'number',
-    class: 'form-control',
+  const pageInput = new NumberInput({
+    mainClass: 'form-control',
     id: 'searchPage',
-    min: '1',
+    min: 1,
   }).setVal(1);
   pageGroup.append(pageLabel, pageInput);
 
   // --- Submit Button ---
   const btnGroup = TinyHtml.createFrom('div', { class: 'col-12 text-center mt-3' });
-  const submitBtn = TinyHtml.createFrom('button', {
+  const submitBtn = new Button({
     type: 'submit',
-    class: 'btn btn-primary px-4 py-2',
-  }).setText('Search');
+    mainClass: 'btn',
+    tags: 'btn-primary px-4 py-2',
+    label: 'Search',
+  });
 
   btnGroup.append(submitBtn);
 

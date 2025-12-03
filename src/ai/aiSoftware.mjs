@@ -22,7 +22,7 @@ import TinyClientIo from './socketClient.mjs';
 import RpgData from './software/rpgData.mjs';
 import { noOnlineMode, contentEnabler, isOnline } from './software/enablerContent.mjs';
 import ficConfigs from './values/ficConfigs.mjs';
-import { makeMsgRenderer } from './msgRender.mjs';
+import { makeMsgRenderer, userStatus } from './msgRender.mjs';
 
 import './values/jsonTemplate.mjs';
 
@@ -3170,19 +3170,6 @@ export const AiScriptStart = async () => {
         let isLoadingMsgs = false;
         const clearIsLoadingMsgs = () => {
           isLoadingMsgs = false;
-        };
-
-        const userStatus = {
-          isMod: false,
-          isAdmin: false,
-          room: {
-            isAdmin: false,
-            isMod: false,
-          },
-          server: {
-            isAdmin: false,
-            isMod: false,
-          },
         };
 
         // Read Only Mode
