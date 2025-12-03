@@ -383,7 +383,7 @@ export default function messageManager(socket, io) {
 
     if (existsStart || existsEnd) {
       const dateData = [];
-      query.conditions.push({ group: 'OR', conditions: dateData });
+      query.conditions.push({ group: 'AND', conditions: dateData });
       if (existsStart) dateData.push({ column: 'date', operator: '>=', value: start });
       if (existsEnd) dateData.push({ column: 'date', operator: '<=', value: end });
     }
@@ -492,7 +492,7 @@ export default function messageManager(socket, io) {
 
     if (existsStart || existsEnd) {
       const dateData = [];
-      query.conditions.push({ group: 'OR', conditions: dateData });
+      query.conditions.push({ group: 'AND', conditions: dateData });
 
       if (existsStart) dateData.push({ column: 'date', operator: '>=', value: start });
       if (existsEnd) dateData.push({ column: 'date', operator: '<=', value: end });

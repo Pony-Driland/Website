@@ -3,6 +3,8 @@ import clone from 'clone';
 import { io as Io } from 'socket.io-client';
 import { countObj, isJsonObject } from 'tiny-essentials/basics';
 
+/** @typedef {{ error: boolean; msg: string; code: number; }} SocketError */
+
 class TinyClientIo extends EventEmitter {
   #cfg = {
     /** @type {string|null} */
@@ -818,7 +820,30 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
-  // Load messages
+  /**
+   * Load messages
+   *
+   * @returns {Promise<{
+   *  messages: {
+   *    chapter: number;
+   *    date: number;
+   *    edited: number;
+   *    errorCode: string|null;
+   *    hash: string;
+   *    historyId: string;
+   *    isModel: boolean;
+   *    model: string;
+   *    roomdId: string;
+   *    text: string;
+   *    tokens: number;
+   *    userId: string;
+   *  }[];
+   *  page: number;
+   *  success: boolean;
+   *  totalItems: number;
+   *  totalPages: number;
+   * }>}
+   */
   loadMessages({
     text = null,
     chapter = null,

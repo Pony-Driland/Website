@@ -37,6 +37,24 @@ body.is-using-ai {
   }
 
   /* AI Chatbox */
+  #chat-history-search {
+    .modal-dialog {
+      max-width: none;
+      width: 80%;
+    }
+    @media (max-width: 767px) {
+      .modal-dialog {
+        max-height: none;
+        width: 97% !important;
+        height: 97% !important;
+      }
+    }
+
+    .final-ai-icon {
+      display: none !important;
+    }
+  }
+
   #ai-chatbox {
     &.hide-msg-buttons {
       .ai-text-editor > button {
