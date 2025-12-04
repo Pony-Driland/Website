@@ -5191,11 +5191,6 @@ jest-worker@^27.4.5:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jquery@^3.7.1:
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.7.1.tgz#083ef98927c9a6a74d05a6af02806566d16274de"
-  integrity sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==
-
 js-base64@^2.1.9:
   version "2.6.4"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.6.4.tgz#f4e686c5de1ea1f867dbcad3d46d969428df98c4"
@@ -5205,11 +5200,6 @@ js-base64@^3.7.8:
   version "3.7.8"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-3.7.8.tgz#af44496bc09fa178ed9c4adf67eb2b46f5c6d2a4"
   integrity sha512-hNngCeKxIUQiEUN3GPJOkz4wF/YvdUdbNL9hsBcMQTkKzboD7T/q3OYOuuPZLUE6dBxSGpwhk5mwuDud7JVAow==
-
-js-loading-overlay@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/js-loading-overlay/-/js-loading-overlay-1.2.0.tgz#9dfa8e815969fa67049af798cb9b65afc7d33549"
-  integrity sha512-1No+SmLxzclgGr1wvJbfp1cCnEF+GsWJUJHv8URu/9YJW/BnNdWrYFYIw/gKXDJWFr/ZdR+9gnbJbND+vn+z4Q==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
