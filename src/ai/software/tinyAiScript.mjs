@@ -182,6 +182,9 @@ export const tinyAiScript = {
           target: '_blank',
         }).setText('here'),
         TinyHtml.createFrom('span').setText('. Enter the server settings you want to connect to.'),
+        TinyHtml.createFrom('div', { class: 'small' }).setText(
+          'Tip: Try adding ws:// before the server address you want to connect to.',
+        ),
       );
 
     const hostButton = (inputs, tinyBig = -1) =>
