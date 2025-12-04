@@ -1,6 +1,6 @@
 import path from 'path';
 import PuddySql from 'puddysql';
-import isDebug from '../isDebug';
+import isDebug from '../../api/isDebug';
 
 const db = new PuddySql.Instance();
 

@@ -19,6 +19,9 @@ import {
   roomUpdateIsRateLimited,
 } from './values';
 
+/**
+ * @param {import('socket.io-client').Socket} socket
+ */
 export default function roomManager(socket, io, appStorage) {
   socket.on('exists-room', async (data, fn) => {
     if (noDataInfo(data, fn)) return;

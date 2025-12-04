@@ -1,64 +1,9 @@
 import fs from 'fs';
 import path from 'path';
-import ini from 'ini';
 
 import { startDatabase } from './connection/sql';
 import { _setIniConfig } from './connection/values';
-import isDebug from './isDebug';
-
-const FOLDER_NAME = 'tiny-chat_data';
-
-// Function to create folder to store files
-function createAppDirectory() {
-  console.log('[APP] [INFO] Starting data directory creation...');
-
-  const appDirectory = !isDebug()
-    ? path.join(path.dirname(process.execPath), FOLDER_NAME) // For production, next to the .exe
-    : path.join(__dirname, `../${FOLDER_NAME}`); // For development, inside the project folder
-
-  console.log(`[APP] [INFO] Checking if directory ${appDirectory} exists...`);
-
-  if (!fs.existsSync(appDirectory)) {
-    console.log(`[APP] [WARNING] Directory ${appDirectory} not found. Creating...`);
-    fs.mkdirSync(appDirectory);
-    console.log(`[APP] [SUCCESS] Directory ${appDirectory} successfully created.`);
-  } else {
-    console.log(`[APP] [INFO] Directory ${appDirectory} already exists.`);
-  }
-
-  return appDirectory;
-}
-
-// Function to ensure the .ini file exists. If it doesn't, it copies a template file.
-async function ensureIniFile(iniFilePath, templateFilePath) {
-  try {
-    // Check if the INI file exists
-    if (!fs.existsSync(iniFilePath)) {
-      console.log(`[APP] [INI] File ${iniFilePath} does not exist. Copying template...`);
-
-      // Read the template file
-      const templateContent = fs.readFileSync(templateFilePath, 'utf-8');
-
-      // Write the template content to the INI file
-      fs.writeFileSync(iniFilePath, templateContent);
-
-      console.log(`[APP] [INI] Template copied to ${iniFilePath}`);
-    } else {
-      console.log(`[APP] [INI] File ${iniFilePath} already exists.`);
-    }
-
-    // Load the INI file using the ini module
-    const config = ini.parse(fs.readFileSync(iniFilePath, 'utf-8'));
-    const defaultCfg = ini.parse(fs.readFileSync(templateFilePath, 'utf-8'));
-    console.log('[APP] [INI] INI file loaded!');
-
-    return { newCfg: config, defaultCfg };
-  } catch (err) {
-    console.error('[APP] [INI] Error ensuring INI file:');
-    console.error(err);
-    return null;
-  }
-}
+import { createAppDirectory, ensureIniFile, getIniBoolean } from '../api/ini';
 
 export default async function startFiles() {
   let canStart = true;
@@ -66,7 +11,7 @@ export default async function startFiles() {
   try {
     // Start content
     console.log(`[APP] [INFO] Starting folder...`);
-    const appDir = createAppDirectory();
+    const appDir = createAppDirectory('tiny-chat_data', __dirname);
     console.log(`[APP] [INFO] Folder: ${appDir}`);
 
     // Start ini file
@@ -75,12 +20,6 @@ export default async function startFiles() {
       path.join(appDir, `./config.ini`),
       path.join(__dirname, `./config.ini`),
     );
-
-    const getIniBoolean = (value) =>
-      (typeof value === 'boolean' && value) ||
-      (typeof value === 'string' && (value === 'yes' || value === 'on' || value === 'true'))
-        ? true
-        : false;
 
     // Insert Config
     const loadTinyCfg = (theCfg) => {
@@ -91,6 +30,10 @@ export default async function startFiles() {
 
       _setIniConfig('OPEN_REGISTRATION', getIniBoolean(theCfg.server.registration_open));
       _setIniConfig('LOAD_ALL_HISTORY', getIniBoolean(theCfg.server.load_all_history));
+
+      if (typeof theCfg.proxy.address === 'string')
+        _setIniConfig('PROXY_ADDRESS', theCfg.proxy.address);
+      if (typeof theCfg.proxy.auth === 'string') _setIniConfig('PROXY_AUTH', theCfg.proxy.auth);
 
       if (typeof theCfg.genesis.owner_id === 'string')
         _setIniConfig('OWNER_ID', theCfg.genesis.owner_id);
@@ -103,7 +46,7 @@ export default async function startFiles() {
 
     /**
      * Object with a config of your application.
-     * @returns {Object} - The config.ini file loaded from your application.
+     * @returns {Record<string, *>} - The config.ini file loaded from your application.
      */
     appStorage.config = config;
 
