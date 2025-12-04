@@ -35,19 +35,6 @@ startFiles().then(async (appStorage) => {
         : null
       : null) ?? null;
 
-  /////////////////////////////////////////////////////////////
-
-  const proxy = proxyAddress ? new SocketIoProxyClient(proxyAddress) : null;
-
-  if (proxy) {
-    proxy.auth = proxyAuth;
-    proxy.on('connect', () => console.log(`[PROXY] [${proxyAddress}] Connected!`));
-    proxy.on('disconnect', () => console.log(`[PROXY] [${proxyAddress}] Disconnected!`));
-    proxy.connect();
-  }
-
-  /////////////////////////////////////////////////////////////
-
   if (
     typeof ownerData.password === 'string' &&
     ownerData.password.length > 0 &&
@@ -70,8 +57,17 @@ startFiles().then(async (appStorage) => {
     roomManager(socket, io, appStorage);
   };
 
+  const proxy = proxyAddress ? new SocketIoProxyClient(proxyAddress) : null;
   const io = new Server({ cors: { origin: '*' } });
   io.on('connection', onConnection);
+
+  if (proxy) {
+    proxy.auth = proxyAuth;
+    proxy.server = io;
+    proxy.on('connect', () => console.log(`[PROXY] [${proxyAddress}] Connected!`));
+    proxy.on('disconnect', () => console.log(`[PROXY] [${proxyAddress}] Disconnected!`));
+    proxy.connect();
+  }
 
   // Start server
   process.on('SIGINT', async () => {
