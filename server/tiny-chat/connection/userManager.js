@@ -14,6 +14,9 @@ import {
   noDataInfo,
 } from './values';
 
+/**
+ * @param {import('socket.io-client').Socket} socket
+ */
 export default function userManager(socket, io) {
   socket.on('user-is-mod', async (data, fn) => {
     if (noDataInfo(data, fn)) return;

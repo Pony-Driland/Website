@@ -15,7 +15,10 @@ import {
   userMsgLoadIsRateLimited,
 } from './values';
 
-export default function messageManager(socket, io) {
+/**
+ * @param {import('socket.io-client').Socket} socket
+ */
+export default function messageManager(socket) {
   socket.on('send-message', async (data, fn) => {
     if (noDataInfo(data, fn)) return;
     const { message, roomId, tokens, model, hash, isModel, errorCode } = data;
