@@ -1,11 +1,18 @@
 import EventEmitter from 'events';
 import { io as Io } from 'socket.io-client';
+import { TinyPromiseQueue } from 'tiny-essentials';
 
 class SocketIoProxyClient extends EventEmitter {
-  /** @type {import('socket.io-client').WebSocket} */
+  #queue = new TinyPromiseQueue();
+
+  #enabled = false;
+
+  #firstTime = true;
+
+  /** @type {import('socket.io-client').Socket} */
   #client;
 
-  /** @returns {import('socket.io-client').WebSocket} */
+  /** @returns {import('socket.io-client').Socket} */
   get client() {
     return this.#client;
   }
@@ -22,8 +29,8 @@ class SocketIoProxyClient extends EventEmitter {
 
   #connected = false;
 
-  get isConnected() {
-    return this.#connected;
+  get connected() {
+    return this.#connected && this.#client.connected && this.#client.id;
   }
 
   /** @type {null|number} */
@@ -55,8 +62,14 @@ class SocketIoProxyClient extends EventEmitter {
     this.#client.on('disconnect', () => {
       this.emit('disconnect');
       this.#connected = false;
-      setTimeout(() => this.connect(), this.#connTimeout);
     });
+
+    const retryConn = () => {
+      if (!this.#firstTime && !this.#connected) this.connect();
+      if (this.#enabled) setTimeout(retryConn, this.#connTimeout);
+    };
+
+    setTimeout(retryConn, this.#connTimeout);
   }
 
   /**
@@ -64,17 +77,32 @@ class SocketIoProxyClient extends EventEmitter {
    */
   connect() {
     return new Promise((resolve) => {
-      if (this.#connected) {
+      this.#firstTime = false;
+      this.#enabled = true;
+      if (this.connected) {
         resolve(false);
         return;
       }
 
-      this.#client.emit('AUTH_PROXY', this.#auth, () => {
-        this.emit('connect');
-        this.#connected = true;
-        resolve(true);
-      });
+      const sendConnect = () =>
+        this.#client.emit('AUTH_PROXY', this.#auth, () => {
+          this.emit('connect');
+          this.#connected = true;
+          resolve(true);
+        });
+
+      if (this.#client.connected) sendConnect();
+      else {
+        this.client.once('connect', () => sendConnect());
+        this.client.connect();
+      }
     });
+  }
+
+  disconnect() {
+    this.client.disconnect();
+    this.#enabled = false;
+    this.#firstTime = true;
   }
 }
 
