@@ -85,6 +85,7 @@ class SocketIoProxyServer extends EventEmitter {
             authRl.isRateLimited(userSocket.id) ||
             typeof fn !== 'function'
           ) {
+            if (this.#socket.id === userSocket.id) return;
             authRl.hit(userSocket.id);
             userSocket.disconnect(true);
             removeTimeout();

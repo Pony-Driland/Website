@@ -76,6 +76,7 @@ startFiles().then(async (appStorage) => {
   // Start server
   process.on('SIGINT', async () => {
     try {
+      proxy.disconnect();
       io.close();
     } catch {}
   });
