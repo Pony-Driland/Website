@@ -1,10 +1,8 @@
 import EventEmitter from 'events';
+import { Server } from 'socket.io';
 import { io as Io } from 'socket.io-client';
-import { TinyPromiseQueue } from 'tiny-essentials';
 
 class SocketIoProxyClient extends EventEmitter {
-  #queue = new TinyPromiseQueue();
-
   #enabled = false;
 
   #firstTime = true;
@@ -15,6 +13,20 @@ class SocketIoProxyClient extends EventEmitter {
   /** @returns {import('socket.io-client').Socket} */
   get client() {
     return this.#client;
+  }
+
+  /** @type {null|import('socket.io').Server} */
+  #server = null;
+
+  /** @returns {null|import('socket.io').Server} */
+  get server() {
+    return this.#server;
+  }
+
+  /** @param {import('socket.io').Server} server */
+  set server(server) {
+    if (!(server instanceof Server)) throw new Error('Invalid socket io server!');
+    this.#server = server;
   }
 
   /** @type {null|string|number} */
@@ -54,11 +66,13 @@ class SocketIoProxyClient extends EventEmitter {
   constructor(proxyAddress, cfg) {
     super();
 
+    // Client Config
     const clientCfg = { ...cfg };
     clientCfg.reconnection = false;
     clientCfg.autoConnect = false;
     this.#client = new Io(proxyAddress, clientCfg);
 
+    // Reconnect
     this.#client.on('disconnect', () => {
       this.emit('disconnect');
       this.#connected = false;
@@ -70,13 +84,25 @@ class SocketIoProxyClient extends EventEmitter {
     };
 
     setTimeout(retryConn, this.#connTimeout);
+
+    // User events
+    this.#client.on('PROXY_REQUEST', (eventName, ...args) => {
+      if (typeof eventName !== 'string' || !this.#server) return;
+      this.#server;
+    });
   }
 
   /**
+   * Connect proxy
    * @returns {Promise<boolean>}
    */
   connect() {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
+      if (!(this.#server instanceof Server)) {
+        reject(new Error('Invalid socket io server!'));
+        return;
+      }
+
       this.#firstTime = false;
       this.#enabled = true;
       if (this.connected) {
@@ -99,6 +125,7 @@ class SocketIoProxyClient extends EventEmitter {
     });
   }
 
+  /** Disconnect proxy */
   disconnect() {
     this.client.disconnect();
     this.#enabled = false;
