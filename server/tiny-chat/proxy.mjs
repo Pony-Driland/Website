@@ -2,6 +2,10 @@ import EventEmitter from 'events';
 import { Server } from 'socket.io';
 import { io as Io } from 'socket.io-client';
 
+/** @typedef {import('../tiny-chat-proxy/proxy.mjs').ProxyUserDisconnect} ProxyUserDisconnect */
+/** @typedef {import('../tiny-chat-proxy/proxy.mjs').ProxyUserConnection} ProxyUserConnection */
+/** @typedef {import('../tiny-chat-proxy/proxy.mjs').ProxyRequest} ProxyRequest */
+
 class SocketIoProxyClient extends EventEmitter {
   #enabled = false;
 
@@ -86,9 +90,23 @@ class SocketIoProxyClient extends EventEmitter {
     setTimeout(retryConn, this.#connTimeout);
 
     // User events
-    this.#client.on('PROXY_REQUEST', (eventName, ...args) => {
-      if (typeof eventName !== 'string' || !this.#server) return;
-      this.#server;
+    this.#client.on(
+      'PROXY_REQUEST',
+      /** @type {(...args: ProxyRequest) => avoid} */ (socketId, eventName, ...args) => {
+        if ((typeof socketId !== 'string' && typeof eventName !== 'string') || !this.#server)
+          return;
+        console.log('PROXY_REQUEST', socketId, eventName, ...args);
+      },
+    );
+
+    this.#client.on('PROXY_USER_CONNECTION', (/** @type {ProxyUserConnection} */ socketInfo) => {
+      console.log('PROXY_USER_CONNECTION', socketInfo);
+      // this.emit('socketConnection', { id: socketInfo.id });
+    });
+
+    this.#client.on('PROXY_USER_DISCONNECT', (/** @type {ProxyUserDisconnect} */ socketInfo) => {
+      console.log('PROXY_USER_DISCONNECT', socketInfo);
+      // this.emit('socketDisconnect', socketInfo);
     });
   }
 
