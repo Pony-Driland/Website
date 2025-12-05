@@ -9,6 +9,13 @@ import roomManager from './connection/roomManager';
 import { getHashString, getIniConfig } from './connection/values';
 import db from './connection/sql';
 
+/**
+ * @callback EmitTo
+ * @param {string} roomId
+ * @param {string} eventName
+ * @param {any} data
+ */
+
 // Start server
 startFiles().then(async (appStorage) => {
   // Cancel start
@@ -47,19 +54,29 @@ startFiles().then(async (appStorage) => {
 
   /**
    * @param {import('socket.io-client').Socket} socket
+   * @param {EmitTo} emitTo
+   * @param {EmitTo} socketTo
+   * @param {boolean} isProxy
    */
-  const onConnection = (socket) => {
+  const onConnection = (socket, emitTo, socketTo, isProxy) => {
     console.log(
       `[APP] [${socket.handshake ? socket.handshake.address : '?.?.?.?'}] User connected: ${socket.id}`,
     );
-    messageManager(socket, io);
-    userManager(socket, io);
-    roomManager(socket, io, appStorage);
+    messageManager(socket, socketTo);
+    userManager(socket, emitTo);
+    roomManager(socket, emitTo, socketTo);
   };
 
   const proxy = proxyAddress ? new SocketIoProxyClient(proxyAddress) : null;
   const io = new Server({ cors: { origin: '*' } });
-  io.on('connection', onConnection);
+  io.on('connection', (socket) =>
+    onConnection(
+      socket,
+      (roomId, eventName, data) => io.to(roomId).emit(eventName, data),
+      (roomId, eventName, data) => socket.to(roomId).emit(eventName, data),
+      false,
+    ),
+  );
 
   if (proxy) {
     proxy.auth = proxyAuth;

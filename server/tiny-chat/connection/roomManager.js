@@ -21,8 +21,10 @@ import {
 
 /**
  * @param {import('socket.io-client').Socket} socket
+ * @param {import('../index').EmitTo} emitTo
+ * @param {import('../index').EmitTo} socketTo
  */
-export default function roomManager(socket, io, appStorage) {
+export default function roomManager(socket, emitTo, socketTo) {
   socket.on('exists-room', async (data, fn) => {
     if (noDataInfo(data, fn)) return;
     const { roomId } = data;
@@ -113,7 +115,7 @@ export default function roomManager(socket, io, appStorage) {
     });
 
     // Complete
-    joinRoom(socket, io, roomId, fn);
+    joinRoom(socket, emitTo, roomId, fn);
   });
 
   socket.on('leave', (data, fn) => {
@@ -127,7 +129,7 @@ export default function roomManager(socket, io, appStorage) {
     if (!userId) return accountNotDetected(fn);
 
     // Execute leave
-    const leaveStatus = leaveRoom(socket, io, roomId);
+    const leaveStatus = leaveRoom(socket, emitTo, roomId);
     if (!leaveStatus.success) {
       if (leaveStatus.code === 1) {
         fn({ error: true, msg: 'No Room users.', roomId, code: 1 });
@@ -192,8 +194,8 @@ export default function roomManager(socket, io, appStorage) {
     await roomBannedUsers.set(roomId, { userId });
 
     // Remove the user from their room
-    io.to(roomId).emit('user-banned', { roomId, userId });
-    leaveRoom(userSockets.get(userId), io, roomId);
+    emitTo(roomId, 'user-banned', { roomId, userId });
+    leaveRoom(userSockets.get(userId), emitTo, roomId);
 
     // User ban successfully.
     fn({ success: true });
@@ -297,7 +299,7 @@ export default function roomManager(socket, io, appStorage) {
     for (const userId of userIds) {
       const kickResult = {};
       if (userId !== room.ownerId && userId !== getIniConfig('OWNER_ID')) {
-        const kickStatus = leaveRoom(userSockets.get(userId), io, roomId);
+        const kickStatus = leaveRoom(userSockets.get(userId), emitTo, roomId);
         if (!kickStatus.success) {
           if (kickStatus.code === 2) {
             kickResult.code = 2;
@@ -310,7 +312,7 @@ export default function roomManager(socket, io, appStorage) {
           }
         } else {
           kickResult.success = true;
-          io.to(roomId).emit('user-kicked', { roomId, userId });
+          emitTo(roomId, 'user-kicked', { roomId, userId });
         }
       } else {
         kickResult.code = 4;
@@ -410,7 +412,7 @@ export default function roomManager(socket, io, appStorage) {
     // Disconnect user from rooms
     if (rUsers) {
       rUsers.forEach((userData, tUser) => {
-        leaveRoom(userSockets.get(tUser), io, roomId);
+        leaveRoom(userSockets.get(tUser), emitTo, roomId);
       });
       roomUsers.delete(roomId);
     }
@@ -464,7 +466,7 @@ export default function roomManager(socket, io, appStorage) {
     // Notify all users in the room about the updated settings
     const newRoom = await rooms.get(roomId);
     if (typeof newRoom.password !== 'undefined') delete newRoom.password;
-    io.to(roomId).emit('room-updated', { data: newRoom, roomId });
+    emitTo(roomId, 'room-updated', { data: newRoom, roomId });
 
     // Room disabled successfully.
     fn({ success: true });
@@ -512,7 +514,7 @@ export default function roomManager(socket, io, appStorage) {
     // Notify all users in the room about the updated settings
     const newRoom = await rooms.get(roomId);
     if (typeof newRoom.password !== 'undefined') delete newRoom.password;
-    io.to(roomId).emit('room-updated', { data: newRoom, roomId });
+    emitTo(roomId, 'room-updated', { data: newRoom, roomId });
 
     // Room enabled successfully.
     fn({ success: true });
@@ -561,7 +563,7 @@ export default function roomManager(socket, io, appStorage) {
     // Disconnect user from rooms
     rUsers.forEach((userData, tUser) => {
       if (tUser !== getIniConfig('OWNER_ID') && tUser !== room.ownerId)
-        leaveRoom(userSockets.get(tUser), io, roomId);
+        leaveRoom(userSockets.get(tUser), emitTo, roomId);
     });
 
     // Room disabled successfully.
@@ -645,7 +647,7 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Notify all users in the room about the updated settings
-    io.to(roomId).emit('room-mod-updated', { result, type: 'add', roomId });
+    emitTo(roomId, 'room-mod-updated', { result, type: 'add', roomId });
 
     // Complete
     fn({ success: true });
@@ -683,7 +685,7 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Notify all users in the room about the updated settings
-    io.to(roomId).emit('room-mod-updated', { result, type: 'remove', roomId });
+    emitTo(roomId, 'room-mod-updated', { result, type: 'remove', roomId });
 
     // Complete
     fn({ success: true });
@@ -816,7 +818,7 @@ export default function roomManager(socket, io, appStorage) {
       // Notify all users in the room about the updated settings
       const newRoom = await rooms.get(roomId);
       if (typeof newRoom.password !== 'undefined') delete newRoom.password;
-      io.to(roomId).emit('room-updated', { data: newRoom, roomId });
+      emitTo(roomId, 'room-updated', { data: newRoom, roomId });
     }
 
     // Complete
@@ -867,7 +869,7 @@ export default function roomManager(socket, io, appStorage) {
       await roomData.set(roomId, { data: values });
       // Notify all users in the room about the updated data
       const result = await roomData.get(roomId);
-      socket.to(roomId).emit('room-data-updated', {
+      socketTo(roomId, 'room-data-updated', {
         roomId,
         isPrivate: false,
         values: result?.data ?? {},

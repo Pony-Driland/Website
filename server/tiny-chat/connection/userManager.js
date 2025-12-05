@@ -16,8 +16,9 @@ import {
 
 /**
  * @param {import('socket.io-client').Socket} socket
+ * @param {import('../index').EmitTo} emitTo
  */
-export default function userManager(socket, io) {
+export default function userManager(socket, emitTo) {
   socket.on('user-is-mod', async (data, fn) => {
     if (noDataInfo(data, fn)) return;
     const { userId } = data;
@@ -235,7 +236,7 @@ export default function userManager(socket, io) {
 
     userSession.setNickname(socket, user.nickname);
     userSession.eachRooms(socket, (roomId) =>
-      io.to(roomId).emit('user-updated', { roomId, userId, data: { nickname: user.nickname } }),
+      emitTo(roomId, 'user-updated', { roomId, userId, data: { nickname: user.nickname } }),
     );
 
     // User unban successfully.
@@ -367,7 +368,7 @@ export default function userManager(socket, io) {
     // Disconnect user from rooms
     if (userId)
       roomUsers.forEach((users, roomId) => {
-        if (users.has(userId)) leaveRoom(socket, io, roomId);
+        if (users.has(userId)) leaveRoom(socket, emitTo, roomId);
       });
 
     // Remove from userSockets

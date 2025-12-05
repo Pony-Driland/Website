@@ -276,7 +276,7 @@ export const getJoinData = (socket) => {
   return { nickname, ping: pingNow };
 };
 
-export const joinRoom = (socket, io, roomId, fn) => {
+export const joinRoom = (socket, emitTo, roomId, fn) => {
   if (socket) {
     // Get data
     const userId = userSession.getUserId(socket);
@@ -293,7 +293,7 @@ export const joinRoom = (socket, io, roomId, fn) => {
 
       userSession.addRoom(socket, roomId);
       const socketData = { roomId, userId, nickname: joinData.nickname, ping: joinData.ping };
-      io.to(roomId).emit('user-joined', socketData);
+      emitTo(roomId, 'user-joined', socketData);
       if (fn) fn(socketData);
       return true;
     }
@@ -303,7 +303,7 @@ export const joinRoom = (socket, io, roomId, fn) => {
 };
 
 // Leave room
-export const leaveRoom = (socket, io, roomId, fn) => {
+export const leaveRoom = (socket, emitTo, roomId, fn) => {
   if (socket) {
     // Get data
     const userId = userSession.getUserId(socket);
@@ -318,7 +318,7 @@ export const leaveRoom = (socket, io, roomId, fn) => {
       if (room.has(userId)) {
         // Remove the user from their room
         room.delete(userId);
-        io.to(roomId).emit('user-left', { roomId, nickname, userId });
+        emitTo(roomId, 'user-left', { roomId, nickname, userId });
         socket.leave(roomId);
         userSession.removeRoom(socket, roomId);
         // Complete

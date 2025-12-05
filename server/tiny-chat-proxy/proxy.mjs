@@ -2,6 +2,22 @@ import { EventEmitter } from 'events';
 import { Server } from 'socket.io';
 import { TinyRateLimiter } from 'tiny-essentials';
 
+/**
+ * @typedef {Object} ProxyUserDisconnect
+ * @property {string} id
+ * @property {import('socket.io').DisconnectReason} reason
+ * @property {any} desc
+ */
+
+/**
+ * @typedef {Object} ProxyUserConnection
+ * @property {string} id
+ */
+
+/**
+ * @typedef {[id: string, eventName: string, ...any[]]} ProxyRequest
+ */
+
 class SocketIoProxyServer extends EventEmitter {
   /** @type {null|import('socket.io').Socket} */
   #socket = null;
@@ -44,6 +60,16 @@ class SocketIoProxyServer extends EventEmitter {
   }
 
   /**
+   * @param {import('socket.io').Socket} userSocket
+   */
+  #sendNewUser(userSocket) {
+    if (!this.#socket) return;
+    /** @type {ProxyUserConnection} */
+    const data = { id: userSocket.id };
+    this.#socket.emit('PROXY_USER_CONNECTION', data);
+  }
+
+  /**
    * @param {import('socket.io').ServerOptions} proxyCfg
    * @param {{ maxHits: number, interval: number, cleanupInterval: number }} [rlCfg]
    */
@@ -56,6 +82,9 @@ class SocketIoProxyServer extends EventEmitter {
 
     // Handle user connections
     this.#server.on('connection', (userSocket) => {
+      // Send socket data
+      this.#sendNewUser(userSocket);
+      // Start connection
       this.emit('connection', userSocket);
 
       /** @type {NodeJS.Timeout|null} */
@@ -93,9 +122,13 @@ class SocketIoProxyServer extends EventEmitter {
           }
 
           this.#socket = userSocket;
+          const sendResult = async () => {
+            fn(!!this.#socket);
+            for (const socket of await this.#server.fetchSockets()) this.#sendNewUser(socket);
+          };
           this.emit('server-connection', userSocket);
           removeTimeout();
-          fn();
+          sendResult();
           return;
         }
 
@@ -108,11 +141,19 @@ class SocketIoProxyServer extends EventEmitter {
 
         // Send request
         removeTimeout();
-        this.#socket.emit('PROXY_REQUEST', ...[eventName, ...args]);
+
+        /** @type {ProxyRequest} */
+        const data = [userSocket.id, eventName, ...args];
+        this.#socket.emit('PROXY_REQUEST', ...data);
       });
 
       // Disconnect
-      userSocket.on('disconnect', () => {
+      userSocket.on('disconnect', (reason, desc) => {
+        if (this.#socket) {
+          /** @type {ProxyUserDisconnect} */
+          const data = { id: userSocket.id, reason, desc };
+          this.#socket.emit('PROXY_USER_DISCONNECT', data);
+        }
         if (this.#socket.id === userSocket.id) {
           this.#socket = null;
           this.emit('server-disconnect', userSocket);
