@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 import { Server } from 'socket.io';
-import { TinyRateLimiter } from 'tiny-essentials';
+import { isJsonObject, TinyRateLimiter } from 'tiny-essentials';
 
 /**
  * @typedef {Object} ProxyUserDisconnect
@@ -143,6 +143,21 @@ class SocketIoProxyServer extends EventEmitter {
           removeTimeout();
           fn(!!this.#socket);
           this.#sockets.forEach((socket) => this.#sendNewUser(socket));
+          return;
+        }
+
+        // Disconnect user
+        if (eventName === 'DISCONNECT_PROXY_USER') {
+          if (
+            this.#socket.id !== userSocket.id ||
+            !isJsonObject(args[0]) ||
+            typeof args[0].id !== 'string' ||
+            typeof args[0].close !== 'boolean'
+          )
+            return;
+          const socket = this.#sockets.get(args[0].id);
+          if (!socket) return;
+          socket.disconnect(args[0].close);
           return;
         }
 
