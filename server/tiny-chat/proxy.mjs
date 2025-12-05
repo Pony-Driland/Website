@@ -1,5 +1,4 @@
 import EventEmitter from 'events';
-import { Server } from 'socket.io';
 import { io as Io } from 'socket.io-client';
 import SocketIoProxyUser from './proxyUser.mjs';
 
@@ -62,16 +61,19 @@ class SocketIoProxyClient extends EventEmitter {
 
   /**
    * @param {string} proxyAddress
-   * @param {import('socket.io-client').SocketOptions} cfg
+   * @param {import('socket.io-client').ManagerOptions} cfg
    */
   constructor(proxyAddress, cfg) {
     super();
 
-    // Client Config
+    /**
+     * Client Config
+     * @type {import('socket.io-client').ManagerOptions} cfg
+     */
     const clientCfg = { ...cfg };
     clientCfg.reconnection = false;
     clientCfg.autoConnect = false;
-    this.#client = new Io(proxyAddress, clientCfg);
+    this.#client = Io(proxyAddress, clientCfg);
 
     // Reconnect
     this.#client.on('disconnect', () => {
@@ -81,15 +83,15 @@ class SocketIoProxyClient extends EventEmitter {
 
     const retryConn = () => {
       if (!this.#firstTime && !this.#connected) this.connect();
-      if (this.#enabled) setTimeout(retryConn, this.#connTimeout);
+      if (this.#enabled) setTimeout(retryConn, this.#connTimeout ?? 0);
     };
 
-    setTimeout(retryConn, this.#connTimeout);
+    setTimeout(retryConn, this.#connTimeout ?? 0);
 
     // User events
     this.#client.on(
       'PROXY_REQUEST',
-      /** @type {(...args: ProxyRequest) => avoid} */ (socketId, eventName, ...args) => {
+      /** @type {(...args: ProxyRequest) => void} */ (socketId, eventName, ...args) => {
         console.log('PROXY_REQUEST', socketId, eventName, ...args);
         if (typeof socketId !== 'string' && typeof eventName !== 'string') return;
 
@@ -152,7 +154,12 @@ class SocketIoProxyClient extends EventEmitter {
     this.client.disconnect();
     this.#enabled = false;
     this.#firstTime = true;
-    this.#sockets.forEach((socket) => socket.removeAllListeners());
+    this.#sockets.forEach((socket) => {
+      socket.removeAllListeners();
+      try {
+        socket.disconnect();
+      } catch {}
+    });
     this.#sockets.clear();
   }
 

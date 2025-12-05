@@ -39,7 +39,7 @@ class TinyClientIo extends EventEmitter {
     this.#cfg = cfg;
 
     /** @type {Io|null} */
-    this.socket = typeof cfg.ip === 'string' && cfg.ip.length > 0 ? new Io(cfg.ip) : null;
+    this.socket = typeof cfg.ip === 'string' && cfg.ip.length > 0 ? Io(cfg.ip) : null;
 
     this.resetData();
 
