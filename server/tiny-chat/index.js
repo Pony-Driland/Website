@@ -71,9 +71,13 @@ startFiles().then(async (appStorage) => {
   const io = new Server({ cors: { origin: '*' } });
   io.on('connection', (socket) =>
     onConnection(
+      // Socket
       socket,
+      // IO
       (roomId, eventName, data) => io.to(roomId).emit(eventName, data),
+      // Socket
       (roomId, eventName, data) => socket.to(roomId).emit(eventName, data),
+      // isProxy
       false,
     ),
   );
