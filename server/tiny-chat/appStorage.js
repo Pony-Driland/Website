@@ -21,8 +21,12 @@ export default async function startFiles() {
       path.join(__dirname, `./config.ini`),
     );
 
-    // Insert Config
+    /**
+     * Insert Config
+     * @param {{ [key: string]: any; }} theCfg
+     */
     const loadTinyCfg = (theCfg) => {
+      // @ts-ignore
       for (const item in theCfg) config[item] = theCfg[item];
       for (const item in theCfg.limits)
         if (typeof theCfg.limits[item] === 'number' || typeof theCfg.limits[item] === 'string')
