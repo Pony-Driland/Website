@@ -204,17 +204,23 @@ class SocketIoProxyUser extends EventEmitter {
     this._updateData(socketInfo);
   }
 
+  _disconnect() {
+    if (this.#disconnected) return;
+    this.removeAllListeners();
+    this.#connected = false;
+    this.#disconnected = true;
+    this.#rooms.clear();
+  }
+
   /**
    * @param {boolean} [close=false]
    * @returns {this}
    */
   disconnect(close = false) {
+    if (this.#disconnected) return this;
     if (typeof close !== 'boolean') throw new Error('Close needs to be a boolean value!');
     this.#socket.emit('DISCONNECT_PROXY_USER', { id: this.#id, close });
-    this.removeAllListeners();
-    this.#connected = false;
-    this.#disconnected = true;
-    this.#rooms.clear();
+    this._disconnect();
     return this;
   }
 }
