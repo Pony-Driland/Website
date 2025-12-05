@@ -28,8 +28,15 @@ class SocketIoProxyUser extends EventEmitter {
     this.#id = socketInfo.id;
   }
 
-  disconnect() {
+  /**
+   * @param {boolean} [close=false]
+   * @returns {this}
+   */
+  disconnect(close = false) {
+    if (typeof close !== 'boolean') throw new Error('Close needs to be a boolean value!');
+    this.#socket.emit('DISCONNECT_PROXY_USER', { id: this.#id, close });
     this.removeAllListeners();
+    return this;
   }
 }
 
