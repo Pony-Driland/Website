@@ -201,7 +201,18 @@ export const createDiceSpecialHtml = (data) => {
     $totalBase,
   );
 
-  createDiceResults($totalBaseNumber, TinySimpleDice.applyModifiers(data.results, data.modifiers));
+  /** @type {import('tiny-essentials/libs/TinySimpleDice').ApplyDiceModifiersResult|null} */
+  let diceResult = null;
+  let errorMsg = '';
+  try {
+    diceResult = TinySimpleDice.applyModifiers(data.results, data.modifiers);
+  } catch (err) {
+    errorMsg = err.message;
+    diceResult = null;
+  }
+
+  if (diceResult) createDiceResults($totalBaseNumber, diceResult);
+  else $totalBaseNumber.setText(errorMsg).addClass('text-danger');
 
   return $root;
 };
