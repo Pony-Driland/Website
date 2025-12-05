@@ -84,11 +84,9 @@ startFiles().then(async (appStorage) => {
 
   if (proxy) {
     proxy.auth = proxyAuth;
-    proxy.server = io;
     proxy.on('connect', () => console.log(`[PROXY] [${proxyAddress}] Connected!`));
     proxy.on('disconnect', () => console.log(`[PROXY] [${proxyAddress}] Disconnected!`));
-
-    proxy.on('connection', console.log);
+    // proxy.on('connection', console.log);
 
     proxy.connect();
   }
