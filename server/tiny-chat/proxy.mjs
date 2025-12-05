@@ -115,7 +115,7 @@ class SocketIoProxyClient extends EventEmitter {
       if (!socket) return;
 
       socket.emit('disconnect', socketInfo.reason, socketInfo.desc);
-      socket.removeAllListeners();
+      socket._disconnect();
       this.#sockets.delete(socketInfo.id);
     });
 
