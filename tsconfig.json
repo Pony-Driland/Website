@@ -20,7 +20,8 @@
         "src/files/tinyLib.mjs",
         "build/TinyBuilder",
         "server/tiny-chat-proxy",
-        "server/tiny-chat"
+        "server/tiny-chat/proxy.mjs",
+        "server/tiny-chat/proxyUser.mjs",
     ],
     "exclude": ["node_modules"]
 }

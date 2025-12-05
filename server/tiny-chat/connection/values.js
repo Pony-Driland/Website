@@ -57,62 +57,41 @@ export const createRoom = async (userId, roomId, password, title) => {
 
 export const userSession = {
   check: (socket) => {
-    if (!socket.tinySession) socket.tinySession = { rooms: [] };
+    if (!Array.isArray(socket.data.rooms)) socket.data.rooms = [];
   },
   isInRoom: (socket, roomId) => {
-    if (
-      socket.tinySession &&
-      Array.isArray(socket.tinySession.rooms) &&
-      socket.tinySession.rooms.indexOf(roomId) > -1
-    )
-      return true;
+    if (Array.isArray(socket.data.rooms) && socket.data.rooms.indexOf(roomId) > -1) return true;
 
     return false;
   },
   addRoom: (socket, roomId) => {
-    if (socket.tinySession && typeof roomId === 'string') {
-      if (Array.isArray(socket.tinySession.rooms) && socket.tinySession.rooms.indexOf(roomId) < 0)
-        socket.tinySession.rooms.push(roomId);
+    if (typeof roomId === 'string') {
+      if (Array.isArray(socket.data.rooms) && socket.data.rooms.indexOf(roomId) < 0)
+        socket.data.rooms.push(roomId);
       return true;
     }
     return false;
   },
   eachRooms: (socket, callback) => {
-    if (socket.tinySession && Array.isArray(socket.tinySession.rooms))
-      for (const index in socket.tinySession.rooms) callback(socket.tinySession.rooms[index]);
+    if (Array.isArray(socket.data.rooms))
+      for (const index in socket.data.rooms) callback(socket.data.rooms[index]);
   },
   removeRoom: (socket, roomId) => {
-    if (
-      socket.tinySession &&
-      Array.isArray(socket.tinySession.rooms) &&
-      typeof roomId === 'string'
-    ) {
-      const index = socket.tinySession.rooms.indexOf(roomId);
-      if (index > -1) socket.tinySession.rooms.splice(index, 1);
+    if (Array.isArray(socket.data.rooms) && typeof roomId === 'string') {
+      const index = socket.data.rooms.indexOf(roomId);
+      if (index > -1) socket.data.rooms.splice(index, 1);
     }
     return false;
   },
-  getUserId: (socket) =>
-    socket.tinySession && typeof socket.tinySession.userId === 'string'
-      ? socket.tinySession.userId
-      : null,
-  getNickname: (socket) =>
-    socket.tinySession && typeof socket.tinySession.nickname === 'string'
-      ? socket.tinySession.nickname
-      : null,
+  getUserId: (socket) => (typeof socket.data.userId === 'string' ? socket.data.userId : null),
+  getNickname: (socket) => (typeof socket.data.nickname === 'string' ? socket.data.nickname : null),
   setUserId: (socket, userId) => {
-    if (socket.tinySession) {
-      socket.tinySession.userId = userId;
-      return true;
-    }
-    return false;
+    socket.data.userId = userId;
+    return true;
   },
   setNickname: (socket, nickname) => {
-    if (socket.tinySession) {
-      socket.tinySession.nickname = nickname;
-      return true;
-    }
-    return false;
+    socket.data.nickname = nickname;
+    return true;
   },
 };
 
