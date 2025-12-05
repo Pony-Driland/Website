@@ -10,6 +10,12 @@ import { isJsonObject, TinyRateLimiter } from 'tiny-essentials';
  */
 
 /**
+ * @typedef {Object} ProxyUserConnectionUpdated
+ * @property {string} id
+ * @property {ProxyUserConnection} changes
+ */
+
+/**
  * @typedef {Object} ProxyUserConnection
  * Represents all serializable data of a connected user socket,
  * sent to the proxy server to allow full remote interaction and inspection.
@@ -91,48 +97,108 @@ class SocketIoProxyServer extends EventEmitter {
   }
 
   /**
-   * Sends a fully detailed user socket info to the proxy server.
-   * This includes every serializable property that may be useful for a remote proxy.
-   * @param {import('socket.io').Socket} userSocket
+   * Extracts all relevant, serializable Socket.IO data.
+   * @param {import('socket.io').Socket} socket
+   * @returns {ProxyUserConnection}
    */
-  #sendNewUser(userSocket) {
-    if (!this.#socket) return;
-
-    /** @type {ProxyUserConnection} */
-    const detailed = {
-      id: userSocket.id,
+  extractSocketInfo(socket) {
+    return {
+      id: socket.id,
 
       // Rooms this client belongs to
-      rooms: [...userSocket.rooms],
+      rooms: [...socket.rooms],
 
       // Handshake data (⚠ contains headers, query)
       handshake: {
-        address: userSocket.handshake.address,
-        headers: userSocket.handshake.headers,
-        query: userSocket.handshake.query,
-        time: userSocket.handshake.time,
-        secure: userSocket.handshake.secure,
-        xdomain: userSocket.handshake.xdomain,
-        issued: userSocket.handshake.issued,
-        url: userSocket.handshake.url,
+        address: socket.handshake.address,
+        headers: socket.handshake.headers,
+        query: socket.handshake.query,
+        time: socket.handshake.time,
+        secure: socket.handshake.secure,
+        xdomain: socket.handshake.xdomain,
+        issued: socket.handshake.issued,
+        url: socket.handshake.url,
       },
 
       // Engine.IO internal data (serializable only!)
       engine: {
-        readyState: userSocket.conn.readyState,
-        transport: userSocket.conn.transport.name,
-        protocol: userSocket.conn.protocol,
+        readyState: socket.conn.readyState,
+        transport: socket.conn.transport.name,
+        protocol: socket.conn.protocol,
       },
 
       // Namespace
-      namespace: userSocket.nsp.name,
+      namespace: socket.nsp.name,
+    };
+  }
+
+  /**
+   * Returns the diff between two objects.
+   * @param {ProxyUserConnection} oldData
+   * @param {ProxyUserConnection} newData
+   * @returns {ProxyUserConnection|null}
+   */
+  #diff(oldData, newData) {
+    /** @type {ProxyUserConnection} */
+    const diff = oldData;
+    let hasChanges = false;
+
+    for (const key of Object.keys(newData)) {
+      // @ts-ignore
+      const oldVal = oldData[key];
+      // @ts-ignore
+      const newVal = newData[key];
+
+      if (JSON.stringify(oldVal) !== JSON.stringify(newVal)) {
+        // @ts-ignore
+        diff[key] = newVal;
+        hasChanges = true;
+      }
+    }
+
+    return hasChanges ? diff : null;
+  }
+
+  /**
+   * @param {import('socket.io').Socket} socket
+   */
+  #emitUpdate(socket) {
+    if (!this.#socket) return;
+
+    const current = this.extractSocketInfo(socket);
+    const previous = this.#socketStates.get(socket.id) ?? current;
+
+    const changes = this.#diff(previous, current);
+    if (!changes) return;
+
+    this.#socketStates.set(socket.id, current);
+
+    /** @type {ProxyUserConnectionUpdated} */
+    const result = {
+      id: socket.id,
+      changes,
     };
 
-    this.#socket.emit('PROXY_USER_CONNECTION', detailed);
+    this.#socket.emit('PROXY_USER_UPDATE', result);
+  }
+
+  /**
+   * Sends a fully detailed user socket info to the proxy server.
+   * This includes every serializable property that may be useful for a remote proxy.
+   * @param {import('socket.io').Socket} socket
+   */
+  #sendNewUser(socket) {
+    if (!this.#socket) return;
+    const initial = this.extractSocketInfo(socket);
+    this.#socketStates.set(socket.id, initial);
+    this.#socket.emit('PROXY_USER_CONNECTION', initial);
   }
 
   /** @type {Map<string, import('socket.io').Socket>} */
   #sockets = new Map();
+
+  /** @type {Map<string, ProxyUserConnection>} */
+  #socketStates = new Map();
 
   /** @returns {Record<string, import('socket.io').Socket>} */
   get sockets() {
@@ -155,12 +221,26 @@ class SocketIoProxyServer extends EventEmitter {
 
     // Handle user connections
     this.#server.on('connection', (userSocket) => {
+      // Data
+      /** 
+      const dataProxy = new Proxy(userSocket.data, {
+        set: (obj, prop, value) => {
+          obj[prop] = value;
+          this.#emitUpdate(userSocket);
+          return true;
+        },
+      });
+
+      userSocket.data = dataProxy;
+      */
+
       // Send socket data
       this.#sockets.set(userSocket.id, userSocket);
       this.#sendNewUser(userSocket);
       // Start connection
       this.emit('connection', userSocket);
 
+      // Timeout
       /** @type {NodeJS.Timeout|null} */
       let timeoutConnection = !this.#socket
         ? setTimeout(() => {
@@ -175,6 +255,26 @@ class SocketIoProxyServer extends EventEmitter {
         timeoutConnection = null;
       };
 
+      // Transport
+      userSocket.conn.on('upgrade', () => {
+        this.#emitUpdate(userSocket);
+      });
+
+      // Ready State
+      userSocket.conn.on('close', () => {
+        this.#emitUpdate(userSocket);
+      });
+
+      // Rooms
+      userSocket.on('join', (room) => {
+        this.#emitUpdate(userSocket);
+      });
+
+      userSocket.on('leave', (room) => {
+        this.#emitUpdate(userSocket);
+      });
+
+      // Events
       userSocket.onAny((eventName, ...args) => {
         this.emit('user-event', userSocket, eventName, [...args]);
 
@@ -236,6 +336,7 @@ class SocketIoProxyServer extends EventEmitter {
       // Disconnect
       userSocket.on('disconnect', (reason, desc) => {
         this.#sockets.delete(userSocket.id);
+        this.#socketStates.delete(userSocket.id);
         if (this.#socket) {
           /** @type {ProxyUserDisconnect} */
           const data = { id: userSocket.id, reason, desc };
@@ -256,6 +357,7 @@ class SocketIoProxyServer extends EventEmitter {
     this.#server?.close();
     this.#server?.removeAllListeners();
     this.#sockets.clear();
+    this.#socketStates.clear();
     this.#socket = null;
     this.#auth = null;
     this.#connTimeout = null;

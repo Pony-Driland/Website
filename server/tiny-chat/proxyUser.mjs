@@ -174,7 +174,7 @@ class SocketIoProxyUser extends EventEmitter {
   /**
    * @param {ProxyUserConnection} socketInfo
    */
-  #updateData(socketInfo) {
+  _updateData(socketInfo) {
     this.#id = socketInfo.id;
     this.#rooms = new Set(socketInfo.rooms);
 
@@ -201,7 +201,7 @@ class SocketIoProxyUser extends EventEmitter {
   constructor(socketInfo, socket) {
     super();
     this.#socket = socket;
-    this.#updateData(socketInfo);
+    this._updateData(socketInfo);
   }
 
   /**
@@ -214,6 +214,7 @@ class SocketIoProxyUser extends EventEmitter {
     this.removeAllListeners();
     this.#connected = false;
     this.#disconnected = true;
+    this.#rooms.clear();
     return this;
   }
 }
