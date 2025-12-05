@@ -19,10 +19,17 @@ import { TinyRateLimiter } from 'tiny-essentials';
  */
 
 class SocketIoProxyServer extends EventEmitter {
+  #isDestroyed = false;
+
+  /** @returns {boolean} */
+  get isDestroyed() {
+    return this.#isDestroyed;
+  }
+
   /** @type {null|import('socket.io').Socket} */
   #socket = null;
 
-  /** @type {import('socket.io').Server} */
+  /** @type {import('socket.io').Server|null} */
   #server;
 
   /** @returns {null|import('socket.io').Socket} */
@@ -32,6 +39,7 @@ class SocketIoProxyServer extends EventEmitter {
 
   /** @returns {import('socket.io').Server} */
   get server() {
+    if (this.#isDestroyed) throw new Error('Instance destroyed!');
     return this.#server;
   }
 
@@ -69,6 +77,14 @@ class SocketIoProxyServer extends EventEmitter {
     this.#socket.emit('PROXY_USER_CONNECTION', data);
   }
 
+  /** @type {Map<string, import('socket.io').Socket>} */
+  #sockets = new Map();
+
+  /** @returns {Record<string, import('socket.io').Socket>} */
+  get sockets() {
+    return Object.fromEntries(this.#sockets);
+  }
+
   /**
    * @param {import('socket.io').ServerOptions} proxyCfg
    * @param {{ maxHits: number, interval: number, cleanupInterval: number }} [rlCfg]
@@ -83,6 +99,7 @@ class SocketIoProxyServer extends EventEmitter {
     // Handle user connections
     this.#server.on('connection', (userSocket) => {
       // Send socket data
+      this.#sockets.set(userSocket.id, userSocket);
       this.#sendNewUser(userSocket);
       // Start connection
       this.emit('connection', userSocket);
@@ -122,13 +139,10 @@ class SocketIoProxyServer extends EventEmitter {
           }
 
           this.#socket = userSocket;
-          const sendResult = async () => {
-            fn(!!this.#socket);
-            for (const socket of await this.#server.fetchSockets()) this.#sendNewUser(socket);
-          };
           this.emit('server-connection', userSocket);
           removeTimeout();
-          sendResult();
+          fn(!!this.#socket);
+          this.#sockets.forEach((socket) => this.#sendNewUser(socket));
           return;
         }
 
@@ -149,6 +163,7 @@ class SocketIoProxyServer extends EventEmitter {
 
       // Disconnect
       userSocket.on('disconnect', (reason, desc) => {
+        this.#sockets.delete(userSocket.id);
         if (this.#socket) {
           /** @type {ProxyUserDisconnect} */
           const data = { id: userSocket.id, reason, desc };
@@ -163,6 +178,18 @@ class SocketIoProxyServer extends EventEmitter {
         removeTimeout();
       });
     });
+  }
+
+  destroy() {
+    this.#server.disconnect();
+    this.#server.removeAllListeners();
+    this.#sockets.clear();
+    this.#socket = null;
+    this.#auth = null;
+    this.#connTimeout = null;
+    this.#isDestroyed = true;
+    this.#server = null;
+    this.removeAllListeners();
   }
 }
 

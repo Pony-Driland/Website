@@ -1,12 +1,20 @@
 import EventEmitter from 'events';
 import { Server } from 'socket.io';
 import { io as Io } from 'socket.io-client';
+import SocketIoProxyUser from './proxyUser.mjs';
 
 /** @typedef {import('../tiny-chat-proxy/proxy.mjs').ProxyUserDisconnect} ProxyUserDisconnect */
 /** @typedef {import('../tiny-chat-proxy/proxy.mjs').ProxyUserConnection} ProxyUserConnection */
 /** @typedef {import('../tiny-chat-proxy/proxy.mjs').ProxyRequest} ProxyRequest */
 
 class SocketIoProxyClient extends EventEmitter {
+  #isDestroyed = false;
+
+  /** @returns {boolean} */
+  get isDestroyed() {
+    return this.#isDestroyed;
+  }
+
   #enabled = false;
 
   #firstTime = true;
@@ -63,6 +71,9 @@ class SocketIoProxyClient extends EventEmitter {
     return this.#connTimeout;
   }
 
+  /** @type {Map<string, SocketIoProxyUser>} */
+  #sockets = new Map();
+
   /**
    * @param {string} proxyAddress
    * @param {import('socket.io-client').SocketOptions} cfg
@@ -101,11 +112,17 @@ class SocketIoProxyClient extends EventEmitter {
 
     this.#client.on('PROXY_USER_CONNECTION', (/** @type {ProxyUserConnection} */ socketInfo) => {
       console.log('PROXY_USER_CONNECTION', socketInfo);
+      this.#sockets.set(socketInfo.id, new SocketIoProxyUser(socketInfo));
       // this.emit('socketConnection', { id: socketInfo.id });
     });
 
     this.#client.on('PROXY_USER_DISCONNECT', (/** @type {ProxyUserDisconnect} */ socketInfo) => {
       console.log('PROXY_USER_DISCONNECT', socketInfo);
+      const socket = this.#sockets.get(socketInfo.id);
+      if (!socket) return;
+
+      socket.removeAllListeners();
+      this.#sockets.delete(socketInfo.id);
       // this.emit('socketDisconnect', socketInfo);
     });
   }
@@ -116,6 +133,7 @@ class SocketIoProxyClient extends EventEmitter {
    */
   connect() {
     return new Promise((resolve, reject) => {
+      if (this.#isDestroyed) reject(new Error('Destroyed instance!'));
       if (!(this.#server instanceof Server)) {
         reject(new Error('Invalid socket io server!'));
         return;
@@ -148,6 +166,15 @@ class SocketIoProxyClient extends EventEmitter {
     this.client.disconnect();
     this.#enabled = false;
     this.#firstTime = true;
+    this.#sockets.forEach((socket) => socket.removeAllListeners());
+    this.#sockets.clear();
+  }
+
+  destroy() {
+    this.disconnect();
+    this.#server.removeAllListeners();
+    this.removeAllListeners();
+    this.#isDestroyed = true;
   }
 }
 
