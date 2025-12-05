@@ -4,6 +4,7 @@ import SocketIoProxyUser from './proxyUser.mjs';
 
 /** @typedef {import('../tiny-chat-proxy/proxy.mjs').ProxyUserDisconnect} ProxyUserDisconnect */
 /** @typedef {import('../tiny-chat-proxy/proxy.mjs').ProxyUserConnection} ProxyUserConnection */
+/** @typedef {import('../tiny-chat-proxy/proxy.mjs').ProxyUserConnectionUpdated} ProxyUserConnectionUpdated */
 /** @typedef {import('../tiny-chat-proxy/proxy.mjs').ProxyRequest} ProxyRequest */
 
 class SocketIoProxyClient extends EventEmitter {
@@ -116,6 +117,13 @@ class SocketIoProxyClient extends EventEmitter {
       socket.emit('disconnect', socketInfo.reason, socketInfo.desc);
       socket.removeAllListeners();
       this.#sockets.delete(socketInfo.id);
+    });
+
+    this.#client.on('PROXY_USER_UPDATE', (/** @type {ProxyUserConnectionUpdated} */ socketInfo) => {
+      console.log('PROXY_USER_UPDATE', socketInfo);
+      const socket = this.#sockets.get(socketInfo.id);
+      if (!socket) return;
+      socket._updateData(socketInfo.changes);
     });
   }
 
