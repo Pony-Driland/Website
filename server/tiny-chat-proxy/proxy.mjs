@@ -11,11 +11,34 @@ import { isJsonObject, TinyRateLimiter } from 'tiny-essentials';
 
 /**
  * @typedef {Object} ProxyUserConnection
- * @property {string} id
+ * Represents all serializable data of a connected user socket,
+ * sent to the proxy server to allow full remote interaction and inspection.
+ *
+ * @property {string} id - Socket unique identifier.
+ *
+ * @property {string[]} rooms - List of rooms the socket is part of.
+ *
+ *
+ * @property {Object} handshake - Full handshake information.
+ * @property {string} handshake.address - IP address of the connected client.
+ * @property {Object.<string, any>} handshake.headers - Client HTTP headers.
+ * @property {Object.<string, any>} handshake.query - URL query parameters.
+ * @property {string} handshake.time - Human-readable time string.
+ * @property {boolean} handshake.secure - Whether the connection is secured (HTTPS/WSS).
+ * @property {boolean} handshake.xdomain - Whether the connection comes from a different domain.
+ * @property {number} handshake.issued - Timestamp of when the handshake was generated.
+ * @property {string} handshake.url - Full request URL.
+ *
+ * @property {Object} engine - Engine.IO internal details (safe subset).
+ * @property {string} engine.readyState - Current ready state of the Engine.IO connection.
+ * @property {string} engine.transport - Current Engine.IO transport name.
+ * @property {number} engine.protocol - Engine.IO protocol version.
+ *
+ * @property {string} namespace - Namespace to which the client is connected.
  */
 
 /**
- * @typedef {[id: string, eventName: string, ...any[]]} ProxyRequest
+ * @typedef {[id: string, ...import('socket.io').Event]} ProxyRequest
  */
 
 class SocketIoProxyServer extends EventEmitter {
@@ -39,7 +62,7 @@ class SocketIoProxyServer extends EventEmitter {
 
   /** @returns {import('socket.io').Server} */
   get server() {
-    if (this.#isDestroyed) throw new Error('Instance destroyed!');
+    if (this.#isDestroyed || !this.#server) throw new Error('Instance destroyed!');
     return this.#server;
   }
 
@@ -68,13 +91,44 @@ class SocketIoProxyServer extends EventEmitter {
   }
 
   /**
+   * Sends a fully detailed user socket info to the proxy server.
+   * This includes every serializable property that may be useful for a remote proxy.
    * @param {import('socket.io').Socket} userSocket
    */
   #sendNewUser(userSocket) {
     if (!this.#socket) return;
+
     /** @type {ProxyUserConnection} */
-    const data = { id: userSocket.id };
-    this.#socket.emit('PROXY_USER_CONNECTION', data);
+    const detailed = {
+      id: userSocket.id,
+
+      // Rooms this client belongs to
+      rooms: [...userSocket.rooms],
+
+      // Handshake data (⚠ contains headers, query)
+      handshake: {
+        address: userSocket.handshake.address,
+        headers: userSocket.handshake.headers,
+        query: userSocket.handshake.query,
+        time: userSocket.handshake.time,
+        secure: userSocket.handshake.secure,
+        xdomain: userSocket.handshake.xdomain,
+        issued: userSocket.handshake.issued,
+        url: userSocket.handshake.url,
+      },
+
+      // Engine.IO internal data (serializable only!)
+      engine: {
+        readyState: userSocket.conn.readyState,
+        transport: userSocket.conn.transport.name,
+        protocol: userSocket.conn.protocol,
+      },
+
+      // Namespace
+      namespace: userSocket.nsp.name,
+    };
+
+    this.#socket.emit('PROXY_USER_CONNECTION', detailed);
   }
 
   /** @type {Map<string, import('socket.io').Socket>} */
@@ -87,7 +141,10 @@ class SocketIoProxyServer extends EventEmitter {
 
   /**
    * @param {import('socket.io').ServerOptions} proxyCfg
-   * @param {{ maxHits: number, interval: number, cleanupInterval: number }} [rlCfg]
+   * @param {Object} [rlCfg]
+   * @param {number} [rlCfg.maxHits=3]
+   * @param {number} [rlCfg.interval=1000]
+   * @param {number} [rlCfg.cleanupInterval=60000]
    */
   constructor(proxyCfg, { maxHits = 3, interval = 1000, cleanupInterval = 60000 } = {}) {
     super();
@@ -131,7 +188,7 @@ class SocketIoProxyServer extends EventEmitter {
             authRl.isRateLimited(userSocket.id) ||
             typeof fn !== 'function'
           ) {
-            if (this.#socket.id === userSocket.id) return;
+            if (this.#socket?.id === userSocket.id) return;
             authRl.hit(userSocket.id);
             userSocket.disconnect(true);
             removeTimeout();
@@ -149,7 +206,7 @@ class SocketIoProxyServer extends EventEmitter {
         // Disconnect user
         if (eventName === 'DISCONNECT_PROXY_USER') {
           if (
-            this.#socket.id !== userSocket.id ||
+            this.#socket?.id !== userSocket.id ||
             !isJsonObject(args[0]) ||
             typeof args[0].id !== 'string' ||
             typeof args[0].close !== 'boolean'
@@ -184,7 +241,7 @@ class SocketIoProxyServer extends EventEmitter {
           const data = { id: userSocket.id, reason, desc };
           this.#socket.emit('PROXY_USER_DISCONNECT', data);
         }
-        if (this.#socket.id === userSocket.id) {
+        if (this.#socket?.id === userSocket.id) {
           this.#socket = null;
           this.emit('server-disconnect', userSocket);
           return;
@@ -196,8 +253,8 @@ class SocketIoProxyServer extends EventEmitter {
   }
 
   destroy() {
-    this.#server.disconnect();
-    this.#server.removeAllListeners();
+    this.#server?.close();
+    this.#server?.removeAllListeners();
     this.#sockets.clear();
     this.#socket = null;
     this.#auth = null;

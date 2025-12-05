@@ -18,7 +18,9 @@
         "src/modules", 
         "src/account", 
         "src/files/tinyLib.mjs",
-        "build/TinyBuilder"
+        "build/TinyBuilder",
+        "server/tiny-chat-proxy",
+        "server/tiny-chat"
     ],
     "exclude": ["node_modules"]
 }
