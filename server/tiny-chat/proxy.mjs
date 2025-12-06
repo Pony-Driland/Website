@@ -8,6 +8,32 @@ import SocketIoProxyUser from './proxyUser.mjs';
 /** @typedef {import('../tiny-chat-proxy/proxy.mjs').ProxyRequest} ProxyRequest */
 
 class SocketIoProxyClient extends EventEmitter {
+  #debugMode = false;
+
+  /** @returns {boolean} */
+  get debugMode() {
+    return this.#debugMode;
+  }
+
+  /** @param {boolean} value */
+  set debugMode(value) {
+    if (typeof value !== 'boolean') throw new Error('Invalid debug mode value!');
+    this.#debugMode = true;
+  }
+
+  #allowOnAny = false;
+
+  /** @returns {boolean} */
+  get allowOnAny() {
+    return this.#allowOnAny;
+  }
+
+  /** @param {boolean} value */
+  set allowOnAny(value) {
+    if (typeof value !== 'boolean') throw new Error('Invalid allowOnAny value!');
+    this.#allowOnAny = true;
+  }
+
   #isDestroyed = false;
 
   /** @returns {boolean} */
@@ -93,7 +119,7 @@ class SocketIoProxyClient extends EventEmitter {
     this.#client.on(
       'PROXY_REQUEST',
       /** @type {(...args: ProxyRequest) => void} */ (socketId, eventName, ...args) => {
-        console.log('PROXY_REQUEST', socketId, eventName, ...args);
+        if (this.#debugMode) console.log('PROXY_REQUEST', socketId, eventName, ...args);
         if (typeof socketId !== 'string' && typeof eventName !== 'string') return;
 
         const socket = this.#sockets.get(socketId);
@@ -103,14 +129,15 @@ class SocketIoProxyClient extends EventEmitter {
     );
 
     this.#client.on('PROXY_USER_CONNECTION', (/** @type {ProxyUserConnection} */ socketInfo) => {
-      console.log('PROXY_USER_CONNECTION', socketInfo);
+      if (this.#debugMode) console.log('PROXY_USER_CONNECTION', socketInfo);
       const socket = new SocketIoProxyUser(socketInfo, this.#client);
+      socket.allowOnAny = this.#allowOnAny;
       this.#sockets.set(socketInfo.id, socket);
       this.emit('connection', socket);
     });
 
     this.#client.on('PROXY_USER_DISCONNECT', (/** @type {ProxyUserDisconnect} */ socketInfo) => {
-      console.log('PROXY_USER_DISCONNECT', socketInfo);
+      if (this.#debugMode) console.log('PROXY_USER_DISCONNECT', socketInfo);
       const socket = this.#sockets.get(socketInfo.id);
       if (!socket) return;
 
@@ -119,12 +146,19 @@ class SocketIoProxyClient extends EventEmitter {
       this.#sockets.delete(socketInfo.id);
     });
 
-    this.#client.on('PROXY_USER_UPDATE', (/** @type {ProxyUserConnectionUpdated} */ socketInfo) => {
-      console.log('PROXY_USER_UPDATE', socketInfo);
-      const socket = this.#sockets.get(socketInfo.id);
-      if (!socket) return;
-      socket._updateData(socketInfo.changes);
-    });
+    this.#client.on(
+      'PROXY_USER_UPDATE',
+      (
+        /** @type {ProxyUserConnectionUpdated} */ socketInfo,
+        /** @type {string} */ type,
+        /** @type {string|null|undefined} */ room,
+      ) => {
+        if (this.#debugMode) console.log('PROXY_USER_UPDATE', socketInfo);
+        const socket = this.#sockets.get(socketInfo.id);
+        if (!socket) return;
+        socket._updateData(socketInfo.changes, type, room);
+      },
+    );
   }
 
   /**

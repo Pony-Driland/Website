@@ -48,10 +48,15 @@ const startServer = async () => {
 
   proxy.auth = AUTH;
   proxy.connTimeout = CONNECTION_TIMEOUT;
+  proxy.listenAdapter('/');
 
   proxy.on('connection', (userSocket) => console.log('[PROXY] User connected:', userSocket.id));
   proxy.on('disconnect', (userSocket) => console.log('[PROXY] User disconnected:', userSocket.id));
   proxy.on('connection-timeout', (userSocket) => console.log('[PROXY] Timeout:', userSocket.id));
+
+  proxy.on('user-update', (userSocket, type, room) => {
+    if (IS_DEBUG) console.log(`[PROXY] User updated:`, userSocket.id, type, room);
+  });
 
   proxy.on('user-event', (userSocket, eventName, args) => {
     if (IS_DEBUG) console.log('[PROXY] Debug:', eventName, args);

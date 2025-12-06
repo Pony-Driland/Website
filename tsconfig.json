@@ -19,7 +19,7 @@
         "src/account", 
         "src/files/tinyLib.mjs",
         "build/TinyBuilder",
-        "server/tiny-chat-proxy",
+        "server/tiny-chat-proxy/proxy.mjs",
         "server/tiny-chat/proxy.mjs",
         "server/tiny-chat/proxyUser.mjs",
     ],
