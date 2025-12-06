@@ -4,49 +4,77 @@ import { isJsonObject, TinyRateLimiter } from 'tiny-essentials';
 
 /**
  * @typedef {Object} ProxyUserDisconnect
- * @property {string} id
- * @property {import('socket.io').DisconnectReason} reason
- * @property {any} desc
+ * Represents a disconnection report sent to the proxy server.
+ *
+ * @property {string} id - Disconnected user socket ID.
+ * @property {import('socket.io').DisconnectReason} reason - Reason provided by Socket.IO.
+ * @property {any} desc - Additional description or error object.
  */
 
 /**
  * @typedef {Object} ProxyUserConnectionUpdated
- * @property {string} id
- * @property {ProxyUserConnection} changes
+ * Represents a diff patch of updated user connection data.
+ *
+ * @property {string} id - User socket ID.
+ * @property {ProxyUserConnection} changes - Only changed fields.
  */
 
 /**
  * @typedef {Object} ProxyUserConnection
- * Represents all serializable data of a connected user socket,
- * sent to the proxy server to allow full remote interaction and inspection.
+ * Represents all serializable data of a connected socket.
+ * This object is transmitted to the proxy server so it can simulate
+ * remote access to all user details without having direct access to the runtime socket.
  *
- * @property {string} id - Socket unique identifier.
+ * This enables:
+ * - fully remote introspection
+ * - remote user operations
+ * - remote room joins/leaves
+ * - remote event emission
  *
- * @property {string[]} rooms - List of rooms the socket is part of.
+ * @property {string} id - Unique socket identifier.
  *
+ * @property {string[]} rooms - All rooms the socket currently belongs to.
  *
- * @property {Object} handshake - Full handshake information.
- * @property {string} handshake.address - IP address of the connected client.
- * @property {Object.<string, any>} handshake.headers - Client HTTP headers.
- * @property {Object.<string, any>} handshake.query - URL query parameters.
- * @property {string} handshake.time - Human-readable time string.
- * @property {boolean} handshake.secure - Whether the connection is secured (HTTPS/WSS).
- * @property {boolean} handshake.xdomain - Whether the connection comes from a different domain.
- * @property {number} handshake.issued - Timestamp of when the handshake was generated.
+ * @property {Object} handshake - Full handshake information sent by the client.
+ * @property {string} handshake.address - Client IP address.
+ * @property {Object.<string, any>} handshake.headers - HTTP headers from the client request.
+ * @property {Object.<string, any>} handshake.query - Incoming connection query-string params.
+ * @property {string} handshake.time - Connection timestamp.
+ * @property {boolean} handshake.secure - Whether the handshake occurred over HTTPS/WSS.
+ * @property {boolean} handshake.xdomain - Whether the request originated from another domain.
+ * @property {number} handshake.issued - Unix timestamp for handshake issuance.
  * @property {string} handshake.url - Full request URL.
  *
- * @property {Object} engine - Engine.IO internal details (safe subset).
- * @property {string} engine.readyState - Current ready state of the Engine.IO connection.
- * @property {string} engine.transport - Current Engine.IO transport name.
+ * @property {Object} engine - Safe subset of Engine.IO internal metadata.
+ * @property {string} engine.readyState - Engine.IO connection state.
+ * @property {string} engine.transport - Current transport ("polling" or "websocket").
  * @property {number} engine.protocol - Engine.IO protocol version.
  *
- * @property {string} namespace - Namespace to which the client is connected.
+ * @property {string} namespace - Namespace the client is connected to.
  */
 
 /**
  * @typedef {[id: string, ...import('socket.io').Event]} ProxyRequest
  */
 
+/**
+ * SocketIoProxyServer
+ *
+ * This class creates a **remote control layer** on top of a Socket.IO server.
+ *
+ * It exposes:
+ * - A **single authenticated controlling socket** (the operator)
+ * - All connected users with full serializable metadata
+ * - Automatic change detection via diffing
+ * - Remote room operations (join, leave)
+ * - Remote broadcasting
+ * - Remote event emission
+ * - Proxied user events with return-path back to the operator
+ *
+ * It is effectively a "virtualized mirror" of all socket activity,
+ * allowing external systems to observe and interact with real users
+ * without having direct access to the socket server runtime.
+ */
 class SocketIoProxyServer extends EventEmitter {
   #isDestroyed = false;
 
@@ -75,7 +103,12 @@ class SocketIoProxyServer extends EventEmitter {
   /** @type {null|string|number} */
   #auth = null;
 
-  /** @param {null|string|number} value */
+  /**
+   * Sets the authentication value required by the operator client.
+   * Only one socket is allowed to become the proxy operator.
+   *
+   * @param {null|string|number} value - Authentication secret.
+   */
   set auth(value) {
     if (typeof value !== 'string' && typeof value !== 'number' && value !== null)
       throw new Error('Invalid Server Auth!');
@@ -85,7 +118,13 @@ class SocketIoProxyServer extends EventEmitter {
   /** @type {null|number} */
   #connTimeout = null;
 
-  /** @param {null|number} value */
+  /**
+   * Sets the maximum allowed time (ms) before a newly connected socket
+   * must authenticate as the proxy operator.
+   * If authentication does not occur in time, the socket is forcibly disconnected.
+   *
+   * @param {null|number} value
+   */
   set connTimeout(value) {
     if (typeof value !== 'number' && value !== null) throw new Error('Invalid connection timeout!');
     this.#connTimeout = value;
@@ -97,7 +136,12 @@ class SocketIoProxyServer extends EventEmitter {
   }
 
   /**
-   * Extracts all relevant, serializable Socket.IO data.
+   * Extracts all safe, serializable information from a Socket.IO socket instance.
+   * Used for:
+   * - initial connection sync
+   * - remote inspection
+   * - diff computation
+   *
    * @param {import('socket.io').Socket} socket
    * @returns {ProxyUserConnection}
    */
@@ -133,13 +177,14 @@ class SocketIoProxyServer extends EventEmitter {
   }
 
   /**
-   * Returns the diff between two objects.
+   * Computes a deep diff between two ProxyUserConnection objects.
+   * Only returns changed fields, keeping full structure where needed.
+   *
    * @param {ProxyUserConnection} oldData
    * @param {ProxyUserConnection} newData
-   * @returns {ProxyUserConnection|null}
+   * @returns {ProxyUserConnection|null} - Diff or null if nothing changed.
    */
   #diff(oldData, newData) {
-    /** @type {ProxyUserConnection} */
     const diff = oldData;
     let hasChanges = false;
 
@@ -160,9 +205,16 @@ class SocketIoProxyServer extends EventEmitter {
   }
 
   /**
+   * Emits an update event and sends delta-changes to the proxy operator.
+   * Triggered when:
+   * - user joins/leaves room
+   * - connection upgrades
+   * - transport changes
+   * - handshake changes
+   *
    * @param {import('socket.io').Socket} socket
-   * @param {string} type
-   * @param {string|null} [room]
+   * @param {string} type - Update category.
+   * @param {string|null} [room] - Room affected (if any).
    */
   #emitUpdate(socket, type, room) {
     if (!this.#socket) return;
@@ -176,18 +228,14 @@ class SocketIoProxyServer extends EventEmitter {
     this.#socketStates.set(socket.id, current);
 
     /** @type {ProxyUserConnectionUpdated} */
-    const result = {
-      id: socket.id,
-      changes,
-    };
+    const result = { id: socket.id, changes };
 
     this.emit(`user-update`, socket, type, room);
     this.#socket.emit('PROXY_USER_UPDATE', result, type, room);
   }
 
   /**
-   * Sends a fully detailed user socket info to the proxy server.
-   * This includes every serializable property that may be useful for a remote proxy.
+   * Sends full state for a newly connected user to the operator.
    * @param {import('socket.io').Socket} socket
    */
   #sendNewUser(socket) {
@@ -203,13 +251,25 @@ class SocketIoProxyServer extends EventEmitter {
   /** @type {Map<string, ProxyUserConnection>} */
   #socketStates = new Map();
 
-  /** @returns {Record<string, import('socket.io').Socket>} */
+  /**
+   * Returns an object representation of all active sockets.
+   * Key = socket.id
+   * Value = socket instance
+   *
+   * @returns {Record<string, import('socket.io').Socket>}
+   */
   get sockets() {
     return Object.fromEntries(this.#sockets);
   }
 
   /**
-   * @param {string} where
+   * Hooks into the adapter layer of a specific namespace, allowing detection of:
+   * - join-room
+   * - leave-room
+   *
+   * This ensures room-level changes emit diffs to the proxy operator.
+   *
+   * @param {string} where - Namespace path.
    */
   listenAdapter(where) {
     if (!this.#server) throw new Error('No server detected!');
@@ -231,20 +291,21 @@ class SocketIoProxyServer extends EventEmitter {
   }
 
   /**
-   * @param {import('socket.io').ServerOptions} proxyCfg
-   * @param {Object} [rlCfg]
-   * @param {number} [rlCfg.maxHits=3]
-   * @param {number} [rlCfg.interval=1000]
-   * @param {number} [rlCfg.cleanupInterval=60000]
+   * Creates a full Socket.IO proxy server instance.
+   *
+   * @param {import('socket.io').ServerOptions} proxyCfg - Socket.IO server config.
+   * @param {Object} [rlCfg] - Rate limiter settings.
+   * @param {number} [rlCfg.maxHits=3] - Maximum hits before blocking.
+   * @param {number} [rlCfg.interval=1000] - Rate limiter interval.
+   * @param {number} [rlCfg.cleanupInterval=60000] - Cleanup frequency.
    */
   constructor(proxyCfg, { maxHits = 3, interval = 1000, cleanupInterval = 60000 } = {}) {
     super();
     this.#server = new Server(proxyCfg);
 
-    // RateLimit
     const authRl = new TinyRateLimiter({ maxHits, interval, cleanupInterval });
 
-    // Handle user connections
+    // ---- Main connection logic ----
     this.#server.on('connection', (userSocket) => {
       // Data
       /** 
@@ -259,7 +320,7 @@ class SocketIoProxyServer extends EventEmitter {
       userSocket.data = dataProxy;
       */
 
-      // Send socket data
+      // Set socket data
       this.#sockets.set(userSocket.id, userSocket);
       this.#sendNewUser(userSocket);
       // Start connection
@@ -280,20 +341,21 @@ class SocketIoProxyServer extends EventEmitter {
         timeoutConnection = null;
       };
 
-      // Transport
+      // Transport upgrade
       userSocket.conn.on('upgrade', () => {
         this.#emitUpdate(userSocket, 'upgrade');
       });
 
-      // Ready State
+      // Closed transport
       userSocket.conn.on('close', () => {
         this.#emitUpdate(userSocket, 'close');
       });
 
+      // Pre-registered event handlers map
       /** @type {Map<string, (...args: any) => void>} */
       const events = new Map();
 
-      // Auth
+      // ---- Authentication event ----
       events.set(
         'AUTH_PROXY',
         (/** @type {string} */ auth, /** @type {(arg: any) => void} */ fn) => {
@@ -312,13 +374,16 @@ class SocketIoProxyServer extends EventEmitter {
 
           this.#socket = userSocket;
           this.emit('server-connection', userSocket);
+
           removeTimeout();
           fn(!!this.#socket);
+
+          // Send state of all existing users
           this.#sockets.forEach((socket) => this.#sendNewUser(socket));
         },
       );
 
-      // User disconnect
+      // ---- Remote user disconnect ----
       events.set('DISCONNECT_PROXY_USER', (...args) => {
         if (
           this.#socket?.id !== userSocket.id ||
@@ -327,13 +392,14 @@ class SocketIoProxyServer extends EventEmitter {
           typeof args[0].close !== 'boolean'
         )
           return;
+
         const socket = this.#sockets.get(args[0].id);
         if (!socket) return;
         removeTimeout();
         socket.disconnect(args[0].close);
       });
 
-      // Join
+      // ---- Remote join room ----
       events.set(
         'PROXY_USER_JOIN',
         (
@@ -348,7 +414,7 @@ class SocketIoProxyServer extends EventEmitter {
         },
       );
 
-      // Leave
+      // ---- Remote leave room ----
       events.set(
         'PROXY_USER_LEAVE',
         (
@@ -363,23 +429,26 @@ class SocketIoProxyServer extends EventEmitter {
         },
       );
 
+      // ---- Remote broadcast from specific user ----
       events.set('PROXY_USER_BROADCAST_OPERATOR', (id, room, eventName, ...args) => {
         const socket = this.#sockets.get(id);
         if (!socket) return args[args.length - 1]();
         socket.to(room).emit(eventName, ...args);
       });
 
+      // ---- Remote broadcast from proxy server ----
       events.set('PROXY_BROADCAST_OPERATOR', (room, eventName, ...args) => {
         if (this.#server) this.#server.to(room).emit(eventName, ...args);
       });
 
+      // ---- Remote emit directly to user ----
       events.set('PROXY_EMIT', (id, eventName, ...args) => {
         const socket = this.#sockets.get(id);
         if (!socket) return args[args.length - 1]();
         socket.emit(eventName, ...args);
       });
 
-      // Events
+      // ---- Generic user events ----
       userSocket.onAny((eventName, ...args) => {
         this.emit('user-event', userSocket, eventName, [...args]);
 
@@ -394,7 +463,6 @@ class SocketIoProxyServer extends EventEmitter {
           return;
         }
 
-        // Send request
         removeTimeout();
 
         /** @type {ProxyRequest} */
@@ -402,26 +470,33 @@ class SocketIoProxyServer extends EventEmitter {
         this.#socket.emit('PROXY_REQUEST', ...data);
       });
 
-      // Disconnect
+      // ---- On disconnect ----
       userSocket.on('disconnect', (reason, desc) => {
         this.#sockets.delete(userSocket.id);
         this.#socketStates.delete(userSocket.id);
+
         if (this.#socket) {
           /** @type {ProxyUserDisconnect} */
           const data = { id: userSocket.id, reason, desc };
           this.#socket.emit('PROXY_USER_DISCONNECT', data);
         }
+
         if (this.#socket?.id === userSocket.id) {
           this.#socket = null;
           this.emit('server-disconnect', userSocket);
           return;
         }
+
         this.emit('disconnect', userSocket);
         removeTimeout();
       });
     });
   }
 
+  /**
+   * Fully destroys the proxy server, closing the Socket.IO instance
+   * and clearing all tracked state from memory.
+   */
   destroy() {
     this.#server?.close();
     this.#server?.removeAllListeners();

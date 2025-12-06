@@ -5,164 +5,135 @@ import fixProxyArgs from './proxyArgs.mjs';
 
 /** @typedef {import('../tiny-chat-proxy/proxy.mjs').ProxyUserConnection} ProxyUserConnection */
 
+/**
+ * Represents a proxied Socket.IO user inside the architecture.
+ *
+ * This class mirrors a remote user connection received from the proxy layer and exposes
+ * an API very similar to a regular Socket.IO `Socket` instance, but all actions
+ * (emit, join, leave, broadcast, disconnect) are routed through the proxy operator.
+ *
+ * The purpose of this class is:
+ * - Keep an internal synchronized representation of the remote user's socket
+ * - Provide a safe and validated interface for broadcasting events or modifying the user's state
+ * - Emit local events notifying about remote room-joins, room-leaves, and metadata updates
+ *
+ * Internally, the class maintains snapshots of:
+ * - Rooms
+ * - Handshake data
+ * - Transport and Engine.IO details
+ * - Namespace information
+ *
+ * These are updated whenever the proxy sends new data.
+ */
 class SocketIoProxyUser extends EventEmitter {
-  /** @type {EventEmitter} */
+  /** @type {EventEmitter} Internal event emitter for per-user system events */
   #userConn = new EventEmitter();
 
-  /** @returns {EventEmitter} */
+  /** @returns {EventEmitter} Exposes internal user event stream */
   get userConn() {
     return this.#userConn;
   }
 
-  /** @type {Record<string|number|symbol, any>} */
+  /** @type {Record<string|number|symbol, any>} Arbitrary metadata container */
   #data = {};
 
-  /** @returns {Record<string|number|symbol, any>} */
+  /** @returns {Record<string|number|symbol, any>} Returns stored custom metadata */
   get data() {
     return this.#data;
   }
 
-  /** @param {Record<string|number|symbol, any>} value */
+  /**
+   * Overwrites metadata with a new JSON-compatible object.
+   * @param {Record<string|number|symbol, any>} value
+   */
   set data(value) {
     if (!isJsonObject(value)) throw new Error('Invalid data object type!');
     this.#data = value;
   }
 
-  #allowOnAny = false;
-
-  /** @returns {boolean} */
-  get allowOnAny() {
-    return this.#allowOnAny;
-  }
-
-  /** @param {boolean} value */
-  set allowOnAny(value) {
-    if (typeof value !== 'boolean') throw new Error('Invalid allowOnAny value!');
-    this.#allowOnAny = true;
-  }
-
+  /** @type {boolean} Connection state tracking */
   #connected = true;
   #disconnected = false;
 
   /**
-   * Socket unique identifier.
+   * Remote socket identifier provided by the proxy.
    * @type {string}
    */
   #id = '';
 
   /**
-   * Rooms this client belongs to
+   * Set of rooms the proxied user belongs to.
    * @type {Set<string>}
    */
   #rooms = new Set();
 
   /**
-   * Engine.IO internal details (safe subset).
+   * Engine.IO transport details (safe subset).
    */
   #conn = {
     /**
      *  Current transport used by the client
      */
     transport: {
-      /**
-       * Current Engine.IO transport name.
-       * @type {string}
-       */
+      /** @type {string} Current transport being used */
       name: '',
     },
-
-    /**
-     * Current ready state of the Engine.IO connection.
-     * @type {string}
-     */
+    /** @type {string} Current readyState of the transport */
     readyState: '',
-
-    /**
-     * Engine.IO protocol version.
-     * @type {number}
-     */
+    /** @type {number} Engine.IO protocol version */
     protocol: NaN,
   };
 
   /**
-   * Full handshake information.
+   * Handshake information mirrored from the proxy.
    */
   #handshake = {
-    /**
-     * Client HTTP headers.
-     * @type {Object.<string, string>}
-     */
+    /** @type {Object.<string, string>} Request headers */
     headers: {},
-
-    /**
-     * URL query parameters.
-     * @type {Object.<string, any>}
-     */
+    /** @type {Object.<string, any>} Query parameters */
     query: {},
-
-    /**
-     * Human-readable time string.
-     * @type {string}
-     */
+    /** @type {string} Human-readable connection time */
     time: '',
-
-    /**
-     * Whether the connection is secured (HTTPS/WSS).
-     * @type {boolean}
-     */
+    /** @type {boolean} Whether the connection is secure */
     secure: false,
-
-    /**
-     * Whether the connection comes from a different domain.
-     * @type {boolean}
-     */
+    /** @type {boolean} Whether the client is from another domain */
     xdomain: false,
-
-    /**
-     * Timestamp of when the handshake was generated.
-     * @type {number}
-     */
+    /** @type {number} Timestamp of handshake issuance */
     issued: NaN,
-
-    /**
-     * Full request URL.
-     * @type {string}
-     */
+    /** @type {string} Full request URL */
     url: '',
-
-    /**
-     * IP address of the connected client.
-     * @type {string}
-     */
+    /** @type {string} Client IP address */
     address: '',
   };
 
-  /**  Direct IP address seen by the server */
+  /**
+   * Namespace information of the proxied user.
+   */
   #nsp = {
-    /**
-     * Namespace to which the client is connected.
-     * @type {string}
-     */
+    /** @type {string} Namespace name */
     name: '',
   };
 
-  /** @returns {string} */
+  /**
+   * Returns a proxy-adjusted unique id (local socket id + remote id).
+   * @returns {string}
+   */
   get id() {
     return `${this.#socket.id}_PROXY_${this.#id}`;
   }
 
-  /** @returns {boolean} */
+  /** @returns {boolean} Whether the proxied user is currently connected */
   get connected() {
     return this.#connected;
   }
 
-  /** @returns {boolean} */
+  /** @returns {boolean} Whether the proxied user is permanently disconnected */
   get disconnected() {
     return this.#disconnected;
   }
 
   /**
-   * Returns a cloned array of rooms this client belongs to.
+   * Returns a cloned list of rooms.
    * @returns {string[]}
    */
   get rooms() {
@@ -170,7 +141,7 @@ class SocketIoProxyUser extends EventEmitter {
   }
 
   /**
-   * Returns a deep-cloned snapshot of the Engine.IO connection details.
+   * Returns a deep clone of Engine.IO connection details.
    * @returns {{
    *  transport: { name: string },
    *  readyState: string,
@@ -182,7 +153,7 @@ class SocketIoProxyUser extends EventEmitter {
   }
 
   /**
-   * Returns a deep-cloned snapshot of the socket handshake information.
+   * Returns a deep clone of handshake information.
    * @returns {{
    *   headers: Object.<string, string>,
    *   query: Object.<string, any>,
@@ -199,20 +170,22 @@ class SocketIoProxyUser extends EventEmitter {
   }
 
   /**
-   * Returns a cloned value of the namespace information.
+   * Returns a cloned namespace information object.
    * @returns {{ name: string }}
    */
   get nsp() {
     return structuredClone(this.#nsp);
   }
 
-  /** @type {import('socket.io-client').Socket} */
+  /** @type {import('socket.io-client').Socket} Underlying Socket.IO client used to send proxy commands */
   #socket;
 
   /**
-   * @param {ProxyUserConnection} socketInfo
-   *  @param {string}  [type]
-   *  @param {string|null} [room]
+   * Updates internal proxy user state and optionally emits a change event.
+   *
+   * @param {ProxyUserConnection} socketInfo Remote user state snapshot
+   * @param {string} [type] Optional event type to emit (e.g., "join", "leave")
+   * @param {string|null} [room] Room related to the update, if applicable
    */
   _updateData(socketInfo, type, room) {
     this.#id = socketInfo.id;
@@ -237,8 +210,10 @@ class SocketIoProxyUser extends EventEmitter {
   }
 
   /**
-   * @param {ProxyUserConnection} socketInfo
-   * @param {import('socket.io-client').Socket} socket
+   * Creates a new proxied user instance.
+   *
+   * @param {ProxyUserConnection} socketInfo Initial remote state snapshot
+   * @param {import('socket.io-client').Socket} socket Client-side operator socket
    */
   constructor(socketInfo, socket) {
     super();
@@ -247,12 +222,20 @@ class SocketIoProxyUser extends EventEmitter {
   }
 
   /**
-   * @param {string|string[]} room
+   * Broadcasts an event to one or more rooms on behalf of the proxied user.
+   *
+   * This does NOT emit locally — it sends a command to the proxy.
+   *
+   * @param {string|string[]} room Target room(s)
    */
   to(room) {
     return {
       /**
-       * @type {(eventName: string, ...args: any) => import('socket.io-client').Socket} args
+       * Emits a broadcast event to specified rooms through the proxy engine.
+       *
+       * @param {string} eventName
+       * @param {...any} args
+       * @returns {import('socket.io-client').Socket}
        */
       emit: (eventName, ...args) =>
         this.#socket.emit(
@@ -263,6 +246,7 @@ class SocketIoProxyUser extends EventEmitter {
   }
 
   /**
+   * Emits a local event inside the proxy-user instance.
    * @param {string|symbol} eventName
    * @param {...any} args
    */
@@ -271,14 +255,21 @@ class SocketIoProxyUser extends EventEmitter {
   }
 
   /**
+   * Emits an event to the proxied user's remote socket.
+   *
+   * This does NOT emit locally — it sends a proxy-level `PROXY_EMIT`.
+   *
    * @param {string|symbol} eventName
    * @param {...any} args
+   * @returns {boolean} Whether the emit command was accepted
    */
   emit(eventName, ...args) {
     return !!this.#socket.emit('PROXY_EMIT', ...fixProxyArgs([this.#id, eventName, ...args]));
   }
 
   /**
+   * Requests the remote user to join a room through the proxy.
+   *
    * @param {string} room
    * @returns {Promise<boolean>}
    */
@@ -293,6 +284,8 @@ class SocketIoProxyUser extends EventEmitter {
   }
 
   /**
+   * Requests the remote user to leave a room through the proxy.
+   *
    * @param {string} room
    * @returns {Promise<boolean>}
    */
@@ -306,6 +299,10 @@ class SocketIoProxyUser extends EventEmitter {
     });
   }
 
+  /**
+   * Marks the proxied user as disconnected and clears local state.
+   * Internal use only.
+   */
   _disconnect() {
     if (this.#disconnected) return;
     this.removeAllListeners();
@@ -315,7 +312,9 @@ class SocketIoProxyUser extends EventEmitter {
   }
 
   /**
-   * @param {boolean} [close=false]
+   * Requests the proxy to disconnect the remote user.
+   *
+   * @param {boolean} [close=false] Whether the underlying engine should also close the session
    * @returns {this}
    */
   disconnect(close = false) {
