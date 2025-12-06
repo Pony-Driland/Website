@@ -19,7 +19,7 @@ class SocketIoProxyClient extends EventEmitter {
   /** @param {boolean} value */
   set debugMode(value) {
     if (typeof value !== 'boolean') throw new Error('Invalid debug mode value!');
-    this.#debugMode = true;
+    this.#debugMode = value;
   }
 
   #allowOnAny = false;
@@ -131,7 +131,6 @@ class SocketIoProxyClient extends EventEmitter {
     this.#client.on('PROXY_USER_CONNECTION', (/** @type {ProxyUserConnection} */ socketInfo) => {
       if (this.#debugMode) console.log('PROXY_USER_CONNECTION', socketInfo);
       const socket = new SocketIoProxyUser(socketInfo, this.#client);
-      this.debugMode = this.#debugMode;
       socket.allowOnAny = this.#allowOnAny;
       this.#sockets.set(socketInfo.id, socket);
       this.emit('connection', socket);

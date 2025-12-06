@@ -1,4 +1,3 @@
-import { TinyPromiseQueue } from 'tiny-essentials';
 import SocketIoProxyUser from './proxyUser.mjs';
 
 /**
@@ -28,29 +27,26 @@ import SocketIoProxyUser from './proxyUser.mjs';
  * @param {import('socket.io').Socket} io
  * @param {import('./proxy.mjs').default|null} proxy
  * @param {ProxyOnConnection} callback
- * @returns {TinyPromiseQueue}
  */
 const proxyOnConnection = (io, proxy, callback) => {
-  const queue = new TinyPromiseQueue();
-
   // Server Side
   io.on('connection', (socket) =>
     callback({
       // Socket
       socket,
       // IO To
-      emitTo: async (roomId, eventName, data) => {
-        await queue.enqueue(async () => io.to(roomId).emit(eventName, data));
-        if (proxy) await queue.enqueue(async () => proxy.to(roomId).emit(eventName, data));
+      emitTo: (roomId, eventName, data) => {
+        io.to(roomId).emit(eventName, data);
+        if (proxy) proxy.to(roomId).emit(eventName, data);
       },
       // Socket To
-      socketTo: async (roomId, eventName, data) => {
-        await queue.enqueue(async () => socket.to(roomId).emit(eventName, data));
-        if (proxy) await queue.enqueue(async () => proxy.to(roomId).emit(eventName, data));
+      socketTo: (roomId, eventName, data) => {
+        socket.to(roomId).emit(eventName, data);
+        if (proxy) proxy.to(roomId).emit(eventName, data);
       },
       // Socket Emit
-      socketEmit: async (eventName, ...args) => {
-        await queue.enqueue(async () => socket.emit(eventName, ...args));
+      socketEmit: (eventName, ...args) => {
+        socket.emit(eventName, ...args);
       },
       // isProxy
       isProxy: false,
@@ -65,25 +61,23 @@ const proxyOnConnection = (io, proxy, callback) => {
         // @ts-ignore
         socket,
         // IO To
-        emitTo: async (roomId, eventName, data) => {
-          await queue.enqueue(async () => io.to(roomId).emit(eventName, data));
-          await queue.enqueue(async () => proxy.to(roomId).emit(eventName, data));
+        emitTo: (roomId, eventName, data) => {
+          io.to(roomId).emit(eventName, data);
+          proxy.to(roomId).emit(eventName, data);
         },
         // Socket To
-        socketTo: async (roomId, eventName, data) => {
-          await queue.enqueue(async () => socket.to(roomId).emit(eventName, data));
-          await queue.enqueue(async () => io.to(roomId).emit(eventName, data));
+        socketTo: (roomId, eventName, data) => {
+          socket.to(roomId).emit(eventName, data);
+          io.to(roomId).emit(eventName, data);
         },
         // Socket Emit
-        socketEmit: async (eventName, ...args) => {
-          await queue.enqueue(async () => socket.emit(eventName, ...args));
+        socketEmit: (eventName, ...args) => {
+          socket.emit(eventName, ...args);
         },
         // isProxy
         isProxy: true,
       }),
     );
-
-  return queue;
 };
 
 export default proxyOnConnection;
