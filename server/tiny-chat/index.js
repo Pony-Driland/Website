@@ -1,6 +1,6 @@
 import { Server } from 'socket.io';
-import SocketIoProxyClient from './proxy.mjs';
-import proxyOnConnection from './proxyOnConnection.mjs';
+import SocketIoProxyClient from 'tiny-server-essentials/proxy/client';
+import proxyOnConnection from 'tiny-server-essentials/proxy/client/onConnection';
 
 import startFiles from './appStorage';
 
