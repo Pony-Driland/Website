@@ -131,7 +131,6 @@ class SocketIoProxyClient extends EventEmitter {
     this.#client.on('PROXY_USER_CONNECTION', (/** @type {ProxyUserConnection} */ socketInfo) => {
       if (this.#debugMode) console.log('PROXY_USER_CONNECTION', socketInfo);
       const socket = new SocketIoProxyUser(socketInfo, this.#client);
-      socket.allowOnAny = this.#allowOnAny;
       this.#sockets.set(socketInfo.id, socket);
       this.emit('connection', socket);
     });
