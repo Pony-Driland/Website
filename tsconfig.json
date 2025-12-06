@@ -18,11 +18,7 @@
         "src/modules", 
         "src/account", 
         "src/files/tinyLib.mjs",
-        "build/TinyBuilder",
-        "server/tiny-chat-proxy/proxy.mjs",
-        "server/tiny-chat/proxy.mjs",
-        "server/tiny-chat/proxyOnConnection.mjs",
-        "server/tiny-chat/proxyUser.mjs",
+        "build/TinyBuilder"
     ],
     "exclude": ["node_modules"]
 }

@@ -7728,11 +7728,6 @@ tiny-dices@^1.1.0:
   dependencies:
     tiny-essentials "^1.24.0"
 
-tiny-essentials@^1.22.1:
-  version "1.23.2"
-  resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.23.2.tgz#d95d791d44ac5dac6d4b96318d6eb97156a7fd32"
-  integrity sha512-8cdf0buWlT5sVyv0DpXvfJK4auwzpzbtdG5S8FhL75j5XiAaFBFV+NtskRwyzltCY4miyMybvblY7gXF83bA/g==
-
 tiny-essentials@^1.24.0:
   version "1.24.0"
   resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.24.0.tgz#4576de85a20c89ab5d3c173dee110d81ff261055"
@@ -7748,17 +7743,18 @@ tiny-essentials@^1.24.5:
   resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.24.5.tgz#76132adf833a73655dc49eaded4b68bc4f15cffb"
   integrity sha512-exikhxkAoKv226kXf9ILToBuWnYajZR/QBCoxqreS/m5xjQbE0DpdyB9OSC/sy5FQrmEcuka/J309Y/sn2SRZg==
 
-tiny-server-essentials@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/tiny-server-essentials/-/tiny-server-essentials-1.0.4.tgz#72e489f45c0a037cd94e66cfd1f56c0c131bf50d"
-  integrity sha512-ebdvZqaS56UnWWQRSNzdGEaa+tkrWdC4pYaHRJQyWlut8ImKKham8smkJoo7FTehEm/rae8Xym6nCEXzIaEZPQ==
+tiny-server-essentials@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/tiny-server-essentials/-/tiny-server-essentials-1.1.0.tgz#c1b50d3210cca0a63acef04fbe5c0e250ccd0f6c"
+  integrity sha512-+Z3cHhxS2UjWxVDTYt1LBeOv6dGExa5WGI6jUsXq5wbgDI0dKAC6IAen11sHTgj7uiDu3IMDd17EF/cNNGOuUw==
   dependencies:
     "@types/express" "^5.0.1"
     "@types/http-errors" "^2.0.4"
     express "^5.1.0"
     http-errors "^2.0.0"
     socket.io "^4.8.1"
-    tiny-essentials "^1.22.1"
+    socket.io-client "^4.8.1"
+    tiny-essentials "^1.24.3"
 
 tippy.js@^6.3.7:
   version "6.3.7"
