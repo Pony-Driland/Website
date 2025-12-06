@@ -266,12 +266,14 @@ Removes a user from a room without banning them, allowing them to rejoin later.
 - **Success**:
   ```json
   {
+    "userId": "string",
     "success": true
   }
   ```
 - **Error**:
   ```json
   {
+    "userId": "string",
     "error": true,
     "msg": "Error message",
     "code": <error_code>

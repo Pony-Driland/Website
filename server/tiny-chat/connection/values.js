@@ -1,6 +1,10 @@
 import crypto from 'crypto';
 import { isJsonObject } from 'tiny-essentials/basics';
+import TinyPromiseQueue from 'tiny-essentials/libs/TinyPromiseQueue';
 import db from './sql';
+
+const AsyncFunction = (async () => {}).constructor;
+export const roomQueue = new TinyPromiseQueue();
 
 export const userSockets = new Map(); // Socket users
 
@@ -255,7 +259,7 @@ export const getJoinData = (socket) => {
   return { nickname, ping: pingNow };
 };
 
-export const joinRoom = (socket, emitTo, roomId, fn) => {
+export const joinRoom = async (socket, emitTo, roomId, fn) => {
   if (socket) {
     // Get data
     const userId = userSession.getUserId(socket);
@@ -268,7 +272,11 @@ export const joinRoom = (socket, emitTo, roomId, fn) => {
       roomUsers.get(roomId).set(userId, joinData);
 
       // Notify room members about the new user (excluding the user who just joined)
-      socket.join(roomId);
+      await roomQueue.enqueue(() =>
+        socket.join instanceof AsyncFunction
+          ? socket.join(roomId)
+          : new Promise((resolve) => resolve(socket.join(roomId))),
+      );
 
       userSession.addRoom(socket, roomId);
       const socketData = { roomId, userId, nickname: joinData.nickname, ping: joinData.ping };
@@ -282,7 +290,7 @@ export const joinRoom = (socket, emitTo, roomId, fn) => {
 };
 
 // Leave room
-export const leaveRoom = (socket, emitTo, roomId, fn) => {
+export const leaveRoom = async (socket, emitTo, roomId, fn) => {
   if (socket) {
     // Get data
     const userId = userSession.getUserId(socket);
@@ -298,7 +306,11 @@ export const leaveRoom = (socket, emitTo, roomId, fn) => {
         // Remove the user from their room
         room.delete(userId);
         emitTo(roomId, 'user-left', { roomId, nickname, userId });
-        socket.leave(roomId);
+        await roomQueue.enqueue(() =>
+          socket.leave instanceof AsyncFunction
+            ? socket.leave(roomId)
+            : new Promise((resolve) => resolve(socket.leave(roomId))),
+        );
         userSession.removeRoom(socket, roomId);
         // Complete
         if (fn) fn({ success: true });

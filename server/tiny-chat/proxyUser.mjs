@@ -266,9 +266,33 @@ class SocketIoProxyUser extends EventEmitter {
     return true;
   }
 
-  join() {}
+  /**
+   * @param {string} room
+   * @returns {Promise<boolean>}
+   */
+  join(room) {
+    return new Promise((resolve) => {
+      this.#socket.emit(
+        'PROXY_USER_JOIN',
+        { id: this.#id, room },
+        (/** @type {boolean} */ result) => resolve(typeof result === 'boolean' ? result : false),
+      );
+    });
+  }
 
-  leave() {}
+  /**
+   * @param {string} room
+   * @returns {Promise<boolean>}
+   */
+  leave(room) {
+    return new Promise((resolve) => {
+      this.#socket.emit(
+        'PROXY_USER_LEAVE',
+        { id: this.#id, room },
+        (/** @type {boolean} */ result) => resolve(typeof result === 'boolean' ? result : false),
+      );
+    });
+  }
 
   _disconnect() {
     if (this.#disconnected) return;

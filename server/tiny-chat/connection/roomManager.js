@@ -102,6 +102,7 @@ export default function roomManager(socket, emitTo, socketTo) {
     const roomModerators = db.getTable('roomModerators');
     const privateRoomData = db.getTable('privateRoomData');
     const roomData = db.getTable('roomData');
+
     socket.emit('room-entered', {
       roomId,
       users,
@@ -115,10 +116,10 @@ export default function roomManager(socket, emitTo, socketTo) {
     });
 
     // Complete
-    joinRoom(socket, emitTo, roomId, fn);
+    await joinRoom(socket, emitTo, roomId, fn);
   });
 
-  socket.on('leave', (data, fn) => {
+  socket.on('leave', async (data, fn) => {
     if (noDataInfo(data, fn)) return;
     const { roomId } = data;
     // Validate values
@@ -129,7 +130,7 @@ export default function roomManager(socket, emitTo, socketTo) {
     if (!userId) return accountNotDetected(fn);
 
     // Execute leave
-    const leaveStatus = leaveRoom(socket, emitTo, roomId);
+    const leaveStatus = await leaveRoom(socket, emitTo, roomId);
     if (!leaveStatus.success) {
       if (leaveStatus.code === 1) {
         fn({ error: true, msg: 'No Room users.', roomId, code: 1 });
@@ -195,7 +196,7 @@ export default function roomManager(socket, emitTo, socketTo) {
 
     // Remove the user from their room
     emitTo(roomId, 'user-banned', { roomId, userId });
-    leaveRoom(userSockets.get(userId), emitTo, roomId);
+    await leaveRoom(userSockets.get(userId), emitTo, roomId);
 
     // User ban successfully.
     fn({ success: true });
@@ -296,31 +297,37 @@ export default function roomManager(socket, emitTo, socketTo) {
 
     // Remove the user from their room
     const kickResults = { success: true, data: [] };
+    const kickPromises = [];
     for (const userId of userIds) {
-      const kickResult = {};
+      const kickResult = { userId };
       if (userId !== room.ownerId && userId !== getIniConfig('OWNER_ID')) {
-        const kickStatus = leaveRoom(userSockets.get(userId), emitTo, roomId);
-        if (!kickStatus.success) {
-          if (kickStatus.code === 2) {
-            kickResult.code = 2;
-            kickResult.error = true;
-            kickResult.msg = 'User not found.';
-          } else if (kickStatus.code === 3) {
-            kickResult.code = 3;
-            kickResult.error = true;
-            kickResult.msg = 'Invalid data.';
+        const theKick = leaveRoom(userSockets.get(userId), emitTo, roomId);
+        theKick.then((kickStatus) => {
+          if (!kickStatus.success) {
+            if (kickStatus.code === 2) {
+              kickResult.code = 2;
+              kickResult.error = true;
+              kickResult.msg = 'User not found.';
+            } else if (kickStatus.code === 3) {
+              kickResult.code = 3;
+              kickResult.error = true;
+              kickResult.msg = 'Invalid data.';
+            }
+          } else {
+            kickResult.success = true;
+            emitTo(roomId, 'user-kicked', { roomId, userId });
           }
-        } else {
-          kickResult.success = true;
-          emitTo(roomId, 'user-kicked', { roomId, userId });
-        }
+          kickResults.data.push(kickResult);
+        });
+        kickPromises.push(theKick);
       } else {
         kickResult.code = 4;
         kickResult.error = true;
         kickResult.msg = 'You are not allowed to do this.';
+        kickResults.data.push(kickResult);
       }
-      kickResults.data.push(kickResult);
     }
+    await Promise.all(kickPromises);
 
     // Complete
     fn(kickResults);
@@ -411,9 +418,11 @@ export default function roomManager(socket, emitTo, socketTo) {
 
     // Disconnect user from rooms
     if (rUsers) {
+      const leaves = [];
       rUsers.forEach((userData, tUser) => {
-        leaveRoom(userSockets.get(tUser), emitTo, roomId);
+        leaves.push(leaveRoom(userSockets.get(tUser), emitTo, roomId));
       });
+      await Promise.all(leaves);
       roomUsers.delete(roomId);
     }
 
@@ -561,10 +570,12 @@ export default function roomManager(socket, emitTo, socketTo) {
     await rooms.update(roomId, { disabled: true });
 
     // Disconnect user from rooms
+    const leaves = [];
     rUsers.forEach((userData, tUser) => {
       if (tUser !== getIniConfig('OWNER_ID') && tUser !== room.ownerId)
-        leaveRoom(userSockets.get(tUser), emitTo, roomId);
+        leaves.push(leaveRoom(userSockets.get(tUser), emitTo, roomId));
     });
+    await Promise.all(leaves);
 
     // Room disabled successfully.
     fn({ success: true });
