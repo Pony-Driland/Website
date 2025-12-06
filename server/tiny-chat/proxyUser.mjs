@@ -1,9 +1,24 @@
 import EventEmitter from 'events';
 import { isJsonObject } from 'tiny-essentials';
 
+import fixProxyArgs from './proxyArgs.mjs';
+
 /** @typedef {import('../tiny-chat-proxy/proxy.mjs').ProxyUserConnection} ProxyUserConnection */
 
 class SocketIoProxyUser extends EventEmitter {
+  #debugMode = false;
+
+  /** @returns {boolean} */
+  get debugMode() {
+    return this.#debugMode;
+  }
+
+  /** @param {boolean} value */
+  set debugMode(value) {
+    if (typeof value !== 'boolean') throw new Error('Invalid debug mode value!');
+    this.#debugMode = true;
+  }
+
   /** @type {EventEmitter} */
   #userConn = new EventEmitter();
 
@@ -146,7 +161,7 @@ class SocketIoProxyUser extends EventEmitter {
 
   /** @returns {string} */
   get id() {
-    return this.#id;
+    return `${this.#socket.id}_PROXY_${this.#id}`;
   }
 
   /** @returns {boolean} */
@@ -245,15 +260,18 @@ class SocketIoProxyUser extends EventEmitter {
   }
 
   /**
-   * @param {string|string[]} id
+   * @param {string|string[]} room
    */
-  to(id) {
+  to(room) {
     return {
       /**
        * @type {(eventName: string, ...args: any) => import('socket.io-client').Socket} args
        */
       emit: (eventName, ...args) =>
-        this.#socket.emit('PROXY_BROADCAST_OPERATOR', { id, eventName, args }),
+        this.#socket.emit(
+          'PROXY_USER_BROADCAST_OPERATOR',
+          ...fixProxyArgs([this.#id, room, eventName, ...args]),
+        ),
     };
   }
 
@@ -261,9 +279,16 @@ class SocketIoProxyUser extends EventEmitter {
    * @param {string|symbol} eventName
    * @param {...any} args
    */
+  _emit(eventName, ...args) {
+    return super.emit(eventName, ...args);
+  }
+
+  /**
+   * @param {string|symbol} eventName
+   * @param {...any} args
+   */
   emit(eventName, ...args) {
-    if (eventName === 'disconnect') return super.emit(eventName, ...args);
-    return !!this.#socket.emit('PROXY_RESPONSE', ...[eventName, ...args]);
+    return !!this.#socket.emit('PROXY_EMIT', ...fixProxyArgs([this.#id, eventName, ...args]));
   }
 
   /**

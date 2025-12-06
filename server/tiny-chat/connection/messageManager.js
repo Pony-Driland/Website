@@ -17,7 +17,7 @@ import {
 
 /**
  * @param {import('socket.io-client').Socket} socket
- * @param {import('../index').EmitTo} socketTo
+ * @param {import('../proxyOnConnection.mjs').EmitTo} socketTo
  */
 export default function messageManager(socket, socketTo) {
   socket.on('send-message', async (data, fn) => {
@@ -95,7 +95,7 @@ export default function messageManager(socket, socketTo) {
     const msg = await roomHistories.set(roomId, msgData);
 
     // Emit to the room that the user joined (based on roomId)
-    socketTo(roomId, 'new-message', {
+    await socketTo(roomId, 'new-message', {
       roomId,
       id: msg.historyId,
       userId,
@@ -200,7 +200,7 @@ export default function messageManager(socket, socketTo) {
     };
 
     // Emit the event only to logged-in users in the room
-    socketTo(roomId, 'message-updated', newEvent);
+    await socketTo(roomId, 'message-updated', newEvent);
 
     // Complete
     fn(newEvent);
@@ -263,7 +263,7 @@ export default function messageManager(socket, socketTo) {
     });
 
     // Emit the event only to logged-in users in the room
-    socketTo(roomId, 'message-deleted', { roomId, id: messageId });
+    await socketTo(roomId, 'message-deleted', { roomId, id: messageId });
     fn({ success: true, roomId, id: messageId });
   });
 
@@ -657,7 +657,7 @@ export default function messageManager(socket, socketTo) {
     result.id = diceData.id;
 
     // Complete
-    socketTo(roomId, 'roll-result', result);
+    await socketTo(roomId, 'roll-result', result);
 
     fn({ success: true, results: diceResults, id: diceData.id });
   });

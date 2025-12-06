@@ -21,6 +21,7 @@
         "build/TinyBuilder",
         "server/tiny-chat-proxy/proxy.mjs",
         "server/tiny-chat/proxy.mjs",
+        "server/tiny-chat/proxyOnConnection.mjs",
         "server/tiny-chat/proxyUser.mjs",
     ],
     "exclude": ["node_modules"]

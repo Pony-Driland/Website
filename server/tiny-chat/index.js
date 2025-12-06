@@ -1,5 +1,6 @@
 import { Server } from 'socket.io';
 import SocketIoProxyClient from './proxy.mjs';
+import proxyOnConnection from './proxyOnConnection.mjs';
 
 import startFiles from './appStorage';
 
@@ -8,14 +9,6 @@ import userManager from './connection/userManager';
 import roomManager from './connection/roomManager';
 import { getHashString, getIniConfig } from './connection/values';
 import db from './connection/sql';
-import SocketIoProxyUser from './proxyUser.mjs';
-
-/**
- * @callback EmitTo
- * @param {string} roomId
- * @param {string} eventName
- * @param {any} data
- */
 
 // Start server
 startFiles().then(async (appStorage) => {
@@ -52,36 +45,8 @@ startFiles().then(async (appStorage) => {
     await users.set(ownerData.userId, { password: getHashString(ownerData.password) }, true);
 
   // Socket IO
-
-  /**
-   * @param {import('socket.io-client').Socket} socket
-   * @param {EmitTo} emitTo
-   * @param {EmitTo} socketTo
-   * @param {boolean} isProxy
-   */
-  const onConnection = (socket, emitTo, socketTo, isProxy) => {
-    console.log(
-      `[APP] [${socket.handshake ? socket.handshake.address : '?.?.?.?'}] User connected: ${socket.id}`,
-    );
-    messageManager(socket, socketTo);
-    userManager(socket, emitTo);
-    roomManager(socket, emitTo, socketTo);
-  };
-
   const proxy = proxyAddress ? new SocketIoProxyClient(proxyAddress) : null;
   const io = new Server({ cors: { origin: '*' } });
-  io.on('connection', (socket) =>
-    onConnection(
-      // Socket
-      socket,
-      // IO
-      (roomId, eventName, data) => io.to(roomId).emit(eventName, data),
-      // Socket
-      (roomId, eventName, data) => socket.to(roomId).emit(eventName, data),
-      // isProxy
-      false,
-    ),
-  );
 
   // Proxy
   if (proxy) {
@@ -89,24 +54,19 @@ startFiles().then(async (appStorage) => {
     proxy.on('connect', () => console.log(`[PROXY] [${proxyAddress}] Connected!`));
     proxy.on('disconnect', () => console.log(`[PROXY] [${proxyAddress}] Disconnected!`));
 
-    // User connection
-    proxy.on('connection', (/** @type {SocketIoProxyUser} */ socket) => {
-      console.log(`[PROXY] [connection] [${socket.id}]`, {
-        rooms: socket.rooms,
-        nsp: socket.nsp,
-        conn: socket.conn,
-        handshake: socket.handshake,
-      });
-
-      // Disconnect
-      socket.on('disconnect', (/** @type {string} */ reason, /** @type {any} */ desc) =>
-        console.log(`[PROXY] [disconnect] [${socket.id}] ${reason} ${desc}`),
-      );
-    });
-
     // Connect
     proxy.connect();
   }
+
+  // On connection
+  proxyOnConnection(io, proxy, ({ socket, emitTo, socketTo, socketEmit }) => {
+    console.log(
+      `[APP] [${socket.handshake ? socket.handshake.address : '?.?.?.?'}] User connected: ${socket.id}`,
+    );
+    messageManager(socket, socketTo);
+    userManager(socket, emitTo);
+    roomManager(socket, emitTo, socketTo, socketEmit);
+  });
 
   // Start server
   process.on('SIGINT', async () => {
@@ -117,5 +77,7 @@ startFiles().then(async (appStorage) => {
   });
 
   io.listen(appStorage.config.server.port);
-  console.log(`[APP] Server running on port ${appStorage.config.server.port}`);
+  console.log(
+    `[APP] Server running on port ${appStorage.config.server.port}${proxy ? ` and in the proxy ${proxyAddress}` : ''}`,
+  );
 });

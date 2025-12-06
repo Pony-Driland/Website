@@ -21,10 +21,11 @@ import {
 
 /**
  * @param {import('socket.io-client').Socket} socket
- * @param {import('../index').EmitTo} emitTo
- * @param {import('../index').EmitTo} socketTo
+ * @param {import('../proxyOnConnection.mjs').EmitTo} emitTo
+ * @param {import('../proxyOnConnection.mjs').EmitTo} socketTo
+ * @param {import('../proxyOnConnection.mjs').SocketEmit} socketEmit
  */
-export default function roomManager(socket, emitTo, socketTo) {
+export default function roomManager(socket, emitTo, socketTo, socketEmit) {
   socket.on('exists-room', async (data, fn) => {
     if (noDataInfo(data, fn)) return;
     const { roomId } = data;
@@ -103,7 +104,7 @@ export default function roomManager(socket, emitTo, socketTo) {
     const privateRoomData = db.getTable('privateRoomData');
     const roomData = db.getTable('roomData');
 
-    socket.emit('room-entered', {
+    await socketEmit('room-entered', {
       roomId,
       users,
       mods: (await roomModerators.getAll()) || [],
@@ -195,7 +196,7 @@ export default function roomManager(socket, emitTo, socketTo) {
     await roomBannedUsers.set(roomId, { userId });
 
     // Remove the user from their room
-    emitTo(roomId, 'user-banned', { roomId, userId });
+    await emitTo(roomId, 'user-banned', { roomId, userId });
     await leaveRoom(userSockets.get(userId), emitTo, roomId);
 
     // User ban successfully.
@@ -315,7 +316,7 @@ export default function roomManager(socket, emitTo, socketTo) {
             }
           } else {
             kickResult.success = true;
-            emitTo(roomId, 'user-kicked', { roomId, userId });
+            kickPromises.push(emitTo(roomId, 'user-kicked', { roomId, userId }));
           }
           kickResults.data.push(kickResult);
         });
@@ -475,7 +476,7 @@ export default function roomManager(socket, emitTo, socketTo) {
     // Notify all users in the room about the updated settings
     const newRoom = await rooms.get(roomId);
     if (typeof newRoom.password !== 'undefined') delete newRoom.password;
-    emitTo(roomId, 'room-updated', { data: newRoom, roomId });
+    await emitTo(roomId, 'room-updated', { data: newRoom, roomId });
 
     // Room disabled successfully.
     fn({ success: true });
@@ -523,7 +524,7 @@ export default function roomManager(socket, emitTo, socketTo) {
     // Notify all users in the room about the updated settings
     const newRoom = await rooms.get(roomId);
     if (typeof newRoom.password !== 'undefined') delete newRoom.password;
-    emitTo(roomId, 'room-updated', { data: newRoom, roomId });
+    await emitTo(roomId, 'room-updated', { data: newRoom, roomId });
 
     // Room enabled successfully.
     fn({ success: true });
@@ -658,7 +659,7 @@ export default function roomManager(socket, emitTo, socketTo) {
     }
 
     // Notify all users in the room about the updated settings
-    emitTo(roomId, 'room-mod-updated', { result, type: 'add', roomId });
+    await emitTo(roomId, 'room-mod-updated', { result, type: 'add', roomId });
 
     // Complete
     fn({ success: true });
@@ -696,7 +697,7 @@ export default function roomManager(socket, emitTo, socketTo) {
     }
 
     // Notify all users in the room about the updated settings
-    emitTo(roomId, 'room-mod-updated', { result, type: 'remove', roomId });
+    await emitTo(roomId, 'room-mod-updated', { result, type: 'remove', roomId });
 
     // Complete
     fn({ success: true });
@@ -829,7 +830,7 @@ export default function roomManager(socket, emitTo, socketTo) {
       // Notify all users in the room about the updated settings
       const newRoom = await rooms.get(roomId);
       if (typeof newRoom.password !== 'undefined') delete newRoom.password;
-      emitTo(roomId, 'room-updated', { data: newRoom, roomId });
+      await emitTo(roomId, 'room-updated', { data: newRoom, roomId });
     }
 
     // Complete
@@ -868,7 +869,7 @@ export default function roomManager(socket, emitTo, socketTo) {
       await privateRoomData.set(roomId, { data: values });
       // const result = await privateRoomData.get(roomId);
       // Notify all users in the room about the updated data
-      /* socket.emit('room-data-updated', {
+      /* await socketEmit('room-data-updated', {
         roomId,
         isPrivate: true,
         values: result?.data ?? {},
@@ -880,7 +881,7 @@ export default function roomManager(socket, emitTo, socketTo) {
       await roomData.set(roomId, { data: values });
       // Notify all users in the room about the updated data
       const result = await roomData.get(roomId);
-      socketTo(roomId, 'room-data-updated', {
+      await socketTo(roomId, 'room-data-updated', {
         roomId,
         isPrivate: false,
         values: result?.data ?? {},

@@ -1,6 +1,7 @@
 import EventEmitter from 'events';
 import { io as Io } from 'socket.io-client';
 import SocketIoProxyUser from './proxyUser.mjs';
+import fixProxyArgs from './proxyArgs.mjs';
 
 /** @typedef {import('../tiny-chat-proxy/proxy.mjs').ProxyUserDisconnect} ProxyUserDisconnect */
 /** @typedef {import('../tiny-chat-proxy/proxy.mjs').ProxyUserConnection} ProxyUserConnection */
@@ -121,16 +122,16 @@ class SocketIoProxyClient extends EventEmitter {
       /** @type {(...args: ProxyRequest) => void} */ (socketId, eventName, ...args) => {
         if (this.#debugMode) console.log('PROXY_REQUEST', socketId, eventName, ...args);
         if (typeof socketId !== 'string' && typeof eventName !== 'string') return;
-
         const socket = this.#sockets.get(socketId);
         if (!socket) return;
-        socket.emit(eventName, ...args);
+        socket._emit(eventName, ...args);
       },
     );
 
     this.#client.on('PROXY_USER_CONNECTION', (/** @type {ProxyUserConnection} */ socketInfo) => {
       if (this.#debugMode) console.log('PROXY_USER_CONNECTION', socketInfo);
       const socket = new SocketIoProxyUser(socketInfo, this.#client);
+      this.debugMode = this.#debugMode;
       socket.allowOnAny = this.#allowOnAny;
       this.#sockets.set(socketInfo.id, socket);
       this.emit('connection', socket);
@@ -141,7 +142,7 @@ class SocketIoProxyClient extends EventEmitter {
       const socket = this.#sockets.get(socketInfo.id);
       if (!socket) return;
 
-      socket.emit('disconnect', socketInfo.reason, socketInfo.desc);
+      socket._emit('disconnect', socketInfo.reason, socketInfo.desc);
       socket._disconnect();
       this.#sockets.delete(socketInfo.id);
     });
@@ -159,6 +160,19 @@ class SocketIoProxyClient extends EventEmitter {
         socket._updateData(socketInfo.changes, type, room);
       },
     );
+  }
+
+  /**
+   * @param {string|string[]} room
+   */
+  to(room) {
+    return {
+      /**
+       * @type {(eventName: string, ...args: any) => import('socket.io-client').Socket} args
+       */
+      emit: (eventName, ...args) =>
+        this.#client.emit('PROXY_BROADCAST_OPERATOR', ...fixProxyArgs([room, eventName, ...args])),
+    };
   }
 
   /**
