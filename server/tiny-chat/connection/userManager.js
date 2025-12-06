@@ -16,7 +16,7 @@ import {
 
 /**
  * @param {import('socket.io-client').Socket} socket
- * @param {import('../index').EmitTo} emitTo
+ * @param {import('../proxyOnConnection.mjs').EmitTo} emitTo
  */
 export default function userManager(socket, emitTo) {
   socket.on('user-is-mod', async (data, fn) => {
@@ -234,10 +234,15 @@ export default function userManager(socket, emitTo) {
     await users.update(userId, { nickname: nickname.substring(0, getIniConfig('NICKNAME_SIZE')) });
     const user = await users.get(userId);
 
+    const tinyPromises = [];
     userSession.setNickname(socket, user.nickname);
     userSession.eachRooms(socket, (roomId) =>
-      emitTo(roomId, 'user-updated', { roomId, userId, data: { nickname: user.nickname } }),
+      tinyPromises.push(
+        emitTo(roomId, 'user-updated', { roomId, userId, data: { nickname: user.nickname } }),
+      ),
     );
+
+    await Promise.all(tinyPromises);
 
     // User unban successfully.
     fn({ nickname: user.nickname });
@@ -355,7 +360,7 @@ export default function userManager(socket, emitTo) {
     });
   });
 
-  socket.on('disconnect', () => {
+  socket.on('disconnect', async () => {
     // Get user
     const userId = userSession.getUserId(socket);
     const ipAddress = socket.handshake ? socket.handshake.address : '?.?.?.?';
@@ -366,10 +371,13 @@ export default function userManager(socket, emitTo) {
     );
 
     // Disconnect user from rooms
-    if (userId)
+    if (userId) {
+      const tinyPromises = [];
       roomUsers.forEach((users, roomId) => {
-        if (users.has(userId)) leaveRoom(socket, emitTo, roomId);
+        if (users.has(userId)) tinyPromises.push(leaveRoom(socket, emitTo, roomId));
       });
+      await Promise.all(tinyPromises);
+    }
 
     // Remove from userSockets
     userSockets.delete(userId);

@@ -136,8 +136,9 @@ export const getRateLimit = () => ({
   openRegistration: getIniConfig('OPEN_REGISTRATION'),
 });
 
-export const sendRateLimit = (socket) => {
-  socket.emit('ratelimt-updated', getRateLimit());
+/** @param {import('../proxyOnConnection.mjs').SocketEmit} socketEmit */
+export const sendRateLimit = (socketEmit) => {
+  return socketEmit('ratelimt-updated', getRateLimit());
 };
 
 // Rate limit editor
@@ -280,7 +281,7 @@ export const joinRoom = async (socket, emitTo, roomId, fn) => {
 
       userSession.addRoom(socket, roomId);
       const socketData = { roomId, userId, nickname: joinData.nickname, ping: joinData.ping };
-      emitTo(roomId, 'user-joined', socketData);
+      await emitTo(roomId, 'user-joined', socketData);
       if (fn) fn(socketData);
       return true;
     }
@@ -305,7 +306,7 @@ export const leaveRoom = async (socket, emitTo, roomId, fn) => {
       if (room.has(userId)) {
         // Remove the user from their room
         room.delete(userId);
-        emitTo(roomId, 'user-left', { roomId, nickname, userId });
+        await emitTo(roomId, 'user-left', { roomId, nickname, userId });
         await roomQueue.enqueue(() =>
           socket.leave instanceof AsyncFunction
             ? socket.leave(roomId)

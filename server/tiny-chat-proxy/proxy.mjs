@@ -333,6 +333,52 @@ class SocketIoProxyServer extends EventEmitter {
         socket.disconnect(args[0].close);
       });
 
+      // Join
+      events.set(
+        'PROXY_USER_JOIN',
+        (
+          /** @type {{ id: string; room: string; }} */ data,
+          /** @type {(arg: any) => boolean} */ fn,
+        ) => {
+          const { id, room } = data;
+          const socket = this.#sockets.get(id);
+          if (!socket) return fn(false);
+          socket.join(room);
+          fn(true);
+        },
+      );
+
+      // Leave
+      events.set(
+        'PROXY_USER_LEAVE',
+        (
+          /** @type {{ id: string; room: string; }} */ data,
+          /** @type {(arg: any) => boolean} */ fn,
+        ) => {
+          const { id, room } = data;
+          const socket = this.#sockets.get(id);
+          if (!socket) return fn(false);
+          socket.leave(room);
+          fn(true);
+        },
+      );
+
+      events.set('PROXY_USER_BROADCAST_OPERATOR', (id, room, eventName, ...args) => {
+        const socket = this.#sockets.get(id);
+        if (!socket) return args[args.length - 1]();
+        socket.to(room).emit(eventName, ...args);
+      });
+
+      events.set('PROXY_BROADCAST_OPERATOR', (room, eventName, ...args) => {
+        if (this.#server) this.#server.to(room).emit(eventName, ...args);
+      });
+
+      events.set('PROXY_EMIT', (id, eventName, ...args) => {
+        const socket = this.#sockets.get(id);
+        if (!socket) return args[args.length - 1]();
+        socket.emit(eventName, ...args);
+      });
+
       // Events
       userSocket.onAny((eventName, ...args) => {
         this.emit('user-event', userSocket, eventName, [...args]);
