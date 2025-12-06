@@ -281,7 +281,7 @@ export const joinRoom = async (socket, emitTo, roomId, fn) => {
 
       userSession.addRoom(socket, roomId);
       const socketData = { roomId, userId, nickname: joinData.nickname, ping: joinData.ping };
-      await emitTo(roomId, 'user-joined', socketData);
+      emitTo(roomId, 'user-joined', socketData);
       if (fn) fn(socketData);
       return true;
     }
@@ -306,7 +306,7 @@ export const leaveRoom = async (socket, emitTo, roomId, fn) => {
       if (room.has(userId)) {
         // Remove the user from their room
         room.delete(userId);
-        await emitTo(roomId, 'user-left', { roomId, nickname, userId });
+        emitTo(roomId, 'user-left', { roomId, nickname, userId });
         await roomQueue.enqueue(() =>
           socket.leave instanceof AsyncFunction
             ? socket.leave(roomId)

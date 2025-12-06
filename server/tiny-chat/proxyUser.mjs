@@ -6,19 +6,6 @@ import fixProxyArgs from './proxyArgs.mjs';
 /** @typedef {import('../tiny-chat-proxy/proxy.mjs').ProxyUserConnection} ProxyUserConnection */
 
 class SocketIoProxyUser extends EventEmitter {
-  #debugMode = false;
-
-  /** @returns {boolean} */
-  get debugMode() {
-    return this.#debugMode;
-  }
-
-  /** @param {boolean} value */
-  set debugMode(value) {
-    if (typeof value !== 'boolean') throw new Error('Invalid debug mode value!');
-    this.#debugMode = true;
-  }
-
   /** @type {EventEmitter} */
   #userConn = new EventEmitter();
 
