@@ -161,8 +161,10 @@ class SocketIoProxyServer extends EventEmitter {
 
   /**
    * @param {import('socket.io').Socket} socket
+   * @param {string} type
+   * @param {string|null} [room]
    */
-  #emitUpdate(socket) {
+  #emitUpdate(socket, type, room) {
     if (!this.#socket) return;
 
     const current = this.extractSocketInfo(socket);
@@ -179,7 +181,8 @@ class SocketIoProxyServer extends EventEmitter {
       changes,
     };
 
-    this.#socket.emit('PROXY_USER_UPDATE', result);
+    this.emit(`user-update`, socket, type, room);
+    this.#socket.emit('PROXY_USER_UPDATE', result, type, room);
   }
 
   /**
@@ -206,6 +209,28 @@ class SocketIoProxyServer extends EventEmitter {
   }
 
   /**
+   * @param {string} where
+   */
+  listenAdapter(where) {
+    if (!this.#server) throw new Error('No server detected!');
+    const adapter = this.#server.of(where).adapter;
+
+    adapter.on('join-room', (room, id) => {
+      const userSocket = this.#sockets.get(id);
+      if (!userSocket) return;
+      this.#emitUpdate(userSocket, 'join-room', room);
+    });
+
+    adapter.on('leave-room', (room, id) => {
+      const userSocket = this.#sockets.get(id);
+      if (!userSocket) return;
+      this.#emitUpdate(userSocket, 'leave-room', room);
+    });
+
+    return adapter;
+  }
+
+  /**
    * @param {import('socket.io').ServerOptions} proxyCfg
    * @param {Object} [rlCfg]
    * @param {number} [rlCfg.maxHits=3]
@@ -226,7 +251,7 @@ class SocketIoProxyServer extends EventEmitter {
       const dataProxy = new Proxy(userSocket.data, {
         set: (obj, prop, value) => {
           obj[prop] = value;
-          this.#emitUpdate(userSocket);
+          this.#emitUpdate(userSocket, 'data');
           return true;
         },
       });
@@ -257,21 +282,12 @@ class SocketIoProxyServer extends EventEmitter {
 
       // Transport
       userSocket.conn.on('upgrade', () => {
-        this.#emitUpdate(userSocket);
+        this.#emitUpdate(userSocket, 'upgrade');
       });
 
       // Ready State
       userSocket.conn.on('close', () => {
-        this.#emitUpdate(userSocket);
-      });
-
-      // Rooms
-      userSocket.on('join', (room) => {
-        this.#emitUpdate(userSocket);
-      });
-
-      userSocket.on('leave', (room) => {
-        this.#emitUpdate(userSocket);
+        this.#emitUpdate(userSocket, 'close');
       });
 
       // Events

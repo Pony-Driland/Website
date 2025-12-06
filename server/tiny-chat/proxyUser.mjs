@@ -1,8 +1,44 @@
 import EventEmitter from 'events';
+import { isJsonObject } from 'tiny-essentials';
 
 /** @typedef {import('../tiny-chat-proxy/proxy.mjs').ProxyUserConnection} ProxyUserConnection */
 
 class SocketIoProxyUser extends EventEmitter {
+  /** @type {EventEmitter} */
+  #userConn = new EventEmitter();
+
+  /** @returns {EventEmitter} */
+  get userConn() {
+    return this.#userConn;
+  }
+
+  /** @type {Record<string|number|symbol, any>} */
+  #data = {};
+
+  /** @returns {Record<string|number|symbol, any>} */
+  get data() {
+    return this.#data;
+  }
+
+  /** @param {Record<string|number|symbol, any>} value */
+  set data(value) {
+    if (!isJsonObject(value)) throw new Error('Invalid data object type!');
+    this.#data = value;
+  }
+
+  #allowOnAny = false;
+
+  /** @returns {boolean} */
+  get allowOnAny() {
+    return this.#allowOnAny;
+  }
+
+  /** @param {boolean} value */
+  set allowOnAny(value) {
+    if (typeof value !== 'boolean') throw new Error('Invalid allowOnAny value!');
+    this.#allowOnAny = true;
+  }
+
   #connected = true;
   #disconnected = false;
 
@@ -173,8 +209,10 @@ class SocketIoProxyUser extends EventEmitter {
 
   /**
    * @param {ProxyUserConnection} socketInfo
+   *  @param {string}  [type]
+   *  @param {string|null} [room]
    */
-  _updateData(socketInfo) {
+  _updateData(socketInfo, type, room) {
     this.#id = socketInfo.id;
     this.#rooms = new Set(socketInfo.rooms);
 
@@ -192,6 +230,8 @@ class SocketIoProxyUser extends EventEmitter {
     this.#handshake.xdomain = socketInfo.handshake.xdomain;
     this.#handshake.issued = socketInfo.handshake.issued;
     this.#handshake.url = socketInfo.handshake.url;
+
+    if (type) this.#userConn.emit(type, room);
   }
 
   /**
@@ -203,6 +243,32 @@ class SocketIoProxyUser extends EventEmitter {
     this.#socket = socket;
     this._updateData(socketInfo);
   }
+
+  /**
+   * @param {string|string[]} id
+   */
+  to(id) {
+    return {
+      /**
+       * @param {[eventName: string, ...any[]]} args
+       */
+      emit: (...args) => this.#socket.emit('PROXY_BROADCAST_OPERATOR', { id, args }),
+    };
+  }
+
+  /**
+   * @param {string|symbol} eventName
+   * @param {...any} args
+   */
+  emit(eventName, ...args) {
+    if (eventName === 'disconnect') return super.emit(eventName, ...args);
+
+    return true;
+  }
+
+  join() {}
+
+  leave() {}
 
   _disconnect() {
     if (this.#disconnected) return;

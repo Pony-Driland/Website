@@ -8,6 +8,7 @@ import userManager from './connection/userManager';
 import roomManager from './connection/roomManager';
 import { getHashString, getIniConfig } from './connection/values';
 import db from './connection/sql';
+import SocketIoProxyUser from './proxyUser.mjs';
 
 /**
  * @callback EmitTo
@@ -82,12 +83,28 @@ startFiles().then(async (appStorage) => {
     ),
   );
 
+  // Proxy
   if (proxy) {
     proxy.auth = proxyAuth;
     proxy.on('connect', () => console.log(`[PROXY] [${proxyAddress}] Connected!`));
     proxy.on('disconnect', () => console.log(`[PROXY] [${proxyAddress}] Disconnected!`));
-    // proxy.on('connection', console.log);
 
+    // User connection
+    proxy.on('connection', (/** @type {SocketIoProxyUser} */ socket) => {
+      console.log(`[PROXY] [connection] [${socket.id}]`, {
+        rooms: socket.rooms,
+        nsp: socket.nsp,
+        conn: socket.conn,
+        handshake: socket.handshake,
+      });
+
+      // Disconnect
+      socket.on('disconnect', (/** @type {string} */ reason, /** @type {any} */ desc) =>
+        console.log(`[PROXY] [disconnect] [${socket.id}] ${reason} ${desc}`),
+      );
+    });
+
+    // Connect
     proxy.connect();
   }
 
