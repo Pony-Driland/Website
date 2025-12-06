@@ -290,14 +290,13 @@ class SocketIoProxyServer extends EventEmitter {
         this.#emitUpdate(userSocket, 'close');
       });
 
-      // Events
-      userSocket.onAny((eventName, ...args) => {
-        this.emit('user-event', userSocket, eventName, [...args]);
+      /** @type {Map<string, (...args: any) => void>} */
+      const events = new Map();
 
-        // Auth Server
-        if (eventName === 'AUTH_PROXY') {
-          const [auth, fn] = args;
-
+      // Auth
+      events.set(
+        'AUTH_PROXY',
+        (/** @type {string} */ auth, /** @type {(arg: any) => void} */ fn) => {
           if (
             this.#socket ||
             this.#auth !== auth ||
@@ -316,23 +315,31 @@ class SocketIoProxyServer extends EventEmitter {
           removeTimeout();
           fn(!!this.#socket);
           this.#sockets.forEach((socket) => this.#sendNewUser(socket));
-          return;
-        }
+        },
+      );
 
-        // Disconnect user
-        if (eventName === 'DISCONNECT_PROXY_USER') {
-          if (
-            this.#socket?.id !== userSocket.id ||
-            !isJsonObject(args[0]) ||
-            typeof args[0].id !== 'string' ||
-            typeof args[0].close !== 'boolean'
-          )
-            return;
-          const socket = this.#sockets.get(args[0].id);
-          if (!socket) return;
-          socket.disconnect(args[0].close);
+      // User disconnect
+      events.set('DISCONNECT_PROXY_USER', (...args) => {
+        if (
+          this.#socket?.id !== userSocket.id ||
+          !isJsonObject(args[0]) ||
+          typeof args[0].id !== 'string' ||
+          typeof args[0].close !== 'boolean'
+        )
           return;
-        }
+        const socket = this.#sockets.get(args[0].id);
+        if (!socket) return;
+        removeTimeout();
+        socket.disconnect(args[0].close);
+      });
+
+      // Events
+      userSocket.onAny((eventName, ...args) => {
+        this.emit('user-event', userSocket, eventName, [...args]);
+
+        // Custom Event
+        const eventFn = events.get(eventName);
+        if (eventFn) return eventFn(...args);
 
         // No server
         if (!this.#socket) {
