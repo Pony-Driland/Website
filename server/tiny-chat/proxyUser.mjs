@@ -250,9 +250,10 @@ class SocketIoProxyUser extends EventEmitter {
   to(id) {
     return {
       /**
-       * @param {[eventName: string, ...any[]]} args
+       * @type {(eventName: string, ...args: any) => import('socket.io-client').Socket} args
        */
-      emit: (...args) => this.#socket.emit('PROXY_BROADCAST_OPERATOR', { id, args }),
+      emit: (eventName, ...args) =>
+        this.#socket.emit('PROXY_BROADCAST_OPERATOR', { id, eventName, args }),
     };
   }
 
@@ -262,8 +263,7 @@ class SocketIoProxyUser extends EventEmitter {
    */
   emit(eventName, ...args) {
     if (eventName === 'disconnect') return super.emit(eventName, ...args);
-
-    return true;
+    return !!this.#socket.emit('PROXY_RESPONSE', ...[eventName, ...args]);
   }
 
   /**
