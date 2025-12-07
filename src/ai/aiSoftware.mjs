@@ -51,6 +51,7 @@ import { openChangePassword } from './buttons/changePassword.mjs';
 import { tinyModalTextarea } from './buttons/modalTextarea.mjs';
 import { openHistory } from './buttons/history.mjs';
 import { openDiceHistory } from './buttons/diceHistory.mjs';
+import { rpgSchemaSettingsMenu } from './buttons/rpgSchema.mjs';
 
 const { Icon } = TinyHtmlElems;
 
@@ -902,6 +903,9 @@ export const AiScriptStart = async () => {
     leftMenu.push(TinyHtml.createFrom('h5').setText('Online'));
     leftMenu.push(createButtonSidebar('fas fa-users', 'Room settings', roomSettingsMenu));
     leftMenu.push(createButtonSidebar('fas fa-users', 'User manager', userButtonActions));
+    leftMenu.push(
+      createButtonSidebar('fa-solid fa-book', 'Rpg Schema settings', rpgSchemaSettingsMenu),
+    );
 
     const templateChangeInfo = (
       id,

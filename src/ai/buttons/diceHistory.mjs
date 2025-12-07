@@ -8,7 +8,7 @@ import { loaderScreen } from '../../important.mjs';
 import moment from 'moment/moment';
 import { createDiceSpecialHtml } from './dice.mjs';
 
-const { Form, Button, TextInput, DateTimeInput, NumberInput, Textarea } = TinyHtmlElems;
+const { Form, Button, TextInput, DateTimeInput, NumberInput } = TinyHtmlElems;
 
 export const openDiceHistory = () => {
   if (!isOnline()) return;
