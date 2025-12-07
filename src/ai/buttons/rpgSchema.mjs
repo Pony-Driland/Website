@@ -23,10 +23,15 @@ export const rpgSchemaSettingsMenu = () => {
 
     // ─── Edit room ───────────────────────────────
     const $editForm = TinyHtml.createFrom('form').addClass('mb-4');
-    $editForm.append(TinyHtml.createFrom('h5').setText('Edit Room Schema'));
     $editForm.append(
-      TinyHtml.createFrom('small').setText(
-        'You will need to update the page for the effects to happen.',
+      TinyHtml.createFrom('h5').setText('Edit RPG Schema'),
+      TinyHtml.createFrom('small').append(
+        `Please insert a schema json in the `,
+        TinyHtml.createFrom('a', {
+          target: '_blank',
+          href: 'https://github.com/json-editor/json-editor',
+        }).setText('JSONEditor'),
+        ' format:',
       ),
     );
 
@@ -69,9 +74,9 @@ export const rpgSchemaSettingsMenu = () => {
 
     // Start modal
     const { modal, html } = tinyLib.modal({
-      title: 'Room Schema',
+      title: 'RPG Schema',
       dialog: 'modal-lg',
-      id: 'room-schama',
+      id: 'rpg-schema-editor',
       body: $root,
     });
 
