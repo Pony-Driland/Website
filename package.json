@@ -19,9 +19,6 @@
         "email": "tiny@puddy.club",
         "url": "https://github.com/JasminDreasond"
     },
-    "pkg": {
-        "assets": "dist/server/tiny-chat/config.ini"
-    },
     "dependencies": {
         "@cryptofonts/cryptofont": "^1.3.5",
         "@fortawesome/fontawesome-free": "^7.0.0",
