@@ -138,6 +138,8 @@ class EnablerAiContent extends EventEmitter {
     }
   }
 
+  //////////////////////////////////////////////////////////
+
   async initRpgData() {
     await this.rpgData.init();
     const tinyRpgData = this.rpgData.data.public.getValue();
