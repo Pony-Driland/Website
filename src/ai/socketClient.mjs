@@ -132,6 +132,7 @@ class TinyClientIo extends EventEmitter {
   resetData() {
     this.ratelimit = {};
     this.room = {};
+    this.rpgSchema = {};
     this.roomData = {};
     this.roomPrivateData = {};
     this.user = {};
@@ -344,6 +345,13 @@ class TinyClientIo extends EventEmitter {
     }
   }
 
+  setRpgSchema(result) {
+    if (isJsonObject(result)) {
+      this.rpgSchema = result;
+      return { values: result };
+    }
+  }
+
   // Set Room Data (Local)
   setRoomData(result) {
     if (
@@ -362,11 +370,15 @@ class TinyClientIo extends EventEmitter {
     if (
       isJsonObject(result) &&
       isJsonObject(result.data) &&
+      isJsonObject(result.rpgSchema) &&
       isJsonObject(result.users) &&
       isJsonObject(result.roomData) &&
       isJsonObject(result.roomPrivateData) &&
       Array.isArray(result.mods)
     ) {
+      // Room rpg schema
+      this.setRpgSchema(result.rpgSchema);
+
       // Room data
       this.setRoom(result.data);
 
@@ -389,6 +401,7 @@ class TinyClientIo extends EventEmitter {
     }
     // Error
     else {
+      this.setRpgSchema({});
       this.setRoom({});
       this.setUsers({});
       this.setMods([]);
@@ -406,6 +419,10 @@ class TinyClientIo extends EventEmitter {
 
   getRoom() {
     return this.room || {};
+  }
+
+  getRpgSchema() {
+    return this.rpgSchema || {};
   }
 
   /**
@@ -521,6 +538,11 @@ class TinyClientIo extends EventEmitter {
 
   offGetRateLimit(callback) {
     this.socket.off('ratelimt-updated', callback);
+  }
+
+  // On room updates
+  onRpgSchemaUpdates(callback) {
+    this.socket.on('rpg-schema-updated', callback);
   }
 
   // On room updates
@@ -742,6 +764,21 @@ class TinyClientIo extends EventEmitter {
       roomId: this.#cfg.roomId,
       newSettings: settings,
     });
+  }
+
+  // Update room schema
+  updateRpgSchema(schemaData = {}) {
+    return new Promise((resolve, reject) =>
+      this.#socketEmitApi('update-rpg-schema', {
+        roomId: this.#cfg.roomId,
+        values: schemaData,
+      })
+        .then((result) => {
+          if (!result.error) this.setRpgSchema(schemaData);
+          resolve(result);
+        })
+        .catch(reject),
+    );
   }
 
   // Update room data
@@ -1063,6 +1100,15 @@ class TinyClientIo extends EventEmitter {
       console.log('[socket-io] [ratelimit]', this.getRateLimit());
     });
 
+    // Room schema updates
+    this.onRpgSchemaUpdates((result) => {
+      if (this.checkRoomId(result) && isJsonObject(result.values)) {
+        const data = this.setRpgSchema(result.values);
+        if (data) this.emit('rpgSchemaUpdates', data.values);
+        console.log('[socket-io] [rpg-schema]', this.getRpgSchema());
+      }
+    });
+
     // Room updates
     this.onRoomUpdates((result) => {
       if (this.checkRoomId(result) && isJsonObject(result.data)) {
@@ -1152,6 +1198,7 @@ class TinyClientIo extends EventEmitter {
           room: this.getRoom(),
           users: this.getUsers(),
           mods: this.getMods(),
+          rpgSchema: this.getRpgSchema(),
           roomData: this.getRoomData(),
           roomPrivateData: this.getRoomPrivateData(),
         });
