@@ -38,6 +38,7 @@ export const tinyAiScript = {
       tinyIo.client.destroy();
       tinyIo.client = null;
       console.log('[socket-io] Connection destroyed!');
+      setTimeout(() => window.location.reload(), 500);
       return true;
     } else return false;
   },
