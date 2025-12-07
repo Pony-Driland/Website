@@ -2,7 +2,7 @@ import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
 import { isJsonObject } from 'tiny-essentials/basics';
 
-import { tinyIo } from '../software/base.mjs';
+import { tinyAi, tinyIo } from '../software/base.mjs';
 import tinyLib, { alert } from '../../files/tinyLib.mjs';
 import { loaderScreen } from '../../important.mjs';
 
@@ -24,20 +24,29 @@ export const rpgSchemaSettingsMenu = () => {
     // ─── Edit room ───────────────────────────────
     const $editForm = TinyHtml.createFrom('form').addClass('mb-4');
     $editForm.append(TinyHtml.createFrom('h5').setText('Edit Room Schema'));
+    $editForm.append(
+      TinyHtml.createFrom('small').setText(
+        'You will need to update the page for the effects to happen.',
+      ),
+    );
 
-    const roomEditDetector = (data) => {
-      if (isJsonObject(data)) $roomSchema.setVal(JSON.stringify(data, null, 2));
+    const loadJsonData = (data) => {
+      $roomSchema.setVal(isJsonObject(data) ? JSON.stringify(data, null, 2) : '');
     };
 
+    const roomEditDetector = (data) => loadJsonData(data);
     tinyIo.client.on('rpgSchemaUpdates', roomEditDetector);
 
     const $roomSchema = new Textarea({
-      value: JSON.stringify(roomSchema, null, 2),
+      value: '',
       placeholder: 'Enter new schema data',
       disabled: cantEdit,
       mainClass: 'form-control',
+      rows: 15,
       // maxLength: ratelimit.size.,
     });
+
+    loadJsonData(roomSchema);
 
     // Submit
     $editForm.append(
@@ -90,6 +99,7 @@ export const rpgSchemaSettingsMenu = () => {
                 $editError.setText(`${result.msg}\nCode ${result.code}`);
               } else {
                 modal.hide();
+                tinyAi.setCustomValue('rpgSchema', jsonResult);
                 alert('Your room schema has been changed successfully!');
               }
               loaderScreen.stop();

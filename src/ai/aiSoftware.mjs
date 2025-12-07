@@ -406,17 +406,7 @@ export const AiScriptStart = async () => {
           }
 
           // Load rpg data
-          await rpgData.init();
-          const tinyRpgData = rpgData.data.public.getValue();
-          const tinyRpgPrivateData = rpgData.data.private.getValue();
-          if (tinyRpgData) {
-            rpgData.setAllowAiUse(tinyRpgData.allowAiUse, 'public');
-            rpgData.setAllowAiSchemaUse(tinyRpgData.allowAiSchemaUse, 'public');
-          }
-          if (tinyRpgPrivateData) {
-            rpgData.setAllowAiUse(tinyRpgPrivateData.allowAiUse, 'private');
-            rpgData.setAllowAiSchemaUse(tinyRpgPrivateData.allowAiSchemaUse, 'private');
-          }
+          if (!isOnline()) await contentEnabler.initRpgData();
 
           // Add file data
           const fileTokens = tinyAi.getTokens('file');
@@ -872,18 +862,57 @@ export const AiScriptStart = async () => {
 
   const rpgContentButtons = [];
 
+  // Load rpg data
+  const loadRpgSchemaData = async () => {
+    loaderScreen.start();
+    // Is online
+    if (isOnline()) {
+      // Get rpg schema
+      let rpgSchema = tinyIo.client.getRpgSchema();
+      // No one? Create new one
+      if (!isJsonObject(rpgSchema) || countObj(rpgSchema) < 1) {
+        rpgSchema = aiTemplates.funcs.jsonTemplate();
+        tinyAi.setCustomValue('rpgSchema', rpgSchema);
+
+        const user = tinyIo.client.getUser() || {};
+        const room = tinyIo.client.getRoom() || {};
+        const cantEdit = room.ownerId !== tinyIo.client.getUserId() && !user.isOwner;
+
+        if (!cantEdit) await tinyIo.client.updateRpgSchema(rpgSchema);
+      }
+      // Use the one
+      else tinyAi.setCustomValue('rpgSchema', rpgSchema);
+      // Init Rpg Data
+      await contentEnabler.initRpgData();
+    }
+    loaderScreen.stop();
+  };
+
   // RPG Data
-  const rpgPublicButton = createButtonSidebar('fa-solid fa-note-sticky', 'View Data', null, false, {
-    toggle: 'offcanvas',
-    target: '#rpg_ai_base_1',
-  });
+  const rpgPublicButton = createButtonSidebar(
+    'fa-solid fa-note-sticky',
+    'View Data',
+    loadRpgSchemaData,
+    false,
+    {
+      toggle: 'offcanvas',
+      target: '#rpg_ai_base_1',
+    },
+  );
+
   rpgContentButtons.push(rpgPublicButton);
 
   // Private RPG Data
-  const rpgPrivateButton = createButtonSidebar('fa-solid fa-book', 'View Private', null, false, {
-    toggle: 'offcanvas',
-    target: '#rpg_ai_base_2',
-  });
+  const rpgPrivateButton = createButtonSidebar(
+    'fa-solid fa-book',
+    'View Private',
+    loadRpgSchemaData,
+    false,
+    {
+      toggle: 'offcanvas',
+      target: '#rpg_ai_base_2',
+    },
+  );
   rpgPrivateButton.addClass('d-hide');
   rpgContentButtons.push(rpgPrivateButton);
 
