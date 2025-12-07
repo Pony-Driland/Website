@@ -178,7 +178,7 @@ export const tinyAiScript = {
       TinyHtml.createFrom('p').append(
         TinyHtml.createFrom('span').setText('You can host your server '),
         TinyHtml.createFrom('a', {
-          href: 'https://github.com/Pony-Driland/Website/tree/main/server/tiny-chat',
+          href: 'https://github.com/Pony-Driland/TinyChat-Server',
           target: '_blank',
         }).setText('here'),
         TinyHtml.createFrom('span').setText('. Enter the server settings you want to connect to.'),
