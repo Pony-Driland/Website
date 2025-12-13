@@ -34,7 +34,7 @@
         "firebase": "^12.1.0",
         "for-promise": "^2.0.5",
         "jsstore": "^4.9.0",
-        "marked": "^16.2.0",
+        "marked": "^17.0.1",
         "moment": "^2.30.1",
         "object-hash": "^3.0.0",
         "paginate-array": "^2.1.0",
