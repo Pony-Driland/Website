@@ -13,8 +13,12 @@
   /* Offcanvas */
   .offcanvas {
     padding-top: 56px;
-    max-width: 900px;
+    max-width: 100%;
     width: 100%;
+
+    textarea {
+      height: 320px;
+    }
 
     .je-object__container {
       .card {
