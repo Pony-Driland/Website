@@ -327,6 +327,7 @@ aiTemplates.funcs.jsonTemplate = () => {
       options: { collapsed: false },
       // Base
       properties: {
+        // AI Stuff
         allowAiUse: {
           type: 'boolean',
           title: 'Allow AI Prompt Usage (BETA)',
@@ -338,17 +339,75 @@ aiTemplates.funcs.jsonTemplate = () => {
           description:
             'Allow AI to use the schema data for generative content in future responses.',
         },
+        // Comments List
         comments: {
-          type: 'string',
-          format: 'textarea',
           title: 'Comments',
-          description: 'Any additional comments or notes about the RPG session.',
+          type: 'array',
+          id: 'comments',
+          options: { collapsed: true },
+          description:
+            'Flexible comment system organized by custom categories. Useful for notes, lore, session logs, GM reminders, or anything else.',
+          items: {
+            title: 'Category',
+            headerTemplate: '{{self.name}}',
+            type: 'object',
+            id: 'comment_category',
+            options: { collapsed: true },
+            properties: {
+              name: {
+                type: 'string',
+                title: 'Category Name',
+                minLength: 1,
+                description: 'Custom name for this comment category.',
+              },
+              comments: {
+                headerTemplate: '{{self.length}} Comments',
+                title: 'Comments',
+                type: 'array',
+                id: 'category_comments',
+                options: { collapsed: false },
+                description: 'List of comments inside this category.',
+                items: {
+                  title: 'Comment',
+                  headerTemplate: '{{self.title}}',
+                  type: 'object',
+                  id: 'comment',
+                  options: { collapsed: false },
+                  properties: {
+                    title: {
+                      type: 'string',
+                      title: 'Title',
+                      description: 'Optional title for the comment.',
+                    },
+                    text: {
+                      type: 'string',
+                      format: 'textarea',
+                      title: 'Text',
+                      description: 'The main content of the comment.',
+                    },
+                    author: {
+                      type: 'string',
+                      title: 'Author',
+                      description: 'Who wrote this comment.',
+                    },
+                    createdAt: {
+                      type: 'string',
+                      title: 'Created At',
+                      description: 'Date or in-game time when this comment was created.',
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
+        // Clock
         clock: {
           type: 'string',
           title: 'Clock',
           description: 'In-game time or any time-related information for the RPG session.',
         },
+        // Location
         location: {
           type: 'string',
           title: 'Location',
