@@ -172,6 +172,12 @@ aiTemplates.funcs.jsonTemplate = () => {
                       minimum: 1,
                       description: 'How many units of this item the character has.',
                     },
+                    meta: {
+                      type: 'string',
+                      format: 'textarea',
+                      title: '📜 Metadata',
+                      description: 'Metadata of this item the character has.',
+                    },
                   },
                 },
               },
@@ -239,9 +245,9 @@ aiTemplates.funcs.jsonTemplate = () => {
                   properties: {
                     name: {
                       type: 'string',
-                      title: '📦 Name',
+                      title: '🪄 Name',
                       minLength: 1,
-                      description: 'The name of the skill.',
+                      description: 'The name of the skill (e.g., Fireball, Stealth, Healing).',
                     },
                     amount: {
                       type: 'number',
@@ -249,11 +255,31 @@ aiTemplates.funcs.jsonTemplate = () => {
                       minimum: 0,
                       description: 'How skilled the character is in this ability.',
                     },
+                    about: {
+                      type: 'string',
+                      format: 'textarea',
+                      title: '📖 About',
+                      description:
+                        'A brief description of the skill, its effects, and limitations.',
+                    },
+                    level: {
+                      type: 'number',
+                      title: '📈 Level',
+                      description: "The skill's rank, affecting its power and effectiveness.",
+                      minimum: 1,
+                    },
                     cost: {
                       type: 'number',
-                      title: '💰 Cost',
+                      title: '🔥 Cost',
+                      description: 'The resource cost (mana, stamina, etc.) to use the skill.',
                       minimum: 0,
-                      description: 'The cost (e.g., mana or stamina) to use this skill.',
+                    },
+                    cooldown: {
+                      type: 'number',
+                      title: '⏱️ Cooldown',
+                      description:
+                        'The time before the skill can be used again (in turns or seconds).',
+                      minimum: 0,
                     },
                   },
                 },
