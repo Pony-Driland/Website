@@ -466,6 +466,8 @@ Just light blending gently.
 
 <img src="/img/characters/rainbow-queen/drawing-examples/2024-11-21_23-55.png" height="500">
 
+The last step is very simple. Make a copy of the entire eye part layer, slightly reduce the size of the layer, turn it completely into a solid white color, and lightly apply the blur effect until you achieve the result shown in the image below.
+
 <img src="/img/characters/rainbow-queen/drawing-examples/2024-11-21_23-56.png" height="500">
 :::
 
