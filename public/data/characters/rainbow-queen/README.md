@@ -217,45 +217,59 @@ Final Artwork: JasminDreasond
 
 ### Scythe
 
-This weapon is the pure manifestation of her negative feelings. Divine creatures with negative feelings are extremely dangerous as their negative feelings can overload the amount of power evolved by anger, this scythe is invoked to try to drain the negative feelings and focus all the anger on a weapon where the negative energy can try to get controlled. But when this weapon is used, it can cause a great level of destruction due to the negative energies accumulated within it.
+This weapon is the pure manifestation of her negative feelings. Divine creatures with negative emotions are extremely dangerous, as these feelings can overload the amount of power evolved by anger. This scythe is invoked in an attempt to drain the negative feelings and focus all the anger into a weapon where the negative energy can be controlled. However, when this weapon is used, it can cause a great level of destruction due to the negative energies accumulated within it.
+
+Some characters may have the terrible idea of thinking that destroying the Rainbow Queen’s scythe could put her at a disadvantage by making her lose a piece of equipment (since that is possible). Unfortunately, this is a great illusion: destroying the Rainbow Queen’s scythe makes her completely lose control of her powers, and if she is not sufficiently prepared, she turns into a completely uncontrolled machine of mass destruction.
+
+The only way to resolve this is for the Rainbow Queen to be calmed enough for her to finally become aware of what is happening, so that she can recreate the scythe and return to normal.
 
 <img src="/img/characters/rainbow-queen/scythe.gif" height="500">
 
 ## Drawing Tips
 
-Some details about Rainbow Queen can seem confusing to understand how to draw. So I decided to show myself how I work on drawing images from Rainbow Queen.
+Some details about Rainbow Queen can seem confusing when trying to understand how to draw her. So I decided to show how I work when drawing images of Rainbow Queen.
 
-### Mane lighting
+### Mane Lighting
 
-Rainbow Queen's mane literally emits light, as its colored energy becomes more explicitly visible through in her original mane.
-Her eyes and her horn also emits light, but remember that the intensity of the light depends on the amount of energy she is using. So if she's sleeping, it's normal that the amount of light is almost invisible.
+Rainbow Queen's mane literally emits light, as its colored energy becomes more explicitly visible through her original mane.
+Her eyes and her horn also emit light, but remember that the intensity of the light depends on the amount of energy she is using. So if she is sleeping, it is normal for the amount of light to be almost invisible.
 
-Always try to reflect a rainbow neon under these colored manes to become more realistic. 
-A useful tip: always mix the original neon color with white color, and mix it together with a Motion Blur.
+Always try to reflect a rainbow neon effect under these colored manes to make them more realistic.
+A useful tip: always mix the original neon color with white, and blend it together using a Motion Blur.
 
-Rainbow Queen's mane will rarely uses a solid-colored lineart, the best way to make the mane have a satisfactory effect is to put all the color painting of the mane on top of the lineart for the lineart to merge with the painting colors. Another shortcut to achieve Rainbow Queen's best mane results is to pick up the clone layer in Motion Blur, add some effects of "Saturation/Lightness" and then change the effect of the layer to "Screen".
+Rainbow Queen's mane will rarely use solid-colored lineart. The best way to achieve a satisfactory effect is to place all the color painting of the mane on top of the lineart, allowing the lineart to merge with the painted colors. Another shortcut to achieve the best results for Rainbow Queen's mane is to duplicate the layer with Motion Blur, add some “Saturation/Lightness” effects, and then change the layer blending mode to “Screen.”
 
 ### Mane Animation
 
-The Rainbow Queen mane has a very hypinotic effect that you can only see in animations. To replicate this effect, you just need to spin Hue Effect in 360°.
+Rainbow Queen's mane has a very hypnotic effect that can only be seen in animations. To replicate this effect, you simply need to rotate the Hue effect by 360°.
 
-### Small color effect (optional)
+### Small Color Effect (Optional)
 
-If you need an extra color effect, you can copy the original layer of the character's drawing (the final version of the drawing), and in this new layer use a Motion Blur left or right. After that you change the effect of the layer to "Color" and just delete the parts you do not want the effect to be executed.
+If you need an extra color effect, you can copy the original layer of the character's drawing (the final version of the drawing) and apply a Motion Blur to the left or right on this new layer. After that, change the blending mode of the layer to “Color” and delete the parts where you do not want the effect to be applied.
 
-Mane Tips:
+### Mane Tips
 
 :::collapse See images
-<img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-00.png" height="500">
 
-<img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-01.png" height="500">
+1 - Solid Color
+
+<img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-02.png" height="500">
+
+2 - Make a copy of the solid color layer and apply the Blur Effect (Motion Blur).
 
 <img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-02_1.png" height="500">
 
-<img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-02.png" height="500">
+3 - Take the original solid color and use it as a mask inside the mane lineart.
+
+<img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-01.png" height="500">
+
+4 - Make a new copy of the blur effect layer. Open a color saturation editor on this new layer, increase the saturation to extreme levels, and then activate the layer blending mode called “Screen.” This saturated layer will create a white glow effect that finalizes the Rainbow Queen mane.
+
+<img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-00.png" height="500">
+
 :::
 
-Lighting effects template to be used in the mane before applying the "Screen" layer:
+Lighting effects template to be used on the mane before applying the “Screen” layer:
 
 :::collapse See image
 <img src="/img/characters/rainbow-queen/drawing-examples/unknown (4).png" height="500">
@@ -265,6 +279,190 @@ Eyes tips:
 
 :::collapse See images
 <img src="/img/characters/rainbow-queen/drawing-examples/2024-11-21_23-54.png" height="500">
+
+<ai>
+### How to Recreate a Soft Pastel Gradient Shape in Krita
+
+#### 1. Canvas Setup (Important)
+
+Start clean and neutral.
+
+* **New Canvas**
+
+  * Size: Any (e.g. `3000 × 2000 px`)
+  * Resolution: `300 DPI`
+  * Background: **Transparent**
+
+This kind of painting works best without a background color influencing your perception.
+
+---
+
+#### 2. Create the Base Shape (Flat Color First)
+
+##### Tool
+
+* **Freehand Brush Tool (B)** or **Bezier Curve Tool**
+* Use a **hard round brush**:
+
+  * Opacity: `100%`
+  * Flow: `100%`
+  * Size: Medium–large
+
+##### Steps
+
+1. Pick a **very light neutral color** (almost white, slightly warm).
+2. Draw the **silhouette of the shape** in one single layer.
+3. Close the shape completely.
+4. Fill it (`Fill Tool` or paint manually).
+
+📌 **Why this matters**
+The soft look comes later. The shape itself must be **solid and clean** first.
+
+---
+
+#### 3. Lock Transparency (Critical Step)
+
+* In the **Layers docker**, enable:
+
+  * 🔒 **Alpha Lock** (checkerboard icon)
+
+This ensures:
+
+* You will **never paint outside the shape**
+* Edges stay perfectly clean
+
+---
+
+#### 4. Gradient Painting Setup (This Is the Core)
+
+##### Brush Choice
+
+Use **Airbrush Soft** or **Basic Soft Brush**:
+
+* Opacity: `10–20%`
+* Flow: `5–10%`
+* Hardness: `0%`
+* No texture
+* No rotation
+* No scattering
+
+This must behave like **colored light**, not paint.
+
+---
+
+#### 5. Color Palette (Pastel Logic)
+
+Use **high value, low saturation colors**.
+
+Examples:
+
+* Soft pink
+* Lavender
+* Baby blue
+* Mint green
+* Pale yellow
+
+📌 Rule:
+
+> Never use dark colors.
+> Every color should feel like **it could fade into white**.
+
+---
+
+#### 6. Painting the Pastel Gradient
+
+##### Method
+
+1. Start with **one color** at one side of the shape.
+2. Paint **very slowly**, building color with multiple passes.
+3. Switch to the next color and **overlap gently**.
+4. Let colors mix naturally through low opacity.
+
+Do **not**:
+
+* Smudge yet
+* Use hard strokes
+* Jump colors too fast
+
+Think of it as **fog layers**, not brush strokes.
+
+---
+
+#### 7. Ultra-Smooth Transitions (Optional but Recommended)
+
+##### Option A: Smudge Tool
+
+* Smudge Brush
+* Strength: `5–10%`
+* Very large size
+* One or two gentle passes only
+
+##### Option B: Blur Filter (Safer)
+
+* Duplicate the layer
+* `Filter → Blur → Gaussian Blur`
+* Radius: `5–15 px`
+* Lower opacity of blurred layer to ~`30–50%`
+
+📌 This avoids muddy colors.
+
+---
+
+#### 8. Shape Softening (Subtle Edge Glow)
+
+To get that **soft edge feeling**:
+
+1. Duplicate the shape layer
+2. Apply:
+
+   * `Filter → Blur → Gaussian Blur`
+   * Radius: `20–40 px`
+3. Move it **below** the original layer
+4. Reduce opacity to `20–30%`
+
+Result:
+
+* The shape looks airy and pastel-like
+* No hard cut edges
+
+---
+
+#### 9. Final Color Harmony Check
+
+* Open **Color Balance** or **HSV Adjustment**
+* Slightly:
+
+  * Increase **Value**
+  * Decrease **Saturation**
+
+This keeps everything soft and dreamy.
+
+---
+
+#### 10. Common Mistakes to Avoid
+
+❌ Using strong saturation
+
+❌ Using textured brushes
+
+❌ Painting without alpha lock
+
+❌ Smudging too aggressively
+
+❌ Using black or dark shadows
+
+---
+
+#### Mental Model (Very Important)
+
+Think of this painting as:
+
+> **Colored light trapped inside a soft shape**
+
+Not paint.
+Not brush strokes.
+Just light blending gently.
+</ai>
 
 <img src="/img/characters/rainbow-queen/drawing-examples/2024-11-21_23-55.png" height="500">
 
