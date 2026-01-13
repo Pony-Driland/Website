@@ -51,7 +51,7 @@
         "ws": "^8.18.3"
     },
     "devDependencies": {
-        "@babel/cli": "^7.28.3",
+        "@babel/cli": "^7.28.6",
         "@babel/core": "^7.28.3",
         "@babel/node": "^7.28.0",
         "@babel/parser": "^7.28.3",
