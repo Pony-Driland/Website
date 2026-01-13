@@ -55,7 +55,7 @@
         "@babel/core": "^7.28.3",
         "@babel/node": "^7.28.0",
         "@babel/parser": "^7.28.3",
-        "@babel/preset-env": "^7.28.3",
+        "@babel/preset-env": "^7.28.6",
         "@babel/traverse": "^7.28.3",
         "@types/bootstrap": "^5.2.10",
         "@types/clone": "^2.1.4",
