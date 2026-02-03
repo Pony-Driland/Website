@@ -76,6 +76,7 @@ export const ponyTimeToEarth = (ponyMinutes) => {
 formatCustomTimer(earthTimeToPony(1) * 60, 'days');
 "13:42:51"
 
+// 7 earth minutes = 4 pony driland days
 formatCustomTimer(earthTimeToPony(7) * 60, 'days', '{days} day(s) {hours}:{minutes}:{seconds}');
 "4 day(s) 00:00:00" 
 
