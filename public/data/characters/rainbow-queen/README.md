@@ -182,7 +182,7 @@ As previously mentioned, the Rainbow Queen's body does not function in a traditi
 
 #### Gastric Environment and Lining
 
-The stomach lining is composed of unique materials that maintain a **fluffy texture**. However, it is specifically evolved to be highly sensitive to absorbing various types of energy and interacting with light, evidenced by its grayish hue.
+The stomach lining is composed of unique materials that maintain a **squishy texture**. However, it is specifically evolved to be highly sensitive to absorbing various types of energy and interacting with light, evidenced by its grayish hue.
 
 * **Thermal Insulation:** The stomach features advanced thermal insulation, preventing body heat from overwhelming the interior. This creates an environment that is significantly less suffocating than a standard stomach.
 * **Atmospheric Quality:** This insulation also assists in filtering her breath, ensuring it reaches the stomach as **pure, fresh air**, further improving the comfort of the internal space.
@@ -192,7 +192,7 @@ The stomach lining is composed of unique materials that maintain a **fluffy text
 
 When the intensity of the energy being absorbed is high, the stomach walls may glow. These lights can also become visible if the Rainbow Queen performs magic internally, as her magic easily permeates the stomach walls to reach the interior.
 
-* **Celestial Effect:** When Rainbow Queen uses her magic, it travels through her body toward her horn. This often manifests as a peaceful, low-intensity glow on the stomach walls, resembling a **starry night sky**. This effect can be so comforting to the eyes that it occasionally hypnotizes the "guest" into a deeper slumber.
+* **Celestial Effect:** When Rainbow Queen uses her magic, it travels through her body toward her horn. This often manifests as a peaceful, low-intensity glow on the stomach walls, resembling a little the **starry night sky**. This effect can be so comforting to the eyes that it occasionally hypnotizes the "guest" into a deeper slumber.
 
 #### Natural Defense Mechanisms
 
