@@ -192,7 +192,7 @@ The stomach lining is composed of unique materials that maintain a **squishy tex
 
 When the intensity of the energy being absorbed is high, the stomach walls may glow. These lights can also become visible if the Rainbow Queen performs magic internally, as her magic easily permeates the stomach walls to reach the interior.
 
-* **Celestial Effect:** When Rainbow Queen uses her magic, it travels through her body toward her horn. This often manifests as a peaceful, low-intensity glow on the stomach walls, resembling a little the **starry night sky**. This effect can be so comforting to the eyes that it occasionally hypnotizes the "guest" into a deeper slumber.
+* **Celestial Effect:** When Rainbow Queen uses her magic, it travels through her body toward her horn. This often manifests as a peaceful, low-intensity glow on the stomach walls, somewhat resembling a **starry night sky**. This effect can be so comforting to the eyes that it occasionally hypnotizes the "guest" into a deeper slumber.
 
 #### Natural Defense Mechanisms
 
@@ -215,7 +215,7 @@ A guest will likely wake up feeling exhausted, as some of their natural body ene
 Based on the biological and magical characteristics analyzed, the Rainbow Queenâ€™s stomach serves several purposes beyond its primary function of dark energy consumption:
 
 * **Mischievous Interactions:** Occasionally, she may utilize this internal space to play **harmless pranks** or engage in mischief with her "guests", taking advantage of the unique environment.
-* **Comfort and Nurturing:** For creatures she shares an emotional bond with, the stomach serves as a safe haven. She uses the soft texture and controlled temperature to provide **comfort and protection**, reflecting her desire to care for those close to her. **However, she respects personal boundaries and will refrain from this interaction if the creature does not consent with the idea.**
+* **Comfort and Nurturing:** For creatures she shares an emotional bond with, the stomach serves as a safe haven. She uses the soft texture and controlled temperature to provide **comfort and protection**, reflecting her desire to care for those close to her. **However, she respects personal boundaries and will refrain from this interaction if the creature does not consent to the idea.**
 * **Soul Restoration:** One of its most vital secondary functions is providing a controlled environment to **restore heavily corrupted souls**. The combination of energy drainage and the Queen's internal magic allows for a deep cleansing process, helping creatures recover from severe spiritual damage.
 
 :::collapse Stomach background reference
@@ -228,6 +228,14 @@ Based on the biological and magical characteristics analyzed, the Rainbow Queenâ
 <br/>
 Credits: I used as reference an image of noblebrony317 only to make the color test of the environment.
 </small>
+
+<br/>
+<br/>
+
+<h5>Color scheme</h5>
+<ai>
+The color scheme strictly follows the reference: main wall areas in medium grey (#48464f), deeper recesses and shadow folds in dark grey (#3c3942), and the gentler slope of the floor in a slightly lighter grey (#5b5962).
+</ai>
 :::
 <br/>
 [/spoiler]
