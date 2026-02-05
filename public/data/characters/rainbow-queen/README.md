@@ -233,9 +233,11 @@ Credits: I used as reference an image of noblebrony317 only to make the color te
 <br/>
 
 <h5>Color scheme</h5>
+
 <ai>
 The color scheme strictly follows the reference: main wall areas in medium grey (#48464f), deeper recesses and shadow folds in dark grey (#3c3942), and the gentler slope of the floor in a slightly lighter grey (#5b5962).
 </ai>
+
 :::
 <br/>
 [/spoiler]
