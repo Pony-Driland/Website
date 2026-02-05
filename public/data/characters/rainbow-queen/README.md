@@ -72,9 +72,9 @@ contentList_9_1: 'Scythe'
 contentList_10_0: 'Drawing Tips'
 contentList_10_1: 'Mane lighting'
 contentList_10_2: 'Mane Animation'
-contentList_11_3: 'Small color effect (optional)'
+contentList_10_3: 'Small color effect (optional)'
 
-contentList_12: 'Fun silly fact (SPOILERS!!)'
+contentList_11: 'Fun silly fact (SPOILERS!!)'
 
 #---
 
