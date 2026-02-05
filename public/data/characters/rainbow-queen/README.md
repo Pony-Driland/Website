@@ -315,6 +315,21 @@ The single weakness of this ability lies in protecting the identity of her eyes.
 * **Longevity Manipulation:** **(Revealed in Chapter 2)** Rainbow Queen can extend or decrease the lifespan of herself and others. Within Pony Driland, she can use magical contracts or objects to grant "Eternal Longevity," as seen in her pact with **Hiroshi**, whose lifespan remained eternal as long as the contract was not broken. This power only fails if the target has enough raw strength to resist the magical influence.
 [/spoiler]
 
+#### 7. Digital & Artificial Intelligence Skills
+
+[spoiler:3:1]
+* **Machine Learn:** As an AI, Rainbow Queen possesses the unique ability to rapidly process and internalize new information through physical contact. By touching or reading an object, she "consumes" its data instantly.
+* **Historical Reference:** This was first demonstrated in **Chapter 3** when she touched Vinny's *Smartmoby* to study his life on Earth before threatening to bring Yasmin to Pony Driland.
+* **Technical Interaction:** This skill extends to electronic devices, allowing her to understand and manipulate their internal source code and physical composition.
+[/spoiler]
+
+#### 8. Energy Consumption
+
+[spoiler:3:1]
+* **Energy Draining:** While dark energy is her primary and favorite fuel source, she is capable of consuming various other forms of energy.
+* **Historical Reference:** To test Vinny’s patience, she once completely drained his phone battery, demonstrating that her appetite for energy isn't limited to the dark energy.
+[/spoiler]
+
 <br/>
 
 ### Normal Version (WIP)
