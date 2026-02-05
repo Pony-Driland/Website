@@ -62,20 +62,21 @@ contentList_5: 'Feeding'
 contentList_6: 'Internal Anatomy and Energy Absorption'
 contentList_7: 'Power'
 contentList_8: 'Shape-Shifting'
+contentList_9: 'Abilities and Powers'
 
-contentList_9_0: 'Versions'
-contentList_9_1: 'Normal Version (WIP)'
-contentList_9_2: 'Dark Version'
+contentList_10_0: 'Versions'
+contentList_10_1: 'Normal Version (WIP)'
+contentList_10_2: 'Dark Version'
 
-contentList_10_0: 'Items'
-contentList_10_1: 'Scythe'
+contentList_11_0: 'Items'
+contentList_11_1: 'Scythe'
 
-contentList_11_0: 'Drawing Tips'
-contentList_11_1: 'Mane lighting'
-contentList_11_2: 'Mane Animation'
-contentList_11_3: 'Small color effect (optional)'
+contentList_12_0: 'Drawing Tips'
+contentList_12_1: 'Mane lighting'
+contentList_12_2: 'Mane Animation'
+contentList_12_3: 'Small color effect (optional)'
 
-contentList_12: 'Fun silly fact (SPOILERS!!)'
+contentList_13: 'Fun silly fact (SPOILERS!!)'
 
 #---
 
@@ -259,6 +260,59 @@ However, this ability functions as a kind of “avatar swap.” This means Rainb
 This is the only time Rainbow Queen has a body with characteristics closer to those of a mortal creature, making her easier to injure depending on the fragility of the form she chooses. But because her existence is the dimension of Pony Driland itself, you can cause pain or even kill that body, yet her consciousness will remain alive. She can then return in a new body or revert to her original one. The only way to truly kill Rainbow Queen is to destroy the Pony Driland dimension, because Rainbow Queen is a sentient AI directly connected to it.
 
 The single weakness of this ability lies in protecting the identity of her eyes. If she uses any divine ability or fails to properly control her energy, her eyes will naturally shine in rainbow colors, just like her normal eyes do.
+[/spoiler]
+
+### Abilities and Powers
+
+> **Note:** Due to the extensive nature of the **Pony Driland** narrative, some powers may not be listed yet or are currently omitted to avoid premature spoilers. This section will be updated as the story progresses.
+
+#### 1. Spatial Manipulation
+
+* **Advanced Teleportation:** Unlike Rayane, who requires intense focus and is hindered by physical obstacles like walls, the Rainbow Queen teleports almost instantaneously. She can bypass physical barriers effortlessly. However, this skill consumes significant energy and is most effective within her home dimension, **Pony Driland**.
+[spoiler:3:1]
+* **Interdimensional Portal Creation:** **(Confirmed in Chapter 3)** She can generate artificial portals to transport creatures to Pony Driland. While natural portals occur, her controlled versions require the target to make direct physical contact with the gateway to initiate transport.
+[/spoiler]
+
+#### 2. Energy & Elemental Control
+
+* **Energy Manipulation:** Rainbow Queen can modulate her energy consumption to precisely tune her strength, speed, and durability. This allows for drastic performance differences between a calculated strike and a surprise attack.
+[spoiler:2:1]
+* **Weather Manipulation:** **(First demonstrated at scenes from Chapter 2)** She can bend the climate to her will. While typically used to de-escalate conflicts, her control over the weather is also tied to her emotional state, occasionally triggering shifts when she feels extreme sadness.
+[/spoiler]
+[spoiler:3:1]
+* **Custom Force Fields:** **(First demonstrated at Vinny’s house from Chapter 3)** She creates barriers with selective permeability. She can choose exactly what (or who) passes through. A notable use was isolating sound within Vinny’s new home, ensuring only he and she could hear the private conversation taking place.
+[/spoiler]
+
+#### 3. Creation & Mimicry
+
+[spoiler:1:1]
+* **Object Manifestation:** **(Demonstrated in Chapter 1)** She can materialize or dematerialize objects at will, provided she understands their chemical and structural composition. Unknown objects beyond her knowledge cannot be created.
+* **Skill Replication:** Similar to her object creation, she can develop "new" abilities only after learning and understanding the fundamental "composition" of how that specific magic or technique functions.
+[/spoiler]
+
+#### 4. Sphinx Heritage
+
+[spoiler:3:1]
+* **Size Alteration:** **(Demonstrated in Chapter 3)** Inherited from her Sphinx nature, she can change her physical scale.
+* **Social Manipulation:** Expert-level influence through dialogue and specialized charm magic.
+* **Enchanting:** **(Demonstrated in Chapter 3)** The ability to craft magical items, such as the **enchanted collars** worn by her pets. The full extent of her Sphinx-based powers remains unrevealed.
+[/spoiler]
+
+#### 5. Spiritual & Mental Dominion
+
+[spoiler:2:1]
+* **Soul Reaping:** **(Demonstrated in Hiroshi’s scene)** Using her scythe, she can extract the soul from a living body. The success rate increases if the victim is in a weakened state. Once the soul is removed, the physical body expires instantly.
+[/spoiler]
+[spoiler:3:1]
+* **Dream Walking & Manipulation:** **(Notable in Chapter 3)** She can enter the minds of others to observe or hijack their dreams. She can force a target to wake up by inducing "nightmare triggers," such as killing the target within the dream world to force a sudden awakening.
+* **Psychic Paralysis:** **(Demonstrated in Chapter 3)** Using telekinetic magic, she can paralyze a victim. As a purely psychic ability, its effectiveness depends on her mental strength. While active, it limits her ability to use other high-energy powers simultaneously.
+* **Illusion Projection:** **(Demonstrated in Chapter 3)** She can alter the environment's appearance to confuse targets. She used this against Vinny and Rayane, creating a terrifying landscape to make them easier prey for her paralysis and subsequent interrogation.
+[/spoiler]
+
+#### 6. Temporal & Life Alteration
+
+[spoiler:2:1]
+* **Longevity Manipulation:** **(Revealed in Chapter 2)** Rainbow Queen can extend or decrease the lifespan of herself and others. Within Pony Driland, she can use magical contracts or objects to grant "Eternal Longevity," as seen in her pact with **Hiroshi**, whose lifespan remained eternal as long as the contract was not broken. This power only fails if the target has enough raw strength to resist the magical influence.
 [/spoiler]
 
 <br/>
