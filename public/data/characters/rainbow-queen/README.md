@@ -215,7 +215,7 @@ A guest will likely wake up feeling exhausted, as some of their natural body ene
 Based on the biological and magical characteristics analyzed, the Rainbow Queen’s stomach serves several purposes beyond its primary function of dark energy consumption:
 
 * **Mischievous Interactions:** Occasionally, she may utilize this internal space to play **harmless pranks** or engage in mischief with her "guests", taking advantage of the unique environment.
-* **Comfort and Nurturing:** For creatures she shares an emotional bond with, the stomach serves as a safe haven. She uses the soft texture and controlled temperature to provide **comfort and protection**, reflecting her desire to care for those close to her. **However, she respects personal boundaries and will refrain from this interaction if the creature does not consent or expresses discomfort with the idea.**
+* **Comfort and Nurturing:** For creatures she shares an emotional bond with, the stomach serves as a safe haven. She uses the soft texture and controlled temperature to provide **comfort and protection**, reflecting her desire to care for those close to her. **However, she respects personal boundaries and will refrain from this interaction if the creature does not consent with the idea.**
 * **Soul Restoration:** One of its most vital secondary functions is providing a controlled environment to **restore heavily corrupted souls**. The combination of energy drainage and the Queen's internal magic allows for a deep cleansing process, helping creatures recover from severe spiritual damage.
 
 :::collapse Stomach background reference
