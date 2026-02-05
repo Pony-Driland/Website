@@ -59,22 +59,23 @@ contentList_2: 'Hobby'
 contentList_3: 'Personality'
 contentList_4: 'Dark Energy'
 contentList_5: 'Feeding'
-contentList_6: 'Power'
-contentList_7: 'Shape-Shifting'
+contentList_6: 'Internal Anatomy and Energy Absorption'
+contentList_7: 'Power'
+contentList_8: 'Shape-Shifting'
 
-contentList_8_0: 'Versions'
-contentList_8_1: 'Normal Version (WIP)'
-contentList_8_2: 'Dark Version'
+contentList_9_0: 'Versions'
+contentList_9_1: 'Normal Version (WIP)'
+contentList_9_2: 'Dark Version'
 
-contentList_9_0: 'Items'
-contentList_9_1: 'Scythe'
+contentList_10_0: 'Items'
+contentList_10_1: 'Scythe'
 
-contentList_10_0: 'Drawing Tips'
-contentList_10_1: 'Mane lighting'
-contentList_10_2: 'Mane Animation'
-contentList_10_3: 'Small color effect (optional)'
+contentList_11_0: 'Drawing Tips'
+contentList_11_1: 'Mane lighting'
+contentList_11_2: 'Mane Animation'
+contentList_11_3: 'Small color effect (optional)'
 
-contentList_11: 'Fun silly fact (SPOILERS!!)'
+contentList_12: 'Fun silly fact (SPOILERS!!)'
 
 #---
 
@@ -100,15 +101,21 @@ She has large white wings and wears a glowing blue necklace with a central gem. 
 
 Due to the mixture of sphinx essence, Rainbow Queen also has paws like a cat.
 
+<br/>
+
 ### Natural Habitat
 
 Her home has an architecture inspired by the Egyptian culture. She has a pyramid as her home and lives on an extremely high cold mountain. Due to the extreme cold of the mountain, her natural habitat is covered by snow instead of sand. This allowed her to create a great passion for the cold climates.
 
 She uses her divine elemental manipulation abilities to raise or lower her body temperature to her advantage in order to withstand any hot or cold temperatures, but this can use a lot of energy from her body.
 
+<br/>
+
 ### Hobby
 
 Her favorite activity is helping the souls of the ponies who have recently died in Pony Driland. She has the ability to interact with souls, which other ponies cannot do that. She helps souls find acceptance of death to be safe and rest in peace. All the souls she collect are kept in a mysterious safe place, but it is unknown what secret place is.
+
+<br/>
 
 ### Personality
 
@@ -131,6 +138,9 @@ Because of this, Rainbow Queen is far more familiar with dark energy than the ot
 [/spoiler]
 
 [spoiler:3:3641]
+
+<br/>
+
 ### Dark Energy
 
 Dark energy is a power-based energy produced by negative feelings accumulated within a soul, capable of causing variations in the sanity, mood, and abilities of a living being.
@@ -140,6 +150,8 @@ One of Rainbow Queen’s tasks is to prevent any living being from losing total 
 Each creature can have different reactions to dark energy, including Rainbow Queen herself, who uses her scythe to regulate the amount of dark energy within her own body. Rainbow Queen literally feeds on dark energy, opening her mouth to begin the draining process, absorbing the dark energy of her victims into her own body, where she can then use it to her advantage.
 
 Rainbow Queen also has the option of devouring a victim to trap them inside her own belly (either when she uses her Sphinx ability to increase her size, or when she drains enough energy from a living being to shrink them). In this state, a black liquid will put the trapped victim to sleep, making the process of draining dark energy much easier, faster, and safer.
+
+<br/>
 
 ### Feeding
 
@@ -156,7 +168,46 @@ This process of controlling normal food is very simple for Rainbow Queen, since 
 The process of converting food into energy is not limited to food, as she has the ability to transform practically anything into energy (and the ability to restore it or try to turn it into something else). The object will dematerialize once it no longer has enough energy to maintain its structure. This ability also works on living beings, but it is much harder to perform because the energy contained within a living being’s soul is much greater than that of a common object.
 
 When a living being’s energy reaches the minimum threshold that allows Rainbow Queen to manipulate or erase the body of that being, she gains the ability to induce mutations or control the being’s size (either shrinking or enlarging it). If the creature is trapped inside her body, Rainbow Queen can perform these abilities far more easily, since the energy of her own body is extremely concentrated, allowing her to strike her victim directly.
+
+<br/>
+
+### Internal Anatomy and Energy Absorption
+
+#### Overview of the Digestive System
+
+As previously mentioned, the Rainbow Queen's body does not function in a traditional way regarding food consumption. Consequently, her internal biology operates quite differently from conventional organisms.
+
+#### Gastric Environment and Lining
+
+The stomach lining is composed of unique materials that maintain a **fluffy texture**. However, it is specifically evolved to be highly sensitive to absorbing various types of energy and interacting with light, evidenced by its grayish hue.
+
+* **Thermal Insulation:** The stomach features advanced thermal insulation, preventing body heat from overwhelming the interior. This creates an environment that is significantly less suffocating than a standard stomach.
+* **The Black Fluid:** Instead of gastric acid, the stomach contains a specialized black liquid. Its primary purpose is to absorb dark energy (or any interacting energy). Upon contact with a living being, this fluid induces a **deep sleep** to facilitate the energy drainage process.
+
+#### Luminescent Energy Absorption
+
+When the intensity of the energy being absorbed is high, the stomach walls may glow. These lights can also become visible if the Rainbow Queen performs magic internally, as her magic easily permeates the stomach walls to reach the interior.
+
+* **Celestial Effect:** When Rainbow Queen uses her magic, it travels through her body toward her horn. This often manifests as a peaceful, low-intensity glow on the stomach walls, resembling a **starry night sky**. This effect can be so comforting to the eyes that it occasionally hypnotizes the "guest" into a deeper slumber.
+
+#### Natural Defense Mechanisms
+
+Attempting to harm the stomach walls is extremely dangerous. Behind the physical lining lies a **barrier of raw energy**.
+
+* **Reaction:** If an injury occurs, this energy barrier reacts instantly to attack the threat (which can be fatal) and rapidly heals the stomach wall.
+
+#### The "Digestion" Process
+
+When the stomach detects that a guest is in a deep sleep, the walls automatically and **gently contract** to embrace them. This allows for direct physical contact, which optimizes the drainage of dark energy.
+
+> While this behavior might seem affectionate or "cute," it is the Rainbow Queen's equivalent of digestion. It is not intended to kill, but strictly to extract energy.
+
+#### Post-Absorption Recovery
+
+A guest will likely wake up feeling exhausted, as some of their natural body energy may be drained alongside the dark energy. However, recovery is quick; the individual usually regains their strength within a few minutes once direct contact with the stomach walls ceases.
 [/spoiler]
+
+<br/>
 
 ### Power
 
@@ -185,6 +236,9 @@ Because Rainbow Queen’s power and energy are far greater, she is capable of pe
 [/spoiler]
 
 [spoiler:4:1]
+
+<br/>
+
 ### Shape-Shifting
 
 Rainbow Queen’s ability to manipulate reality can also be applied to herself. She possesses a skill very similar to that of the Changelings, allowing her to transform into any other creature. This ability is usually used when she tries to blend in among the other inhabitants of a region.
@@ -196,10 +250,14 @@ This is the only time Rainbow Queen has a body with characteristics closer to th
 The single weakness of this ability lies in protecting the identity of her eyes. If she uses any divine ability or fails to properly control her energy, her eyes will naturally shine in rainbow colors, just like her normal eyes do.
 [/spoiler]
 
+<br/>
+
 ### Normal Version (WIP)
 
 <img src="/img/characters/rainbow-queen/wip/ref-1.gif" height="500">
 <a href="https://derpibooru.org/images/2717471" target="_blank">Derpibooru Page</a>
+
+<br/>
 
 ### Dark Version
 
@@ -215,6 +273,8 @@ Scythe Lineart: JasminDreasond
 
 Final Artwork: JasminDreasond
 
+<br/>
+
 ### Scythe
 
 This weapon is the pure manifestation of her negative feelings. Divine creatures with negative emotions are extremely dangerous, as these feelings can overload the amount of power evolved by anger. This scythe is invoked in an attempt to drain the negative feelings and focus all the anger into a weapon where the negative energy can be controlled. However, when this weapon is used, it can cause a great level of destruction due to the negative energies accumulated within it.
@@ -225,9 +285,13 @@ The only way to resolve this is for the Rainbow Queen to be calmed enough for he
 
 <img src="/img/characters/rainbow-queen/scythe.gif" height="500">
 
+<br/>
+
 ## Drawing Tips
 
 Some details about Rainbow Queen can seem confusing when trying to understand how to draw her. So I decided to show how I work when drawing images of Rainbow Queen.
+
+<br/>
 
 ### Mane Lighting
 
@@ -239,13 +303,19 @@ A useful tip: always mix the original neon color with white, and blend it togeth
 
 Rainbow Queen's mane will rarely use solid-colored lineart. The best way to achieve a satisfactory effect is to place all the color painting of the mane on top of the lineart, allowing the lineart to merge with the painted colors. Another shortcut to achieve the best results for Rainbow Queen's mane is to duplicate the layer with Motion Blur, add some “Saturation/Lightness” effects, and then change the layer blending mode to “Screen.”
 
+<br/>
+
 ### Mane Animation
 
 Rainbow Queen's mane has a very hypnotic effect that can only be seen in animations. To replicate this effect, you simply need to rotate the Hue effect by 360°.
 
+<br/>
+
 ### Small Color Effect (Optional)
 
 If you need an extra color effect, you can copy the original layer of the character's drawing (the final version of the drawing) and apply a Motion Blur to the left or right on this new layer. After that, change the blending mode of the layer to “Color” and delete the parts where you do not want the effect to be applied.
+
+<br/>
 
 ### Mane Tips
 
@@ -281,6 +351,9 @@ Eyes tips:
 <img src="/img/characters/rainbow-queen/drawing-examples/2024-11-21_23-54.png" height="500">
 
 <ai>
+
+<br/>
+
 ### How to Recreate a Soft Pastel Gradient Shape in Krita
 
 #### 1. Canvas Setup (Important)
@@ -478,6 +551,11 @@ Mane solid colors:
 :::
 
 [spoiler:3:2238]
+
+<hr/>
+
+<br/>
+
 ## Fun silly fact (SPOILERS!!)
 
 When Pony Driland was in the first chapter, the first characters drawing made were Rainbow Queen and Rayane.
