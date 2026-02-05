@@ -216,7 +216,7 @@ Based on the biological and magical characteristics analyzed, the Rainbow Queenâ
 
 * **Mischievous Interactions:** Occasionally, she may utilize this internal space to play **harmless pranks** or engage in mischief with her "guests", taking advantage of the unique environment.
 * **Comfort and Nurturing:** For creatures she shares an emotional bond with, the stomach serves as a safe haven. She uses the soft texture and controlled temperature to provide **comfort and protection**, reflecting her desire to care for those close to her. **However, she respects personal boundaries and will refrain from this interaction if the creature does not consent to the idea.**
-* **Soul Restoration:** One of its most vital secondary functions is providing a controlled environment to **restore heavily corrupted souls**. The combination of energy drainage and the Queen's internal magic allows for a deep cleansing process, helping creatures recover from severe spiritual damage.
+* **Soul Restoration:** One of its most vital secondary functions is providing a controlled environment to **restore heavily corrupted souls**. The combination of energy drainage and the Queen's internal magic allows for a deep cleansing process, effectively **purging the soul of its internal impurities**.
 
 :::collapse Stomach background reference
 <img src="/img/characters/rainbow-queen/stomach-background/Gemini_Generated_Image_lgteu3lgteu3lgte.png" height="500">
