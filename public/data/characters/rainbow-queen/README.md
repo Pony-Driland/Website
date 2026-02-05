@@ -204,7 +204,7 @@ Attempting to harm the stomach walls is extremely dangerous. Behind the physical
 
 When the stomach detects that a guest is in a deep sleep, the walls automatically and **gently contract** to embrace them. This allows for direct physical contact, which optimizes the drainage of dark energy.
 
-> While this behavior might seem affectionate or "cute," it is the Rainbow Queen's equivalent of digestion. It is not intended to kill, but strictly to extract energy.
+> While this behavior might seem affectionate or "cute", it is the Rainbow Queen's equivalent of digestion. It is not intended to kill, but strictly to extract energy.
 
 #### Post-Absorption Recovery
 
@@ -214,7 +214,7 @@ A guest will likely wake up feeling exhausted, as some of their natural body ene
 
 Based on the biological and magical characteristics analyzed, the Rainbow Queen’s stomach serves several purposes beyond its primary function of dark energy consumption:
 
-* **Mischievous Interactions:** Occasionally, she may utilize this internal space to play **harmless pranks** or engage in mischief with her "guests," taking advantage of the unique environment.
+* **Mischievous Interactions:** Occasionally, she may utilize this internal space to play **harmless pranks** or engage in mischief with her "guests", taking advantage of the unique environment.
 * **Comfort and Nurturing:** For creatures she shares an emotional bond with, the stomach serves as a safe haven. She uses the soft texture and controlled temperature to provide **comfort and protection**, reflecting her desire to care for those close to her. **However, she respects personal boundaries and will refrain from this interaction if the creature does not consent or expresses discomfort with the idea.**
 * **Soul Restoration:** One of its most vital secondary functions is providing a controlled environment to **restore heavily corrupted souls**. The combination of energy drainage and the Queen's internal magic allows for a deep cleansing process, helping creatures recover from severe spiritual damage.
 
@@ -317,7 +317,7 @@ The single weakness of this ability lies in protecting the identity of her eyes.
 * **Soul Reaping:** **(Demonstrated in Hiroshi’s scene)** Using her scythe, she can extract the soul from a living body. The success rate increases if the victim is in a weakened state. Once the soul is removed, the physical body expires instantly.
 [/spoiler]
 [spoiler:3:1]
-* **Dream Walking & Manipulation:** **(Notable in Chapter 3)** She can enter the minds of others to observe or hijack their dreams. She can force a target to wake up by inducing "nightmare triggers," such as killing the target within the dream world to force a sudden awakening.
+* **Dream Walking & Manipulation:** **(Notable in Chapter 3)** She can enter the minds of others to observe or hijack their dreams. She can force a target to wake up by inducing "nightmare triggers", such as killing the target within the dream world to force a sudden awakening.
 * **Psychic Paralysis:** **(Demonstrated in Chapter 3)** Using telekinetic magic, she can paralyze a victim. As a purely psychic ability, its effectiveness depends on her mental strength. While active, it limits her ability to use other high-energy powers simultaneously.
 * **Illusion Projection:** **(Demonstrated in Chapter 3)** She can alter the environment's appearance to confuse targets. She used this against Vinny and Rayane, creating a terrifying landscape to make them easier prey for her paralysis and subsequent interrogation.
 [/spoiler]
@@ -325,7 +325,7 @@ The single weakness of this ability lies in protecting the identity of her eyes.
 #### 6. Temporal & Life Alteration
 
 [spoiler:2:1]
-* **Longevity Manipulation:** **(Revealed in Chapter 2)** Rainbow Queen can extend or decrease the lifespan of herself and others. Within Pony Driland, she can use magical contracts or objects to grant "Eternal Longevity," as seen in her pact with **Hiroshi**, whose lifespan remained eternal as long as the contract was not broken. This power only fails if the target has enough raw strength to resist the magical influence.
+* **Longevity Manipulation:** **(Revealed in Chapter 2)** Rainbow Queen can extend or decrease the lifespan of herself and others. Within Pony Driland, she can use magical contracts or objects to grant "Eternal Longevity", as seen in her pact with **Hiroshi**, whose lifespan remained eternal as long as the contract was not broken. This power only fails if the target has enough raw strength to resist the magical influence.
 [/spoiler]
 
 #### 7. Digital & Artificial Intelligence Skills
