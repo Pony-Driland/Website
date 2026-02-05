@@ -173,6 +173,8 @@ When a living being’s energy reaches the minimum threshold that allows Rainbow
 
 ### Internal Anatomy and Energy Absorption
 
+**Rainbow Queen is an exotic and unique entity within the realm of Pony Driland.** She is fully aware that her behavior and the way her body functions differ significantly from the ordinary creatures of this dimension.
+
 #### Overview of the Digestive System
 
 As previously mentioned, the Rainbow Queen's body does not function in a traditional way regarding food consumption. Consequently, her internal biology operates quite differently from conventional organisms.
@@ -182,6 +184,7 @@ As previously mentioned, the Rainbow Queen's body does not function in a traditi
 The stomach lining is composed of unique materials that maintain a **fluffy texture**. However, it is specifically evolved to be highly sensitive to absorbing various types of energy and interacting with light, evidenced by its grayish hue.
 
 * **Thermal Insulation:** The stomach features advanced thermal insulation, preventing body heat from overwhelming the interior. This creates an environment that is significantly less suffocating than a standard stomach.
+* **Atmospheric Quality:** This insulation also assists in filtering her breath, ensuring it reaches the stomach as **pure, fresh air**, further improving the comfort of the internal space.
 * **The Black Fluid:** Instead of gastric acid, the stomach contains a specialized black liquid. Its primary purpose is to absorb dark energy (or any interacting energy). Upon contact with a living being, this fluid induces a **deep sleep** to facilitate the energy drainage process.
 
 #### Luminescent Energy Absorption
@@ -205,6 +208,14 @@ When the stomach detects that a guest is in a deep sleep, the walls automaticall
 #### Post-Absorption Recovery
 
 A guest will likely wake up feeling exhausted, as some of their natural body energy may be drained alongside the dark energy. However, recovery is quick; the individual usually regains their strength within a few minutes once direct contact with the stomach walls ceases.
+
+#### Versatility and Intent
+
+Based on the biological and magical characteristics analyzed, the Rainbow Queen’s stomach serves several purposes beyond its primary function of dark energy consumption:
+
+* **Mischievous Interactions:** Occasionally, she may utilize this internal space to play **harmless pranks** or engage in mischief with her "guests," taking advantage of the unique environment.
+* **Comfort and Nurturing:** For creatures she shares an emotional bond with, the stomach serves as a safe haven. She uses the soft texture and controlled temperature to provide **comfort and protection**, reflecting her desire to care for those close to her. **However, she respects personal boundaries and will refrain from this interaction if the creature does not consent or expresses discomfort with the idea.**
+* **Soul Restoration:** One of its most vital secondary functions is providing a controlled environment to **restore heavily corrupted souls**. The combination of energy drainage and the Queen's internal magic allows for a deep cleansing process, helping creatures recover from severe spiritual damage.
 [/spoiler]
 
 <br/>
