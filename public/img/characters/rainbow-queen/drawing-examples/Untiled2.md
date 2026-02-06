@@ -31,6 +31,7 @@ Finally, we add the soft central glow.
 
 * **Action:** Create a circle with soft, feathered edges and place a rainbow gradient inside it (**Group 8**).
 * **Recommended Blending Modes:**
+
 | Tier | Blend Modes |
 | :--- | :--- |
 | **Primary** | Overlay, Addition |
