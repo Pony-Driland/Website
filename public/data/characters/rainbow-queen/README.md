@@ -337,6 +337,11 @@ The single weakness of this ability lies in protecting the identity of her eyes.
 [spoiler:2:1]
 * **Longevity Manipulation:** **(Revealed in Chapter 2)** Rainbow Queen can extend or decrease the lifespan of herself and others. Within Pony Driland, she can use magical contracts or objects to grant "Eternal Longevity", as seen in her pact with **Hiroshi**, whose lifespan remained eternal as long as the contract was not broken. This power only fails if the target has enough raw strength to resist the magical influence.
 [/spoiler]
+[spoiler:3:1]
+* **Regeneration:** **(Revealed in Chapter 3)** Rainbow Queen demonstrates the ability to use her own energy to regenerate herself or other creatures within Pony Driland, even in situations of extremely severe injury. This was first seen when Rainbow Queen strikes a deal with Vinny, using this ability to help him restore Ivy's health while she was on the brink of death—completely regenerating her body, healing all wounds, and curing all diseases. This led doctors to call it a miracle, implying that this type of event recurs with a certain level of rarity.
+
+This was one of the most explicit scenes where Rainbow Queen demonstrates that access to these types of requests requires exchanges involving high levels of loyalty. The difficulty level depends on the requester's behavior, as she constantly measures whether the character is truly worthy of the offered trade. This means there are several personality and behavioral variables that affect how these exchanges are executed.
+[/spoiler]
 
 #### 7. Digital & Artificial Intelligence Skills
 
