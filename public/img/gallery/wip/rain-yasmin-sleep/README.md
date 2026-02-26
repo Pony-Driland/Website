@@ -25,7 +25,7 @@ The idea of the dialogue is that the first 3 images represent that each image is
 
 This comic communicates with the canonical part of Pony Driland in chapter 3, where Yasmin is already a Rainbow Queen pet, and Rainbow Queen is having fun with her before the Yasmin's sleep time.
 
-In the official story, Rainbow Queen likes to make Yasmin sleep inside her tummy (Rainbow Queen likes to say provocatively that the words "my darkness" refer to her stomach for fun, symbolizing that she likes to be a dark creature), because Rainbow Queen found out Yasmin is the only creature in her friendships who accepts be devoured alive safely, making one of her contained feelings can finally be free.
+In the official story, Rainbow Queen likes to make Yasmin sleep inside her tummy (Rainbow Queen likes to say provocatively that the words "my darkness" refer to her stomach for fun, symbolizing that she likes to be a dark creature), because Rainbow Queen found out Yasmin is the only creature in her friendships who accepts being devoured alive safely, making one of her contained feelings finally be free.
 
 With this information obtained after spying on Yasmin's cell phone, Rainbow Queen feels happy that in the end Yasmin will feel safe when she realizes that this moment, even being scary, in the end, nothing bad will really happen, because the other friends have an extremely higher level of fear of sleeping inside the belly of Rainbow Queen.
 
