@@ -41,7 +41,7 @@ Image 3: sleep~
 
 Image 4: Heh~ My little pet is going to fall asleep like a dessert in my darkness...
 
-Image 5: Where her belong~
+Image 5: Where she belong~
 
 ## The comic image
 
