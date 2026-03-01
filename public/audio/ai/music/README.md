@@ -1,4 +1,4 @@
-# Rainbow Queen songs (AI)
+# Songs made by AI
 
 This folder is dedicated to soundtracks generated through AI. These soundtracks are intended to be used as a reference for the production of future songs (with or without AI) or for use in videos.
 
