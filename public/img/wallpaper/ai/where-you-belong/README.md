@@ -8,7 +8,7 @@ Gemini
 
 JasminDreasond
 
-## Image Resolutins
+## Image Resolutions
 
 2k
 
