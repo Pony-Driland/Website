@@ -1,6 +1,6 @@
 # Where you belong
 
-Yasmin sleeping in Rainbow Queen's stomach. Recreation of the first scene that this happens in chapter 2.
+Yasmin sleeping in Rainbow Queen's stomach. Recreation of the first scene that this happens in chapter 3.
 
 ## Image Generator
 
