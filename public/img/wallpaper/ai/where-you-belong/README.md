@@ -8,6 +8,14 @@ Gemini
 
 JasminDreasond
 
+## Animation Version (Non-Ai Video) by
+
+JasminDreasond
+
+#### Software used:
+
+Kdenlive
+
 ## Image Resolutions
 
 2k
