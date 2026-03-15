@@ -5396,10 +5396,10 @@ tiny-essentials@^1.24.3:
   resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.24.3.tgz#92a6ff376e594fbcaed62f6f0033b547da51142c"
   integrity sha512-4bH/2vFC42L9hMML0WvgmEnrJ6uEWA8IeEX4+vlksWWp0FTRiFthNOniMOnPpmyfjVy4MASq7p8llqXmsfL83g==
 
-tiny-essentials@^1.25.1:
-  version "1.25.1"
-  resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.25.1.tgz#18a8c1198f700afb69526b2a93dbf95bdbd7a888"
-  integrity sha512-GESAwWrq3o5w1+QgoUS/XAkKdyNbabcXVi4YFiQOw51jV/FKTcd0uAmIMOuo90rPqEsz4EgqAreFjN3HjsjEYA==
+tiny-essentials@^1.25.2:
+  version "1.25.2"
+  resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.25.2.tgz#16ae85b580cfca49495ecdc3f04798b5c44f6a32"
+  integrity sha512-rQMj2zYouWpDCBkWTpxiIVsmS28l/HN1V1r9DWvSwp3Qzl4c+DEqP4HZRQ2ZRzsqZyuK+uAl5fxqvu9qFMIShA==
 
 tiny-server-essentials@^1.1.0:
   version "1.1.0"
