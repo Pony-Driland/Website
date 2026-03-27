@@ -31,7 +31,7 @@
         "exifreader": "^4.31.1",
         "express": "^5.1.0",
         "file-saver": "^2.0.5",
-        "firebase": "^12.1.0",
+        "firebase": "^12.8.0",
         "for-promise": "^2.0.5",
         "jsstore": "^4.9.0",
         "marked": "^16.2.0",
