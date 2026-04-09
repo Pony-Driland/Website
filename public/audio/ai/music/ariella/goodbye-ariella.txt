@@ -2,6 +2,7 @@ Cinematic orchestral, solo music box, melancholic piano intro, slow emotional bu
 
 
 
+------------------------------------------------------------------
 
 [Instrumental Intro]
 [Solo melancholic piano with music box, slow and hesitant]
@@ -28,4 +29,57 @@ Cinematic orchestral, solo music box, melancholic piano intro, slow emotional bu
 [Fading into a single lonely note]
 [Final silence]
 [End]
+
+---------------------------------------------------------------------
+
+
+[Instrumental]
+
+[Intro]
+
+[solo violin arpeggios, A minor]
+
+[soft piano chords]
+
+[Build-up]
+
+[staccato string ensemble enters]
+
+[muted electric guitar chugging]
+
+[crescendo with snare rolls]
+
+[Main Theme]
+
+[distorted electric guitar power chords]
+
+[driving rock drums, double-kick accents]
+
+[virtuosic solo violin melody]
+
+[full orchestral string section pads]
+
+[Bridge]
+
+[half-time drum feel]
+
+[sustained violin notes with heavy vibrato]
+
+[piano melodic fills]
+
+[Climax]
+
+[rapid violin 16th-note runs]
+
+[aggressive guitar riffs]
+
+[crash cymbal hits]
+
+[Outro]
+
+[drums and guitar cut out]
+
+[fading solo violin melody]
+[final piano chord resonance dramatically in sorrow]
+
 
