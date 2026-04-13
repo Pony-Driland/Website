@@ -28,5 +28,14 @@ The following AI tools were utilized in the creation and organization of these a
 * **Gemini** (Technical support, documentation, and scripting)
 * **Suno** (Musical generation and base tracks)
 
+### 🎵 Music & Licensing (Suno)
+
+All soundtracks featured in this project were generated using **Suno** while under an active **Pro/Premier subscription**. 
+
+As per Suno's licensing terms:
+> "If you make songs while subscribed to the Pro or Premier plan, you own the songs. Further, you are granted a commercial use license to monetize those songs."
+
+This ensures that all audio assets used here are fully owned by me and cleared for commercial use.
+
 ---
 *Thank you for respecting the creative process!*
