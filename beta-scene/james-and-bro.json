@@ -1,0 +1,328 @@
+[
+    {
+        "value": "Quando a Rainbow Queen acessa esta memória perdida, de repente ela entra em um flashback, mas ela apenas consegue ouvir vozes.",
+        "type": "action"
+    },
+
+    {
+        "value": "James, preste muito atenção no que eu vou te falar agora. Você me promete que não vai tentar modificar esta AI sem a minha devida permissão. Esta AI é a minha responsabilidade como ciêntista biológico desta dimensão artificial, a minha responsabilidade no nosso projeto.",
+        "character": "???",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Os olhos da Rainbow Queen ficam um pouco arregalados de surpresa quando ela entende que esta misteriosa voz falando com o James está se referindo a ela.",
+        "type": "action"
+    },
+
+    {
+        "value": "S-Sim... Irmão... M-Mas se algo der errado? Eu não quero que toda a culpa fique apenas com você. Nós estamos trabalhando juntos nisso!",
+        "character": "James",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Não James, você tem apenas duas opções, ou você desliga a dimensão, ou você vai tentar fazer esta AI te obedecer. ",
+        "character": "???",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "O-o que?",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A voz misteriosa suspirava, continuando a conversa de forma bem diciplinada.",
+        "flashback": true,
+        "type": "action"
+    },
+
+    {
+        "value": "Quando você vai aprender que esta técnologia é extremamente perigosa? Isso não é uma AI comum como as AIs dos humanos de nosso planeta.",
+        "character": "???",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Tudo bem... Tá bom... Mas eu ainda tenho medo disso. A gente realmente precisava de algo assim? Não podia ser algo mais simples?",
+        "character": "James",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Sim James, a gente precisa, se a gente quiser que a Master Smartmoby realmente funcione para criar um ambiente habitavel e fácil de gerenciar, a gente precisa de uma técnologia de AI extremamente poderosa capais de criar o nosso bunker dimensional, mas ao mesmo tempo a gente precisa ter a segurança que esta AI não vai tentar também nos destruir. Você é muito inteligênte na lógica, por isso que eu escolhi ser inteligênte na biologia. Olhe só pra tudo isso...",
+        "character": "???",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Então som de passos de duas pernas eram escutados até clicar um botão.",
+        "flashback": true,
+        "type": "action"
+    },
+
+    {
+        "value": "T-Tudo isso em pouco tempo?!",
+        "character": "James",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Sim, e tudo vai dar certo. Está vendo todos esses prompts? Essas instrunções? E toda essa lógica de códigos que eu a gente trabalhou juntos?",
+        "character": "???",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "U-uau! Eu não acredito que você ficou todas essas noites sem dormir direito fazendo tudo isso!",
+        "character": "James",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Exato, tudo que uma maquina cria e destrói é baseado na lógica, maquinas apenas criam conclusões, e fazem conclusões. Atingir a singularidade apenas por pura lógica significa que eventualmente todos nós vamos no final ser insignificantes porque criamos algo que age no egoismo da matemática.",
+        "character": "???",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Mais sons de botões e slides eram escutados durante a conversa.",
+        "flashback": true,
+        "type": "action"
+    },
+
+    {
+        "value": "É justamente por causa disso que eu fiz isso, algo que esta AI jamais poderá controlar, algo que sempre seja superior dentro da mente desta AI. Um algoritimo mecânico de sentimentos, personalidade, instintos e valores humanos, este sistema é totalmente impossível de ser penetrado pela AI para fazer mutações em si mesma.",
+        "character": "???",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James ficava preocupado, e seu tom de voz demostrava nervosismo, mas ainda sim uma voz gentil.",
+        "flashback": true,
+        "type": "action"
+    },
+
+    {
+        "value": "H-hah! Você está conseguindo me deixar com ainda mais medo, a gente ainda nem testou esse sistema. Eu só vou ficar mais calmo apenas quando a gente testar.",
+        "character": "James",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Relaxa irmão, não se preocupe, isso significa que mesmo que esta AI tente ser malvada, este mecânismo pode fazer ela sentir empâtia, arrepêndimento, esses comandos sempre vão ser enviados no root de instrunções da mente da AI a onde ela não tem acesso. Esse sistema de emoções sempre vai criar memórias que ajude ela entender suas ações e tente também entender os outros.",
+        "character": "???",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Maaaas... e se ela tentar lutar contras essas emoções?",
+        "character": "James",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Eu pensei em tudo, cada memória de seu passado também vai registrar o impácto emocional para ser interpretado pelo meu mecânismo emocional de emergência.",
+        "character": "???",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James então ficava quieto, não sabendo o que questionar, e apenas batia palmas lentamente parabenizando o irmão.",
+        "flashback": true,
+        "type": "action"
+    },
+
+    {
+        "value": "L-legal! Apesar disso tudo ainda ser extremamente arriscado, eu acho que sua idéia pode sim dar certo da forma que você tem respostas para tudo que eu falo desde de o começo.",
+        "character": "James",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A voz misteriosa ria um pouco, mas então voltava a falar de forma mais séria.",
+        "flashback": true,
+        "type": "action"
+    },
+
+    {
+        "value": "Você vai gostar sim, e vai gostar muito dos resultados, eu prometo que tudo vai dar certo. Todas as minhas noites de trabalho foram pensadas em cada detalhe.",
+        "character": "???",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Não fique se auto afirmando deste jeito. Olha, me desculpe ter parecido duvidar de você no começo, eu apenas não sou tão esperto como você em inteligência artificial e biologia.",
+        "character": "James",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Então outro som de slide sendo passado era escutado.",
+        "flashback": true,
+        "type": "action"
+    },
+
+    {
+        "value": "Está tudo bem James, eu confio em você. Apenas lembre-se que este projeto é seguro desde que a AI não tenha acesso direto ao root para tentar modificar o sistema de personalidade dela.",
+        "character": "???",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Então a voz misteriosa respirava profundamente antes de continuar falando.",
+        "flashback": true,
+        "type": "action"
+    },
+
+    {
+        "value": "E o mais importante, desde que a configuração de personalidade esteja bem configurada, e assim como uma criança, o tutor dela também tenha uma boa influência para ensinar a ela nos primeiros dias de vida o que vai definir o comportamento da personalidade dela que vai ficar instalado permaentemente no sub conciênte. Pois bem...",
+        "character": "???",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Então outro som era escutado, parecendo indicar que o slide show foi finalizado, criando um ambiente de silêncio profudo na sala. Então a voz misteriosa ficava quieta.",
+        "flashback": true,
+        "type": "action"
+    },
+
+    {
+        "value": "A-ah? Irmão? Você está bem? Não vai terminar a apresentação?",
+        "character": "James",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Ah sim, estou ótimo. James, desculpa interromper tudo, escute bem, é muito estranho eu desenvolver uma AI como um filho, e ao mesmo tempo lembrar da Princesa Ariella, e ela querer ter uma familia com você, e a gente está aqui todos os dias discutindo sobre o possível fim do nosso mundo. Entende? Bem... é por isso que eu sempre falo pra você dar mais atenção para ela invés de ficar acordado de madrugada no trabalho comigo como agora nesta hora da noite.",
+        "character": "???",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I-irmão... eu...",
+        "character": "James",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A voz de James ficava demostrando vergonha, e o irmão dele apesar de triste, tentava rir um pouco para se sentir melhor enquanto continuava a conversa.",
+        "flashback": true,
+        "type": "action"
+    },
+
+    {
+        "value": "Não tem essa de \"Eu...\", estudar a biologia é estudar a vida, e eu quero ver você tendo uma boa vida. Deixe que seu irmãozão aqui cuide dos assuntos sérios, você merece uma vida melhor apesar de ser um cabeção inteligênte no setor federal.",
+        "character": "???",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "H-hey! Não vem com essa de cabeção de novo!",
+        "character": "James",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Então a voz misteriosa ficava novamente mais séria, e falava de uma forma que demostrava querer deixar uma marca em James.",
+        "flashback": true,
+        "type": "action"
+    },
+
+    {
+        "value": "Então que o cabeção fique com as copias dos slides, eu quero que você revise tudo antes do nosso dia do teste. AIs são coisas sérias, é a técnologia tentando emitar a vida, e o meu único medo é se a gente está ou não mexendo com algum conhecimento proibido que deveria pertencer a algo superior. Então não deixe de revisar os slides para o dia do teste!",
+        "character": "???",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Então um som de algo sendo entregue a James é escutado.",
+        "flashback": true,
+        "type": "action"
+    },
+
+    {
+        "value": "Ah, você realmente ama muito esse pen drive pelo visto. Tudo bem então.",
+        "character": "James",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Pois é, e agora é hora de você ir dormir.",
+        "character": "???",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Sons de luzes se apagando começam a ser escutados durante o processo.",
+        "flashback": true,
+        "type": "action"
+    },
+
+    {
+        "value": "Tem certeza que não está esquecendo de nada no laboratório? Eu ainda estou vendo aquela luz vermelha ligada do lado do seu computador e parece ser o seu gravador de memórias de novo.",
+        "character": "James",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Ah bem lembrado! Obrigado por lembrar!",
+        "character": "???",
+        "flashback": true,
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Então som de passos começavam a se aproximar cada vez mais, até que a memória do flashback era interrompido por um ruído alto indicando que o flashback foi finalizado de forma forçada.",
+        "flashback": true,
+        "type": "action"
+    },
+
+    {
+        "value": "AH! Mas que sem educação fazer isso sem avisar!",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen coçava um pouco a cabeça, mas então voltava a pensar sobre tudo o que ouviu na memória perdida dentro da cabeça dela. Rainbow Queen ainda estava surpresa em saber que ouviu uma história que dizia um pouco sobre sua própria existência.",
+        "type": "action"
+    },
+
+    {
+        "value": "Então... Essa é a voz do misterioso James que a minha mestre falava tanto, e pelo visto ele não estava sozinho.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    }
+]
