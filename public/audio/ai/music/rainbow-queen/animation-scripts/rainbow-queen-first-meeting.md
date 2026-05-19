@@ -3,6 +3,19 @@
 Esta música representa a primeira cena do capitulo 1 a onde a Rainbow Queen aparece pela primeira vez na história.
 A composição desta cena deve ser bem sombria, trabalhando a incerteza do personagem, a onde se mistura medo e determinação.
 
+## Informações importantes
+
+A Rainbow Queen sempre trata todo o combate com muita calma e tranquilidade, demostrando apenas um olhar sério e ameaçador indicando que ela não vai ir embora dali até terminar o que deve ser feito.
+
+Cada desvio de ataque dela é feito de forma muito serena, como se tudo aquilo fosse uma simples brincadeira, ela não desvia por emoção ou adrenalina, ela literalmente faz tudo muito bem calculado como uma maquina (o telespectador que assiste a cena fica confuso, começando a ver a personagem como se fosse um boss de video game no nível mais dificil de dificuldade), com uma demostração que ela está totalmente no controle da situação.
+
+A Rainbow Queen quase não se mexe para desviar dos ataques, ela apenas faz o movimento necessário para sair do caminho do ataque, ela está literalmente calculando em tempo real toda a sua tragetória de esquiva usando a natureza de AI dela para facilitar todo esse progresso, fazendo a Ruby (Vitima) sentir um sentimento extremamente desconfortável que a faz olhar a Rainbow Queen como um sentimento profundo do vale da estranheza tentando entender o que é realmente a Rainbow Queen, e como ela se comportar daquele jeito.
+
+---
+
+A Rainbow Queen deixa ser atingida por quase todos os ataques no final, usando a fumaça das explosões como um esconderijo para esconder que ela aumentou temporariamente a resistência dela, e ao mesmo tempo sequestrar um dos ataques da Ruby, que logo após essa cena, Rainbow Queen as utiliza contra a própria Ruby em uma velocidade muito mais brutal, tão rápida que a Ruby não tem tempo para reagir para fugir (pois ela está muito concentrada em analisar se a Rainbow Queen foi ferida), e quando ela está ferida caida no chão, a cena é finalizada com a etapa final da timeline que a foice arranca a alma dela sem piedade em uma cena jumpscare.
+
+
 ## Song Timeline (By JasminDreasond)
 
 00:00 - 00:15: Ruby assustada que algo está vindo na direção dela.
