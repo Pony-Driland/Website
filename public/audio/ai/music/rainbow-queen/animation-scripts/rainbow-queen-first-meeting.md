@@ -1,3 +1,5 @@
+### Script by: JasminDreasond
+
 # Informação básica
 
 Esta música representa a primeira cena do capitulo 1 a onde a Rainbow Queen aparece pela primeira vez na história.
@@ -16,7 +18,7 @@ A Rainbow Queen quase não se mexe para desviar dos ataques, ela apenas faz o mo
 A Rainbow Queen deixa ser atingida por quase todos os ataques no final, usando a fumaça das explosões como um esconderijo para esconder que ela aumentou temporariamente a resistência dela, e ao mesmo tempo sequestrar um dos ataques da Ruby, que logo após essa cena, Rainbow Queen as utiliza contra a própria Ruby em uma velocidade muito mais brutal, tão rápida que a Ruby não tem tempo para reagir para fugir (pois ela está muito concentrada em analisar se a Rainbow Queen foi ferida), e quando ela está ferida caida no chão, a cena é finalizada com a etapa final da timeline que a foice arranca a alma dela sem piedade em uma cena jumpscare.
 
 
-## Song Timeline (By JasminDreasond)
+## Song Timeline
 
 00:00 - 00:15: Ruby assustada que algo está vindo na direção dela.
 
