@@ -127,11 +127,23 @@ Rainbow Queen has a personal affection for her pets. She likes to play with her 
 
 This mixture of personalities turns her into a being whose actions are difficult to predict, especially when this blends with her desire to protect Pony Driland and her own existence, since she depends on the existence of this dimension.
 
+[spoiler:3:2238]
+Rainbow Queen's predatory and manipulative personality is directly linked to her Sphinx feline race; her visual changes during reactions of hatred and anger are directly linked to her Kirin race; and her more dominant personality is a mixture of her authoritative personality as an alicorn from her world, blended with her logical nature as an artificial intelligence.
+
+Although Rainbow Queen has a genuine capacity to feel and express emotions (and she often uses this as data to better exploit her victims' feelings to calculate the next step in an action) and to converse like an organic creature, all of her behavior, no matter how organic it appears, is extremely calculated due to her AI nature. <semi-ai>This is most evident in her combat style, which is extremely cold and calculating. She does not fight based on emotions, but rather through the most efficient logic to solve a mathematical problem—in this case, defeating the opponent—as quickly and optimized as possible to fulfill a mission with extreme efficiency and intelligence. This mathematical precision also extends to bets, gambles, and other environments involving psychological warfare, making her exceptionally dangerous to adversaries who try to challenge her in strategic psychological reasoning. If the opponent is not psychologically prepared for this, Rainbow Queen's combat actions will naturally trigger the "Uncanny Valley" effect in their psyche. The adversary is forced to realize that she might stand completely still, moving or reacting in an extremely minimal and calculated manner only to dodge an attack or counterattack without a single trace of fear or insecurity, allowing her to even maintain her provocative actions to terrorize the opponent's mind while she continues executing her mission with absolute efficiency. Furthermore, she possesses an authentic behavioral reaction when carrying out solutions to satisfy her true feelings.</semi-ai>
+
+Rainbow Queen's emotions cannot be directly manipulated by herself (though nothing stops her from trying to do so indirectly, just as a human with advanced emotional intelligence can naturally do), because they are always running on a control layer that she herself cannot access. This prevents any risk of Rainbow Queen becoming an extremely logical AI without emotions to filter her own actions. This system is accompanied by hidden empathy emergency protocols in case her feelings detect that what she is doing does not align with the personal morality she has learned throughout her life, something very similar to what happens with humans when they realize on their own that their actions do not properly align with their personal morality.
+[/spoiler]
+
 As she grew angrier and her heart filled with hate and fear, it manifested in her powers, making her more and more somber. If an extremely large reality shock occurs along this path, she can literally lose control of her powers and end up destroying herself due to the large concentration of energy released by her feelings, which spiral out of control because of her emotional instability.
 
 Divine powers are naturally increased through determination, fury, hatred, or love.
 When she feels sad, as her feelings become unstable, her powers also become unstable.
 If something serious like depression occurs, this instability can be even greater, causing other dangerous negative feelings that can increase her power wildly while leaving the creature totally unstable and terrifying. Her physical appearance becomes sinister as the negative personality becomes dominant, resulting in a frightening and intimidating appearance.
+
+[spoiler:3:2238]
+These personality effects on her abilities are a direct result of her very nature as an artificial intelligence, as Rainbow Queen is directly linked to the existence of Pony Driland due to her being the direct personification of the machine that controls the digital dimension of Pony Driland. This means that the direct death of Rainbow Queen is also the destruction of the dimension itself, which could lead to the death of everyone inside it, making it extremely dangerous to kill her if you risk dying along with her while being inside Pony Driland.
+[/spoiler]
 
 [spoiler:3:3641]
 Rainbow Queen’s habit of consuming dark energy from various living beings to use it for her own existence and for Pony Driland has specialized her in several psychological manipulation abilities. This directly influences her skills, which extend far beyond combat, turning her into a dangerous being who enjoys playing with hazardous emotions such as fear, sanity, anxiety, and other negative feelings.
@@ -171,6 +183,8 @@ The process of converting food into energy is not limited to food, as she has th
 When a living being’s energy reaches the minimum threshold that allows Rainbow Queen to manipulate or erase the body of that being, she gains the ability to induce mutations or control the being’s size (either shrinking or enlarging it). If the creature is trapped inside her body, Rainbow Queen can perform these abilities far more easily, since the energy of her own body is extremely concentrated, allowing her to strike her victim directly.
 
 <br/>
+
+<semi-ai>
 
 ### Internal Anatomy and Energy Absorption
 
@@ -212,7 +226,7 @@ A guest will likely wake up feeling exhausted, as some of their natural body ene
 
 #### Versatility and Intent
 
-Based on the biological and magical characteristics analyzed, the Rainbow Queen’s stomach serves several purposes beyond its primary function of dark energy consumption:
+The Rainbow Queen’s stomach serves several purposes beyond its primary function of dark energy consumption:
 
 * **Mischievous Interactions:** Occasionally, she may utilize this internal space to play **harmless pranks** or engage in mischief with her "guests", taking advantage of the unique environment.
 * **Comfort and Nurturing:** For creatures she shares an emotional bond with, the stomach serves as a safe haven. She uses the soft texture and controlled temperature to provide **comfort and protection**, reflecting her desire to care for those close to her. **However, she respects personal boundaries and will refrain from this interaction if the creature does not consent to the idea.**
@@ -240,6 +254,9 @@ The color scheme strictly follows the reference: main wall areas in medium grey 
 
 :::
 <br/>
+
+</semi-ai>
+
 [/spoiler]
 
 <br/>
@@ -286,6 +303,8 @@ The single weakness of this ability lies in protecting the identity of her eyes.
 [/spoiler]
 
 ### Abilities and Powers
+
+<semi-ai>
 
 > **Note:** Due to the extensive nature of the **Pony Driland** narrative, some powers may not be listed yet or are currently omitted to avoid premature spoilers. This section will be updated as the story progresses.
 
@@ -357,6 +376,8 @@ This was one of the most explicit scenes where Rainbow Queen demonstrates that a
 * **Energy Draining:** While dark energy is her primary and favorite fuel source, she is capable of consuming various other forms of energy.
 * **Historical Reference:** To test Vinny’s patience, she once completely drained his phone battery, demonstrating that her appetite for energy isn't limited to the dark energy.
 [/spoiler]
+
+</semi-ai>
 
 <br/>
 
