@@ -62,8 +62,17 @@ bleak snowstorm ambient, lost explorer theme, sorrowful piano, distant music box
 (A final, desperate cry against the freezing storm)
 
 [Outro]
-(The instruments freeze over one by one, losing strength)
-(Heavy orchestral steps slow down to a complete stop)
-(Music box slows down, notes drifting apart, fading into the freezing wind)
+(The grand orchestration completely freezes over, leaving a vast, empty soundscape)
+(Heavy orchestral steps slow down to a final, exhausted stop in the deep snow)
+(The howling wind ambiance grows louder, lonely and cold)
+(The fragile music box returns for one last, solitary melody)
+(Notes become painfully slow, hesitant, and slightly detuned, like gears freezing solid)
+(A single, weeping violin note holds in the distant background, fading into a whisper)
+(The music box keys slow down to a halt, leaving only the echo of the final, unresolved chord)
+
+[Outro Extension]
+(Total silence from the instruments)
+(Only the faint, haunting sound of the freezing blizzard wind remains)
+(The wind slowly blows away into a quiet, distant hush, leaving absolute nothingness)
 
 [End]
