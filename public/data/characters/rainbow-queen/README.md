@@ -184,53 +184,83 @@ When a living being’s energy reaches the minimum threshold that allows Rainbow
 
 <br/>
 
-<semi-ai>
-
 ### Internal Anatomy and Energy Absorption
+
+<semi-ai>
 
 **Rainbow Queen is an exotic and unique entity within the realm of Pony Driland.** She is fully aware that her behavior and the way her body functions differ significantly from the ordinary creatures of this dimension.
 
+</semi-ai>
+
 #### Overview of the Digestive System
+
+<semi-ai>
 
 As previously mentioned, the Rainbow Queen's body does not function in a traditional way regarding food consumption. Consequently, her internal biology operates quite differently from conventional organisms.
 
+</semi-ai>
+
 #### Gastric Environment and Lining
+
+<semi-ai>
 
 The stomach lining is composed of unique materials that maintain a **squishy texture**. However, it is specifically evolved to be highly sensitive to absorbing various types of energy and interacting with light, evidenced by its grayish hue.
 
-* **Thermal Insulation:** The stomach features advanced thermal insulation, preventing body heat from overwhelming the interior. This creates an environment that is significantly less suffocating than a standard stomach.
-* **Atmospheric Quality:** This insulation also assists in filtering her breath, ensuring it reaches the stomach as **pure, fresh air**, further improving the comfort of the internal space.
-* **The Black Fluid:** Instead of gastric acid, the stomach contains a specialized black liquid. Its primary purpose is to absorb dark energy (or any interacting energy). Upon contact with a living being, this fluid induces a **deep sleep** to facilitate the energy drainage process.
+</semi-ai>
+
+* **Thermal Insulation:** <semi-ai>The stomach features advanced thermal insulation, preventing body heat from overwhelming the interior. This creates an environment that is significantly less suffocating than a standard stomach.</semi-ai>
+* **Atmospheric Quality:** <semi-ai>This insulation also assists in filtering her breath, ensuring it reaches the stomach as **pure, fresh air**, further improving the comfort of the internal space.</semi-ai>
+* **The Black Fluid:** <semi-ai>Instead of gastric acid, the stomach contains a specialized black liquid. Its primary purpose is to absorb dark energy (or any interacting energy). Upon contact with a living being, this fluid induces a **deep sleep** to facilitate the energy drainage process.</semi-ai>
+
+</semi-ai>
 
 #### Luminescent Energy Absorption
 
+<semi-ai>
+
 When the intensity of the energy being absorbed is high, the stomach walls may glow. These lights can also become visible if the Rainbow Queen performs magic internally, as her magic easily permeates the stomach walls to reach the interior.
 
-* **Celestial Effect:** When Rainbow Queen uses her magic, it travels through her body toward her horn. This often manifests as a peaceful, low-intensity glow on the stomach walls, somewhat resembling a **starry night sky**. This effect can be so comforting to the eyes that it occasionally hypnotizes the "guest" into a deeper slumber.
+* **Stellar Luminescence Effect:** <semi-ai>When Rainbow Queen uses her magic, it travels through her body toward her horn. This often manifests as a peaceful, low-intensity glow on the stomach walls, somewhat resembling a **starry night sky**. This effect can be so comforting to the eyes that it occasionally hypnotizes the "guest" into a deeper slumber.</semi-ai>
 
 #### Natural Defense Mechanisms
 
+<semi-ai>
+
 Attempting to harm the stomach walls is extremely dangerous. Behind the physical lining lies a **barrier of raw energy**.
 
-* **Reaction:** If an injury occurs, this energy barrier reacts instantly to attack the threat (which can be fatal) and rapidly heals the stomach wall.
+</semi-ai>
+
+* **Reaction:** <semi-ai>If an injury occurs, this energy barrier reacts instantly to attack the threat (which can be fatal) and rapidly heals the stomach wall.</semi-ai>
 
 #### The "Digestion" Process
 
+<semi-ai>
+
 When the stomach detects that a guest is in a deep sleep, the walls automatically and **gently contract** to embrace them. This allows for direct physical contact, which optimizes the drainage of dark energy.
 
-> While this behavior might seem affectionate or "cute", it is the Rainbow Queen's equivalent of digestion. It is not intended to kill, but strictly to extract energy.
+</semi-ai>
+
+> <semi-ai>While this behavior might seem affectionate or "cute", it is the Rainbow Queen's equivalent of digestion. It is not intended to kill, but strictly to extract energy.</semi-ai>
 
 #### Post-Absorption Recovery
 
+<semi-ai>
+
 A guest will likely wake up feeling exhausted, as some of their natural body energy may be drained alongside the dark energy. However, recovery is quick; the individual usually regains their strength within a few minutes once direct contact with the stomach walls ceases.
+
+</semi-ai>
 
 #### Versatility and Intent
 
+<semi-ai>
+
 The Rainbow Queen’s stomach serves several purposes beyond its primary function of dark energy consumption:
 
-* **Mischievous Interactions:** Occasionally, she may utilize this internal space to play **harmless pranks** or engage in mischief with her "guests", taking advantage of the unique environment.
-* **Comfort and Nurturing:** For creatures she shares an emotional bond with, the stomach serves as a safe haven. She uses the soft texture and controlled temperature to provide **comfort and protection**, reflecting her desire to care for those close to her. **However, she respects personal boundaries and will refrain from this interaction if the creature does not consent to the idea.**
-* **Soul Restoration:** One of its most vital secondary functions is providing a controlled environment to **restore heavily corrupted souls**. The combination of energy drainage and the Queen's internal magic allows for a deep cleansing process, effectively **purging the soul of its internal impurities**.
+</semi-ai>
+
+* **Mischievous Interactions:** <semi-ai>Occasionally, she may utilize this internal space to play **harmless pranks** or engage in mischief with her "guests", taking advantage of the unique environment.</semi-ai>
+* **Comfort and Nurturing:** <semi-ai>For creatures she shares an emotional bond with, the stomach serves as a safe haven. She uses the soft texture and controlled temperature to provide **comfort and protection**, reflecting her desire to care for those close to her. **However, she respects personal boundaries and will refrain from this interaction if the creature does not consent to the idea.**</semi-ai>
+* **Soul Restoration:** <semi-ai>One of its most vital secondary functions is providing a controlled environment to **restore heavily corrupted souls**. The combination of energy drainage and the Queen's internal magic allows for a deep cleansing process, effectively **purging the soul of its internal impurities**.</semi-ai>
 
 :::collapse Stomach background reference
 <img src="/img/characters/rainbow-queen/stomach-background/Gemini_Generated_Image_lgteu3lgteu3lgte.png" height="500">
@@ -254,8 +284,6 @@ The color scheme strictly follows the reference: main wall areas in medium grey 
 
 :::
 <br/>
-
-</semi-ai>
 
 [/spoiler]
 
@@ -308,76 +336,156 @@ The single weakness of this ability lies in protecting the identity of her eyes.
 
 > **Note:** Due to the extensive nature of the **Pony Driland** narrative, some powers may not be listed yet or are currently omitted to avoid premature spoilers. This section will be updated as the story progresses.
 
+</semi-ai>
+
 #### 1. Spatial Manipulation
 
+<semi-ai>
+
 * **Advanced Teleportation:** Unlike Rayane, who requires intense focus and is hindered by physical obstacles like walls, the Rainbow Queen teleports almost instantaneously. She can bypass physical barriers effortlessly. However, this skill consumes significant energy and is most effective within her home dimension, **Pony Driland**.
+
+</semi-ai>
+
 [spoiler:3:1]
+
+<semi-ai>
+
 * **Interdimensional Portal Creation:** **(Confirmed in Chapter 3)** She can generate artificial portals to transport creatures to Pony Driland. While natural portals occur, her controlled versions require the target to make direct physical contact with the gateway to initiate transport.
+
+</semi-ai>
+
 [/spoiler]
 
 #### 2. Energy & Elemental Control
 
+<semi-ai>
+
 * **Energy Manipulation:** Rainbow Queen can modulate her energy consumption to precisely tune her strength, speed, and durability. This allows for drastic performance differences between a calculated strike and a surprise attack.
+
+</semi-ai>
+
 [spoiler:2:1]
+
+<semi-ai>
+
 * **Weather Manipulation:** **(First demonstrated at scenes from Chapter 2)** She can bend the climate to her will. While typically used to de-escalate conflicts, her control over the weather is also tied to her emotional state, occasionally triggering shifts when she feels extreme sadness.
+
+</semi-ai>
+
 [/spoiler]
 [spoiler:3:1]
+
+<semi-ai>
+
 * **Custom Force Fields:** **(First demonstrated at Vinny’s house from Chapter 3)** She creates barriers with selective permeability. She can choose exactly what (or who) passes through. A notable use was isolating sound within Vinny’s new home, ensuring only he and she could hear the private conversation taking place.
+
+</semi-ai>
+
 [/spoiler]
 
 #### 3. Creation & Mimicry
 
 [spoiler:1:1]
+
+<semi-ai>
+
 * **Object Manifestation:** **(Demonstrated in Chapter 1)** She can materialize or dematerialize objects at will, provided she understands their chemical and structural composition. Unknown objects beyond her knowledge cannot be created.
 * **Skill Replication:** Similar to her object creation, she can develop "new" abilities only after learning and understanding the fundamental "composition" of how that specific magic or technique functions.
+
+</semi-ai>
+
 [/spoiler]
 
 #### 4. Sphinx Heritage
 
 [spoiler:3:1]
+
+<semi-ai>
+
 * **Size Alteration:** **(Demonstrated in Chapter 3)** Inherited from her Sphinx nature, she can change her physical scale.
 * **Social Manipulation:** Expert-level influence through dialogue and specialized charm magic.
 * **Enchanting:** **(Demonstrated in Chapter 3)** The ability to craft magical items, such as the **enchanted collars** worn by her pets. The full extent of her Sphinx-based powers remains unrevealed.
+
+</semi-ai>
+
 [/spoiler]
 
 #### 5. Spiritual & Mental Dominion
 
 [spoiler:2:1]
+
+<semi-ai>
+
 * **Soul Reaping:** **(Demonstrated in Hiroshi’s scene)** Using her scythe, she can extract the soul from a living body. The success rate increases if the victim is in a weakened state. Once the soul is removed, the physical body expires instantly.
+
+</semi-ai>
+
 [/spoiler]
 [spoiler:3:1]
+
+<semi-ai>
+
 * **Dream Walking & Manipulation:** **(Notable in Chapter 3)** She can enter the minds of others to observe or hijack their dreams. She can force a target to wake up by inducing "nightmare triggers", such as killing the target within the dream world to force a sudden awakening.
 * **Psychic Paralysis:** **(Demonstrated in Chapter 3)** Using telekinetic magic, she can paralyze a victim. As a purely psychic ability, its effectiveness depends on her mental strength. While active, it limits her ability to use other high-energy powers simultaneously.
 * **Illusion Projection:** **(Demonstrated in Chapter 3)** She can alter the environment's appearance to confuse targets. She used this against Vinny and Rayane, creating a terrifying landscape to make them easier prey for her paralysis and subsequent interrogation.
+
+</semi-ai>
+
 [/spoiler]
 
 #### 6. Temporal & Life Alteration
 
 [spoiler:2:1]
+
+<semi-ai>
+
 * **Longevity Manipulation:** **(Revealed in Chapter 2)** Rainbow Queen can extend or decrease the lifespan of herself and others. Within Pony Driland, she can use magical contracts or objects to grant "Eternal Longevity", as seen in her pact with **Hiroshi**, whose lifespan remained eternal as long as the contract was not broken. This power only fails if the target has enough raw strength to resist the magical influence.
+
+</semi-ai>
+
 [/spoiler]
 [spoiler:3:1]
+
+<semi-ai>
+
 * **Regeneration:** **(Revealed in Chapter 3)** Rainbow Queen demonstrates the ability to use her own energy to regenerate herself or other creatures within Pony Driland, even in situations of extremely severe injury. This was first seen when Rainbow Queen strikes a deal with Vinny, using this ability to help him restore Ivy's health while she was on the brink of death—completely regenerating her body, healing all wounds, and curing all diseases. This led doctors to call it a miracle, implying that this type of event recurs with a certain level of rarity.
 
+</semi-ai>
+
+<semi-ai>
+
 This was one of the most explicit scenes where Rainbow Queen demonstrates that access to these types of requests requires exchanges involving high levels of loyalty. The difficulty level depends on the requester's behavior, as she constantly measures whether the character is truly worthy of the offered trade. This means there are several personality and behavioral variables that affect how these exchanges are executed.
+
+</semi-ai>
+
 [/spoiler]
 
 #### 7. Digital & Artificial Intelligence Skills
 
 [spoiler:3:1]
+
+<semi-ai>
+
 * **Machine Learn:** As an AI, Rainbow Queen possesses the unique ability to rapidly process and internalize new information through physical contact. By touching or reading an object, she "consumes" its data instantly.
 * **Historical Reference:** This was first demonstrated in **Chapter 3** when she touched Vinny's *Smartmoby* to study his life on Earth before threatening to bring Yasmin to Pony Driland.
 * **Technical Interaction:** This skill extends to electronic devices, allowing her to understand and manipulate their internal source code and physical composition.
+
+</semi-ai>
+
 [/spoiler]
 
 #### 8. Energy Consumption
 
 [spoiler:3:1]
+
+<semi-ai>
+
 * **Energy Draining:** While dark energy is her primary and favorite fuel source, she is capable of consuming various other forms of energy.
 * **Historical Reference:** To test Vinny’s patience, she once completely drained his phone battery, demonstrating that her appetite for energy isn't limited to the dark energy.
-[/spoiler]
 
 </semi-ai>
+
+[/spoiler]
 
 <br/>
 
