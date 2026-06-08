@@ -74,5 +74,15 @@ bleak snowstorm ambient, lost explorer theme, sorrowful piano, distant music box
 (Total silence from the instruments)
 (Only the faint, haunting sound of the freezing blizzard wind remains)
 (The wind slowly blows away into a quiet, distant hush, leaving absolute nothingness)
+(A sudden, distant crack of deep ice echoes through the void, sharp and final)
+
+[Epilogue]
+(A ghostly, reversed piano chord swells briefly, like a frozen memory slipping away)
+(One slow, extremely faint heartbeat-like bass drum thud... followed by an agonizing pause)
+(The air feels painfully still, the winter storm having claimed everything)
+
+[Final Fade]
+(A single, almost inaudible mechanical 'click' from the broken music box spring)
+(Complete, heavy, and eternal silence)
 
 [End]
