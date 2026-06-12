@@ -4,7 +4,7 @@ Tanto a espaço nave de James tanto de todas as pessoas de sua civilização pos
 
 O centro da espaço nave possui um gerador magnético protegido por uma camada de material especial feito para distribuir esta energia apenas entre parte interna da estrutura da espaço nave, sem ter o risco do magnetismo puxar acidentalmente as pessoas e objetos que estão no interior da espaço nave, fazendo todos sempre experimentar uma força ambiente idela para corpo e os objetos que estão dentro dela.
 
-Essa distribuição ocorre por vários canos que ligam as paredes do lado de fora da espaço nave ao centro magnético da nave, a idéia deste sistema é fazer que o centro da nave simule um núcleo de um planeta de forma artificial.
+Essa distribuição ocorre por vários canos que ligam as paredes do lado de fora da espaço nave ao centro magnético da nave, a idéia deste sistema é fazer que o centro da nave simule um núcleo de um planeta de forma artificial para que a nave sempre esteja orbitando a si mesma.
 
 Quando este núcleo é manipulado, a força magnética muda a força de sua atração para a direção que a nave precisa se movimentar, permitindo que o piloto precise apenas escolher a direção e a força gravitacional para movimentar a nave.
 
