@@ -34,13 +34,13 @@ charTable_9_0: 'Joined At'
 charTable_9_1: '2021-11-13'
 #---
 
-<span class="made-by-ai">
+<ai>
 
 This character has not yet appeared in the Pony Driland story. Details regarding their species, abilities, personality, and role in the narrative are currently unknown. Further information will be added to this page as the story progresses and the character is formally introduced. Please check back for updates.
 
 Blue Screen is a pony inspired by computer errors and system failures. Her body is bright blue, resembling the Windows Blue Screen of Death (BSOD), and her dark blue mane features glowing circuit-like patterns. She has red hexagonal eyes that turn cyan in BSOD Mode. Her cutie mark is a yellow warning sign, symbolizing crashes and system instability. Blue Screen represents glitches, digital corruption, or a malfunctioning, making her a unique embodiment of technology and errors in the Pony Driland universe.
 
-</span>
+</ai>
 
 Although there is no cutie marks in Pony Driland, this character mysteriously has a cutie mark, no one knows the real reason for it, creating a new suspense atmosphere of trying to know what the origin of this character is.
 

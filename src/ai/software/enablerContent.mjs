@@ -1,10 +1,42 @@
+import { EventEmitter } from 'events';
 import { alert } from '../../files/tinyLib.mjs';
+import { tinyIo, tinyStorage } from './base.mjs';
+import RpgData from './rpgData.mjs';
 
-class EnablerAiContent {
+/**
+ * Used to detect if you're online in a server
+ * @returns {boolean}
+ */
+export const isOnline = () => (!noOnlineMode() && tinyIo.client ? true : false);
+
+/**
+ * Used to detect if you're in a server
+ * @returns {boolean}
+ */
+export const noOnlineMode = () => {
+  return (
+    contentEnabler.rpgCfg &&
+    (typeof contentEnabler.rpgCfg.ip !== 'string' || contentEnabler.rpgCfg.ip.length < 1)
+  );
+};
+
+class EnablerAiContent extends EventEmitter {
   #validateMultiplayer;
   #enabledFirstDialogue;
 
+  /** @type {undefined|RpgData} */
+  rpgData;
+
+  constructor() {
+    super();
+  }
+
   /////////////////////////////////////////////////
+
+  setRpgCfg() {
+    this.rpgCfg = tinyStorage.getApiKey(tinyStorage.selectedAi()) || {};
+    return this.rpgCfg;
+  }
 
   setResetSettingsButton(resetSettingsButton) {
     this.resetSettingsButton = resetSettingsButton;
@@ -58,6 +90,10 @@ class EnablerAiContent {
     this.cancelSubmit = cancelSubmit;
   }
 
+  setAiSubmit(aiSubmit) {
+    this.aiSubmit = aiSubmit;
+  }
+
   setSubmitCache(submitCache) {
     this.submitCache = submitCache;
   }
@@ -92,13 +128,29 @@ class EnablerAiContent {
 
   ////////////////////////////////////////////////////////////
 
-  #readOnlyTemplate(item, value, needAi = true) {
-    const isEnabled = this.#validateMultiplayer(value, needAi);
+  #readOnlyTemplate(item, value, needAi = true, allowMulti = false) {
+    const isEnabled = this.#validateMultiplayer(value, needAi, allowMulti);
     item.toggleProp('disabled', isEnabled);
     if (isEnabled) {
       item.addClass('disabled');
     } else {
       item.removeClass('disabled');
+    }
+  }
+
+  //////////////////////////////////////////////////////////
+
+  async initRpgData() {
+    await this.rpgData.init();
+    const tinyRpgData = this.rpgData.data.public.getValue();
+    const tinyRpgPrivateData = this.rpgData.data.private.getValue();
+    if (tinyRpgData) {
+      this.rpgData.setAllowAiUse(tinyRpgData.allowAiUse, 'public');
+      this.rpgData.setAllowAiSchemaUse(tinyRpgData.allowAiSchemaUse, 'public');
+    }
+    if (tinyRpgPrivateData) {
+      this.rpgData.setAllowAiUse(tinyRpgPrivateData.allowAiUse, 'private');
+      this.rpgData.setAllowAiSchemaUse(tinyRpgPrivateData.allowAiSchemaUse, 'private');
     }
   }
 
@@ -162,8 +214,8 @@ class EnablerAiContent {
     }
 
     for (const index in this.ficPromptItems) {
-      this.ficPromptItems[index].toggleProp('disabled', isDisabled);
-      if (isDisabled) this.ficPromptItems[index].addClass('disabled');
+      this.ficPromptItems[index].toggleProp('disabled', value);
+      if (value) this.ficPromptItems[index].addClass('disabled');
       else this.ficPromptItems[index].removeClass('disabled');
     }
     // First dialogue script
@@ -197,11 +249,13 @@ class EnablerAiContent {
   ////////////////////////////////////////////////////////////
 
   #enableReadOnly(isEnabled = true, controller = null) {
-    this.#readOnlyTemplate(this.msgSubmit, isEnabled, false);
-    this.#readOnlyTemplate(this.msgInput, isEnabled, false);
+    this.#readOnlyTemplate(this.msgSubmit, isEnabled, false, true);
+    this.#readOnlyTemplate(this.msgInput, isEnabled, false, true);
+    this.#readOnlyTemplate(this.aiSubmit, isEnabled, false, true);
     this.#readOnlyTemplate(this.cancelSubmit, !isEnabled || !controller, false);
     if (controller) {
       this.msgSubmit.addClass('d-none');
+      this.aiSubmit.addClass('d-none');
       this.cancelSubmit.removeClass('d-none');
       this.cancelSubmit.on('click', () => {
         enableReadOnly(false);
@@ -216,6 +270,7 @@ class EnablerAiContent {
       });
     } else {
       this.msgSubmit.removeClass('d-none');
+      this.aiSubmit.removeClass('d-none');
       this.cancelSubmit.addClass('d-none');
       this.cancelSubmit.off('click');
     }
@@ -266,4 +321,4 @@ class EnablerAiContent {
   }
 }
 
-export default EnablerAiContent;
+export const contentEnabler = new EnablerAiContent();

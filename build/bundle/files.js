@@ -2,9 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 // Modules you want to copy
-const modulesToCopy = [
-  ['jsstore/dist/jsstore.worker.min.js', 'jsstore.worker.min.js'],
-]; // Replace with the desired modules
+const modulesToCopy = [['jsstore/dist/jsstore.worker.min.js', 'jsstore.worker.min.js']]; // Replace with the desired modules
 
 // Default reference path for modules (you can change this)
 const nodeModulesPath = path.join(__dirname, '../../node_modules');

@@ -1,4 +1,6 @@
-import { TinyHtml, TinyAfterScrollWatcher } from 'tiny-essentials';
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
+import TinyAfterScrollWatcher from 'tiny-essentials/libs/TinyAfterScrollWatcher';
 
 import { tinyLs, gtag } from '../important.mjs';
 import tinyLib from '../files/tinyLib.mjs';
@@ -7,6 +9,11 @@ import storyCfg from '../chapters/config.mjs';
 import ttsManager from './tts/tts.mjs';
 import musicManager from './music/index.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
+import { body, tinyWin } from '../html/query.mjs';
+import { markdownBase } from '../html/base.mjs';
+import { musicApp } from './music/html.mjs';
+
+const { Icon } = TinyHtmlElems;
 
 // Prepare Cache
 const cacheChapterUpdater = { soundCache: {} };
@@ -44,7 +51,7 @@ cacheChapterUpdater.setActiveItem = (item, scrollIntoView = false) => {
 
       let scrollTarget = document.querySelector(`tr[line="${selectedItem - 1}"]`);
       if (scrollTarget == null) {
-        scrollTarget = document.getElementById('markdown-read');
+        scrollTarget = markdownBase.get(0);
       }
       scrollTarget.scrollIntoView();
     }
@@ -56,7 +63,7 @@ cacheChapterUpdater.setActiveItem = (item, scrollIntoView = false) => {
 
 // Read Data on Scroll
 const winScroller = new TinyAfterScrollWatcher(window);
-new TinyHtml(window).on(['resize', 'scroll'], () => {
+tinyWin.on(['resize', 'scroll'], () => {
   if (ttsManager.enabled) {
     return;
   }
@@ -96,18 +103,18 @@ new TinyHtml(window).on(['resize', 'scroll'], () => {
 
 cacheChapterUpdater.scrollData = () => {
   // Set Playlist
-  if (Array.isArray(storyData.music.playlist)) {
+  if (Array.isArray(musicApp.playlist)) {
     musicManager.disable(false);
   } else {
-    storyData.music.playlist = [];
+    musicApp.playlist = [];
   }
 
   // Exist Playlist
   if (
     !storyData.chapter.blockLineSave &&
-    !storyData.music.disabled &&
-    Array.isArray(storyData.music.playlist) &&
-    storyData.music.playlist.length > 0
+    !musicApp.disabled &&
+    Array.isArray(musicApp.playlist) &&
+    musicApp.playlist.length > 0
   ) {
     musicManager.startPlaylist();
   }
@@ -130,7 +137,7 @@ cacheChapterUpdater.scrollData = () => {
   const removeAllWeather = () => {
     storyData.sfx['heavy-rain'].hide();
     storyData.sfx['heavy-rain-little-thunder'].hide();
-    TinyHtml.query('body')?.removeClass('raining-sky', 'thunder-effect');
+    body.removeClass('raining-sky', 'thunder-effect');
   };
 
   // Set Weather
@@ -143,10 +150,10 @@ cacheChapterUpdater.scrollData = () => {
     if (!storyData.chapter.blockLineSave) {
       if (storyData.chapter.weather === 'heavyrain') {
         storyData.sfx['heavy-rain'].show();
-        // TinyHtml.query('body')?.addClass('raining-sky');
+        // body.addClass('raining-sky');
       } else if (storyData.chapter.weather === 'bolt') {
         storyData.sfx['heavy-rain-little-thunder'].show();
-        // TinyHtml.query('body')?.addClass('raining-sky', 'thunder-effect');
+        // body.addClass('raining-sky', 'thunder-effect');
       }
     }
   }
@@ -259,7 +266,7 @@ cacheChapterUpdater.data = (lastPage) => {
       });
       storyData.chapter.nav.bookmark
         .setAttr('title', 'Bookmark')
-        .append(tinyLib.icon('fas fa-bookmark'));
+        .append(new Icon('fas fa-bookmark'));
       Tooltip(storyData.chapter.nav.bookmark);
 
       // Action
@@ -335,11 +342,11 @@ const chapterSet = {
       // Set Playlist
       const playlist = storyCfg.playlist[value];
       if (Array.isArray(playlist)) {
-        storyData.music.value = value;
-        storyData.music.playlist = playlist;
+        musicApp.value = value;
+        musicApp.playlist = playlist;
       } else {
-        storyData.music.value = null;
-        storyData.music.playlist = [];
+        musicApp.value = null;
+        musicApp.playlist = [];
       }
     }
   },
@@ -367,7 +374,7 @@ const chapterSet = {
 
   dayNightCycle: (value, actionFromNow = false) => {
     if (actionFromNow) {
-      TinyHtml.query('body')
+      body
         ?.removeClass(`fic-daycicle-morning`)
         .removeClass(`fic-daycicle-evening`)
         .removeClass(`fic-daycicle-night`)
@@ -411,7 +418,7 @@ const chapterSet = {
             .data('BootstrapToolTip')
             .setContent({ '.tooltip-inner': newTitle });
         }
-        obj.removeAttr('title').append(tinyLib.icon(types[value].icon));
+        obj.removeAttr('title').append(new Icon(types[value].icon));
       }
     }
   },
@@ -445,7 +452,7 @@ const chapterSet = {
       const obj = new TinyHtml(storyData.nc.base.right.find(':scope > #status #weather'));
       obj.empty();
       if (types[value]) {
-        obj.setAttr('title', types[value].title).append(tinyLib.icon(types[value].icon));
+        obj.setAttr('title', types[value].title).append(new Icon(types[value].icon));
         Tooltip(obj);
         obj.removeAttr('title');
       }

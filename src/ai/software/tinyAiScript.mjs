@@ -1,9 +1,14 @@
 import { setTinyGoogleAi } from 'tiny-ai-api';
-import { TinyHtml, formatDayTimer } from 'tiny-essentials';
+import { formatDayTimer } from 'tiny-essentials/basics';
+import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 
 import tinyLib from '../../files/tinyLib.mjs';
 import { appData } from '../../important.mjs';
 import { tinyAi, tinyIo, tinyStorage } from './base.mjs';
+import { body } from '../../html/query.mjs';
+
+const { Icon } = TinyHtmlElems;
 
 export const tinyAiScript = {
   isEnabled: () => typeof tinyStorage.selectedAi() === 'string',
@@ -17,7 +22,7 @@ export const tinyAiScript = {
 
     button: tinyLib.bs
       .button({ id: 'ai-login', dsBtn: true, class: 'nav-link' })
-      .prepend(tinyLib.icon('fa-solid fa-robot me-2')),
+      .prepend(new Icon('fa-solid fa-robot me-2')),
 
     updateTitle: () => {
       if (tinyAiScript.aiLogin.button) {
@@ -33,6 +38,7 @@ export const tinyAiScript = {
       tinyIo.client.destroy();
       tinyIo.client = null;
       console.log('[socket-io] Connection destroyed!');
+      setTimeout(() => window.location.reload(), 500);
       return true;
     } else return false;
   },
@@ -49,7 +55,7 @@ export const tinyAiScript = {
         'text-danger-emphasis',
       );
       tinyAiScript.aiLogin.title = 'AI/RP Enabled';
-      TinyHtml.query('body')?.addClass('can-ai');
+      body.addClass('can-ai');
 
       // Update Ai API script
       tinyAiScript.mpClient = false;
@@ -71,7 +77,7 @@ export const tinyAiScript = {
       // Update html
       new TinyHtml(tinyAiScript.aiLogin.button.find(':scope > i')).addClass('text-danger-emphasis');
       tinyAiScript.aiLogin.title = 'AI/RP Disabled';
-      TinyHtml.query('body')?.removeClass('can-ai');
+      body.removeClass('can-ai');
       tinyAiScript.enabled = false;
     }
 
@@ -173,10 +179,13 @@ export const tinyAiScript = {
       TinyHtml.createFrom('p').append(
         TinyHtml.createFrom('span').setText('You can host your server '),
         TinyHtml.createFrom('a', {
-          href: 'https://github.com/Pony-Driland/Website/tree/main/server/tiny-chat',
+          href: 'https://github.com/Pony-Driland/TinyChat-Server',
           target: '_blank',
         }).setText('here'),
         TinyHtml.createFrom('span').setText('. Enter the server settings you want to connect to.'),
+        TinyHtml.createFrom('div', { class: 'small' }).setText(
+          'Tip: Try adding ws:// before the server address you want to connect to.',
+        ),
       );
 
     const hostButton = (inputs, tinyBig = -1) =>
@@ -270,6 +279,7 @@ export const tinyAiScript = {
           tinyStorage.setApiKey('google-generative', result);
           tinyAiScript.checkTitle();
           TinyHtml.query('#ai_connection')?.data('BootstrapModal').hide();
+          window.location.reload();
         })
         .toggleProp('disabled', appData.ai.using);
 

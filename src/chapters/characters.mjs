@@ -46,6 +46,13 @@ storyCfg.characters = {
     description:
       "James is one of the scientists responsible for developing the source code that helped create the Pony Driland dimension. James' journey involves discovering what happened to the dimension, while sadly suffering from the loss of his original dimension.",
   },
+  ivy: {
+    path: '/data/characters/ivy/README.md',
+    url: '/characters/ivy.html',
+    title: 'Ivy',
+    description:
+      'A gentle and somewhat timid pegasus pony, Ivy finds herself lost in Pony Driland and entangled in its conflicts. She is characterized by her kindness, shyness, and a deep-seated loneliness stemming from a difficult past.',
+  },
   aniya: {
     path: '/data/characters/aniya/README.md',
     url: '/characters/aniya.html',

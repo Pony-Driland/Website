@@ -1,4 +1,5 @@
-import { TinyHtml } from "tiny-essentials";
+import TinyHtml from "tiny-essentials/libs/TinyHtml";
+import tinyLib from "../../../../src/files/tinyLib.mjs";
 
 // Start Web3
 const puddyWeb3 = new PuddyWeb3('matic');
