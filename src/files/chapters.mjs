@@ -284,11 +284,7 @@ export const storyData = {
     console.log('Loading UI...');
 
     loaderScreen.update('Starting website...');
-    if (
-      location.hostname !== 'localhost' &&
-      location.hostname !== '127.0.0.1' &&
-      !tinyLs.getString('user-country')
-    ) {
+    if (!tinyLs.getString('user-country')) {
       const userCountry = await fetch('https://api.country.is/')
         .then((res) => res.json())
         .catch(console.error);
