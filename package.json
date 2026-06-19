@@ -28,7 +28,7 @@
         "buffer": "^6.0.3",
         "clone": "^2.1.2",
         "events": "^3.3.0",
-        "exifreader": "^4.36.1",
+        "exifreader": "^4.39.0",
         "express": "^5.2.1",
         "file-saver": "^2.0.5",
         "firebase": "^12.8.0",
@@ -52,11 +52,11 @@
         "tiny-essentials": "^1.26.4",
         "tiny-server-essentials": "^1.1.1",
         "tippy.js": "^6.3.7",
-        "ws": "^8.19.0"
+        "ws": "^8.21.0"
     },
     "devDependencies": {
         "@babel/cli": "^7.28.6",
-        "@babel/core": "^7.29.0",
+        "@babel/core": "^7.29.6",
         "@babel/node": "^7.29.0",
         "@babel/parser": "^7.29.0",
         "@babel/preset-env": "^7.28.3",
