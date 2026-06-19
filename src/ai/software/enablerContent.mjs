@@ -140,6 +140,22 @@ class EnablerAiContent extends EventEmitter {
 
   //////////////////////////////////////////////////////////
 
+  async initRpgData() {
+    await this.rpgData.init();
+    const tinyRpgData = this.rpgData.data.public.getValue();
+    const tinyRpgPrivateData = this.rpgData.data.private.getValue();
+    if (tinyRpgData) {
+      this.rpgData.setAllowAiUse(tinyRpgData.allowAiUse, 'public');
+      this.rpgData.setAllowAiSchemaUse(tinyRpgData.allowAiSchemaUse, 'public');
+    }
+    if (tinyRpgPrivateData) {
+      this.rpgData.setAllowAiUse(tinyRpgPrivateData.allowAiUse, 'private');
+      this.rpgData.setAllowAiSchemaUse(tinyRpgPrivateData.allowAiSchemaUse, 'private');
+    }
+  }
+
+  //////////////////////////////////////////////////////////
+
   deRpgContent() {
     this.rpgContentButtons.forEach((item) => {
       item.addClass('disabled').addProp('disabled');

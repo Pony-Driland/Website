@@ -21,14 +21,15 @@ import { tinyLs, fa, needsAgeVerification, loaderScreen, tinyNotification } from
 import { Tooltip } from './modules/TinyBootstrap.mjs';
 import { AiScriptStart } from './ai/aiSoftware.mjs';
 import { tinyAiScript } from './ai/software/tinyAiScript.mjs';
+import './api/pony-time.mjs';
 
+import 'tiny-essentials/css/aiMarker.min.css';
 import '@cryptofonts/cryptofont/cryptofont.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'tippy.js/dist/tippy.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'photoswipe/dist/photoswipe.css';
 import '../node_modules/tiny-dices/dist/TinyDices.min.css';
-import 'tiny-essentials/css/aiMarker.min.css';
 import 'tiny-essentials/css/TinyLoadingScreen.min.css';
 import 'tiny-essentials/css/TinyNotify.min.css';
 
