@@ -28,12 +28,12 @@
         "buffer": "^6.0.3",
         "clone": "^2.1.2",
         "events": "^3.3.0",
-        "exifreader": "^4.31.1",
+        "exifreader": "^4.39.0",
         "express": "^5.1.0",
         "file-saver": "^2.0.5",
         "firebase": "^12.1.0",
         "for-promise": "^2.0.5",
-        "glob": "^11.0.3",
+        "glob": "^12.0.0",
         "ini": "^6.0.0",
         "jquery": "^3.7.1",
         "js-loading-overlay": "^1.2.0",
@@ -53,11 +53,11 @@
         "tiny-essentials": "^1.26.4",
         "tiny-server-essentials": "^1.1.1",
         "tippy.js": "^6.3.7",
-        "ws": "^8.18.3"
+        "ws": "^8.21.0"
     },
     "devDependencies": {
         "@babel/cli": "^7.28.3",
-        "@babel/core": "^7.28.3",
+        "@babel/core": "^7.29.6",
         "@babel/node": "^7.28.0",
         "@babel/parser": "^7.28.3",
         "@babel/preset-env": "^7.28.3",
@@ -74,7 +74,7 @@
         "esbuild-sass-plugin": "^3.3.1",
         "esmify": "^2.1.1",
         "fs-extra": "^11.3.1",
-        "glob": "^11.0.3",
+        "glob": "^12.0.0",
         "prettier": "3.6.2"
     },
     "private": true
