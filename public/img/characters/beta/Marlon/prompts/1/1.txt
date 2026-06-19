@@ -1,0 +1,3 @@
+ O personagem da primeira imagem se chama Marlon, ele é um unicórnio.
+
+Faça uma atualização no estilo de layout do corpo de personagem do Marlon. As pernas e cascos dele precisam corresponder ao layout da personagem na praia.
