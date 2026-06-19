@@ -1,0 +1,1 @@
+eu quero que você faça uma lista de prompts de todos os detalhes da imagem que eu te mandei para eu enviar para o Stable Diffusion.
