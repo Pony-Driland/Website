@@ -18,6 +18,7 @@ lerna-debug.log*
 
 ponydriland_tiny_chat
 tiny-chat_data
+tiny-chat_proxy
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json

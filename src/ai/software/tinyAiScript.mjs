@@ -38,6 +38,7 @@ export const tinyAiScript = {
       tinyIo.client.destroy();
       tinyIo.client = null;
       console.log('[socket-io] Connection destroyed!');
+      setTimeout(() => window.location.reload(), 500);
       return true;
     } else return false;
   },
@@ -178,10 +179,13 @@ export const tinyAiScript = {
       TinyHtml.createFrom('p').append(
         TinyHtml.createFrom('span').setText('You can host your server '),
         TinyHtml.createFrom('a', {
-          href: 'https://github.com/Pony-Driland/Website/tree/main/server/tiny-chat',
+          href: 'https://github.com/Pony-Driland/TinyChat-Server',
           target: '_blank',
         }).setText('here'),
         TinyHtml.createFrom('span').setText('. Enter the server settings you want to connect to.'),
+        TinyHtml.createFrom('div', { class: 'small' }).setText(
+          'Tip: Try adding ws:// before the server address you want to connect to.',
+        ),
       );
 
     const hostButton = (inputs, tinyBig = -1) =>

@@ -1,5 +1,4 @@
 import moment from 'moment';
-import { marked } from 'marked';
 import clone from 'clone';
 import objHash from 'object-hash';
 import { saveAs } from 'file-saver';
@@ -23,6 +22,7 @@ import TinyClientIo from './socketClient.mjs';
 import RpgData from './software/rpgData.mjs';
 import { noOnlineMode, contentEnabler, isOnline } from './software/enablerContent.mjs';
 import ficConfigs from './values/ficConfigs.mjs';
+import { makeMsgRenderer, userStatus } from './msgRender.mjs';
 
 import './values/jsonTemplate.mjs';
 
@@ -49,6 +49,9 @@ import { openDownloadsList } from './buttons/downloads.mjs';
 import { openCreateAccount } from './buttons/createAccount.mjs';
 import { openChangePassword } from './buttons/changePassword.mjs';
 import { tinyModalTextarea } from './buttons/modalTextarea.mjs';
+import { openHistory } from './buttons/history.mjs';
+import { openDiceHistory } from './buttons/diceHistory.mjs';
+import { rpgSchemaSettingsMenu } from './buttons/rpgSchema.mjs';
 
 const { Icon } = TinyHtmlElems;
 
@@ -403,17 +406,7 @@ export const AiScriptStart = async () => {
           }
 
           // Load rpg data
-          await rpgData.init();
-          const tinyRpgData = rpgData.data.public.getValue();
-          const tinyRpgPrivateData = rpgData.data.private.getValue();
-          if (tinyRpgData) {
-            rpgData.setAllowAiUse(tinyRpgData.allowAiUse, 'public');
-            rpgData.setAllowAiSchemaUse(tinyRpgData.allowAiSchemaUse, 'public');
-          }
-          if (tinyRpgPrivateData) {
-            rpgData.setAllowAiUse(tinyRpgPrivateData.allowAiUse, 'private');
-            rpgData.setAllowAiSchemaUse(tinyRpgPrivateData.allowAiSchemaUse, 'private');
-          }
+          if (!isOnline()) await contentEnabler.initRpgData();
 
           // Add file data
           const fileTokens = tinyAi.getTokens('file');
@@ -530,6 +523,7 @@ export const AiScriptStart = async () => {
               makeMessage(
                 {
                   message: msg.parts[0].text,
+                  tokens: tokens[index],
                   id: msgId,
                 },
                 msg.role === 'user' ? null : toTitleCase(msg.role),
@@ -868,18 +862,57 @@ export const AiScriptStart = async () => {
 
   const rpgContentButtons = [];
 
+  // Load rpg data
+  const loadRpgSchemaData = async () => {
+    loaderScreen.start();
+    // Is online
+    if (isOnline()) {
+      // Get rpg schema
+      let rpgSchema = tinyIo.client.getRpgSchema();
+      // No one? Create new one
+      if (!isJsonObject(rpgSchema) || countObj(rpgSchema) < 1) {
+        rpgSchema = aiTemplates.funcs.jsonTemplate();
+        tinyAi.setCustomValue('rpgSchema', rpgSchema);
+
+        const user = tinyIo.client.getUser() || {};
+        const room = tinyIo.client.getRoom() || {};
+        const cantEdit = room.ownerId !== tinyIo.client.getUserId() && !user.isOwner;
+
+        if (!cantEdit) await tinyIo.client.updateRpgSchema(rpgSchema);
+      }
+      // Use the one
+      else tinyAi.setCustomValue('rpgSchema', rpgSchema);
+      // Init Rpg Data
+      await contentEnabler.initRpgData();
+    }
+    loaderScreen.stop();
+  };
+
   // RPG Data
-  const rpgPublicButton = createButtonSidebar('fa-solid fa-note-sticky', 'View Data', null, false, {
-    toggle: 'offcanvas',
-    target: '#rpg_ai_base_1',
-  });
+  const rpgPublicButton = createButtonSidebar(
+    'fa-solid fa-note-sticky',
+    'View Data',
+    loadRpgSchemaData,
+    false,
+    {
+      toggle: 'offcanvas',
+      target: '#rpg_ai_base_1',
+    },
+  );
+
   rpgContentButtons.push(rpgPublicButton);
 
   // Private RPG Data
-  const rpgPrivateButton = createButtonSidebar('fa-solid fa-book', 'View Private', null, false, {
-    toggle: 'offcanvas',
-    target: '#rpg_ai_base_2',
-  });
+  const rpgPrivateButton = createButtonSidebar(
+    'fa-solid fa-book',
+    'View Private',
+    loadRpgSchemaData,
+    false,
+    {
+      toggle: 'offcanvas',
+      target: '#rpg_ai_base_2',
+    },
+  );
   rpgPrivateButton.addClass('d-hide');
   rpgContentButtons.push(rpgPrivateButton);
 
@@ -899,6 +932,9 @@ export const AiScriptStart = async () => {
     leftMenu.push(TinyHtml.createFrom('h5').setText('Online'));
     leftMenu.push(createButtonSidebar('fas fa-users', 'Room settings', roomSettingsMenu));
     leftMenu.push(createButtonSidebar('fas fa-users', 'User manager', userButtonActions));
+    leftMenu.push(
+      createButtonSidebar('fa-solid fa-book', 'Rpg Schema settings', rpgSchemaSettingsMenu),
+    );
 
     const templateChangeInfo = (
       id,
@@ -994,6 +1030,9 @@ export const AiScriptStart = async () => {
         });
       },
     );
+
+    leftMenu.push(createButtonSidebar('fa-solid fa-timeline', 'Room History', openHistory));
+    leftMenu.push(createButtonSidebar('fa-solid fa-timeline', 'Dice History', openDiceHistory));
 
     leftMenu.push(createButtonSidebar('fas fa-key', 'Change password', openChangePassword));
     createAccountButton = createButtonSidebar(
@@ -1630,7 +1669,7 @@ export const AiScriptStart = async () => {
   // TITLE: Get Ai Tokens
   let usingUpdateToken = false;
   const updateAiTokenCounterData = (hashItems, forceReset = false) => {
-    if (tinyAiScript.mpClient) return;
+    if (tinyAiScript.mpClient || tinyAiScript.noai) return;
     if (!usingUpdateToken) {
       usingUpdateToken = true;
       const history = tinyAi.getData();
@@ -1718,10 +1757,11 @@ export const AiScriptStart = async () => {
 
       // Insert message
       let isComplete = false;
-      const insertMessage = (msgData, role, finishReason) => {
+      const insertMessage = (msgData, tokens, role, finishReason) => {
         if (!tinyCache.msgBallon) {
           tinyCache.msgBallon = makeMessage(
             {
+              tokens,
               message: msgData,
               id: tinyCache.msgId,
             },
@@ -1784,6 +1824,7 @@ export const AiScriptStart = async () => {
               if (typeof chuck.contents[index].parts[0].text === 'string')
                 insertMessage(
                   chuck.contents[index].parts[0].text,
+                  promptTokens,
                   chuck.contents[index].role,
                   chuck.contents[index].finishReason,
                 );
@@ -1841,7 +1882,7 @@ export const AiScriptStart = async () => {
                   });
 
                 // Send message request
-                insertMessage(msg.parts[0].text, msg.role, msg.finishReason);
+                insertMessage(msg.parts[0].text, promptTokens, msg.role, msg.finishReason);
 
                 // Update message data
                 const oldBallonCache = tinyCache.msgBallon.data('tiny-ai-cache');
@@ -1989,6 +2030,7 @@ export const AiScriptStart = async () => {
 
     // Add new message
     let sentId = null;
+    let newToken = null;
     const canContinue = await new Promise(async (resolve) => {
       try {
         // Exist message
@@ -2004,7 +2046,7 @@ export const AiScriptStart = async () => {
             !tinyAiScript.noai && !tinyAiScript.mpClient
               ? await tinyAi.countTokens([newMsg])
               : { totalTokens: 0 };
-          const newToken =
+          newToken =
             newTokens && typeof newTokens.totalTokens === 'number' ? newTokens.totalTokens : null;
 
           // Get id
@@ -2036,6 +2078,7 @@ export const AiScriptStart = async () => {
         addMessage(
           makeMessage({
             message: msg,
+            tokens: newToken,
             id: sentId,
           }),
         );
@@ -2071,6 +2114,7 @@ export const AiScriptStart = async () => {
           addMessage(
             makeMessage(
               {
+                tokens: sendData.tokens,
                 message: msg,
                 date: msgData.date,
                 id: sentId,
@@ -2347,47 +2391,6 @@ export const AiScriptStart = async () => {
 
   const makeTempMessage = (msg, type) => addMessage(makeMessage({ message: msg }, type));
 
-  // Message Maker
-  const makeMsgRenderer = (msg) => {
-    const renderer = new marked.Renderer();
-    const final = '<span class="final-ai-icon">';
-    // | █ ▌▐ _
-
-    // Remove links and html
-    renderer.link = (href, title, text) => `<span>${text}</span>`;
-    renderer.image = () => ``;
-    renderer.html = (data) => {
-      if (data.raw !== final || data.text !== final) return ``;
-      else return `${final}█</span>`;
-    };
-
-    // Fix del
-    renderer.del = function (data) {
-      if (data.raw.startsWith('~') && data.raw.endsWith('~') && !data.raw.startsWith('~~')) {
-        return data.raw;
-      }
-      return `<del>${data.text}</del>`;
-    };
-
-    // Complete
-    let newMsg = `${msg}`;
-    while (newMsg.endsWith('\n')) {
-      newMsg = newMsg.slice(0, -1);
-    }
-
-    while (newMsg.startsWith('\n')) {
-      newMsg = newMsg.slice(1);
-    }
-
-    return marked.parse(
-      `${newMsg}${final}`.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ''),
-      {
-        renderer: renderer,
-        breaks: true,
-      },
-    );
-  };
-
   const makeMsgWarning = (finishReason) => {
     const textBase = TinyHtml.createFrom('span');
     const result = tinyLib.bs.alert(
@@ -2417,6 +2420,7 @@ export const AiScriptStart = async () => {
       msgId: null,
       chapter: null,
       edited: null,
+      tokens: null,
     },
     username = null,
   ) => {
@@ -2428,6 +2432,7 @@ export const AiScriptStart = async () => {
       date: data.date,
       msg: data.message,
       role: username ? toTitleCase(username) : 'User',
+      tokens: data.tokens,
       dataid: data.id,
       updateText: (text = tinyCache.msg ?? '') =>
         msgBallon.empty().append(TinyHtml.createFromHtml(makeMsgRenderer(text))),
@@ -2453,6 +2458,7 @@ export const AiScriptStart = async () => {
         msgBase.setAttr('date', tinyCache.date ?? null);
         msgBase.setAttr('chapter', tinyCache.chapter ?? null);
         msgBase.setAttr('dataid', tinyCache.dataid ?? null);
+        msgBase.setAttr('tokens', tinyCache.tokens ?? null);
         msgBase.setAttr('role', tinyCache.role ?? null);
 
         /**
@@ -2551,8 +2557,11 @@ export const AiScriptStart = async () => {
               createTableContent('msgid', tinyCache.msgId ?? null),
               createTableContent(
                 'edited',
-                edited.isValid() ? `${edited.calendar()} (${edited.valueOf()})` : null,
+                edited.isValid() && edited.valueOf() > 0
+                  ? `${edited.calendar()} (${edited.valueOf()})`
+                  : null,
               ),
+              createTableContent('tokens', tinyCache.tokens > 0 ? tinyCache.tokens : null),
               createTableContent(
                 'date',
                 date.isValid() ? `${date.calendar()} (${date.valueOf()})` : null,
@@ -3196,19 +3205,6 @@ export const AiScriptStart = async () => {
           isLoadingMsgs = false;
         };
 
-        const userStatus = {
-          isMod: false,
-          isAdmin: false,
-          room: {
-            isAdmin: false,
-            isMod: false,
-          },
-          server: {
-            isAdmin: false,
-            isMod: false,
-          },
-        };
-
         // Read Only Mode
         const updateReadOnlyMode = (roomData) => {
           const isReadOnly =
@@ -3555,6 +3551,7 @@ export const AiScriptStart = async () => {
                 msgId,
                 chapter: msgData.chapter,
                 edited: msgData.edited,
+                tokens: msgData.tokens,
               },
               !msgData.isModel ? msgData.userId : 'Model',
             ),
@@ -3575,27 +3572,43 @@ export const AiScriptStart = async () => {
           if (cfg) cfg.remove();
         });
 
+        client.on('needUpdateTokens', () => updateAiTokenCounterData());
+
         client.on('messageEdit', (msgData) => {
           const html = new TinyHtml(
             `#ai-element-root #ai-chatbox .ai-chat-data[msgid="${msgData.id}"]`,
           );
-          if (html.size < 1) return;
-          const cfg = html.data('tiny-ai-cache');
-          if (!cfg) return;
-          cfg.edited = msgData.edited;
-          cfg.date = msgData.date;
-          cfg.msg = msgData.text;
 
-          const newContent = tinyAi.getMsgById(cfg.dataid);
-          newContent.parts[0].text = msgData.text;
-
-          tinyAi.replaceIndex(tinyAi.getIndexOfId(cfg.dataid), newContent, {
+          const newMsgCfg = {
             count: msgData.tokens,
             msgId: msgData.id,
-          });
+          };
 
-          cfg.update();
-          cfg.updateText();
+          if (html.size > 0) {
+            const cfg = html.data('tiny-ai-cache');
+
+            if (!cfg) return;
+            cfg.edited = msgData.edited;
+            cfg.date = msgData.date;
+            cfg.msg = msgData.text;
+
+            const newContent = tinyAi.getMsgById(cfg.dataid);
+            newContent.parts[0].text = msgData.text;
+            tinyAi.replaceIndex(tinyAi.getIndexOfId(cfg.dataid), newContent, newMsgCfg);
+
+            cfg.update();
+            cfg.updateText();
+          } else {
+            const data = tinyAi.getData();
+            if (!isJsonObject(data)) return;
+            const index = data.tokens.data.findIndex((token) => token.msgId === msgData.id);
+            if (index < 0) return;
+
+            const newContent = tinyAi.getMsgByIndex(index);
+            newContent.parts[0].text = msgData.text;
+            tinyAi.replaceIndex(index, newContent, newMsgCfg);
+          }
+          updateAiTokenCounterData();
         });
 
         // User Status

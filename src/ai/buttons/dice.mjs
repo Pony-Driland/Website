@@ -149,7 +149,7 @@ function generateRandomId(length = 8) {
  * @param {{ sides: number; roll: number; tokens: string[]; total: number; canZero: boolean; }[]} data.results
  * @param {{ bg: string; border: string; img: string; selectionBg: string; selectionText: string; text: string; }} data.skin
  */
-export const openDiceSpecialModal = (data) => {
+export const createDiceSpecialHtml = (data) => {
   const $root = TinyHtml.createFrom('div');
   const $diceContainer = TinyHtml.createFrom('div');
   const dice = new TinyDices($diceContainer.get(0));
@@ -201,14 +201,36 @@ export const openDiceSpecialModal = (data) => {
     $totalBase,
   );
 
-  createDiceResults($totalBaseNumber, TinySimpleDice.applyModifiers(data.results, data.modifiers));
+  /** @type {import('tiny-essentials/libs/TinySimpleDice').ApplyDiceModifiersResult|null} */
+  let diceResult = null;
+  let errorMsg = '';
+  try {
+    diceResult = TinySimpleDice.applyModifiers(data.results, data.modifiers);
+  } catch (err) {
+    errorMsg = err.message;
+    diceResult = null;
+  }
 
+  if (diceResult) createDiceResults($totalBaseNumber, diceResult);
+  else $totalBaseNumber.setText(errorMsg).addClass('text-danger');
+
+  return $root;
+};
+
+/**
+ * @param {Object} data
+ * @param {number} data.total
+ * @param {string} data.userId
+ * @param {{ sides: number; roll: number; tokens: string[]; total: number; canZero: boolean; }[]} data.results
+ * @param {{ bg: string; border: string; img: string; selectionBg: string; selectionText: string; text: string; }} data.skin
+ */
+export const openDiceSpecialModal = (data) => {
   // Start modal
   tinyLib.modal({
     title: 'Dice Roll Result',
     dialog: 'modal-lg',
     id: `dice-roll-${generateRandomId()}`,
-    body: $root,
+    body: createDiceSpecialHtml(data),
   });
 };
 
