@@ -4,7 +4,7 @@ import chokidar from 'chokidar';
 import { build, context } from 'esbuild';
 import { TinyEvents } from 'tiny-essentials';
 
-/** @typedef {import('tiny-essentials/dist/v1/libs/TinyEvents.mjs').handler} handler */
+/** @typedef {import('tiny-essentials/libs/TinyEvents').handler} handler */
 /** @typedef {import('esbuild').BuildOptions} BuildOptions */
 /** @typedef {import('esbuild').BuildContext} BuildContext */
 /** @typedef {import('esbuild').BuildResult} BuildResult */
