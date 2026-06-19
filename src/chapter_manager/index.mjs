@@ -587,7 +587,7 @@ export const openChapterMenu = (params = {}) => {
     }).on('click', () => {
       /** @type {boolean|null} */
       let valueToSet = null;
-      for (let i = 0; i < storyData.chapter.amount; i++) {
+      for (let i = 0; i <= storyData.chapter.amount; i++) {
         const bmValueName = `bookmarkCanSpoiler${i}`;
         if (valueToSet === null) valueToSet = !tinyLs.getBool(bmValueName);
         tinyLs.setBool(bmValueName, valueToSet);

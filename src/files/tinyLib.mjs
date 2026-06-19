@@ -80,6 +80,7 @@ tinyLib.alert = (where, alertType, icon, text) => {
  * Modal
  * @param {Object} data
  * @param {string} [data.dialog]
+ * @param {number} [data.width]
  * @param {string} [data.id]
  * @param {Function} [data.hidden]
  * @param {TinyHtml<any>} [data.footer]
@@ -89,6 +90,16 @@ tinyLib.alert = (where, alertType, icon, text) => {
  */
 tinyLib.modal = (data) => {
   if (typeof data.dialog !== 'string') data.dialog = '';
+
+  const dialog = TinyHtml.createFrom('div', {
+    class: 'modal-dialog ' + data.dialog,
+    role: 'document',
+  });
+  if (typeof data.width === 'string' || typeof data.width === 'number')
+    dialog.setStyle({
+      'max-width': 'none',
+      width: typeof data.width === 'number' ? `${data.width}px` : data.width,
+    });
 
   const modal = TinyHtml.createFrom('div', {
     class: 'modal fade',
@@ -103,7 +114,7 @@ tinyLib.modal = (data) => {
       }
     })
     .append(
-      TinyHtml.createFrom('div', { class: 'modal-dialog ' + data.dialog, role: 'document' }).append(
+      dialog.append(
         TinyHtml.createFrom('div', { class: 'modal-content' }).append(
           TinyHtml.createFrom('div', { class: 'modal-header' }).append(
             TinyHtml.createFrom('h5', { class: 'modal-title' }).append(data.title),
