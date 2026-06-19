@@ -1,0 +1,185 @@
+[
+  {
+    "value": "Prisma e Megan estavam em uma sala de reunião fechada, os dois estavam sentados em cadeiras com uma mesa ao redor, e em cima da mesa tinha um retrato que estava virado para baixo, tudo estava muito quieto e Prisma estava chorando de forma muito dramática.",
+    "type": "action"
+  },
+
+  {
+    "value": "Olha Prisma, me escute...",
+    "character": "Megan",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Megan suspirava profundamente por alguns segundos antes de continuar a conversa.",
+    "type": "action"
+  },
+
+  {
+    "value": "Você precisa entender que a gente não pode prender Marlon, eu sei que ele é um revolucionário, ele fez um manifesto, separou a região de Pony Driland em 2, ele roubou nossos arsenais de energia para jogar uma bomba atômica em uma cidade, mas você precisa entender que a revolta popular dele não vai acabar na hora que a gente o prende-lo. A situação pode até terminar pior, ele vai acabar virando um simbolo de guerra e piorar a nossa crise politica em Pony Driland.",
+    "character": "Megan",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Exatamente! ESSE IDIOTA JOGOU UMA BOMBA ATÔMICA E EXPLODIU UMA CIDADE INTEIRA! Ele contratou uma equipe de cyber ataque e invadiu nosso sistema de segurança! Por causa dele... O HIROSHI ESTÁ MORTO!!",
+    "character": "Prisma",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Prisma começava a chorar em um sentimento de revolta enquanto continuava falando e olhando fixamente para os olhos de Megan.",
+    "type": "action"
+  },
+
+  {
+    "value": "Megan! SE LIGA! HIROSHI ESTÁ MORTO! Ele era o único pônei deste mundo que me fazia sentir que eu tinha um avô de verdade! Você acha mesmo que a Rain vai trazer ele de volta a vida depois de quebrar um pacto?!",
+    "character": "Prisma",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Megan colocava uma pata no ombro de Prisma e respondia ainda com uma voz calma.",
+    "type": "action"
+  },
+
+  {
+    "value": "Prisma... Se acalme, eu sei que isso é terrível, mas a gente ainda está lidando com uma crise politica. Marlon é o único que tem controle da região Leste, a gente precisa dele para unificar novamente as duas regiões.",
+    "character": "Megan",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "C-como a gente vai unificar as regiões com um traído??",
+    "character": "Prisma",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "É por isso que eu precise que você descanse e deixe tudo comigo, eu já recebi o relatório que o Kai vai ser o sucessor de Hiroshi.",
+    "character": "Megan",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Megan ajuda Prisma limpar as lágrimas dos olhos gentilmente enquanto continuava respondendo.",
+    "type": "action"
+  },
+
+  {
+    "value": "Você sabe que eu não quebro promeças, e eu prometo a você, que vamos achar uma forma de convencer Marlon a parar com tudo isso, e vamos ter a ajuda de Kai com tudo isso. Marlon mesmo falou que ele está chocado pela morte de Hiroshi, você não acha que pelo fato do Marlon está assustado em ver a Rain pela primeira vez, pode ser uma chance da gente mudar a mentalidade dele?",
+    "character": "Megan",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Prisma ficava um pouco pensativa, tentando se acalmar antes de responder.",
+    "type": "action"
+  },
+
+  {
+    "value": "S-sim, verdade. Mas eu ainda não confio nele. Esse idiota foi quem fez Hiroshi morrer. É como... É como se eu estivesse vendo a morte da minha mãe de novo.",
+    "character": "Prisma",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Prisma começava a chorar de novo, mas Megan abraçava ela antes de continuar falando.",
+    "type": "action"
+  },
+
+  {
+    "value": "Eu sei... eu sei muito bem disso. Mas lembre-se o que a sua mãe te disse, a gente deve perdoar o próximo, mesmo que seja nossos inimigos. Então é isso que a gente vai tentar fazer.",
+    "character": "Megan",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Prisma olhava para Megan enquanto limpava os olhos molhados de lágrimas.",
+    "type": "action"
+  },
+
+  {
+    "value": "Verdade, m-mas eu não vou tirar um olho dele. Eu também quero investiga-lo para saber o que ele realmente está tentando fazer...",
+    "character": "Prisma",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Prisma chorava um pouco mais enquanto respondia com uma voz de choro.",
+    "type": "action"
+  },
+
+  {
+    "value": "P-Por favor, deixeu participar da investigação! É pelo H-Hiroshi...",
+    "character": "Prisma",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Se acalme... Você vai participar sim, mas lembre-se que você ainda tem que investigar o misterioso Vinny que está com a Rayane. Não era para ter criaturas vindo do planeta Terra em Pony Driland, principalmente os humanos deste planeta. Você sabe que a gente está em perigo se for descoberto que humanos do planeta Terra estão em Pony Driland.",
+    "character": "Megan",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "S-sim. Eu sei disso. Ele é um bobalhão, eu só preciso achar ele no momento certo.",
+    "character": "Prisma",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Megan fazia um pequeno sorriso de confiança e dava um tapa nas costas de Prisma.",
+    "type": "action"
+  },
+
+  {
+    "value": "É assim mesmo que eu gosto de ver. Confiança! Vai dar tudo certo Prisma! Você é a comandante da nossa equipe!",
+    "character": "Megan",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Megan entregava um lenço para Prisma e vai até a porta da sala de reunião.",
+    "type": "action"
+  },
+
+  {
+    "value": "Eu tenho que voltar para o interrogatório, Marlon está me esperando, não saia desta sala até você parar de chorar.",
+    "character": "Megan",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "S-sim, Megan...",
+    "character": "Prisma",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Megan saia da sala e fechava a porta, deixando Prisma em um silêncio profundo.",
+    "type": "action"
+  },
+
+  {
+    "value": "Hiroshi...",
+    "character": "Prisma",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Prisma levanta o porta retrato novamente, revelando que a fotografia mostrava ela e a Amy sorrindo abraçando Hiroshi que já estava idoso, e no centro atrais de todos os trés estava a Rainbow Queen por ser a mais alta, com um olhar sério de autoridade de família, usando as asas para ajudar o abraço.",
+    "type": "action"
+  },
+
+  {
+    "value": "As vezes... E-Eu só queria voltar no tempo quando as coisas eram melhores...",
+    "character": "Prisma",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Prisma voltava a chorar enquanto abraçava o retrato, tentando encontrar um conforto em suas recordações de família.",
+    "type": "action"
+  }
+]

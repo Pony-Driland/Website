@@ -1,0 +1,8 @@
+1- Primeiro criamos as linhas
+Fazendo um clone das linhas e coloca de mascara um fundo branco (Group 2) com um efeito blur bem forte (Usando Motion Blur).
+
+2- Fazemos um outro clone com um blur menor e usa mascara de uma imagem colorida (Group 5) (Usando Motion Blur).
+
+3- Fazemos um merge de todos os dois grupos e o coloca no topo e aplica um efeito Lens Blur.
+
+4- Fazemos um circulo pintado de forma suave e coloca o arco iris dentro dele (Group 8). Melhores blends: 1(Overlay, Addition),2(Divide, Color Dodge, Gamma Illumination), 3(Luminosity/Shine (SAI))
