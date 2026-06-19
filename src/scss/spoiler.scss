@@ -1,11 +1,11 @@
 .book-spoiler {
   cursor: pointer;
 
-  & > * {
+  & * {
     pointer-events: none !important;
   }
 
-  & > *,
+  & *,
   a,
   &::selection {
     background: black !important;
