@@ -1,9 +1,7 @@
-import {
-  TinyHtml,
-  TinyDomReadyManager,
-  installWindowHiddenScript,
-  addAiMarkerShortcut,
-} from 'tiny-essentials';
+import { installWindowHiddenScript, addAiMarkerShortcut } from 'tiny-essentials/basics';
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
+import TinyDomReadyManager from 'tiny-essentials/libs/TinyDomReadyManager';
 import QRCode from 'qrcode';
 import moment from 'moment';
 import { saveAs } from 'file-saver';
@@ -18,29 +16,33 @@ import tinyLib, { alert } from './files/tinyLib.mjs';
 import { storyData } from './files/chapters.mjs';
 import storyCfg from './chapters/config.mjs';
 import { openChapterMenu } from './chapter_manager/index.mjs';
-import { tinyLs, fa, needsAgeVerification, loaderScreen } from './important.mjs';
+import { tinyLs, fa, needsAgeVerification, loaderScreen, tinyNotification } from './important.mjs';
 
-import TinyIcon from './modules/template/TinyIcon.mjs';
-import TinyButton from './modules/template/TinyButton.mjs';
 import { Tooltip } from './modules/TinyBootstrap.mjs';
 import { AiScriptStart } from './ai/aiSoftware.mjs';
 import { tinyAiScript } from './ai/software/tinyAiScript.mjs';
+import './api/pony-time.mjs';
 
+import 'tiny-essentials/css/aiMarker.min.css';
 import '@cryptofonts/cryptofont/cryptofont.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'tippy.js/dist/tippy.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'photoswipe/dist/photoswipe.css';
 import '../node_modules/tiny-dices/dist/TinyDices.min.css';
-import 'tiny-essentials/css/aiMarker.min.css';
 import 'tiny-essentials/css/TinyLoadingScreen.min.css';
+import 'tiny-essentials/css/TinyNotify.min.css';
 
 import './scss/dark.scss';
 import './scss/main.scss';
 import './scss/carousel.scss';
 import './scss/rpg.scss';
 import { openMDFile, openNewAddress, clearFicData } from './fixStuff/markdown.mjs';
+import { app, body, head, tinyWin, topPage } from './html/query.mjs';
+import { markdownBase } from './html/base.mjs';
+import { fileEnd, fileStart } from './ai/values/defaults.mjs';
 
+const { Icon } = TinyHtmlElems;
 addAiMarkerShortcut();
 
 // Start Document
@@ -130,8 +132,6 @@ export const saveRoleplayFormat = (chapter, saveAsFile = true, tinyCfg = {}) => 
   }
 
   // File start and end
-  const fileStart = `---------- Official Pony Driland fic file ----------`;
-  const fileEnd = `---------- The end Official Pony Driland fic file ----------`;
   let file = ``;
 
   // Insert chapter
@@ -168,40 +168,12 @@ export const saveRoleplayFormat = (chapter, saveAsFile = true, tinyCfg = {}) => 
 
   // Info data
   let info = `Title: ${storyData.title}\nDescription: ${storyData.description}\nAuthor: ${storyCfg.creator}\nAuthor Page: ${storyCfg.creator_url}`;
-  if (
-    (storyCfg.bitcoin && storyCfg.bitcoin.address) ||
-    (storyCfg.dogecoin && storyCfg.dogecoin.address) ||
-    (storyCfg.ethereum && storyCfg.ethereum.address) ||
-    (storyCfg.polygon && storyCfg.polygon.address) ||
-    (storyCfg.bnb && storyCfg.bnb.address)
-  ) {
-    info += `\n`;
-  }
-
-  if (storyCfg.bitcoin && storyCfg.bitcoin.address) {
-    info += `\nBitcoin Donations: ${storyCfg.bitcoin.address}`;
-  }
-
-  if (storyCfg.dogecoin && storyCfg.dogecoin.address) {
-    info += `\nDogecoin Donations: ${storyCfg.dogecoin.address}`;
-  }
-
-  if (storyCfg.ethereum && storyCfg.ethereum.address) {
-    info += `\nEthereum Donations: ${storyCfg.ethereum.address}`;
-  }
-
-  if (storyCfg.polygon && storyCfg.polygon.address) {
-    info += `\nPolygon Donations: ${storyCfg.polygon.address}`;
-  }
-
-  if (storyCfg.bnb && storyCfg.bnb.address) {
-    info += `\nBNB Donations: ${storyCfg.bnb.address}`;
-  }
+  const finalData = `${fileStart}\n\n${info}\n\n${file}\n\n${fileEnd}`;
 
   // Save file
   if (saveAsFile)
     saveAs(
-      new Blob([`${fileStart}\n\n${info}\n\n${file}\n\n${fileEnd}`], {
+      new Blob([finalData], {
         type: 'text/plain',
       }),
       `Pony Driland${
@@ -220,7 +192,7 @@ const getParams = () => {
 };
 
 // Pop State
-new TinyHtml(window).on('popstate', () => {
+tinyWin.on('popstate', () => {
   // Remove Fic Data
   clearFicData();
 
@@ -270,9 +242,9 @@ rootApp.onReady(() => {
        * @param {Function} fn
        * @param {string} readme
        */
-      (fn, readme) => {
+      async (fn, readme) => {
         // Custom Colors
-        TinyHtml.query('head')?.append(
+        head.append(
           TinyHtml.createFrom('style', { id: 'custom_color' }).setText(`
 
             .alert .close span{
@@ -429,7 +401,7 @@ rootApp.onReady(() => {
 
               // Add text
               aItem.setText(item.text);
-              if (item.icon) aItem.prepend(tinyLib.icon(`${item.icon} me-2`));
+              if (item.icon) aItem.prepend(new Icon(`${item.icon} me-2`));
 
               // File
               if (typeof item.file === 'string') {
@@ -666,6 +638,11 @@ rootApp.onReady(() => {
           });
 
           newItem.dbBase.characters.push({
+            file: '/data/characters/ivy/README.md',
+            text: 'Ivy (Character WIP)',
+          });
+
+          newItem.dbBase.characters.push({
             file: '/data/characters/prisma/README.md',
             text: 'Prisma (Character WIP)',
           });
@@ -685,6 +662,11 @@ rootApp.onReady(() => {
             text: 'Whistler (Character WIP)',
           });
 
+          newItem.dbBase.characters.push({
+            file: '/data/characters/yasmin/README.md',
+            text: 'Yasmin (Character WIP)',
+          });
+
           tinyAiScript.checkTitle();
           tinyAiScript.aiLogin.base.prepend(tinyAiScript.aiLogin.button);
           tinyAiScript.aiLogin.button.on('click', (e) => {
@@ -698,14 +680,14 @@ rootApp.onReady(() => {
             loginAccount.base = TinyHtml.createFrom('li', {
               className: 'nav-item font-weight-bold',
             });
-            loginAccount.link = new TinyButton({
+            loginAccount.link = new TinyHtmlElems.Button({
               label: '',
               tags: 'disabled',
               mainClass: 'nav-link',
             })
               .setAttr('id', 'login-start')
               .setAttr('title', 'Sign in with Google');
-            loginAccount.icon = new TinyIcon(['fa-solid', 'fa-right-to-bracket']);
+            loginAccount.icon = new TinyHtmlElems.Icon(['fa-solid', 'fa-right-to-bracket']);
 
             const tool = Tooltip(loginAccount.link);
             loginAccount.base.append(loginAccount.link);
@@ -777,7 +759,7 @@ rootApp.onReady(() => {
             TinyHtml.createFrom('li', { class: 'nav-item' }).prepend(
               TinyHtml.createFrom('a', { class: 'nav-link', href: '/', id: 'homepage' })
                 .setText('Home')
-                .prepend(tinyLib.icon('fas fa-home me-2'))
+                .prepend(new Icon('fas fa-home me-2'))
                 .on('click', (e) => {
                   e.preventDefault();
                   openMDFile('MAIN', true);
@@ -794,7 +776,7 @@ rootApp.onReady(() => {
                 id: 'discord-server',
               })
                 .setText('Discord')
-                .prepend(tinyLib.icon('fab fa-discord me-2'))
+                .prepend(new Icon('fab fa-discord me-2'))
                 .on('click', () => {
                   if (offCanvasEl) offCanvasEl.hide();
                 }),
@@ -809,7 +791,7 @@ rootApp.onReady(() => {
                 id: 'blog-url',
               })
                 .setText('Blog')
-                .prepend(tinyLib.icon('fa-solid fa-rss me-2'))
+                .prepend(new Icon('fa-solid fa-rss me-2'))
                 .on('click', () => {
                   if (offCanvasEl) offCanvasEl.hide();
                 }),
@@ -823,9 +805,12 @@ rootApp.onReady(() => {
                 id: 'ai-access-page',
               })
                 .setText('AI Page')
-                .prepend(tinyLib.icon('fa-solid fa-server me-2'))
-                .on('click', (e) => {
+                .prepend(new Icon('fa-solid fa-server me-2'))
+                .on('click', async (e) => {
                   e.preventDefault();
+                  loaderScreen.start();
+                  await tinyNotification.requestPerm();
+                  loaderScreen.stop();
                   AiScriptStart();
                   if (offCanvasEl) offCanvasEl.hide();
                 }),
@@ -860,11 +845,11 @@ rootApp.onReady(() => {
                 })
                   .setText('Read Fic')
                   .append(isNewValue)
-                  .prepend(tinyLib.icon('fab fa-readme me-2')),
+                  .prepend(new Icon('fab fa-readme me-2')),
               )
               .on('click', (e) => {
                 e.preventDefault();
-                TinyHtml.query('#top_page')?.addClass('d-none');
+                topPage.addClass('d-none');
                 openChapterMenu();
                 if (offCanvasEl) offCanvasEl.hide();
               }),
@@ -888,7 +873,7 @@ rootApp.onReady(() => {
         const tinyCollapse2 = tinyLib.bs.navbar.collapse('right', 'small mdMenu', 'fic-nav');
 
         // Insert Navbar
-        TinyHtml.query('body')?.prepend(
+        body.prepend(
           // Navbar
           navbarOffCanvas,
           tinyLib.bs.navbar.root('md-navbar', 'dark', true).append(
@@ -938,7 +923,7 @@ rootApp.onReady(() => {
         checkWindowSize();
 
         // Insert Readme
-        TinyHtml.query('#app')?.append(tinyLib.bs.container('markdown-read'));
+        app.append(markdownBase);
 
         // Footer Base
         const tinyFooter = { 1: [], 2: [] };
@@ -954,7 +939,7 @@ rootApp.onReady(() => {
                 href: `https://opensea.io/collection/${storyCfg.opensea}`,
               })
                 .setText('OpenSea')
-                .prepend(tinyLib.icon('fab fa-ethereum me-2')),
+                .prepend(new Icon('fab fa-ethereum me-2')),
             ),
           );
         }
@@ -965,7 +950,7 @@ rootApp.onReady(() => {
             TinyHtml.createFrom('li').append(
               TinyHtml.createFrom('a', { href: `https://${storyData.cid32}.ipfs.dweb.link/` })
                 .setText('IPFS ' + storyCfg.nftDomain.name)
-                .prepend(tinyLib.icon('fas fa-wifi me-2')),
+                .prepend(new Icon('fas fa-wifi me-2')),
             ),
           );
         }
@@ -980,7 +965,7 @@ rootApp.onReady(() => {
                 href: `https://${storyCfg.mastodon.domain}/@${storyCfg.mastodon.username}`,
               })
                 .setText('Mastodon')
-                .prepend(tinyLib.icon('fa-brands fa-mastodon me-2')),
+                .prepend(new Icon('fa-brands fa-mastodon me-2')),
             ),
           );
         }
@@ -994,7 +979,7 @@ rootApp.onReady(() => {
                 href: `https://discord.gg/${storyCfg.discordInvite}`,
               })
                 .setText('Discord Server')
-                .prepend(tinyLib.icon('fab fa-discord me-2')),
+                .prepend(new Icon('fab fa-discord me-2')),
             ),
           );
         }
@@ -1009,7 +994,7 @@ rootApp.onReady(() => {
             TinyHtml.createFrom('li').append(
               TinyHtml.createFrom('a', { target: '_blank', href: `https://${storyCfg.domain}` })
                 .setText('Website')
-                .prepend(tinyLib.icon('fa-solid fa-pager me-2')),
+                .prepend(new Icon('fa-solid fa-pager me-2')),
             ),
           );
         } else {
@@ -1020,7 +1005,7 @@ rootApp.onReady(() => {
                 href: `https://${storyCfg.mirror[Math.floor(Math.random() * storyCfg?.mirror.length)]}`,
               })
                 .setText('Mirror')
-                .prepend(tinyLib.icon('fa-solid fa-pager me-2')),
+                .prepend(new Icon('fa-solid fa-pager me-2')),
             ),
           );
         }
@@ -1034,7 +1019,7 @@ rootApp.onReady(() => {
                 href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.valueURL),
               })
                 .setText(storyCfg.nftDomain.name)
-                .prepend(tinyLib.icon('fas fa-marker me-2')),
+                .prepend(new Icon('fas fa-marker me-2')),
             ),
           );
         }
@@ -1047,7 +1032,7 @@ rootApp.onReady(() => {
                 href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}`,
               })
                 .setText('Github')
-                .prepend(tinyLib.icon('fab fa-github me-2')),
+                .prepend(new Icon('fab fa-github me-2')),
             ),
           );
         }
@@ -1056,7 +1041,7 @@ rootApp.onReady(() => {
           TinyHtml.createFrom('li').append(
             TinyHtml.createFrom('a', { target: '_blank', href: 'mailto:' + storyCfg.contact })
               .setText('Contact')
-              .prepend(tinyLib.icon('fas fa-envelope me-2')),
+              .prepend(new Icon('fas fa-envelope me-2')),
           ),
         );
 
@@ -1068,7 +1053,7 @@ rootApp.onReady(() => {
                 id: 'license',
               })
                 .setText('License')
-                .prepend(tinyLib.icon('fas fa-copyright me-2')),
+                .prepend(new Icon('fas fa-copyright me-2')),
             )
             .on('click', (e) => {
               e.preventDefault();
@@ -1084,7 +1069,7 @@ rootApp.onReady(() => {
                 id: 'privacy-policy',
               })
                 .setText('Privacy Policy')
-                .prepend(tinyLib.icon('fas fa-user-shield me-2')),
+                .prepend(new Icon('fas fa-user-shield me-2')),
             )
             .on('click', (e) => {
               e.preventDefault();
@@ -1093,7 +1078,7 @@ rootApp.onReady(() => {
         );
 
         // Insert Footer
-        TinyHtml.query('body')?.append(
+        body.append(
           TinyHtml.createFrom('footer', { class: 'page-footer font-small pt-4 clearfix' }).append(
             // Base
             TinyHtml.createFrom('div', {
@@ -1183,8 +1168,12 @@ rootApp.onReady(() => {
         // Start Readme
         const params = getParams();
         if (params.path === 'read-fic') openChapterMenu(params);
-        else if (params.path === 'ai') AiScriptStart();
-        else openNewAddress(params, true, true);
+        else if (params.path === 'ai') {
+          loaderScreen.start();
+          await tinyNotification.requestPerm();
+          loaderScreen.stop();
+          AiScriptStart();
+        } else openNewAddress(params, true, true);
 
         // Final part
         fn();

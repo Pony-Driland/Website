@@ -7146,7 +7146,7 @@
   }, 
 
   {
-    "value": "Sorry to interrupt you... But maybe James already told you that... but I'll say it again. In this dimension the time goes by much faster. Every minute in your original dimension can be many years inside this dimension.",
+    "value": "Sorry to interrupt you... But maybe James already told you that... but I'll say it again. In this dimension the time goes by much faster. Every hour in your original dimension can be many years inside this dimension.",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -7196,7 +7196,7 @@
   }, 
 
   {
-    "value": "Bu-but actually it was me. I was unprotected when I tried to find you in my world when you ran away from home without telling me, I tried to run attracted to you because I didn't want to be without you. But I accidentally fall into this world after a mysterious meteor shower. I found a mysterious item... It looked like a watch or a bracelet. This item brought me into this world... a little world of fantasies that ended up coming true.",
+    "value": "Bu-but actually it was me. I was unprotected when I tried to find you in my world when you ran away from home without telling me, I tried to find you because I didn't want to live without you. But I accidentally fall into this world after a mysterious meteor shower. I found a mysterious item... It looked like a watch or a bracelet. This item brought me into this world... a little world of fantasies that ended up coming true.",
     "character": "Amy",
     "type": "dialogue"
   }, 
@@ -7218,7 +7218,7 @@
   }, 
 
   {
-    "value": "But I almost forgot your existence after more than 100 years of not seeing you after I met my master. I needed time to remember you again. Now it looks like I'm not your younger sister anymore because I've aged so much faster than you. I'm many years older than you, bu-but look at me and you...",
+    "value": "But I almost forgot your existence, after more than 100 years of not seeing you after I met my master. I needed time to remember you again. Now it looks like I'm not your younger sister anymore because I've aged so much faster than you. I'm many years older than you, bu-but look at me and you...",
     "character": "Amy",
     "type": "dialogue"
   }, 
@@ -18151,7 +18151,7 @@
   }, 
 
   {
-    "value": "After I do that and she becomes my new pet, I'll free you to your second new deal. Rayane no longer wants to see you suffering. She already knows that you have no escape. She just wants the best for you.",
+    "value": "After I do that and she becomes my new pet, I'll release you into your next agreement. Rayane no longer wants to see you suffering. She already knows you have no way out. She only wants what's best for you.",
     "character": "Rainbow Queen",
     "type": "dialogue"
   }, 
@@ -20770,13 +20770,13 @@
 
   {
     "nsfw": ["vore"],
-    "value": "Yasmin was very embarrassed to realize that she was really inside the belly of Rainbow Queen, everything was dark and warm with a fresh air coming from the breath of Rainbow Queen, but it was just a safe humid place totally lonely. The liquid around did not seem to be what Yasmin imagined, the liquid did not seem to be strong enough to digest something like her, it was just a black liquid and a little transparent, but strangely this liquid seemed to be trying to drain something from Yasmin's body gently. Yasmin cried quietly, from the fear of the unknown about what could happen in the next few minutes.",
+    "value": "Yasmin was very embarrassed to realize that she was really inside the belly of Rainbow Queen. Everything was dark and warm, with fresh air coming from Rainbow Queen's breath, but it was just a safe, humid place, totally lonely. The space wasn't tight enough to cause claustrophobia, it was about the size of a very small room. The liquid around did not seem to be what Yasmin imagined, it didn't seem strong enough to digest something like her. It was just a black, slightly transparent liquid, but strangely, it seemed to be gently trying to drain something from Yasmin's body. Yasmin cried quietly, afraid of the unknown and what could happen in the next few minutes.",
     "type": "action"
   },
 
   {
     "nsfw": ["vore"],
-    "value": "Shhhhhh~ Don't worry my little pet... you're my little dessert now. I'll teleport you and your humble soul later~",
+    "value": "Shhhhhh~ Don't worry my little pet... you're my little dessert inside my darkness now. I'll teleport you and your humble soul later~",
     "character": "Rainbow Queen",
     "type": "dialogue"
   },
@@ -26440,7 +26440,7 @@
   }, 
 
   {
-    "value": "Rainbow Queen then looked again at Amy and smirks in response, caressing Amy's mane gently.",
+    "value": "Rainbow Queen looks at Amy again then smirks in response, caressing Amy's mane gently.",
     "type": "action"
   },  
 
@@ -26484,7 +26484,7 @@
   }, 
 
   {
-    "value": "Rainbow Queen then looked at the door in front of her and then Amy again.",
+    "value": "Rainbow Queen looks at the door in front of her and then looks Amy again.",
     "type": "action"
   },  
 
@@ -26492,7 +26492,7 @@
     "set": {
       "playlistPlay": null
     },
-    "value": "I just came to visit some memories. Seeing information about the Earth for the first time reminded me of her existence.",
+    "value": "I just came to visit some memories. Seeing information about the Earth for the first time reminded me her existence.",
     "character": "Rainbow Queen",
     "type": "dialogue"
   },  

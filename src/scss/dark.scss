@@ -2214,3 +2214,14 @@ a.text-dark:focus {
 .btn-close {
   filter: none;
 }
+
+:root {
+  // Notify
+
+  --notify-color-bg: #0d0d0d;
+  --notify-color-text: #ffffff;
+  --notify-color-shadow: rgba(0, 0, 0, 0.1);
+
+  --notify-close-color: #444;
+  --notify-close-color-hover: #000;
+}

@@ -1,27 +1,54 @@
 import { EventEmitter } from 'events';
-import { io } from 'socket.io-client';
-import { objType } from 'tiny-essentials';
+import clone from 'clone';
+import { io as Io } from 'socket.io-client';
+import { countObj, isJsonObject } from 'tiny-essentials/basics';
+
+/** @typedef {{ error: boolean; msg: string; code: number; }} SocketError */
 
 class TinyClientIo extends EventEmitter {
-  #cfg;
+  #cfg = {
+    /** @type {string|null} */
+    roomId: null,
+    /** @type {string|null} */
+    username: null,
+    /** @type {string|null} */
+    password: null,
+    /** @type {string|null} */
+    roomPassword: null,
+  };
+
+  /** @type {string|null} */
+  id = null;
+
+  ratelimit = {};
+  room = {};
+  roomData = {};
+  roomPrivateData = {};
+  user = {};
+  users = {};
+  history = [];
+
+  /** @type {string[]} */
+  mods = [];
+
+  connected = false;
+  active = false;
 
   constructor(cfg) {
     super();
-    const tinyThis = this;
     this.#cfg = cfg;
-    this.socket = typeof cfg.ip === 'string' && cfg.ip.length > 0 ? new io(cfg.ip) : null;
 
-    this.id = null;
-    this.connected = false;
-    this.active = false;
+    /** @type {Io|null} */
+    this.socket = typeof cfg.ip === 'string' && cfg.ip.length > 0 ? Io(cfg.ip) : null;
+
     this.resetData();
 
     if (this.socket) {
       console.log('[socket.io] Starting...');
       this.socket.on('disconnect', (reason, details) => {
-        tinyThis.active = tinyThis.socket.active;
-        tinyThis.id = null;
-        tinyThis.connected = tinyThis.socket.connected;
+        this.active = this.socket.active;
+        this.id = null;
+        this.connected = this.socket.connected;
 
         console.log(
           `[socket-io] [disconnect]${typeof reason === 'string' ? ` ${reason}` : ''}`,
@@ -30,30 +57,49 @@ class TinyClientIo extends EventEmitter {
       });
 
       this.socket.on('connect_error', (err) => {
-        tinyThis.active = tinyThis.socket.active;
-        if (!tinyThis.socket.active) {
+        this.active = this.socket.active;
+        if (!this.socket.active) {
           // the connection was denied by the server
           // in that case, `socket.connect()` must be manually called in order to reconnect
         }
       });
 
       this.socket.on('connect', () => {
-        tinyThis.active = tinyThis.socket.active;
-        console.log(`[socket.io] Connected! Id: ${tinyThis.socket.id}`);
-        tinyThis.id = tinyThis.socket.id;
-        tinyThis.connected = tinyThis.socket.connected;
+        this.active = this.socket.active;
+        console.log(`[socket.io] Connected! Id: ${this.socket.id}`);
+        this.id = this.socket.id;
+        this.connected = this.socket.connected;
       });
 
       this.socket.io.on('reconnect_attempt', () => {
-        tinyThis.active = tinyThis.socket.active;
+        this.active = this.socket.active;
         console.log('[socket.io] Trying to reconnect...');
       });
 
       this.socket.io.on('reconnect', () => {
-        tinyThis.active = tinyThis.socket.active;
+        this.active = this.socket.active;
         console.log('[socket.io] Reconnecting...');
       });
     }
+  }
+
+  /**
+   * @param {string} userId
+   * @returns {boolean}
+   */
+  isRoomMod(userId = this.getUserId()) {
+    if (this.isRoomOwner(userId)) return true;
+    for (const modId of this.getMods()) if (modId === userId) return true;
+    return false;
+  }
+
+  /**
+   * @param {string} userId
+   * @returns {boolean}
+   */
+  isRoomOwner(userId = this.getUserId()) {
+    if (this.room.ownerId === userId) return true;
+    return false;
   }
 
   // Is Active
@@ -61,7 +107,10 @@ class TinyClientIo extends EventEmitter {
     return this.active;
   }
 
-  // Get user id
+  /**
+   * Get user id
+   * @returns {string|null}
+   */
   getUserId() {
     return this.#cfg.username;
   }
@@ -71,7 +120,10 @@ class TinyClientIo extends EventEmitter {
     return this.connected;
   }
 
-  // Get room id
+  /**
+   * Get room id
+   * @returns {string|null}
+   */
   getRoomId() {
     return this.#cfg.roomId;
   }
@@ -80,6 +132,7 @@ class TinyClientIo extends EventEmitter {
   resetData() {
     this.ratelimit = {};
     this.room = {};
+    this.rpgSchema = {};
     this.roomData = {};
     this.roomPrivateData = {};
     this.user = {};
@@ -90,15 +143,15 @@ class TinyClientIo extends EventEmitter {
 
   // Rate limit
   setRateLimit(result) {
-    this.ratelimit = { limit: {}, size: {}, time: null, loadAllHistory: null };
-    if (objType(result, 'object')) {
+    this.ratelimit = { limit: {}, size: {}, time: null, loadAllHistory: false };
+    if (isJsonObject(result)) {
       this.ratelimit.loadAllHistory =
-        typeof result.loadAllHistory === 'boolean' ? result.loadAllHistory : true;
+        typeof result.loadAllHistory === 'boolean' ? result.loadAllHistory : false;
       this.ratelimit.time = typeof result.time === 'number' ? result.time : 0;
       this.ratelimit.openRegistration =
         typeof result.openRegistration === 'boolean' ? result.openRegistration : false;
 
-      if (objType(result.limit, 'object')) {
+      if (isJsonObject(result.limit)) {
         this.ratelimit.limit = {
           events: typeof result.limit.events === 'number' ? result.limit.events : 0,
           diceRolls: typeof result.limit.diceRolls === 'number' ? result.limit.diceRolls : 0,
@@ -107,7 +160,7 @@ class TinyClientIo extends EventEmitter {
           roomUsers: typeof result.limit.roomUsers === 'number' ? result.limit.roomUsers : 0,
         };
       }
-      if (objType(result.size, 'object')) {
+      if (isJsonObject(result.size)) {
         this.ratelimit.size = {
           modelId: typeof result.size.modelId === 'number' ? result.size.modelId : 0,
           history: typeof result.size.history === 'number' ? result.size.history : 0,
@@ -125,7 +178,7 @@ class TinyClientIo extends EventEmitter {
             typeof result.size.firstDialogue === 'number' ? result.size.firstDialogue : 0,
         };
       }
-      if (objType(result.dice, 'object')) {
+      if (isJsonObject(result.dice)) {
         this.ratelimit.dice = {
           img: typeof result.dice.img === 'number' ? result.dice.img : 0,
           border: typeof result.dice.border === 'number' ? result.dice.border : 0,
@@ -148,7 +201,7 @@ class TinyClientIo extends EventEmitter {
   // Dice
   setDice(result) {
     this.dice = {};
-    if (objType(result, 'object')) {
+    if (isJsonObject(result)) {
       const ratelimit = this.getRateLimit()?.dice;
       this.dice.img =
         typeof result.img === 'string'
@@ -184,9 +237,9 @@ class TinyClientIo extends EventEmitter {
     return this.dice;
   }
 
-  // User
+  // User (local)
   setUser(result) {
-    if (objType(result, 'object')) {
+    if (isJsonObject(result)) {
       this.user = {
         isAdmin: typeof result.isAdmin === 'boolean' ? result.isAdmin : false,
         isMod: typeof result.isMod === 'boolean' ? result.isMod : false,
@@ -208,12 +261,13 @@ class TinyClientIo extends EventEmitter {
 
   // Users
   setUsers(result) {
-    this.users = objType(result, 'object') ? result : {};
+    this.users = isJsonObject(result) ? result : {};
   }
 
+  // Add user (Local)
   addUser(result) {
     if (!this.users) this.users = {};
-    if (objType(result, 'object') && typeof result.userId === 'string') {
+    if (isJsonObject(result) && typeof result.userId === 'string') {
       this.users[result.userId] = {
         ping: typeof result.ping === 'number' ? result.ping : 0,
         nickname: typeof result.nickname === 'string' ? result.nickname : null,
@@ -222,20 +276,23 @@ class TinyClientIo extends EventEmitter {
     }
   }
 
+  // Edit user (Local)
   editUser(result) {
     if (!this.users) this.users = {};
-    if (objType(result, 'object') && typeof result.userId === 'string') {
+    if (isJsonObject(result) && typeof result.userId === 'string') {
       if (typeof result.ping === 'number') this.users[result.userId].ping = result.ping;
       if (typeof result.nickname === 'string') this.users[result.userId].nickname = result.nickname;
       return this.users[result.userId];
     }
   }
 
+  // Remove user (Local)
   removeUser(result) {
-    if (objType(result, 'object') && this.users) {
+    if (isJsonObject(result) && this.users) {
       if (typeof result.userId === 'string' && this.users[result.userId]) {
+        const data = { data: clone(this.users[result.userId]), userId: result.userId };
         delete this.users[result.userId];
-        return result.userId;
+        return data;
       }
     }
     return null;
@@ -245,13 +302,14 @@ class TinyClientIo extends EventEmitter {
     return this.users || {};
   }
 
-  // Room
+  // Set Room (Local)
   setRoom(result) {
-    if (objType(result, 'object')) {
+    if (isJsonObject(result)) {
       this.room = {
         title: typeof result.title === 'string' ? result.title : '',
         ownerId: typeof result.ownerId === 'string' ? result.ownerId : '',
         maxUsers: typeof result.maxUsers === 'number' ? result.maxUsers : 0,
+        chapter: typeof result.chapter === 'number' ? result.chapter : 0,
         model: typeof result.model === 'string' ? result.model : null,
         prompt: typeof result.prompt === 'string' ? result.prompt : null,
         firstDialogue: typeof result.firstDialogue === 'string' ? result.firstDialogue : null,
@@ -264,16 +322,41 @@ class TinyClientIo extends EventEmitter {
         presencePenalty: typeof result.presencePenalty === 'number' ? result.presencePenalty : null,
         frequencyPenalty:
           typeof result.frequencyPenalty === 'number' ? result.frequencyPenalty : null,
-        disabled: typeof result.disabled === 'number' ? (result.disabled ? true : false) : false,
+
+        disabled:
+          typeof result.disabled === 'number'
+            ? result.disabled
+              ? true
+              : false
+            : typeof result.disabled === 'boolean'
+              ? result.disabled
+              : false,
+
+        readOnly:
+          typeof result.readOnly === 'number'
+            ? result.readOnly
+              ? true
+              : false
+            : typeof result.readOnly === 'boolean'
+              ? result.readOnly
+              : false,
       };
       return this.room;
     }
   }
 
+  setRpgSchema(result) {
+    if (isJsonObject(result)) {
+      this.rpgSchema = result;
+      return { values: result };
+    }
+  }
+
+  // Set Room Data (Local)
   setRoomData(result) {
     if (
-      objType(result, 'object') &&
-      objType(result.values, 'object') &&
+      isJsonObject(result) &&
+      isJsonObject(result.values) &&
       typeof result.isPrivate === 'boolean'
     ) {
       if (result.isPrivate) this.roomPrivateData = result.values;
@@ -282,16 +365,20 @@ class TinyClientIo extends EventEmitter {
     }
   }
 
+  // Set room base (Local)
   setRoomBase(result) {
     if (
-      objType(result, 'object') &&
-      objType(result.data, 'object') &&
-      objType(result.users, 'object') &&
-      objType(result.roomData, 'object') &&
-      objType(result.roomPrivateData, 'object') &&
-      Array.isArray(result.history) &&
+      isJsonObject(result) &&
+      isJsonObject(result.data) &&
+      isJsonObject(result.rpgSchema) &&
+      isJsonObject(result.users) &&
+      isJsonObject(result.roomData) &&
+      isJsonObject(result.roomPrivateData) &&
       Array.isArray(result.mods)
     ) {
+      // Room rpg schema
+      this.setRpgSchema(result.rpgSchema);
+
       // Room data
       this.setRoom(result.data);
 
@@ -305,10 +392,6 @@ class TinyClientIo extends EventEmitter {
         if (typeof result.mods[index].userId === 'string')
           this.addModUser(result.mods[index].userId);
 
-      // History
-      this.setHistory([]);
-      for (const index in result.history) this.addHistory(result.history[index]);
-
       // Room Data
       this.setRoomData({ values: result.roomData, isPrivate: false });
       this.setRoomData({ values: result.roomPrivateData, isPrivate: true });
@@ -318,9 +401,9 @@ class TinyClientIo extends EventEmitter {
     }
     // Error
     else {
+      this.setRpgSchema({});
       this.setRoom({});
       this.setUsers({});
-      this.setHistory([]);
       this.setMods([]);
       return false;
     }
@@ -338,57 +421,36 @@ class TinyClientIo extends EventEmitter {
     return this.room || {};
   }
 
-  // History
-  setHistory(result) {
-    this.history = Array.isArray(result) ? result : [];
+  getRpgSchema() {
+    return this.rpgSchema || {};
   }
 
-  getHistory() {
-    return this.history || [];
-  }
-
-  #filterHistoryData(data) {
-    return data;
-  }
-
-  addHistory(data) {
-    if (this.history.findIndex((item) => item.id === data.id) < 0) {
-      const newData = this.#filterHistoryData(item);
-      this.history.push(newData);
-      return newData;
-    }
-  }
-
-  editHistory(data) {
-    const index = this.history.findIndex((item) => item.id === data.id);
-    if (index > -1) {
-      this.history[index] = this.#filterHistoryData(data);
-      return this.history[index];
-    }
-  }
-
-  removeHistory(id) {
-    const index = this.history.findIndex((item) => item.id === id);
-    if (index > -1) {
-      const id = this.history[index].id;
-      this.history.splice(index, 1);
-      return id;
-    }
-  }
-
-  // Mods
+  /**
+   * Mods
+   * @returns {string[]}
+   */
   getMods() {
-    return this.mods || [];
+    return this.mods ?? [];
   }
 
+  /**
+   * (Local)
+   * @param {string[]} result
+   */
   setMods(result) {
     this.mods = Array.isArray(result) ? result : [];
   }
 
+  /**
+   * (Local)
+   */
   addModUser(userId) {
     if (this.mods.indexOf(userId) < 0) this.mods.push(userId);
   }
 
+  /**
+   * (Local)
+   */
   removeModUser(userId) {
     const index = this.mods.indexOf(userId);
     if (index > -1) this.mods.splice(index, 1);
@@ -396,8 +458,7 @@ class TinyClientIo extends EventEmitter {
 
   // Socket emit
   #socketEmitApi(where, data) {
-    const tinyThis = this;
-    return new Promise((resolve) => tinyThis.socket.emit(where, data, (result) => resolve(result)));
+    return new Promise((resolve) => this.socket.emit(where, data, (result) => resolve(result)));
   }
 
   // On connection
@@ -477,6 +538,11 @@ class TinyClientIo extends EventEmitter {
 
   offGetRateLimit(callback) {
     this.socket.off('ratelimt-updated', callback);
+  }
+
+  // On room updates
+  onRpgSchemaUpdates(callback) {
+    this.socket.on('rpg-schema-updated', callback);
   }
 
   // On room updates
@@ -620,16 +686,42 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
+  // Disable readOnly room
+  disableReadOnlyRoom() {
+    return new Promise((resolve, reject) =>
+      this.#socketEmitApi('disable-readonly-room', {
+        roomId: this.#cfg.roomId,
+      })
+        .then((result) => {
+          if (!result.error) this.room.readOnly = false;
+          resolve(result);
+        })
+        .catch(reject),
+    );
+  }
+
+  // Enable readOnly room
+  enableReadOnlyRoom() {
+    return new Promise((resolve, reject) =>
+      this.#socketEmitApi('enable-readonly-room', {
+        roomId: this.#cfg.roomId,
+      })
+        .then((result) => {
+          if (!result.error) this.room.readOnly = true;
+          resolve(result);
+        })
+        .catch(reject),
+    );
+  }
+
   // Disable room
   disableRoom() {
-    const tinyThis = this;
     return new Promise((resolve, reject) =>
-      tinyThis
-        .#socketEmitApi('disable-room', {
-          roomId: this.#cfg.roomId,
-        })
+      this.#socketEmitApi('disable-room', {
+        roomId: this.#cfg.roomId,
+      })
         .then((result) => {
-          if (!result.error) tinyThis.room.disabled = true;
+          if (!result.error) this.room.disabled = true;
           resolve(result);
         })
         .catch(reject),
@@ -638,14 +730,12 @@ class TinyClientIo extends EventEmitter {
 
   // Enable room
   enableRoom() {
-    const tinyThis = this;
     return new Promise((resolve, reject) =>
-      tinyThis
-        .#socketEmitApi('enable-room', {
-          roomId: this.#cfg.roomId,
-        })
+      this.#socketEmitApi('enable-room', {
+        roomId: this.#cfg.roomId,
+      })
         .then((result) => {
-          if (!result.error) tinyThis.room.disabled = false;
+          if (!result.error) this.room.disabled = false;
           resolve(result);
         })
         .catch(reject),
@@ -676,12 +766,41 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
+  // Update room schema
+  updateRpgSchema(schemaData = {}) {
+    return new Promise((resolve, reject) =>
+      this.#socketEmitApi('update-rpg-schema', {
+        roomId: this.#cfg.roomId,
+        values: schemaData,
+      })
+        .then((result) => {
+          if (!result.error) this.setRpgSchema(schemaData);
+          resolve(result);
+        })
+        .catch(reject),
+    );
+  }
+
   // Update room data
   updateRoomData(values = {}, isPrivate = false) {
-    return this.#socketEmitApi('update-room', {
+    return this.#socketEmitApi('update-room-data', {
       roomId: this.#cfg.roomId,
       isPrivate,
       values,
+    });
+  }
+
+  // Is moderator
+  accountIsMod(userId = '') {
+    return this.#socketEmitApi('user-is-mod', {
+      userId,
+    });
+  }
+
+  // Is Owner
+  accountIsOwner(userId = '') {
+    return this.#socketEmitApi('user-is-owner', {
+      userId,
     });
   }
 
@@ -717,14 +836,12 @@ class TinyClientIo extends EventEmitter {
 
   // Change your nickname
   changeNickname(nickname = '') {
-    const tinyThis = this;
     return new Promise((resolve, reject) =>
-      tinyThis
-        .#socketEmitApi('change-nickname', {
-          nickname,
-        })
+      this.#socketEmitApi('change-nickname', {
+        nickname,
+      })
         .then((result) => {
-          if (!result.error) tinyThis.user.nickname = nickname;
+          if (!result.error) this.user.nickname = nickname;
           resolve(result);
         })
         .catch(reject),
@@ -740,37 +857,137 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
+  /**
+   * Load messages
+   *
+   * @returns {Promise<{
+   *  messages: {
+   *    chapter: number;
+   *    date: number;
+   *    edited: number;
+   *    errorCode: string|null;
+   *    hash: string;
+   *    historyId: string;
+   *    isModel: boolean;
+   *    model: string;
+   *    roomdId: string;
+   *    text: string;
+   *    tokens: number;
+   *    userId: string;
+   *  }[];
+   *  page: number;
+   *  success: boolean;
+   *  totalItems: number;
+   *  totalPages: number;
+   * }>}
+   */
+  loadMessages({
+    text = null,
+    chapter = null,
+    userId = null,
+    start = null,
+    end = null,
+    page = 1,
+    perPage = this.getRateLimit().size.history ?? null,
+  }) {
+    return new Promise((resolve, reject) =>
+      this.#socketEmitApi('load-messages', {
+        roomId: this.#cfg.roomId,
+        page,
+        perPage,
+        text,
+        chapter,
+        start,
+        end,
+        userId,
+      })
+        .then((result) => {
+          resolve(result);
+        })
+        .catch(reject),
+    );
+  }
+
+  // Load Dice History
+  loadDiceHistory({
+    userId = null,
+    start = null,
+    end = null,
+    page = 1,
+    perPage = this.getRateLimit().size.history ?? null,
+  }) {
+    return new Promise((resolve, reject) =>
+      this.#socketEmitApi('load-dice-history', {
+        roomId: this.#cfg.roomId,
+        page,
+        perPage,
+        start,
+        end,
+        userId,
+      })
+        .then((result) => {
+          resolve(result);
+        })
+        .catch(reject),
+    );
+  }
+
   // Send room message
-  sendMessage(message = '') {
-    return this.#socketEmitApi('send-message', {
-      roomId: this.#cfg.roomId,
-      message,
-    });
+  sendMessage(message = '', { tokens, model, hash, isModel = false }) {
+    return new Promise((resolve, reject) =>
+      this.#socketEmitApi('send-message', {
+        roomId: this.#cfg.roomId,
+        tokens,
+        model,
+        hash,
+        message,
+        isModel,
+      })
+        .then((result) => {
+          resolve(result);
+        })
+        .catch(reject),
+    );
   }
 
   // Edit room message
-  editMessage(message = '', msgId = '') {
-    return this.#socketEmitApi('edit-message', {
-      roomId: this.#cfg.roomId,
-      messageId: msgId,
-      newText: message,
-    });
+  editMessage({ message = '', hash = null, tokens = null }, msgId = '') {
+    return new Promise((resolve, reject) =>
+      this.#socketEmitApi('edit-message', {
+        roomId: this.#cfg.roomId,
+        messageId: msgId,
+        hash,
+        tokens,
+        newText: message,
+      })
+        .then((result) => {
+          resolve(result);
+        })
+        .catch(reject),
+    );
   }
 
   // Delete room message
   deleteMessage(msgId = '') {
-    return this.#socketEmitApi('delete-message', {
-      roomId: this.#cfg.roomId,
-      messageId: msgId,
-    });
+    return new Promise((resolve, reject) =>
+      this.#socketEmitApi('delete-message', {
+        roomId: this.#cfg.roomId,
+        messageId: msgId,
+      })
+        .then((result) => {
+          resolve(result);
+        })
+        .catch(reject),
+    );
   }
 
   // Roll Dice
-  rollDice(dice = [], canZero = false) {
+  rollDice(dice = [], canZero = false, modifiers = {}) {
     return this.#socketEmitApi('roll-dice', {
       roomId: this.#cfg.roomId,
       canZero,
       dice,
+      modifiers,
     });
   }
 
@@ -790,212 +1007,261 @@ class TinyClientIo extends EventEmitter {
     if (this.socket) this.socket.destroy();
   }
 
+  /** @returns {boolean} */
   checkRoomId(result) {
-    return objType(result, 'object') && result.roomId === this.getRoomId();
+    return isJsonObject(result) && result.roomId === this.getRoomId();
   }
 
   install(tinyAiScript) {
-    const client = this;
     // Dice
-    client.onDiceRoll((result) => {
-      if (client.checkRoomId(result)) {
-        const data = { total: null, results: null };
-        if (typeof result.total === 'number') data.total = result.total;
-        if (Array.isArray(result.results)) {
-          data.results = [];
-          for (const index in result.results)
-            if (
-              typeof result.results[index].sides === 'number' &&
-              typeof result.results[index].roll === 'number'
-            )
-              data.results.push({
-                sides: result.results[index].sides,
-                roll: result.results[index].roll,
-              });
+    this.onDiceRoll((result) => {
+      if (this.checkRoomId(result)) {
+        const data = {
+          results: null,
+          modifiers: null,
+          userId: null,
+          canZero: null,
+          skin: null,
+          id: null,
+          date: 0,
+        };
+
+        // Skin
+        if (isJsonObject(result.skin)) {
+          data.skin = {
+            bg: typeof result.skin.bg === 'string' ? result.skin.bg : null,
+            border: typeof result.skin.border === 'string' ? result.skin.border : null,
+            img: typeof result.skin.img === 'string' ? result.skin.img : null,
+            selectionBg:
+              typeof result.skin.selectionBg === 'string' ? result.skin.selectionBg : null,
+            selectionText:
+              typeof result.skin.selectionText === 'string' ? result.skin.selectionText : null,
+            text: typeof result.skin.text === 'string' ? result.skin.text : null,
+          };
         }
 
-        client.emit('diceRoll', data);
+        // UserId
+        if (typeof result.id === 'string') data.id = result.id;
+        if (typeof result.userId === 'string') data.userId = result.userId;
+        if (typeof result.canZero === 'boolean') data.canZero = result.canZero;
+
+        // Results
+        if (
+          Array.isArray(result.results) &&
+          result.results.every(
+            (item) => typeof item.value === 'number' && typeof item.sides === 'number',
+          )
+        )
+          data.results = result.results;
+
+        if (
+          Array.isArray(result.modifiers) ||
+          result.modifiers.every(
+            (item) =>
+              countObj(item) === 3 &&
+              typeof item.index === 'number' &&
+              typeof item.expression === 'string' &&
+              typeof item.original === 'string',
+          )
+        ) {
+          data.modifiers = result.modifiers;
+          data.original = result.original;
+          data.index = result.index;
+        }
+
+        data.date = typeof result.date === 'number' ? new Date(result.date) : null;
+
+        // Complete
+        this.emit('diceRoll', data);
         console.log('[socket-io] [dice]', data);
       }
     });
 
     // Get user updated
-    client.onUserUpdated((result) => {
+    this.onUserUpdated((result) => {
       if (
-        client.checkRoomId(result) &&
-        objType(result.data, 'object') &&
+        this.checkRoomId(result) &&
+        isJsonObject(result.data) &&
         typeof result.userId === 'string' &&
         typeof result.data.nickname === 'string'
       ) {
-        const data = client.editUser({ userId: result.userId, nickname: result.data.nickname });
-        if (result.userId === client.getUserId()) this.user.nickname = result.data.nickname;
+        const data = this.editUser({ userId: result.userId, nickname: result.data.nickname });
+        if (result.userId === this.getUserId()) this.user.nickname = result.data.nickname;
 
-        if (data) client.emit('userUpdated', data);
-        console.log('[socket-io] [user-data]', client.getUser());
+        if (data) this.emit('userUpdated', data);
+        console.log('[socket-io] [user-data]', result);
       }
     });
 
     // Get ratelimit data
-    client.onGetRateLimit((result) => {
-      client.setRateLimit(result);
-      client.emit('getRateLimit', client.getRateLimit());
-      console.log('[socket-io] [ratelimit]', client.getRateLimit());
+    this.onGetRateLimit((result) => {
+      this.setRateLimit(result);
+      this.emit('getRateLimit', this.getRateLimit());
+      console.log('[socket-io] [ratelimit]', this.getRateLimit());
+    });
+
+    // Room schema updates
+    this.onRpgSchemaUpdates((result) => {
+      if (this.checkRoomId(result) && isJsonObject(result.values)) {
+        const data = this.setRpgSchema(result.values);
+        if (data) this.emit('rpgSchemaUpdates', data.values);
+        console.log('[socket-io] [rpg-schema]', this.getRpgSchema());
+      }
     });
 
     // Room updates
-    client.onRoomUpdates((result) => {
-      if (client.checkRoomId(result) && objType(result.data, 'object')) {
-        const data = client.setRoom(result.data);
-        if (data) client.emit('roomUpdates', data);
-        console.log('[socket-io] [room]', client.getRoom());
+    this.onRoomUpdates((result) => {
+      if (this.checkRoomId(result) && isJsonObject(result.data)) {
+        const data = this.setRoom(result.data);
+        if (data) this.emit('roomUpdates', data);
+        console.log('[socket-io] [room]', this.getRoom());
       }
     });
 
     // User ban
-    client.onRoomBan((result) => {
-      if (client.checkRoomId(result)) {
+    this.onRoomBan((result) => {
+      if (this.checkRoomId(result)) {
         const data = typeof result.userId === 'string' ? result.userId : null;
-        client.emit('userBanned', data);
+        this.emit('userBanned', data);
         console.log('[socket-io] [room-ban]', data);
       }
     });
 
     // User kick
-    client.onRoomKick((result) => {
-      if (client.checkRoomId(result)) {
+    this.onRoomKick((result) => {
+      if (this.checkRoomId(result)) {
         const data = typeof result.userId === 'string' ? result.userId : null;
-        client.emit('userKicked', data);
+        this.emit('userKicked', data);
         console.log('[socket-io] [room-kick]', data);
       }
     });
 
     // User left
-    client.onUserLeft((result) => {
-      if (client.checkRoomId(result)) {
-        const data = client.removeUser(result);
-        if (data) client.emit('userLeft', data);
-        console.log('[socket-io] [room-users]', client.getUsers());
+    this.onUserLeft((result) => {
+      if (this.checkRoomId(result)) {
+        const data = this.removeUser(result);
+        if (data) this.emit('userLeft', data);
+        console.log('[socket-io] [room-users]', this.getUsers());
       }
     });
 
     // User join
-    client.onUserJoin((result) => {
-      if (client.checkRoomId(result)) {
-        const data = client.addUser(result);
-        if (data) client.emit('userJoined', data);
-        console.log('[socket-io] [room-users]', client.getUsers());
+    this.onUserJoin((result) => {
+      if (this.checkRoomId(result)) {
+        const data = this.addUser(result);
+        if (data) this.emit('userJoined', data);
+        console.log('[socket-io] [room-users]', this.getUsers());
       }
     });
 
     // Room data
-    client.onRoomData((result) => {
-      if (client.checkRoomId(result)) {
-        const data = client.setRoomData(result);
-        console.log('[socket-io] [room-data]', data);
+    this.onRoomData((result) => {
+      if (this.checkRoomId(result)) {
+        const data = this.setRoomData(result);
+        if (data) this.emit('roomDataUpdates', data);
+        console.log('[socket-io] [room-json-data]', data);
       }
     });
 
     // New message
-    client.onNewMessage((result) => {
-      const data = client.addHistory(result);
-      if (data) client.emit('newMessage', data);
-      console.log('[socket-io] [message-add]', client.getHistory());
+    this.onNewMessage((result) => {
+      if (this.checkRoomId(result)) {
+        this.emit('newMessage', result);
+        console.log('[socket-io] [message-add]', result);
+      }
     });
 
     // Message delete
-    client.onMessageDelete((result) => {
-      if (client.checkRoomId(result)) {
-        const data = client.removeHistory(result.id);
-
-        if (data) client.emit('messageDelete', data);
-        console.log('[socket-io] [message-delete]', client.getHistory());
+    this.onMessageDelete((result) => {
+      if (this.checkRoomId(result)) {
+        this.emit('messageDelete', result);
+        console.log('[socket-io] [message-delete]', result);
       }
     });
 
     // Message edit
-    client.onMessageEdit((result) => {
-      if (client.checkRoomId(result)) {
-        const data = client.editHistory(result);
-        if (data) client.emit('messageEdit', data);
-        console.log('[socket-io] [message-edit]', client.getHistory());
+    this.onMessageEdit((result) => {
+      if (this.checkRoomId(result)) {
+        this.emit('messageEdit', result);
+        console.log('[socket-io] [message-edit]', result);
       }
     });
 
     // Get room data
-    client.onRoomEnter((result) => {
-      if (client.checkRoomId(result)) {
-        if (!client.setRoomBase(result)) client.emit('roomEntered', false);
-        else client.emit('roomEntered', true);
+    this.onRoomEnter((result) => {
+      if (this.checkRoomId(result)) {
+        if (!this.setRoomBase(result)) this.emit('roomEntered', false);
+        else this.emit('roomEntered', true);
 
-        client.emit('roomEnter');
+        this.emit('roomEnter');
         console.log('[socket-io] [room-data]', {
-          history: client.getHistory(),
-          room: client.getRoom(),
-          users: client.getUsers(),
-          mods: client.getMods(),
-          roomData: client.getRoomData(),
-          roomPrivateData: client.getRoomPrivateData(),
+          room: this.getRoom(),
+          users: this.getUsers(),
+          mods: this.getMods(),
+          rpgSchema: this.getRpgSchema(),
+          roomData: this.getRoomData(),
+          roomPrivateData: this.getRoomPrivateData(),
         });
       }
     });
 
     // Mod list update
-    client.onRoomModChange((result) => {
-      if (client.checkRoomId(result)) {
+    this.onRoomModChange((result) => {
+      if (this.checkRoomId(result)) {
         if (Array.isArray(result.result)) {
           for (const index in result.result) {
             if (typeof result.result[index] === 'string') {
               if (result.type === 'add') {
-                client.addModUser(result.result[index]);
-                client.emit('roomModChange', 'add', result.result[index]);
+                this.addModUser(result.result[index]);
+                this.emit('roomModChange', 'add', result.result[index]);
               }
               if (result.type === 'remove') {
-                client.removeModUser(result.result[index]);
-                client.emit('roomModChange', 'remove', result.result[index]);
+                this.removeModUser(result.result[index]);
+                this.emit('roomModChange', 'remove', result.result[index]);
               }
             }
           }
         }
 
-        console.log('[socket-io] [mod-data]', client.getMods());
+        console.log('[socket-io] [mod-data]', this.getMods());
       }
     });
 
     // Connect
-    client.onConnect(() => {
-      client.resetData();
-      client.emit('connect', client.getSocket()?.id);
+    this.onConnect(() => {
+      this.resetData();
+      this.emit('connect', this.getSocket()?.id);
       // Login
-      client.login().then((result) => {
+      this.login().then((result) => {
         // Check room
-        client.emit('join', result);
+        this.emit('join', result);
         if (!result.error) {
           // Insert data
-          client.setUser(result);
-          console.log('[socket-io] [user-data]', client.getUser());
-          console.log('[socket-io] [dice]', client.getDice());
-          console.log('[socket-io] [ratelimit]', client.getRateLimit());
-          client.existsRoom().then((result2) => {
+          this.setUser(result);
+          console.log('[socket-io] [user-data]', this.getUser());
+          console.log('[socket-io] [dice]', this.getDice());
+          console.log('[socket-io] [ratelimit]', this.getRateLimit());
+          this.existsRoom().then((result2) => {
             // Join room
             const joinRoom = () =>
-              client.joinRoom().then((result4) => {
+              this.joinRoom().then((result4) => {
                 // Error
-                if (result4.error) client.emit('roomError', result4);
+                if (result4.error) this.emit('roomError', result4);
                 // Complete
-                else client.emit('roomJoinned', result4);
+                else this.emit('roomJoinned', result4);
               });
 
             // Error
-            if (result2.error) client.emit('roomError', result2);
+            if (result2.error) this.emit('roomError', result2);
             // Exists?
             else if (result2.exists) joinRoom();
             else {
               if (!tinyAiScript.mpClient)
-                client.createRoom().then((result3) => {
+                this.createRoom().then((result3) => {
                   if (!result3.error) joinRoom();
-                  else client.emit('roomError', result3);
+                  else this.emit('roomError', result3);
                 });
-              else client.emit('roomNotFound', result2);
+              else this.emit('roomNotFound', result2);
             }
           });
         }
@@ -1003,8 +1269,8 @@ class TinyClientIo extends EventEmitter {
     });
 
     // Disconnect
-    client.onDisconnect((reason, details) => {
-      client.emit('disconnect', reason, details);
+    this.onDisconnect((reason, details) => {
+      this.emit('disconnect', reason, details);
     });
   }
 }

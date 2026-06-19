@@ -1,3 +1,7 @@
+<center>
+    <img src="./info.jpg" alt="info">
+</center>
+
 # Voice Clips – Modified by AI
 
 This folder contains audio files originally recorded by me, **Yasmin Seidel**.
@@ -11,3 +15,9 @@ These files are for personal, creative, or fan-related use only.
 Please do not redistribute them as official content or claim the character voices are real.
 
 Enjoy!
+
+
+## Softwares
+
+- <a href="https://www.audacityteam.org/download/" target="_blank">Audacity</a> (Record the raw audio)
+- <a href="https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI" target="_blank">RVC WebUI</a> (Voice Changer)

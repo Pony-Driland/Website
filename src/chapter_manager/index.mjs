@@ -1,5 +1,7 @@
 import objHash from 'object-hash';
-import { countObj, toTitleCase, TinyHtml } from 'tiny-essentials';
+import { countObj, toTitleCase } from 'tiny-essentials/basics';
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
 import paginateArray from 'paginate-array';
 
 import { isNoNsfw, loaderScreen, tinyLs } from '../important.mjs';
@@ -11,6 +13,10 @@ import storyCfg from '../chapters/config.mjs';
 import BootstrapPaginator from '../modules/bootstrap-paginator.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
+import { body, tinyWin } from '../html/query.mjs';
+import { markdownBase } from '../html/base.mjs';
+
+const { Icon, Button, Anchor } = TinyHtmlElems;
 
 /*  Rain made by Aaron Rickle */
 const rainConfig = {};
@@ -77,11 +83,11 @@ const rainMode = {
   },
 
   on: () => {
-    TinyHtml.query('body')?.addClass('raining-sky');
+    body.addClass('raining-sky');
   },
 
   off: () => {
-    TinyHtml.query('body')?.addClass('raining-sky');
+    body.addClass('raining-sky');
   },
 };
 
@@ -188,7 +194,7 @@ const storyDialogue = {
 export const openChapterMenu = (params = {}) => {
   // Prepare Data
   clearFicData();
-  TinyHtml.query('#markdown-read')?.empty();
+  markdownBase.empty();
   storyData.chapter.blockLineSave = false;
 
   // Get Page Data
@@ -272,7 +278,7 @@ export const openChapterMenu = (params = {}) => {
   // New Read
   const newRead = async (chapter = 1, selectedLine = null) => {
     // Clear Update Warn
-    TinyHtml.query('#fic-start')?.setText('Read Fic').prepend(tinyLib.icon('fab fa-readme me-2'));
+    TinyHtml.query('#fic-start')?.setText('Read Fic').prepend(new Icon('fab fa-readme me-2'));
 
     // Load Sounds
     if (storyCfg.sfx) {
@@ -322,7 +328,7 @@ export const openChapterMenu = (params = {}) => {
     storyData.chapter.selected = chapter;
 
     // Prepare Data
-    TinyHtml.query('#markdown-read')?.empty();
+    markdownBase.empty();
 
     // Detect Bookmark
     const { page, filtedItems, selectedLine: line } = getPageData(selectedLine, chapter);
@@ -367,7 +373,7 @@ export const openChapterMenu = (params = {}) => {
           // Scroll
           TinyHtml.setWinScrollTop(TinyHtml.getById('app').offset().top);
           pagination2.show(page);
-          new TinyHtml(window).trigger('scroll');
+          tinyWin.trigger('scroll');
         },
       });
 
@@ -444,7 +450,7 @@ export const openChapterMenu = (params = {}) => {
       }
 
       TinyHtml.setWinScrollTop(TinyHtml.getById('app').offset().top);
-      new TinyHtml(window).trigger('scroll');
+      tinyWin.trigger('scroll');
     };
 
     searchItems.character = TinyHtml.createFrom('input', {
@@ -465,14 +471,14 @@ export const openChapterMenu = (params = {}) => {
     searchItems.base.append(searchItems.character, searchItems.message);
 
     // Table
-    TinyHtml.query('#markdown-read')?.append(
+    markdownBase.append(
       // Info
       tinyLib.bs
         .alert('info')
         .setText(
           'Bold texts are action texts, small texts are thoughts of characters, common texts are dialogues or telepathy. If you are using filters to keep your reading 100% SFW, some unnecessary text lines will be automatically skipped.',
         )
-        .prepend(tinyLib.icon('fas fa-info-circle me-3')),
+        .prepend(new Icon('fas fa-info-circle me-3')),
 
       // Title
       TinyHtml.createFrom('h3')
@@ -520,13 +526,13 @@ export const openChapterMenu = (params = {}) => {
     );
 
     // Fic Mode
-    TinyHtml.query('body')?.addClass('ficMode');
+    body.addClass('ficMode');
 
     // Complete
-    new TinyHtml(window).trigger('scroll');
+    tinyWin.trigger('scroll');
     if (line !== null) {
-      const tinyLine = TinyHtml.query('#markdown-read [line="' + line + '"]');
-      if (tinyLine) TinyHtml.setWinScrollTop(tinyLine.offset().top);
+      const tinyLine = new TinyHtml(markdownBase.find('[line="' + line + '"]'));
+      if (tinyLine.size > 0) TinyHtml.setWinScrollTop(tinyLine.offset().top);
     }
     rainMode.start();
     return;
@@ -557,7 +563,6 @@ export const openChapterMenu = (params = {}) => {
 
   // Nope. Choose One
   else {
-    const markdownRead = TinyHtml.query('#markdown-read');
     const cantNsfw = isNoNsfw();
     if (cantNsfw) {
       for (const item in storyCfg.nsfw) {
@@ -565,8 +570,36 @@ export const openChapterMenu = (params = {}) => {
       }
     }
 
+    /** @type {TinyHtmlElems.Button[]} */
+    const spoilersButton = [];
+
+    /** @param {number} chapter */
+    const getCanSpoilerMsg = (chapter) => {
+      const canSpoiler = tinyLs.getBool(`bookmarkCanSpoiler${chapter}`);
+      return canSpoiler ? 'Disable spoiler auto-reveal' : 'Enable spoiler auto-reveal';
+    };
+
+    // All Spoilers Button
+    const allSpoilersButton = new Button({
+      mainClass: 'btn',
+      tags: 'btn-secondary flex-fill mx-3',
+      label: `Change spoiler auto-reveal for all`,
+    }).on('click', () => {
+      /** @type {boolean|null} */
+      let valueToSet = null;
+      for (let i = 0; i <= storyData.chapter.amount; i++) {
+        const bmValueName = `bookmarkCanSpoiler${i}`;
+        if (valueToSet === null) valueToSet = !tinyLs.getBool(bmValueName);
+        tinyLs.setBool(bmValueName, valueToSet);
+      }
+
+      for (const item of spoilersButton) {
+        item.setLabel(getCanSpoilerMsg(item.attrNumber('chapter')));
+      }
+    });
+
     // Prepare Choose
-    markdownRead?.append(
+    markdownBase.append(
       // Banner
       TinyHtml.createFrom('img', { class: 'img-fluid mb-2', src: '/img/external/banner1.jpg' }),
 
@@ -624,7 +657,7 @@ export const openChapterMenu = (params = {}) => {
 
             // Modal
             tinyLib.modal({
-              title: [tinyLib.icon('fa-solid fa-user me-3'), 'Character Statistics'],
+              title: [new Icon('fa-solid fa-user me-3'), 'Character Statistics'],
               body: TinyHtml.createFrom('span').append(newDiv.append(content)),
               dialog: 'modal-lg',
             });
@@ -676,7 +709,7 @@ export const openChapterMenu = (params = {}) => {
 
             // Modal
             tinyLib.modal({
-              title: [tinyLib.icon('fa-solid fa-a me-3'), 'Letter Statistics'],
+              title: [new Icon('fa-solid fa-a me-3'), 'Letter Statistics'],
               body: TinyHtml.createFrom('span').append(newDiv.append(content)),
               dialog: 'modal-lg',
             });
@@ -727,7 +760,7 @@ export const openChapterMenu = (params = {}) => {
 
             // Modal
             tinyLib.modal({
-              title: [tinyLib.icon('fa-solid fa-a me-3'), 'Word Statistics'],
+              title: [new Icon('fa-solid fa-a me-3'), 'Word Statistics'],
               body: TinyHtml.createFrom('span').append(newDiv.append(content)),
               dialog: 'modal-lg',
             });
@@ -741,7 +774,7 @@ export const openChapterMenu = (params = {}) => {
           .setText(
             'Each time you read a chapter, your progress is automatically saved. This checkpoint is stored in your browser. If you want to continue reading on another device, simply save the checkpoint URL that appears when you open a chapter.',
           )
-          .prepend(tinyLib.icon('fas fa-info-circle me-3'))
+          .prepend(new Icon('fas fa-info-circle me-3'))
           .addClass('made-by-ai'),
 
         tinyLib.bs
@@ -749,7 +782,7 @@ export const openChapterMenu = (params = {}) => {
           .setText(
             "Disclaimer: All songs on this page are streamed directly from YouTube. This means many tracks are not owned by me and are used solely to enhance the reading experience. I acknowledge that if any artist requests removal, the song will be replaced. All songs played count as views on the original creator's YouTube channel. You can find the official music page via the info icon on the player.",
           )
-          .prepend(tinyLib.icon('fas fa-info-circle me-3'))
+          .prepend(new Icon('fas fa-info-circle me-3'))
           .addClass('made-by-ai'),
 
         tinyLib.bs
@@ -757,13 +790,13 @@ export const openChapterMenu = (params = {}) => {
           .setText(
             'This site does not collect your personal access data. However, some third-party services used on this page — such as YouTube, Google, and Cloudflare — may collect browsing information.',
           )
-          .prepend(tinyLib.icon('fas fa-info-circle me-3'))
+          .prepend(new Icon('fas fa-info-circle me-3'))
           .addClass('made-by-ai'),
       ),
 
       TinyHtml.createFrom('h2')
         .setText(`Please select a chapter to read.`)
-        .prepend(tinyLib.icon('fas fa-book-open me-3'))
+        .prepend(new Icon('fas fa-book-open me-3'))
         .append(
           tinyLib.bs
             .button(`${!cantNsfw ? 'info' : 'danger'} btn-sm ms-3`)
@@ -877,7 +910,7 @@ export const openChapterMenu = (params = {}) => {
 
               // Modal
               tinyLib.modal({
-                title: [tinyLib.icon('fas fa-eye me-3'), 'Mature Content Settings'],
+                title: [new Icon('fas fa-eye me-3'), 'Mature Content Settings'],
                 body: TinyHtml.createFrom('center').append(
                   TinyHtml.createFrom('p', { class: 'text-danger made-by-ai' }).setText(
                     "Don't expect any explicit 18+ content here. The mature themes are not graphic and are only used to add depth to the story — for example, to make certain scenes feel more realistic. By enabling these settings, you confirm that you are over 18 and accept full responsibility for the content you choose to view.",
@@ -892,7 +925,8 @@ export const openChapterMenu = (params = {}) => {
         .addClass('made-by-ai')
         .setText(
           `When you open a chapter, look at the top of the page. You'll find extra tools, including a bookmark manager to save your progress directly in your browser.`,
-        ),
+        )
+        .append(allSpoilersButton),
     );
 
     // Read More Data
@@ -930,16 +964,47 @@ export const openChapterMenu = (params = {}) => {
       }
 
       // Chapter Button
-      const chapterButton = TinyHtml.createFrom('a', {
-        class: 'btn btn-primary m-2 ms-0',
+      const chapterButton = new Anchor({
+        mainClass: 'btn',
+        tags: 'btn-primary flex-fill mx-3',
         href: `/chapter/${chapter}.html`,
-        chapter: chapter,
-      });
+        label: 'Load Chapter',
+      })
+        .setAttr('chapter', chapter)
+        .on('click', (e) => {
+          e.preventDefault();
+          // Start Chapter
+          urlUpdate(`read-fic`, null, false, { chapter });
+          newRead(Number(chapterButton.attr('chapter')));
+        });
+
+      // Spoiler Button
+      const bmValueName = `bookmarkCanSpoiler${chapter}`;
+      const chapterSpoiler = new Button({
+        mainClass: 'btn',
+        tags: 'btn-secondary flex-fill mx-3',
+        label: getCanSpoilerMsg(chapter),
+      })
+        .setAttr('chapter', chapter)
+        .on('click', () => {
+          tinyLs.setBool(bmValueName, !tinyLs.getBool(bmValueName) ?? true);
+          chapterSpoiler.setLabel(getCanSpoilerMsg(chapter));
+        });
+
+      spoilersButton.push(chapterSpoiler);
+
+      new Tooltip(
+        chapterSpoiler.setAttr(
+          'title',
+          'Do you want every spoiler of this chapter to be automatically revealed on the website?',
+        ),
+      );
 
       // Add Chapter
-      markdownRead.append(
+      markdownBase.append(
         TinyHtml.createFrom('div', { class: 'card mb-2' }).append(
           TinyHtml.createFrom('div', { class: 'card-body' }).append(
+            // Info
             TinyHtml.createFrom('h5', { class: 'card-title' })
               .setText('Chapter ' + chapter)
               .append(isNewValue),
@@ -961,15 +1026,10 @@ export const openChapterMenu = (params = {}) => {
             TinyHtml.createFrom('p', { class: 'card-text small' }).setText(
               storyCfg.chapterName[chapter].description,
             ),
-            TinyHtml.createFrom('div', { class: 'd-grid gap-2 col-6 mx-auto' }).append(
-              chapterButton
-                .on('click', (e) => {
-                  e.preventDefault();
-                  // Start Chapter
-                  urlUpdate(`read-fic`, null, false, { chapter });
-                  newRead(Number(chapterButton.attr('chapter')));
-                })
-                .setText('Load Chapter'),
+            // Load Chapter
+            TinyHtml.createFrom('div', { class: 'd-flex justify-content-between px-3' }).append(
+              chapterButton,
+              chapterSpoiler,
             ),
           ),
         ),

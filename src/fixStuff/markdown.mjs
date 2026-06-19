@@ -1,5 +1,6 @@
 import { marked } from 'marked';
-import { TinyHtml } from 'tiny-essentials';
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
 import tinyLib, { alert } from '../files/tinyLib.mjs';
 
 import { storyData } from '../files/chapters.mjs';
@@ -7,7 +8,16 @@ import { appData, gtag, loaderScreen } from '../important.mjs';
 import { tinyAiScript } from '../ai/software/tinyAiScript.mjs';
 import storyCfg from '../chapters/config.mjs';
 
-import { fixFileUrl, fixHref, fixImageSrc } from './urls.mjs';
+import { fixFileUrl, fixHref, fixImageSrc, fixSpoilers } from './urls.mjs';
+import { body, topPage } from '../html/query.mjs';
+import { yt } from '../api/youtube.mjs';
+import { markdownBase } from '../html/base.mjs';
+
+import '../markdown/dropdown.mjs';
+import '../markdown/spoiler.mjs';
+import '../markdown/ai-tag.mjs';
+
+const { Icon } = TinyHtmlElems;
 
 /**
  * Remove Fic Data
@@ -30,8 +40,8 @@ export const clearFicData = () => {
     }
   }
 
-  TinyHtml.query('body')
-    ?.removeClass('ficMode')
+  body
+    .removeClass('ficMode')
     .removeClass(`fic-daycicle-morning`)
     .removeClass(`fic-daycicle-evening`)
     .removeClass(`fic-daycicle-night`)
@@ -45,13 +55,7 @@ export const clearFicData = () => {
   storyData.chapter.nav = {};
   storyData.chapter.selected = 0;
 
-  if (
-    storyData.youtube.player &&
-    storyData.youtube.checkYT() &&
-    storyData.youtube.state === YT.PlayerState.PLAYING
-  ) {
-    storyData.youtube.player.stopVideo();
-  }
+  if (yt.exists && yt.state === YT.PlayerState.PLAYING) yt.player.stopVideo();
 };
 
 /**
@@ -146,9 +150,11 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
   /** @type {string} */
   let data = '';
 
+  // Fix Html
   if (!isHTML) data = marked.parse(text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ''));
   else data = text;
 
+  // Fix URLs
   data = data
     .replace(tinyLib.getGitUrlPath(`href\=\"{url}public\\/`), 'href="javascript:void(0)" file="../')
     .replace(tinyLib.getGitUrlPath(`src\=\"{url}public\\/`), 'src="../')
@@ -157,6 +163,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
       'src="https://cloudflare-ipfs.com/ipfs/',
     );
 
+  // Content List
   const canContentList =
     metadata && Array.isArray(metadata.contentList) && metadata.contentList.length > 0;
   if (canContentList)
@@ -164,7 +171,6 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
   else data = data.replace('{{content_list}}', '');
 
   // Markdown page ways
-  const markdownBase = TinyHtml.query('#markdown-read');
   const pageTypes = {
     // Wiki
     wiki: () => {
@@ -246,25 +252,25 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
 
       // Complete
       row.append(colSidebar, colMain);
-      markdownBase?.append(row);
+      markdownBase.append(row);
     },
   };
 
   // Insert Data
-  markdownBase?.empty();
+  markdownBase.empty();
   if (
     !metadata ||
     typeof metadata.mode !== 'string' ||
     typeof pageTypes[metadata.mode] !== 'function'
   )
-    markdownBase?.setHtml(data);
+    markdownBase.setHtml(data);
   else pageTypes[metadata.mode]();
 
   // Top Page
   if (isMainPage) {
-    TinyHtml.query('#top_page')?.removeClass('d-none');
+    topPage.removeClass('d-none');
   } else {
-    TinyHtml.query('#top_page')?.addClass('d-none');
+    topPage.addClass('d-none');
   }
 
   const markdownHid = (text) =>
@@ -276,16 +282,14 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
         .replace(/\(|\)|\?|\!/g, '_'),
     )}`;
 
-  if (markdownBase) {
-    const markdownItems = new TinyHtml(markdownBase.find(`h1,h2,h3,h4,h5`));
-    markdownItems.forEach((item) => {
-      item.setAttr('id', markdownHid(item.text()));
-    });
-  }
+  const markdownItems = new TinyHtml(markdownBase.find(`h1,h2,h3,h4,h5`));
+  markdownItems.forEach((item) => {
+    item.setAttr('id', markdownHid(item.text()));
+  });
 
   // Content List
   if (canContentList)
-    TinyHtml.queryAll('[id="markdown-read"] .content-list-data').forEach((item) => {
+    new TinyHtml(markdownBase.find('.content-list-data')).forEach((item) => {
       const tinyBase = TinyHtml.createFrom('div', {
         class: 'bg-black rounded-top collapse-content d-flex align-items-center',
       });
@@ -293,7 +297,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
       const openButton = TinyHtml.createFrom('h5', { class: 'm-0 p-2 w-100' });
       openButton
         .setText('Contents')
-        .prepend(tinyLib.icon('d-flex align-items-center fa-solid fa-list me-2 small'));
+        .prepend(new Icon('d-flex align-items-center fa-solid fa-list me-2 small'));
 
       const collapseButton = tinyLib.bs
         .button('link btn-bg p-2 d-flex justify-content-center align-items-center me-2')
@@ -304,7 +308,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
           width: 30,
           'font-size': '14px',
         })
-        .append(tinyLib.icon('fa-solid fa-square-minus'));
+        .append(new Icon('fa-solid fa-square-minus'));
 
       tinyBase.append(openButton, collapseButton);
 
@@ -391,10 +395,11 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
     });
 
   // Convert File URLs
-  TinyHtml.queryAll('[id="markdown-read"] a[file]').forEach(fixFileUrl(openMDFile));
+  new TinyHtml(markdownBase.find('a[file]')).forEach(fixFileUrl(openMDFile));
 
-  TinyHtml.queryAll('[id="markdown-read"] a:not([file])').forEach(fixHref);
-  TinyHtml.queryAll('[id="markdown-read"] img').forEach(fixImageSrc);
+  new TinyHtml(markdownBase.find('a:not([file])')).forEach(fixHref);
+  new TinyHtml(markdownBase.find('img')).forEach(fixImageSrc);
+  new TinyHtml(markdownBase.find('.book-spoiler')).forEach(fixSpoilers);
 };
 
 /**

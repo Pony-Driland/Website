@@ -1,9 +1,28 @@
+#dice-roll,
+[id^='dice-roll-'] {
+  /* RPG Dices */
+  .dice-exp {
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
 #ai-element-root {
   /* Offcanvas */
   .offcanvas {
     padding-top: 56px;
-    max-width: 650px;
+    max-width: 100%;
     width: 100%;
+
+    textarea {
+      height: 320px;
+    }
+
+    .json-editor-btn-collapse {
+      margin-right: 10px !important;
+    }
 
     .je-object__container {
       .card {

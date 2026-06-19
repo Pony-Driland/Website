@@ -1,12 +1,12 @@
 import { EventEmitter } from 'events';
 import * as JsStore from 'jsstore';
-import {
-  getAge,
-  TinyHtml,
-  TinyLoadingScreen,
-  TinyLocalStorage,
-  TinyNotifications,
-} from 'tiny-essentials';
+import { getAge } from 'tiny-essentials/basics';
+import TinyLoadingScreen from 'tiny-essentials/libs/TinyLoadingScreen';
+import TinyLocalStorage from 'tiny-essentials/libs/TinyLocalStorage';
+import TinyNotifications from 'tiny-essentials/libs/TinyNotifications';
+import TinyToastNotify from 'tiny-essentials/libs/TinyToastNotify';
+
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import storyCfg from './chapters/config.mjs';
 import FirebaseAccount from './account/firebase.mjs';
 
@@ -53,6 +53,8 @@ export const tinyNotification = new TinyNotifications({
   defaultIcon: '/img/icon/192.png',
 });
 
+export const tinyToast = new TinyToastNotify('bottom', 'right', 3000, 60);
+
 // Firebase
 export const fa = new FirebaseAccount({
   apiKey: 'AIzaSyDl1CEbPJAUj3B1spAT_DiQz4JYZeeXRQU',
@@ -67,7 +69,8 @@ export const fa = new FirebaseAccount({
 /** @returns {boolean} */
 export function needsAgeVerification() {
   return tinyLs.getString('user-country') &&
-    storyCfg.noNsfw.includes(tinyLs.getString('user-country') ?? '')
+    (storyCfg.noNsfw.includes('ALL') ||
+      storyCfg.noNsfw.includes(tinyLs.getString('user-country') ?? ''))
     ? true
     : false;
 }
@@ -92,3 +95,9 @@ export function isNoNsfw(biggerAge = 18) {
   }
   return isNoNsfw;
 }
+
+// Fic Data
+export const ficCache = {
+  charPrompts: '',
+  charListPrompts: [],
+};

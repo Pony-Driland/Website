@@ -1,8 +1,16 @@
 import { TinyAiInstance } from 'tiny-ai-api';
-import { TinyHtml } from 'tiny-essentials';
 import TinyAiStorage from './TinyAiStorage.mjs';
 import { appData } from '../../important.mjs';
+import { body } from '../../html/query.mjs';
+import TinyClientIo from '../socketClient.mjs';
 
+/**
+ * @typedef {Object} TinyIo
+ * @property {null|TinyClientIo} client
+ * @property {boolean} firstTime
+ */
+
+/** @type {TinyIo} */
 export const tinyIo = { client: null, firstTime: true };
 
 export const tinyAi = new TinyAiInstance();
@@ -10,9 +18,9 @@ export const tinyStorage = new TinyAiStorage();
 
 appData.emitter.on('isUsingAI', (usingAI) => {
   if (usingAI) {
-    TinyHtml.query('body')?.addClass('is-using-ai');
+    body.addClass('is-using-ai');
   } else {
-    TinyHtml.query('body')?.removeClass('is-using-ai');
+    body.removeClass('is-using-ai');
   }
 });
 

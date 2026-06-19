@@ -1,8 +1,10 @@
 import tippy from 'tippy.js';
 import clone from 'clone';
-import { readJsonBlob, readBase64Blob, TinyHtml, isJsonObject } from 'tiny-essentials';
+import { readJsonBlob, readBase64Blob, isJsonObject } from 'tiny-essentials/basics';
+import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import storyCfg from '../chapters/config.mjs';
 import { Modal } from '../modules/TinyBootstrap.mjs';
+import { body } from '../html/query.mjs';
 
 /** Tiny Lib */
 const tinyLib = {};
@@ -78,15 +80,26 @@ tinyLib.alert = (where, alertType, icon, text) => {
  * Modal
  * @param {Object} data
  * @param {string} [data.dialog]
+ * @param {number} [data.width]
  * @param {string} [data.id]
  * @param {Function} [data.hidden]
  * @param {TinyHtml<any>} [data.footer]
  * @param {TinyHtml<any>} [data.title]
  * @param {TinyHtml<any>} [data.body]
- * @returns {bootstrap.Modal}
+ * @returns {{ modal: bootstrap.Modal, html: TinyHtml<HTMLElement> }}
  */
 tinyLib.modal = (data) => {
   if (typeof data.dialog !== 'string') data.dialog = '';
+
+  const dialog = TinyHtml.createFrom('div', {
+    class: 'modal-dialog ' + data.dialog,
+    role: 'document',
+  });
+  if (typeof data.width === 'string' || typeof data.width === 'number')
+    dialog.setStyle({
+      'max-width': 'none',
+      width: typeof data.width === 'number' ? `${data.width}px` : data.width,
+    });
 
   const modal = TinyHtml.createFrom('div', {
     class: 'modal fade',
@@ -101,7 +114,7 @@ tinyLib.modal = (data) => {
       }
     })
     .append(
-      TinyHtml.createFrom('div', { class: 'modal-dialog ' + data.dialog, role: 'document' }).append(
+      dialog.append(
         TinyHtml.createFrom('div', { class: 'modal-content' }).append(
           TinyHtml.createFrom('div', { class: 'modal-header' }).append(
             TinyHtml.createFrom('h5', { class: 'modal-title' }).append(data.title),
@@ -120,8 +133,8 @@ tinyLib.modal = (data) => {
       ),
     );
 
-  TinyHtml.query('body')?.prepend(modal);
-  return Modal(modal, undefined, true);
+  body.prepend(modal);
+  return { modal: Modal(modal, undefined, true), html: modal };
 };
 
 /**
@@ -239,13 +252,6 @@ tinyLib.getGitUrlPath = (text, type = 'g') => {
   const tinyUrl = `https\\:\\/\\/github.com\\/${storyCfg.github.account}\\/${storyCfg.github.repository}\\/blob\\/main\\/`;
   return new RegExp(typeof text === 'string' ? text.replace('{url}', tinyUrl) : tinyUrl, type);
 };
-
-/**
- * Icon
- *
- * @param {string} classItem
- */
-tinyLib.icon = (classItem) => TinyHtml.createFrom('i', { class: classItem });
 
 /** Files Upload button */
 tinyLib.upload = {};
