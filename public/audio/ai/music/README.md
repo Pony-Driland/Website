@@ -37,10 +37,11 @@ The following AI tools were utilized in the creation and organization of these a
 
 * **Gemini** (Technical support, documentation, and scripting)
 * **Suno** (Musical generation and base tracks)
+* **Ace Step 1.5** (Musical generation and base tracks)
 
 ### 🎵 Music & Licensing (Suno)
 
-All soundtracks featured in this project were generated using **Suno** while under an active **Pro/Premier subscription**.
+Some soundtracks featured in this project were generated using **Suno** while under an active **Pro/Premier subscription**.
 
 As per Suno's licensing terms:
 
