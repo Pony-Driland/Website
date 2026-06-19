@@ -1,0 +1,33 @@
+{
+    "name": "Abigail",
+    "description": "This pony belongs to a very old decent family that manages to survive the extreme cold of the Whicocesert Mountain. Her fur is much warmer than other normal ponies, making her a pony that cannot survive hot environments. This pony has privileged knowledge about this place, and knowing this very well, she avoids environments with a lot of civilization and usually has few friendships.",
+    "image": "ipfs://QmavXUE4krebqGiU3FcoecbtFyimWHKdkrnBRkyEm2PN5r",
+    "image_url": "ipfs://QmavXUE4krebqGiU3FcoecbtFyimWHKdkrnBRkyEm2PN5r",
+    "attributes": [
+        {
+            "trait_type": "Character",
+            "value": "Abigail"
+        },
+        {
+            "trait_type": "Cute",
+            "value": "Yes"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Race",
+            "value": "Earth Pony"
+        },
+        {
+            "trait_type": "Specie",
+            "value": "Pony"
+        },
+        {
+            "trait_type": "Size",
+            "value": "Normal"
+        }
+    ],
+    "background_color": "FFFFFF"
+}

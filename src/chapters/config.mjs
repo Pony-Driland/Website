@@ -99,7 +99,7 @@ const storyCfg = {
     color4: '#5e5e5e',
   },
 
-  noNsfw: ['UK', 'GB', 'BR'],
+  noNsfw: ['ALL'],
 
   // Mature Content Config (You can freely add as many NSFW filters as you like.)
   nsfw: {
