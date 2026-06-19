@@ -9,7 +9,6 @@ import { fileURLToPath } from 'url';
 
 // Import esbuild and plugins
 import { sassPlugin } from 'esbuild-sass-plugin';
-import { nodeModulesPolyfillPlugin } from 'esbuild-plugins-node-modules-polyfill';
 import TinyBuilder from './TinyBuilder.mjs';
 
 // Setup __dirname and __filename (not available in ES modules by default)
@@ -33,7 +32,6 @@ const distPublic = path.join(__dirname, '../../dist/public');
 
 export const tiny = new TinyBuilder({
   plugins: [
-    nodeModulesPolyfillPlugin(),
     sassPlugin({
       type: 'css', // gera arquivo CSS separado
     }),
