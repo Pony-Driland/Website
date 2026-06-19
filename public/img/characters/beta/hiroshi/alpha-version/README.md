@@ -1,1 +1,0 @@
-# Alpha version made by ChatGPT.
