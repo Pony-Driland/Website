@@ -69,7 +69,8 @@ export const fa = new FirebaseAccount({
 /** @returns {boolean} */
 export function needsAgeVerification() {
   return tinyLs.getString('user-country') &&
-    storyCfg.noNsfw.includes(tinyLs.getString('user-country') ?? '')
+    (storyCfg.noNsfw.includes('ALL') ||
+      storyCfg.noNsfw.includes(tinyLs.getString('user-country') ?? ''))
     ? true
     : false;
 }
