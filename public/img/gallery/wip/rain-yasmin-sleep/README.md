@@ -54,7 +54,7 @@ Ignores the ice environment, Rainbow Queen usually sleeps in a dimension that fu
 
 Image 8: Continuation of image 7 with a zoom on the character's belly, showing the more detailed belly (and a darker environment as the wings are covering the belly) with a text just indicating the sounds in a smooth cute way, but the scene is focused.
 
-Image 7/1: X-Ray
+Image 7/1: X-Ray reference. The idea of this image is that it is a darker environment, where the illumination will only be seen correctly on the character's face and hooves(with small points of very weak light).
 `public/img/wallpaper/ai/where-you-belong/1080.png`
 
 This image is a good reference to see the belly behind the wings (Images without wings to see the belly).
@@ -69,4 +69,7 @@ This image is a good reference to see the belly behind the wings (Images without
 
 `./reference-test/Gemini_Generated_Image_ovc92iovc92iovc9.png`
 <img src="./reference-test/Gemini_Generated_Image_ovc92iovc92iovc9.png" alt="comic" />
+
+``public/img/wallpaper/ai/where-you-belong/1080.png``
+<img src="../../../wallpaper/ai/where-you-belong/1080.png" alt="comic" />
 [/spoiler]
