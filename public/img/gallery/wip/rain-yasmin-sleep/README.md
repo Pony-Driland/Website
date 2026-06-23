@@ -31,19 +31,42 @@ With this information obtained after spying on Yasmin's cell phone, Rainbow Quee
 
 Yasmin does not know this yet because she is still consumed by terror. However, the moment she accepts her fate of sleeping inside Rainbow Queen’s belly for the first time and chooses it as a safe place to protect herself from depression and the fear of the unknown, it triggers a realization for Rainbow Queen. She realizes that, for the first time, someone has accepted sleeping inside her stomach, which makes her feel very happy and wishes for Yasmin to remain her pet and to repeat this moment in the coming nights.
 
-## Comic Dialogues
+## Comic Dialogues (and script)
 
-Image 1: go...
+The Rainbow Queen is in a dark void dimension.
 
-Image 2: to...
+Image 1: Dialogue: go...
 
-Image 3: sleep~
+Image 2: Dialogue: to...
+
+Image 3: Dialogue: sleep~
+
+Image 3.1: X-Ray body slides down (continues the cute reaction face of image 3).
 
 Image 4: Heh~ My little pet is going to fall asleep like a dessert in my darkness...
 
 Image 5: Where she belong~
 
+Image 6: Black Image with the text: Some minutes later
+
+Image 7: `./reference-test/Gemini_Generated_Image_kwxuyukwxuyukwxu.png` (Zoom focus in the character on the bed only).
+Ignores the ice environment, Rainbow Queen usually sleeps in a dimension that functions as a dream controlled by her, so instead of a cold place, it can be a bed floating in the dark void.
+
+Image 8: Continuation of image 7 with a zoom on the character's belly, showing the more detailed belly (and a darker environment as the wings are covering the belly) with a text just indicating the sounds in a smooth cute way, but the scene is focused.
+
+Image 7/1: X-Ray
+`public/img/wallpaper/ai/where-you-belong/1080.png`
+
+This image is a good reference to see the belly behind the wings (Images without wings to see the belly).
+`./reference-test/Gemini_Generated_Image_ovc92iovc92iovc9.png`
+
 ## The comic image
 
 <img src="./comic3.jpg" alt="comic" />
+
+`./reference-test/Gemini_Generated_Image_kwxuyukwxuyukwxu.png`
+<img src="./reference-test/Gemini_Generated_Image_kwxuyukwxuyukwxu.png" alt="comic" />
+
+`./reference-test/Gemini_Generated_Image_ovc92iovc92iovc9.png`
+<img src="./reference-test/Gemini_Generated_Image_ovc92iovc92iovc9.png" alt="comic" />
 [/spoiler]
