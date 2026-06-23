@@ -524,6 +524,12 @@ The only way to resolve this is for the Rainbow Queen to be calmed enough for he
 
 <br/>
 
+## Design Creation References
+
+Rainbow Queen's design was inspired by a collection of characters. The most obvious influence is the Sphinx from MLP, which is clearly reflected in her arm accessories. Her facial features are a strong reference to Asriel from Undertale. Her earrings and Usekh Collar were directly inspired by Beerus from Dragon Ball Super, and her scythe was directly inspired by Bête Noire's scythe.
+
+<br/>
+
 ## Drawing Tips
 
 Some details about Rainbow Queen can seem confusing when trying to understand how to draw her. So I decided to show how I work when drawing images of Rainbow Queen.
