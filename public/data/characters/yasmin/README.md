@@ -15,11 +15,11 @@ charTable_1_1: 'Female'
 charTable_2_0: 'Residence'
 charTable_2_1: 'Rainbow Queen's home'
 
-charTable_3_0: 'Family'
-charTable_3_1: 'Rainbow Queen's pet'
-
 charTable_4_0: 'Created At'
-charTable_4_1: '2021-11-13'
+charTable_4_1: '2021-04-29T18:12:19.000Z'
+
+charTable_4_0: 'Design Created At'
+charTable_4_1: '2025-09-29T17:57:00.000Z'
 
 charTable_5_0: 'Credits'
 charTable_5_1: ''

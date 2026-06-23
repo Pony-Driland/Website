@@ -31,10 +31,10 @@ charTable_8_0: 'Generator'
 charTable_8_1: 'Stable Diffusion'
 
 charTable_9_0: 'Created At'
-charTable_9_1: '2022-03-20'
+charTable_9_1: '2021-10-31T00:51:02.000Z'
 
 charTable_10_0: 'Design Created At'
-charTable_10_1: '2025-02-18'
+charTable_10_1: '2023-03-29T01:49:15.000Z'
 #---
 
 <ai>

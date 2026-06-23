@@ -28,10 +28,10 @@ charTable_7_0: 'Ref Design'
 charTable_7_1: '[JasminDreasond](https://derpibooru.org/tags/artist-colon-jasmindreasond)'
 
 charTable_8_0: 'Created At'
-charTable_8_1: '2012-??-??'
+charTable_8_1: '2012-??-??T??:??:??.000Z'
 
 charTable_9_0: 'Joined At'
-charTable_9_1: '2021-11-13'
+charTable_9_1: '2021-11-19T00:44:59.000Z'
 #---
 
 <ai>

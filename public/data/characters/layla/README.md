@@ -28,7 +28,7 @@ charTable_6_0: 'Design'
 charTable_6_1: '[João the John](https://derpibooru.org/tags/artist-colon-joaothejohn)'
 
 charTable_7_0: 'Created At'
-charTable_7_1: '2021-11-03'
+charTable_7_1: '2021-11-03T02:21:15.000Z'
 
 contentList_1_0: 'Items'
 contentList_1_1: 'Collar'
