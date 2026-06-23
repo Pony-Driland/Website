@@ -1,0 +1,1 @@
+Friday, April 17, 2026 at 8:00 PM (Sao_Paulo/America)
