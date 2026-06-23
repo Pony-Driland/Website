@@ -50,10 +50,10 @@ function SeamlessLoop() {
     chrome: Boolean(window.chrome),
     safari: Boolean(
       !window.chrome &&
-        /safari/.test(navigator.userAgent.toLowerCase()) &&
-        window.getComputedStyle &&
-        !window.globalStorage &&
-        !window.opera,
+      /safari/.test(navigator.userAgent.toLowerCase()) &&
+      window.getComputedStyle &&
+      !window.globalStorage &&
+      !window.opera,
     ),
   };
   //console.debug("ff: " + this.is.ff);

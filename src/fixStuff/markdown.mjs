@@ -16,6 +16,7 @@ import { markdownBase } from '../html/base.mjs';
 import '../markdown/dropdown.mjs';
 import '../markdown/spoiler.mjs';
 import '../markdown/ai-tag.mjs';
+import { convertIsoStringsToCalendar } from '../files/utils.mjs';
 
 const { Icon } = TinyHtmlElems;
 
@@ -206,35 +207,39 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
       );
 
       // Character table
-      if (Array.isArray(metadata.charTable) && metadata.charTable.length > 0) {
+      const charTable = metadata.charTable;
+      if (Array.isArray(charTable) && charTable.length > 0) {
         const cardBodyTable = TinyHtml.createFrom('table', { class: 'table table-hover m-0' });
         const cardBodyTbody = TinyHtml.createFrom('tbody');
-        for (const tIndex in metadata.charTable) {
-          if (typeof metadata.charTable[tIndex][1] !== 'undefined') {
+        for (const tIndex in charTable) {
+          const charTableContent = charTable[tIndex];
+          // Value exists
+          if (typeof charTableContent[1] !== 'undefined') {
             const td = TinyHtml.createFrom('td', { class: 'bg-transparent' });
-            if (typeof metadata.charTable[tIndex][1] === 'string')
-              td.setText(metadata.charTable[tIndex][1]);
+            // Is String
+            if (typeof charTableContent[1] === 'string')
+              td.setText(convertIsoStringsToCalendar(charTableContent[1]));
+            // Is Object
             else if (
-              typeof metadata.charTable[tIndex][1].text === 'string' &&
-              typeof metadata.charTable[tIndex][1].url === 'string'
+              typeof charTableContent[1].text === 'string' &&
+              typeof charTableContent[1].url === 'string'
             )
               td.append(
                 TinyHtml.createFrom('a', {
                   class: 'text-decoration-none',
                   target: '_blank',
-                  href: !metadata.charTable[tIndex][1].isRepUrl
-                    ? metadata.charTable[tIndex][1].url
+                  href: !charTableContent[1].isRepUrl
+                    ? charTableContent[1].url
                     : 'javascript:void(0)',
-                  file: metadata.charTable[tIndex][1].isRepUrl
-                    ? `../${metadata.charTable[tIndex][1].isRepUrl}`
-                    : null,
-                }).setText(metadata.charTable[tIndex][1].text),
+                  file: charTableContent[1].isRepUrl ? `../${charTableContent[1].isRepUrl}` : null,
+                }).setText(charTableContent[1].text),
               );
 
+            // Complete
             cardBodyTbody.append(
               TinyHtml.createFrom('tr').append(
                 TinyHtml.createFrom('th', { class: 'bg-transparent', scope: 'row' }).setText(
-                  metadata.charTable[tIndex][0],
+                  charTableContent[0],
                 ),
                 td,
               ),
