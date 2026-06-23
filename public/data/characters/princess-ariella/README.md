@@ -25,7 +25,7 @@ charTable_5_0: 'Design'
 charTable_5_1: '[Synth Sparkle](https://derpibooru.org/tags/artist-colon-synthsparkle)'
 
 charTable_6_0: 'Created At'
-charTable_6_1: '2021-08-19'
+charTable_6_1: '2021-08-19T20:16:08.000Z'
 #---
 
 [spoiler:4:1]

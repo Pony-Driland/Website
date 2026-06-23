@@ -31,10 +31,10 @@ charTable_8_0: 'Generator'
 charTable_8_1: 'Stable Diffusion'
 
 charTable_9_0: 'Created At'
-charTable_9_1: '2021-08-29'
+charTable_9_1: '2021-08-19T20:16:08.000Z'
 
 charTable_10_0: 'Design Created At'
-charTable_10_1: '2025-03-02'
+charTable_10_1: '2023-04-30T23:54:26.000Z'
 #---
 
 [spoiler:1:1363]

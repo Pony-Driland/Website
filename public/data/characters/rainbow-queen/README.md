@@ -48,10 +48,10 @@ charTable_13_0: ''
 charTable_13_1: 'JasminDreasond'
 
 charTable_14_0: 'Created At'
-charTable_14_1: '2018-??-??'
+charTable_14_1: '2018-??-??T??:??:??.???Z'
 
 charTable_15_0: 'Design Created At'
-charTable_15_1: '2021-10-06'
+charTable_15_1: '2021-06-10T00:00:00.000Z'
 
 contentList_0: 'Specie'
 contentList_1: 'Natural Habitat'
