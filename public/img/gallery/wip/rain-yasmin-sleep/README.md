@@ -35,30 +35,52 @@ Yasmin does not know this yet because she is still consumed by terror. However, 
 
 The Rainbow Queen is in a dark void dimension.
 
+---
+
 Image 1: Dialogue: go...
+
+---
 
 Image 2: Dialogue: to...
 
+---
+
 Image 3: Dialogue: sleep~
+
+---
 
 Image 3.1: X-Ray body slides down (continues the cute reaction face of image 3).
 
+---
+
 Image 4: Heh~ My little pet is going to fall asleep like a dessert in my darkness...
+
+---
 
 Image 5: Where she belong~
 
+---
+
 Image 6: Black Image with the text: Some minutes later
+
+---
 
 Image 7: `./reference-test/Gemini_Generated_Image_kwxuyukwxuyukwxu.png` (Zoom focus in the character on the bed only).
 Ignores the ice environment, Rainbow Queen usually sleeps in a dimension that functions as a dream controlled by her, so instead of a cold place, it can be a bed floating in the dark void.
 
-Image 8: Continuation of image 7 with a zoom on the character's belly, showing the more detailed belly (and a darker environment as the wings are covering the belly) with a text just indicating the sounds in a smooth cute way, but the scene is focused.
+---
 
-Image 7/1: X-Ray reference. The idea of this image is that it is a darker environment, where the illumination will only be seen correctly on the character's face and hooves(with small points of very weak light).
-`public/img/wallpaper/ai/where-you-belong/1080.png`
+Image 8: Continuation of image 7 with a zoom on the character's belly, showing the more detailed belly (and a darker environment as the wings are covering the belly) with a text just indicating the sounds in a smooth cute way, but the scene is focused.
 
 This image is a good reference to see the belly behind the wings (Images without wings to see the belly).
 `./reference-test/Gemini_Generated_Image_ovc92iovc92iovc9.png`
+
+---
+
+Image 8/1: The idea of this image is that it is a darker environment, where the illumination will only be seen correctly on the character's face and hooves(with small points of very weak light).
+X-Ray reference: `public/img/wallpaper/ai/where-you-belong/1080.png`
+
+Put on a few light sound words indicating Rainbow Queen is purring.
 
 ## The comic image
 
