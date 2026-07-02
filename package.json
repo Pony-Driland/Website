@@ -54,11 +54,11 @@
         "ws": "^8.19.0"
     },
     "devDependencies": {
-        "@babel/cli": "^7.28.6",
-        "@babel/core": "^7.29.0",
-        "@babel/node": "^7.29.0",
+        "@babel/cli": "^8.0.1",
+        "@babel/core": "^8.0.1",
+        "@babel/node": "^8.0.1",
         "@babel/parser": "^8.0.0",
-        "@babel/preset-env": "^7.29.0",
+        "@babel/preset-env": "^8.0.2",
         "@babel/traverse": "^8.0.0",
         "@types/bootstrap": "^5.2.10",
         "@types/clone": "^2.1.4",
