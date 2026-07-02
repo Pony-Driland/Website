@@ -124,7 +124,7 @@ export const prettierSrc = async () => {
  * Step 2b: Copy/install extra JS files and run update scripts.
  */
 export const installMoreJsFiles = async () => {
-  await run('npx babel-node build/bundle/files');
+  await run('node -r @babel/register build/bundle/files');
   await run('npm run update-chapter');
   await run('npm run update-characters');
   await run('npm run update-sitemap');
