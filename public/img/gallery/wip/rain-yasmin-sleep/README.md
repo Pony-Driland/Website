@@ -68,6 +68,8 @@ Image 6: Black Image with the text: Some minutes later
 Image 7: `./reference-test/Gemini_Generated_Image_kwxuyukwxuyukwxu.png` (Zoom focus in the character on the bed only).
 Ignores the ice environment, Rainbow Queen usually sleeps in a dimension that functions as a dream controlled by her, so instead of a cold place, it can be a bed floating in the dark void.
 
+The wing covering the belly scene is like a blanket covering the belly gently making inside the belly look darkest (which makes the combination of the final picture of comic be naturally very darkest).
+
 ---
 
 Image 8: Continuation of image 7 with a zoom on the character's belly, showing the more detailed belly (and a darker environment as the wings are covering the belly) with a text just indicating the sounds in a smooth cute way, but the scene is focused.
