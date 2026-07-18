@@ -4555,10 +4555,10 @@ tiny-essentials@^1.28.1:
   resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.28.1.tgz#d7fecef368fe3c1d5df2070c293b3c8dec8fab94"
   integrity sha512-EQjXiJi1aYeMtqOUJCYB2c7yAInXouyXA2wftrS8b9Q8OSP9/ZUSosyCoibvlkpCTTxLi4Q8067IA6iJJa7J2Q==
 
-tiny-server-essentials@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/tiny-server-essentials/-/tiny-server-essentials-1.1.1.tgz#108b0af355c3a54dcf0a34bada2b960f8887de90"
-  integrity sha512-eHscYNwqbIlZ9UkmCnPXDRNL+GDRb4w0q7SBQtJ+gMDSY2IZdQD1/6vL3nRPv7biRlrbzJ+gcYdT+AEY/wYjwA==
+tiny-server-essentials@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/tiny-server-essentials/-/tiny-server-essentials-1.1.2.tgz#ed3bcd726d79fc5d24ec34247731c62601abbb0e"
+  integrity sha512-OZhfv3O+lYMMKijm6OmAbODbDcQAdSG6v4YZoHaMw+mRcWrluwJA3QBCQo6rs54roYFkUWh5hIi6HlrU8qMoGw==
   dependencies:
     "@types/express" "^5.0.1"
     "@types/http-errors" "^2.0.4"
