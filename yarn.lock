@@ -936,17 +936,17 @@
     "@babel/types" "^7.29.7"
     debug "^4.3.1"
 
-"@babel/traverse@^8.0.0":
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-8.0.0.tgz#0473589140c796d13e27641ab0783069f0fe7512"
-  integrity sha512-bxTj/W2VclGE6CctlfQOpxg8MPDzXArRqkOBePw8EHfebcjF7fETWSS3BriEECo+UiU/Yblq+xUtSImFu7cTbw==
+"@babel/traverse@^8.0.0", "@babel/traverse@^8.0.4":
+  version "8.0.4"
+  resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-8.0.4.tgz#71fc3f8861a4548e7f2938fdecac73e25d1db1ed"
+  integrity sha512-bZnmqzGG8UZneG1lLxBoWIH0G6Gr1D846Yu4/3XnY6FhCndMR49u26nTY08u/dAxWmLWF9vGQOuC+84FfIUoeg==
   dependencies:
     "@babel/code-frame" "^8.0.0"
     "@babel/generator" "^8.0.0"
     "@babel/helper-globals" "^8.0.0"
-    "@babel/parser" "^8.0.0"
+    "@babel/parser" "^8.0.4"
     "@babel/template" "^8.0.0"
-    "@babel/types" "^8.0.0"
+    "@babel/types" "^8.0.4"
     obug "^2.1.1"
 
 "@babel/types@^7.29.7":
