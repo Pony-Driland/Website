@@ -3,7 +3,7 @@ import clone from 'clone';
 import objHash from 'object-hash';
 import { saveAs } from 'file-saver';
 
-import { objType, countObj, toTitleCase, isJsonObject } from 'tiny-essentials/basics';
+import { countObj, toTitleCase, isJsonObject, isObjType } from 'tiny-essentials/basics';
 import TinyHtml from 'tiny-essentials/libs/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
 
@@ -560,7 +560,7 @@ export const AiScriptStart = async () => {
             typeof file.customList[i].type === 'string'
           ) {
             const { name, type } = file.customList[i];
-            if (objType(file[name], type)) {
+            if (isObjType(file[name], type)) {
               tinyAi.setCustomValue(
                 name,
                 file[name],

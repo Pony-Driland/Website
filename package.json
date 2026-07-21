@@ -48,7 +48,7 @@
         "socket.io-client": "^4.8.3",
         "tiny-ai-api": "^1.2.0",
         "tiny-dices": "^1.1.2",
-        "tiny-essentials": "^1.28.2",
+        "tiny-essentials": "^1.28.3",
         "tiny-server-essentials": "^1.1.2",
         "tippy.js": "^6.3.7",
         "ws": "^8.19.0"
