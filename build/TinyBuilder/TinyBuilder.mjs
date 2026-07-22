@@ -67,7 +67,7 @@ class TinyBuilder extends EventEmitter {
       );
     return this.#WebSocketServer;
   }
-  
+
   //////////////////////////////////////////////////////
 
   /** @type {number|null} */
