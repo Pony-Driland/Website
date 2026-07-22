@@ -270,7 +270,7 @@ storyCfg.sfx = {
   'onderwish-emergency': {
     type: 'file',
     module: 'main',
-    value: '/audio/alert/470504__onderwish__emergency-siren.mp3',
+    value: '/audio/random-authors/alert/470504__onderwish__emergency-siren.mp3',
   },
 
   civildefense: {
@@ -282,38 +282,38 @@ storyCfg.sfx = {
   'train-horn-1': {
     type: 'file',
     module: 'main',
-    value: '/audio/jasmindreasond/train/horn-1.mp3',
+    value: '/audio/jasmindreasond/sfx/train/horn-1.mp3',
     loop: false,
   },
 
   'heavy-rain-little-thunder': {
     type: 'file',
     module: 'main',
-    value: '/audio/jasmindreasond/rain/heavy-rain-little-thunder.mp4',
+    value: '/audio/jasmindreasond/sfx/rain/heavy-rain-little-thunder.mp4',
   },
 
   'heavy-rain': {
     type: 'file',
     module: 'main',
-    value: '/audio/jasmindreasond/rain/heavy-rain.mp4',
+    value: '/audio/jasmindreasond/sfx/rain/heavy-rain.mp4',
   },
 
   'ambulance-alarm': {
     type: 'file',
     module: 'main',
-    value: '/audio/jasmindreasond/alarm/ambulance.wav',
+    value: '/audio/jasmindreasond/sfx/alarm/ambulance.wav',
   },
 
   'train-1': {
     type: 'file',
     module: 'main',
-    value: '/audio/jasmindreasond/train/1.mp3',
+    value: '/audio/jasmindreasond/sfx/train/1.mp3',
   },
 
   'nuke-1': {
     type: 'file',
     module: 'main',
-    value: '/audio/jasmindreasond/explosion/nuke.mp3',
+    value: '/audio/jasmindreasond/sfx/explosion/nuke.mp3',
     loop: false,
   },
 };
