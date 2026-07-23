@@ -1,0 +1,15 @@
+{
+    "file": "string|string[]",
+    "category?": "string|string[]",
+    "generators_used?": ["string"],
+    "alternative_files?": [
+        {
+            "category?": "string|string[]",
+            "generators_used?": ["string"],
+            "file":["string"]
+        }
+    ],
+    "creation_date": "number",
+    "instrument_prompt?": "string",
+    "reference_songs?": ["string"]
+}

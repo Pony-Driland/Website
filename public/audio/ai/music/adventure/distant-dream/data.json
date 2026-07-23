@@ -1,9 +1,11 @@
 {
     "file": "distant-dream-v1.1.mp3",
     "creation_date": 1780856280000,
+    "generators_used": ["suno"],
     "alternative_files": [
         {
             "category": "ambient-sound",
+            "generators_used": ["ace_step"],
             "file":[
                 "ambient-sound/distant-dream-V1.1(alternative-2).mp3",
                 "ambient-sound/distant-dream-V1.1(alternative-3).mp3",

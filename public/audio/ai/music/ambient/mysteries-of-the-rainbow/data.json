@@ -1,5 +1,6 @@
 {
     "file": "mysteries-of-the-rainbow.mp3",
+    "generators_used": ["suno"],
     "creation_date": 1772310960000,
     "instrument_prompt": "Slow cinematic score, chamber orchestra strings and distant choirs, Start with a lonely music-box motif over deep, misty pads; whispering sul tasto strings creep in with subtle dissonances, Angelic childlike choir swells in high register, gently detuned, then melts into darker harmonies, Maintain a calm, stalking tempo; dynamics stay mostly restrained, with rare icy crescendos that recede back into eerie stillness, ambient, theme, slow, orchestral",
     "reference_songs": []
