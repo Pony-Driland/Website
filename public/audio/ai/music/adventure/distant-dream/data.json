@@ -1,4 +1,15 @@
 {
+    "file": "distant-dream-v1.1.mp3",
+    "alternative_files": [
+        {
+            "category": "ambient-sound",
+            "file":[
+                "ambient-sound/distant-dream-V1.1(alternative-2).mp3",
+                "ambient-sound/distant-dream-V1.1(alternative-3).mp3",
+                "ambient-sound/distant-dream-V1.1(alternative-4).mp3"
+            ]
+        }
+    ],
     "instrument_prompt": "bleak snowstorm ambient, lost explorer theme, sorrowful piano, distant music box, ethereal shivering strings, emotional buildup, hopeless adventure, freezing atmosphere, dark academia, lonely",
     "reference_songs": []
 }
