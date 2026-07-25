@@ -1,6 +1,8 @@
 {
     "file": "the-rainbow-presence-2.mp3",
     "generators_used": ["suno"],
+    "bpm": [132],
+    "suno_start": "00:01.364",
     "creation_date": 1773711660000,
     "instrument_prompt": "ghostly dark acoustic, extremely slow tempo, very few instruments, deep sorrow, unsettling calmness, lingering shadows, minimalist dark fantasy, purely instrumental, synthesizers, synth, a deceptive music box melody plays over dark, industrial nightmare, Start with sparse",
     "instrument_negative_prompt": "electronic, glitch, distortion, edm, upbeat, drums, heavy percussion, beat, fast tempo, loud, pop, rock, vocals, crowded arrangement, brass, bright, happy, energetic",

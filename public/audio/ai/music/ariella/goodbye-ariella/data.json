@@ -1,6 +1,8 @@
 {
     "file": "goodbye-ariella-v1.1.mp3",
     "generators_used": ["suno"],
+    "bpm": [72, 80, 97, 100, 98, 94, 96, 97, 93, 90],
+    "suno_start": "00:00.440",
     "creation_date": 1775757180000,
     "instrument_prompt": "Cinematic orchestral, solo music box, melancholic piano intro, slow emotional build-up, tragic, dramatic strings, epic orchestral climax, heavy brass, sorrowful, dynamic tempo, theatrical",
     "reference_songs": []
