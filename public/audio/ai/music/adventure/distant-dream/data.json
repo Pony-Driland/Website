@@ -2,6 +2,8 @@
     "file": "distant-dream-v1.1.mp3",
     "creation_date": 1780856280000,
     "generators_used": ["suno"],
+    "bpm": [90, 80],
+    "suno_start": "00:00.680",
     "alternative_files": [
         {
             "category": "ambient-sound",
