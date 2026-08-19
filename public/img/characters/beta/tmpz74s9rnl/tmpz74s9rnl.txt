@@ -1,0 +1,19 @@
+pony, safe, giant pony, {Female};
+style by (MadeByBlujetink:1.0);
+
+full body, (long fur), (((Solo))),
+((fluffy fur texture)):2.0,
+anime;
+digital media;
+
+digitrade;
+intricate detailed fluffy fur, transparent hair, {fur/hair};
+
+
+Negative prompt: extra face, deformed, ugly, blurry, bad anatomy, disfigured, disfigured body, extra limb, face out of frame, multiple tails, ((bad anatomy)), malformed, malformed belly, mutant, monstrous, missing limbs, crosseyed, mutation, extra hooves, mutated, mutated body, out of frame, deformed hooves, malformed hooves, antro, extra ears
+
+Steps: 20, Sampler: Euler a, CFG scale: 7, Seed: 808217728, Size: 512x512, Model hash: b67ab73bf8, Model: pony-diffusion-v2, Version: v1.3.0
+
+
+
+Generated at: Sunday, July 9, 2023 at 6:09 PM
