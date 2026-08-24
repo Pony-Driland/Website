@@ -1,5 +1,5 @@
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
-import TinySimpleDice from 'tiny-essentials/libs/TinySimpleDice';
+import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
+import TinySimpleDice from 'tiny-essentials/libs/math/TinySimpleDice';
 import { isJsonObject } from 'tiny-essentials/basics';
 
 import TinyDices from 'tiny-dices';
@@ -12,8 +12,8 @@ import tinyLib from '../../files/tinyLib.mjs';
 import { Tooltip } from '../../modules/TinyBootstrap.mjs';
 
 /**
- * @param {import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} $totalBaseNumber
- * @param {import('tiny-essentials/libs/TinySimpleDice').ApplyDiceModifiersResult} data
+ * @param {import('tiny-essentials/libs/html/TinyHtml').TinyHtmlAny} $totalBaseNumber
+ * @param {import('tiny-essentials/libs/math/TinySimpleDice').ApplyDiceModifiersResult} data
  * @returns {NodeJS.Timeout}
  */
 export const createDiceResults = ($totalBaseNumber, data, callback = () => undefined) => {
@@ -201,7 +201,7 @@ export const createDiceSpecialHtml = (data) => {
     $totalBase,
   );
 
-  /** @type {import('tiny-essentials/libs/TinySimpleDice').ApplyDiceModifiersResult|null} */
+  /** @type {import('tiny-essentials/libs/math/TinySimpleDice').ApplyDiceModifiersResult|null} */
   let diceResult = null;
   let errorMsg = '';
   try {

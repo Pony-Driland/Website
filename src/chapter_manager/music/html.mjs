@@ -1,5 +1,5 @@
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
-import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
+import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import { storyData } from '../../files/chapters.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import { yt } from '../../api/youtube.mjs';

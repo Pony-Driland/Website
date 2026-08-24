@@ -1,7 +1,7 @@
 import tippy from 'tippy.js';
 import clone from 'clone';
 import { readJsonBlob, readBase64Blob, isJsonObject } from 'tiny-essentials/basics';
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import storyCfg from '../chapters/config.mjs';
 import { Modal } from '../modules/TinyBootstrap.mjs';
 import { body } from '../html/query.mjs';

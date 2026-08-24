@@ -1,4 +1,4 @@
-import TinyDomReadyManager from 'tiny-essentials/libs/TinyDomReadyManager';
+import TinyDomReadyManager from 'tiny-essentials/libs/html/TinyDomReadyManager';
 import { loaderScreen } from './important.mjs';
 import { newUrl } from './html/query.mjs';
 

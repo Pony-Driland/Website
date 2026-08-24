@@ -1,4 +1,4 @@
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 
 export const tinyWin = new TinyHtml(window);
 

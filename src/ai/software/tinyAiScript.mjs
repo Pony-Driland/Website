@@ -1,7 +1,7 @@
 import { setTinyGoogleAi } from 'tiny-ai-api';
 import { formatDayTimer } from 'tiny-essentials/basics';
-import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
+import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 
 import tinyLib from '../../files/tinyLib.mjs';
 import { appData } from '../../important.mjs';

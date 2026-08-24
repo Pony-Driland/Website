@@ -1,5 +1,5 @@
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
-import TinyHtmlNumberInput from 'tiny-essentials/libs/TinyHtmlElems/Input/Number';
+import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
+import TinyHtmlNumberInput from 'tiny-essentials/libs/html/TinyHtmlElems/Input/Number';
 
 import { tinyIo } from '../software/base.mjs';
 import tinyLib, { alert } from '../../files/tinyLib.mjs';

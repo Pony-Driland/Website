@@ -1,4 +1,4 @@
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import tinyLib, { alert } from '../../files/tinyLib.mjs';
 import { tinyIo } from '../software/base.mjs';
 

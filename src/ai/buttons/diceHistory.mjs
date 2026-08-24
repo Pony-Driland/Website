@@ -1,5 +1,5 @@
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
-import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
+import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 
 import { tinyIo } from '../software/base.mjs';
 import { isOnline } from '../software/enablerContent.mjs';
@@ -34,7 +34,7 @@ export const openDiceHistory = () => {
 
     /**
      * @param {string} name
-     * @param {import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} input
+     * @param {import('tiny-essentials/libs/html/TinyHtml').TinyHtmlAny} input
      */
     const dateValidator = (name, input) => {
       try {
@@ -46,7 +46,7 @@ export const openDiceHistory = () => {
 
     /**
      * @param {string} name
-     * @param {import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} input
+     * @param {import('tiny-essentials/libs/html/TinyHtml').TinyHtmlAny} input
      */
     const numberValidator = (name, input) => {
       try {
