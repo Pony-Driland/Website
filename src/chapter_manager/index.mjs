@@ -1,5 +1,6 @@
 import objHash from 'object-hash';
-import { countObj, toTitleCase } from 'tiny-essentials/basics';
+import { toTitleCase } from 'tiny-essentials/basics/text';
+import { countObj } from 'tiny-essentials/basics/objChecker';
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import TinyArrayPaginator from 'tiny-essentials/libs/array/TinyArrayPaginator';

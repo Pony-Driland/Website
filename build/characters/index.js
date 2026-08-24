@@ -2,7 +2,7 @@
 const path = require('path');
 const fs = require('fs');
 const { glob } = require("glob");
-const { writeJsonFile, ensureDirectory } = require('tiny-essentials');
+const { writeJsonFile, ensureDirectory } = require('tiny-essentials/fileManager/normal');
 
 const getDirectories = (src, callback) => glob(src + '/**/*')
     .then((data) => callback(null, data)).catch((err) => callback(err));

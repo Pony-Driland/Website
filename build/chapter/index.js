@@ -1,7 +1,7 @@
 // Get Path
 const path = require('path');
 const fs = require('fs');
-const { writeJsonFile, ensureDirectory } = require('tiny-essentials');
+const { writeJsonFile, ensureDirectory } = require('tiny-essentials/fileManager/normal');
 
 // Get Fic Data
 const ficData = require('../publicFolder')();

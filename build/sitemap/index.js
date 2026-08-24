@@ -2,7 +2,7 @@
 const path = require('path');
 const fs = require('fs');
 const { SitemapStream } = require('sitemap');
-const { ensureDirectory } = require('tiny-essentials');
+const { ensureDirectory } = require('tiny-essentials/fileManager/normal');
 
 // Get Fic Data
 const ficData = require('../publicFolder')();
