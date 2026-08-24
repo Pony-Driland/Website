@@ -1,6 +1,7 @@
 import Pizzicato from 'pizzicato';
 import objHash from 'object-hash';
-import { shuffleArray, ruleOfThree } from 'tiny-essentials/basics';
+import { ruleOfThree } from 'tiny-essentials/basics/simpleMath';
+import { shuffleArray } from 'tiny-essentials/basics/array';
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 
 import SeamlessLoop from '../../../build/bundle/SeamlessLoop.mjs';

@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 import * as JsStore from 'jsstore';
-import { getAge } from 'tiny-essentials/basics';
+import { getAge } from 'tiny-essentials/basics/simpleMath';
 import TinyLoadingScreen from 'tiny-essentials/libs/html/templates/TinyLoadingScreen';
 import TinyLocalStorage from 'tiny-essentials/libs/storage/TinyLocalStorage';
 import TinyNotifications from 'tiny-essentials/libs/html/notification/TinyNotifications';

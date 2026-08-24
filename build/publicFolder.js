@@ -1,4 +1,4 @@
-const { ensureDirectory } = require('tiny-essentials');
+const { ensureDirectory } = require('tiny-essentials/fileManager/normal');
 
 module.exports = function() {
 
