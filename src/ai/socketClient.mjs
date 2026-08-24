@@ -1,5 +1,4 @@
 import { EventEmitter } from 'events';
-import clone from 'clone';
 import { io as Io } from 'socket.io-client';
 import { countObj, isJsonObject } from 'tiny-essentials/basics';
 
@@ -290,7 +289,7 @@ class TinyClientIo extends EventEmitter {
   removeUser(result) {
     if (isJsonObject(result) && this.users) {
       if (typeof result.userId === 'string' && this.users[result.userId]) {
-        const data = { data: clone(this.users[result.userId]), userId: result.userId };
+        const data = { data: structuredClone(this.users[result.userId]), userId: result.userId };
         delete this.users[result.userId];
         return data;
       }

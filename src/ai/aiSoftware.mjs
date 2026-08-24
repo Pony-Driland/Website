@@ -1,5 +1,4 @@
 import moment from 'moment';
-import clone from 'clone';
 import objHash from 'object-hash';
 import { saveAs } from 'file-saver';
 
@@ -1053,7 +1052,7 @@ export const AiScriptStart = async () => {
     leftMenu.push(
       createButtonSidebar('fa-solid fa-file-export', 'Export', () => {
         const exportData = {
-          file: clone(tinyAi.getData()),
+          file: structuredClone(tinyAi.getData()),
           id: tinyAi.getId(),
         };
 
@@ -1426,7 +1425,7 @@ export const AiScriptStart = async () => {
 
       // RPG Data
       if ((canPublicRPG || canPrivateRPG) && (canPublicSchemaRPG || canPrivateSchemaRPG)) {
-        const tinyRpgData = clone(rpgData.template.schema);
+        const tinyRpgData = structuredClone(rpgData.template.schema);
 
         if (typeof tinyRpgData.properties.allowAiUse !== 'undefined')
           delete tinyRpgData.properties.allowAiUse;
@@ -1447,7 +1446,7 @@ export const AiScriptStart = async () => {
       // Public RPG
       if (canPublicRPG) {
         rpgData.oldHash.public = tinyAi.getHash('rpgData');
-        const tinyRpgData = clone(history.rpgData);
+        const tinyRpgData = structuredClone(history.rpgData);
         if (typeof tinyRpgData.allowAiUse !== 'undefined') delete tinyRpgData.allowAiUse;
         let tinyText = `${userFileStart}\n\n`;
         tinyText += JSON.stringify({ database: tinyRpgData });
@@ -1463,7 +1462,7 @@ export const AiScriptStart = async () => {
       // Private RPG
       if (canPrivateRPG) {
         rpgData.oldHash.private = tinyAi.getHash('rpgPrivateData');
-        const tinyRpgData = clone(history.rpgPrivateData);
+        const tinyRpgData = structuredClone(history.rpgPrivateData);
         if (typeof tinyRpgData.allowAiUse !== 'undefined') delete tinyRpgData.allowAiUse;
         let tinyText = `${officialFileStart}\n\n`;
         tinyText += JSON.stringify({ database: tinyRpgData });
@@ -1617,7 +1616,7 @@ export const AiScriptStart = async () => {
           );
 
           // System Instruction
-          const systemCheck = clone(systemData);
+          const systemCheck = structuredClone(systemData);
           if (systemCheck) systemCheck.role = 'user';
           await updateTokenData(
             'systemInstruction',

@@ -1,6 +1,5 @@
 import { EventEmitter } from 'events';
 import { basename, join } from 'path';
-import clone from 'clone';
 import chokidar from 'chokidar';
 import { build, context } from 'esbuild';
 
@@ -166,7 +165,7 @@ class TinyBuilder extends EventEmitter {
    * @returns {BuildOptions}
    */
   get config() {
-    return clone(this.#config);
+    return this.#config;
   }
 
   /**
@@ -177,7 +176,7 @@ class TinyBuilder extends EventEmitter {
   set config(value) {
     if (typeof value !== 'object' || value === null || Array.isArray(value))
       throw new TypeError('Expected a plain object for config.');
-    this.#config = clone(value);
+    this.#config = value;
   }
 
   ////////////////////////////////////////////
