@@ -2,7 +2,9 @@ import moment from 'moment';
 import objHash from 'object-hash';
 import { saveAs } from 'file-saver';
 
-import { countObj, toTitleCase, isJsonObject, isObjType } from 'tiny-essentials/basics';
+import { countObj, isJsonObject } from 'tiny-essentials/basics/objChecker';
+import { toTitleCase } from 'tiny-essentials/basics/text';
+import { isObjType } from 'tiny-essentials/basics/objFilter';
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 
