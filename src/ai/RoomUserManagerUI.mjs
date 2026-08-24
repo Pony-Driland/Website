@@ -1,6 +1,6 @@
 import moment from 'moment';
 import objHash from 'object-hash';
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import tinyLib, { alert } from '../files/tinyLib.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import TinyClientIo from './socketClient.mjs';

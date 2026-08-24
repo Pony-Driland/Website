@@ -1,4 +1,4 @@
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import PhotoSwipeLightbox from 'photoswipe';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { tinyLs } from '../important.mjs';

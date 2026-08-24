@@ -1,5 +1,5 @@
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
-import TinyTextRangeEditor from 'tiny-essentials/libs/TinyTextRangeEditor';
+import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
+import TinyTextRangeEditor from 'tiny-essentials/libs/text/TinyTextRangeEditor';
 
 import tinyLib from '../../files/tinyLib.mjs';
 import ficConfigs from '../values/ficConfigs.mjs';

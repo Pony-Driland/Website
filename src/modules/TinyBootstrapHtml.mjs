@@ -1,5 +1,5 @@
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
-import Button from 'tiny-essentials/libs/TinyHtmlElems/Button';
+import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
+import Button from 'tiny-essentials/libs/html/TinyHtmlElems/Button';
 
 /**
  * @param {string | Element | TinyHtml<any>} label

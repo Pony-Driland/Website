@@ -1,7 +1,7 @@
 import { installWindowHiddenScript, addAiMarkerShortcut } from 'tiny-essentials/basics';
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
-import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
-import TinyDomReadyManager from 'tiny-essentials/libs/TinyDomReadyManager';
+import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
+import TinyDomReadyManager from 'tiny-essentials/libs/html/TinyDomReadyManager';
 import QRCode from 'qrcode';
 import moment from 'moment';
 import { saveAs } from 'file-saver';

@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 import forPromise from 'for-promise';
-import TinyDomReadyManager from 'tiny-essentials/libs/TinyDomReadyManager';
+import TinyDomReadyManager from 'tiny-essentials/libs/html/TinyDomReadyManager';
 import { body } from '../html/query.mjs';
 
 const postMessage = (data) => {

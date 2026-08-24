@@ -1,5 +1,5 @@
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
-import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
+import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import { isJsonObject } from 'tiny-essentials/basics';
 
 import { tinyAi, tinyIo } from '../software/base.mjs';

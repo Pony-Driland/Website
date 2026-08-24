@@ -1,6 +1,6 @@
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
-import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
-import TinyAfterScrollWatcher from 'tiny-essentials/libs/TinyAfterScrollWatcher';
+import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
+import TinyAfterScrollWatcher from 'tiny-essentials/libs/html/scroll/TinyAfterScrollWatcher';
 
 import { tinyLs, gtag } from '../important.mjs';
 import tinyLib from '../files/tinyLib.mjs';

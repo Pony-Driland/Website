@@ -1,4 +1,4 @@
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
+import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import { EventEmitter } from 'events';
 import { storyData } from '../files/chapters.mjs';
 import musicManager from '../chapter_manager/music/index.mjs';

@@ -4,8 +4,8 @@ import objHash from 'object-hash';
 import { saveAs } from 'file-saver';
 
 import { countObj, toTitleCase, isJsonObject, isObjType } from 'tiny-essentials/basics';
-import TinyHtml from 'tiny-essentials/libs/TinyHtml';
-import TinyHtmlElems from 'tiny-essentials/libs/TinyHtmlElems';
+import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
+import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 
 import {
   isNoNsfw,
@@ -834,7 +834,7 @@ export const AiScriptStart = async () => {
 
   const leftMenu = [];
 
-  /** @type {null|import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} */
+  /** @type {null|import('tiny-essentials/libs/html/TinyHtml').TinyHtmlAny} */
   let autoSelectChatMode = null;
 
   // Insert menu
@@ -924,7 +924,7 @@ export const AiScriptStart = async () => {
   // Classic Map
   leftMenu.push(createButtonSidebar('fa-solid fa-map', 'Classic Map', openClassicMap));
 
-  /** @type {null|import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} */
+  /** @type {null|import('tiny-essentials/libs/html/TinyHtml').TinyHtmlAny} */
   let createAccountButton = null;
 
   // TITLE: Online Mode options
@@ -2462,7 +2462,7 @@ export const AiScriptStart = async () => {
         msgBase.setAttr('role', tinyCache.role ?? null);
 
         /**
-         * @param {import('tiny-essentials/libs/TinyHtml').TinyHtmlAny} base
+         * @param {import('tiny-essentials/libs/html/TinyHtml').TinyHtmlAny} base
          * @param {number|null} value
          * @param {() => (string|null|undefined)} result
          */
