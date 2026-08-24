@@ -1,4 +1,3 @@
-import clone from 'clone';
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 
 import { tinyIo } from '../software/base.mjs';
@@ -25,7 +24,7 @@ export const userButtonActions = () => {
       currentUserId: user.userId,
       isOwner: user.userId === room.ownerId,
       root: $root,
-      users: clone(tinyIo.client.getUsers()),
+      users: structuredClone(tinyIo.client.getUsers()),
       moderators: [],
     });
 
@@ -36,7 +35,7 @@ export const userButtonActions = () => {
     userManager.setReadonly(room.readOnly);
 
     // Add events
-    const usersAdded = (data) => userManager.addUser(data.userId, clone(data.data));
+    const usersAdded = (data) => userManager.addUser(data.userId, structuredClone(data.data));
     const usersRemoved = (userId) => userManager.removeUser(userId);
     const userModUpdated = (type, userId) => {
       if (type === 'add') userManager.promoteModerator(userId);

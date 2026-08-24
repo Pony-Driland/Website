@@ -2553,11 +2553,6 @@ clone@^1.0.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==
 
-clone@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
-  integrity sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w==
-
 coa@~1.0.1:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/coa/-/coa-1.0.4.tgz#a9ef153660d6a86a8bdec0289a5c684d217432fd"
@@ -3278,11 +3273,6 @@ inherits@^2.0.3, inherits@~2.0.3, inherits@~2.0.4:
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
 
-ini@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/ini/-/ini-7.0.0.tgz#d8b3ecbf9425a8581bd95921eb3be1a7948531d4"
-  integrity sha512-ifK0CgjALofS5bkrcTy4RaQ9Vx2Knf/eLeIO+NaswQEpH1UblrtTSCIvN71qQDMq0PeQ/SSPojvEJp9vvvfr+w==
-
 invariant@^2.2.2:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
@@ -3367,11 +3357,6 @@ js-base64@^3.7.8:
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-3.8.0.tgz#cfc7b3d0f15dc6f69403c50df8ff2decca1a23ad"
   integrity sha512-65kvbemyZhj+ExQt1PEFyBEjL5vAHysu1lJdW1AwhhChkO8ZBPizYk/m9GVrpbS2Je1hF+UYZ+6KywqtZV8mHw==
-
-js-loading-overlay@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/js-loading-overlay/-/js-loading-overlay-1.2.0.tgz#9dfa8e815969fa67049af798cb9b65afc7d33549"
-  integrity sha512-1No+SmLxzclgGr1wvJbfp1cCnEF+GsWJUJHv8URu/9YJW/BnNdWrYFYIw/gKXDJWFr/ZdR+9gnbJbND+vn+z4Q==
 
 js-tokens@^10.0.0:
   version "10.0.0"
@@ -3704,11 +3689,6 @@ p-try@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
-
-paginate-array@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/paginate-array/-/paginate-array-2.1.0.tgz#062e8844763f5d0fa566e6289e9009bdfccb9f89"
-  integrity sha512-rY2Bo4AsD3YU8WcHwWjxZLBunTM5UYQlBAMTIaDPBWINJ59L6DL9S1DqtW5RQdRctBEdm7k06QKCIvUNDGhclg==
 
 parseurl@^1.3.3:
   version "1.3.3"

@@ -1,5 +1,4 @@
 import tippy from 'tippy.js';
-import clone from 'clone';
 import { readJsonBlob, readBase64Blob, isJsonObject } from 'tiny-essentials/basics';
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import storyCfg from '../chapters/config.mjs';
@@ -28,7 +27,7 @@ tinyLib.mdManager.extractMetadata = (markdown) => {
   const metadataObject = metadataLines.reduce((accumulator, line) => {
     const [key, ...value] = line.split(':').map((part) => part.trim());
 
-    const newValue = clone(accumulator);
+    const newValue = structuredClone(accumulator);
     if (key) {
       // @ts-ignore
       newValue[key] = value[1] ? value.join(':') : value.join('');

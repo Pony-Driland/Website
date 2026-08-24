@@ -2,7 +2,7 @@ import objHash from 'object-hash';
 import { countObj, toTitleCase } from 'tiny-essentials/basics';
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
-import paginateArray from 'paginate-array';
+import TinyArrayPaginator from 'tiny-essentials/libs/array/TinyArrayPaginator';
 
 import { isNoNsfw, loaderScreen, tinyLs } from '../important.mjs';
 import tinyLib, { alert } from '../files/tinyLib.mjs';
@@ -17,6 +17,15 @@ import { body, tinyWin } from '../html/query.mjs';
 import { markdownBase } from '../html/base.mjs';
 
 const { Icon, Button, Anchor } = TinyHtmlElems;
+
+/**
+ * @typedef {{ content: any; line: number; }} FicPaginationData
+ */
+
+/**
+ * @template T
+ * @typedef {import('tiny-essentials/libs/array/TinyArrayPaginator').GetterResult<T>} GetterResult
+ */
 
 /*  Rain made by Aaron Rickle */
 const rainConfig = {};
@@ -250,7 +259,11 @@ export const openChapterMenu = (params = {}) => {
     return { page, selectedLine, filtedItems };
   };
 
-  // Insert table data
+  /**
+   * Insert table data
+   * @param {TinyHtml<HTMLElement>} table
+   * @param {GetterResult<FicPaginationData>} pagination
+   */
   const insertTableData = (table, pagination) => {
     // Reset Item
     storyData.chapter.html = {};
@@ -259,16 +272,16 @@ export const openChapterMenu = (params = {}) => {
     // Items
     const items = [];
 
-    // Insert Items
-    const numberPag = Number(pagination.perPage * Number(pagination.currentPage - 1));
-    for (const item in pagination.data) {
-      const pagData = pagination.data[item].content;
+    // pagination.items is the array returned by TinyArrayPaginator.get()
+    for (const item of pagination.items) {
+      const pagData = item.content;
       if (typeof storyDialogue[pagData.type] === 'function') {
-        storyDialogue[pagData.type](pagination.data[item].line, items, pagData);
+        storyDialogue[pagData.type](item.line, items, pagData);
       }
     }
 
-    // Update Data
+    // Calculate the offset for the cache updater
+    const numberPag = (pagination.page - 1) * pagination.perPage;
     cacheChapterUpdater.data(numberPag + 1);
 
     // Insert
@@ -337,8 +350,9 @@ export const openChapterMenu = (params = {}) => {
     // Save MD5
     tinyLs.setItem('chapter' + chapter + 'MD5', objHash(storyData.data[chapter]));
 
-    // Pagination
-    const pagination = paginateArray(filtedItems, page, storyCfg.itemsPerPage);
+    // --- PAGINATION WITH TinyArrayPaginator ---
+    const paginator = new TinyArrayPaginator(filtedItems);
+    const pagination = paginator.get({ page, perPage: storyCfg.itemsPerPage });
 
     // Items
     const table = TinyHtml.createFrom('tbody');
@@ -353,26 +367,31 @@ export const openChapterMenu = (params = {}) => {
     tinyPag.base[0] = TinyHtml.createElement('div');
     tinyPag.base[1] = TinyHtml.createElement('div');
 
-    const addDefaultPagination = (ftItems, tPage, where = 'default') => {
+    /**
+     * @param {TinyArrayPaginator<FicPaginationData>} paginatorInstance
+     * @param {GetterResult<FicPaginationData>} currentPagination
+     * @param {string} where
+     */
+    const addDefaultPagination = (paginatorInstance, currentPagination, where = 'default') => {
       tinyPag.base[0].empty();
       tinyPag.base[1].empty();
 
       tinyPag[where][0] = TinyHtml.createElement('nav');
       const pagination1 = new BootstrapPaginator(tinyPag[where][0], {
         listContainerClass: 'justify-content-center',
-        currentPage: tPage.currentPage,
-        totalPages: tPage.totalPages,
+        currentPage: currentPagination.page,
+        totalPages: currentPagination.totalPages,
         size: 'normal',
         alignment: 'center',
         onPageChanged: () => {
           // Process Data
-          const page = Number(new TinyHtml(tinyPag[where][0].find('.active')).text().trim());
-          const tPage = paginateArray(ftItems, page, storyCfg.itemsPerPage);
+          const targetPage = Number(new TinyHtml(tinyPag[where][0].find('.active')).text().trim());
+          const tPage = paginatorInstance.get({ page: targetPage, perPage: storyCfg.itemsPerPage });
           insertTableData(table, tPage);
 
           // Scroll
           TinyHtml.setWinScrollTop(TinyHtml.getById('app').offset().top);
-          pagination2.show(page);
+          pagination2.show(targetPage);
           tinyWin.trigger('scroll');
         },
       });
@@ -380,14 +399,14 @@ export const openChapterMenu = (params = {}) => {
       tinyPag[where][1] = TinyHtml.createElement('nav');
       const pagination2 = new BootstrapPaginator(tinyPag[where][1], {
         listContainerClass: 'justify-content-center',
-        currentPage: tPage.currentPage,
-        totalPages: tPage.totalPages,
+        currentPage: currentPagination.page,
+        totalPages: currentPagination.totalPages,
         size: 'normal',
         alignment: 'center',
         onPageChanged: () => {
           // Get Page
-          const page = Number(new TinyHtml(tinyPag[where][1].find('.active')).text().trim());
-          pagination1.show(page);
+          const targetPage = Number(new TinyHtml(tinyPag[where][1].find('.active')).text().trim());
+          pagination1.show(targetPage);
         },
       });
 
@@ -395,7 +414,7 @@ export const openChapterMenu = (params = {}) => {
       tinyPag.base[1].append(tinyPag[where][1]);
     };
 
-    addDefaultPagination(filtedItems, pagination);
+    addDefaultPagination(paginator, pagination);
     insertTableData(table, pagination);
 
     // Search
@@ -413,7 +432,7 @@ export const openChapterMenu = (params = {}) => {
       // Nope
       if (character.length < 1 && message.length < 1) {
         storyData.chapter.blockLineSave = false;
-        addDefaultPagination(filtedItems, pagination);
+        addDefaultPagination(paginator, pagination);
         insertTableData(table, pagination);
       }
 
@@ -442,11 +461,12 @@ export const openChapterMenu = (params = {}) => {
           }
         }
 
-        // Complete
-        const pagination = paginateArray(searchResult, 1, storyCfg.itemsPerPage);
+        // --- PAGINATION FOR SEARCH ---
+        const searchPaginator = new TinyArrayPaginator(searchResult);
+        const searchPagination = searchPaginator.get({ page: 1, perPage: storyCfg.itemsPerPage });
 
-        addDefaultPagination(searchResult, pagination, 'search');
-        insertTableData(table, pagination);
+        addDefaultPagination(searchPaginator, searchPagination, 'search');
+        insertTableData(table, searchPagination);
       }
 
       TinyHtml.setWinScrollTop(TinyHtml.getById('app').offset().top);
@@ -470,7 +490,7 @@ export const openChapterMenu = (params = {}) => {
     searchItems.message.on('change', searchCheck);
     searchItems.base.append(searchItems.character, searchItems.message);
 
-    // Table
+    // Table & UI construction...
     markdownBase.append(
       // Info
       tinyLib.bs
@@ -538,7 +558,7 @@ export const openChapterMenu = (params = {}) => {
     return;
   };
 
-  // Exist Chapter
+  // Exist Chapter logic
   if (typeof params.chapter === 'string' && params.chapter.length > 0) {
     // Fix Line
     if (params.line) {
@@ -904,9 +924,7 @@ export const openChapterMenu = (params = {}) => {
               // Mature Content Item
               const nsfwDIV = TinyHtml.createFrom('div');
               nsfwDIV.append(nsfwContent);
-              if (existNSFW) {
-                nsfwDIV.addClass('row');
-              }
+              if (existNSFW) nsfwDIV.addClass('row');
 
               // Modal
               tinyLib.modal({
@@ -929,7 +947,7 @@ export const openChapterMenu = (params = {}) => {
         .append(allSpoilersButton),
     );
 
-    // Read More Data
+    // Chapter Buttons
     for (let i = 0; i < storyData.chapter.amount; i++) {
       // Chapter Number
       const chapter = String(i + 1);
