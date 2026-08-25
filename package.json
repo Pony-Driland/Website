@@ -27,7 +27,7 @@
         "bootstrap": "^5.3.7",
         "buffer": "^6.0.3",
         "events": "^3.3.0",
-        "exifreader": "^4.42.0",
+        "exifreader": "^4.44.0",
         "express": "^5.2.1",
         "file-saver": "^2.0.5",
         "firebase": "^12.17.1",
