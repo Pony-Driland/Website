@@ -4,3 +4,6 @@ Disallow: /tumblr/
 Disallow: /prompts/
 
 Allow: /
+
+Sitemap: https://ponydriland.com/sitemap/chapter.xml
+Sitemap: https://ponydriland.com/sitemap/characters.xml
