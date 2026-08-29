@@ -3,7 +3,6 @@ import forPromise from 'for-promise';
 import TinyDomReadyManager from 'tiny-essentials/libs/html/TinyDomReadyManager';
 import { body } from '../html/query.mjs';
 
-
 /**
  * @typedef {Object} MessageData
  * @property {string} type - The type of message being sent to the Service Worker.
