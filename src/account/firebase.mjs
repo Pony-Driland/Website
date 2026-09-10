@@ -200,6 +200,26 @@ class FirebaseAccount extends EventEmitter {
       .filter((entry) => {
         if (!entry || typeof entry !== 'object') return false;
 
+        /**
+         * @typedef {Object} UserData
+         * @property {number} year
+         * @property {number} month
+         * @property {number} day
+         */
+
+        /**
+         * @typedef {Object} UserMetadataSource
+         * @property {string} id
+         * @property {string} type
+         */
+
+        /**
+         * @typedef {Object} UserMetadata
+         * @property {boolean} [primary]
+         * @property {UserMetadataSource} source
+         */
+
+        /** @type {{ date: UserData; metadata: UserMetadata }} */
         const { date, metadata } = entry;
 
         // Validate date
