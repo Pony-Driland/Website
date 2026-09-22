@@ -894,10 +894,10 @@
     "@babel/types" "^8.0.0"
     esutils "^2.0.2"
 
-"@babel/register@^8.0.1":
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/@babel/register/-/register-8.0.1.tgz#ad9396794c87b89e7596ce44354b97d75f2665e9"
-  integrity sha512-cnhRaD7/V44JpWK33A2oPzBj38JJ7oYsEQpuLV9PLZd/5FvfmDbft3UjyqQfUuQ7rMx065uB1sbscqxhUehuNQ==
+"@babel/register@^8.0.1", "@babel/register@^8.0.6":
+  version "8.0.6"
+  resolved "https://registry.yarnpkg.com/@babel/register/-/register-8.0.6.tgz#d4a6572c0111474eb33626028ee2f61a8e274f8c"
+  integrity sha512-Ix77Wl3Xpv/YXCRUa7s/FC0pWqsA+fego+HjmC0ziJioGKrBdS2Jpz2GruJMkUKYiJ33m+W8NXfce+3PQRzmSQ==
   dependencies:
     "@cspotcode/source-map-support" "^0.8.1"
     cacache "20.0.3"
