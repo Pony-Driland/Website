@@ -35,7 +35,7 @@
         "glob": "^13.0.6",
         "jsstore": "^4.9.0",
         "marked": "^18.0.9",
-        "moment": "^2.30.1",
+        "moment": "^2.31.0",
         "object-hash": "^3.0.0",
         "photoswipe": "^5.4.4",
         "pizzicato": "^0.6.4",
