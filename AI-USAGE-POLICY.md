@@ -124,22 +124,22 @@ original artistic style, as explained in [Section 2](#2-ai-usage-in-art).
 
 ## 6. Who Can Join the Team
 
-### 6.1 Prompters
-
-Prompters **can** participate in Pony Driland. However, the probability of
-acceptance is **very rare**, because most AI-related tasks can be more easily
-managed by the original creator of Pony Driland.
-
-### 6.2 Human Artists + AI
+### 6.1 Human Artists specialized in AI
 
 Human artists who use AI are **welcome**, as long as they can efficiently prove
 that they have the technical ability to use this tool **together with** the
 technical knowledge of an artist.
 
-### 6.3 Organic Artists
+### 6.2 Organic Artists
 
 Traditional (organic) artists are **welcome**, following the same criteria as
 artists who use AI.
+
+### 6.3 Prompters
+
+Prompters **can** participate in Pony Driland. However, the probability of
+acceptance is **very rare**, because most AI-related tasks can be more easily
+managed by the original creator of Pony Driland.
 
 ---
 
