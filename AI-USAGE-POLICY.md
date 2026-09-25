@@ -59,6 +59,10 @@ Our protection is limited to **one thing only**: your **original art style**.
 To make this clear, here is exactly what the AI does and does not do with your
 artwork.
 
+> **Exception:** This section only covers content with a visual identity. Voice
+> acting, music, sound effects, and other non-visual works are not covered here.
+> See [Section 2.4](#24-audio-and-non-visual-content-exception).
+
 **The AI is used to:**
 
 - Isolate and extract the **original elements of Pony Driland** (characters,
@@ -81,6 +85,45 @@ If your art style is **not considered original** (for example, if it uses a very
 common style already used by many other artists and industry projects in general),
 then there is no original style to protect, and the protection described in
 [Section 2.2](#22-what-we-protect) does not apply.
+
+### 2.4 Audio and Non-Visual Content Exception
+
+The protection described in [Section 2.2](#22-what-we-protect) only applies to
+content that has a **visual identity**. If a work has no visual identity, there is
+no visual style to protect, and this section applies instead.
+
+**Content covered by this section:**
+
+- Voice acting
+- Music and songs
+- Sound effects
+- Any other work that cannot have a visual identity
+
+**Recommendation for voice actors:**
+
+Always perform with a **fictional voice** (a character voice), never with your
+natural speaking voice.
+
+**Recommendation for musicians and sound designers:**
+
+Create material **for the project**, not personal signature work. Treat the audio
+you send as a contribution to Pony Driland, not as a portfolio piece.
+
+**Why this matters:**
+
+- A fictional voice belongs to the character. If it is ever cloned, the clone
+  copies the character, not you.
+- Your natural voice stays out of the project material. It cannot be cloned from
+  something that was never recorded.
+- This protects your real identity, your real voice, and your future work.
+
+**What this means in practice:**
+
+- The project may use AI to process, adapt, remix, or clone the **audio** you
+  performed or composed.
+- The project will **not** ask you to record with your natural voice.
+- If you choose to use your natural voice anyway, you do so knowing that it is
+  **not** protected by Section 2.2.
 
 ---
 
