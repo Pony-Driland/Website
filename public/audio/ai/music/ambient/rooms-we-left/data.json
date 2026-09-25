@@ -1,0 +1,9 @@
+{
+    "file": "rooms-we-left.mp3",
+    "generators_used": ["suno"],
+    "bpm": [109, 110, 112, 107, 102, 96, 91],
+    "suno_start": "00:00.000",
+    "creation_date": 1790365560000,
+    "instrument_prompt": "Ambient cinematic, slow rhythm, instrumental, dreamy piano, emotional resonance, nostalgic vibe, soothing, tranquil, soft background score, music box",
+    "reference_songs": ["rainbow-queen-first-meeting", "the-colorless-rainbow", "rainbow-queen-battle-1"]
+}
