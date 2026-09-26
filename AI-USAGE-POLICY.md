@@ -22,7 +22,8 @@ before you contribute. It is always better to ask than to guess.
 7. [Team Priority Order](#7-team-priority-order)
 8. [Human-First Content Policy](#8-human-first-content-policy)
 9. [Summary](#9-summary)
-10. [Credits and Transparency](#10-credits-and-transparency)
+10. [Scope and Enforcement](#10-scope-and-enforcement)
+11. [Credits and Transparency](#11-credits-and-transparency)
 
 ---
 
@@ -225,7 +226,52 @@ This means:
 
 ---
 
-## 10. Credits and Transparency
+## 10. Scope and Enforcement
+
+This policy is a contract between Pony Driland and the people who work on it. It
+only has power where that contract exists.
+
+### 10.1 Who This Policy Applies To
+
+This policy applies **only** to:
+
+- Members of the official Pony Driland team.
+- Contributors who have agreed to this policy.
+- Content that is marked as **official Pony Driland content**.
+
+### 10.2 Who This Policy Does Not Apply To
+
+This policy does **not** apply to:
+
+- Fan-made content.
+- Unofficial projects.
+- Any community member who is not part of the official project.
+
+If you are not an official member, [Section 4](#4-community-ownership) does not
+apply to you. Your work is not covered by it, and it is not taken by it.
+
+### 10.3 Protection for Everyone Else
+
+If you are not an official member of Pony Driland, your work is **yours**.
+
+We will **not** use your work to train AI without your explicit permission. This
+includes art, writing, music, voice, and any other material you publish.
+
+Using the work of a community member for AI training without authorization is a
+violation of this policy.
+
+### 10.4 Consequences
+
+A violation of this policy may result in official community punishment. This
+includes, but is not limited to:
+
+- Removal of the offending content.
+- Removal from the official team.
+- A ban from the community.
+
+---
+
+## 11. Credits and Transparency
 
 Following the spirit of [Section 8](#8-human-first-content-policy), we state
 clearly how this document was made.
@@ -242,6 +288,7 @@ entire creative process: choosing what to protect, what to allow, and what to
 refuse. The AI had no opinion about Pony Driland. The human did.
 
 This is the same principle we apply to all AI content in this project.
+
 
 ---
 
