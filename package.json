@@ -30,7 +30,7 @@
         "exifreader": "^4.42.0",
         "express": "^5.2.1",
         "file-saver": "^2.0.5",
-        "firebase": "^12.17.1",
+        "firebase": "^12.19.0",
         "for-promise": "^2.0.5",
         "glob": "^13.0.6",
         "jsstore": "^4.9.0",
