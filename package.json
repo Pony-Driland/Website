@@ -7,7 +7,7 @@
         "build": "npm run build:files && node ./build/merge-website.mjs",
         "build:files": "node ./build/builder.mjs",
         "build:files:debug": "node ./build/builder.mjs debug",
-        "fix:prettier": "prettier --write ./src/* && prettier --write ./build/bundle/* && prettier --write ./build/TinyBuilder/* && prettier --write ./temp/*",
+        "prettier": "prettier --write ./src/* && prettier --write ./build/bundle/* && prettier --write ./build/TinyBuilder/* && prettier --write ./temp/*",
         "update-base64": "node ./build/base64",
         "update-chapter": "node ./build/chapter",
         "update-characters": "node ./build/characters",
@@ -44,7 +44,7 @@
         "socket.io-client": "^4.8.3",
         "tiny-ai-api": "^1.2.0",
         "tiny-dices": "^1.1.2",
-        "tiny-essentials": "^1.28.16",
+        "tiny-essentials": "^1.29.0",
         "tiny-server-essentials": "^1.1.2",
         "tippy.js": "^6.3.7",
         "ws": "^8.21.3"
