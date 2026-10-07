@@ -322,12 +322,12 @@
     "@babel/template" "^8.0.0"
     "@babel/types" "^8.0.0"
 
-"@babel/node@^8.0.1":
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/@babel/node/-/node-8.0.1.tgz#33461234cc05549c9e62bb4d2ee689ab51dbc77e"
-  integrity sha512-vxneQIP0PGQwymuZkwewtbPVBAm8Zw+Jy/RtznWZ5FSAQlKp/g6ZKrKwNndrMfBpwFjY0jxjx4hF5ZigXdvPrQ==
+"@babel/node@^8.0.6":
+  version "8.0.6"
+  resolved "https://registry.yarnpkg.com/@babel/node/-/node-8.0.6.tgz#8dfc124b0b0628072e5f91b10699a9c632e4bc2f"
+  integrity sha512-YO56bbGl5D9h25+fzO+WlTo4ua9Cyg1aqmb4OhNEDDrWC02E8xtyYuoexVHLvfZOb2wZt3GE3UBDeIhgLiersg==
   dependencies:
-    "@babel/register" "^8.0.1"
+    "@babel/register" "^8.0.6"
     commander "^14.0.2"
     core-js "^3.48.0"
     v8flags "^4.0.1"
@@ -894,10 +894,10 @@
     "@babel/types" "^8.0.0"
     esutils "^2.0.2"
 
-"@babel/register@^8.0.1":
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/@babel/register/-/register-8.0.1.tgz#ad9396794c87b89e7596ce44354b97d75f2665e9"
-  integrity sha512-cnhRaD7/V44JpWK33A2oPzBj38JJ7oYsEQpuLV9PLZd/5FvfmDbft3UjyqQfUuQ7rMx065uB1sbscqxhUehuNQ==
+"@babel/register@^8.0.1", "@babel/register@^8.0.6":
+  version "8.0.6"
+  resolved "https://registry.yarnpkg.com/@babel/register/-/register-8.0.6.tgz#d4a6572c0111474eb33626028ee2f61a8e274f8c"
+  integrity sha512-Ix77Wl3Xpv/YXCRUa7s/FC0pWqsA+fego+HjmC0ziJioGKrBdS2Jpz2GruJMkUKYiJ33m+W8NXfce+3PQRzmSQ==
   dependencies:
     "@cspotcode/source-map-support" "^0.8.1"
     cacache "20.0.3"
