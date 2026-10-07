@@ -22,7 +22,7 @@
     "dependencies": {
         "@cryptofonts/cryptofont": "^1.3.5",
         "@fortawesome/fontawesome-free": "^7.3.1",
-        "@json-editor/json-editor": "^2.15.2",
+        "@json-editor/json-editor": "^2.17.2",
         "@popperjs/core": "^2.11.8",
         "bootstrap": "^5.3.7",
         "buffer": "^6.0.3",
