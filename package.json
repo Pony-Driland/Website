@@ -41,7 +41,7 @@
         "pizzicato": "^0.6.4",
         "qrcode": "^1.5.0",
         "sitemap": "^9.0.0",
-        "socket.io-client": "^4.8.3",
+        "socket.io-client": "^4.8.4",
         "tiny-ai-api": "^1.2.0",
         "tiny-dices": "^1.1.2",
         "tiny-essentials": "^1.29.0",
