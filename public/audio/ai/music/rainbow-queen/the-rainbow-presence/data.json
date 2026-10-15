@@ -1,5 +1,6 @@
 {
-    "file": "the-rainbow-presence.mp3",
+    "format": ["mp3", "wav"],
+    "file": "the-rainbow-presence",
     "generators_used": ["suno"],
     "bpm": [143, 138, 142, 130, 125, 130, 122, 126, 120, 133, 142, 110, 115],
     "creation_date": 1773599940000,

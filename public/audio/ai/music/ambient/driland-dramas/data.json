@@ -1,5 +1,6 @@
 {
-    "file": "driland-dramas.mp3",
+    "format": ["mp3", "wav"],
+    "file": "driland-dramas",
     "generators_used": ["suno"],
     "bpm": [90],
     "creation_date": 1772356200000,

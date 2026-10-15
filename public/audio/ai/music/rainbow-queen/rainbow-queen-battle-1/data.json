@@ -1,5 +1,6 @@
 {
-    "file": "rainbow-queen-battle-1.mp3",
+    "format": ["mp3", "wav"],
+    "file": "rainbow-queen-battle-1",
     "generators_used": ["suno"],
     "bpm": [145, 135, 130, 110, 108],
     "suno_start": "00:00.406",

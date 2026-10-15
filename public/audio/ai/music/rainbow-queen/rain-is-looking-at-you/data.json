@@ -1,5 +1,6 @@
 {
-    "file": "rain-is-looking-at-you.mp3",
+    "format": ["mp3", "wav"],
+    "file": "rain-is-looking-at-you",
     "generators_used": ["suno"],
     "bpm": [90],
     "suno_start": "00:00.019",

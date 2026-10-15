@@ -1,5 +1,6 @@
 {
-    "file": "mystery-star-battlefield-v2.mp3",
+    "format": ["mp3", "wav"],
+    "file": "mystery-star-battlefield-v2",
     "generators_used": ["suno"],
     "bpm": [80],
     "suno_start": "00:00.528",
