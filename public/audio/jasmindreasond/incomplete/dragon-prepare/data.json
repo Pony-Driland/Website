@@ -1,4 +1,5 @@
 {
-    "file": "dragon_prepare_31.wav",
+    "format": ["wav"],
+    "file": "dragon_prepare_31",
     "creation_date": 1448803440000
 }

@@ -1,4 +1,5 @@
 {
-    "file": "play-again.wav",
+    "format": ["wav"],
+    "file": "play-again",
     "creation_date": 1431275280000
 }
