@@ -1,5 +1,6 @@
 {
-    "file": "first-elite-color-meeting-with-prisma-on-the-subway.mp3",
+    "format": ["mp3", "wav"],
+    "file": "first-elite-color-meeting-with-prisma-on-the-subway",
     "generators_used": ["suno"],
     "bpm": [185, 190, 186, 165, 130, 110, 95, 97, 95],
     "suno_start": "00:00.284",

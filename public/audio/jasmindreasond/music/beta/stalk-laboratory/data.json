@@ -1,4 +1,5 @@
 {
-    "file": "stalk-laboratory.mp3",
+    "format": ["mp3", "wav"],
+    "file": "stalk-laboratory",
     "creation_date": 1493143020000
 }

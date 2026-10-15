@@ -1,5 +1,6 @@
 {
-    "file": ["driland-mysteries.mp3", "driland-mysteries(1).mp3"],
+    "format": ["mp3", "wav"],
+    "file": ["driland-mysteries", "driland-mysteries(1)"],
     "generators_used": ["suno"],
     "bpm": [90, 100, 110, 120, 150, 160, 166],
     "suno_start": "00:00.667",

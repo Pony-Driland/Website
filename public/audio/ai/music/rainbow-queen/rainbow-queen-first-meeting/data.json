@@ -1,5 +1,6 @@
 {
-    "file": "rainbow-queen-first-meeting.mp3",
+    "format": ["mp3", "wav"],
+    "file": "rainbow-queen-first-meeting",
     "generators_used": ["suno"],
     "bpm": [90],
     "creation_date": 1772581380000,

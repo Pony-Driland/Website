@@ -1,5 +1,6 @@
 {
-    "file": "the-colorless-rainbow.mp3",
+    "format": ["mp3", "wav"],
+    "file": "the-colorless-rainbow",
     "generators_used": ["suno"],
     "bpm": [90],
     "suno_start": "00:00.014",

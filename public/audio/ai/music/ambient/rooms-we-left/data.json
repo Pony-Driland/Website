@@ -1,5 +1,6 @@
 {
-    "file": "rooms-we-left.mp3",
+    "format": ["mp3", "wav"],
+    "file": "rooms-we-left",
     "generators_used": ["suno"],
     "bpm": [109, 110, 112, 107, 102, 96, 91],
     "suno_start": "00:00.102",

@@ -1,5 +1,6 @@
 {
-    "file": "rainbow-queen-theme.mp3",
+    "format": ["mp3", "wav"],
+    "file": "rainbow-queen-theme",
     "generators_used": ["suno"],
     "bpm": [130],
     "suno_start": "00:00.529",

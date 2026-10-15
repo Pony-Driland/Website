@@ -1,5 +1,6 @@
 {
-    "file": "the-dragon-prepare-31-(electronic).mp3",
+    "format": ["mp3", "wav"],
+    "file": "the-dragon-prepare-31-(electronic)",
     "generators_used": ["suno"],
     "bpm": [130],
     "suno_start": "00:00.036",
