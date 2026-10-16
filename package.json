@@ -47,7 +47,7 @@
         "tiny-essentials": "^1.29.0",
         "tiny-server-essentials": "^1.1.2",
         "tippy.js": "^6.3.7",
-        "ws": "^8.21.3"
+        "ws": "^8.22.0"
     },
     "devDependencies": {
         "@babel/cli": "^8.0.4",
@@ -61,7 +61,7 @@
         "@types/clone": "^2.1.4",
         "@types/fs-extra": "^11.0.4",
         "@types/json-editor": "^0.0.10",
-        "@types/ws": "^8.18.1",
+        "@types/ws": "^8.18.2",
         "babel-preset-es2015": "^6.24.1",
         "chokidar": "^5.0.0",
         "esbuild": "^0.28.1",
