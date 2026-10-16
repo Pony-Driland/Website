@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@babel/cli@^8.0.4":
-  version "8.0.4"
-  resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-8.0.4.tgz#b941c026bc0d6e674c363dc1c2cbf784207e2ca7"
-  integrity sha512-mgg9G7dJw7xzx/0Sn8eWQkDpEcQrlDdEV4Y4Ii+8Oay88+lK45vNuSavRUj4g+e5Yfw4tkH4U3ObBFOMJhy4oQ==
+"@babel/cli@^8.0.6":
+  version "8.0.6"
+  resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-8.0.6.tgz#d209800ad1f078f7cbb9a2f4e0f546a72d1180e9"
+  integrity sha512-um8l/siZ6XioGNxbmEry1Z3u77Ye6bkDkg6lXewtZDacGNC+MLh85CWcnMV/A12i4eh77HkhkSKVlZtk4JsucA==
   dependencies:
-    "@jridgewell/trace-mapping" "^0.3.28"
+    "@jridgewell/trace-mapping" "^0.3.31"
     chokidar "^5.0.0"
     commander "^14.0.2"
     convert-source-map "^2.0.0"
@@ -1560,7 +1560,7 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@jridgewell/trace-mapping@^0.3.24", "@jridgewell/trace-mapping@^0.3.28":
+"@jridgewell/trace-mapping@^0.3.24", "@jridgewell/trace-mapping@^0.3.28", "@jridgewell/trace-mapping@^0.3.31":
   version "0.3.31"
   resolved "https://registry.yarnpkg.com/@jridgewell/trace-mapping/-/trace-mapping-0.3.31.tgz#db15d6781c931f3a251a3dac39501c98a6082fd0"
   integrity sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==
