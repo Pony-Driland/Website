@@ -5,7 +5,6 @@
     "bpm": [91, 93, 95, 90],
     "suno_start": "00:00.126",
     "creation_date": 1792108791000,
-    "instrument_prompt": "Dark Gothic J-Rock / Orchestral Metal Instrumental, Instrumentation: Heavy, low-tuned distorted electric guitars with chugging riffs, Cinematic staccato strings (violins and cellos) providing a fast, rhythmic drive, Orchestral percussion with deep Taiko drums and industrial metallic hits, Eerie pipe organ melodies layered with dark, atmospheric synthesizers, Occasional gothic bells or chimes for a haunting regal feel",
     "production_steps": [
         { 
             "id": "google_flow_music",
@@ -14,7 +13,8 @@
         {
             "id": "suno",
             "weirdness": 0.25,
-            "max_mode": true
+            "max_mode": true,
+            "instrument_prompt": "Dark Gothic J-Rock / Orchestral Metal Instrumental, Instrumentation: Heavy, low-tuned distorted electric guitars with chugging riffs, Cinematic staccato strings (violins and cellos) providing a fast, rhythmic drive, Orchestral percussion with deep Taiko drums and industrial metallic hits, Eerie pipe organ melodies layered with dark, atmospheric synthesizers, Occasional gothic bells or chimes for a haunting regal feel"
         }
     ],
     "reference_songs": ["rainbow-queen-first-meeting"]
