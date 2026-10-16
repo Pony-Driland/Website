@@ -2,7 +2,7 @@
     "format": ["mp3", "wav"],
     "file": "the-hard-battle",
     "generators_used": ["suno"],
-    "bpm": [91, 93, 95, 90],
+    "bpm": [91, 184, 93, 95, 90],
     "suno_start": "00:00.126",
     "creation_date": 1792108791000,
     "production_steps": [
