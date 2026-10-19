@@ -3,7 +3,7 @@
     "format?": ["string"],
     "category?": "string|string[]",
     "generators_used?": ["string"],
-    "bpm": ["number"],
+    "bpm?": ["number"],
     "suno_start?": "string",
     "alternative_files?": [
         {
