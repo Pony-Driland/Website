@@ -3,6 +3,11 @@
     "file": "pudim-amarelinho",
     "generators_used": ["suno"],
     "creation_date": 1782975060000,
-    "instrument_prompt": "electrifying, dark piano, hypnotique",
+    "production_steps": [
+        {
+            "id": "suno_v5.5",
+            "instrument_prompt": "electrifying, dark piano, hypnotique"
+        }
+    ],
     "reference_songs": []
 }

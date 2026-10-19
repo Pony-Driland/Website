@@ -5,6 +5,11 @@
     "bpm": [120],
     "suno_start": "00:00.151",
     "creation_date": 1777206960000,
-    "instrument_prompt": "Dark Gothic J-Rock / Orchestral Metal, instrumental, high-intensity fast-paced drive in a minor key; music box motif, low-tuned chugging guitars, rapid staccato violins and cellos, deep taiko drums, metallic hits, eerie pipe organ, atmospheric synths and gothic chimes; low drone and creeping strings build to a sudden full-band surge, ending in a sustained orchestral swell.",
+    "production_steps": [
+        {
+            "id": "suno_v6",
+            "instrument_prompt": "Dark Gothic J-Rock / Orchestral Metal, instrumental, high-intensity fast-paced drive in a minor key; music box motif, low-tuned chugging guitars, rapid staccato violins and cellos, deep taiko drums, metallic hits, eerie pipe organ, atmospheric synths and gothic chimes; low drone and creeping strings build to a sudden full-band surge, ending in a sustained orchestral swell."
+        }
+    ],
     "reference_songs": []
 }
