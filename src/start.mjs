@@ -1088,7 +1088,7 @@ rootApp.onReady(() => {
                 // Logo
                 TinyHtml.createFrom('div', { class: 'col-md-6 mt-md-0 mt-3' }).append(
                   TinyHtml.createFrom('center').append(
-                    TinyHtml.createFrom('img', { class: 'img-fluid', src: '/img/logo.png' }),
+                    TinyHtml.createFrom('img', { class: 'img-fluid', src: '/img/blank.png' }),
                     TinyHtml.createFrom('br'),
                   ),
                 ),
