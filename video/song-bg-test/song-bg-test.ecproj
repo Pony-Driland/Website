@@ -5,7 +5,7 @@
     1
   ],
   "compTimes": {
-    "1": 2051111462400
+    "1": 1813792780800
   },
   "schema": 2,
   "settings": {
@@ -51,6 +51,2497 @@
         ],
         "layers": [
           {
+            "id": 259,
+            "name": "Song Name",
+            "source": {
+              "type": "Text"
+            },
+            "label": "Red",
+            "comment": "",
+            "start_time": 0,
+            "in_point": 0,
+            "out_point": 2542700160000,
+            "stretch": 100.0,
+            "switches": {
+              "video": true,
+              "audio": true,
+              "solo": false,
+              "locked": false,
+              "shy": false,
+              "collapse": false,
+              "quality": "Best",
+              "sampling": "Bilinear",
+              "effects": true,
+              "frame_blend": "Off",
+              "motion_blur": false,
+              "adjustment": false,
+              "three_d": false,
+              "guide": false
+            },
+            "blend_mode": "Normal",
+            "preserve_transparency": false,
+            "track_matte": null,
+            "parent": null,
+            "markers": [],
+            "auto_orient": "Off",
+            "props": {
+              "uid": 260,
+              "match": "layer",
+              "name": "Text",
+              "kind": {
+                "kind": "Plain"
+              },
+              "enabled": true,
+              "children": [
+                {
+                  "node": "Group",
+                  "uid": 275,
+                  "match": "text",
+                  "name": "Text",
+                  "kind": {
+                    "kind": "Plain"
+                  },
+                  "enabled": true,
+                  "children": [
+                    {
+                      "node": "Prop",
+                      "uid": 261,
+                      "match": "sourceText",
+                      "name": "Source Text",
+                      "value": {
+                        "t": "Text",
+                        "v": {
+                          "text": "Song Name",
+                          "font": "Ubuntu",
+                          "style": "Bold",
+                          "size": 120.0,
+                          "fill": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                          ],
+                          "stroke": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                          ],
+                          "stroke_width": 0.0,
+                          "apply_fill": true,
+                          "apply_stroke": true,
+                          "stroke_over_fill": true,
+                          "tracking": 0.0,
+                          "leading": null,
+                          "justify": "Center",
+                          "baseline_shift": 0.0,
+                          "h_scale": 100.0,
+                          "v_scale": 100.0,
+                          "faux_bold": false,
+                          "faux_italic": false,
+                          "all_caps": false,
+                          "small_caps": false,
+                          "box_size": null,
+                          "box_pos": [
+                            0.0,
+                            0.0
+                          ],
+                          "tsume": 0.0,
+                          "baseline": "Normal",
+                          "kerning": "Metrics",
+                          "ligatures": true,
+                          "tate_chu_yoko": false,
+                          "vertical_roman_upright": false,
+                          "indent_left": 0.0,
+                          "indent_right": 0.0,
+                          "indent_first": 0.0,
+                          "space_before": 0.0,
+                          "space_after": 0.0,
+                          "direction": "Ltr",
+                          "composer": "EveryLine",
+                          "hanging_punctuation": false,
+                          "vertical": false
+                        }
+                      },
+                      "ui": {
+                        "kind": "Text"
+                      },
+                      "spatial": false,
+                      "hold_only": true,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 262,
+                      "match": "perChar3d",
+                      "name": "Per-character 3D",
+                      "value": {
+                        "t": "Bool",
+                        "v": false
+                      },
+                      "ui": {
+                        "kind": "Hidden"
+                      },
+                      "spatial": false,
+                      "hold_only": true,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": true
+                    },
+                    {
+                      "node": "Group",
+                      "uid": 264,
+                      "match": "pathOptions",
+                      "name": "Path Options",
+                      "kind": {
+                        "kind": "Plain"
+                      },
+                      "enabled": true,
+                      "children": [
+                        {
+                          "node": "Prop",
+                          "uid": 263,
+                          "match": "path",
+                          "name": "Path",
+                          "value": {
+                            "t": "Enum",
+                            "v": 0
+                          },
+                          "ui": {
+                            "kind": "Popup",
+                            "options": [
+                              "None"
+                            ]
+                          },
+                          "spatial": false,
+                          "hold_only": true,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": true
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 265,
+                          "match": "reversePath",
+                          "name": "Reverse Path",
+                          "value": {
+                            "t": "Bool",
+                            "v": false
+                          },
+                          "ui": {
+                            "kind": "Checkbox"
+                          },
+                          "spatial": false,
+                          "hold_only": true,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 266,
+                          "match": "perpendicular",
+                          "name": "Perpendicular To Path",
+                          "value": {
+                            "t": "Bool",
+                            "v": true
+                          },
+                          "ui": {
+                            "kind": "Checkbox"
+                          },
+                          "spatial": false,
+                          "hold_only": true,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 267,
+                          "match": "forceAlignment",
+                          "name": "Force Alignment",
+                          "value": {
+                            "t": "Bool",
+                            "v": false
+                          },
+                          "ui": {
+                            "kind": "Checkbox"
+                          },
+                          "spatial": false,
+                          "hold_only": true,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 268,
+                          "match": "firstMargin",
+                          "name": "First Margin",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Pixels"
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 269,
+                          "match": "lastMargin",
+                          "name": "Last Margin",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Pixels"
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        }
+                      ]
+                    },
+                    {
+                      "node": "Group",
+                      "uid": 270,
+                      "match": "moreOptions",
+                      "name": "More Options",
+                      "kind": {
+                        "kind": "Plain"
+                      },
+                      "enabled": true,
+                      "children": [
+                        {
+                          "node": "Prop",
+                          "uid": 271,
+                          "match": "anchorGrouping",
+                          "name": "Anchor Point Grouping",
+                          "value": {
+                            "t": "Enum",
+                            "v": 0
+                          },
+                          "ui": {
+                            "kind": "Popup",
+                            "options": [
+                              "Character",
+                              "Word",
+                              "Line",
+                              "All"
+                            ]
+                          },
+                          "spatial": false,
+                          "hold_only": true,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": true
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 272,
+                          "match": "groupingAlignment",
+                          "name": "Grouping Alignment",
+                          "value": {
+                            "t": "Vec2",
+                            "v": [
+                              0.0,
+                              0.0
+                            ]
+                          },
+                          "ui": {
+                            "kind": "Percent"
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 273,
+                          "match": "fillStroke",
+                          "name": "Fill & Stroke",
+                          "value": {
+                            "t": "Enum",
+                            "v": 0
+                          },
+                          "ui": {
+                            "kind": "Popup",
+                            "options": [
+                              "Per Character Palette",
+                              "All Fills Over All Strokes",
+                              "All Strokes Over All Fills"
+                            ]
+                          },
+                          "spatial": false,
+                          "hold_only": true,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": true
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 274,
+                          "match": "interCharBlend",
+                          "name": "Inter-Character Blending",
+                          "value": {
+                            "t": "Enum",
+                            "v": 0
+                          },
+                          "ui": {
+                            "kind": "Popup",
+                            "options": [
+                              "Normal",
+                              "Darken",
+                              "Multiply",
+                              "Color Burn",
+                              "Linear Burn",
+                              "Darker Color",
+                              "Add",
+                              "Lighten",
+                              "Screen",
+                              "Color Dodge",
+                              "Lighter Color",
+                              "Overlay",
+                              "Soft Light",
+                              "Hard Light",
+                              "Linear Light",
+                              "Vivid Light",
+                              "Pin Light",
+                              "Hard Mix",
+                              "Difference",
+                              "Exclusion",
+                              "Subtract",
+                              "Divide",
+                              "Hue",
+                              "Saturation",
+                              "Color",
+                              "Luminosity"
+                            ]
+                          },
+                          "spatial": false,
+                          "hold_only": true,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": true
+                        }
+                      ]
+                    },
+                    {
+                      "node": "Group",
+                      "uid": 276,
+                      "match": "animators",
+                      "name": "Animators",
+                      "kind": {
+                        "kind": "Plain"
+                      },
+                      "enabled": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "node": "Group",
+                  "uid": 277,
+                  "match": "masks",
+                  "name": "Masks",
+                  "kind": {
+                    "kind": "Plain"
+                  },
+                  "enabled": true,
+                  "children": []
+                },
+                {
+                  "node": "Group",
+                  "uid": 278,
+                  "match": "effects",
+                  "name": "Effects",
+                  "kind": {
+                    "kind": "Plain"
+                  },
+                  "enabled": true,
+                  "children": []
+                },
+                {
+                  "node": "Group",
+                  "uid": 287,
+                  "match": "transform",
+                  "name": "Transform",
+                  "kind": {
+                    "kind": "Plain"
+                  },
+                  "enabled": true,
+                  "children": [
+                    {
+                      "node": "Prop",
+                      "uid": 279,
+                      "match": "anchor",
+                      "name": "Anchor Point",
+                      "value": {
+                        "t": "Vec3",
+                        "v": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ]
+                      },
+                      "ui": {
+                        "kind": "Point"
+                      },
+                      "spatial": true,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 2,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 280,
+                      "match": "position",
+                      "name": "Position",
+                      "value": {
+                        "t": "Vec3",
+                        "v": [
+                          516.5524291992188,
+                          819.343705729226,
+                          0.0
+                        ]
+                      },
+                      "ui": {
+                        "kind": "Point"
+                      },
+                      "spatial": true,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 2,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 281,
+                      "match": "scale",
+                      "name": "Scale",
+                      "value": {
+                        "t": "Vec3",
+                        "v": [
+                          100.0,
+                          100.0,
+                          100.0
+                        ]
+                      },
+                      "ui": {
+                        "kind": "Percent"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 2,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 282,
+                      "match": "orientation",
+                      "name": "Orientation",
+                      "value": {
+                        "t": "Vec3",
+                        "v": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ]
+                      },
+                      "ui": {
+                        "kind": "Angle"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": true,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 283,
+                      "match": "rotationX",
+                      "name": "X Rotation",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 0.0
+                      },
+                      "ui": {
+                        "kind": "Angle"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": true,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 284,
+                      "match": "rotationY",
+                      "name": "Y Rotation",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 0.0
+                      },
+                      "ui": {
+                        "kind": "Angle"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": true,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 285,
+                      "match": "rotation",
+                      "name": "Rotation",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 0.0
+                      },
+                      "ui": {
+                        "kind": "Angle"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 286,
+                      "match": "opacity",
+                      "name": "Opacity",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 100.0
+                      },
+                      "ui": {
+                        "kind": "Slider",
+                        "min": 0.0,
+                        "max": 100.0,
+                        "slider_min": 0.0,
+                        "slider_max": 100.0,
+                        "decimals": 0
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    }
+                  ]
+                },
+                {
+                  "node": "Group",
+                  "uid": 288,
+                  "match": "materialOptions",
+                  "name": "Material Options",
+                  "kind": {
+                    "kind": "Plain"
+                  },
+                  "enabled": true,
+                  "children": [
+                    {
+                      "node": "Prop",
+                      "uid": 289,
+                      "match": "castsShadows",
+                      "name": "Casts Shadows",
+                      "value": {
+                        "t": "Enum",
+                        "v": 0
+                      },
+                      "ui": {
+                        "kind": "Popup",
+                        "options": [
+                          "Off",
+                          "On",
+                          "Only"
+                        ]
+                      },
+                      "spatial": false,
+                      "hold_only": true,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 290,
+                      "match": "lightTransmission",
+                      "name": "Light Transmission",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 0.0
+                      },
+                      "ui": {
+                        "kind": "Percent"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 291,
+                      "match": "acceptsShadows",
+                      "name": "Accepts Shadows",
+                      "value": {
+                        "t": "Enum",
+                        "v": 1
+                      },
+                      "ui": {
+                        "kind": "Popup",
+                        "options": [
+                          "Off",
+                          "On",
+                          "Only"
+                        ]
+                      },
+                      "spatial": false,
+                      "hold_only": true,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 292,
+                      "match": "acceptsLights",
+                      "name": "Accepts Lights",
+                      "value": {
+                        "t": "Bool",
+                        "v": true
+                      },
+                      "ui": {
+                        "kind": "Checkbox"
+                      },
+                      "spatial": false,
+                      "hold_only": true,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 293,
+                      "match": "ambient",
+                      "name": "Ambient",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 100.0
+                      },
+                      "ui": {
+                        "kind": "Percent"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 294,
+                      "match": "diffuse",
+                      "name": "Diffuse",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 50.0
+                      },
+                      "ui": {
+                        "kind": "Percent"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 295,
+                      "match": "specularIntensity",
+                      "name": "Specular Intensity",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 50.0
+                      },
+                      "ui": {
+                        "kind": "Percent"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 296,
+                      "match": "specularShininess",
+                      "name": "Specular Shininess",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 5.0
+                      },
+                      "ui": {
+                        "kind": "Percent"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 297,
+                      "match": "metal",
+                      "name": "Metal",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 100.0
+                      },
+                      "ui": {
+                        "kind": "Percent"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": 178,
+            "name": "logo.png",
+            "source": {
+              "type": "Footage",
+              "item": 177
+            },
+            "label": "Lavender",
+            "comment": "",
+            "start_time": 0,
+            "in_point": 0,
+            "out_point": 2542700160000,
+            "stretch": 100.0,
+            "switches": {
+              "video": true,
+              "audio": true,
+              "solo": false,
+              "locked": true,
+              "shy": false,
+              "collapse": false,
+              "quality": "Best",
+              "sampling": "Bilinear",
+              "effects": true,
+              "frame_blend": "Off",
+              "motion_blur": false,
+              "adjustment": false,
+              "three_d": false,
+              "guide": false
+            },
+            "blend_mode": "Normal",
+            "preserve_transparency": false,
+            "track_matte": null,
+            "parent": null,
+            "markers": [],
+            "auto_orient": "Off",
+            "props": {
+              "uid": 179,
+              "match": "layer",
+              "name": "logo.png",
+              "kind": {
+                "kind": "Plain"
+              },
+              "enabled": true,
+              "children": [
+                {
+                  "node": "Group",
+                  "uid": 180,
+                  "match": "masks",
+                  "name": "Masks",
+                  "kind": {
+                    "kind": "Plain"
+                  },
+                  "enabled": true,
+                  "children": []
+                },
+                {
+                  "node": "Group",
+                  "uid": 181,
+                  "match": "effects",
+                  "name": "Effects",
+                  "kind": {
+                    "kind": "Plain"
+                  },
+                  "enabled": true,
+                  "children": [
+                    {
+                      "node": "Group",
+                      "uid": 201,
+                      "match": "ec.color.huesaturation",
+                      "name": "Hue/Saturation",
+                      "kind": {
+                        "kind": "Effect",
+                        "effect": "ec.color.huesaturation"
+                      },
+                      "enabled": true,
+                      "children": [
+                        {
+                          "node": "Prop",
+                          "uid": 202,
+                          "match": "channelControl",
+                          "name": "Channel Control",
+                          "value": {
+                            "t": "Enum",
+                            "v": 0
+                          },
+                          "ui": {
+                            "kind": "Popup",
+                            "options": [
+                              "Master",
+                              "Reds",
+                              "Yellows",
+                              "Greens",
+                              "Cyans",
+                              "Blues",
+                              "Magentas"
+                            ]
+                          },
+                          "spatial": false,
+                          "hold_only": true,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 203,
+                          "match": "hue",
+                          "name": "Master Hue",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "keys": [
+                            {
+                              "time": 0,
+                              "value": {
+                                "t": "Scalar",
+                                "v": 0.0
+                              },
+                              "in_interp": "Linear",
+                              "out_interp": "Linear",
+                              "in_ease": [],
+                              "out_ease": [],
+                              "continuous": false,
+                              "auto_bezier": false,
+                              "spatial_in": [
+                                0.0,
+                                0.0,
+                                0.0
+                              ],
+                              "spatial_out": [
+                                0.0,
+                                0.0,
+                                0.0
+                              ],
+                              "spatial_auto": true,
+                              "spatial_continuous": false,
+                              "roving": false
+                            },
+                            {
+                              "time": 2534224492800,
+                              "value": {
+                                "t": "Scalar",
+                                "v": 720.0
+                              },
+                              "in_interp": "Linear",
+                              "out_interp": "Linear",
+                              "in_ease": [],
+                              "out_ease": [],
+                              "continuous": false,
+                              "auto_bezier": false,
+                              "spatial_in": [
+                                0.0,
+                                0.0,
+                                0.0
+                              ],
+                              "spatial_out": [
+                                0.0,
+                                0.0,
+                                0.0
+                              ],
+                              "spatial_auto": true,
+                              "spatial_continuous": false,
+                              "roving": false
+                            }
+                          ],
+                          "ui": {
+                            "kind": "Angle"
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 204,
+                          "match": "saturation",
+                          "name": "Master Saturation",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -100.0,
+                            "max": 100.0,
+                            "slider_min": -100.0,
+                            "slider_max": 100.0,
+                            "decimals": 1
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 205,
+                          "match": "lightness",
+                          "name": "Master Lightness",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -100.0,
+                            "max": 100.0,
+                            "slider_min": -100.0,
+                            "slider_max": 100.0,
+                            "decimals": 1
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 206,
+                          "match": "redsHue",
+                          "name": "Red Hue",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Angle"
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 207,
+                          "match": "redsSaturation",
+                          "name": "Red Saturation",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -100.0,
+                            "max": 100.0,
+                            "slider_min": -100.0,
+                            "slider_max": 100.0,
+                            "decimals": 1
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 208,
+                          "match": "redsLightness",
+                          "name": "Red Lightness",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -100.0,
+                            "max": 100.0,
+                            "slider_min": -100.0,
+                            "slider_max": 100.0,
+                            "decimals": 1
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 209,
+                          "match": "redsRangeStart",
+                          "name": "Red Range Start",
+                          "value": {
+                            "t": "Scalar",
+                            "v": -15.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -360.0,
+                            "max": 720.0,
+                            "slider_min": -180.0,
+                            "slider_max": 360.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 210,
+                          "match": "redsRangeEnd",
+                          "name": "Red Range End",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 15.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -360.0,
+                            "max": 720.0,
+                            "slider_min": -180.0,
+                            "slider_max": 360.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 211,
+                          "match": "redsStartFalloff",
+                          "name": "Red Start Falloff",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 30.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": 0.0,
+                            "max": 180.0,
+                            "slider_min": 0.0,
+                            "slider_max": 90.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 212,
+                          "match": "redsEndFalloff",
+                          "name": "Red End Falloff",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 30.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": 0.0,
+                            "max": 180.0,
+                            "slider_min": 0.0,
+                            "slider_max": 90.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 213,
+                          "match": "yellowsHue",
+                          "name": "Yellow Hue",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Angle"
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 214,
+                          "match": "yellowsSaturation",
+                          "name": "Yellow Saturation",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -100.0,
+                            "max": 100.0,
+                            "slider_min": -100.0,
+                            "slider_max": 100.0,
+                            "decimals": 1
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 215,
+                          "match": "yellowsLightness",
+                          "name": "Yellow Lightness",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -100.0,
+                            "max": 100.0,
+                            "slider_min": -100.0,
+                            "slider_max": 100.0,
+                            "decimals": 1
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 216,
+                          "match": "yellowsRangeStart",
+                          "name": "Yellow Range Start",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 45.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -360.0,
+                            "max": 720.0,
+                            "slider_min": -180.0,
+                            "slider_max": 360.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 217,
+                          "match": "yellowsRangeEnd",
+                          "name": "Yellow Range End",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 75.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -360.0,
+                            "max": 720.0,
+                            "slider_min": -180.0,
+                            "slider_max": 360.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 218,
+                          "match": "yellowsStartFalloff",
+                          "name": "Yellow Start Falloff",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 30.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": 0.0,
+                            "max": 180.0,
+                            "slider_min": 0.0,
+                            "slider_max": 90.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 219,
+                          "match": "yellowsEndFalloff",
+                          "name": "Yellow End Falloff",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 30.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": 0.0,
+                            "max": 180.0,
+                            "slider_min": 0.0,
+                            "slider_max": 90.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 220,
+                          "match": "greensHue",
+                          "name": "Green Hue",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Angle"
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 221,
+                          "match": "greensSaturation",
+                          "name": "Green Saturation",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -100.0,
+                            "max": 100.0,
+                            "slider_min": -100.0,
+                            "slider_max": 100.0,
+                            "decimals": 1
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 222,
+                          "match": "greensLightness",
+                          "name": "Green Lightness",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -100.0,
+                            "max": 100.0,
+                            "slider_min": -100.0,
+                            "slider_max": 100.0,
+                            "decimals": 1
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 223,
+                          "match": "greensRangeStart",
+                          "name": "Green Range Start",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 105.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -360.0,
+                            "max": 720.0,
+                            "slider_min": -180.0,
+                            "slider_max": 360.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 224,
+                          "match": "greensRangeEnd",
+                          "name": "Green Range End",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 135.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -360.0,
+                            "max": 720.0,
+                            "slider_min": -180.0,
+                            "slider_max": 360.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 225,
+                          "match": "greensStartFalloff",
+                          "name": "Green Start Falloff",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 30.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": 0.0,
+                            "max": 180.0,
+                            "slider_min": 0.0,
+                            "slider_max": 90.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 226,
+                          "match": "greensEndFalloff",
+                          "name": "Green End Falloff",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 30.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": 0.0,
+                            "max": 180.0,
+                            "slider_min": 0.0,
+                            "slider_max": 90.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 227,
+                          "match": "cyansHue",
+                          "name": "Cyan Hue",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Angle"
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 228,
+                          "match": "cyansSaturation",
+                          "name": "Cyan Saturation",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -100.0,
+                            "max": 100.0,
+                            "slider_min": -100.0,
+                            "slider_max": 100.0,
+                            "decimals": 1
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 229,
+                          "match": "cyansLightness",
+                          "name": "Cyan Lightness",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -100.0,
+                            "max": 100.0,
+                            "slider_min": -100.0,
+                            "slider_max": 100.0,
+                            "decimals": 1
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 230,
+                          "match": "cyansRangeStart",
+                          "name": "Cyan Range Start",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 165.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -360.0,
+                            "max": 720.0,
+                            "slider_min": -180.0,
+                            "slider_max": 360.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 231,
+                          "match": "cyansRangeEnd",
+                          "name": "Cyan Range End",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 195.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -360.0,
+                            "max": 720.0,
+                            "slider_min": -180.0,
+                            "slider_max": 360.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 232,
+                          "match": "cyansStartFalloff",
+                          "name": "Cyan Start Falloff",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 30.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": 0.0,
+                            "max": 180.0,
+                            "slider_min": 0.0,
+                            "slider_max": 90.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 233,
+                          "match": "cyansEndFalloff",
+                          "name": "Cyan End Falloff",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 30.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": 0.0,
+                            "max": 180.0,
+                            "slider_min": 0.0,
+                            "slider_max": 90.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 234,
+                          "match": "bluesHue",
+                          "name": "Blue Hue",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Angle"
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 235,
+                          "match": "bluesSaturation",
+                          "name": "Blue Saturation",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -100.0,
+                            "max": 100.0,
+                            "slider_min": -100.0,
+                            "slider_max": 100.0,
+                            "decimals": 1
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 236,
+                          "match": "bluesLightness",
+                          "name": "Blue Lightness",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -100.0,
+                            "max": 100.0,
+                            "slider_min": -100.0,
+                            "slider_max": 100.0,
+                            "decimals": 1
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 237,
+                          "match": "bluesRangeStart",
+                          "name": "Blue Range Start",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 225.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -360.0,
+                            "max": 720.0,
+                            "slider_min": -180.0,
+                            "slider_max": 360.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 238,
+                          "match": "bluesRangeEnd",
+                          "name": "Blue Range End",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 255.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -360.0,
+                            "max": 720.0,
+                            "slider_min": -180.0,
+                            "slider_max": 360.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 239,
+                          "match": "bluesStartFalloff",
+                          "name": "Blue Start Falloff",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 30.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": 0.0,
+                            "max": 180.0,
+                            "slider_min": 0.0,
+                            "slider_max": 90.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 240,
+                          "match": "bluesEndFalloff",
+                          "name": "Blue End Falloff",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 30.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": 0.0,
+                            "max": 180.0,
+                            "slider_min": 0.0,
+                            "slider_max": 90.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 241,
+                          "match": "magentasHue",
+                          "name": "Magenta Hue",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Angle"
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 242,
+                          "match": "magentasSaturation",
+                          "name": "Magenta Saturation",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -100.0,
+                            "max": 100.0,
+                            "slider_min": -100.0,
+                            "slider_max": 100.0,
+                            "decimals": 1
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 243,
+                          "match": "magentasLightness",
+                          "name": "Magenta Lightness",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -100.0,
+                            "max": 100.0,
+                            "slider_min": -100.0,
+                            "slider_max": 100.0,
+                            "decimals": 1
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 244,
+                          "match": "magentasRangeStart",
+                          "name": "Magenta Range Start",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 285.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -360.0,
+                            "max": 720.0,
+                            "slider_min": -180.0,
+                            "slider_max": 360.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 245,
+                          "match": "magentasRangeEnd",
+                          "name": "Magenta Range End",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 315.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -360.0,
+                            "max": 720.0,
+                            "slider_min": -180.0,
+                            "slider_max": 360.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 246,
+                          "match": "magentasStartFalloff",
+                          "name": "Magenta Start Falloff",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 30.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": 0.0,
+                            "max": 180.0,
+                            "slider_min": 0.0,
+                            "slider_max": 90.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 247,
+                          "match": "magentasEndFalloff",
+                          "name": "Magenta End Falloff",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 30.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": 0.0,
+                            "max": 180.0,
+                            "slider_min": 0.0,
+                            "slider_max": 90.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 248,
+                          "match": "colorize",
+                          "name": "Colorize",
+                          "value": {
+                            "t": "Bool",
+                            "v": false
+                          },
+                          "ui": {
+                            "kind": "Checkbox"
+                          },
+                          "spatial": false,
+                          "hold_only": true,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 249,
+                          "match": "colorizeHue",
+                          "name": "Colorize Hue",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Angle"
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 250,
+                          "match": "colorizeSaturation",
+                          "name": "Colorize Saturation",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 25.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": 0.0,
+                            "max": 100.0,
+                            "slider_min": 0.0,
+                            "slider_max": 100.0,
+                            "decimals": 0
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 251,
+                          "match": "colorizeLightness",
+                          "name": "Colorize Lightness",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": -100.0,
+                            "max": 100.0,
+                            "slider_min": -100.0,
+                            "slider_max": 100.0,
+                            "decimals": 1
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "node": "Group",
+                  "uid": 190,
+                  "match": "transform",
+                  "name": "Transform",
+                  "kind": {
+                    "kind": "Plain"
+                  },
+                  "enabled": true,
+                  "children": [
+                    {
+                      "node": "Prop",
+                      "uid": 182,
+                      "match": "anchor",
+                      "name": "Anchor Point",
+                      "value": {
+                        "t": "Vec3",
+                        "v": [
+                          300.0,
+                          200.0,
+                          0.0
+                        ]
+                      },
+                      "ui": {
+                        "kind": "Point"
+                      },
+                      "spatial": true,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 2,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 183,
+                      "match": "position",
+                      "name": "Position",
+                      "value": {
+                        "t": "Vec3",
+                        "v": [
+                          1583.5967056272762,
+                          540.0,
+                          0.0
+                        ]
+                      },
+                      "ui": {
+                        "kind": "Point"
+                      },
+                      "spatial": true,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 2,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 184,
+                      "match": "scale",
+                      "name": "Scale",
+                      "value": {
+                        "t": "Vec3",
+                        "v": [
+                          124.04185286461303,
+                          124.04185286461303,
+                          100.0
+                        ]
+                      },
+                      "ui": {
+                        "kind": "Percent"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 2,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 185,
+                      "match": "orientation",
+                      "name": "Orientation",
+                      "value": {
+                        "t": "Vec3",
+                        "v": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ]
+                      },
+                      "ui": {
+                        "kind": "Angle"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": true,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 186,
+                      "match": "rotationX",
+                      "name": "X Rotation",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 0.0
+                      },
+                      "ui": {
+                        "kind": "Angle"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": true,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 187,
+                      "match": "rotationY",
+                      "name": "Y Rotation",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 0.0
+                      },
+                      "ui": {
+                        "kind": "Angle"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": true,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 188,
+                      "match": "rotation",
+                      "name": "Rotation",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 0.0
+                      },
+                      "ui": {
+                        "kind": "Angle"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 189,
+                      "match": "opacity",
+                      "name": "Opacity",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 100.0
+                      },
+                      "ui": {
+                        "kind": "Slider",
+                        "min": 0.0,
+                        "max": 100.0,
+                        "slider_min": 0.0,
+                        "slider_max": 100.0,
+                        "decimals": 0
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    }
+                  ]
+                },
+                {
+                  "node": "Group",
+                  "uid": 191,
+                  "match": "materialOptions",
+                  "name": "Material Options",
+                  "kind": {
+                    "kind": "Plain"
+                  },
+                  "enabled": true,
+                  "children": [
+                    {
+                      "node": "Prop",
+                      "uid": 192,
+                      "match": "castsShadows",
+                      "name": "Casts Shadows",
+                      "value": {
+                        "t": "Enum",
+                        "v": 0
+                      },
+                      "ui": {
+                        "kind": "Popup",
+                        "options": [
+                          "Off",
+                          "On",
+                          "Only"
+                        ]
+                      },
+                      "spatial": false,
+                      "hold_only": true,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 193,
+                      "match": "lightTransmission",
+                      "name": "Light Transmission",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 0.0
+                      },
+                      "ui": {
+                        "kind": "Percent"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 194,
+                      "match": "acceptsShadows",
+                      "name": "Accepts Shadows",
+                      "value": {
+                        "t": "Enum",
+                        "v": 1
+                      },
+                      "ui": {
+                        "kind": "Popup",
+                        "options": [
+                          "Off",
+                          "On",
+                          "Only"
+                        ]
+                      },
+                      "spatial": false,
+                      "hold_only": true,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 195,
+                      "match": "acceptsLights",
+                      "name": "Accepts Lights",
+                      "value": {
+                        "t": "Bool",
+                        "v": true
+                      },
+                      "ui": {
+                        "kind": "Checkbox"
+                      },
+                      "spatial": false,
+                      "hold_only": true,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 196,
+                      "match": "ambient",
+                      "name": "Ambient",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 100.0
+                      },
+                      "ui": {
+                        "kind": "Percent"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 197,
+                      "match": "diffuse",
+                      "name": "Diffuse",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 50.0
+                      },
+                      "ui": {
+                        "kind": "Percent"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 198,
+                      "match": "specularIntensity",
+                      "name": "Specular Intensity",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 50.0
+                      },
+                      "ui": {
+                        "kind": "Percent"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 199,
+                      "match": "specularShininess",
+                      "name": "Specular Shininess",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 5.0
+                      },
+                      "ui": {
+                        "kind": "Percent"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    },
+                    {
+                      "node": "Prop",
+                      "uid": 200,
+                      "match": "metal",
+                      "name": "Metal",
+                      "value": {
+                        "t": "Scalar",
+                        "v": 100.0
+                      },
+                      "ui": {
+                        "kind": "Percent"
+                      },
+                      "spatial": false,
+                      "hold_only": false,
+                      "three_d_only": false,
+                      "two_d_only": false,
+                      "shown_dims": 0,
+                      "static_only": false
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
             "id": 88,
             "name": "Song Wave",
             "source": {
@@ -59,15 +2550,15 @@
             },
             "label": "Red",
             "comment": "",
-            "start_time": -93232339200,
-            "in_point": -93232339200,
-            "out_point": 2449467820800,
+            "start_time": -440734694400,
+            "in_point": 0,
+            "out_point": 2542700160000,
             "stretch": 100.0,
             "switches": {
               "video": true,
               "audio": true,
               "solo": false,
-              "locked": false,
+              "locked": true,
               "shy": false,
               "collapse": false,
               "quality": "Best",
@@ -277,7 +2768,7 @@
                           "name": "Maximum Height",
                           "value": {
                             "t": "Scalar",
-                            "v": 522.0963541666667
+                            "v": 522.1
                           },
                           "ui": {
                             "kind": "Slider",
@@ -1042,7 +3533,158 @@
                     "kind": "Plain"
                   },
                   "enabled": true,
-                  "children": []
+                  "children": [
+                    {
+                      "node": "Group",
+                      "uid": 252,
+                      "match": "ec.generate.cclightburst",
+                      "name": "CC Light Burst 2.5",
+                      "kind": {
+                        "kind": "Effect",
+                        "effect": "ec.generate.cclightburst"
+                      },
+                      "enabled": true,
+                      "children": [
+                        {
+                          "node": "Prop",
+                          "uid": 253,
+                          "match": "center",
+                          "name": "Center",
+                          "value": {
+                            "t": "Vec2",
+                            "v": [
+                              3466.0,
+                              2000.0
+                            ]
+                          },
+                          "ui": {
+                            "kind": "Point"
+                          },
+                          "spatial": true,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 254,
+                          "match": "intensity",
+                          "name": "Intensity",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 100.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": 0.0,
+                            "max": 600.0,
+                            "slider_min": 0.0,
+                            "slider_max": 200.0,
+                            "decimals": 1
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 255,
+                          "match": "rayLength",
+                          "name": "Ray Length",
+                          "value": {
+                            "t": "Scalar",
+                            "v": 0.0
+                          },
+                          "ui": {
+                            "kind": "Slider",
+                            "min": 0.0,
+                            "max": 100.0,
+                            "slider_min": 0.0,
+                            "slider_max": 100.0,
+                            "decimals": 1
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 256,
+                          "match": "burst",
+                          "name": "Burst",
+                          "value": {
+                            "t": "Enum",
+                            "v": 2
+                          },
+                          "ui": {
+                            "kind": "Popup",
+                            "options": [
+                              "Straight",
+                              "Fade",
+                              "Center"
+                            ]
+                          },
+                          "spatial": false,
+                          "hold_only": true,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 257,
+                          "match": "setColor",
+                          "name": "Set Color",
+                          "value": {
+                            "t": "Bool",
+                            "v": false
+                          },
+                          "ui": {
+                            "kind": "Checkbox"
+                          },
+                          "spatial": false,
+                          "hold_only": true,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        },
+                        {
+                          "node": "Prop",
+                          "uid": 258,
+                          "match": "color",
+                          "name": "Color",
+                          "value": {
+                            "t": "Color",
+                            "v": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          "ui": {
+                            "kind": "Color"
+                          },
+                          "spatial": false,
+                          "hold_only": false,
+                          "three_d_only": false,
+                          "two_d_only": false,
+                          "shown_dims": 0,
+                          "static_only": false
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "node": "Group",
@@ -2051,7 +4693,39 @@
         "codec": "JPG",
         "missing": false
       }
+    },
+    "177": {
+      "id": 177,
+      "name": "logo.png",
+      "label": "Lavender",
+      "comment": "",
+      "parent": null,
+      "kind": {
+        "type": "Footage",
+        "path": "/run/user/1000/doc/707161ad/logo.png",
+        "kind": "Still",
+        "width": 600,
+        "height": 400,
+        "pixel_aspect": 1.0,
+        "frame_rate": {
+          "num": 30,
+          "den": 1
+        },
+        "native_rate": null,
+        "duration": 0,
+        "has_video": true,
+        "has_audio": false,
+        "alpha": "Straight",
+        "premul_color": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "loop_count": 1,
+        "codec": "PNG",
+        "missing": false
+      }
     }
   },
-  "next_id": 177
+  "next_id": 310
 }
