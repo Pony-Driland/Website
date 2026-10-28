@@ -2,7 +2,7 @@
     "format": ["mp3", "wav"],
     "file": "lingering-shadows",
     "generators_used": ["suno"],
-    "bpm": [],
+    "bpm": [120],
     "suno_start": "00:00.000",
     "creation_date": 0,
     "production_steps": [
