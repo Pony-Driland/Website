@@ -8,6 +8,8 @@ declare global {
   interface SongProductionStep {
     id: string;
     weirdness?: number;
+    style_influence?: number;
+    audio_influence?: number;
     max_mode: boolean;
     instrument_prompt: string;
     instrument_negative_prompt?: string;

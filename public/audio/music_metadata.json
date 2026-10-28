@@ -15,8 +15,10 @@
     "production_steps?": [
         {
             "id": "string",
-            "weirdness?": "number",
-            "max_mode": "boolean",
+            "weirdness?": 0.5,
+            "style_influence?": 0.5,
+            "audio_influence?": 0.25,
+            "max_mode": false,
             "instrument_prompt": "string",
             "instrument_negative_prompt?": "string"
         }

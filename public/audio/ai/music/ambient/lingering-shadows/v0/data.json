@@ -1,0 +1,15 @@
+{
+    "format": ["mp3", "wav"],
+    "file": "lingering-shadows",
+    "generators_used": ["suno"],
+    "bpm": [],
+    "suno_start": "00:00.000",
+    "creation_date": 0,
+    "production_steps": [
+        {
+            "id": "suno_v5",
+            "instrument_prompt": "ghostly dark acoustic, extremely slow tempo, very few instruments, deep sorrow, unsettling calmness, lingering shadows, minimalist dark fantasy, purely instrumental, synthesizers, synth, a deceptive music box melody plays over dark, industrial nightmare, Start with sparse"
+        }
+    ],
+    "reference_songs": ["rainbow-queen-first-meeting", "the-colorless-rainbow", "the-rainbow-presence"]
+}
