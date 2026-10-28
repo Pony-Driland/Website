@@ -2,7 +2,7 @@
     "format": ["mp3", "wav"],
     "file": "the-rainbow-is-here",
     "generators_used": ["suno"],
-    "bpm": [108],
+    "bpm": [108, 96],
     "suno_start": "00:00.116",
     "creation_date": 1792004580000,
     "production_steps": [

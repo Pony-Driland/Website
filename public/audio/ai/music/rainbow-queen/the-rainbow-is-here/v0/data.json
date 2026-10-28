@@ -1,0 +1,15 @@
+{
+    "format": ["mp3", "wav"],
+    "file": "the-rainbow-is-here",
+    "generators_used": ["suno"],
+    "bpm": [108, 96],
+    "suno_start": "00:00.116",
+    "creation_date": 1792004580000,
+    "production_steps": [
+        {
+            "id": "suno_v6",
+            "instrument_prompt": "Dark epic orchestral, instrumental; towering heavy brass over low strings and deep orchestral percussion, with a delicate music-box motif; swelling orchestral crescendo, shadowed gothic textures; slow, weighty pace"
+        }
+    ],
+    "reference_songs": ["rainbow-queen-appears"]
+}
