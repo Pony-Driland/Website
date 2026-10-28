@@ -7,7 +7,9 @@
     "creation_date": 0,
     "production_steps": [
         {
-            "id": "suno_v5",
+            "id": "suno_v6",
+            "weirdness": 0.35,
+            "style_influence": 0.75,
             "instrument_prompt": "ghostly dark acoustic, extremely slow tempo, very few instruments, deep sorrow, unsettling calmness, lingering shadows, minimalist dark fantasy, purely instrumental, synthesizers, synth, a deceptive music box melody plays over dark, industrial nightmare, Start with sparse"
         }
     ],
