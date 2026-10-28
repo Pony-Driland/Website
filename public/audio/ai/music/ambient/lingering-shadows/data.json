@@ -4,7 +4,7 @@
     "generators_used": ["suno"],
     "bpm": [120, 110, 117],
     "suno_start": "00:00.127",
-    "creation_date": 0,
+    "creation_date": 1793145360000,
     "production_steps": [
         {
             "id": "suno_v6",
