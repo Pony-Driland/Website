@@ -1,5 +1,5 @@
 {
-    "format": ["mp3", "wav"],
+    "format": ["mp3"],
     "file": "hiroshi-team-vs-marlon-(v0.9)-(cinematic-song)",
     "generators_used": ["suno"],
     "bpm": [120],

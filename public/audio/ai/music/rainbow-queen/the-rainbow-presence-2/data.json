@@ -1,5 +1,5 @@
 {
-    "format": ["mp3", "wav"],
+    "format": ["mp3"],
     "file": "the-rainbow-presence-2",
     "generators_used": ["suno"],
     "bpm": [132],

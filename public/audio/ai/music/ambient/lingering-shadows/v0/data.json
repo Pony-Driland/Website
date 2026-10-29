@@ -1,5 +1,5 @@
 {
-    "format": ["mp3", "wav"],
+    "format": ["mp3"],
     "file": "lingering-shadows",
     "generators_used": ["suno"],
     "bpm": [120],

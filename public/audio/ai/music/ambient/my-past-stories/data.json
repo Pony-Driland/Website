@@ -1,5 +1,5 @@
 {
-    "format": ["mp3", "wav"],
+    "format": ["mp3"],
     "file": "my-past-stories",
     "generators_used": ["suno"],
     "bpm": [90],

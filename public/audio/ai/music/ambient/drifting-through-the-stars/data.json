@@ -1,5 +1,5 @@
 {
-    "format": ["mp3", "wav"],
+    "format": ["mp3"],
     "file": "drifting-through-the-stars",
     "generators_used": ["suno"],
     "bpm": [120],

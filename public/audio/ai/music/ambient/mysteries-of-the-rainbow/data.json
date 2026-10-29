@@ -1,5 +1,5 @@
 {
-    "format": ["mp3", "wav"],
+    "format": ["mp3"],
     "file": "mysteries-of-the-rainbow",
     "generators_used": ["suno"],
     "bpm": [120],

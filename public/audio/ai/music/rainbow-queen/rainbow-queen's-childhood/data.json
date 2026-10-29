@@ -1,5 +1,5 @@
 {
-    "format": ["mp3", "wav"],
+    "format": ["mp3"],
     "file": "rainbow-queen's-childhood",
     "generators_used": ["suno"],
     "bpm": [148],
