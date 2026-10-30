@@ -4530,10 +4530,10 @@ tiny-dices@^1.1.2:
   resolved "https://registry.yarnpkg.com/tiny-dices/-/tiny-dices-1.1.2.tgz#e67b388b36d0aae0d12867e61fc89fe4da9a92ab"
   integrity sha512-gpAEj85mwwxwPHlTtTMQjAbvn7flrst3RXjYVWGRxaACN6TNyHjK0E2n6/6iC/4FAGG/0BPyg78LRfkxDMvq/A==
 
-tiny-essentials@^1.29.0:
-  version "1.29.0"
-  resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.29.0.tgz#f96528ec69e0e92f8fbb1dca2da081fe1fc75475"
-  integrity sha512-yXBRBh1PtM2VpQmGsRy8DBxKJIkF1pE64c2HyoTENU2S0SvAGxy03nKwNSwDXC4AwlFXiqncTr6NaS9OPJslzg==
+tiny-essentials@^1.29.1:
+  version "1.29.1"
+  resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.29.1.tgz#b81462fd2af707657921cc57bf9cec9d39b29b8f"
+  integrity sha512-XLfP7AHYoHfRPe3YF9OA0Mckaano+Xad5Mxzwyz82r37ZkS5MfGsMODGE7WMxGqP8O1pSbqAIoGVmIcVGL73TQ==
 
 tiny-server-essentials@^1.1.3:
   version "1.1.3"
