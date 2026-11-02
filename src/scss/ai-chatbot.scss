@@ -172,6 +172,29 @@ body.is-using-ai {
 
   // Online
   #ai-element-root {
+    /* Right sidebar (AI run settings) */
+    #ai-run-settings {
+      transition:
+        width 0.2s ease-in-out,
+        min-width 0.2s ease-in-out;
+      flex-shrink: 0;
+
+      .sidebar-right-toggle {
+        flex-shrink: 0;
+        line-height: 1;
+      }
+
+      &.sidebar-collapsed {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        overflow-x: hidden;
+
+        > div:first-child {
+          justify-content: center !important;
+        }
+      }
+    }
+
     &:not(.is-admin):not(.is-mod):not(.is-room-admin):not(.is-room-mod) {
       #ai-chatbox.is-online {
         .delete-button,

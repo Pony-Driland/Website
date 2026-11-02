@@ -1344,27 +1344,79 @@ export const AiScriptStart = async () => {
   );
   contentEnabler.setResetSettingsButton(resetSettingsButton);
 
-  const sidebarRight = TinyHtml.createFrom('div', sidebarStyle).append(
-    TinyHtml.createFrom('ul', { class: 'list-unstyled' }).append(
-      TinyHtml.createFrom('h5').setText('Run Settings'),
-      sidebarRightBase.modelSelector,
-      sidebarRightBase.tokenCounter,
-      sidebarRightBase.temperature,
-      sidebarRightBase.outputLength,
-      sidebarRightBase.topP,
-      sidebarRightBase.topK,
-      sidebarRightBase.presencePenalty,
-      sidebarRightBase.frequencyPenalty,
+  // TITLE: Right sidebar (AI model settings)
+  const sidebarRightTitle = TinyHtml.createFrom('h5').addClass('mb-0').setText('Run Settings');
 
-      TinyHtml.createFrom('hr', { class: 'm-2' }),
+  const sidebarRightToggleIcon = new Icon('fa-solid fa-chevron-right');
 
-      // Load more models
-      loadMoreModels,
+  const sidebarRightToggle = tinyLib.bs
+    .button('bg btn-sm')
+    .addClass('sidebar-right-toggle')
+    .setAttr('title', 'Hide settings')
+    .append(sidebarRightToggleIcon);
 
-      // Reset Settings
-      resetSettingsButton,
-    ),
+  const sidebarRightBody = TinyHtml.createFrom('div')
+    .addClass('sidebar-right-body')
+    .append(
+      TinyHtml.createFrom('ul', { class: 'list-unstyled' }).append(
+        sidebarRightBase.modelSelector,
+        sidebarRightBase.tokenCounter,
+        sidebarRightBase.temperature,
+        sidebarRightBase.outputLength,
+        sidebarRightBase.topP,
+        sidebarRightBase.topK,
+        sidebarRightBase.presencePenalty,
+        sidebarRightBase.frequencyPenalty,
+
+        TinyHtml.createFrom('hr', { class: 'm-2' }),
+
+        // Load more models
+        loadMoreModels,
+
+        // Reset Settings
+        resetSettingsButton,
+      ),
+    );
+
+  const sidebarRight = TinyHtml.createFrom('div', sidebarStyle)
+    .setAttr('id', 'ai-run-settings')
+    .append(
+      TinyHtml.createFrom('div')
+        .addClass('d-flex align-items-center justify-content-between gap-2 mb-2')
+        .append(sidebarRightTitle, sidebarRightToggle),
+      sidebarRightBody,
+    );
+
+  // TITLE: Right sidebar collapse
+  const SIDEBAR_RIGHT_STORAGE = 'tiny-ai-run-settings-collapsed';
+
+  /**
+   * Collapses or expands the AI model settings panel.
+   *
+   * @param {boolean} collapsed - Whether the panel must be collapsed.
+   * @param {boolean} [save=true] - Whether the state must be persisted.
+   */
+  const setSidebarRightCollapsed = (collapsed, save = true) => {
+    sidebarRight.toggleClass('sidebar-collapsed', collapsed);
+    sidebarRightTitle.toggleClass('d-none', collapsed);
+    sidebarRightBody.toggleClass('d-none', collapsed);
+    sidebarRightToggleIcon
+      .removeClass('fa-chevron-left')
+      .removeClass('fa-chevron-right')
+      .addClass(collapsed ? 'fa-chevron-left' : 'fa-chevron-right');
+    sidebarRight.setStyle({
+      width: collapsed ? '56px' : '250px',
+      'min-width': collapsed ? '56px' : '250px',
+    });
+    sidebarRightToggle.setAttr('title', collapsed ? 'Show settings' : 'Hide settings');
+    if (save) tinyLs.setItem(SIDEBAR_RIGHT_STORAGE, String(collapsed));
+  };
+
+  sidebarRightToggle.on('click', () =>
+    setSidebarRightCollapsed(!sidebarRight.hasClass('sidebar-collapsed')),
   );
+
+  setSidebarRightCollapsed(tinyLs.getItem(SIDEBAR_RIGHT_STORAGE) === 'true', false);
 
   // TITLE: Execute messages
   const prepareContentList = (addIndexList = false) => {
