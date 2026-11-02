@@ -1,8 +1,9 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlNumberInput from 'tiny-essentials/libs/html/TinyHtmlElems/Input/Number';
+import { alert, confirm } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
 import { tinyIo } from '../software/base.mjs';
-import tinyLib, { alert } from '../../files/tinyLib.mjs';
+import tinyLib from '../../files/tinyLib.mjs';
 
 export const roomSettingsMenu = () => {
   if (tinyIo.client) {
@@ -247,7 +248,7 @@ export const roomSettingsMenu = () => {
       }
     });
 
-    $deleteForm.on('submit', (e) => {
+    $deleteForm.on('submit', async (e) => {
       e.preventDefault();
       if (!cantEdit) {
         $deleteError.empty(); // limpa erros anteriores
@@ -259,7 +260,7 @@ export const roomSettingsMenu = () => {
           return;
         }
 
-        if (!confirm('Are you absolutely sure? This cannot be undone.')) return;
+        if (!(await confirm('Are you absolutely sure? This cannot be undone.'))) return;
 
         modal.hide();
         tinyIo.client.deleteRoom(password).then((result) => {

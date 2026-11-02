@@ -3,8 +3,9 @@ import objHash from 'object-hash';
 import { isJsonObject } from 'tiny-essentials/basics/objChecker';
 import { fetchJson, fetchText } from 'tiny-essentials/basics/html';
 import { toTitleCase } from 'tiny-essentials/basics/text';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
-import tinyLib, { alert } from './tinyLib.mjs';
+import tinyLib from './tinyLib.mjs';
 import storyCfg from '../chapters/config.mjs';
 import { connStore, ficCache, loaderScreen, tinyLs } from '../important.mjs';
 

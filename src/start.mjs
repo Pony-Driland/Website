@@ -2,6 +2,7 @@ import { installWindowHiddenScript, addAiMarkerShortcut } from 'tiny-essentials/
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import TinyDomReadyManager from 'tiny-essentials/libs/html/TinyDomReadyManager';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 import QRCode from 'qrcode';
 import moment from 'moment';
 import { saveAs } from 'file-saver';
@@ -12,7 +13,7 @@ import './chapters/sound.mjs';
 import './chapters/counter.mjs';
 import './chapters/characters.mjs';
 
-import tinyLib, { alert } from './files/tinyLib.mjs';
+import tinyLib from './files/tinyLib.mjs';
 import { storyData } from './files/chapters.mjs';
 import storyCfg from './chapters/config.mjs';
 import { openChapterMenu } from './chapter_manager/index.mjs';

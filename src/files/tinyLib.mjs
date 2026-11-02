@@ -221,21 +221,6 @@ tinyLib.formGroupCheck = (data) => {
 };
 
 /**
- * Alert
- * @param {string} text
- * @param {string} title
- */
-export const alert = (text, title = 'Browser Warning!') => {
-  return tinyLib.modal({
-    title: TinyHtml.createFrom('span').setText(title),
-    body: TinyHtml.createFrom('div', { class: 'text-break' })
-      .setStyle('white-space', 'pre-wrap')
-      .setText(text),
-    dialog: 'modal-lg',
-  });
-};
-
-/**
  * Remove AI tags
  *
  * @param {string} str

@@ -1,11 +1,11 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 import { EventEmitter } from 'events';
 import { storyData } from '../files/chapters.mjs';
 import musicManager from '../chapter_manager/music/index.mjs';
 import storyCfg from '../chapters/config.mjs';
 import { tinyLs, gtag } from '../important.mjs';
 import { head } from '../html/query.mjs';
-import { alert } from '../files/tinyLib.mjs';
 
 import { musicApp } from '../chapter_manager/music/html.mjs';
 

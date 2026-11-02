@@ -1,6 +1,7 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinySimpleDice from 'tiny-essentials/libs/math/TinySimpleDice';
 import { isJsonObject } from 'tiny-essentials/basics/objChecker';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
 import TinyDices from 'tiny-dices';
 import { saveAs } from 'file-saver';

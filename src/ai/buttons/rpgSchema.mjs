@@ -1,9 +1,10 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import { isJsonObject } from 'tiny-essentials/basics/objChecker';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
 import { tinyAi, tinyIo } from '../software/base.mjs';
-import tinyLib, { alert } from '../../files/tinyLib.mjs';
+import tinyLib from '../../files/tinyLib.mjs';
 import { loaderScreen } from '../../important.mjs';
 
 const { Textarea } = TinyHtmlElems;

@@ -7,6 +7,7 @@ import { toTitleCase } from 'tiny-essentials/basics/text';
 import { isObjType } from 'tiny-essentials/basics/objFilter';
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
+import { alert, confirm } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
 import {
   isNoNsfw,
@@ -17,7 +18,7 @@ import {
   loaderScreen,
   tinyToast,
 } from '../important.mjs';
-import tinyLib, { alert } from '../files/tinyLib.mjs';
+import tinyLib from '../files/tinyLib.mjs';
 import aiTemplates from './values/templates.mjs';
 import TinyClientIo from './socketClient.mjs';
 import RpgData from './software/rpgData.mjs';
@@ -2739,7 +2740,7 @@ export const AiScriptStart = async () => {
       // Delete button
       deleteButton.on('click', async (event) => {
         // Ask for confirmation unless the user holds shift while clicking
-        if (!event?.shiftKey && !window.confirm('Are you sure you want to delete this message?'))
+        if (!event?.shiftKey && !(await confirm('Are you sure you want to delete this message?')))
           return;
 
         deleteButton.addClass('disabled').addProp('disabled');

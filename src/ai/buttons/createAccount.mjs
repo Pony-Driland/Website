@@ -1,5 +1,6 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
-import tinyLib, { alert } from '../../files/tinyLib.mjs';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
+import tinyLib from '../../files/tinyLib.mjs';
 import { tinyIo } from '../software/base.mjs';
 
 export const openCreateAccount = () => {

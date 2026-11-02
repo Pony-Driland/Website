@@ -13,6 +13,9 @@ import {
   Toast as BsToast,
 } from 'bootstrap';
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
+import { BootstrapDialogs } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
+
+BootstrapDialogs.Modal = BsModal;
 
 /**
  * Initializes and returns a Bootstrap Modal instance bound to a TinyHtml element.

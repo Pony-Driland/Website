@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events';
-import { alert } from '../../files/tinyLib.mjs';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 import { tinyIo, tinyStorage } from './base.mjs';
 import RpgData from './rpgData.mjs';
 

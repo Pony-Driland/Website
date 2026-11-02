@@ -1,7 +1,8 @@
 import moment from 'moment';
 import objHash from 'object-hash';
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
-import tinyLib, { alert } from '../files/tinyLib.mjs';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
+import tinyLib from '../files/tinyLib.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import TinyClientIo from './socketClient.mjs';
 
