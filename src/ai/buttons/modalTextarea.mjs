@@ -5,6 +5,15 @@ import tinyLib from '../../files/tinyLib.mjs';
 import ficConfigs from '../values/ficConfigs.mjs';
 import { canSandBox, tinyAi } from '../software/base.mjs';
 
+/**
+ * Opens a modal with a resizable textarea, optionally with a template picker.
+ *
+ * Used by the AI page for the system instructions, the prompt and the first
+ * dialogue editors.
+ *
+ * @module ai/buttons/modalTextarea
+ */
+
 // Textarea Template
 export const tinyModalTextarea = (
   config = {

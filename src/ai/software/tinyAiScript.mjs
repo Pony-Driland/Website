@@ -1,3 +1,10 @@
+/**
+ * Global state of the AI page: the login button, the active provider and the
+ * helpers that boot or tear down the connection.
+ *
+ * @module ai/software/tinyAiScript
+ */
+
 import { setTinyGoogleAi } from 'tiny-ai-api';
 import { formatDayTimer } from 'tiny-essentials/basics/clock';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
@@ -10,10 +17,6 @@ import { body } from '../../html/query.mjs';
 
 const { Icon } = TinyHtmlElems;
 
-/**
- * Global state of the AI page: the login button, the active provider and the
- * helpers that boot or tear down the connection.
- */
 export const tinyAiScript = {
   isEnabled: () => typeof tinyStorage.selectedAi() === 'string',
   enabled: false,
