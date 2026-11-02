@@ -2737,7 +2737,11 @@ export const AiScriptStart = async () => {
         : null,
 
       // Delete button
-      deleteButton.on('click', async () => {
+      deleteButton.on('click', async (event) => {
+        // Ask for confirmation unless the user holds shift while clicking
+        if (!event?.shiftKey && !window.confirm('Are you sure you want to delete this message?'))
+          return;
+
         deleteButton.addClass('disabled').addProp('disabled');
         editButton.addClass('disabled').addProp('disabled');
         let isError = false;
