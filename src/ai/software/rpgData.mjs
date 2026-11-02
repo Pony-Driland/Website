@@ -12,7 +12,19 @@ import ficConfigs from '../values/ficConfigs.mjs';
 
 /** @typedef {import("json-editor")} JSONEditor */
 
+/**
+ * Owns the two JSON Editor instances (public and private) that back the RPG data
+ * panels of the AI page.
+ *
+ * Emits `ready` once both editors finished booting, `change` on every edit and
+ * `save` when an offcanvas is closed with pending changes.
+ *
+ * @extends EventEmitter
+ */
 class RpgData extends EventEmitter {
+  /**
+   * Creates the empty state for both editors.
+   */
   constructor() {
     super();
     this.schemaHash = null;
@@ -37,6 +49,12 @@ class RpgData extends EventEmitter {
     };
   }
 
+  /**
+   * Parses a JSON string, returning `null` when the payload is invalid.
+   *
+   * @param {string|Object} value - Raw value coming from the editor.
+   * @returns {Object|null} The parsed object, or `null` when it cannot be parsed.
+   */
   // TITLE: Data Filter
   filter(value) {
     if (typeof value === 'string') {
@@ -52,15 +70,37 @@ class RpgData extends EventEmitter {
   }
 
   // TITLE: Config
+
+  /**
+   * Stores whether the AI is allowed to read the given data scope.
+   *
+   * @param {boolean} value - New permission value.
+   * @param {'public'|'private'} type - Data scope being updated.
+   * @returns {void}
+   */
   setAllowAiUse(value, type) {
     if (typeof this.allowAiUse[type] === 'boolean')
       this.allowAiUse[type] = typeof value === 'boolean' ? value : false;
   }
+  /**
+   * Stores whether the AI is allowed to read the schema of the given scope.
+   *
+   * @param {boolean} value - New permission value.
+   * @param {'public'|'private'} type - Data scope being updated.
+   * @returns {void}
+   */
   setAllowAiSchemaUse(value, type) {
     if (typeof this.allowAiSchemaUse[type] === 'boolean')
       this.allowAiSchemaUse[type] = typeof value === 'boolean' ? value : false;
   }
 
+  /**
+   * Wires the `hide.bs.offcanvas` handler that persists the editors when the
+   * user closes them.
+   *
+   * @param {Function} updateAiTokenCounterData - Recomputes the token counter after a save.
+   * @returns {void}
+   */
   // TITLE: Close canvas
   finishOffCanvas(updateAiTokenCounterData) {
     /**
@@ -89,6 +129,12 @@ class RpgData extends EventEmitter {
     this.html.private.on('hide.bs.offcanvas', onOffCanvasClosed('private', 'rpgPrivateData'));
   }
 
+  /**
+   * Builds both offcanvas panels and their Bootstrap instances.
+   *
+   * @param {Object} container - Element the panels are prepended to.
+   * @returns {void}
+   */
   initOffCanvas(container) {
     // Prepare RPG
     this.html.public = tinyLib.bs.offcanvas('start', 'rpg_ai_base_1', '', this.base.public, true);
@@ -98,6 +144,12 @@ class RpgData extends EventEmitter {
     this.offcanvas.private = new Offcanvas(this.html.private.get(0));
   }
 
+  /**
+   * Boots (or reboots) both JSON editors and resolves once they are ready.
+   *
+   * @param {boolean} [forceRestart=false] - Recreates the editors even when the schema did not change.
+   * @returns {Promise<Object>} The data loaded into each editor, keyed by scope.
+   */
   init(forceRestart = false) {
     return new Promise((resolve, reject) => {
       // Get template

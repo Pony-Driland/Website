@@ -3,7 +3,7 @@ import { marked } from 'marked';
 let contentId = 0;
 
 /**
- * Marked extension to handle :::collapse label ... :::
+ * Marked extension that renders collapsible `<details>` blocks.
  */
 const collapseExtension = {
   name: 'collapse',

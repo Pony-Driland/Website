@@ -10,6 +10,14 @@ import { createDiceSpecialHtml } from './dice.mjs';
 
 const { Form, Button, TextInput, DateTimeInput, NumberInput } = TinyHtmlElems;
 
+/**
+ * Opens the dice history browser, with filters by author, date range and dice
+ * expression.
+ *
+ * Returns immediately when the app is not connected to a room.
+ *
+ * @returns {void}
+ */
 export const openDiceHistory = () => {
   if (!isOnline()) return;
   const room = tinyIo.client.getRoom();

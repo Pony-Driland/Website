@@ -9,6 +9,14 @@ import { loaderScreen } from '../../important.mjs';
 
 const { Textarea } = TinyHtmlElems;
 
+/**
+ * Opens the RPG schema settings modal, where the room owner (or an admin) can
+ * edit the JSON schema that describes the room RPG data.
+ *
+ * Does nothing when there is no active socket client.
+ *
+ * @returns {void}
+ */
 export const rpgSchemaSettingsMenu = () => {
   if (tinyIo.client) {
     const room = tinyIo.client.getRoom() || {};

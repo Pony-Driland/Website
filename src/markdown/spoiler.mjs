@@ -1,7 +1,7 @@
 import { marked } from 'marked';
 
 /**
- * Spoiler extension for [spoiler:chapter:line]...[/spoiler]
+ * Marked extension that turns spoiler syntax into a styled span.
  */
 const spoilerExtension = {
   name: 'book-spoiler',

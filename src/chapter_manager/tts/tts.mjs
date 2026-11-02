@@ -9,6 +9,12 @@ const { Icon } = TinyHtmlElems;
 // Base
 storyData.tts = {};
 
+/**
+ * Thin wrapper around the Web Speech API used to read chapters aloud.
+ *
+ * @module chapter_manager/tts
+ */
+
 const ttsManager = {
   enabled: false,
   voicePreferenceList: ['Zira - English', 'English (USA,l03)', 'DEFAULT'],

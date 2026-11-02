@@ -9,6 +9,15 @@ import tinyLib from './tinyLib.mjs';
 import storyCfg from '../chapters/config.mjs';
 import { connStore, ficCache, loaderScreen, tinyLs } from '../important.mjs';
 
+/**
+ * Loads and caches the chapter list, the readme and the per-chapter progress.
+ *
+ * Every getter is memoized; call `start()` once the DOM is ready to bootstrap
+ * the whole structure.
+ *
+ * @module files/chapters
+ */
+
 // Prepare Data
 export const storyData = {
   // Info

@@ -1,3 +1,10 @@
+/**
+ * Static story configuration: title, author, theme, social links and the list
+ * of languages and content warnings.
+ *
+ * @module chapters/config
+ */
+
 const storyCfg = {
   // Twitter
   twitter: {

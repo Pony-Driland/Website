@@ -2,8 +2,19 @@ import { EventEmitter } from 'events';
 import { isJsonObject } from 'tiny-essentials/basics/objChecker';
 import { tinyLs } from '../../important.mjs';
 
-// Localstorage Manager
+/**
+ * Persists AI provider credentials and the currently selected provider in
+ * `localStorage`.
+ *
+ * Emits `saveApiStorage` whenever the credential map is written, plus
+ * `setApiKey` and `delApiKey` with the affected provider name.
+ *
+ * @extends EventEmitter
+ */
 class TinyAiStorage extends EventEmitter {
+  /**
+   * Restores the stored credentials and the previously selected provider.
+   */
   constructor() {
     super();
 
@@ -19,11 +30,23 @@ class TinyAiStorage extends EventEmitter {
     }
   }
 
+  /**
+   * Serializes the credential map back into `localStorage`.
+   *
+   * @private
+   * @returns {void}
+   */
   _saveApiStorage() {
     tinyLs.setItem('tiny-ai-storage', JSON.stringify(this.storage));
     this.emit('saveApiStorage', this.storage);
   }
 
+  /**
+   * Clears the selected provider when its credential no longer exists.
+   *
+   * @private
+   * @returns {void}
+   */
   _updateExistsAi() {
     if (
       this._selected &&
@@ -37,6 +60,12 @@ class TinyAiStorage extends EventEmitter {
     }
   }
 
+  /**
+   * Marks a provider as the active one.
+   *
+   * @param {string} value - Provider name. Ignored when it has no stored credential.
+   * @returns {void}
+   */
   setSelectedAi(value) {
     this._selected =
       typeof value === 'string' &&
@@ -50,10 +79,23 @@ class TinyAiStorage extends EventEmitter {
     else tinyLs.removeItem('tiny-ai-storage-selected');
   }
 
+  /**
+   * Returns the name of the active provider.
+   *
+   * @returns {string|null} The provider name, or `null` when none is selected.
+   */
   selectedAi() {
     return this._selected;
   }
 
+  /**
+   * Stores the credential of a provider and persists it.
+   *
+   * @param {string} name - Provider name.
+   * @param {string|number|Object} key - Credential payload (API key or config object).
+   * @returns {void}
+   * @throws {Error} If `key` is not a string, a number or a plain object.
+   */
   setApiKey(name, key) {
     if (typeof key === 'string' || typeof key === 'number' || isJsonObject(key)) {
       this.storage[name] = key;
@@ -65,6 +107,12 @@ class TinyAiStorage extends EventEmitter {
     throw new Error('Invalid AI api key data type!');
   }
 
+  /**
+   * Removes the credential of a provider.
+   *
+   * @param {string} name - Provider name.
+   * @returns {boolean} `true` when a credential was removed, `false` when none existed.
+   */
   delApiKey(name) {
     if (this.storage[name]) {
       delete this.storage[name];
@@ -76,6 +124,12 @@ class TinyAiStorage extends EventEmitter {
     return false;
   }
 
+  /**
+   * Reads the credential of a provider.
+   *
+   * @param {string} name - Provider name.
+   * @returns {{ key: string|null }|Object} `{ key }` for string credentials, otherwise the stored object.
+   */
   getApiKey(name) {
     return typeof this.storage[name] === 'string'
       ? { key: this.storage[name] }

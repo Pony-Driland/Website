@@ -5,6 +5,14 @@ import { alert, confirm } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/
 import { tinyIo } from '../software/base.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 
+/**
+ * Opens the room settings modal, allowing the owner (or an admin) to rename the
+ * room, change its password and delete it.
+ *
+ * Does nothing when there is no active socket client.
+ *
+ * @returns {void}
+ */
 export const roomSettingsMenu = () => {
   if (tinyIo.client) {
     const room = tinyIo.client.getRoom() || {};

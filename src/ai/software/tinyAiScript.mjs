@@ -10,6 +10,10 @@ import { body } from '../../html/query.mjs';
 
 const { Icon } = TinyHtmlElems;
 
+/**
+ * Global state of the AI page: the login button, the active provider and the
+ * helpers that boot or tear down the connection.
+ */
 export const tinyAiScript = {
   isEnabled: () => typeof tinyStorage.selectedAi() === 'string',
   enabled: false,
@@ -33,6 +37,7 @@ export const tinyAiScript = {
     },
   },
 
+  // Destroys the socket client and reloads the page.
   killIo: () => {
     if (tinyIo.client) {
       tinyIo.client.destroy();
@@ -43,6 +48,8 @@ export const tinyAiScript = {
     } else return false;
   },
 
+  // Re-reads the selected provider and refreshes the login button and the
+  // `can-ai` body class accordingly.
   // Checker
   checkTitle: () => {
     // Get selected Ai
@@ -85,6 +92,8 @@ export const tinyAiScript = {
     tinyAiScript.aiLogin.updateTitle();
   },
 
+  // Opens the provider picker modal, where the user chooses between the
+  // local providers and the multiplayer server.
   // Login button
   login: () => {
     // Selector

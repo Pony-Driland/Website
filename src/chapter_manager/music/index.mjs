@@ -14,6 +14,13 @@ import ttsManager from '../tts/tts.mjs';
 import { Tooltip } from '../../modules/TinyBootstrap.mjs';
 import { musicApp, musicBase } from './html.mjs';
 
+/**
+ * Music manager: resolves the soundtrack of each scene, cross-fades between
+ * tracks and keeps the YouTube and Pizzicato players in sync.
+ *
+ * @module chapter_manager/music
+ */
+
 // Music Manager
 const musicManager = {
   // Sound Cache

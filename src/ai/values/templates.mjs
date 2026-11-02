@@ -7,6 +7,13 @@ import {
   userFileStart,
 } from './defaults.mjs';
 
+/**
+ * Prompt library: system instructions, helper snippets and the default RPG
+ * schema factory used across the AI page.
+ *
+ * @module ai/values/templates
+ */
+
 const aiTemplates = { funcs: {}, instructions: {}, helpers: {}, prompts: [] };
 
 // is four-legged and pony-like

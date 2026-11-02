@@ -3,6 +3,15 @@ import TinyMap from '../TinyMap.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import { contentEnabler } from '../software/enablerContent.mjs';
 
+/**
+ * Opens the classic map viewer for the current room.
+ *
+ * The map is read from the RPG data stored in the room schema. When the room
+ * has no map configured, the user is informed through an alert instead.
+ *
+ * @returns {void}
+ * @throws {Error} If the RPG data is not available when the map is opened.
+ */
 export const openClassicMap = () => {
   const startTinyMap = (place) => {
     const rpgData = contentEnabler.rpgData;

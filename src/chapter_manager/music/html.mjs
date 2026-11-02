@@ -7,6 +7,12 @@ import { yt } from '../../api/youtube.mjs';
 const { Icon } = TinyHtmlElems;
 
 // Base
+/**
+ * Pre-built DOM nodes of the floating music player.
+ *
+ * @module chapter_manager/music/html
+ */
+
 export const musicApp = {
   isStopping: false,
   useThis: true,

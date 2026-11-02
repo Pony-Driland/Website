@@ -345,6 +345,10 @@ class TinyPwa extends EventEmitter {
 
 const initDom = new TinyDomReadyManager();
 
+/**
+ * Shared PWA controller: handles the install prompt, the update flow and the
+ * display-mode detection.
+ */
 export const tinyPwa = new TinyPwa();
 initDom.onReady(() => {
   if (window.matchMedia('(display-mode: standalone)').matches) {

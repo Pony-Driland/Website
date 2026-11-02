@@ -15,6 +15,13 @@ import { musicApp } from './music/html.mjs';
 
 const { Icon } = TinyHtmlElems;
 
+/**
+ * Renders the chapter reader: builds the page list, restores the reading
+ * position and lazily loads the chapter content while scrolling.
+ *
+ * @module chapter_manager/updater
+ */
+
 // Prepare Cache
 const cacheChapterUpdater = { soundCache: {} };
 

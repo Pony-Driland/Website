@@ -4,6 +4,14 @@ import { tinyIo } from '../software/base.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import UserRoomManager from '../RoomUserManagerUI.mjs';
 
+/**
+ * Opens the user manager modal, which lists the users in the current room and
+ * exposes the moderation actions available to the signed-in account.
+ *
+ * Does nothing when there is no active socket client.
+ *
+ * @returns {void}
+ */
 export const userButtonActions = () => {
   if (tinyIo.client) {
     const $root = TinyHtml.createFrom('div');

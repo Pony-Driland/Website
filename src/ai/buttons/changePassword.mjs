@@ -3,6 +3,15 @@ import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/Bootstrap
 import { tinyIo } from '../software/base.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 
+/**
+ * Opens the "Change password" modal for the signed-in room account.
+ *
+ * The form asks for the current password plus the new password twice, then
+ * forwards the request to the socket client. Server-side rate limits are read
+ * from the room config to cap the input lengths.
+ *
+ * @returns {void}
+ */
 export const openChangePassword = () => {
   // Root
   const ratelimit = tinyIo.client.getRateLimit() || { size: {} };

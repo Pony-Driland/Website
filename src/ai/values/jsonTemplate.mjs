@@ -1,3 +1,9 @@
+/**
+ * Registers the default RPG JSON schema factory on the template registry.
+ *
+ * @module ai/values/jsonTemplate
+ */
+
 import aiTemplates from './templates.mjs';
 
 // https://github.com/json-editor/json-editor?tab=readme-ov-file

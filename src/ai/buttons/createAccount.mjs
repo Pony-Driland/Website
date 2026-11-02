@@ -3,6 +3,15 @@ import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/Bootstrap
 import tinyLib from '../../files/tinyLib.mjs';
 import { tinyIo } from '../software/base.mjs';
 
+/**
+ * Opens the "Create account" modal for the current room.
+ *
+ * Registration is only offered when the room has `openRegistration` enabled or
+ * when the signed-in user is an admin. Otherwise the function returns silently
+ * and no modal is created.
+ *
+ * @returns {void}
+ */
 export const openCreateAccount = () => {
   // Get data
   const ratelimit = tinyIo.client.getRateLimit() || { size: {} };

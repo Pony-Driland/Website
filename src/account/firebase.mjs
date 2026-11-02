@@ -268,12 +268,10 @@ class FirebaseAccount extends EventEmitter {
    * scope during Google login. The method will refresh the OAuth token by prompting a popup login
    * if necessary.
    *
-   * The returned object typically contains an array of `birthdays`, where each entry can have a
-   * `date` object with `year`, `month`, and `day`.
-   * ```
+   * The returned array contains one entry per birthday record, where each entry has a `date`
+   * object with `year`, `month` and `day`, plus the `metadata` describing the source.
    *
-   * @returns {Promise<UserBirthday[]>}
-   * Birthday data object from Google People API.
+   * @returns {Promise<UserBirthday[]>} Birthday data from the Google People API.
    * @throws {Error} If the user is not logged in or the request fails.
    */
   async getBirthday() {

@@ -11,6 +11,13 @@ import { makeMsgRenderer, userStatus } from '../msgRender.mjs';
 
 const { Form, Button, TextInput, DateTimeInput, NumberInput, Textarea } = TinyHtmlElems;
 
+/**
+ * Opens the room history browser, with filters by author, date range and text.
+ *
+ * Returns immediately when the app is not connected to a room.
+ *
+ * @returns {void}
+ */
 export const openHistory = () => {
   if (!isOnline()) return;
   const room = tinyIo.client.getRoom();
