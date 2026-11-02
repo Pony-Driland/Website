@@ -2839,6 +2839,22 @@ export const AiScriptStart = async () => {
 
   Tooltip(firstDialogueBase.button);
 
+  // TITLE: Shift danger hint
+  // Highlights every delete button while the shift key is held, warning the user that
+  // the next click will delete the message without asking for confirmation.
+  const setShiftDanger = (active) => container.toggleClass('shift-danger', active);
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Shift') setShiftDanger(true);
+  });
+
+  window.addEventListener('keyup', (event) => {
+    if (event.key === 'Shift') setShiftDanger(false);
+  });
+
+  // Safety net: the browser may swallow the keyup while the tab is unfocused
+  window.addEventListener('blur', () => setShiftDanger(false));
+
   // TITLE: Prepare events
   tinyAi.removeAllListeners('setMaxOutputTokens');
   tinyAi.removeAllListeners('setTemperature');

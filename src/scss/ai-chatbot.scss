@@ -172,6 +172,13 @@ body.is-using-ai {
 
   // Online
   #ai-element-root {
+    /* Delete button turns red while the shift key is held (skip confirmation) */
+    &.shift-danger #ai-chatbox .delete-button {
+      background-color: var(--bs-danger) !important;
+      border-color: var(--bs-danger) !important;
+      color: #fff !important;
+    }
+
     /* Right sidebar (AI run settings) */
     #ai-run-settings {
       transition:
