@@ -38,7 +38,7 @@ class BuffAudio extends EventEmitter {
   _source = null;
   /** @type {number} - time of the audio playback, seconds */
   _playbackTime = 0;
-  /** @type {number} - timestamp of last playback start, milliseconds */ 
+  /** @type {number} - timestamp of last playback start, milliseconds */
   _startTimestamp = 0;
   /** @type {number} - seconds */
   _bufferDuration = 0;
