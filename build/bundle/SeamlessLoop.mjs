@@ -9,7 +9,7 @@
  *
  * USAGE:
  * - Create the Seamlessloop object
- * 		var loop = new SeamlessLoop();
+ * 		const loop = new SeamlessLoop();
  *
  * - Add as many sounds as you will use, providing duration in miliseconds
  * (sounds must be pre-loaded if you want to update the loop without gaps)
@@ -22,7 +22,7 @@
  *
  * - Start reproducing the seamless loop:
  * 		function soundsLoaded() {
- * 			var n = 1;
+ * 			const n = 1;
  * 			loop.start("sound" + n);
  * 		};
  *
@@ -40,190 +40,259 @@
  * 		loop.stop();
  */
 
-function SeamlessLoop() {
-  this.is = {
+class ActualArray extends Map {
+  _length = -1;
+  _1_isLoaded = false;
+  _2_isLoaded = false;
+  /** @type {HTMLAudioElement|null} */
+  _1 = null;
+  /** @type {HTMLAudioElement|null} */
+  _2 = null;
+  constructor() {
+    super();
+  }
+}
+
+class SeamlessLoop {
+  /** @type {number} */
+  _total = 0;
+  /** @type {number} */
+  _load = 0;
+  /** @type {(() => void)|null} */
+  cb_loaded = null;
+  cb_loaded_flag = new Boolean();
+  /** @type {NodeJS.Timeout|null} */
+  timeout = null;
+  /** @type {number} */
+  playDelay = -30;
+  /** @type {number} */
+  stopDelay = 30;
+  /** @type {boolean} */
+  isDebug = false;
+
+  is = {
     ff: Boolean(
+      // @ts-ignore
       !(window.mozInnerScreenX == null) && /firefox/.test(navigator.userAgent.toLowerCase()),
     ),
+    // @ts-ignore
     ie: Boolean(document.all && !window.opera),
+    // @ts-ignore
     opera: Boolean(window.opera),
+    // @ts-ignore
     chrome: Boolean(window.chrome),
     safari: Boolean(
+      // @ts-ignore
       !window.chrome &&
       /safari/.test(navigator.userAgent.toLowerCase()) &&
+      // @ts-ignore
       window.getComputedStyle &&
+      // @ts-ignore
       !window.globalStorage &&
+      // @ts-ignore
       !window.opera,
     ),
   };
-  //console.debug("ff: " + this.is.ff);
-  //console.debug("ie: " + this.is.ie);
-  //console.debug("opera: " + this.is.opera);
-  //console.debug("chrome: " + this.is.chrome);
-  //console.debug("safari: " + this.is.safari);
-  this._total = 0;
-  this._load = 0;
-  this.cb_loaded;
-  this.cb_loaded_flag = new Boolean();
-  this.timeout;
-  this.playDelay = -30;
-  this.stopDelay = 30;
-  if (this.is.chrome) this.playDelay = -25;
-  if (this.is.chrome) this.stopDelay = 25;
-  if (this.is.ff) this.playDelay = -25;
-  if (this.is.ff) this.stopDelay = 85;
-  if (this.is.opera) this.playDelay = 5;
-  if (this.is.opera) this.stopDelay = 0;
-  //console.debug(this.playDelay + ", " + this.stopDelay);
-  this.next = 1;
-  this.audios = new Array();
-  this.actual = new Array();
-  this.dropOld = new Boolean();
-  this.old;
-  this._volume = 1;
 
-  var t = this;
-  this._eventCanplaythrough = function (audBool) {
+  next = 1;
+  audios = new ActualArray();
+  actual = new ActualArray();
+  dropOld = new Boolean();
+
+  constructor() {
+    if (this.is.chrome) this.playDelay = -25;
+    if (this.is.chrome) this.stopDelay = 25;
+    if (this.is.ff) this.playDelay = -25;
+    if (this.is.ff) this.stopDelay = 85;
+    if (this.is.opera) this.playDelay = 5;
+    if (this.is.opera) this.stopDelay = 0;
+    this.old;
+    this._volume = 1;
+    if (this.isDebug) {
+      console.debug(this.playDelay + ', ' + this.stopDelay);
+      console.debug('ff: ' + this.is.ff);
+      console.debug('ie: ' + this.is.ie);
+      console.debug('opera: ' + this.is.opera);
+      console.debug('chrome: ' + this.is.chrome);
+      console.debug('safari: ' + this.is.safari);
+    }
+  }
+
+  /** @param {boolean} audBool */
+  _eventCanplaythrough(audBool) {
     if (audBool == false) {
       audBool = true;
-      t._load++;
-      if (t._load == t._total) {
-        t.loaded = true;
-        if (t.cb_loaded_flag == true) {
-          t.cb_loaded();
-          t.cb_loaded_flag = false;
+      this._load++;
+      if (this._load == this._total) {
+        this.loaded = true;
+        if (this.cb_loaded_flag == true) {
+          if (typeof this.cb_loaded === 'function') this.cb_loaded();
+          this.cb_loaded_flag = false;
         }
       }
     }
-  };
+  }
 
-  this._eventPlaying = function (audMute) {
-    setTimeout(function () {
+  /** @param {HTMLAudioElement} audMute */
+  _eventPlaying(audMute) {
+    setTimeout(() => {
       audMute.pause();
       try {
         audMute.currentTime = 0;
       } catch (e) {
         console.error(e);
       }
-    }, t.stopDelay);
+    }, this.stopDelay);
 
-    if (t.dropOld == true) {
-      setTimeout(function () {
-        if (t.old.paused == false) {
-          t.old.pause();
+    if (this.dropOld == true) {
+      setTimeout(() => {
+        if (this.old?.paused == false) {
+          this.old.pause();
           try {
-            t.old.currentTime = 0;
+            this.old.currentTime = 0;
           } catch (e) {
             console.error(e);
           }
         }
-      }, t.stopDelay);
-      t.dropOld = false;
+      }, this.stopDelay);
+      this.dropOld = false;
     }
-  };
+  }
 
-  this._eventEnded = function (aud) {
+  /** @param {HTMLAudioElement} aud */
+  _eventEnded(aud) {
     aud.volume = this._volume;
-  };
+  }
 
-  this.doLoop = function () {
-    var key = this.next == 1 ? '_1' : '_2';
-    var antikey = this.next == 1 ? '_2' : '_1';
+  doLoop() {
+    /** @type {'_1'|'_2'} */
+    const key = this.next == 1 ? '_1' : '_2';
+    /** @type {'_1'|'_2'} */
+    const antikey = this.next == 1 ? '_2' : '_1';
 
-    var t = this;
-    this.timeout = setTimeout(function () {
-      t.doLoop();
+    this.timeout = setTimeout(() => {
+      this.doLoop();
     }, this.actual._length + this.playDelay);
 
-    if (this.is.opera) this.actual[antikey].pause();
+    if (this.is.opera) this.actual[antikey]?.pause();
 
-    this.actual[key].play();
+    this.actual[key]?.play();
     this.next *= -1;
-  };
+  }
 
-  this.isLoaded = function () {
+  isLoaded() {
     return Boolean(this._load == this._total);
-  };
-}
-
-SeamlessLoop.prototype.start = function (id) {
-  if (id != '') {
-    this.actual = this.audios[id];
-  }
-  this.doLoop();
-};
-
-SeamlessLoop.prototype.volume = function (vol) {
-  if (typeof vol != 'undefined') {
-    this.actual._1.volume = vol;
-    this.actual._2.volume = vol;
-    this._volume = vol;
   }
 
-  return vol;
-};
-
-SeamlessLoop.prototype.stop = function () {
-  clearTimeout(this.timeout);
-  this.actual._1.currentTime = 0;
-  this.actual._1.pause();
-  this.actual._2.currentTime = 0;
-  this.actual._2.pause();
-};
-
-SeamlessLoop.prototype.callback = function (cb_loaded) {
-  this.cb_loaded = cb_loaded;
-  if (this.isLoaded() == true) cb_loaded();
-  else this.cb_loaded_flag = true;
-};
-
-SeamlessLoop.prototype.update = function (id, sync) {
-  //var key = (this.next == 1 ? "_1" : "_2");
-  var antikey = this.next == 1 ? '_2' : '_1';
-
-  this.old = this.actual[antikey];
-  this.actual = this.audios[id];
-  if (sync == false) {
-    if (this.old.paused == false) {
-      this.dropOld = true;
-      if (this.is.opera) this.old.pause();
+  /** @param {string} id */
+  start(id) {
+    if (id != '') {
+      this.actual = this.audios.get(id);
     }
-    clearTimeout(this.timeout);
     this.doLoop();
   }
-};
 
-SeamlessLoop.prototype.addUri = function (uri, length, id) {
-  this.audios[id] = new Array();
-  this.audios[id]._length = length;
-  var t = this;
-  this.audios[id]._1_isLoaded = new Boolean();
-  this.audios[id]._2_isLoaded = new Boolean();
-  this.audios[id]._1 = new Audio(uri);
-  this.audios[id]._2 = new Audio(uri);
-  this._total++;
-  this.audios[id]._1.addEventListener('canplaythrough', function () {
-    t._eventCanplaythrough(t.audios[id]._1_isLoaded);
-  });
-  this.audios[id]._2.addEventListener('canplaythrough', function () {
-    t._eventCanplaythrough(t.audios[id]._2_isLoaded);
-  });
-  this.audios[id]._1.addEventListener('playing', function () {
-    t._eventPlaying(t.audios[id]._2);
-  });
-  this.audios[id]._2.addEventListener('playing', function () {
-    t._eventPlaying(t.audios[id]._1);
-  });
-  this.audios[id]._1.addEventListener('ended', function () {
-    t._eventEnded(t.audios[id]._1);
-  });
-  this.audios[id]._2.addEventListener('ended', function () {
-    t._eventEnded(t.audios[id]._2);
-  });
-  this.audios[id]._1.load();
-  this.audios[id]._2.load();
-  this.audios[id]._1.volume = this._volume;
-  this.audios[id]._2.volume = this._volume;
-};
+  /** @param {number} [vol] */
+  volume(vol) {
+    if (typeof vol != 'undefined' && this.actual._1 && this.actual._2) {
+      this.actual._1.volume = vol;
+      this.actual._2.volume = vol;
+      this._volume = vol;
+    }
+
+    return vol;
+  }
+
+  stop() {
+    if (!this.actual._1 || !this.actual._2) return;
+    if (this.timeout !== null) clearTimeout(this.timeout);
+    this.timeout = null;
+    this.actual._1.currentTime = 0;
+    this.actual._1.pause();
+    this.actual._2.currentTime = 0;
+    this.actual._2.pause();
+  }
+
+  /** @param {() => void} cb_loaded */
+  callback(cb_loaded) {
+    this.cb_loaded = cb_loaded;
+    if (this.isLoaded() == true) cb_loaded();
+    else this.cb_loaded_flag = true;
+  }
+
+  /**
+   * @param {string} id
+   * @param {boolean} sync
+   */
+  update(id, sync) {
+    //const key = (this.next == 1 ? "_1" : "_2");
+    /** @type {'_2'|'_1'} */
+    const antikey = this.next == 1 ? '_2' : '_1';
+
+    this.old = this.actual[antikey];
+    this.actual = this.audios.get(id);
+    if (sync == false) {
+      if (this.old?.paused == false) {
+        this.dropOld = true;
+        if (this.is.opera) this.old.pause();
+      }
+      if (this.timeout !== null) clearTimeout(this.timeout);
+      this.timeout = null;
+      this.doLoop();
+    }
+  }
+
+  /**
+   * @param {string} uri
+   * @param {number} length
+   * @param {string} id
+   */
+  addUri(uri, length, id) {
+    const audio = new ActualArray();
+    this.audios.set(id, audio);
+    audio._length = length;
+    audio._1 = new Audio(uri);
+    audio._2 = new Audio(uri);
+    this._total++;
+    audio._1.addEventListener('canplaythrough', () => {
+      this._eventCanplaythrough(audio._1_isLoaded);
+    });
+    audio._2.addEventListener('canplaythrough', () => {
+      this._eventCanplaythrough(audio._2_isLoaded);
+    });
+    audio._1.addEventListener('playing', () => {
+      if (!audio._2) {
+        console.warn('No audio_2');
+        return;
+      }
+      this._eventPlaying(audio._2);
+    });
+    audio._2.addEventListener('playing', () => {
+      if (!audio._1) {
+        console.warn('No audio_1');
+        return;
+      }
+      this._eventPlaying(audio._1);
+    });
+    audio._1.addEventListener('ended', () => {
+      if (!audio._1) {
+        console.warn('No audio_1');
+        return;
+      }
+      this._eventEnded(audio._1);
+    });
+    audio._2.addEventListener('ended', () => {
+      if (!audio._2) {
+        console.warn('No audio_2');
+        return;
+      }
+      this._eventEnded(audio._2);
+    });
+    audio._1.load();
+    audio._2.load();
+    audio._1.volume = this._volume;
+    audio._2.volume = this._volume;
+  }
+}
 
 export default SeamlessLoop;
