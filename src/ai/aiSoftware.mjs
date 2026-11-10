@@ -61,7 +61,7 @@ const getClient = () => {
   const client = tinyIo.client;
   if (!client) throw new Error('IO Client not found!');
   return client;
-}
+};
 
 export const AiScriptStart = async () => {
   let sessionEnabled = true;

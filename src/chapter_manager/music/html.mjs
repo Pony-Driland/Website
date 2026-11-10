@@ -179,7 +179,6 @@ musicBaseItems.push(
   disableButton
     .on('click', () => {
       if (!musicApp.loading) {
-        disableButton.removeClass('');
         if (musicApp.useThis) {
           musicApp.useThis = false;
           musicApp.nav.disable.addClass('text-danger');
