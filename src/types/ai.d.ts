@@ -305,8 +305,8 @@ interface TinyAiTokenData {
   count: number | null;
   /** Whether the counter must be hidden. */
   hide?: boolean;
-  /** Message id this counter belongs to. */
-  msgId?: number;
+  /** Server message id this counter belongs to. */
+  msgId?: number | string;
 }
 
 /** A model returned by the provider. */

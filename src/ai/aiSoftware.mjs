@@ -83,8 +83,19 @@ const isModelCategory = (entry) => 'category' in entry && typeof entry.category 
  * The published types do not declare the `msgId` field, but the library stores
  * the object untouched, so the multiplayer mode relies on it.
  *
- * @typedef {{ count: number|null, hide?: boolean, msgId?: number }} AiTokenPayload
+ * @typedef {{ count: number|null, hide?: boolean, msgId?: number|string }} AiTokenPayload
  */
+
+/**
+ * Tells whether a value can be used as a server message id.
+ *
+ * The multiplayer server hands out string ids, while the local sessions use
+ * numbers, so both have to be accepted everywhere a message id is stored.
+ *
+ * @param {unknown} value - Value to check.
+ * @returns {value is number|string} `true` when the value is a valid message id.
+ */
+const isMsgId = (value) => typeof value === 'number' || typeof value === 'string';
 
 /**
  * Builds a single session message.
@@ -106,19 +117,20 @@ const buildContent = (item, role = null) =>
  * Builds a token payload for `tiny-ai-api`.
  *
  * @param {AiTokenPayload} data - Token data.
- * @returns {{ count: number|null, hide?: boolean }} The payload.
+ * @returns {{ count: number|null, hide?: boolean, msgId?: number|string }} The payload.
  */
-const tokenPayload = (data) => /** @type {{ count: number|null, hide?: boolean }} */ (data);
+const tokenPayload = (data) =>
+  /** @type {{ count: number|null, hide?: boolean, msgId?: number|string }} */ (data);
 
 /**
  * Reads the server message id stored in a token payload.
  *
- * @param {{ count: number|null, hide?: boolean }|null|undefined} data - Token data.
- * @returns {number|undefined} The stored message id, when there is one.
+ * @param {{ count: number|null, hide?: boolean, msgId?: number|string }|null|undefined} data - Token data.
+ * @returns {number|string|undefined} The stored message id, when there is one.
  */
 const getTokenMsgId = (data) => {
   const msgId = data ? /** @type {AiTokenPayload} */ (data).msgId : undefined;
-  return typeof msgId === 'number' ? msgId : undefined;
+  return isMsgId(msgId) ? msgId : undefined;
 };
 
 /**
@@ -1412,8 +1424,10 @@ export const AiScriptStart = async () => {
     presencePenalty.disable();
     frequencyPenalty.disable();
 
-    if (typeof model.inputTokenLimit === 'number')
-      tokenCount.updateValue('total', model.inputTokenLimit);
+    tokenCount.updateValue(
+      'total',
+      typeof model.inputTokenLimit === 'number' ? model.inputTokenLimit : 0,
+    );
 
     outputLength
       .setVal(typeof model.outputTokenLimit === 'number' ? model.outputTokenLimit : 0)
@@ -1859,6 +1873,8 @@ export const AiScriptStart = async () => {
           );
 
           // Read messages
+          /** @type {Promise<void>[]} */
+          const messageUpdates = [];
           for (const index in indexList) {
             const msgIndex = Number(index);
             const oldHashes = Array.isArray(hashItems.data) ? hashItems.data : [];
@@ -1875,26 +1891,31 @@ export const AiScriptStart = async () => {
                   undefined,
                   tokenPayload({ count: newCount, msgId: getTokenMsgId(tokenData) }),
                 );
-                if (isOnline()) {
-                  const hash = tinyAi.getMsgHashByIndex(msgIndex);
-                  const message = tinyAi.getMsgByIndex(msgIndex);
-                  if (!message) return;
-                  const client = getClient();
+                if (!isOnline()) return;
+                const hash = tinyAi.getMsgHashByIndex(msgIndex);
+                const message = tinyAi.getMsgByIndex(msgIndex);
+                if (!message) return;
+                const client = getClient();
+                messageUpdates.push(
                   client
                     .editMessage(
                       { message: partText(message.parts[0]), hash, tokens: newCount },
                       getTokenMsgId(tokenData),
                     )
                     .then((result) => {
-                      if (result.error) alert(result.msg ?? 'Unknown error', { title: 'ERROR!' });
+                      if (result.error) throw new Error(result.msg ?? 'Unknown error');
                     })
                     .catch((err) => {
                       alert(err.message, { title: 'ERROR!' });
                       console.error(err);
-                    });
-                }
+                    }),
+                );
               },
             );
+          }
+
+          if (messageUpdates.length > 0) {
+            await Promise.allSettled(messageUpdates);
           }
 
           const totalTokens = tinyAi.getTotalTokens();
@@ -2062,8 +2083,7 @@ export const AiScriptStart = async () => {
       tinyCache.cancel = () => {
         if (!isCanceled) {
           if (tinyCache.msgBallon) tinyCache.msgBallon.remove();
-          if (typeof tinyCache.msgId === 'number' || typeof tinyCache.msgId === 'string')
-            tinyAi.deleteIndex(tinyAi.getIndexOfId(tinyCache.msgId));
+          if (isMsgId(tinyCache.msgId)) tinyAi.deleteIndex(tinyAi.getIndexOfId(tinyCache.msgId));
           completeTask();
           isCanceled = true;
         }
@@ -2507,7 +2527,7 @@ export const AiScriptStart = async () => {
         const data = await executeAi(submitCache, controller);
 
         // Online
-        if (isOnline() && data && typeof data.ballon.msgId === 'number') {
+        if (isOnline() && data && isMsgId(data.ballon.msgId)) {
           const msgId = data.ballon.msgId;
           const sendData = {
             model: tinyAi.getModel() ?? '',
@@ -2991,7 +3011,7 @@ export const AiScriptStart = async () => {
                   newContent,
                   tokenPayload({
                     count: null,
-                    msgId: typeof tinyCache.msgId === 'number' ? tinyCache.msgId : undefined,
+                    msgId: isMsgId(tinyCache.msgId) ? tinyCache.msgId : undefined,
                   }),
                 );
                 let isError = false;
@@ -3030,7 +3050,7 @@ export const AiScriptStart = async () => {
                     newContent,
                     tokenPayload({
                       count: oldTokens,
-                      msgId: typeof tinyCache.msgId === 'number' ? tinyCache.msgId : undefined,
+                      msgId: isMsgId(tinyCache.msgId) ? tinyCache.msgId : undefined,
                     }),
                   );
                   return;
@@ -4037,7 +4057,7 @@ export const AiScriptStart = async () => {
             buildContent({ role, parts: [{ text: msgData.text }] }, role),
             tokenPayload({
               count: typeof msgData.tokens === 'number' ? msgData.tokens : null,
-              msgId: typeof msgId === 'number' ? msgId : undefined,
+              msgId: isMsgId(msgId) ? msgId : undefined,
             }),
           );
 
