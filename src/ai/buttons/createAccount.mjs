@@ -24,6 +24,12 @@ export const openCreateAccount = () => {
     const $errorBox = tinyLib.bs.alert('danger', '', false).addClass('d-none');
 
     // Helper to build input fields
+    /**
+     * @param {string} labelText
+     * @param {string} inputId
+     * @param {number|null} [maxLength]
+     * @param {string} [type]
+     */
     const createInputGroup = (labelText, inputId, maxLength = null, type = 'text') => {
       const $group = TinyHtml.createFrom('div').addClass('mb-3');
       const $label = TinyHtml.createFrom('label')
@@ -64,6 +70,7 @@ export const openCreateAccount = () => {
     $root.append($errorBox, user.group, pass.group, confirm.group, nick.group, $button);
 
     // Show error message
+    /** @param {string} msg */
     const showError = (msg) => {
       $errorBox.setHtml(msg).removeClass('d-none');
     };
@@ -76,7 +83,7 @@ export const openCreateAccount = () => {
     // Handle Enter key
     [user.input, pass.input, confirm.input, nick.input].forEach(($input) => {
       $input.on('keydown', (e) => {
-        if (e.key === 'Enter') {
+        if (/** @type {KeyboardEvent} */ (e).key === 'Enter') {
           e.preventDefault();
           $button.trigger('click');
         }
@@ -85,10 +92,10 @@ export const openCreateAccount = () => {
 
     // Submit action
     $button.on('click', () => {
-      const userId = user.input.val().trim();
-      const password = pass.input.val().trim();
-      const confirmPassword = confirm.input.val().trim();
-      const nickname = nick.input.val().trim();
+      const userId = String(user.input.val() ?? '').trim();
+      const password = String(pass.input.val() ?? '').trim();
+      const confirmPassword = String(confirm.input.val() ?? '').trim();
+      const nickname = String(nick.input.val() ?? '').trim();
 
       if (!userId || !password || !confirmPassword) {
         showError('User ID and both password fields are required.');

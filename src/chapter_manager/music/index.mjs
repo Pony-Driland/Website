@@ -21,8 +21,35 @@ import { musicApp, musicBase } from './html.mjs';
  * @module chapter_manager/music
  */
 
-// Music Manager
+/**
+ * @typedef {Object} MusicManager
+ * @property {{ blob: Record<string, HTMLAudioElement>, buffer: Record<string, BuffAudio> }} cache
+ * @property {(url: string) => Promise<HTMLAudioElement>} loadAudio
+ * @property {(url: string) => Promise<BuffAudio>} loadAudioBuffer
+ * @property {() => void} nextMusic
+ * @property {(react?: boolean) => void} disable
+ * @property {() => void} startBase
+ * @property {() => void} updatePlayer
+ * @property {(item: string, loop?: boolean, type?: string) => void} insertSFX
+ * @property {() => void} startPlaylist
+ * @property {() => Promise<void>} stopPlaylist
+ * @property {MusicStartBackends} start
+ */
+
+/**
+ * Backends that can start a sound, one per supported audio engine.
+ *
+ * @typedef {Object} MusicStartBackends
+ * @property {(item: string, loop: boolean, resolve: (value?: unknown) => void, url: string, forcePic?: boolean) => PizzicatoPlayer} pizzicato - Plays the sound through Pizzicato.
+ * @property {(item: string, newSound: SeamlessLoop) => void} seamlessloop - Plays the sound through the seamless loop engine.
+ * @property {(item: string, newSound: HTMLAudioElement) => void} vanilla - Plays the sound through a plain `HTMLAudioElement`.
+ */
+
+/** @type {MusicManager} */
 const musicManager = {
+  // Backends (pizzicato / seamlessloop / vanilla)
+  start: /** @type {MusicStartBackends} */ ({}),
+
   // Sound Cache
   cache: { blob: {}, buffer: {} },
 
@@ -70,7 +97,10 @@ const musicManager = {
         fetch(url, { method: 'GET' })
           .then((response) => response.arrayBuffer())
           .then((buffer) => {
-            const buffAudio = new BuffAudio(new AudioContext(), new Uint8Array(buffer));
+            const buffAudio = new BuffAudio(
+              new AudioContext(),
+              /** @type {AudioBuffer} */ (/** @type {unknown} */ (new Uint8Array(buffer))),
+            );
             musicManager.cache.buffer[vanillaURL] = buffAudio;
             resolve(buffAudio);
           })
@@ -153,57 +183,277 @@ const musicManager = {
       ]);
     }
   },
+
+  updatePlayer: () => {
+    // View
+    TinyHtml.query('#music-player')?.addClass('border').removeClass('d-none').addClass('me-3');
+
+    // Buff
+    if (musicApp.buffering || musicApp.loading || !musicApp.usingSystem || !yt.exists) {
+      TinyHtml.queryAll('#music-player > a').addClass('disabled');
+    } else {
+      TinyHtml.queryAll('#music-player > a').removeClass('disabled');
+    }
+
+    // Title
+    if (typeof musicApp.title === 'string' && musicApp.title.length > 0) {
+      const newTitle = `Youtube - ${musicApp.author_name} - ${musicApp.title}`;
+      const divBase = new TinyHtml(TinyHtml.queryAll('#music-player > a').has(musicApp.nav.info));
+
+      if (divBase.size > 0 && divBase.data('bs-tooltip-data') !== newTitle) {
+        divBase.setData('bs-tooltip-data', newTitle);
+        const bsToolTip = divBase.data('BootstrapToolTip');
+        if (bsToolTip) bsToolTip.setContent({ '.tooltip-inner': newTitle });
+      }
+    }
+
+    // Playing
+    if (musicApp.playing) {
+      musicApp.nav.play.addClass('fa-pause').removeClass('fa-play');
+    } else if (musicApp.paused) {
+      musicApp.nav.play.addClass('fa-play').removeClass('fa-pause');
+    } else if (
+      musicApp.stoppabled ||
+      typeof musicApp.currentTime !== 'number' ||
+      typeof musicApp.duration !== 'number' ||
+      musicApp.currentTime === musicApp.duration
+    ) {
+      musicApp.nav.play.addClass('fa-play').removeClass('fa-pause');
+    }
+
+    // Volume
+    musicApp.nav.volume.removeClass('fa-volume-mute').removeClass('fa-volume-up');
+    if (typeof musicApp.volume === 'number' && musicApp.volume > 0) {
+      musicApp.nav.volume.addClass('fa-volume-up');
+    } else {
+      musicApp.nav.volume.addClass('fa-volume-mute');
+    }
+
+    // Tooltip
+    TinyHtml.queryAll('#music-player > a[title]').forEach((instance) => Tooltip(instance));
+  },
+
+  insertSFX: (item, loop = true, type = 'all') => {
+    if (typeof loop !== 'boolean') {
+      loop = true;
+    }
+    return new Promise(async (resolve, reject) => {
+      if (!storyData.sfx[item]) {
+        // Prepare
+        storyData.sfx[item] = /** @type {SfxInstance} */ ({});
+
+        // Try
+        try {
+          // File URL
+          let url = null;
+
+          // IPFS
+          if (storyCfg.sfx?.[item].type === 'ipfs') {
+            url = storyCfg.ipfs?.host.replace('{cid}', storyCfg.sfx?.[item].value);
+          }
+
+          // Normal
+          else {
+            url = storyCfg.sfx?.[item].value;
+          }
+
+          // Exist URL
+          if (url) {
+            // Resolve
+            const tinyResolve = (/** @type {unknown} */ data) => {
+              console.log(`[${url}] Loaded!`);
+              resolve(data);
+            };
+
+            // Values
+            storyData.sfx[item].playing = false;
+            storyData.sfx[item].hiding = false;
+            storyData.sfx[item].loop = loop;
+
+            // Log
+            console.log(`[${url}] Loading...`);
+
+            const file = await musicManager.loadAudio(url);
+            storyData.sfx[item].file = file;
+
+            // Start Pizzicato
+            const startPizzicato = (forcePic = false) => {
+              return musicManager.start.pizzicato(
+                item,
+                loop,
+                tinyResolve,
+                file.currentSrc,
+                forcePic,
+              );
+            };
+
+            // Loop Audio
+            if (loop) {
+              // All Modules
+              if (type === 'all') {
+                const newSound = new SeamlessLoop();
+                newSound.addUri(file.currentSrc, file.duration * 1000, item);
+                newSound.callback(() => {
+                  musicManager.start.seamlessloop(item, newSound);
+                  startPizzicato();
+                });
+              } else if (type === 'pizzicato') {
+                startPizzicato(true);
+              } else if (type === 'main') {
+                const newSound = new SeamlessLoop();
+                newSound.addUri(file.currentSrc, file.duration * 1000, item);
+                newSound.callback(() => {
+                  musicManager.start.seamlessloop(item, newSound);
+                  tinyResolve(undefined);
+                });
+              } else {
+                reject(new Error('Invalid Module Type!'));
+              }
+            }
+
+            // Nope
+            else {
+              // All Modules
+              if (type === 'all') {
+                // Start
+                musicManager.start.vanilla(item, file);
+                startPizzicato();
+              } else if (type === 'pizzicato') {
+                startPizzicato(true);
+              } else if (type === 'main') {
+                musicManager.start.vanilla(item, file);
+                tinyResolve(undefined);
+              } else {
+                reject(new Error('Invalid Module Type!'));
+              }
+            }
+          } else {
+            reject(new Error('Invalid SFX File! ' + item));
+          }
+        } catch (err) {
+          // Fail
+          delete storyData.sfx[item];
+          reject(err);
+        }
+      } else {
+        resolve(undefined);
+      }
+
+      // Complete
+      return;
+    });
+  },
+
+  stopPlaylist: async () => {
+    if (musicApp.usingSystem) {
+      // Playing Used
+      if (musicApp.playing) {
+        musicApp.playingUsed = true;
+      }
+
+      // Using System
+      musicApp.usingSystem = false;
+
+      // Hide Progress
+      const hideTimeout = 50;
+      let volume = musicApp.volume;
+      for (let i = 0; i < 100; i++) {
+        if (!musicApp.usingSystem) {
+          await new Promise((resolve) => {
+            setTimeout(() => {
+              // Volume
+              volume--;
+
+              // Youtube Player
+              if (yt.player && typeof yt.player.setVolume === 'function') {
+                yt.player.setVolume(volume);
+              }
+
+              if (i === 100) {
+                // Youtube Player
+                if (yt.player) {
+                  yt.player.stopVideo();
+                }
+              }
+
+              resolve(undefined);
+            }, hideTimeout);
+          });
+        }
+      }
+    }
+    return;
+  },
+
+  startPlaylist: () => {
+    if (storyData.readFic && objHash(musicApp.playlist) !== objHash(musicApp.playlistPlaying)) {
+      // Check Status
+      if (Array.isArray(musicApp.playlist) && musicApp.playlist.length > 0) {
+        // Play Song
+        shuffleArray(musicApp.playlist);
+
+        const playSong = () => {
+          if (
+            typeof musicApp.now.index === 'number' &&
+            !isNaN(musicApp.now.index) &&
+            isFinite(musicApp.now.index) &&
+            musicApp.now.index > -1
+          ) {
+            // Update Cache
+            musicApp.playlistPlaying = musicApp.playlist;
+
+            // Play
+            const song = musicApp.playlist[musicApp.now.index];
+            if (
+              song &&
+              typeof song.id === 'string' &&
+              song.id.length > 0 &&
+              typeof song.type === 'string' &&
+              song.type.length > 0
+            ) {
+              // Youtube
+              if (song.type === 'youtube') {
+                setTimeout(() => yt.play(song.id), 100);
+              }
+            }
+          }
+        };
+
+        // Exist
+        if (
+          musicApp.now.playlist === null ||
+          musicApp.now.index === -1 ||
+          musicApp.now.playlist !== musicApp.value
+        ) {
+          // Fix Index
+          if (musicApp.now.index < 0 || musicApp.now.playlist !== musicApp.value) {
+            musicApp.now.index = 0;
+          }
+
+          // Now
+          musicApp.now.playlist = musicApp.value;
+
+          // Play
+          playSong();
+        }
+
+        // Resume
+        else if (musicApp.playingUsed) {
+          if (musicApp.playingUsed) {
+            playSong();
+          }
+
+          musicApp.playingUsed = false;
+        }
+      }
+
+      // Check Data
+      musicApp.usingSystem = true;
+    }
+  },
 };
 
 // Music Updater
-musicManager.updatePlayer = () => {
-  // View
-  TinyHtml.query('#music-player')?.addClass('border').removeClass('d-none').addClass('me-3');
-
-  // Buff
-  if (musicApp.buffering || musicApp.loading || !musicApp.usingSystem || !yt.exists) {
-    TinyHtml.queryAll('#music-player > a').addClass('disabled');
-  } else {
-    TinyHtml.queryAll('#music-player > a').removeClass('disabled');
-  }
-
-  // Title
-  if (typeof musicApp.title === 'string' && musicApp.title.length > 0) {
-    const newTitle = `Youtube - ${musicApp.author_name} - ${musicApp.title}`;
-    const divBase = new TinyHtml(TinyHtml.queryAll('#music-player > a').has(musicApp.nav.info));
-
-    if (divBase.size > 0 && divBase.data('bs-tooltip-data') !== newTitle) {
-      divBase.setData('bs-tooltip-data', newTitle);
-      const bsToolTip = divBase.data('BootstrapToolTip');
-      if (bsToolTip) bsToolTip.setContent({ '.tooltip-inner': newTitle });
-    }
-  }
-
-  // Playing
-  if (musicApp.playing) {
-    musicApp.nav.play.addClass('fa-pause').removeClass('fa-play');
-  } else if (musicApp.paused) {
-    musicApp.nav.play.addClass('fa-play').removeClass('fa-pause');
-  } else if (
-    musicApp.stoppabled ||
-    typeof musicApp.currentTime !== 'number' ||
-    typeof musicApp.duration !== 'number' ||
-    musicApp.currentTime === musicApp.duration
-  ) {
-    musicApp.nav.play.addClass('fa-play').removeClass('fa-pause');
-  }
-
-  // Volume
-  musicApp.nav.volume.removeClass('fa-volume-mute').removeClass('fa-volume-up');
-  if (typeof musicApp.volume === 'number' && musicApp.volume > 0) {
-    musicApp.nav.volume.addClass('fa-volume-up');
-  } else {
-    musicApp.nav.volume.addClass('fa-volume-mute');
-  }
-
-  // Tooltip
-  TinyHtml.queryAll('#music-player > a[title]').forEach((instance) => Tooltip(instance));
-};
 
 // TTS Updater
 ttsManager.updatePlayer = () => {
@@ -216,30 +466,49 @@ ttsManager.updatePlayer = () => {
   }
 };
 
-musicManager.start = {};
+/**
+ * @typedef {Object} PizzicatoPlayer
+ * @property {boolean} playing - Whether the sound is playing.
+ * @property {boolean} hiding - Whether the sound is fading out.
+ * @property {boolean} showing - Whether the sound is fading in.
+ * @property {unknown} data - Underlying Pizzicato sound.
+ * @property {number} volume - Volume between 0 and 100.
+ * @property {() => void} stop - Stops the sound.
+ * @property {() => void} start - Starts the sound.
+ * @property {(volume?: number|null) => Promise<void>} play - Plays the sound.
+ * @property {(value?: number|null, notEdit?: boolean) => Promise<void>} setVolume - Sets the volume.
+ * @property {(hideTimeout?: number) => Promise<void>} hide - Fades the sound out.
+ * @property {(hideTimeout?: number) => Promise<void>} show - Fades the sound in.
+ */
 
+/**
+ * @param {string} item - Sound identifier.
+ * @param {boolean} loop - Whether the sound loops.
+ * @param {(value?: unknown) => void} resolve - Resolves the parent promise.
+ * @param {string} url - Sound URL.
+ * @param {boolean} [forcePic] - Forces the Pizzicato backend.
+ * @returns {PizzicatoPlayer} The created player.
+ */
 musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
   // Pizzicato Space
-  const pizzicato = {};
+  /** @type {PizzicatoPlayer} */
+  const pizzicato = /** @type {PizzicatoPlayer} */ ({});
 
   // Pizzicato File
   pizzicato.playing = false;
   pizzicato.hiding = false;
 
   const newSound = new Pizzicato.Sound(
-    {
-      source: 'file',
-      options: { path: url, loop: loop },
-    },
+    { source: 'file', options: { path: url, loop: loop } },
     () => {
-      resolve();
+      resolve(undefined);
     },
   );
 
   pizzicato.data = newSound;
 
   // Data
-  pizzicato.volume = newSound.volume * 100;
+  pizzicato.volume = Number(newSound.volume) * 100;
 
   // Stop
   pizzicato.stop = () => {
@@ -274,7 +543,7 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
           }
 
           pizzicato.start();
-          resolve();
+          resolve(undefined);
         } catch (err) {
           reject(err);
         }
@@ -283,7 +552,7 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
   };
 
   // Set Volume
-  pizzicato.setVolume = (value, notEdit = false) => {
+  pizzicato.setVolume = (/** @type {number|null|undefined} */ value, notEdit = false) => {
     return new Promise((resolve) => {
       let tinyValue = value;
       if (typeof tinyValue !== 'number') {
@@ -316,13 +585,13 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
         pizzicato.volume = tinyValue;
       }
 
-      resolve();
+      resolve(undefined);
     });
   };
 
   // Hide
   pizzicato.hide = async (hideTimeout = 50) => {
-    let volume = newSound.volume * 100;
+    let volume = Number(newSound.volume) * 100;
 
     pizzicato.hiding = true;
     pizzicato.showing = false;
@@ -342,7 +611,7 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
                 pizzicato.setVolume(volume, true);
               }
 
-              resolve();
+              resolve(undefined);
             }, hideTimeout);
           });
         }
@@ -393,7 +662,7 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
                 }
               }
 
-              resolve();
+              resolve(undefined);
             }, hideTimeout);
           });
         }
@@ -409,7 +678,7 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
   };
 
   // End Sound
-  newSound.on('end', () => {
+  /** @type {{ on: (event: string, cb: () => void) => void }} */ (newSound).on('end', () => {
     if (!loop) {
       pizzicato.hide(0);
     }
@@ -419,13 +688,22 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
   if (!forcePic) {
     storyData.sfx[item].pizzicato = pizzicato;
   } else {
-    for (const item2 in pizzicato) {
-      storyData.sfx[item][item2] = pizzicato[item2];
+    const target = /** @type {Record<string, unknown>} */ (
+      /** @type {unknown} */ (storyData.sfx[item])
+    );
+    const source = /** @type {Record<string, unknown>} */ (pizzicato);
+    for (const item2 in source) {
+      target[item2] = source[item2];
     }
   }
+
+  return pizzicato;
 };
 
-musicManager.start.seamlessloop = (item, newSound) => {
+musicManager.start.seamlessloop = (
+  /** @type {string} */ item,
+  /** @type {SeamlessLoop} */ newSound,
+) => {
   // Data
   storyData.sfx[item].data = newSound;
   storyData.sfx[item].volume = newSound._volume * 100;
@@ -463,7 +741,7 @@ musicManager.start.seamlessloop = (item, newSound) => {
           }
 
           storyData.sfx[item].start();
-          resolve();
+          resolve(undefined);
         } catch (err) {
           reject(err);
         }
@@ -472,7 +750,7 @@ musicManager.start.seamlessloop = (item, newSound) => {
   };
 
   // Set Volume
-  storyData.sfx[item].setVolume = (value, notEdit = false) => {
+  storyData.sfx[item].setVolume = (/** @type {number|null|undefined} */ value, notEdit = false) => {
     return new Promise((resolve) => {
       let tinyValue = value;
       if (typeof tinyValue !== 'number') {
@@ -505,7 +783,7 @@ musicManager.start.seamlessloop = (item, newSound) => {
         storyData.sfx[item].volume = tinyValue;
       }
 
-      resolve();
+      resolve(undefined);
     });
   };
 
@@ -531,7 +809,7 @@ musicManager.start.seamlessloop = (item, newSound) => {
                 storyData.sfx[item].setVolume(volume, true);
               }
 
-              resolve();
+              resolve(undefined);
             }, hideTimeout);
           });
         }
@@ -585,7 +863,7 @@ musicManager.start.seamlessloop = (item, newSound) => {
                 }
               }
 
-              resolve();
+              resolve(undefined);
             }, hideTimeout);
           });
         }
@@ -601,10 +879,13 @@ musicManager.start.seamlessloop = (item, newSound) => {
   };
 };
 
-musicManager.start.vanilla = (item, newSound) => {
+musicManager.start.vanilla = (
+  /** @type {string} */ item,
+  /** @type {HTMLAudioElement} */ newSound,
+) => {
   // Values
   storyData.sfx[item].paused = false;
-  storyData.sfx[item].volume = newSound.volume * 100;
+  storyData.sfx[item].volume = Number(newSound.volume) * 100;
   storyData.sfx[item].currentTime = 0;
   storyData.sfx[item].duration = newSound.duration;
 
@@ -636,7 +917,7 @@ musicManager.start.vanilla = (item, newSound) => {
           }
 
           newSound.play();
-          resolve();
+          resolve(undefined);
         } catch (err) {
           reject(err);
         }
@@ -645,16 +926,16 @@ musicManager.start.vanilla = (item, newSound) => {
   };
 
   // Seek To
-  storyData.sfx[item].seekTo = (value) => {
+  storyData.sfx[item].seekTo = (/** @type {number} */ value) => {
     return new Promise((resolve) => {
       storyData.sfx[item].currentTime = value;
       newSound.currentTime = value;
-      resolve();
+      resolve(undefined);
     });
   };
 
   // Set Volume
-  storyData.sfx[item].setVolume = (value, notEdit = false) => {
+  storyData.sfx[item].setVolume = (/** @type {number|null|undefined} */ value, notEdit = false) => {
     return new Promise((resolve) => {
       let tinyValue = value;
       if (typeof tinyValue !== 'number') {
@@ -684,7 +965,7 @@ musicManager.start.vanilla = (item, newSound) => {
         storyData.sfx[item].volume = tinyValue;
       }
 
-      resolve();
+      resolve(undefined);
     });
   };
 
@@ -704,7 +985,7 @@ musicManager.start.vanilla = (item, newSound) => {
           newSound.currentTime = 0;
           storyData.sfx[item].currentTime = 0;
           storyData.sfx[item].leftTime = storyData.sfx[item].duration;
-          resolve();
+          resolve(undefined);
         } catch (err) {
           reject(err);
         }
@@ -725,7 +1006,7 @@ musicManager.start.vanilla = (item, newSound) => {
           storyData.sfx[item].playing = false;
           storyData.sfx[item].paused = true;
           newSound.pause();
-          resolve();
+          resolve(undefined);
         } catch (err) {
           reject(err);
         }
@@ -747,7 +1028,7 @@ musicManager.start.vanilla = (item, newSound) => {
           storyData.sfx[item].paused = false;
           storyData.sfx[item].setVolume(storyData.sfx[item].volume);
           newSound.play();
-          resolve();
+          resolve(undefined);
         } catch (err) {
           reject(err);
         }
@@ -757,7 +1038,7 @@ musicManager.start.vanilla = (item, newSound) => {
 
   // Hide
   storyData.sfx[item].hide = async (hideTimeout = 50) => {
-    let volume = newSound.volume * 100;
+    let volume = Number(newSound.volume) * 100;
 
     storyData.sfx[item].playing = true;
     storyData.sfx[item].paused = false;
@@ -779,7 +1060,7 @@ musicManager.start.vanilla = (item, newSound) => {
                 storyData.sfx[item].setVolume(volume, true);
               }
 
-              resolve();
+              resolve(undefined);
             }, hideTimeout);
           });
         }
@@ -838,7 +1119,7 @@ musicManager.start.vanilla = (item, newSound) => {
                 }
               }
 
-              resolve();
+              resolve(undefined);
             }, hideTimeout);
           });
         }
@@ -878,219 +1159,9 @@ musicManager.start.vanilla = (item, newSound) => {
 };
 
 // Insert SFX
-musicManager.insertSFX = (item, loop = true, type = 'all') => {
-  if (typeof loop !== 'boolean') {
-    loop = true;
-  }
-  return new Promise(async (resolve, reject) => {
-    if (!storyData.sfx[item]) {
-      // Prepare
-      storyData.sfx[item] = {};
-
-      // Try
-      try {
-        // File URL
-        let url = null;
-
-        // IPFS
-        if (storyCfg.sfx[item].type === 'ipfs') {
-          url = storyCfg.ipfs.host.replace('{cid}', storyCfg.sfx[item].value);
-        }
-
-        // Normal
-        else {
-          url = storyCfg.sfx[item].value;
-        }
-
-        // Exist URL
-        if (url) {
-          // Resolve
-          const tinyResolve = (data) => {
-            console.log(`[${url}] Loaded!`);
-            resolve(data);
-          };
-
-          // Values
-          storyData.sfx[item].playing = false;
-          storyData.sfx[item].hiding = false;
-          storyData.sfx[item].loop = loop;
-
-          // Log
-          console.log(`[${url}] Loading...`);
-
-          const file = await musicManager.loadAudio(url);
-          storyData.sfx[item].file = file;
-
-          // Start Pizzicato
-          const startPizzicato = (forcePic = false) => {
-            return musicManager.start.pizzicato(item, loop, tinyResolve, file.currentSrc, forcePic);
-          };
-
-          // Loop Audio
-          if (loop) {
-            // All Modules
-            if (type === 'all') {
-              const newSound = new SeamlessLoop();
-              newSound.addUri(file.currentSrc, file.duration * 1000, item);
-              newSound.callback(() => {
-                musicManager.start.seamlessloop(item, newSound);
-                startPizzicato();
-              });
-            } else if (type === 'pizzicato') {
-              startPizzicato(true);
-            } else if (type === 'main') {
-              const newSound = new SeamlessLoop();
-              newSound.addUri(file.currentSrc, file.duration * 1000, item);
-              newSound.callback(() => {
-                musicManager.start.seamlessloop(item, newSound);
-                tinyResolve();
-              });
-            } else {
-              reject(new Error('Invalid Module Type!'));
-            }
-          }
-
-          // Nope
-          else {
-            // All Modules
-            if (type === 'all') {
-              // Start
-              musicManager.start.vanilla(item, file);
-              startPizzicato();
-            } else if (type === 'pizzicato') {
-              startPizzicato(true);
-            } else if (type === 'main') {
-              musicManager.start.vanilla(item, file);
-              tinyResolve();
-            } else {
-              reject(new Error('Invalid Module Type!'));
-            }
-          }
-        } else {
-          reject(new Error('Invalid SFX File! ' + item));
-        }
-      } catch (err) {
-        // Fail
-        delete storyData.sfx[item];
-        reject(err);
-      }
-    } else {
-      resolve();
-    }
-
-    // Complete
-    return;
-  });
-};
 
 // Stop Playlist
-musicManager.stopPlaylist = async () => {
-  if (musicApp.usingSystem) {
-    // Playing Used
-    if (musicApp.playing) {
-      musicApp.playingUsed = true;
-    }
-
-    // Using System
-    musicApp.usingSystem = false;
-
-    // Hide Progress
-    const hideTimeout = 50;
-    let volume = musicApp.volume;
-    for (let i = 0; i < 100; i++) {
-      if (!musicApp.usingSystem) {
-        await new Promise((resolve) => {
-          setTimeout(() => {
-            // Volume
-            volume--;
-
-            // Youtube Player
-            if (yt.player && typeof yt.player.setVolume === 'function') {
-              yt.player.setVolume(volume);
-            }
-
-            if (i === 100) {
-              // Youtube Player
-              if (yt.player) {
-                yt.player.stopVideo();
-              }
-            }
-
-            resolve();
-          }, hideTimeout);
-        });
-      }
-    }
-  }
-  return;
-};
 
 // Start Playlist
-musicManager.startPlaylist = () => {
-  if (storyData.readFic && objHash(musicApp.playlist) !== objHash(musicApp.playlistPlaying)) {
-    // Check Status
-    if (Array.isArray(musicApp.playlist) && musicApp.playlist.length > 0) {
-      // Play Song
-      shuffleArray(musicApp.playlist);
-
-      const playSong = () => {
-        if (
-          typeof musicApp.now.index === 'number' &&
-          !isNaN(musicApp.now.index) &&
-          isFinite(musicApp.now.index) &&
-          musicApp.now.index > -1
-        ) {
-          // Update Cache
-          musicApp.playlistPlaying = musicApp.playlist;
-
-          // Play
-          const song = musicApp.playlist[musicApp.now.index];
-          if (
-            song &&
-            typeof song.id === 'string' &&
-            song.id.length > 0 &&
-            typeof song.type === 'string' &&
-            song.type.length > 0
-          ) {
-            // Youtube
-            if (song.type === 'youtube') {
-              setTimeout(() => yt.play(song.id), 100);
-            }
-          }
-        }
-      };
-
-      // Exist
-      if (
-        musicApp.now.playlist === null ||
-        musicApp.now.index === -1 ||
-        musicApp.now.playlist !== musicApp.value
-      ) {
-        // Fix Index
-        if (musicApp.now.index < 0 || musicApp.now.playlist !== musicApp.value) {
-          musicApp.now.index = 0;
-        }
-
-        // Now
-        musicApp.now.playlist = musicApp.value;
-
-        // Play
-        playSong();
-      }
-
-      // Resume
-      else if (musicApp.playingUsed) {
-        if (musicApp.playingUsed) {
-          playSong();
-        }
-
-        musicApp.playingUsed = false;
-      }
-    }
-
-    // Check Data
-    musicApp.usingSystem = true;
-  }
-};
 
 export default musicManager;

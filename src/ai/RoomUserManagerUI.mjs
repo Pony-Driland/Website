@@ -1,10 +1,35 @@
 import moment from 'moment';
 import objHash from 'object-hash';
+import { isJsonObject } from 'tiny-essentials/basics/objChecker';
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 import tinyLib from '../files/tinyLib.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import TinyClientIo from './socketClient.mjs';
+
+/**
+ * A single user row rendered by the manager.
+ *
+ * @typedef {Object} RoomUserHtml
+ * @property {import('bootstrap').Tooltip[]} tooltips - Tooltips attached to the row.
+ * @property {{ kick: TinyHtmlAny; ban: TinyHtmlAny; mod: TinyHtmlAny }} actions - Row action buttons.
+ * @property {string} userId - User id.
+ */
+
+/**
+ * A moderator entry.
+ *
+ * @typedef {Object} RoomModerator
+ * @property {string} userId - Moderator user id.
+ */
+
+/**
+ * A single user entry stored by the manager.
+ *
+ * @typedef {Object} RoomUserData
+ * @property {string|null} [nickname] - Display name.
+ * @property {import('moment').Moment|number|string|Date} [ping] - Last ping.
+ */
 
 /**
  * UserRoomManager
@@ -14,10 +39,10 @@ import TinyClientIo from './socketClient.mjs';
  * Created by: Yasmin Seidel (JasminDreasond)
  * Co-developed with: ChatGPT (OpenAI) as coding assistant
  *
- * @param {Object} config
+ * @param {Object} config - Manager configuration.
  * @param {string} config.currentUserId - The userId of the current logged-in user.
  * @param {boolean} config.isOwner - Whether the current user is the owner of the room.
- * @param {jQuery} config.target - DOM element where the manager will be rendered.
+ * @param {TinyHtmlAny} config.root - DOM element where the manager will be rendered.
  *
  * @example
  * const manager = new UserRoomManager({
@@ -30,20 +55,33 @@ import TinyClientIo from './socketClient.mjs';
  * manager.setModerators([{ userId: 'user1' }]);
  */
 class UserRoomManager {
+  /** @type {RoomUserHtml[]} */
   #usersHtml = [];
 
   /** @type {TinyClientIo} */
   #client;
 
+  /** @type {TinyHtmlAny|null} */
+  $unbanInput = null;
+
+  /** @type {TinyHtmlAny|null} */
+  $remveModInput = null;
+
+  /** @type {TinyHtmlAny|null} */
+  $readonlyButton = null;
+
+  /** @type {TinyHtmlAny|null} */
+  $roomStatusButton = null;
+
   /**
    * Creates a new instance of the user room manager.
    *
    * @param {Object} options - The configuration object.
-   * @param {Object} options.client - The client instance used for communication.
-   * @param {jQuery} options.root - The root DOM element where the UI will be rendered.
+   * @param {TinyClientIo} options.client - The client instance used for communication.
+   * @param {TinyHtmlAny} options.root - The root DOM element where the UI will be rendered.
    * @param {string} options.currentUserId - The ID of the current user.
-   * @param {Object<string, Object>} [options.users={}] - An object containing user data, keyed by user ID.
-   * @param {Array<Object>} [options.moderators=[]] - An array of moderator objects, each containing at least a `userId`.
+   * @param {Record<string, RoomUserData>} [options.users={}] - An object containing user data, keyed by user ID.
+   * @param {RoomModerator[]} [options.moderators=[]] - An array of moderator objects, each containing at least a `userId`.
    * @param {boolean} [options.isOwner=false] - Whether the current user is the room owner.
    */
   constructor({ client, root, currentUserId, users, moderators, isOwner }) {
@@ -72,17 +110,18 @@ class UserRoomManager {
    * Retrieves the current search input value in lowercase.
    *
    * @returns {string} The trimmed, lowercase search query or an empty string if not valid.
-   * @private
    */
   #getSearch() {
-    const value = this.$searchInput?.val()?.trim().toLowerCase();
+    const value = String(this.$searchInput?.val() ?? '')
+      .trim()
+      .toLowerCase();
     return typeof value === 'string' ? value : '';
   }
 
   /**
    * Sets a new client instance for the manager.
    *
-   * @param {Object} client - The new client instance to assign.
+   * @param {TinyClientIo} client - The new client instance to assign.
    */
   setClient(client) {
     this.#client = client;
@@ -160,6 +199,7 @@ class UserRoomManager {
     this.$kickAll = tinyLib.bs.button('danger').setText('Kick all');
     this.$kickAll.on('click', () => {
       const room = this.#client.getRoom() || {};
+      /** @type {string[]} */
       const userIds = [];
       Object.keys(this.users).forEach((userId) => {
         if (userId !== this.currentUserId && userId !== room.ownerId) userIds.push(userId);
@@ -216,7 +256,11 @@ class UserRoomManager {
       placeholder: 'Search users...',
     });
     this.$searchInput.on('input', () => {
-      this.renderUserList(this.$searchInput.val().trim().toLowerCase());
+      this.renderUserList(
+        String(this.$searchInput?.val() ?? '')
+          .trim()
+          .toLowerCase(),
+      );
     });
 
     const $searchWrapper = TinyHtml.createFrom('div')
@@ -295,7 +339,7 @@ class UserRoomManager {
       .setAttr('type', 'text')
       .setAttr('placeholder', 'Enter user ID to unban')
       .on('keydown', (e) => {
-        if (e.key === 'Enter') {
+        if (/** @type {KeyboardEvent} */ (e).key === 'Enter') {
           e.preventDefault();
           $unbanButton.trigger('click');
         }
@@ -306,7 +350,7 @@ class UserRoomManager {
       .setAttr('type', 'text')
       .setAttr('placeholder', 'Enter user ID to remove mod')
       .on('keydown', (e) => {
-        if (e.key === 'Enter') {
+        if (/** @type {KeyboardEvent} */ (e).key === 'Enter') {
           e.preventDefault();
           $removeModButton.trigger('click');
         }
@@ -314,8 +358,8 @@ class UserRoomManager {
 
     const $unbanButton = tinyLib.bs.button('success').setText('Unban');
     $unbanButton.on('click', () => {
-      if (!this.$unbanInput.hasProp('disabled')) {
-        const userId = this.$unbanInput.val().trim();
+      if (this.$unbanInput && !this.$unbanInput.hasProp('disabled')) {
+        const userId = String(this.$unbanInput?.val() ?? '').trim();
         if (userId) {
           this.$unbanInput.setVal('');
           this.unbanUser(userId);
@@ -325,8 +369,8 @@ class UserRoomManager {
 
     const $removeModButton = tinyLib.bs.button('danger').setText('Remove Mod');
     $removeModButton.on('click', () => {
-      if (!this.$remveModInput.hasProp('disabled')) {
-        const userId = this.$remveModInput.val().trim();
+      if (this.$remveModInput && !this.$remveModInput.hasProp('disabled')) {
+        const userId = String(this.$remveModInput?.val() ?? '').trim();
         if (userId) {
           this.$remveModInput.setVal('');
           this.reqDemoteModerator(userId).catch((err) => alert(err.message));
@@ -389,11 +433,11 @@ class UserRoomManager {
    * @param {string} [filter=''] - Optional filter string to match against nickname or userId.
    */
   renderUserList(filter = '') {
-    for (const item of this.#usersHtml) item.tooltips.map((item) => item.hide());
+    for (const item of this.#usersHtml) item.tooltips.forEach((tooltip) => tooltip.hide());
     this.$userList.empty();
     this.#usersHtml = [];
 
-    const isMod = (userId) =>
+    const isMod = (/** @type {string} */ userId) =>
       this.moderators.some((mod) => {
         const modStatus = mod.userId === userId;
         if (this.currentUserId === userId) this.isModerator = modStatus;
@@ -634,14 +678,17 @@ class UserRoomManager {
    * @param {string} userId - The user ID to unban.
    */
   unbanUser(userId) {
-    this.$unbanInput.addProp('disabled');
+    const $input = this.$unbanInput;
+    if (!$input) return;
+
+    $input.addProp('disabled');
     this.#client
       .unbanUser(userId)
       .then((result) => {
-        this.$unbanInput.removeProp('disabled').removeClass('disabled');
+        $input.removeProp('disabled').removeClass('disabled');
         if (result.error)
-          this.$unbanInput.setVal(typeof result.msg === 'string' ? result.msg : 'Unknown error');
-        this.$unbanInput.trigger('focus').trigger('select');
+          $input.setVal(typeof result.msg === 'string' ? result.msg : 'Unknown error');
+        $input.trigger('focus').trigger('select');
       })
       .catch((err) => alert(err.message));
   }
@@ -651,14 +698,22 @@ class UserRoomManager {
    * Disables the kick button during the request.
    * On success, removes the user from the user list.
    *
-   * @param {string} userId - The user ID to kick.
+   * @param {string|string[]} userId - The user ID to kick.
    */
   kickUser(userId) {
     const html = this.#usersHtml.find((item) => item.userId === userId);
     if (html) html.actions.kick.addProp('disabled');
     this.#client.kickUser(userId).then((result) => {
       if (html) html.actions.kick.removeProp('disabled').removeClass('disabled');
-      if (!result.error) this.removeUser(userId);
+      if (!result.error) {
+        if (Array.isArray(result.data)) {
+          for (const data of result.data) {
+            if (isJsonObject(data) && typeof data.userId === 'string') {
+              this.removeUser(data.userId);
+            }
+          }
+        }
+      }
     });
   }
 

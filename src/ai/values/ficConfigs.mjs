@@ -9,6 +9,7 @@ const ficConfigs = {
    * @property {string} title - Label shown on the sidebar button.
    * @property {string} id - Unique preset id, also used as the AI session id.
    * @property {string|null} template - Key of the instruction template in `aiTemplates.instructions`, or `null` for a blank session.
+   * @property {string} [prompt] - Optional extra prompt appended to the preset instructions.
    * @property {string} icon - Font Awesome class list used as the button icon.
    * @property {boolean} [isSafe] - Whether the preset is safe for users who did not pass age verification.
    * @property {string} intro - Introductory message injected when the preset is loaded offline.
@@ -80,7 +81,7 @@ const ficConfigs = {
     },
   ],
 
-  /** @type {any[]} */
+  /** @type {import('tiny-essentials/libs/html/TinyHtml').default<HTMLElement>[]} */
   buttons: [],
   /** @type {null|string} */
   selected: null,

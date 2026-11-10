@@ -13,6 +13,36 @@ const { Icon } = TinyHtmlElems;
  * @module chapter_manager/music/html
  */
 
+/**
+ * @typedef {Object} MusicApp
+ * @property {boolean} isStopping
+ * @property {boolean} useThis
+ * @property {string|null} value
+ * @property {{ playlist: string|null, index: number }} now
+ * @property {boolean} usingSystem
+ * @property {boolean} disabled
+ * @property {boolean} playing
+ * @property {boolean} paused
+ * @property {boolean} stoppabled
+ * @property {boolean} buffering
+ * @property {number} volume
+ * @property {StoryTrack[]} playlist
+ * @property {StoryTrack[]} playlistPlaying
+ * @property {boolean} loading
+ * @property {string} title
+ * @property {string} author_name
+ * @property {string} author_url
+ * @property {string} provider_name
+ * @property {string} thumbnail_url
+ * @property {number} currentTime
+ * @property {number} duration
+ * @property {boolean} showing
+ * @property {boolean} playingUsed
+ * @property {Record<string, TinyHtmlAny>} nav
+ * @property {() => void} songVolumeUpdate
+ */
+
+/** @type {MusicApp} */
 export const musicApp = {
   isStopping: false,
   useThis: true,
@@ -26,7 +56,17 @@ export const musicApp = {
   buffering: false,
   volume: 0,
   playlist: [],
-  playlistPlaying: [null],
+  playlistPlaying: [],
+  loading: false,
+  title: '',
+  author_name: '',
+  author_url: '',
+  provider_name: '',
+  thumbnail_url: '',
+  currentTime: 0,
+  duration: 0,
+  showing: false,
+  playingUsed: false,
 
   nav: {
     info: new Icon('fas fa-info-circle'),
@@ -51,6 +91,7 @@ export const musicApp = {
 export const musicBase = TinyHtml.createFrom('div', { id: 'music-player', class: 'd-none' });
 
 // Items
+/** @type {TinyHtmlAny[]} */
 export const musicBaseItems = [];
 
 const disableButton = TinyHtml.createFrom('a', {
@@ -124,7 +165,9 @@ musicBaseItems.push(
           title: [new Icon('fas fa-volume me-3'), 'Song Volume'],
           body: TinyHtml.createFrom('center').append(
             TinyHtml.createFrom('p').setText('Change the page music volume'),
-            input.on('change', () => yt.setVolume(input.val())).setVal(musicApp.volume ?? null),
+            input
+              .on('change', () => yt.setVolume(Number(input.val())))
+              .setVal(musicApp.volume ?? null),
           ),
           dialog: 'modal-lg',
         });

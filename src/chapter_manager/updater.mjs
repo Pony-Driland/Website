@@ -22,9 +22,35 @@ const { Icon } = TinyHtmlElems;
  * @module chapter_manager/updater
  */
 
-// Prepare Cache
-const cacheChapterUpdater = { soundCache: {} };
+/**
+ * A single sound effect tracked by the chapter reader.
+ *
+ * @typedef {Object} SoundCacheEntry
+ * @property {boolean} [playing] - Whether the sound is currently playing.
+ * @property {boolean} [waiting] - Whether the entry still needs to be processed.
+ * @property {ChapterSoundConfig} [value] - The sound configuration attached to the entry.
+ */
 
+/**
+ * Chapter reader cache and public API.
+ *
+ * @typedef {Object} ChapterUpdater
+ * @property {Record<string, SoundCacheEntry>} soundCache - Sound effects by file name.
+ * @property {boolean} [locked] - Prevents re-entrant scroll handling.
+ * @property {ReturnType<typeof setTimeout>} [timeoutChecker] - Pending scroll debounce timer.
+ * @property {(item: number, scrollIntoView?: boolean) => void} setActiveItem - Selects a line.
+ * @property {() => void} scrollData - Applies the state of the current line.
+ * @property {(lastPage: number) => void} data - Renders the given line.
+ */
+
+// Prepare Cache
+/** @type {ChapterUpdater} */
+const cacheChapterUpdater = /** @type {ChapterUpdater} */ ({ soundCache: {} });
+
+/**
+ * @param {number} item - Line to activate.
+ * @param {boolean} [scrollIntoView] - Whether to scroll the line into view.
+ */
 cacheChapterUpdater.setActiveItem = (item, scrollIntoView = false) => {
   if (cacheChapterUpdater.locked) {
     return;
@@ -33,7 +59,7 @@ cacheChapterUpdater.setActiveItem = (item, scrollIntoView = false) => {
   // Validator
   if (storyData.chapter.selected > 0) {
     let selectedItem = Number(item);
-    let currentLine = storyData.chapter.line;
+    let currentLine = storyData.chapter.line ?? 0;
 
     if (currentLine == selectedItem) {
       return;
@@ -43,9 +69,13 @@ cacheChapterUpdater.setActiveItem = (item, scrollIntoView = false) => {
     if (element == null) {
       // Todo: handle correctly
       if (selectedItem > currentLine) {
-        document.querySelector('a[title="Go to next page"]').click();
+        /** @type {HTMLElement|null} */
+        const nextPage = document.querySelector('a[title="Go to next page"]');
+        if (nextPage) nextPage.click();
       } else if (selectedItem < currentLine) {
-        document.querySelector('a[title="Go to previous page"]').click();
+        /** @type {HTMLElement|null} */
+        const prevPage = document.querySelector('a[title="Go to previous page"]');
+        if (prevPage) prevPage.click();
       }
       return;
     }
@@ -56,11 +86,12 @@ cacheChapterUpdater.setActiveItem = (item, scrollIntoView = false) => {
         cacheChapterUpdater.locked = false;
       });
 
+      /** @type {Element|null} */
       let scrollTarget = document.querySelector(`tr[line="${selectedItem - 1}"]`);
       if (scrollTarget == null) {
-        scrollTarget = markdownBase.get(0);
+        scrollTarget = /** @type {Element} */ (markdownBase.get(0));
       }
-      scrollTarget.scrollIntoView();
+      if (scrollTarget) scrollTarget.scrollIntoView();
     }
 
     // Complete
@@ -169,6 +200,7 @@ cacheChapterUpdater.scrollData = () => {
   for (const file in cacheChapterUpdater.soundCache) {
     // Value Data
     const value = cacheChapterUpdater.soundCache[file].value;
+    if (!value) continue;
 
     if (cacheChapterUpdater.soundCache[value.file].waiting) {
       // Progress
@@ -205,7 +237,12 @@ cacheChapterUpdater.scrollData = () => {
   }
 };
 
-// Update Cache
+/**
+ * Renders the given line.
+ *
+ * @param {number} lastPage - Line that must be rendered.
+ * @returns {void}
+ */
 cacheChapterUpdater.data = (lastPage) => {
   if (storyData.chapter.selected > 0) {
     TinyHtml.queryAll('.selected-tr').removeClass('selected-tr');
@@ -221,7 +258,7 @@ cacheChapterUpdater.data = (lastPage) => {
       const tinyData = storyData.chapter.ficPageData.find(
         (ficData) => ficData.line === Number(lastPage),
       );
-      const ttsIndex = tinyData.line || -1;
+      const ttsIndex = tinyData ? tinyData.line : -1;
       if (ttsIndex > -1) ttsManager.readLine(ttsIndex);
     }
 
@@ -234,8 +271,12 @@ cacheChapterUpdater.data = (lastPage) => {
         // Get Data
         if (data[i].set) {
           for (const item in data[i].set) {
-            if (typeof chapterSet[item] === 'function') {
-              chapterSet[item](data[i].set[item], i < lastPage);
+            const setter = chapterSet[item];
+            if (typeof setter === 'function') {
+              setter(
+                /** @type {Record<string, never>} */ (data[i].set)[item],
+                Number(i) < lastPage,
+              );
             }
           }
         }
@@ -300,12 +341,15 @@ cacheChapterUpdater.data = (lastPage) => {
       });
     }
 
-    if (!storyData.chapter.blockLineSave) {
-      storyData.chapter.nav.bookmark.removeClass('disabled');
-      storyData.chapter.nav.bookmark.removeProp('disabled');
-    } else {
-      storyData.chapter.nav.bookmark.addClass('disabled');
-      storyData.chapter.nav.bookmark.addProp('disabled');
+    const bookmark = storyData.chapter.nav.bookmark;
+    if (bookmark) {
+      if (!storyData.chapter.blockLineSave) {
+        bookmark.removeClass('disabled');
+        bookmark.removeProp('disabled');
+      } else {
+        bookmark.addClass('disabled');
+        bookmark.addProp('disabled');
+      }
     }
 
     // Sortable  #status
@@ -331,8 +375,12 @@ cacheChapterUpdater.data = (lastPage) => {
   }
 };
 
-// Set Actions
+/** @type {Record<string, (value: never, actionFromNow?: boolean) => void>} */
 const chapterSet = {
+  /**
+   * @param {ChapterSoundConfig} value - Sound configuration.
+   * @param {boolean} [actionFromNow] - Whether the action happens now.
+   */
   playEffect: (value, actionFromNow = false) => {
     if (actionFromNow && value && value.file && storyData.sfx[value.file]) {
       if (!cacheChapterUpdater.soundCache[value.file]) {
@@ -344,10 +392,14 @@ const chapterSet = {
     }
   },
 
+  /**
+   * @param {string} value - Playlist key.
+   * @param {boolean} [actionFromNow] - Whether the action happens now.
+   */
   playlistPlay: (value, actionFromNow = false) => {
     if (actionFromNow) {
       // Set Playlist
-      const playlist = storyCfg.playlist[value];
+      const playlist = storyCfg.playlist?.[value];
       if (Array.isArray(playlist)) {
         musicApp.value = value;
         musicApp.playlist = playlist;
@@ -358,6 +410,10 @@ const chapterSet = {
     }
   },
 
+  /**
+   * @param {number} value - Day number.
+   * @param {boolean} [actionFromNow] - Whether the action happens now.
+   */
   day: (value, actionFromNow = false) => {
     if (actionFromNow) {
       // Add Item Base
@@ -379,6 +435,10 @@ const chapterSet = {
     }
   },
 
+  /**
+   * @param {string} value - Day/night cycle key.
+   * @param {boolean} [actionFromNow] - Whether the action happens now.
+   */
   dayNightCycle: (value, actionFromNow = false) => {
     if (actionFromNow) {
       body
@@ -404,6 +464,7 @@ const chapterSet = {
       }
 
       // Types
+      /** @type {Record<string, { icon: string, title: string }>} */
       const types = {
         morning: { icon: 'fas fa-sun', title: 'Morning' },
         evening: { icon: 'fas fa-cloud-sun', title: 'Evening' },
@@ -430,6 +491,10 @@ const chapterSet = {
     }
   },
 
+  /**
+   * @param {string} value - Weather key.
+   * @param {boolean} [actionFromNow] - Whether the action happens now.
+   */
   weather: (value, actionFromNow = false) => {
     if (actionFromNow) {
       // Add Item Base
@@ -448,6 +513,7 @@ const chapterSet = {
       }
 
       // Types
+      /** @type {Record<string, { icon: string, title: string }>} */
       const types = {
         rain: { icon: 'fas fa-cloud-rain', title: 'Rain' },
         bolt: { icon: 'fas fa-bolt', title: 'Thunderbolt' },
@@ -466,6 +532,10 @@ const chapterSet = {
     }
   },
 
+  /**
+   * @param {string} value - Location name.
+   * @param {boolean} [actionFromNow] - Whether the action happens now.
+   */
   where: (value, actionFromNow = false) => {
     if (actionFromNow) {
       // Add Item Base

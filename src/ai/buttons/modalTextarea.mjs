@@ -14,7 +14,23 @@ import { canSandBox, tinyAi } from '../software/base.mjs';
  * @module ai/buttons/modalTextarea
  */
 
-// Textarea Template
+/**
+ * @typedef {Object} TinyModalTextareaConfig
+ * @property {string} [info] - Help text shown above the textarea.
+ * @property {number} [size] - Height of the textarea, in pixels.
+ * @property {string} [submitName] - Label of the submit button.
+ * @property {{ data: AiPromptTemplate[], title: string }|null} [addTemplates] - Template picker data.
+ * @property {((value: string) => void)|null} [submitCall] - Submit handler.
+ * @property {string|null} [id] - Element id of the modal.
+ * @property {string|null} [textarea] - Initial textarea value.
+ * @property {boolean} [readOnly] - Whether the textarea is read only.
+ */
+
+/**
+ * @param {TinyModalTextareaConfig} [config] - Modal configuration.
+ * @param {string|string[]} [textValueName] - Template keys holding the text value.
+ * @returns {void}
+ */
 export const tinyModalTextarea = (
   config = {
     info: '???',
@@ -35,10 +51,10 @@ export const tinyModalTextarea = (
     class: 'form-control',
     style: `height: ${String(config.size)}px;`,
   });
-  textarea.setVal(config.textarea);
+  textarea.setVal(config.textarea ?? '');
   if (config.readOnly) textarea.addProp('readOnly');
 
-  const textEditor = new TinyTextRangeEditor(textarea.get(0));
+  const textEditor = new TinyTextRangeEditor(/** @type {HTMLTextAreaElement} */ (textarea.get(0)));
 
   // Templates list
   if (
@@ -68,7 +84,7 @@ export const tinyModalTextarea = (
       // Validator
       const valueTypeValidator = () => {
         // Tiny code
-        const tinyTypeValidator = (tinyTxtValName) =>
+        const tinyTypeValidator = (/** @type {string} */ tinyTxtValName) =>
           typeof templateItem[tinyTxtValName] === 'string' || templateItem.type === tinyTxtValName;
 
         // String
@@ -88,7 +104,7 @@ export const tinyModalTextarea = (
       // Get data
       const getTypeValue = () => {
         // Tiny code
-        const tinyTypeValidator = (tinyTxtValName) =>
+        const tinyTypeValidator = (/** @type {string} */ tinyTxtValName) =>
           typeof templateItem[tinyTxtValName] === 'string' ? templateItem[tinyTxtValName] : null;
 
         // String
@@ -131,7 +147,7 @@ export const tinyModalTextarea = (
           )
             textareaAdd.append(
               TinyHtml.createFrom('option', {
-                value: templateItem.value,
+                value: templateItem.value ?? '',
               })
                 // Data item
                 .setData('TinyAI-select-text', getTypeValue())
@@ -202,7 +218,7 @@ export const tinyModalTextarea = (
     textareaAdd.on('change', () => {
       // Get value
       const option = new TinyHtml(textareaAdd.find(`[value="${textareaAdd.val()}"]`));
-      const text = option ? option.data('TinyAI-select-text') : null || null;
+      const text = option ? option.data('TinyAI-select-text') : null;
 
       const tempValue = option.data('TinyAI-temperature') || null;
       const maxOutputTokensValue = option.data('TinyAI-max-output-tokens') || null;
@@ -241,7 +257,7 @@ export const tinyModalTextarea = (
     submit.setText(config.submitName);
 
     submit.on('click', () => {
-      config.submitCall(textarea.val());
+      if (config.submitCall) config.submitCall(String(textarea.val() ?? ''));
       TinyHtml.query(`#${config.id}`)?.data('BootstrapModal').hide();
     });
 

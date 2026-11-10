@@ -30,6 +30,7 @@ export const roomSettingsMenu = () => {
     const $editForm = TinyHtml.createFrom('form').addClass('mb-4');
     $editForm.append(TinyHtml.createFrom('h5').setText('Edit Room Info'));
 
+    /** @param {Record<string, unknown>} data */
     const roomEditDetector = (data) => {
       if (typeof data.title === 'string') $roomTitle.setVal(data.title);
       if (typeof data.maxUsers === 'number') $maxUsers.setVal(data.maxUsers);
@@ -58,7 +59,7 @@ export const roomSettingsMenu = () => {
         maxLength: ratelimit.size.roomTitle,
       })
       .addClass('form-control')
-      .setVal(room.title)
+      .setVal(room.title ?? '')
       .toggleProp('disabled', cantEdit);
 
     const $maxUsers = new TinyHtmlNumberInput({
@@ -225,10 +226,10 @@ export const roomSettingsMenu = () => {
       if (!cantEdit) {
         $editError.empty(); // limpa erros anteriores
 
-        const title = $roomTitle.val().trim();
+        const title = String($roomTitle.val() ?? '').trim();
         const maxUsers = $maxUsers.valNb();
         const chapter = $chapter.valNb();
-        const password = new TinyHtml($editForm.find('#roomPassword')).val().trim();
+        const password = String(new TinyHtml($editForm.find('#roomPassword')).val() ?? '').trim();
 
         if (Number.isNaN(maxUsers) || maxUsers <= 0) {
           $editError.setText('Max users must be a positive number.');
@@ -245,6 +246,7 @@ export const roomSettingsMenu = () => {
           return;
         }
 
+        /** @type {Record<string, unknown>} */
         const newSettings = { title, maxUsers, chapter };
         if (typeof password === 'string' && password.length > 0) newSettings.password = password;
 

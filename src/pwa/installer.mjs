@@ -9,6 +9,16 @@ import { body } from '../html/query.mjs';
  */
 
 /**
+ * A tab rendered by the install banner.
+ *
+ * @typedef {Object} PwaTab
+ * @property {string} id - Unique tab id.
+ * @property {string} [title] - Tab label.
+ * @property {string} [icon] - Icon class of the tab.
+ * @property {() => void} [onClick] - Click handler of the tab.
+ */
+
+/**
  * Sends a message to the active Service Worker controller.
  *
  * @param {MessageData} data - The message payload to be sent.
@@ -33,7 +43,7 @@ const postMessage = (data) => {
 let firstTime = true;
 let deferredPrompt;
 window.matchMedia('(display-mode: standalone)').addEventListener('change', (evt) => {
-  body.removeClass(['window-browser', 'window-standalone']);
+  body.removeClass('window-browser', 'window-standalone');
 
   let displayMode = 'browser';
   if (evt.matches) {
@@ -85,7 +95,7 @@ function getPWADisplayMode() {
     return 'twa';
   }
 
-  if (navigator.standalone || isStandalone) {
+  if (/** @type {{ standalone?: boolean }} */ (navigator).standalone || isStandalone) {
     return 'standalone';
   }
 
@@ -93,7 +103,6 @@ function getPWADisplayMode() {
 }
 
 /**
- * @param {boolean} enabled
  * @returns {boolean}
  */
 function isUsingPWA() {
@@ -111,6 +120,7 @@ function clearFetchPwaCache() {
 }
 
 if ('serviceWorker' in navigator || 'ServiceWorker' in navigator) {
+  /** @type {Record<string, (event: MessageEvent) => void>} */
   const msgEvents = {};
   navigator.serviceWorker.addEventListener('message', (event) => {
     if (event.data && typeof msgEvents[event.data.type] === 'function')
@@ -128,7 +138,7 @@ function installPWA() {
   if ('serviceWorker' in navigator || 'ServiceWorker' in navigator) {
     /**
      * Validates Service Worker state changes.
-     * @param {ServiceWorker} sw - The Service Worker instance.
+     * @param {ServiceWorker|null} sw - The Service Worker instance.
      */
     const tinyCheck = (sw) => {
       if (sw) {
@@ -146,14 +156,14 @@ function installPWA() {
 
     /**
      * Sets up listeners for Service Worker updates.
-     * @param {ServiceWorker} registration - The Service Worker registration.
+     * @param {ServiceWorkerRegistration} registration - The Service Worker registration.
      */
     const tinyRegistrationChecker = (registration) => {
       // updatefound is also fired for the very first install. ¯\_(ツ)_/¯
-      registration.addEventListener('updatefound', (event) => {
-        tinyCheck(event.target.active);
-        registration.installing?.addEventListener('statechange', (event2) =>
-          tinyCheck(event2.target),
+      registration.addEventListener('updatefound', () => {
+        tinyCheck(registration.active);
+        registration.installing?.addEventListener('statechange', () =>
+          tinyCheck(registration.installing),
         );
       });
     };
@@ -181,61 +191,71 @@ function installPWA() {
             });
 
         if (items.length > 0) {
-          forPromise({ data: items }, async (item, fn, fnErr) => {
-            // Get Url data
-            const tinyUrl =
-              items[item].active &&
-              typeof items[item].active.scriptURL === 'string' &&
-              items[item].active.scriptURL.length > 0
-                ? new URL(items[item].active.scriptURL)
-                : {};
-
-            // Remove old stuff
-            if (
-              cacheChecker.count > 0 ||
-              !items[item].active ||
-              (items[item].active.state !== 'activated' &&
-                items[item].active.state !== 'activating') ||
-              tinyUrl.pathname !== '/service-worker.js'
-            ) {
-              items[item]
-                .unregister()
-                .then((success) => {
-                  if (!success)
-                    console.error(`[PWA] Fail to remove the Service Worker ${items[item].scope}`);
-                  else cacheChecker.removed = true;
-                  fn();
-                })
-                .catch(fnErr);
-            }
-
-            // Update tiny stuff
-            else if (tinyUrl.pathname === '/service-worker.js') {
-              tinyRegistrationChecker(items[item]);
-              if (
+          forPromise(
+            { data: items },
+            async (
+              /** @type {number} */ item,
+              /** @type {() => void} */ fn,
+              /** @type {(err: unknown) => void} */ fnErr,
+            ) => {
+              // Get Url data
+              /** @type {URL|{ pathname?: string }} */
+              const tinyUrl =
                 items[item].active &&
-                (items[item].active.state === 'activated' ||
-                  items[item].active.state === 'activating')
+                typeof items[item].active.scriptURL === 'string' &&
+                items[item].active.scriptURL.length > 0
+                  ? new URL(items[item].active.scriptURL)
+                  : {};
+
+              // Remove old stuff
+              if (
+                cacheChecker.count > 0 ||
+                !items[item].active ||
+                (items[item].active.state !== 'activated' &&
+                  items[item].active.state !== 'activating') ||
+                tinyUrl.pathname !== '/service-worker.js'
               ) {
                 items[item]
-                  .update()
+                  .unregister()
                   .then((success) => {
                     if (!success)
-                      console.error(`[PWA] Fail to update the Service Worker ${items[item].scope}`);
-                    else {
-                      console.log('[PWA] Service Worker Updated.');
-                      cacheChecker.keep = true;
-                      tinyPwa._setIsEnabled(true);
-                    }
+                      console.error(`[PWA] Fail to remove the Service Worker ${items[item].scope}`);
+                    else cacheChecker.removed = true;
                     fn();
                   })
                   .catch(fnErr);
               }
-            }
 
-            // Add count
-            cacheChecker.count++;
-          })
+              // Update tiny stuff
+              else if (tinyUrl.pathname === '/service-worker.js') {
+                tinyRegistrationChecker(items[item]);
+                if (
+                  items[item].active &&
+                  (items[item].active.state === 'activated' ||
+                    items[item].active.state === 'activating')
+                ) {
+                  items[item]
+                    .update()
+                    .then((success) => {
+                      if (!success)
+                        console.error(
+                          `[PWA] Fail to update the Service Worker ${items[item].scope}`,
+                        );
+                      else {
+                        console.log('[PWA] Service Worker Updated.');
+                        cacheChecker.keep = true;
+                        tinyPwa._setIsEnabled(true);
+                      }
+                      fn();
+                    })
+                    .catch(fnErr);
+                }
+              }
+
+              // Add count
+              cacheChecker.count++;
+            },
+          )
             // Remove progress complete
             .then(() => {
               if (cacheChecker.removed && !cacheChecker.keep) registerNewService();
@@ -263,7 +283,9 @@ function installPWA() {
 class TinyPwa extends EventEmitter {
   constructor() {
     super();
+    /** @type {PwaTab[]} */
     this.tabs = [];
+    /** @type {string|null} */
     this.tabId = null;
     this.enabled = false;
     this.initialized = false;
@@ -277,11 +299,13 @@ class TinyPwa extends EventEmitter {
     }
   }
 
+  /** @param {PwaTab} item */
   _addTab(item) {
     this.tabs.push(item);
     this.emit('tabAdded', item);
   }
 
+  /** @param {string} id */
   _removeTab(id) {
     const index = this.tabs.findIndex((tab) => tab.id === id);
     if (index > -1) {
@@ -290,6 +314,7 @@ class TinyPwa extends EventEmitter {
     }
   }
 
+  /** @param {string} id */
   _setTabId(id) {
     if (typeof id === 'string') {
       this.tabId = id;
@@ -297,6 +322,7 @@ class TinyPwa extends EventEmitter {
     } else this.tabId = null;
   }
 
+  /** @param {boolean} enabled */
   _setIsEnabled(enabled) {
     if (typeof enabled === 'boolean') {
       this.enabled = enabled;
@@ -304,6 +330,7 @@ class TinyPwa extends EventEmitter {
     }
   }
 
+  /** @param {boolean} enabled */
   _setNeedRefresh(enabled) {
     if (typeof enabled === 'boolean') {
       this.needRefresh = enabled;
@@ -322,6 +349,7 @@ class TinyPwa extends EventEmitter {
     return this.tabs;
   }
 
+  /** @param {string} id */
   getTab(id) {
     return this.tabs.find((item) => item.id === id);
   }

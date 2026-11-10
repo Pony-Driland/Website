@@ -1,6 +1,10 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 
 /**
+ * @import { TinyHtmlAny } from 'tiny-essentials/libs/html/TinyHtml';
+ */
+
+/**
  * @typedef {Object} BootstrapPaginatorConstructor
  * @property {string} [containerClass=''] - CSS class for the outer container.
  * @property {'normal'|'large'|'small'|'mini'} [size='normal'] - Size of the pagination.
@@ -41,11 +45,11 @@ class BootstrapPaginator {
   /** @type {number} */
   numberOfPages;
 
-  /** @type {TinyHtml<any>} */
+  /** @type {TinyHtmlAny} */
   element;
 
   /**
-   * @param {HTMLElement|string|TinyHtml<any>} element - Target container for the paginator.
+   * @param {HTMLElement|string|TinyHtmlAny} element - Target container for the paginator.
    * @param {Partial<BootstrapPaginatorConstructor>} [options={}] - Configuration options for paginator.
    */
   constructor(element, options = {}) {

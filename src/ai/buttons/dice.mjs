@@ -35,7 +35,7 @@ export const createDiceResults = ($totalBaseNumber, data, callback = () => undef
     container.append(body);
 
     // Total display
-    $totalBaseNumber.append(final);
+    $totalBaseNumber.append(String(final));
 
     const tableWrapper = TinyHtml.createFrom('div');
     tableWrapper.addClass('table-responsive');
@@ -68,9 +68,9 @@ export const createDiceResults = ($totalBaseNumber, data, callback = () => undef
       const tdTokens = TinyHtml.createFrom('td');
       tdTokens.addClass('text-center dice-exp');
 
-      /** @type {TinyHtml<HTMLElement>} */
+      /** @type {TinyHtml<HTMLElement>[]} */
       const result = [];
-      /** @type {TinyHtml<HTMLElement>} */
+      /** @type {TinyHtml<HTMLElement>[]} */
       const rawResult = [];
       let rawMode = true;
 
@@ -89,7 +89,7 @@ export const createDiceResults = ($totalBaseNumber, data, callback = () => undef
         })
           .setText(t)
           .setAttr('title', step.rawTokensP[index]);
-        new Tooltip(item);
+        Tooltip(item);
         rawResult.push(item);
       });
 
@@ -144,24 +144,21 @@ function generateRandomId(length = 8) {
 }
 
 /**
- * @param {Object} data
- * @param {number} data.total
- * @param {string} data.userId
- * @param {{ sides: number; roll: number; tokens: string[]; total: number; canZero: boolean; }[]} data.results
- * @param {{ bg: string; border: string; img: string; selectionBg: string; selectionText: string; text: string; }} data.skin
+ * @param {DiceSpecialData} data - Dice roll payload.
  */
 export const createDiceSpecialHtml = (data) => {
   const $root = TinyHtml.createFrom('div');
   const $diceContainer = TinyHtml.createFrom('div');
-  const dice = new TinyDices($diceContainer.get(0));
+  const dice = new TinyDices(/** @type {HTMLElement} */ ($diceContainer.get(0)));
 
-  if (isJsonObject(data.skin)) {
-    if (data.skin.img) dice.bgImg = data.skin.img;
-    if (data.skin.bg) dice.bgSkin = data.skin.bg;
-    if (data.skin.selectionBg) dice.selectionBgSkin = data.skin.selectionBg;
-    if (data.skin.selectionText) dice.selectionTextSkin = data.skin.selectionText;
-    if (data.skin.border) dice.borderSkin = data.skin.border;
-    if (data.skin.text) dice.textSkin = data.skin.text;
+  const skin = data.skin;
+  if (isJsonObject(skin)) {
+    if (skin.img) dice.bgImg = skin.img;
+    if (skin.bg) dice.bgSkin = skin.bg;
+    if (skin.selectionBg) dice.selectionBgSkin = skin.selectionBg;
+    if (skin.selectionText) dice.selectionTextSkin = skin.selectionText;
+    if (skin.border) dice.borderSkin = skin.border;
+    if (skin.text) dice.textSkin = skin.text;
   }
 
   const $totalBaseNumber = TinyHtml.createFrom('div').setText(0);
@@ -178,9 +175,9 @@ export const createDiceSpecialHtml = (data) => {
   }
 
   const user = tinyIo.client.getUsers()[data.userId] ?? null;
-  /** @type {Date|null} */
-  const date = data.date instanceof Date ? data.date : null;
+  const date = data.date instanceof Date ? data.date : data.date ? new Date(data.date) : null;
 
+  /** @param {Date} date */
   function formatDate24h(date) {
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -206,9 +203,9 @@ export const createDiceSpecialHtml = (data) => {
   let diceResult = null;
   let errorMsg = '';
   try {
-    diceResult = TinySimpleDice.applyModifiers(data.results, data.modifiers);
+    diceResult = TinySimpleDice.applyModifiers(data.results, data.modifiers ?? []);
   } catch (err) {
-    errorMsg = err.message;
+    errorMsg = /** @type {Error} */ (err).message;
     diceResult = null;
   }
 
@@ -219,11 +216,7 @@ export const createDiceSpecialHtml = (data) => {
 };
 
 /**
- * @param {Object} data
- * @param {number} data.total
- * @param {string} data.userId
- * @param {{ sides: number; roll: number; tokens: string[]; total: number; canZero: boolean; }[]} data.results
- * @param {{ bg: string; border: string; img: string; selectionBg: string; selectionText: string; text: string; }} data.skin
+ * @param {Parameters<typeof createDiceSpecialHtml>[0]} data - Dice roll payload.
  */
 export const openDiceSpecialModal = (data) => {
   // Start modal
@@ -248,9 +241,10 @@ export const openTinyDices = () => {
   );
 
   // Config
+  /** @type {DiceFormConfig} */
   const tinyCfg = {
     isOnline: isOnline(),
-    data: {},
+    data: /** @type {DiceSkin} */ ({}),
     rateLimit: {},
   };
 
@@ -272,20 +266,23 @@ export const openTinyDices = () => {
    * @type {Record<string, TinyHtml<HTMLElement>>}
    */
   const configs = {};
+  /** @param {string} id @param {string} text */
   const genLabel = (id, text) =>
     TinyHtml.createFrom('label')
       .addClass('form-label')
       .setAttr('for', `tiny-dice_${id}`)
       .setText(text);
 
+  /** @param {string} id @param {string} type @param {string|number} value @param {string|number} min */
   const genInput = (id, type, value, min) =>
     TinyHtml.createFrom('input')
       .addClass('form-control text-center')
       .setAttr({ id: `tiny-dice_${id}`, type, min })
       .setAttr('placeholder', min)
-      .setVal(value);
+      .setVal(value ?? '');
 
   /** @returns {[TinyHtml<HTMLElement>, TinyHtml<HTMLElement>]} */
+  /** @param {string} id @param {string} text @param {string} type @param {string|number} value @param {string|number} min */
   const genConfig = (id, text, type, value, min) => {
     configs[id] = genInput(id, type, value, min);
     return [genLabel(id, text), configs[id]];
@@ -301,8 +298,8 @@ export const openTinyDices = () => {
   );
   const $perDieCol = TinyHtml.createFrom('div').addClass('col-md-12').append($perDieConfig);
 
-  $perDieConfig[1].on('keydown', (e) => {
-    if (e.key === 'Enter') {
+  $perDieConfig[1].on('keydown', (/** @type {Event} */ e) => {
+    if (/** @type {KeyboardEvent} */ (e).key === 'Enter') {
       e.preventDefault();
       $rollButton.trigger('click');
     }
@@ -344,14 +341,16 @@ export const openTinyDices = () => {
   ];
 
   // TinyDices logic
-  const dice = new TinyDices($diceContainer.get(0));
+  const dice = new TinyDices(/** @type {HTMLElement} */ ($diceContainer.get(0)));
+  /** @type {ReturnType<typeof setTimeout>|null} */
   let updateTotalBase = null;
   $rollButton.on('click', async () => {
     // Get values
-    const perDieRaw = configs.perDieValues.val().trim();
+    const perDieRaw = String(configs.perDieValues.val() ?? '').trim();
     const parsedPerDie = TinySimpleDice.parseString(perDieRaw);
 
     // Get sides amount
+    /** @type {number[]} */
     const sidesAmount = [];
     parsedPerDie.sides.forEach((item) => {
       for (let i = 0; i < item.count; i++) sidesAmount.push(item.sides);
@@ -371,20 +370,22 @@ export const openTinyDices = () => {
 
     // Offline
     if (!tinyCfg.isOnline) {
-      const result = dice.roll(perDie, canZero);
+      const result = dice.roll(perDie ?? '', canZero);
       /** @type {number[]} */
       const diceResults = [];
       for (const item of result) diceResults.push(item.result);
       updateTotalBase = createDiceResults(
         $totalBaseNumber,
         TinySimpleDice.applyModifiers(diceResults, parsedPerDie.modifiers),
-        () => (updateTotalBase = null),
+        () => {
+          updateTotalBase = null;
+        },
       );
     }
     // Online
     else {
       // Prepare data
-      const diceParse = dice.parseRollConfig(perDie);
+      const diceParse = dice.parseRollConfig(perDie ?? '');
       const sides = [];
       for (const index in diceParse) sides.push(diceParse[index]);
 
@@ -401,7 +402,8 @@ export const openTinyDices = () => {
         if (
           Array.isArray(result.results) &&
           result.results.every(
-            (item) => typeof item.value === 'number' && typeof item.sides === 'number',
+            (/** @type {DiceRollResult} */ item) =>
+              typeof item.value === 'number' && typeof item.sides === 'number',
           )
         ) {
           for (const index in result.results) {
@@ -415,7 +417,9 @@ export const openTinyDices = () => {
           updateTotalBase = createDiceResults(
             $totalBaseNumber,
             TinySimpleDice.applyModifiers(result.results, parsedPerDie.modifiers),
-            () => (updateTotalBase = null),
+            () => {
+              updateTotalBase = null;
+            },
           );
         }
       } else $totalBaseNumber.addClass('text-danger').setText(result.msg);
@@ -423,11 +427,12 @@ export const openTinyDices = () => {
   });
 
   // Skin form
+  /** @param {string} label @param {string} id @param {string} placeholder @param {string|undefined|null} value */
   const createInputField = (label, id, placeholder, value) => {
     configs[id] = TinyHtml.createFrom('input')
       .addClass('form-control text-center')
       .setAttr({ type: 'text', placeholder })
-      .setVal(value);
+      .setVal(value ?? '');
 
     return TinyHtml.createFrom('div')
       .addClass('col-md-4 text-center')
@@ -441,15 +446,19 @@ export const openTinyDices = () => {
     .addClass('form-control')
     .addClass('d-none')
     .setAttr('type', 'text')
-    .setVal(tinyCfg.data.img);
+    .setVal(tinyCfg.data.img ?? '');
   const bgImgUploadButton = tinyLib.bs.button('info w-100');
   const uploadImgButton = tinyLib.upload.img(
     bgImgUploadButton.setText('Select Image').on('contextmenu', (e) => {
       e.preventDefault();
       configs.bgImg.setVal('').removeClass('text-danger').trigger('change');
     }),
+    /**
+     * @param {Error|null} err
+     * @param {string|null} dataUrl
+     */
     (err, dataUrl) => {
-      console.log(`[dice-file] [upload] Image length: ${dataUrl.length}`);
+      console.log(`[dice-file] [upload] Image length: ${dataUrl?.length ?? 0}`);
 
       // Error
       bgImgUploadButton.removeClass('text-danger');
@@ -460,10 +469,11 @@ export const openTinyDices = () => {
       }
 
       const maxSize = tinyCfg.rateLimit.img || 0;
-      const base64String = dataUrl.split(',')[1];
+      const base64String = (dataUrl ?? '').split(',')[1] ?? '';
       const padding = (base64String.match(/=+$/) || [''])[0].length;
       const sizeInBytes = (base64String.length * 3) / 4 - padding;
 
+      /** @param {number} tinyBytes */
       const convertToMb = (tinyBytes) => `${(tinyBytes / (1024 * 1024)).toFixed(2)} MB`;
       console.log(`[dice-file] [upload] Image size: ${convertToMb(sizeInBytes)}`);
       console.log(`[dice-file] [upload] Upload limit: ${convertToMb(maxSize)}`);
@@ -473,7 +483,7 @@ export const openTinyDices = () => {
       if (maxSize > 0 && sizeInBytes > maxSize) {
         bgImgUploadButton.addClass('text-danger');
         tinyLib.alert(
-          $diceError,
+          String($diceError),
           'danger',
           'bi bi-exclamation-triangle-fill',
           `Image is too large: ${convertToMb(sizeInBytes)} (max allowed: ${convertToMb(maxSize)})`,
@@ -482,7 +492,10 @@ export const openTinyDices = () => {
       }
 
       // OK
-      configs.bgImg.setVal(dataUrl).removeClass('text-danger').trigger('change');
+      configs.bgImg
+        .setVal(dataUrl ?? '')
+        .removeClass('text-danger')
+        .trigger('change');
     },
   );
 
@@ -504,7 +517,8 @@ export const openTinyDices = () => {
           const item = jsonData.data[name];
           if (typeof item === 'string' || typeof item === 'number') {
             const newValue =
-              typeof tinyCfg.rateLimit[name] !== 'number' || item.length <= tinyCfg.rateLimit[name]
+              typeof tinyCfg.rateLimit[name] !== 'number' ||
+              String(item).length <= tinyCfg.rateLimit[name]
                 ? item
                 : null;
             configs[readSkinData[0]].setVal(newValue).trigger('change');
@@ -555,10 +569,11 @@ export const openTinyDices = () => {
           .setText('Export')
           .on('click', () => {
             // Data base
+            /** @type {DiceSkinFile} */
             const fileData = { data: {} };
             for (const index in readSkinValues) {
               const readSkinData = readSkinValues[index];
-              fileData.data[readSkinData[1]] = configs[readSkinData[0]].val().trim();
+              fileData.data[readSkinData[1]] = String(configs[readSkinData[0]].val() ?? '').trim();
             }
 
             // Date
@@ -574,8 +589,9 @@ export const openTinyDices = () => {
       TinyHtml.createFrom('div', { class: 'col-md-6' }).append(importDiceButton),
     );
 
+  /** @param {string} where @param {string} dataName @param {string|null} value */
   const updateDiceData = (where, dataName, value) => {
-    dice[where] = value;
+    /** @type {Record<string, string|null>} */ (/** @type {unknown} */ (dice))[where] = value;
     if (!tinyIo.client) {
       if (value) tinyLs.setItem(`tiny-dice-${dataName}`, value);
       else tinyLs.removeItem(`tiny-dice-${dataName}`);
@@ -589,7 +605,7 @@ export const openTinyDices = () => {
       updateDiceData(
         readSkinValues[index][0],
         readSkinValues[index][1],
-        tinySkin.val().trim() || null,
+        String(tinySkin.val() ?? '').trim() || null,
       );
     });
   }
@@ -616,17 +632,16 @@ export const openTinyDices = () => {
 
         // Disable buttons
         $applyBtn.addProp('disabled').addClass('disabled');
+        /** @type {Record<string, string>} */
         const diceSkin = {};
         importDiceButton.addProp('disabled').addClass('disabled');
         uploadImgButton.addProp('disabled').addClass('disabled');
 
         // Send dice data
         for (const index in readSkinValues)
-          diceSkin[readSkinValues[index][1]] = configs[readSkinValues[index][0]]
-            .addProp('disabled')
-            .addClass('disabled')
-            .val()
-            .trim();
+          diceSkin[readSkinValues[index][1]] = String(
+            configs[readSkinValues[index][0]].addProp('disabled').addClass('disabled').val() ?? '',
+          ).trim();
 
         const result = await tinyIo.client.setAccountDice(diceSkin);
         if (result.error) $totalBaseNumber.addClass('text-danger').setText(result.msg);

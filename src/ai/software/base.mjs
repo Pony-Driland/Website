@@ -8,14 +8,16 @@ import TinyClientIo from '../socketClient.mjs';
  * Holds the optional socket client used by the multiplayer mode.
  *
  * @typedef {Object} TinyIo
- * @property {null|TinyClientIo} client - Active socket client, or `null` when offline.
+ * @property {TinyClientIo|null} client - Active socket client, or `null` when offline.
  * @property {boolean} firstTime - Whether the socket client still has to be bootstrapped.
  */
 
 /** @type {TinyIo} */
 export const tinyIo = { client: null, firstTime: true };
 
-/** Shared `tiny-ai-api` instance used by every AI screen. */
+/**
+ * Shared `tiny-ai-api` instance used by every AI screen.
+ */
 export const tinyAi = new TinyAiInstance();
 
 /** Persists the provider credentials and the selected provider. */

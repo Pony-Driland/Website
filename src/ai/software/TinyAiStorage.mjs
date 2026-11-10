@@ -18,12 +18,14 @@ class TinyAiStorage extends EventEmitter {
   constructor() {
     super();
 
-    this._selected = tinyLs.getItem('tiny-ai-storage-selected');
-    if (typeof this._selected !== 'string') this._selected = null;
+    /** @type {string | null} */
+    const selected = tinyLs.getItem('tiny-ai-storage-selected');
+    this._selected = typeof selected === 'string' ? selected : null;
 
-    this.storage = tinyLs.getItem('tiny-ai-storage');
+    /** @type {string | null} */
+    const rawStorage = tinyLs.getItem('tiny-ai-storage');
     try {
-      this.storage = JSON.parse(this.storage);
+      this.storage = rawStorage ? JSON.parse(rawStorage) : {};
       if (!this.storage) this.storage = {};
     } catch {
       this.storage = {};
@@ -92,7 +94,7 @@ class TinyAiStorage extends EventEmitter {
    * Stores the credential of a provider and persists it.
    *
    * @param {string} name - Provider name.
-   * @param {string|number|Object} key - Credential payload (API key or config object).
+   * @param {string|number|AiCredential} key - Credential payload (API key or config object).
    * @returns {void}
    * @throws {Error} If `key` is not a string, a number or a plain object.
    */
@@ -128,7 +130,7 @@ class TinyAiStorage extends EventEmitter {
    * Reads the credential of a provider.
    *
    * @param {string} name - Provider name.
-   * @returns {{ key: string|null }|Object} `{ key }` for string credentials, otherwise the stored object.
+   * @returns {{ key: string|null }|AiCredential} `{ key }` for string credentials, otherwise the stored object.
    */
   getApiKey(name) {
     return typeof this.storage[name] === 'string'

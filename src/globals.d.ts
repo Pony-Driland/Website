@@ -1,0 +1,112 @@
+// Ambient declarations for globals injected by third-party scripts at runtime.
+
+import type { formatCustomTimer } from 'tiny-essentials/basics/clock';
+
+/**
+ * A single entry of the `YT.PlayerState` enum.
+ *
+ * @see https://developers.google.com/youtube/iframe_api_reference#Playback_status
+ */
+type YoutubePlayerState = -1 | 0 | 1 | 2 | 3 | 5;
+
+/**
+ * Subset of the YouTube IFrame Player API used by the application.
+ *
+ * @see https://developers.google.com/youtube/iframe_api_reference
+ */
+interface YoutubePlayerInstance {
+  getVolume(): number;
+  setVolume(volume: number): void;
+  getPlaybackQuality(): string;
+  setPlaybackQuality(quality: string): void;
+  getAvailableQualityLevels(): string[];
+  seekTo(seconds: number, allowSeekAhead?: boolean): void;
+  playVideo(): void;
+  pauseVideo(): void;
+  stopVideo(): void;
+  setLoop(loop: boolean): void;
+  setShuffle(shuffle: boolean): void;
+  getDuration(): number;
+  getCurrentTime(): number;
+  getVideoUrl(): string;
+}
+
+/** Constructor signature of `YT.Player`. */
+type YoutubePlayerConstructor = new (
+  elementId: string | HTMLElement,
+  options: Record<string, unknown>,
+) => YoutubePlayerInstance;
+
+/** Namespace injected by `https://www.youtube.com/iframe_api`. */
+interface YoutubeIframeApi {
+  Player: YoutubePlayerConstructor;
+  PlayerState: {
+    UNSTARTED: -1;
+    ENDED: 0;
+    PLAYING: 1;
+    PAUSED: 2;
+    BUFFERING: 3;
+    VIDEO_CUED: 5;
+    CUED: 5;
+  };
+}
+
+interface SongAlternativeFile {
+  category?: string | string[];
+  generators_used?: string[];
+  file: string[];
+}
+
+interface SongProductionStep {
+  id: string;
+  weirdness?: number;
+  style_influence?: number;
+  audio_influence?: number;
+  max_mode: boolean;
+  instrument_prompt: string;
+  instrument_negative_prompt?: string;
+}
+
+interface SongTrackMetadata {
+  file: string | string[];
+  format?: string[];
+  category?: string | string[];
+  generators_used?: string[];
+  bpm?: number[];
+  suno_start?: string;
+  alternative_files?: SongAlternativeFile[];
+  production_steps?: SongProductionStep[];
+  creation_date: number;
+  reference_songs?: string[];
+}
+
+type FormatCustomTimer = typeof formatCustomTimer;
+
+declare global {
+  /** YouTube IFrame Player API namespace, injected by `https://www.youtube.com/iframe_api`. */
+  const YT: YoutubeIframeApi;
+
+  /** jQuery, provided by legacy third-party bundles. */
+  const jQuery: unknown;
+
+  interface Window {
+    /** Converts Earth minutes into Pony Driland minutes. */
+    earthTimeToPony: (earthMinutes: number) => number;
+    /** Converts Pony Driland minutes into Earth minutes. */
+    ponyTimeToEarth: (ponyMinutes: number) => number;
+    /** Formats a duration using the tiny-essentials clock helper. */
+    formatCustomTimer: FormatCustomTimer;
+    /** Google Tag Manager data layer. */
+    dataLayer: unknown[];
+    /** YouTube IFrame API namespace, injected by the YouTube iframe script. */
+    YT: YoutubeIframeApi;
+    /** Callback invoked by the YouTube IFrame API once it is ready. */
+    onYouTubeIframeAPIReady?: () => void;
+    /** Socket.IO client instance exposed for debugging. */
+    tinyIo: unknown;
+    /** Tiny AI client instance exposed for debugging. */
+    tinyAi: unknown;
+    /** Cache-busting query string appended to static asset requests. */
+    fileVersion: string;
+  }
+}

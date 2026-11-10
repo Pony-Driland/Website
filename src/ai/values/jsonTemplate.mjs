@@ -11,7 +11,13 @@ aiTemplates.funcs.jsonTemplate = () => {
   const rpgBase = {
     // Generator
     generator: {
+      /** @type {Record<string, JsonSchemaNode>|null} */
+      characters: null,
       // Character List
+      /**
+       * @param {JsonCharacterListConfig} data - Character list configuration.
+       * @returns {JsonSchemaNode} The generated schema fragment.
+       */
       characterList: (data) => {
         // Result Data
         const resultData = {
@@ -339,14 +345,15 @@ aiTemplates.funcs.jsonTemplate = () => {
           },
         };
         if (data.mascot) {
-          resultData.items.properties.mascot = rpgBase.generator.characterList({
-            title: '🐾 Mascots',
-            description:
-              'A list of mascots that accompany the character, offering unique abilities and support in quests and battles.',
-            id: 'mascots',
-            itemTitle: 'Mascot',
-            itemID: 'mascot',
-          });
+          /** @type {Record<string, JsonSchemaNode>} */ (resultData.items.properties).mascot =
+            rpgBase.generator.characterList({
+              title: '🐾 Mascots',
+              description:
+                'A list of mascots that accompany the character, offering unique abilities and support in quests and battles.',
+              id: 'mascots',
+              itemTitle: 'Mascot',
+              itemID: 'mascot',
+            });
         }
         return resultData;
       },
@@ -764,7 +771,8 @@ aiTemplates.funcs.jsonTemplate = () => {
 
   // Insert Characters
   for (const item in rpgBase.generator.characters) {
-    schema.properties[item] = rpgBase.generator.characters[item];
+    /** @type {Record<string, JsonSchemaNode>} */ (schema.properties)[item] =
+      rpgBase.generator.characters[item];
   }
 
   // Complete

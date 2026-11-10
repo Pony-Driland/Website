@@ -29,7 +29,7 @@ export const userButtonActions = () => {
     const room = tinyIo.client.getRoom() || {};
     const userManager = new UserRoomManager({
       client: tinyIo.client,
-      currentUserId: user.userId,
+      currentUserId: user.userId ?? '',
       isOwner: user.userId === room.ownerId,
       root: $root,
       users: structuredClone(tinyIo.client.getUsers()),
@@ -40,15 +40,22 @@ export const userButtonActions = () => {
     for (const userId of mods) userManager.promoteModerator(userId);
 
     userManager.setRoomStatus(!room.disabled);
-    userManager.setReadonly(room.readOnly);
+    userManager.setReadonly(Boolean(room.readOnly));
 
     // Add events
+    /** @param {{ userId: string, data: { nickname?: string, ping: string|number|Date } }} data */
     const usersAdded = (data) => userManager.addUser(data.userId, structuredClone(data.data));
+    /** @param {string} userId */
     const usersRemoved = (userId) => userManager.removeUser(userId);
+    /**
+     * @param {'add'|'remove'} type
+     * @param {string} userId
+     */
     const userModUpdated = (type, userId) => {
       if (type === 'add') userManager.promoteModerator(userId);
       if (type === 'remove') userManager.demoteModerator(userId);
     };
+    /** @param {{ disabled?: boolean, readOnly: boolean }} roomData */
     const roomStatusUpdate = (roomData) => {
       userManager.setRoomStatus(!roomData.disabled);
       userManager.setReadonly(roomData.readOnly);

@@ -20,13 +20,129 @@ import { Tooltip } from '../modules/TinyBootstrap.mjs';
  * Documentation created by: ChatGPT (OpenAI)
  */
 
+/**
+ * A route drawn on the map grid.
+ *
+ * @typedef {Object} TinyMapRoute
+ * @property {string} coordinates - Grid coordinate in the `column x row` format.
+ * @property {string} [about] - Short description shown in the tooltip.
+ * @property {string} [color] - Background color of the route cell.
+ * @property {string} [fontColor] - Text color of the route cell.
+ */
+
+/**
+ * A location drawn on the map grid.
+ *
+ * @typedef {Object} TinyMapLocation
+ * @property {string} coordinates - Grid coordinate in the `column x row` format.
+ * @property {string} name - Full name of the location.
+ * @property {string} [mininame] - Short name rendered inside the cell.
+ * @property {string} [about] - Description shown inside the location modal.
+ * @property {string} [color] - Background color of the location cell.
+ * @property {string} [fontColor] - Text color of the location cell.
+ * @property {boolean} [shop] - Whether the location sells items.
+ */
+
+/**
+ * An item sold by the shops of the map.
+ *
+ * @typedef {Object} TinyMapItem
+ * @property {string} name - Display name of the item.
+ * @property {string|number} price - Price of the item.
+ * @property {string} [about] - Description of the item.
+ * @property {string} [cities] - Comma or line separated list of the cities that sell the item.
+ */
+
+/**
+ * Raw map definition.
+ *
+ * @typedef {Object} TinyMapConfig
+ * @property {string} size - Map size in the `width x height` format.
+ * @property {string} tile - Tile size in the `width x height` format.
+ * @property {string} [image] - Data URL of the map background.
+ * @property {string} [defaultColor] - Default background color of the grid cells.
+ * @property {string} [name] - Display name of the map.
+ * @property {TinyMapLocation[]} [locations] - Locations of the map.
+ * @property {TinyMapRoute[]} [routes] - Routes of the map.
+ */
+
+/**
+ * A single cell of the rendered grid.
+ *
+ * @typedef {Object} TinyMapGridRow
+ * @property {import('tiny-essentials/libs/html/TinyHtml').default<HTMLElement>} html - Row element.
+ * @property {import('tiny-essentials/libs/html/TinyHtml').default<HTMLElement>[]} data - Cells of the row.
+ */
+
+/**
+ * Sub page currently rendered inside the map container.
+ *
+ * @typedef {Object} TinyMapSubPage
+ * @property {import('tiny-essentials/libs/html/TinyHtml').default<HTMLElement>[]} html - Content of the page.
+ * @property {string} title - Title of the page.
+ */
+
+/**
+ * Cached DOM references of the map.
+ *
+ * @typedef {Object} TinyMapHtml
+ * @property {import('tiny-essentials/libs/html/TinyHtml').default<HTMLElement>} [base] - Container of the map.
+ * @property {import('tiny-essentials/libs/html/TinyHtml').default<HTMLElement>} [table] - Table of the map.
+ * @property {import('tiny-essentials/libs/html/TinyHtml').default<HTMLElement>} [mapButton] - Button that toggles the map.
+ * @property {TinyMapGridRow[]} [grid] - Rendered grid rows.
+ * @property {TinyMapSubPage} [subPage] - Sub page currently rendered.
+ */
+
 class TinyMap {
+  /** @type {number[]} */
+  size = [0, 0];
+
+  /** @type {number[]} */
+  tile = [0, 0];
+
+  /** @type {{ width: number, height: number }} */
+  grid = { width: 0, height: 0 };
+
+  /** @type {string} */
+  image = '';
+
+  /** @type {string} */
+  defaultColor = '';
+
+  /** @type {TinyMapLocation[]} */
+  locations = [];
+
+  /** @type {TinyMapRoute[]} */
+  routes = [];
+
+  /** @type {TinyMapItem[]} */
+  items = [];
+
+  /** @type {string|null} */
+  location = null;
+
+  /** @type {string} */
+  name = '';
+
+  /** @type {number} */
+  _limitSize = 4000;
+
+  /** @type {boolean} */
+  _isSubPage = false;
+
+  /** @type {TinyMapConfig} */
+  map;
+
+  /** @type {TinyMapHtml} */
+  html = {};
+
   /**
    * Creates a new TinyMap instance.
-   * @param {Object} map - The map configuration containing size, tile dimensions, image, colors, locations, and routes.
+   * @param {TinyMapConfig} map - The map configuration containing size, tile dimensions, image, colors, locations, and routes.
    * @param {boolean} [firstBuild=false] - Determines if the map should be built immediately.
+   * @param {TinyMapItem[]} [items] - Items sold by the shops of this map.
    */
-  constructor(map, firstBuild = false) {
+  constructor(map, firstBuild = false, items = []) {
     // Data
     this.map = map;
     this.html = {};
@@ -34,12 +150,15 @@ class TinyMap {
     this._limitSize = 4000;
     this._isSubPage = false;
 
+    // Shop items available to the locations of this map
+    this.items = Array.isArray(items) ? items : [];
+
     // Design
     this.defaultColor = typeof this.map.defaultColor === 'string' ? this.map.defaultColor : '';
 
     // Size
-    this.setSize(this.map.size.split('x'), false);
-    this.setTile(this.map.tile.split('x'), false);
+    this.setSize(this.map.size.split('x').map(Number), false);
+    this.setTile(this.map.tile.split('x').map(Number), false);
     this._setGrid();
 
     // Locations
@@ -48,13 +167,12 @@ class TinyMap {
 
     // First build
     if (firstBuild) this.buildMap(true);
-    this.setMapImage(this.map.image);
+    this.setMapImage(this.map.image ?? '');
   }
 
   /**
    * Validates a background-image value restricted to safe data:image URLs only.
    *
-   * @private
    * @param {string} value - The CSS background-image value.
    * @returns {boolean}
    */
@@ -133,7 +251,7 @@ class TinyMap {
   /**
    * Sets the size of the map and optionally updates the grid.
    *
-   * @param {Array} size - An array containing the new width and height of the map.
+   * @param {number[]} size - An array containing the new width and height of the map.
    * @param {boolean} [setGrid=true] - A flag indicating whether to update the grid after setting the size.
    *
    * This method updates the `size` property of the map, ensuring the values are converted to numbers
@@ -164,7 +282,7 @@ class TinyMap {
   /**
    * Sets the tile size of the map and optionally updates the grid.
    *
-   * @param {Array} tile - An array containing the new width and height for each tile.
+   * @param {number[]} tile - An array containing the new width and height for each tile.
    * @param {boolean} [setGrid=true] - A flag indicating whether to update the grid after setting the tile size.
    *
    * This method updates the `tile` property of the map, ensuring the values are converted to numbers
@@ -200,7 +318,7 @@ class TinyMap {
    * redrawing or reinitializing it.
    */
   emptyMap() {
-    this.html.table.empty();
+    this.html.table?.empty();
   }
 
   /**
@@ -209,14 +327,14 @@ class TinyMap {
    * This function generates a table cell (`<td>`) element that can be used as part of the grid layout. The created
    * cell has optional coordinates, a specified height and width, an optional background color, and optional text content.
    *
-   * @param {number} [cw=0] - The column width, used to set the cell's coordinates (optional).
-   * @param {number} [ch=0] - The row height, used to set the cell's coordinates (optional).
-   * @param {string|null} [text=null] - The text content to be displayed inside the cell (optional).
+   * @param {number|null} [cw=null] - The column coordinate, or `null` for a header cell.
+   * @param {number|null} [ch=null] - The row coordinate, or `null` for a header cell.
+   * @param {string|number|null} [text=null] - The text content to be displayed inside the cell (optional).
    * @param {string|null} [color=null] - The background color of the cell (optional).
    *
-   * @returns {jQuery} - A jQuery object representing the table cell (`<td>`) element.
+   * @returns {import('tiny-essentials/libs/html/TinyHtml').default<HTMLElement>} The created table cell.
    */
-  _buildGridTemplate(cw = 0, ch = 0, text = null, color = null) {
+  _buildGridTemplate(cw = null, ch = null, text = null, color = null) {
     return TinyHtml.createFrom('td', {
       class: 'p-0 m-0',
       coordinates:
@@ -244,7 +362,9 @@ class TinyMap {
    */
   buildMapGrid() {
     // Prepare Table
-    this.html.grid = [];
+    /** @type {TinyMapGridRow[]} */
+    const grid = [];
+    this.html.grid = grid;
     this.emptyMap();
 
     // Generator Height
@@ -259,6 +379,7 @@ class TinyMap {
     // Render grid
     for (let i = 0; i < this.grid.height + 1; i++) {
       const tinytr = TinyHtml.createFrom('tr', { class: 'p-0 m-0' });
+      /** @type {import('tiny-essentials/libs/html/TinyHtml').default<HTMLElement>[]} */
       const tinytds = [];
 
       // Height
@@ -298,7 +419,7 @@ class TinyMap {
 
       // Insert
       if (this.html.table) this.html.table.append(tinytr.append(tinytds));
-      this.html.grid.push({ html: tinytr, data: tinytds });
+      grid.push({ html: tinytr, data: tinytds });
     }
   }
 
@@ -314,17 +435,14 @@ class TinyMap {
    */
   updateGridContent() {
     // Routes Generator
+    /** @param {string} coords */
     const getCoordPlace = (coords) => {
-      const coordinates = coords.split('x');
-      coordinates[0] = Number(coordinates[0]);
-      coordinates[1] = Number(coordinates[1]);
+      const coordinates = coords.split('x').map(Number);
 
       if (!Number.isNaN(coordinates[0]) && !Number.isNaN(coordinates[1])) {
         const cordsValue = coordinates[0] + 'x' + coordinates[1];
-        for (const index in this.html.grid) {
-          const coordBase = this.html.grid[index].data.find(
-            (item) => item.attr('coordinates') === cordsValue,
-          );
+        for (const row of this.html.grid ?? []) {
+          const coordBase = row.data.find((item) => item.attr('coordinates') === cordsValue);
           if (coordBase) return coordBase;
         }
       }
@@ -345,7 +463,7 @@ class TinyMap {
             'title',
             'Route {number}: {about}'
               .replace(/\{number\}/g, routeNumber)
-              .replace(/\{about\}/g, this.routes[item2].about),
+              .replace(/\{about\}/g, String(this.routes[item2].about)),
           );
         } else {
           coordplace.setAttr('title', 'Route {number}'.replace(/\{number\}/g, routeNumber));
@@ -375,7 +493,7 @@ class TinyMap {
         coordplace.setAttr('title', this.locations[item2].name);
         const tooltip = Tooltip(coordplace);
 
-        coordplace.setText(this.locations[item2].mininame);
+        coordplace.setText(this.locations[item2].mininame ?? '');
         if (this.locations[item2].color) {
           coordplace.setStyle('background-color', this.locations[item2].color);
         }
@@ -393,15 +511,10 @@ class TinyMap {
             const tinyLocation = coordplace.data('tinyLocation');
 
             // Get Items
-            let tinyItems;
-
-            try {
-              tinyItems = rpgData.data[place].getEditor('root.settings.items').getValue();
-            } catch (err) {
-              tinyItems = null;
-            }
+            const tinyItems = this.items;
 
             // Items Shop
+            /** @type {import('tiny-essentials/libs/html/TinyHtml').default<HTMLElement>[]} */
             const tinyShop = [];
 
             // Items
@@ -412,6 +525,7 @@ class TinyMap {
                 let alllocations = false;
                 if (typeof tinyItems[item].cities === 'string') {
                   // The cities
+                  /** @type {string[]} */
                   const tinyCities = [];
                   const tinyCities1 = tinyItems[item].cities.split(',');
                   const tinyCities2 = tinyItems[item].cities.split('\n');
@@ -442,6 +556,7 @@ class TinyMap {
 
                 // Add to the list
                 if (cancity) {
+                  /** @type {import('tiny-essentials/libs/html/TinyHtml').default<HTMLElement>|string} */
                   let separeItem = '';
                   if (Number(item) !== Number(tinyItems.length - 1)) {
                     separeItem = TinyHtml.createFrom('hr');
@@ -455,7 +570,7 @@ class TinyMap {
                       TinyHtml.createFrom('span').setText(tinyItems[item].price),
                       TinyHtml.createFrom('br'),
                       TinyHtml.createFrom('span').setText(`About: `),
-                      TinyHtml.createFrom('span').setText(tinyItems[item].about),
+                      TinyHtml.createFrom('span').setText(tinyItems[item].about ?? ''),
                       separeItem,
                     ]),
                   );
@@ -464,10 +579,11 @@ class TinyMap {
             }
 
             // Modal Body
+            /** @type {import('tiny-essentials/libs/html/TinyHtml').default<HTMLElement>[]} */
             const tinyBody = [
               // Info
               TinyHtml.createFrom('h3').setText('Info'),
-              TinyHtml.createFrom('div').setText(tinyLocation.about),
+              TinyHtml.createFrom('div').setText(tinyLocation.about ?? ''),
             ];
 
             if (tinyShop.length > 0) {
@@ -499,7 +615,7 @@ class TinyMap {
    * @returns {void}
    */
   updateMapSize() {
-    this.html.table.setStyle({
+    this.html.table?.setStyle({
       width: this.size[0] + this.tile[0],
       height: this.size[1] + this.tile[1],
     });
@@ -536,7 +652,7 @@ class TinyMap {
    * - Optionally adds a title, if a `title` string is provided, by creating an `<h3>` element.
    * - Appends a new `<div>` with an optional class name (`className`) and the provided `tinyHtml` content.
    *
-   * @param {jQuery} tinyHtml - The HTML content to be appended to the page.
+   * @param {import('tiny-essentials/libs/html/TinyHtml').AppendCheckerValues} tinyHtml - The HTML content to be appended to the page.
    * @param {string|null} [title=null] - The title for the page, which will be wrapped in an `<h3>` tag. If not provided, no title is added.
    * @param {string|null} [className=null] - The CSS class to be applied to the wrapping `<div>`. If not provided, no class is applied.
    *
@@ -544,7 +660,7 @@ class TinyMap {
    */
   buildPage(tinyHtml, title = null, className = null) {
     this.html.base
-      .empty()
+      ?.empty()
       .append(
         typeof title === 'string' ? TinyHtml.createFrom('h3').setText(title) : null,
         TinyHtml.createFrom('div', { class: className }).append(tinyHtml),
@@ -565,15 +681,18 @@ class TinyMap {
    */
   activeSubPage(active = true) {
     this._isSubPage = active;
-    if (!active)
+    if (!active && this.html.table)
       this.buildPage(
         this.html.table,
-        Number(this.html.table.outerWidth(true) - this.tile[0]) +
-          'x' +
-          Number(this.html.table.outerHeight(true) - this.tile[1]),
+        String(
+          Number(this.html.table.outerWidth(true)) -
+            this.tile[0] +
+            'x' +
+            (Number(this.html.table.outerHeight(true)) - this.tile[1]),
+        ),
         'table-responsive',
       );
-    else this.buildPage(this.html.subPage.html, this.html.subPage.title);
+    else if (this.html.subPage) this.buildPage(this.html.subPage.html, this.html.subPage.title);
   }
 
   /**
@@ -612,8 +731,8 @@ class TinyMap {
       }).on('click', () => {
         if (this._isSubPage) {
           this.buildMap();
-          this.html.base.removeClass('d-none');
-        } else this.html.base.toggleClass('d-none');
+          this.html.base?.removeClass('d-none');
+        } else this.html.base?.toggleClass('d-none');
       });
 
     // Set name
@@ -627,7 +746,7 @@ class TinyMap {
   /**
    * Gets the map button element.
    *
-   * @returns {jQuery} The map button element.
+   * @returns {import('tiny-essentials/libs/html/TinyHtml').default<HTMLElement>|undefined} The map button element.
    */
   getMapButton() {
     return this.html.mapButton;
@@ -636,7 +755,7 @@ class TinyMap {
   /**
    * Gets the map table HTML element.
    *
-   * @returns {jQuery} The table element representing the map.
+   * @returns {import('tiny-essentials/libs/html/TinyHtml').default<HTMLElement>|undefined} The table element representing the map.
    */
   getMapHtml() {
     return this.html.table;
@@ -645,7 +764,7 @@ class TinyMap {
   /**
    * Gets the base HTML element for the map container.
    *
-   * @returns {jQuery} The base container element for the map.
+   * @returns {import('tiny-essentials/libs/html/TinyHtml').default<HTMLElement>|undefined} The base container element for the map.
    */
   getMapBaseHtml() {
     return this.html.base;

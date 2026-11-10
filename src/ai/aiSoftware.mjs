@@ -57,6 +57,12 @@ import { rpgSchemaSettingsMenu } from './buttons/rpgSchema.mjs';
 
 const { Icon } = TinyHtmlElems;
 
+const getClient = () => {
+  const client = tinyIo.client;
+  if (!client) throw new Error('IO Client not found!');
+  return client;
+}
+
 export const AiScriptStart = async () => {
   let sessionEnabled = true;
   // Update Url
@@ -83,7 +89,7 @@ export const AiScriptStart = async () => {
       const past = moment(totalTime.now);
 
       // Diff
-      const diff = Math.abs(now - past);
+      const diff = Math.abs(now.valueOf() - past.valueOf());
       if (diff >= 999) totalTime.secondsUsed++;
 
       // Complete
@@ -105,7 +111,7 @@ export const AiScriptStart = async () => {
   if (!tinyAiScript.isEnabled()) {
     alert(
       'AI mode is currently disabled for your session. Please click the robot icon to activate it, then come back here.',
-      'AI Page',
+      { title: 'AI Page' },
     );
     return;
   }
@@ -114,7 +120,7 @@ export const AiScriptStart = async () => {
   if (isNoNsfw()) {
     alert(
       'Access to this content is restricted in your region or settings. You will need to verify your age to continue. The "Sign in with Google" button is located at the top right of the page.',
-      'Age Verification Required',
+      { title: 'Age Verification Required' },
     );
     return;
   }
@@ -140,12 +146,18 @@ export const AiScriptStart = async () => {
 
   /**
    * Sidebar Button
+   *
+   * @param {string} icon - Font Awesome class list of the leading icon.
+   * @param {string} text - Button label.
+   * @param {(e: Event) => void} callback - Click handler.
+   * @param {boolean} [disabled=false] - Whether the button starts disabled.
+   * @param {{ class?: string, dsBtn?: boolean, id?: string, toggle?: string, target?: string }|null} [options=null] - Extra button options.
    * @returns {TinyHtml<HTMLElement>}
    */
   const createButtonSidebar = (icon, text, callback, disabled = false, options = null) => {
     const tinyClass = `link btn-bg text-start w-100${disabled ? ' disabled' : ''}`;
     return tinyLib.bs
-      .button(!options ? tinyClass : { class: tinyClass, ...options })
+      .button(!options ? tinyClass : { ...options, class: tinyClass })
       .setText(text)
       .prepend(new Icon(`${icon} me-2`))
       .on('click', callback)
@@ -165,32 +177,41 @@ export const AiScriptStart = async () => {
 
   resetModelSelector();
 
-  // To Number
+  /**
+   * Converts a raw input value into a number.
+   *
+   * @param {unknown} val - Value read from an input element.
+   * @returns {number} The parsed number, or `0` when it is not numeric.
+   */
   const convertToNumber = (val) =>
     typeof val === 'string' && val.length > 0 ? Number(val) : typeof val === 'number' ? val : 0;
 
-  // Token Count
+  /** @type {TokenCount} */
   const tokenCount = {
     amount: TinyHtml.createFrom('span').setData('token-count', 0).setText('0'),
     total: TinyHtml.createFrom('span').setText('0'),
     updateValue: (where, value) => {
+      const target = tokenCount[where];
+      if (!(target instanceof TinyHtml)) return;
       if (typeof value === 'number') {
         if (!Number.isNaN(value) && Number.isFinite(value)) {
-          if (tokenCount[where] && where !== 'updateValue' && where !== 'getValue')
-            return tokenCount[where]
+          if (target && where !== 'updateValue' && where !== 'getValue')
+            return target
               .setData('token-count', value)
               .setText(value.toLocaleString(navigator.language || 'en-US'));
         }
-      } else return tokenCount[where].setData('token-count', 0).setText(0);
+      } else return target.setData('token-count', 0).setText(0);
     },
 
     getValue: (where) => {
-      if (tokenCount[where] && where !== 'updateValue' && where !== 'getValue')
-        return tokenCount[where].data('token-count') || 0;
+      const target = tokenCount[where];
+      if (!(target instanceof TinyHtml)) return;
+      return target.data('token-count') || 0;
     },
   };
 
   // Ranger Generator
+  /** @returns {TinyRanger} */
   const tinyRanger = () => {
     const rangerBase = TinyHtml.createFrom('div', {
       class: 'd-flex flex-row align-items-center',
@@ -206,11 +227,17 @@ export const AiScriptStart = async () => {
       event.preventDefault();
       let currentValue = Number(ranger.val());
 
+      /**
+       * Reads a numeric attribute of the range input.
+       *
+       * @param {string} where - Attribute name.
+       * @param {number} defaultValue - Value used when the attribute is missing.
+       * @returns {number} The numeric attribute value.
+       */
       const getValue = (where, defaultValue) => {
-        let newValue = ranger.attr(where);
-        if (typeof newValue === 'string' && newValue.length > 0) newValue = Number(newValue);
-        else newValue = defaultValue;
-        return newValue;
+        const newValue = ranger.attr(where);
+        if (typeof newValue === 'string' && newValue.length > 0) return Number(newValue);
+        return defaultValue;
       };
 
       const step = getValue('step', 1);
@@ -218,7 +245,7 @@ export const AiScriptStart = async () => {
       const max = getValue('max', 0);
 
       // Detect scroll position
-      if (event.deltaY < 0) {
+      if (/** @type {WheelEvent} */ (event).deltaY < 0) {
         // Up
         currentValue += step;
       } else {
@@ -236,9 +263,9 @@ export const AiScriptStart = async () => {
     rangerNumber.on('input', () => ranger.setVal(rangerNumber.val()));
 
     rangerNumber.on('change', () => {
-      let value = parseInt(rangerNumber.val());
-      let min = parseInt(rangerNumber.attr('min'));
-      let max = parseInt(rangerNumber.attr('max'));
+      const value = parseInt(String(rangerNumber.val()));
+      const min = parseInt(String(rangerNumber.attr('min')));
+      const max = parseInt(String(rangerNumber.attr('max')));
       if (value < min) {
         rangerNumber.setVal(min);
       } else if (value > max) {
@@ -292,6 +319,12 @@ export const AiScriptStart = async () => {
       },
 
       insert: () => rangerBase,
+      /**
+       * Gets or sets the current value.
+       *
+       * @param {number} [value] - New value.
+       * @returns {TinyRanger|number} The control itself, or the current value.
+       */
       val: function (value) {
         if (typeof value !== 'undefined') {
           ranger.setVal(value);
@@ -364,6 +397,18 @@ export const AiScriptStart = async () => {
 
   // TITLE: Get fic cache
   let isFirstFicCache = true;
+  /**
+   * Loads the cached content of a fic into the chat.
+   *
+   * @param {string} id - Session id.
+   * @param {string|null} [instructionId] - Key of the system instruction.
+   * @param {string|string[]|null} [prompts] - Prompt (or list of prompts) of the session.
+   * @param {string} [introduction] - Introduction message.
+   * @param {AiHashItems|null} [hashItems] - Hashes of the cached sections.
+   * @param {() => Promise<{ mime: string, data: string }|null>} [newContent] - Loader of the attached file.
+   * @param {boolean} [forceReset=false] - Whether the session must be reset first.
+   * @returns {Promise<void>} Resolves once the cache is loaded.
+   */
   const getFicCache = (
     id,
     instructionId,
@@ -377,17 +422,18 @@ export const AiScriptStart = async () => {
       isFirstTime = false;
       // Reset token count
       tokenCount.updateValue('amount', 0);
-      newContent()
-        .then(async (ficData) => {
+      newContent?.()
+        .then(async (/** @type {{ mime: string, data: string }|null} */ ficData) => {
           // Start chatbot script
           if (forceReset) await resetSession(id, true);
           if (forceReset || !tinyAi.selectDataId(id)) {
             // Start History
             tinyAi.startDataId(id, true);
-            tinyAi.setModel(modelSelector.val());
+            tinyAi.setModel(String(modelSelector.val() ?? ''));
 
             // Set Instruction
-            tinyAi.setSystemInstruction(aiTemplates.instructions[instructionId], 0);
+            if (instructionId)
+              tinyAi.setSystemInstruction(aiTemplates.instructions[instructionId], 0);
 
             // Set Prompts
             try {
@@ -416,7 +462,8 @@ export const AiScriptStart = async () => {
           if (ficData) tinyAi.setFileData(ficData.mime, ficData.data);
           else tinyAi.removeFileData();
           const newFileHash = tinyAi.getHash('file');
-          if (oldFileHash === newFileHash) tinyAi.setFileData(null, null, null, fileTokens || 0);
+          if (oldFileHash === newFileHash)
+            tinyAi.setFileData(undefined, undefined, undefined, fileTokens || 0);
 
           // Clear data
           if (isOfflineMode) clearMessages();
@@ -427,6 +474,7 @@ export const AiScriptStart = async () => {
           }
           if (isOfflineMode) makeTempMessage(introduction, 'Introduction');
           const history = tinyAi.getData();
+          if (!history) throw new Error('INVALID SESSION DATA!');
 
           // Restore textarea
           if (ficConfigs.selected) {
@@ -461,7 +509,7 @@ export const AiScriptStart = async () => {
             true,
           );
           if (sessionEnabled) contentEnabler.enPromptButtons();
-          updateAiTokenCounterData(hashItems, forceReset);
+          updateAiTokenCounterData(hashItems ?? undefined, forceReset);
 
           // Update button list
           for (const index in ficConfigs.buttons) {
@@ -485,26 +533,12 @@ export const AiScriptStart = async () => {
 
   /**
    * When sId is used, it means that the request is coming from a session that is not active in the chat
-   * @param {{
-   *  parts: Array<Record<"text" | "inlineData", string | {
-   *     mime_type: string;
-   *     data: string;
-   *  } | null>>;
-   *  role?: string | undefined;
-   *  finishReason?: string | number | undefined;
-   * }[]} data
    *
-   * @param {{
-   * [key: string]: any;
-   * data: Array<{
-   *     count: number | null;
-   *     hide?: boolean;
-   * }>;
-   * }} tokens
-   *
-   * @param {boolean} [readOnly=false]
-   * @param {string} [sId=undefined]
-   *
+   * @param {TinyAiSessionMessage[]} data - Messages to import.
+   * @param {TinyAiTokenData[]} tokens - Token counters of the messages.
+   * @param {boolean} [readOnly=false] - Whether the messages are already stored.
+   * @param {string} [sId=undefined] - Session id, when it is not the active one.
+   * @returns {void}
    */
   const insertImportData = (data, tokens, readOnly = false, sId = undefined) => {
     // Insert data
@@ -516,7 +550,7 @@ export const AiScriptStart = async () => {
               tokens[index],
               sId,
             )
-          : tinyAi.getIdByIndex(index);
+          : tinyAi.getIdByIndex(Number(index));
 
         if (!sId) {
           const msg = !readOnly ? tinyAi.getLastIndexData() : data[index];
@@ -525,10 +559,10 @@ export const AiScriptStart = async () => {
               makeMessage(
                 {
                   message: msg.parts[0].text,
-                  tokens: tokens[index],
-                  id: msgId,
+                  tokens: tokens[index] ? tokens[index].count : null,
+                  id: Number(msgId),
                 },
-                msg.role === 'user' ? null : toTitleCase(msg.role),
+                msg.role === 'user' ? null : toTitleCase(msg.role ?? ''),
               ),
             );
           }
@@ -537,9 +571,16 @@ export const AiScriptStart = async () => {
     }
   };
 
+  /**
+   * Imports a serialized session file into the current chat.
+   *
+   * @param {unknown} jsonData - Parsed session file.
+   * @param {boolean} [forceLoad=false] - Whether the session must replace the current one.
+   * @returns {Promise<boolean>} `true` when the file was imported.
+   */
   const importFileSession = async (jsonData, forceLoad = false) => {
     if (isJsonObject(jsonData) && jsonData.file && typeof jsonData.id === 'string') {
-      const { file } = jsonData;
+      const file = /** @type {AiSessionFile} */ (jsonData.file);
       let sessionId = jsonData.id;
       // Migration to sandbox mode
       if (!canSandBox(sessionId) && typeof file.systemInstruction === 'string')
@@ -562,11 +603,12 @@ export const AiScriptStart = async () => {
             typeof file.customList[i].type === 'string'
           ) {
             const { name, type } = file.customList[i];
+            const customTokens = file.tokens ? file.tokens[name] : 0;
             if (isObjType(file[name], type)) {
               tinyAi.setCustomValue(
                 name,
                 file[name],
-                file.tokens ? file.tokens[name] : 0,
+                typeof customTokens === 'number' ? customTokens : 0,
                 sessionId,
               );
             }
@@ -618,7 +660,7 @@ export const AiScriptStart = async () => {
           file.systemInstruction,
           file.tokens ? file.tokens.systemInstruction : 0,
         );
-      else if (aiTemplates.instructions[instructionId])
+      else if (instructionId && aiTemplates.instructions[instructionId])
         tinyAi.setSystemInstruction(
           aiTemplates.instructions[instructionId],
           file.tokens ? file.tokens.systemInstruction : 0,
@@ -634,7 +676,7 @@ export const AiScriptStart = async () => {
 
       // File
       if (file.tokens && typeof file.tokens.file === 'number')
-        tinyAi.setFileData(null, null, null, file.tokens ? file.tokens.file : 0);
+        tinyAi.setFileData(undefined, undefined, undefined, file.tokens ? file.tokens.file : 0);
 
       if (forceLoad) {
         // Clear messages
@@ -645,7 +687,7 @@ export const AiScriptStart = async () => {
 
       // Complete
       insertImportData(
-        file.data,
+        file.data ?? [],
         file.tokens && Array.isArray(file.tokens.data) ? file.tokens.data : [],
         false,
         forceLoad ? undefined : sessionId,
@@ -704,6 +746,7 @@ export const AiScriptStart = async () => {
   contentEnabler.setFicResets(ficResets);
 
   // TITLE: Fic Templates
+  /** @type {TinyHtmlAny[]} */
   const ficTemplates = [];
   contentEnabler.setFicTemplates(ficTemplates);
   for (const index in ficConfigs.data) {
@@ -731,7 +774,7 @@ export const AiScriptStart = async () => {
   const importItems = [
     // Import
     tinyLib.upload.json(
-      createButtonSidebar('fa-solid fa-file-import', 'Import'),
+      createButtonSidebar('fa-solid fa-file-import', 'Import', () => {}),
       (err, jsonData) => {
         if (err) {
           console.error(err);
@@ -748,6 +791,18 @@ export const AiScriptStart = async () => {
   const ficPromptItems = [
     // System Instructions
     createButtonSidebar('fa-solid fa-toolbox', 'System Instructions', () => {
+      /**
+       * @type {{
+       *   id: string,
+       *   info: string,
+       *   size: number,
+       *   textarea: string|null,
+       *   submitName: string,
+       *   readOnly: boolean,
+       *   addTemplates?: { data: AiPromptTemplate[], title: string },
+       *   submitCall: (value: string) => void,
+       * }}
+       */
       const tinyModalData = {
         id: 'ai_instructions',
         info: 'System Instructions:',
@@ -869,18 +924,19 @@ export const AiScriptStart = async () => {
     loaderScreen.start();
     // Is online
     if (isOnline()) {
+      const client = getClient();
       // Get rpg schema
-      let rpgSchema = tinyIo.client.getRpgSchema();
+      let rpgSchema = client.getRpgSchema();
       // No one? Create new one
       if (!isJsonObject(rpgSchema) || countObj(rpgSchema) < 1) {
         rpgSchema = aiTemplates.funcs.jsonTemplate();
         tinyAi.setCustomValue('rpgSchema', rpgSchema);
 
-        const user = tinyIo.client.getUser() || {};
-        const room = tinyIo.client.getRoom() || {};
-        const cantEdit = room.ownerId !== tinyIo.client.getUserId() && !user.isOwner;
+        const user = client.getUser() || {};
+        const room = client.getRoom() || {};
+        const cantEdit = room.ownerId !== client.getUserId() && !user.isOwner;
 
-        if (!cantEdit) await tinyIo.client.updateRpgSchema(rpgSchema);
+        if (!cantEdit) await client.updateRpgSchema(rpgSchema);
       }
       // Use the one
       else tinyAi.setCustomValue('rpgSchema', rpgSchema);
@@ -938,6 +994,20 @@ export const AiScriptStart = async () => {
       createButtonSidebar('fa-solid fa-book', 'Rpg Schema settings', rpgSchemaSettingsMenu),
     );
 
+    /**
+     * Builds a sidebar entry that edits a single string field of the room.
+     *
+     * @param {string} id - Element id of the modal.
+     * @param {string} icon - Font Awesome class list of the button icon.
+     * @param {string} buttonName - Label of the sidebar button.
+     * @param {string} title - Title of the modal.
+     * @param {string} labelName - Label of the input.
+     * @param {string} placeHolder - Placeholder of the input.
+     * @param {keyof SocketUser} infoName - Name of the field inside the user data.
+     * @param {() => { ratelimit: RatelimitState, userData: SocketUser }} getInfo - Loads the current values.
+     * @param {(value: string) => void} callback - Saves the new value.
+     * @returns {void}
+     */
     const templateChangeInfo = (
       id,
       icon,
@@ -978,7 +1048,7 @@ export const AiScriptStart = async () => {
             .setAttr('maxLength', ratelimit.size[infoName])
             .setVal(typeof userData[infoName] === 'string' ? userData[infoName] : '')
             .on('keydown', (e) => {
-              if (e.key === 'Enter') {
+              if (/** @type {KeyboardEvent} */ (e).key === 'Enter') {
                 e.preventDefault();
                 $saveBtn.trigger('click');
               }
@@ -994,7 +1064,7 @@ export const AiScriptStart = async () => {
 
           // Click button event
           $saveBtn.on('click', () => {
-            callback($input.val().trim());
+            callback(String($input.val() ?? '').trim());
             modal.hide();
           });
 
@@ -1021,12 +1091,14 @@ export const AiScriptStart = async () => {
       'Enter your nickname', // Place Holder
       'nickname', // Object Name
       () => {
-        const ratelimit = tinyIo.client.getRateLimit() || { size: {} };
-        const userData = tinyIo.client.getUser() || {};
+        const client = getClient();
+        const ratelimit = client.getRateLimit() || { size: {} };
+        const userData = client.getUser() || {};
         return { ratelimit, userData };
       },
       (value) => {
-        tinyIo.client.changeNickname(value).then((result) => {
+        const client = getClient();
+        client.changeNickname(value).then((result) => {
           if (result.error) alert(`${result.msg}\nCode ${result.code}`);
           else alert('Your nickname has been changed successfully!');
         });
@@ -1054,8 +1126,9 @@ export const AiScriptStart = async () => {
     // Export
     leftMenu.push(
       createButtonSidebar('fa-solid fa-file-export', 'Export', () => {
+        /** @type {{ file: AiSessionFile|null, id: string|null }} */
         const exportData = {
-          file: structuredClone(tinyAi.getData()),
+          file: /** @type {AiSessionFile|null} */ (structuredClone(tinyAi.getData())),
           id: tinyAi.getId(),
         };
 
@@ -1221,13 +1294,21 @@ export const AiScriptStart = async () => {
       const models = tinyAi.getModelsList();
       resetModelSelector();
       if (models.length > 0) {
-        // Insert model
-        const insertItem = (id, displayName, disabled = false) =>
+        /**
+         * Appends a model entry to the selector.
+         *
+         * @param {string|null} [id] - Model id.
+         * @param {string|null} [displayName] - Human readable name.
+         * @param {boolean} [disabled=false] - Whether the entry is a category header.
+         * @returns {void}
+         */
+        const insertItem = (id, displayName, disabled = false) => {
           modelSelector.append(
-            TinyHtml.createFrom('option', { value: id })
+            TinyHtml.createFrom('option', { value: id ?? null })
               .toggleProp('disabled', disabled)
               .setText(displayName),
           );
+        };
 
         // Get models
         for (const index in models) {
@@ -1244,8 +1325,9 @@ export const AiScriptStart = async () => {
             );
 
             // Category items
-            for (const index2 in models[index].data) {
-              insertItem(models[index].data[index2].id, models[index].data[index2].displayName);
+            const categoryItems = models[index].data ?? [];
+            for (const index2 in categoryItems) {
+              insertItem(categoryItems[index2].id, categoryItems[index2].displayName);
             }
           }
         }
@@ -1259,15 +1341,23 @@ export const AiScriptStart = async () => {
     }
   };
 
+  /**
+   * Applies the default settings of a model.
+   *
+   * @param {TinyAiModel} model - Model metadata.
+   * @param {string} newModel - Model id.
+   * @returns {void}
+   */
   const insertDefaultSettings = (model, newModel) => {
     tinyAi.setModel(newModel, ficConfigs.selected);
     presencePenalty.disable();
     frequencyPenalty.disable();
 
-    tokenCount.updateValue('total', model.inputTokenLimit);
+    if (typeof model.inputTokenLimit === 'number')
+      tokenCount.updateValue('total', model.inputTokenLimit);
 
     outputLength
-      .setVal(model.outputTokenLimit)
+      .setVal(typeof model.outputTokenLimit === 'number' ? model.outputTokenLimit : 0)
       .removeProp('disabled')
       .removeClass('disabled')
       .trigger('input');
@@ -1286,6 +1376,13 @@ export const AiScriptStart = async () => {
     else topK.reset().disable();
   };
 
+  /**
+   * Selects a model and refreshes the sidebar controls.
+   *
+   * @param {string} newModel - Model id.
+   * @param {boolean} [ignoreTokenUpdater=false] - Whether the token counter must be kept.
+   * @returns {void}
+   */
   const selectModel = (newModel, ignoreTokenUpdater = false) => {
     if (!tinyAiScript.noai && !tinyAiScript.mpClient) {
       const model = tinyAi.getModelData(newModel);
@@ -1309,7 +1406,7 @@ export const AiScriptStart = async () => {
     }
   };
 
-  modelSelector.on('change', () => selectModel(modelSelector.val()));
+  modelSelector.on('change', () => selectModel(String(modelSelector.val() ?? '')));
 
   // Load more models
   const loadMoreModels = createButtonSidebar(
@@ -1336,10 +1433,11 @@ export const AiScriptStart = async () => {
     'fa-solid fa-rotate-right',
     'Reset default settings',
     () => {
-      const model = tinyAi.getModelData(modelSelector.val());
+      const selectedModel = String(modelSelector.val() ?? '');
+      const model = tinyAi.getModelData(selectedModel);
       if (model) {
         temperature.val(1);
-        insertDefaultSettings(model, modelSelector.val());
+        insertDefaultSettings(model, selectedModel);
       }
     },
   );
@@ -1482,10 +1580,12 @@ export const AiScriptStart = async () => {
       if ((canPublicRPG || canPrivateRPG) && (canPublicSchemaRPG || canPrivateSchemaRPG)) {
         const tinyRpgData = structuredClone(rpgData.template.schema);
 
-        if (typeof tinyRpgData.properties.allowAiUse !== 'undefined')
-          delete tinyRpgData.properties.allowAiUse;
-        if (typeof tinyRpgData.properties.allowAiSchemaUse !== 'undefined')
-          delete tinyRpgData.properties.allowAiSchemaUse;
+        if (tinyRpgData.properties) {
+          if (typeof tinyRpgData.properties.allowAiUse !== 'undefined')
+            delete tinyRpgData.properties.allowAiUse;
+          if (typeof tinyRpgData.properties.allowAiSchemaUse !== 'undefined')
+            delete tinyRpgData.properties.allowAiSchemaUse;
+        }
 
         let tinyText = `${userFileStart}\n\n`;
         tinyText += JSON.stringify({ schema: tinyRpgData });
@@ -1501,7 +1601,7 @@ export const AiScriptStart = async () => {
       // Public RPG
       if (canPublicRPG) {
         rpgData.oldHash.public = tinyAi.getHash('rpgData');
-        const tinyRpgData = structuredClone(history.rpgData);
+        const tinyRpgData = structuredClone(history.rpgData) ?? {};
         if (typeof tinyRpgData.allowAiUse !== 'undefined') delete tinyRpgData.allowAiUse;
         let tinyText = `${userFileStart}\n\n`;
         tinyText += JSON.stringify({ database: tinyRpgData });
@@ -1517,7 +1617,7 @@ export const AiScriptStart = async () => {
       // Private RPG
       if (canPrivateRPG) {
         rpgData.oldHash.private = tinyAi.getHash('rpgPrivateData');
-        const tinyRpgData = structuredClone(history.rpgPrivateData);
+        const tinyRpgData = structuredClone(history.rpgPrivateData) ?? {};
         if (typeof tinyRpgData.allowAiUse !== 'undefined') delete tinyRpgData.allowAiUse;
         let tinyText = `${officialFileStart}\n\n`;
         tinyText += JSON.stringify({ database: tinyRpgData });
@@ -1558,6 +1658,13 @@ export const AiScriptStart = async () => {
     };
   };
 
+  /**
+   * Recomputes the token counters of the current session.
+   *
+   * @param {AiHashItems} [hashItems] - Hashes of the last run.
+   * @param {boolean} [forceUpdate=false] - Whether every counter must be recomputed.
+   * @returns {Promise<number>} Total amount of tokens.
+   */
   const getAiTokens = (hashItems = { data: [] }, forceUpdate = false) =>
     new Promise(async (resolve, reject) => {
       try {
@@ -1572,14 +1679,24 @@ export const AiScriptStart = async () => {
           rpgSchema,
         } = prepareContentList(true);
         if (content.length > 0) {
-          // Get tokens data
+          /**
+           * Recomputes the token counter of a single section.
+           *
+           * @param {string} name - Section name, used by the log messages.
+           * @param {unknown} contentToCheck - Payload sent to the token counter.
+           * @param {string|null} [hash=null] - Current hash of the section.
+           * @param {string|null} [oldHash=null] - Hash stored in the last run.
+           * @param {{ count: number|null }} [tinyTokens] - Stored token counter.
+           * @param {((newCount: number) => void)|null} [callback] - Stores the new counter.
+           * @returns {Promise<void>} Resolves once the counter is stored.
+           */
           const updateTokenData = async (
             name,
             contentToCheck,
             hash = null,
             oldHash = null,
             tinyTokens = { count: null },
-            callback,
+            callback = null,
           ) => {
             if (!tinyAiScript.noai && !tinyAiScript.mpClient) {
               if (
@@ -1608,9 +1725,9 @@ export const AiScriptStart = async () => {
                   newTokens && typeof newTokens.totalTokens === 'number'
                     ? newTokens.totalTokens
                     : null;
-                if (typeof newToken === 'number') callback(newToken);
+                if (typeof newToken === 'number' && callback) callback(newToken);
               }
-            } else callback(0);
+            } else if (callback) callback(0);
           };
 
           // RPG
@@ -1657,7 +1774,7 @@ export const AiScriptStart = async () => {
             tinyAi.getHash('prompt'),
             typeof hashItems.prompt === 'string' ? hashItems.prompt : null,
             { count: tinyAi.getTokens('prompt') },
-            (newCount) => tinyAi.setPrompt(null, newCount),
+            (newCount) => tinyAi.setPrompt(undefined, newCount),
           );
 
           // File
@@ -1667,7 +1784,7 @@ export const AiScriptStart = async () => {
             tinyAi.getHash('file'),
             typeof hashItems.file === 'string' ? hashItems.file : null,
             { count: tinyAi.getTokens('file') },
-            (newCount) => tinyAi.setFileData(null, null, false, newCount),
+            (newCount) => tinyAi.setFileData(undefined, undefined, false, newCount),
           );
 
           // System Instruction
@@ -1679,33 +1796,40 @@ export const AiScriptStart = async () => {
             tinyAi.getHash('systemInstruction'),
             typeof hashItems.systemInstruction === 'string' ? hashItems.systemInstruction : null,
             { count: tinyAi.getTokens('systemInstruction') },
-            (newCount) => tinyAi.setSystemInstruction(null, newCount),
+            (newCount) => tinyAi.setSystemInstruction(undefined, newCount),
           );
 
           // Read messages
           for (const index in indexList) {
+            const msgIndex = Number(index);
+            const oldHashes = Array.isArray(hashItems.data) ? hashItems.data : [];
             await updateTokenData(
               'message',
               indexList[index],
-              tinyAi.getMsgHashByIndex(index),
-              typeof hashItems.data[index] === 'string' ? hashItems.data[index] : null,
-              tinyAi.getMsgTokensByIndex(index) || { count: null },
+              tinyAi.getMsgHashByIndex(msgIndex),
+              typeof oldHashes[msgIndex] === 'string' ? oldHashes[msgIndex] : null,
+              tinyAi.getMsgTokensByIndex(msgIndex) || { count: null },
               (newCount) => {
-                const tokenData = tinyAi.getMsgTokensByIndex(index);
-                tinyAi.replaceIndex(index, null, { count: newCount, msgId: tokenData.msgId });
+                const tokenData = tinyAi.getMsgTokensByIndex(msgIndex);
+                tinyAi.replaceIndex(msgIndex, undefined, {
+                  count: newCount,
+                  msgId: tokenData ? tokenData.msgId : undefined,
+                });
                 if (isOnline()) {
-                  const hash = tinyAi.getMsgHashByIndex(index);
-                  const message = tinyAi.getMsgByIndex(index);
-                  tinyIo.client
+                  const hash = tinyAi.getMsgHashByIndex(msgIndex);
+                  const message = tinyAi.getMsgByIndex(msgIndex);
+                  if (!message) return;
+                  const client = getClient();
+                  client
                     .editMessage(
                       { message: message.parts[0].text, hash, tokens: newCount },
-                      tokenData.msgId,
+                      tokenData ? tokenData.msgId : undefined,
                     )
                     .then((result) => {
-                      if (result.error) alert(result.msg, 'ERROR!');
+                      if (result.error) alert(result.msg ?? 'Unknown error', { title: 'ERROR!' });
                     })
                     .catch((err) => {
-                      alert(err.message, 'ERROR!');
+                      alert(err.message, { title: 'ERROR!' });
                       console.error(err);
                     });
                 }
@@ -1713,7 +1837,12 @@ export const AiScriptStart = async () => {
             );
           }
 
-          resolve(!tinyAiScript.noai && !tinyAiScript.mpClient ? tinyAi.getTotalTokens() : 0);
+          const totalTokens = tinyAi.getTotalTokens();
+          resolve(
+            !tinyAiScript.noai && !tinyAiScript.mpClient && typeof totalTokens === 'number'
+              ? totalTokens
+              : 0,
+          );
         } else resolve(0);
       } catch (err) {
         reject(err);
@@ -1722,6 +1851,13 @@ export const AiScriptStart = async () => {
 
   // TITLE: Get Ai Tokens
   let usingUpdateToken = false;
+  /**
+   * Recomputes every token counter of the session.
+   *
+   * @param {AiHashItems} [hashItems] - Hashes of the last run.
+   * @param {boolean} [forceReset=false] - Whether every counter must be recomputed.
+   * @returns {void}
+   */
   const updateAiTokenCounterData = (hashItems, forceReset = false) => {
     if (tinyAiScript.mpClient || tinyAiScript.noai) return;
     if (!usingUpdateToken) {
@@ -1768,7 +1904,7 @@ export const AiScriptStart = async () => {
             usingUpdateToken = false;
           })
           .catch((err) => {
-            alert(err.message, 'Error: AI tokens getter');
+            alert(err.message, { title: 'Error: AI tokens getter' });
             console.error(err);
             stopLoadingMessage();
             usingUpdateToken = false;
@@ -1778,17 +1914,30 @@ export const AiScriptStart = async () => {
   };
 
   // TITLE: Execute AI script
+  /**
+   * Streams a model answer into the chat.
+   *
+   * @param {AiBalloonCache} [tinyCache] - Cache shared with the caller.
+   * @param {AbortController} [tinyController] - Controller used to abort the request.
+   * @returns {Promise<{ result: Record<string, unknown>, ballon: AiBalloonCache }>} The result.
+   */
   const executeAi = (tinyCache = {}, tinyController = undefined) =>
     new Promise((resolve, reject) => {
+      /** @type {AiBalloonCache} */
       const ballon = {};
       const { content } = prepareContentList();
 
       // Insert tokens
       const amountTokens = {
-        total: null,
-        data: { candidates: null, prompt: null, total: null },
+        total: /** @type {number|null} */ (null),
+        data: {
+          candidates: /** @type {number|null} */ (null),
+          prompt: /** @type {number|null} */ (null),
+          total: /** @type {number|null} */ (null),
+        },
       };
 
+      /** @param {AiTokenUsage|undefined} tokenUsage */
       const buildAmountTokens = (tokenUsage) => {
         // Build amount tokens
         if (tokenUsage) {
@@ -1805,15 +1954,29 @@ export const AiScriptStart = async () => {
         if (typeof amountTokens.total === 'number')
           tokenCount.updateValue('amount', amountTokens.total);
         const totalAmountToken = tinyAi.getTotalTokens();
-        if (totalAmountToken > amountTokens.total)
+        if (typeof totalAmountToken === 'number' && typeof amountTokens.total === 'number') {
+          if (totalAmountToken > amountTokens.total)
+            tokenCount.updateValue('amount', totalAmountToken);
+        } else if (typeof totalAmountToken === 'number') {
           tokenCount.updateValue('amount', totalAmountToken);
+        }
       };
 
       // Insert message
       let isComplete = false;
+      /**
+       * Renders (or refreshes) the balloon of the message being generated.
+       *
+       * @param {string} msgData - Message text.
+       * @param {number|null} tokens - Amount of tokens of the message.
+       * @param {string} role - Author role.
+       * @param {string} finishReason - Reason the model stopped generating.
+       * @returns {void}
+       */
       const insertMessage = (msgData, tokens, role, finishReason) => {
-        if (!tinyCache.msgBallon) {
-          tinyCache.msgBallon = makeMessage(
+        const currentBalloon = tinyCache.msgBallon;
+        if (!currentBalloon) {
+          const newBalloon = makeMessage(
             {
               tokens,
               message: msgData,
@@ -1821,13 +1984,14 @@ export const AiScriptStart = async () => {
             },
             role === 'user' ? null : toTitleCase(role),
           );
-          addMessage(tinyCache.msgBallon);
-          ballon.msgBallon = tinyCache.msgBallon;
+          tinyCache.msgBallon = newBalloon;
+          addMessage(newBalloon);
+          ballon.msgBallon = newBalloon;
         } else {
-          new TinyHtml(tinyCache.msgBallon.find('.ai-msg-ballon'))
+          new TinyHtml(currentBalloon.find('.ai-msg-ballon'))
             .empty()
             .append(TinyHtml.createFromHtml(makeMsgRenderer(msgData)));
-          const tinyErrorAlert = tinyCache.msgBallon.data('tiny-ai-error-alert');
+          const tinyErrorAlert = currentBalloon.data('tiny-ai-error-alert');
           if (tinyErrorAlert) tinyErrorAlert.updateText(finishReason);
           chatContainer.setScrollTop(999999999);
         }
@@ -1855,7 +2019,7 @@ export const AiScriptStart = async () => {
       // Content Generator
       tinyAi
         .genContent(content, tinyAi.getModel(), tinyController, (chuck) => {
-          isComplete = chuck.done;
+          isComplete = Boolean(chuck.done);
           // Update tokens
           buildAmountTokens(chuck.tokenUsage);
           const promptTokens = amountTokens.data.candidates || 0;
@@ -1863,34 +2027,37 @@ export const AiScriptStart = async () => {
           // Read contents
           if (chuck.contents) {
             for (const index in chuck.contents) {
+              const streamed = chuck.contents[index];
               // Update history
               if (typeof tinyCache.msgId === 'undefined') {
-                tinyCache.msgId = tinyAi.addData(chuck.contents[index], {
+                tinyCache.msgId = tinyAi.addData(streamed, {
                   count: promptTokens || null,
                 });
                 ballon.msgId = tinyCache.msgId;
               } else
-                tinyAi.replaceIndex(tinyAi.getIndexOfId(tinyCache.msgId), chuck.contents[index], {
+                tinyAi.replaceIndex(tinyAi.getIndexOfId(tinyCache.msgId), streamed, {
                   count: promptTokens || null,
                 });
 
               // Send insert request
-              if (typeof chuck.contents[index].parts[0].text === 'string')
+              if (typeof streamed.parts[0].text === 'string')
                 insertMessage(
-                  chuck.contents[index].parts[0].text,
+                  streamed.parts[0].text,
                   promptTokens,
-                  chuck.contents[index].role,
-                  chuck.contents[index].finishReason,
+                  streamed.role ?? 'model',
+                  String(streamed.finishReason ?? ''),
                 );
 
               // Update message cache
-              const oldBallonCache = tinyCache.msgBallon.data('tiny-ai-cache');
-              oldBallonCache.msg = chuck.contents[index].parts[0].text;
-              tinyCache.msgBallon.setData('tiny-ai-cache', oldBallonCache);
+              const currentBalloon = tinyCache.msgBallon;
+              if (!currentBalloon) continue;
+              const oldBallonCache = currentBalloon.data('tiny-ai-cache');
+              oldBallonCache.msg = streamed.parts[0].text;
+              currentBalloon.setData('tiny-ai-cache', oldBallonCache);
               ballon.cache = oldBallonCache;
 
               // Add class
-              tinyCache.msgBallon.addClass('entering-ai-message');
+              currentBalloon.addClass('entering-ai-message');
             }
           }
 
@@ -1917,8 +2084,9 @@ export const AiScriptStart = async () => {
             const promptTokens = amountTokens.data.candidates || 0;
 
             // Insert content
-            for (const index in result.contents) {
-              const msg = result.contents[index];
+            const resultContents = Array.isArray(result.contents) ? result.contents : [];
+            for (const index in resultContents) {
+              const msg = resultContents[index];
               if (
                 msg &&
                 msg.parts &&
@@ -1936,12 +2104,19 @@ export const AiScriptStart = async () => {
                   });
 
                 // Send message request
-                insertMessage(msg.parts[0].text, promptTokens, msg.role, msg.finishReason);
+                insertMessage(
+                  msg.parts[0].text,
+                  promptTokens,
+                  msg.role ?? 'model',
+                  String(msg.finishReason ?? ''),
+                );
 
                 // Update message data
-                const oldBallonCache = tinyCache.msgBallon.data('tiny-ai-cache');
+                const currentBalloon = tinyCache.msgBallon;
+                if (!currentBalloon) continue;
+                const oldBallonCache = currentBalloon.data('tiny-ai-cache');
                 oldBallonCache.msg = msg.parts[0].text;
-                tinyCache.msgBallon.setData('tiny-ai-cache', oldBallonCache);
+                currentBalloon.setData('tiny-ai-cache', oldBallonCache);
                 ballon.cache = oldBallonCache;
               }
             }
@@ -1950,9 +2125,9 @@ export const AiScriptStart = async () => {
           // Error
           else {
             console.log(`AI Generator Error`, result.error);
-            alert(result.error.message);
-            if (typeof result.error.message === 'string' && result.error.message.length > 0)
-              tinyNotification.send('Ai Error', { body: result.error.message });
+            const errorMessage = result.error?.message ?? 'Unknown error';
+            alert(errorMessage);
+            if (errorMessage.length > 0) tinyNotification.send('Ai Error', { body: errorMessage });
           }
 
           // Complete
@@ -1963,6 +2138,15 @@ export const AiScriptStart = async () => {
     });
 
   // TITLE: Textarea input edition
+  /**
+   * Builds the auto-growing textarea used by the chat input.
+   *
+   * @param {number} [minHeight=38] - Minimum height, in pixels.
+   * @param {number} [maxHeight=150] - Maximum height, in pixels.
+   * @param {Record<string, unknown>} [moreConfig] - Extra attributes.
+   * @param {((result: { height: number, newHeight: number, lines: number, value: string }) => void)|null} [callback] - Change handler.
+   * @returns {TinyHtmlAny} The textarea element.
+   */
   const createTextareaInputExition = (
     minHeight = 38,
     maxHeight = 150,
@@ -1982,7 +2166,7 @@ export const AiScriptStart = async () => {
 
     textarea.on('input', () => {
       // Reset for minimum height before recalculating
-      const value = textarea.val();
+      const value = String(textarea.val() ?? '');
       const lines = value.split('\n').length;
       textarea.setStyle('height', 'auto');
 
@@ -2032,7 +2216,7 @@ export const AiScriptStart = async () => {
       const heightDiff = heightAfter - heightBefore;
 
       // Adjust the scroll position to maintain the user's view
-      chatContainer.scrollTop(scrollBefore + heightDiff);
+      chatContainer.setScrollTop(scrollBefore + heightDiff);
 
       // Value
       tinyLs.setItem(
@@ -2058,7 +2242,7 @@ export const AiScriptStart = async () => {
   const submitMessage = async () => {
     // Prepare to get data
     msgInput.blur();
-    const msg = msgInput.val();
+    const msg = String(msgInput.val() ?? '');
     msgInput.setVal('').trigger('input');
 
     // Disable stuff
@@ -2083,7 +2267,9 @@ export const AiScriptStart = async () => {
     loadingMoment();
 
     // Add new message
+    /** @type {number|null} */
     let sentId = null;
+    /** @type {number|null} */
     let newToken = null;
     const canContinue = await new Promise(async (resolve) => {
       try {
@@ -2110,11 +2296,11 @@ export const AiScriptStart = async () => {
         } else resolve(false);
       } catch (err) {
         // Delete error message
-        tinyAi.deleteIndex(tinyAi.getIndexOfId(sentId));
+        if (typeof sentId === 'number') tinyAi.deleteIndex(tinyAi.getIndexOfId(sentId));
 
         // Send error log
         console.error(err);
-        alert(err.message);
+        alert(err instanceof Error ? err.message : String(err));
 
         // Complete
         sentId = null;
@@ -2133,7 +2319,7 @@ export const AiScriptStart = async () => {
           makeMessage({
             message: msg,
             tokens: newToken,
-            id: sentId,
+            id: sentId ?? undefined,
           }),
         );
 
@@ -2149,18 +2335,22 @@ export const AiScriptStart = async () => {
       // Online mode
       else {
         const isNoAi = tinyAiScript.noai || tinyAiScript.mpClient;
+        const sentTokens =
+          !isNoAi && typeof sentId === 'number' ? tinyAi.getMsgTokensById(sentId) : null;
         const sendData = {
           model: (!isNoAi ? tinyAi.getModel() : '') ?? '',
-          tokens: (!isNoAi ? tinyAi.getMsgTokensById(sentId).count : 0) ?? 0,
-          hash: (!isNoAi ? tinyAi.getMsgHashById(sentId) : '') ?? '',
+          tokens: (sentTokens && sentTokens.count) ?? 0,
+          hash: (!isNoAi && typeof sentId === 'number' ? tinyAi.getMsgHashById(sentId) : '') ?? '',
         };
 
-        const msgData = await tinyIo.client.sendMessage(msg, sendData).catch((err) => {
-          alert(err.message, 'ERROR!');
+        const client = getClient();
+        const msgData = await client.sendMessage(msg, sendData).catch((err) => {
+          alert(err.message, { title: 'ERROR!' });
           console.error(err);
+          return { error: true, msg: err instanceof Error ? err.message : String(err) };
         });
 
-        if (!msgData.error) {
+        if (!msgData.error && typeof sentId === 'number') {
           tinyAi.replaceIndex(tinyAi.getIndexOfId(sentId), null, {
             count: sendData.tokens,
             msgId: msgData.id,
@@ -2176,12 +2366,12 @@ export const AiScriptStart = async () => {
                 chapter: msgData.chapter,
                 edited: 0,
               },
-              tinyIo.client.getUserId(),
+              client.getUserId(),
             ),
           );
         } else {
           isError = true;
-          alert(msgData.msg, 'ERROR!');
+          alert(msgData.msg, { title: 'ERROR!' });
         }
       }
     }
@@ -2202,12 +2392,13 @@ export const AiScriptStart = async () => {
     // Error
     if (isError) {
       msgInput.setVal(msg).trigger('input');
-      tinyAi.deleteIndex(tinyAi.getIndexOfId(sentId));
+      if (typeof sentId === 'number') tinyAi.deleteIndex(tinyAi.getIndexOfId(sentId));
     }
   };
 
+  /** @type {AiBalloonCache} */
   const submitCache = {};
-  contentEnabler.setSubmitCache(submitCache);
+  contentEnabler.setSubmitCache(/** @type {Record<string, unknown>} */ (submitCache));
 
   // Submit Button
   msgSubmit.on('click', async () => {
@@ -2230,7 +2421,7 @@ export const AiScriptStart = async () => {
       contentEnabler.dePromptButtons();
       contentEnabler.deModelSelector();
 
-      const yourMsg = msgInput.val();
+      const yourMsg = String(msgInput.val() ?? '');
 
       // Start loading
       let points = '.';
@@ -2247,49 +2438,53 @@ export const AiScriptStart = async () => {
 
       // Execute Ai
       contentEnabler.deBase(controller);
-      await executeAi(submitCache, controller)
-        .catch((err) => {
-          if (submitCache.cancel) submitCache.cancel();
-          console.error(err);
-          alert(err.message);
-        })
-        .then(async (data) => {
-          // Online
-          if (isOnline()) {
-            let isError = false;
-            const sendData = {
-              model: tinyAi.getModel() ?? '',
-              tokens: tinyAi.getMsgTokensById(data.ballon.msgId).count ?? 0,
-              hash: tinyAi.getMsgHashById(data.ballon.msgId) ?? '',
-              isModel: true,
-            };
+      try {
+        const data = await executeAi(submitCache, controller);
 
-            const theMsg = tinyAi.getMsgById(data.ballon.msgId);
-            await tinyIo.client
+        // Online
+        if (isOnline() && data && typeof data.ballon.msgId === 'number') {
+          const msgId = data.ballon.msgId;
+          const sendData = {
+            model: tinyAi.getModel() ?? '',
+            tokens: tinyAi.getMsgTokensById(msgId)?.count ?? 0,
+            hash: tinyAi.getMsgHashById(msgId) ?? '',
+            isModel: true,
+          };
+
+          const theMsg = tinyAi.getMsgById(msgId);
+          if (theMsg) {
+            const client = getClient();
+            await client
               .sendMessage(theMsg.parts[0].text, sendData)
               .then((result) => {
                 if (result.error) {
-                  alert(result.msg, 'ERROR!');
-                  isError = true;
+                  alert(result.msg ?? 'Unknown error', { title: 'ERROR!' });
                 }
 
-                data.ballon.cache.msgId = result.id;
-                data.ballon.cache.date = result.date;
-                data.ballon.cache.chapter = result.chapter;
-                data.ballon.cache.edited = 0;
-                data.ballon.cache.update();
-                tinyAi.replaceIndex(tinyAi.getIndexOfId(data.ballon.msgId), null, {
+                const cache = data.ballon.cache;
+                if (cache) {
+                  cache.msgId = result.id;
+                  cache.date = result.date;
+                  cache.chapter = result.chapter;
+                  cache.edited = 0;
+                  if (typeof cache.update === 'function') cache.update();
+                }
+                tinyAi.replaceIndex(tinyAi.getIndexOfId(msgId), null, {
                   count: sendData.tokens,
                   msgId: result.id,
                 });
               })
               .catch((err) => {
-                alert(err.message, 'ERROR!');
+                alert(err.message, { title: 'ERROR!' });
                 console.error(err);
-                isError = true;
               });
           }
-        });
+        }
+      } catch (err) {
+        if (submitCache.cancel) submitCache.cancel();
+        console.error(err);
+        alert(err instanceof Error ? err.message : String(err));
+      }
 
       // Complete
       clearInterval(loadingMessage);
@@ -2310,8 +2505,9 @@ export const AiScriptStart = async () => {
   window.tinyAi = tinyAi;
 
   msgInput.on('keydown', (event) => {
-    if (event.key === 'Enter' && !event.shiftKey) {
-      event.preventDefault();
+    const keyEvent = /** @type {KeyboardEvent} */ (event);
+    if (keyEvent.key === 'Enter' && !keyEvent.shiftKey) {
+      keyEvent.preventDefault();
       msgSubmit.trigger('click');
     }
   });
@@ -2354,22 +2550,25 @@ export const AiScriptStart = async () => {
       );
 
       let isError = false;
+      /** @type {{ id?: number, date?: number, chapter?: number }} */
       const msgData = {};
       if (isOnline()) {
+        const client = getClient();
         const isNoAi = tinyAiScript.noai || tinyAiScript.mpClient;
+        const firstTokens = !isNoAi ? tinyAi.getMsgTokensById(msgId) : null;
         const sendData = {
           model: (!isNoAi ? tinyAi.getModel() : '') ?? '',
-          tokens: (!isNoAi ? tinyAi.getMsgTokensById(msgId).count : 0) ?? 0,
+          tokens: (firstTokens && firstTokens.count) ?? 0,
           hash: (!isNoAi ? tinyAi.getMsgHashById(msgId) : '') ?? '',
           isModel: true,
         };
 
         loaderScreen.start();
-        await tinyIo.client
+        await client
           .sendMessage(history.firstDialogue, sendData)
           .then((result) => {
             if (result.error) {
-              alert(result.msg, 'ERROR!');
+              alert(result.msg, { title: 'ERROR!' });
               isError = true;
             }
 
@@ -2382,7 +2581,7 @@ export const AiScriptStart = async () => {
             });
           })
           .catch((err) => {
-            alert(err.message, 'ERROR!');
+            alert(err.message, { title: 'ERROR!' });
             console.error(err);
             isError = true;
           });
@@ -2399,10 +2598,10 @@ export const AiScriptStart = async () => {
         makeMessage(
           {
             message: history.firstDialogue,
-            date: msgData.date,
+            date: msgData.date ?? null,
             id: msgId,
-            msgId: msgData.id,
-            chapter: msgData.chapter,
+            msgId: msgData.id ?? null,
+            chapter: msgData.chapter ?? null,
             edited: 0,
           },
           'Model',
@@ -2421,11 +2620,18 @@ export const AiScriptStart = async () => {
     style: 'margin-bottom: 55px !important;',
   });
 
+  /**
+   * Appends a rendered message to the chat.
+   *
+   * @param {TinyHtmlAny} item - Rendered message.
+   * @returns {void}
+   */
   const addMessage = (item) => {
     msgList.append(item);
     // Protect online mode history
     if (isOnline()) {
-      const ratelimit = tinyIo.client.getRateLimit();
+      const client = getClient();
+      const ratelimit = client.getRateLimit();
       if (ratelimit.size) {
         const limit = ratelimit.size.history ?? null;
         if (typeof limit === 'number') {
@@ -2433,7 +2639,7 @@ export const AiScriptStart = async () => {
           if (msgs.size > limit) {
             new TinyHtml(msgs.get(0)).remove();
             // Protect history cache
-            if (tinyAiScript.mpClient && !tinyIo.client.getRateLimit().loadAllHistory)
+            if (tinyAiScript.mpClient && !client.getRateLimit().loadAllHistory)
               tinyAi.deleteIndex(0);
           }
         }
@@ -2443,8 +2649,23 @@ export const AiScriptStart = async () => {
     chatContainer.setScrollTop(999999999);
   };
 
-  const makeTempMessage = (msg, type) => addMessage(makeMessage({ message: msg }, type));
+  /**
+   * Appends a temporary system message to the chat.
+   *
+   * @param {string|null|undefined} msg - Message text.
+   * @param {string|null} type - Author name.
+   * @returns {void}
+   */
+  const makeTempMessage = (msg, type) => {
+    addMessage(makeMessage({ message: msg }, type));
+  };
 
+  /**
+   * Builds the warning alert shown under a message.
+   *
+   * @param {string|number|null|undefined} finishReason - Reason the model stopped.
+   * @returns {{ textBase: TinyHtmlAny, result: TinyHtmlAny, updateText: (code: string|number|null|undefined) => void }} The alert.
+   */
   const makeMsgWarning = (finishReason) => {
     const textBase = TinyHtml.createFrom('span');
     const result = tinyLib.bs.alert(
@@ -2453,7 +2674,9 @@ export const AiScriptStart = async () => {
       true,
     );
 
+    /** @param {string|number|null|undefined} errorCode */
     const updateText = (errorCode) => {
+      if (typeof errorCode !== 'string' && typeof errorCode !== 'number') return;
       const tinyError = tinyAi.getErrorCode(errorCode);
       if (tinyError && typeof tinyError.text === 'string' && !tinyError.hide) {
         textBase.setText(tinyError.text);
@@ -2466,6 +2689,13 @@ export const AiScriptStart = async () => {
   };
 
   // TITLE : Message Maker
+  /**
+   * Creates a chat message element.
+   *
+   * @param {AiChatMessageData} [data] - Message data.
+   * @param {string|null} [username] - Author name, or `null` for the current user.
+   * @returns {TinyHtmlAny} The rendered message.
+   */
   const makeMessage = (
     data = {
       message: null,
@@ -2479,6 +2709,7 @@ export const AiScriptStart = async () => {
     username = null,
   ) => {
     // Prepare renderer
+    /** @type {AiMessageCache} */
     const tinyCache = {
       chapter: data.chapter,
       msgId: data.msgId,
@@ -2492,11 +2723,11 @@ export const AiScriptStart = async () => {
         msgBallon.empty().append(TinyHtml.createFromHtml(makeMsgRenderer(text))),
       delete: () => deleteButton.trigger('click'),
       remove: () => {
-        const tinyIndex = tinyAi.getIndexOfId(data.id);
+        const tinyIndex = typeof data.id === 'number' ? tinyAi.getIndexOfId(data.id) : -1;
         if (!isIgnore && tinyIndex > -1) {
           const tinyTokens = tinyAi.getMsgTokensByIndex(tinyIndex);
           tinyAi.deleteIndex(tinyIndex);
-          const amount = tokenCount.getValue('amount');
+          const amount = Number(tokenCount.getValue('amount') ?? 0);
           tokenCount.updateValue(
             'amount',
             amount - Number(tinyTokens && tinyTokens.count ? tinyTokens.count : 0),
@@ -2517,7 +2748,7 @@ export const AiScriptStart = async () => {
 
         /**
          * @param {import('tiny-essentials/libs/html/TinyHtml').TinyHtmlAny} base
-         * @param {number|null} value
+         * @param {string|number|null|undefined} value
          * @param {() => (string|null|undefined)} result
          */
         const numberInsert = (base, value, result) => {
@@ -2548,7 +2779,8 @@ export const AiScriptStart = async () => {
       },
     };
 
-    const isNotYou = !isOnline() || tinyIo.client.getUserId() !== username;
+    const client = getClient();
+    const isNotYou = !isOnline() || client.getUserId() !== username;
 
     const msgBase = TinyHtml.createFrom('div', {
       class: `p-3${typeof username !== 'string' || !isNotYou ? ' d-flex flex-column align-items-end' : ''} ai-chat-data`,
@@ -2564,7 +2796,7 @@ export const AiScriptStart = async () => {
     msgBase.setData('tiny-ai-cache', tinyCache);
     tinyCache.update();
     const isIgnore = typeof data.id !== 'number' || data.id < 0;
-    const tinyIndex = tinyAi.getIndexOfId(data.id);
+    const tinyIndex = typeof data.id === 'number' ? tinyAi.getIndexOfId(data.id) : -1;
 
     const deleteButton = tinyLib.bs
       .button('bg btn-sm')
@@ -2579,6 +2811,13 @@ export const AiScriptStart = async () => {
       .append(new Icon('fa-solid fa-circle-info'))
       .addClass('info-button');
 
+    /**
+     * Builds a table row of the message info modal.
+     *
+     * @param {string} title - Row label.
+     * @param {string|number|null} value - Row value.
+     * @returns {TinyHtmlAny|null} The row, or `null` when there is no value.
+     */
     const createTableContent = (title, value) =>
       value !== null
         ? TinyHtml.createFrom('tr').append(
@@ -2615,7 +2854,12 @@ export const AiScriptStart = async () => {
                   ? `${edited.calendar()} (${edited.valueOf()})`
                   : null,
               ),
-              createTableContent('tokens', tinyCache.tokens > 0 ? tinyCache.tokens : null),
+              createTableContent(
+                'tokens',
+                typeof tinyCache.tokens === 'number' && tinyCache.tokens > 0
+                  ? tinyCache.tokens
+                  : null,
+              ),
               createTableContent(
                 'date',
                 date.isValid() ? `${date.calendar()} (${date.valueOf()})` : null,
@@ -2632,7 +2876,7 @@ export const AiScriptStart = async () => {
         ? editButton.on('click', () => {
             // Text
             const textInput = TinyHtml.createFrom('textarea', { class: 'form-control' });
-            textInput.setVal(tinyCache.msg ?? null);
+            textInput.setVal(tinyCache.msg ?? '');
             const oldMsg = tinyCache.msg;
 
             // Submit
@@ -2663,7 +2907,7 @@ export const AiScriptStart = async () => {
               cancelButton.addClass('disabled').addProp('disabled');
 
               // New message
-              tinyCache.msg = textInput.val();
+              tinyCache.msg = String(textInput.val() ?? '');
               textInput.addClass('disabled').addProp('disabled');
 
               const newMsg = tinyCache.msg;
@@ -2672,30 +2916,34 @@ export const AiScriptStart = async () => {
                 // New content and insert
                 const oldTokens = tinyAi.getMsgTokensByIndex(tinyIndex)?.count ?? 0;
                 const newContent = tinyAi.getMsgByIndex(tinyIndex);
-                newContent.parts[0].text = tinyCache.msg;
+                if (!newContent) return;
+                newContent.parts[0].text = tinyCache.msg ?? '';
 
                 // Replace content
-                tinyAi.replaceIndex(tinyIndex, newContent, { count: null, msgId: tinyCache.msgId });
+                tinyAi.replaceIndex(tinyIndex, newContent, {
+                  count: null,
+                  msgId: typeof tinyCache.msgId === 'number' ? tinyCache.msgId : undefined,
+                });
                 let isError = false;
                 if (isOnline()) {
                   const isNoAi = tinyAiScript.noai || tinyAiScript.mpClient;
                   const sendData = {
-                    message: newMsg,
+                    message: newMsg ?? '',
                     model: (!isNoAi ? tinyAi.getModel() : '') ?? '',
                   };
 
-                  await tinyIo.client
-                    .editMessage(sendData, tinyCache.msgId)
+                  await client
+                    .editMessage(sendData, tinyCache.msgId ?? undefined)
                     .then((result) => {
                       if (result.error) {
-                        alert(result.msg, 'ERROR!');
+                        alert(result.msg ?? 'Unknown error', { title: 'ERROR!' });
                         isError = true;
                       } else {
-                        tinyCache.edited = result.edited;
+                        tinyCache.edited = /** @type {string|number} */ (result.edited);
                       }
                     })
                     .catch((err) => {
-                      alert(err.message, 'ERROR!');
+                      alert(err.message, { title: 'ERROR!' });
                       console.error(err);
                       isError = true;
                     });
@@ -2705,11 +2953,11 @@ export const AiScriptStart = async () => {
                   submitButton.removeClass('disabled').removeProp('disabled');
                   cancelButton.removeClass('disabled').removeProp('disabled');
                   textInput.removeClass('disabled').removeProp('disabled');
-                  newContent.parts[0].text = oldMsg;
+                  newContent.parts[0].text = oldMsg ?? '';
                   tinyCache.msg = oldMsg;
                   tinyAi.replaceIndex(tinyIndex, newContent, {
                     count: oldTokens,
-                    msgId: tinyCache.msgId,
+                    msgId: typeof tinyCache.msgId === 'number' ? tinyCache.msgId : undefined,
                   });
                   return;
                 }
@@ -2740,7 +2988,11 @@ export const AiScriptStart = async () => {
       // Delete button
       deleteButton.on('click', async (event) => {
         // Ask for confirmation unless the user holds shift while clicking
-        if (!event?.shiftKey && !(await confirm('Are you sure you want to delete this message?')))
+        const mouseEvent = /** @type {MouseEvent} */ (event);
+        if (
+          !mouseEvent?.shiftKey &&
+          !(await confirm('Are you sure you want to delete this message?'))
+        )
           return;
 
         deleteButton.addClass('disabled').addProp('disabled');
@@ -2748,16 +3000,17 @@ export const AiScriptStart = async () => {
         let isError = false;
 
         if (isOnline()) {
-          await tinyIo.client
-            .deleteMessage(tinyCache.msgId)
+          const client = getClient();
+          await client
+            .deleteMessage(tinyCache.msgId === null ? undefined : String(tinyCache.msgId))
             .then((result) => {
               if (result.error) {
-                alert(result.msg, 'ERROR!');
+                alert(result.msg, { title: 'ERROR!' });
                 isError = true;
               }
             })
             .catch((err) => {
-              alert(err.message, 'ERROR!');
+              alert(err.message, { title: 'ERROR!' });
               console.error(err);
               isError = true;
             });
@@ -2773,7 +3026,7 @@ export const AiScriptStart = async () => {
       }),
     );
 
-    const msg = tinyAi.getMsgById(data.id);
+    const msg = typeof data.id === 'number' ? tinyAi.getMsgById(data.id) : null;
     const tinyErrorAlert = makeMsgWarning(msg ? msg.finishReason : null);
 
     const usernameBase = TinyHtml.createFrom('div', {
@@ -2842,6 +3095,7 @@ export const AiScriptStart = async () => {
   // TITLE: Shift danger hint
   // Highlights every delete button while the shift key is held, warning the user that
   // the next click will delete the message without asking for confirmation.
+  /** @param {boolean} active */
   const setShiftDanger = (active) => container.toggleClass('shift-danger', active);
 
   window.addEventListener('keydown', (event) => {
@@ -2881,11 +3135,32 @@ export const AiScriptStart = async () => {
   // tinyAi.on('setFileData', (value) => {});
 
   // Insert template
+  /**
+   * Inserts (or replaces) a row of the local database.
+   *
+   * @param {string} where - Table name.
+   * @param {Record<string, unknown>} fData - Row to store.
+   * @returns {Promise<unknown>} Resolves once the row is stored.
+   */
   const tinyInsertDb = (where, fData) =>
     connStore.insert({ into: where, upsert: true, values: [fData] }).catch(console.error);
+
+  /**
+   * Builds the composite id of a stored message.
+   *
+   * @param {string} sessionId - Session id.
+   * @param {number|string} id - Message id.
+   * @returns {string} The composite id.
+   */
   const tinyMsgIdDb = (sessionId, id) => `${sessionId}:${id}`;
 
-  // Reset session
+  /**
+   * Removes every stored row of a session.
+   *
+   * @param {string} id - Session id.
+   * @param {boolean} [useReadOnly=false] - Whether the controls must be locked meanwhile.
+   * @returns {Promise<unknown>} Resolves once the session is cleared.
+   */
   const resetSession = (id, useReadOnly = false) =>
     new Promise((resolve, reject) => {
       if (isOfflineMode) {
@@ -2927,16 +3202,29 @@ export const AiScriptStart = async () => {
     });
 
   // TITLE: Save backup
+  /** @type {Record<string, ReturnType<typeof setTimeout>|null>} */
   const saveSessionTimeout = {};
+  /**
+   * Persists the current session.
+   *
+   * @param {string|null|undefined} sessionSelected - Session id.
+   * @param {string} [where] - Section that changed.
+   * @returns {void}
+   */
   const saveSessionBackup = (sessionSelected, where) => {
     if (sessionSelected) {
       const getSessionData = () => {
         // Get session
         const tinyData = tinyAi.getData();
+        if (!tinyData) throw new Error('INVALID SESSION DATA!');
         const customList = tinyData.customList;
         const hash = tinyData.hash;
         const tokens = tinyData.tokens;
-        const model = tinyAi.getModelData(modelSelector.val()) || {};
+        /** @type {TinyAiModel} */
+        const model = tinyAi.getModelData(String(modelSelector.val() ?? '')) || {
+          id: null,
+          displayName: null,
+        };
 
         // Room data
         const roomSaveData = {
@@ -2997,7 +3285,9 @@ export const AiScriptStart = async () => {
         saveSessionTimeout[sessionSelected] = setTimeout(() => {
           const { roomSaveData, tokens, hash, customList } = getSessionData();
           // Hash and tokens data insert
+          /** @type {Record<string, unknown>} */
           const hashData = {};
+          /** @type {Record<string, unknown>} */
           const tokenData = {};
           for (const item in roomSaveData) {
             hashData[item] = typeof hash[item] === 'string' ? hash[item] : null;
@@ -3016,8 +3306,9 @@ export const AiScriptStart = async () => {
           tinyInsertDb('aiSessionsTokens', tokenData);
 
           // Room
-          roomSaveData.session = sessionSelected;
-          tinyInsertDb('aiSessionsRoom', roomSaveData);
+          /** @type {Record<string, unknown>} */
+          const roomData = { ...roomSaveData, session: sessionSelected };
+          tinyInsertDb('aiSessionsRoom', roomData);
 
           // Custom list
           tinyInsertDb('aiSessionsCustomList', {
@@ -3036,19 +3327,24 @@ export const AiScriptStart = async () => {
         if (saveSessionTimeout[timeoutId]) clearTimeout(saveSessionTimeout[timeoutId]);
         saveSessionTimeout[timeoutId] = setTimeout(() => {
           const { roomSaveData } = getSessionData();
+          const client = getClient();
 
           // Prepare data
+          /** @type {Record<string, unknown>} */
           const newSettings = {};
-          if (roomSaveData[where] !== null) newSettings[where] = roomSaveData[where];
+          const roomValue = /** @type {Record<string, unknown>} */ (roomSaveData)[where];
+          if (roomValue !== null) newSettings[where] = roomValue;
           let canSave = false;
 
           // Detect Diff
-          const oldData = tinyIo.client.getRoom();
+          const oldData = /** @type {Record<string, unknown>} */ (
+            /** @type {unknown} */ (client.getRoom())
+          );
           for (const name in newSettings) if (newSettings[name] !== oldData[name]) canSave = true;
 
           // Send data
           if (canSave)
-            tinyIo.client.updateRoomSettings(newSettings).then((result) => {
+            client.updateRoomSettings(newSettings).then((result) => {
               if (result.error)
                 alert(
                   `⚠️ Your data was not saved! Please try again.\nError Message:${result.msg}\nCode: ${result.code}`,
@@ -3062,14 +3358,23 @@ export const AiScriptStart = async () => {
     }
   };
 
-  const tinyAiSocketTemplate = (where, where2, el) =>
+  /**
+   * Mirrors a `tiny-ai-api` event into a sidebar control.
+   *
+   * @param {string} where - Event name.
+   * @param {string} [where2] - Section name used by the backup.
+   * @param {TinyRanger|TinyHtmlAny} [el] - Control kept in sync.
+   * @returns {void}
+   */
+  const tinyAiSocketTemplate = (where, where2, el) => {
     tinyAi.on(where, (value, id) => {
       if (el) {
         if (el instanceof TinyHtml) el.setVal(value);
-        else el.val(value);
+        else if ('val' in el) el.val(value);
       }
       saveSessionBackup(id, where2);
     });
+  };
 
   tinyAiSocketTemplate('setMaxOutputTokens', 'maxOutputTokens', outputLength);
   tinyAiSocketTemplate('setTemperature', 'temperature', temperature);
@@ -3141,8 +3446,15 @@ export const AiScriptStart = async () => {
   rpgData.initOffCanvas(container);
 
   // Enable Read Only
+  /**
+   * @param {boolean} [value=false] - Value applied when the control is editable.
+   * @param {boolean} [needAi=true] - Whether the control requires an AI provider.
+   * @param {boolean} [allowMulti=false] - Whether the control stays enabled in multiplayer.
+   * @param {boolean} [isInverse=false] - Inverts the result.
+   * @returns {boolean} Whether the control must be locked.
+   */
   const validateMultiplayer = (
-    value = null,
+    value = false,
     needAi = true,
     allowMulti = false,
     isInverse = false,
@@ -3239,7 +3551,7 @@ export const AiScriptStart = async () => {
     if (socket)
       makeTempMessage(
         `A server has been detected in your config and we will try to connect to it now!`,
-        rpgCfg.ip,
+        String(rpgCfg.ip ?? ''),
       );
 
     // Start rpg mode
@@ -3263,12 +3575,13 @@ export const AiScriptStart = async () => {
         // Connection
 
         // Send error message
+        /** @param {Record<string, unknown>} result */
         const sendSocketError = (result) =>
           makeTempMessage(
             typeof result.msg === 'string'
               ? `${result.msg} (Code: ${typeof result.code === 'number' ? result.code : 0})`
               : 'Unknown error!',
-            rpgCfg.ip,
+            String(rpgCfg.ip ?? ''),
           );
 
         // Install scripts
@@ -3280,9 +3593,10 @@ export const AiScriptStart = async () => {
         };
 
         // Read Only Mode
+        /** @param {RoomState} roomData */
         const updateReadOnlyMode = (roomData) => {
           const isReadOnly =
-            !client.getUsers()[client.getRoom().ownerId] ||
+            !client.getUsers()[String(client.getRoom().ownerId ?? '')] ||
             (roomData.readOnly && !userStatus.isAdmin && !userStatus.isMod)
               ? true
               : false;
@@ -3292,6 +3606,11 @@ export const AiScriptStart = async () => {
         };
 
         // Install prompts
+        /**
+         * @param {boolean} allowEdit - Whether the room data may be applied.
+         * @param {RoomState} roomData - Room data.
+         * @param {boolean} [updateTokens=true] - Whether the token counters must be refreshed.
+         */
         const onlineRoomUpdates = (allowEdit, roomData, updateTokens = true) => {
           if (!allowEdit) return;
 
@@ -3314,33 +3633,40 @@ export const AiScriptStart = async () => {
             tinyAi.setSystemInstruction(roomData.systemInstruction, 0);
 
           // Ai Config
-          if (
-            roomData.frequencyPenalty !== null &&
-            roomData.frequencyPenalty !== tinyAi.getFrequencyPenalty()
-          )
-            tinyAi.setFrequencyPenalty(roomData.frequencyPenalty);
-          if (
-            roomData.presencePenalty !== null &&
-            roomData.presencePenalty !== tinyAi.getPresencePenalty()
-          )
-            tinyAi.setPresencePenalty(roomData.presencePenalty);
+          const {
+            frequencyPenalty,
+            presencePenalty,
+            maxOutputTokens,
+            temperature,
+            topK,
+            topP,
+            model,
+          } = roomData;
 
           if (
-            roomData.maxOutputTokens !== null &&
-            roomData.maxOutputTokens !== tinyAi.getMaxOutputTokens()
+            typeof frequencyPenalty === 'number' &&
+            frequencyPenalty !== tinyAi.getFrequencyPenalty()
           )
-            tinyAi.setMaxOutputTokens(roomData.maxOutputTokens);
-          if (roomData.model !== null && roomData.model !== tinyAi.getModel())
-            tinyAi.setModel(roomData.model);
+            tinyAi.setFrequencyPenalty(frequencyPenalty);
+          if (
+            typeof presencePenalty === 'number' &&
+            presencePenalty !== tinyAi.getPresencePenalty()
+          )
+            tinyAi.setPresencePenalty(presencePenalty);
 
-          if (roomData.temperature !== null && roomData.temperature !== tinyAi.getTemperature())
-            tinyAi.setTemperature(roomData.temperature);
-          if (roomData.topK !== null && roomData.topK !== tinyAi.getTopK())
-            tinyAi.setTopK(roomData.topK);
-          if (roomData.topP !== null && roomData.topP !== tinyAi.getTopP())
-            tinyAi.setTopP(roomData.topP);
+          if (
+            typeof maxOutputTokens === 'number' &&
+            maxOutputTokens !== tinyAi.getMaxOutputTokens()
+          )
+            tinyAi.setMaxOutputTokens(maxOutputTokens);
+          if (typeof model === 'string' && model !== tinyAi.getModel()) tinyAi.setModel(model);
 
-          if (roomData.model === null) modelSelector.setVal('');
+          if (typeof temperature === 'number' && temperature !== tinyAi.getTemperature())
+            tinyAi.setTemperature(temperature);
+          if (typeof topK === 'number' && topK !== tinyAi.getTopK()) tinyAi.setTopK(topK);
+          if (typeof topP === 'number' && topP !== tinyAi.getTopP()) tinyAi.setTopP(topP);
+
+          if (model === null) modelSelector.setVal('');
 
           // Update tokens
           updateReadOnlyMode(roomData);
@@ -3348,22 +3674,27 @@ export const AiScriptStart = async () => {
         };
 
         // Install Room data
+        /**
+         * @param {boolean} allowEdit - Whether the room data may be applied.
+         * @param {{ public?: RoomDataValues, private?: RoomDataValues }} roomData - Room data.
+         * @param {boolean} [updateTokens=true] - Whether the token counters must be refreshed.
+         */
         const onlineRoomDataUpdates = (allowEdit, roomData, updateTokens = true) => {
           if (!allowEdit) return;
           const { public: tinyRpgData, private: tinyRpgPrivateData } = roomData;
 
           // RPG Data
           if (isJsonObject(tinyRpgData)) {
-            rpgData.data.public.setValue(rpgData.filter(tinyRpgData));
-            rpgData.setAllowAiUse(tinyRpgData.allowAiUse, 'public');
-            rpgData.setAllowAiSchemaUse(tinyRpgData.allowAiSchemaUse, 'public');
+            rpgData.data.public?.setValue(rpgData.filter(tinyRpgData) ?? {});
+            rpgData.setAllowAiUse(Boolean(tinyRpgData.allowAiUse), 'public');
+            rpgData.setAllowAiSchemaUse(Boolean(tinyRpgData.allowAiSchemaUse), 'public');
           }
 
           // Private Rpg Data
           if (isJsonObject(tinyRpgPrivateData)) {
-            rpgData.data.private.setValue(rpgData.filter(tinyRpgPrivateData));
-            rpgData.setAllowAiUse(tinyRpgPrivateData.allowAiUse, 'private');
-            rpgData.setAllowAiSchemaUse(tinyRpgPrivateData.allowAiSchemaUse, 'private');
+            rpgData.data.private?.setValue(rpgData.filter(tinyRpgPrivateData) ?? {});
+            rpgData.setAllowAiUse(Boolean(tinyRpgPrivateData.allowAiUse), 'private');
+            rpgData.setAllowAiSchemaUse(Boolean(tinyRpgPrivateData.allowAiSchemaUse), 'private');
           }
 
           // Update tokens
@@ -3372,13 +3703,13 @@ export const AiScriptStart = async () => {
 
         rpgData.on('save', (result) => {
           const resultHash = objHash(result.data);
+          const client = getClient();
 
           if (
-            (result.type === 'public' && resultHash !== objHash(tinyIo.client.getRoomData())) ||
-            (result.type === 'private' &&
-              resultHash !== objHash(tinyIo.client.getRoomPrivateData()))
+            (result.type === 'public' && resultHash !== objHash(client.getRoomData())) ||
+            (result.type === 'private' && resultHash !== objHash(client.getRoomPrivateData()))
           ) {
-            tinyIo.client.updateRoomData(result.data, result.type === 'private');
+            client.updateRoomData(result.data, result.type === 'private');
           }
         });
 
@@ -3391,7 +3722,12 @@ export const AiScriptStart = async () => {
         });
 
         // User Update
+        /**
+         * @param {boolean} isMod - Whether the user is a moderator.
+         * @param {boolean} [isAdmin=false] - Whether the user is an admin.
+         */
         const updateIsMod = (isMod, isAdmin = false) => {
+          const client = getClient();
           userStatus.room.isAdmin = isAdmin;
           userStatus.room.isMod = isMod;
           container.toggleClass('is-room-admin', isAdmin);
@@ -3411,7 +3747,7 @@ export const AiScriptStart = async () => {
             sidebarRight.toggleClass('d-none', !userStatus.isAdmin);
             sidebarRight.toggleClass('d-md-block', userStatus.isAdmin);
           }
-          updateReadOnlyMode(tinyIo.client.getRoom());
+          updateReadOnlyMode(client.getRoom());
         };
 
         client.on('roomModChange', (type, userId) => {
@@ -3426,15 +3762,16 @@ export const AiScriptStart = async () => {
           const room = client.getRoom();
           const userId = client.getUserId();
 
-          userStatus.server.isAdmin = user.isAdmin;
-          userStatus.server.isMod = user.isMod;
+          userStatus.server.isAdmin = Boolean(user.isAdmin);
+          userStatus.server.isMod = Boolean(user.isMod);
 
-          container.toggleClass('is-admin', user.isAdmin);
-          container.toggleClass('is-mod', user.isMod);
-          updateIsMod(client.getMods().indexOf(userId) > -1, room.ownerId === userId);
+          container.toggleClass('is-admin', Boolean(user.isAdmin));
+          container.toggleClass('is-mod', Boolean(user.isMod));
+          updateIsMod(client.getMods().indexOf(String(userId ?? '')) > -1, room.ownerId === userId);
         });
 
         // Connected
+        /** @type {ReturnType<typeof setInterval>|null} */
         let msgChecker = null;
 
         // Connection
@@ -3460,7 +3797,7 @@ export const AiScriptStart = async () => {
           // Message
           makeTempMessage(
             `You are connected! Your connection id is **${connectionId}**. Signing into your account...`,
-            rpgCfg.ip,
+            String(rpgCfg.ip ?? ''),
           );
         });
 
@@ -3471,7 +3808,7 @@ export const AiScriptStart = async () => {
           if (!result.error) {
             makeTempMessage(
               `Welcome **${result.nickname || result.userId}**! You were successfully logged in! Entering the room...`,
-              rpgCfg.ip,
+              String(rpgCfg.ip ?? ''),
             );
           }
           // Error
@@ -3491,46 +3828,51 @@ export const AiScriptStart = async () => {
         // Not found
         client.on('roomNotFound', () => {
           clearIsLoadingMsgs();
-          makeTempMessage('The room was not found', rpgCfg.ip);
+          makeTempMessage('The room was not found', String(rpgCfg.ip ?? ''));
           loaderScreen.stop();
         });
 
         // Room Loaded
         client.on('roomJoinned', (result) => {
+          const client = getClient();
           clearIsLoadingMsgs();
           // Update Fic Cache
           if (isFirstFicCache)
             contentEnabler.once('ficCacheLoaded', (isFirstFicCache) => {
-              onlineRoomUpdates(isFirstFicCache, tinyIo.client.getRoom(), false);
+              onlineRoomUpdates(isFirstFicCache, client.getRoom(), false);
               onlineRoomDataUpdates(
                 isFirstFicCache,
                 {
-                  public: tinyIo.client.getRoomData(),
-                  private: tinyIo.client.getRoomPrivateData(),
+                  public: client.getRoomData(),
+                  private: client.getRoomPrivateData(),
                 },
                 false,
               );
               updateAiTokenCounterData();
             });
           else {
-            onlineRoomUpdates(true, tinyIo.client.getRoom(), false);
+            onlineRoomUpdates(true, client.getRoom(), false);
             onlineRoomDataUpdates(
               true,
               {
-                public: tinyIo.client.getRoomData(),
-                private: tinyIo.client.getRoomPrivateData(),
+                public: client.getRoomData(),
+                private: client.getRoomPrivateData(),
               },
               false,
             );
             updateAiTokenCounterData();
           }
 
-          makeTempMessage(`You successfully entered the room **${result.roomId}**!`, rpgCfg.ip);
+          makeTempMessage(
+            `You successfully entered the room **${result.roomId}**!`,
+            String(rpgCfg.ip ?? ''),
+          );
           loaderScreen.stop();
           isLoadingMsgs = true;
           const startMsgSystem = async () => {
             let msgCount = 0;
             let isError = false;
+            /** @type {{ page: number, perPage?: number|null }} */
             const loadCfg = { page: 1 };
             if (!tinyAiScript.mpClient || client.getRateLimit().loadAllHistory)
               loadCfg.perPage = null;
@@ -3544,7 +3886,7 @@ export const AiScriptStart = async () => {
                 }
                 isLoadingMsgs = false;
                 if (result.error) {
-                  alert(result.msg, 'ERROR!');
+                  alert(result.msg ?? 'Unknown error', { title: 'ERROR!' });
                   isError = true;
                   return;
                 }
@@ -3558,7 +3900,7 @@ export const AiScriptStart = async () => {
                 isError = true;
                 if (!isLoadingMsgs) return;
                 isLoadingMsgs = false;
-                alert(err.message, 'ERROR!');
+                alert(err.message, { title: 'ERROR!' });
                 console.error(err);
               });
 
@@ -3584,7 +3926,7 @@ export const AiScriptStart = async () => {
           // Message
           makeTempMessage(
             `You are disconected${isJsonObject(details) && typeof details.description === 'string' ? ` (${details.description})` : ''}${typeof reason === 'string' ? `: ${reason}` : ''}`,
-            rpgCfg.ip,
+            String(rpgCfg.ip ?? ''),
           );
 
           // Prepare disconnect progress
@@ -3605,15 +3947,24 @@ export const AiScriptStart = async () => {
 
         // Enter room
         client.on('roomEntered', (success) => {
-          if (!success) makeTempMessage(`Invalid room data detected!`, rpgCfg.ip);
+          if (!success) makeTempMessage(`Invalid room data detected!`, String(rpgCfg.ip ?? ''));
         });
 
-        // New message
+        /**
+         * Appends a message received from the server.
+         *
+         * @param {SocketHistoryEntry} msgData - Message payload.
+         * @param {string|number|undefined} msgId - Server message id.
+         * @returns {void}
+         */
         const addNewMsg = (msgData, msgId) => {
           const role = msgData.isModel ? 'model' : 'user';
           const sentId = tinyAi.addData(
             tinyAi.buildContents(null, { role, parts: [{ text: msgData.text }] }, role),
-            { count: msgData.tokens, msgId },
+            {
+              count: typeof msgData.tokens === 'number' ? msgData.tokens : null,
+              msgId: typeof msgId === 'number' ? msgId : undefined,
+            },
           );
 
           addMessage(
@@ -3667,6 +4018,7 @@ export const AiScriptStart = async () => {
             cfg.msg = msgData.text;
 
             const newContent = tinyAi.getMsgById(cfg.dataid);
+            if (!newContent) return;
             newContent.parts[0].text = msgData.text;
             tinyAi.replaceIndex(tinyAi.getIndexOfId(cfg.dataid), newContent, newMsgCfg);
 
@@ -3679,6 +4031,7 @@ export const AiScriptStart = async () => {
             if (index < 0) return;
 
             const newContent = tinyAi.getMsgByIndex(index);
+            if (!newContent) return;
             newContent.parts[0].text = msgData.text;
             tinyAi.replaceIndex(index, newContent, newMsgCfg);
           }
@@ -3687,10 +4040,11 @@ export const AiScriptStart = async () => {
 
         // User Status
         client.on('userLeft', (data) => {
+          const client = getClient();
           const isYou = data.userId === client.getUserId();
           // You was kicked
           if (isYou) return client.disconnect();
-          updateReadOnlyMode(tinyIo.client.getRoom());
+          updateReadOnlyMode(client.getRoom());
 
           const text = `${!isYou ? (data?.data.nickname ?? data.userId) : 'You'} left the room.`;
 
@@ -3700,7 +4054,7 @@ export const AiScriptStart = async () => {
 
         client.on('userJoined', (data) => {
           const isYou = data.userId === client.getUserId();
-          updateReadOnlyMode(tinyIo.client.getRoom());
+          updateReadOnlyMode(client.getRoom());
 
           const text = `${!isYou ? (data?.data.nickname ?? data.userId) : 'You'} joined the room.`;
 
@@ -3714,7 +4068,10 @@ export const AiScriptStart = async () => {
 
       // No server
       if (!socket)
-        makeTempMessage('No server has been detected. Your session is cancelled!', rpgCfg.ip);
+        makeTempMessage(
+          'No server has been detected. Your session is cancelled!',
+          String(rpgCfg.ip ?? ''),
+        );
       else if (!tinyAiScript.mpClient) return;
     }
   }
@@ -3731,10 +4088,19 @@ export const AiScriptStart = async () => {
         order: { by: 'id', type: 'asc' },
       }),
     };
+    /** @type {Record<string, { id: string, file: Record<string, any> }>} */
     const sessions = {};
+    /**
+     * Iterates over the rows of one table and groups them by session.
+     *
+     * @param {keyof typeof sessionData} where - Table name.
+     * @param {(item: Record<string, any>, file: Record<string, any>) => void} callback - Row handler.
+     * @returns {void}
+     */
     const executeSessionInsert = (where, callback) => {
-      for (const index in sessionData[where]) {
-        const sessionItem = sessionData[where][index];
+      const rows = /** @type {Record<string, any>[]} */ (sessionData[where]);
+      for (const index in rows) {
+        const sessionItem = rows[index];
         if (!sessions[sessionItem.session])
           sessions[sessionItem.session] = {
             id: sessionItem.session,

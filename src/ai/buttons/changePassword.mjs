@@ -21,6 +21,11 @@ export const openChangePassword = () => {
   const $errorBox = tinyLib.bs.alert('danger', '', false).addClass('d-none');
 
   // Create label and input
+  /**
+   * @param {string} labelText
+   * @param {string} inputId
+   * @param {string} [type]
+   */
   const createInputGroup = (labelText, inputId, type = 'password') => {
     const $group = TinyHtml.createFrom('div').addClass('mb-3');
     const $label = TinyHtml.createFrom('label')
@@ -48,6 +53,7 @@ export const openChangePassword = () => {
   $root.append($errorBox, current.group, newPass.group, confirmPass.group, $button);
 
   // show error
+  /** @param {string} msg */
   const showError = (msg) => {
     $errorBox.setHtml(msg).removeClass('d-none');
   };
@@ -60,7 +66,7 @@ export const openChangePassword = () => {
   // Enter button
   [current.input, newPass.input, confirmPass.input].forEach(($input) => {
     $input.on('keydown', (e) => {
-      if (e.key === 'Enter') {
+      if (/** @type {KeyboardEvent} */ (e).key === 'Enter') {
         e.preventDefault();
         $button.trigger('click');
       }
@@ -69,9 +75,9 @@ export const openChangePassword = () => {
 
   // Button click
   $button.on('click', () => {
-    const currentVal = current.input.val().trim();
-    const newVal = newPass.input.val().trim();
-    const confirmVal = confirmPass.input.val().trim();
+    const currentVal = String(current.input.val() ?? '').trim();
+    const newVal = String(newPass.input.val() ?? '').trim();
+    const confirmVal = String(confirmPass.input.val() ?? '').trim();
 
     if (!currentVal || !newVal || !confirmVal) {
       showError('Please fill in all fields.');

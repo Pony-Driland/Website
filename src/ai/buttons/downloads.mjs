@@ -54,7 +54,7 @@ export const openDownloadsList = () => {
           TinyHtml.createFrom('h5', { class: 'card-title m-0' })
             .setText(`Chapter ${chapter} - `)
             .append(
-              TinyHtml.createFrom('small').setText(storyCfg.chapterName[chapter].title),
+              TinyHtml.createFrom('small').setText(storyCfg.chapterName[Number(chapter)].title),
 
               tinyClick
                 .on('click', (e) => {

@@ -14,11 +14,23 @@ import {
  * @module ai/values/templates
  */
 
-const aiTemplates = { funcs: {}, instructions: {}, helpers: {}, prompts: [] };
+/** @type {AiTemplates} */
+const aiTemplates = {
+  funcs: /** @type {AiTemplateFuncs} */ ({}),
+  instructions: {},
+  helpers: {},
+  prompts: [],
+};
 
 // is four-legged and pony-like
 
-// Max Tokens warning
+/**
+ * Builds the "max output length" instruction.
+ *
+ * @param {number} maxOutputTokens - Maximum number of characters.
+ * @param {boolean} [isTextContinue] - Whether the sentence continues.
+ * @returns {string} The instruction text.
+ */
 aiTemplates.funcs.maxTokensWarn = (maxOutputTokens, isTextContinue = false) =>
   `${typeof maxOutputTokens === 'number' ? `${!isTextContinue ? 'A' : 'a'}ll your new responses must respect a maximum output length of ${String(maxOutputTokens)} characters without losing any content.` : ''}`;
 
@@ -26,8 +38,21 @@ aiTemplates.funcs.maxTokensWarn = (maxOutputTokens, isTextContinue = false) =>
 aiTemplates.helpers.ficTellLines = `Tell which lines of fic you are referring to tell your answers to help the user search the source of your answers.`;
 
 // Fic Markers
+/**
+ * Explains how a marker is written in the story.
+ *
+ * @param {string} where - Marker name.
+ * @param {string} howMake - Example of the marker.
+ * @returns {string} The instruction text.
+ */
 aiTemplates.funcs.ficTimeCheckerStart = (where, howMake) =>
   `${where} markers in the story are presented as "${howMake}"`;
+/**
+ * Asks the model to keep the marker in natural language.
+ *
+ * @param {string} where - Marker name.
+ * @returns {string} The instruction text.
+ */
 aiTemplates.funcs.ficTimeCheckerFix = (where) =>
   `, tell the ${where} markers in natural language only, not mentioning technical details that i mentioned`;
 
@@ -206,6 +231,13 @@ aiTemplates.prompts.push({
 });
 
 // Convert to Character
+/**
+ * Builds the "convert to character" instruction.
+ *
+ * @param {string} text - Base instruction text.
+ * @param {AiCharacterConfig} [config] - Character configuration.
+ * @returns {string} The instruction text.
+ */
 aiTemplates.funcs.convertToCharacter = (
   text,
   config = {
@@ -215,10 +247,17 @@ aiTemplates.funcs.convertToCharacter = (
   },
 ) =>
   text
-    .replace(/\{\{char\}\}/g, config.name)
-    .replace(/\{\{char\-data\}\}/g, config.data || config.name)
-    .replace(/\{\{user\}\}/g, config.user);
+    .replace(/\{\{char\}\}/g, config.name ?? '')
+    .replace(/\{\{char\-data\}\}/g, config.data || config.name || '')
+    .replace(/\{\{user\}\}/g, config.user ?? '');
 
+/**
+ * Builds the "you are this character" instruction.
+ *
+ * @param {string} charName - Character name.
+ * @param {string} pronoum - Possessive pronoun ("her", "his").
+ * @returns {string} The instruction text.
+ */
 aiTemplates.funcs.aiCharMode = (charName, pronoum) =>
   `You're ${charName} and you'll say all the answers like ${charName}. Say and do things ${charName} would do, don't try to imitate other characters, you're exclusively ${charName} ${pronoum}self in person.
 You must behave like ${charName} ${pronoum}self, and use ${charName}'s personality to make your acting as ${charName} as perfect as possible.`;

@@ -6,6 +6,10 @@ import storyCfg from '../chapters/config.mjs';
 import { Modal } from '../modules/TinyBootstrap.mjs';
 import { body } from '../html/query.mjs';
 
+/**
+ * @import { TinyHtmlAny } from 'tiny-essentials/libs/html/TinyHtml';
+ */
+
 /** Tiny Lib */
 const tinyLib = {};
 
@@ -77,15 +81,33 @@ tinyLib.alert = (where, alertType, icon, text) => {
 };
 
 /**
- * Modal
- * @param {Object} data
- * @param {string} [data.dialog]
- * @param {number} [data.width]
- * @param {string} [data.id]
- * @param {Function} [data.hidden]
- * @param {TinyHtml<any>} [data.footer]
- * @param {TinyHtml<any>} [data.title]
- * @param {TinyHtml<any>} [data.body]
+ * @typedef {TinyHtmlAny|string} ModalContent
+ */
+
+/**
+ * A single entry rendered by {@link tinyLib.bs.dropdownClick}.
+ *
+ * @typedef {Object} DropdownItem
+ * @property {string} [id] - Element id of the generated link.
+ * @property {string} [text] - Visible label.
+ * @property {string} [href] - Link target.
+ * @property {string} [icon] - Font Awesome class list of the leading icon.
+ * @property {string} [file] - Markdown file opened when the entry is clicked.
+ * @property {boolean} [web3Element] - Whether the entry requires a Web3 wallet.
+ * @property {(e: Event) => void} [click] - Extra click handler.
+ */
+
+/**
+ * Opens a Bootstrap modal built from the given pieces.
+ *
+ * @param {Object} data - Modal configuration.
+ * @param {string} [data.dialog] - Extra dialog classes.
+ * @param {number|string} [data.width] - Fixed width of the dialog.
+ * @param {string|null} [data.id] - Element id of the modal.
+ * @param {() => void} [data.hidden] - Callback fired after the modal is hidden.
+ * @param {ModalContent|ModalContent[]} [data.footer] - Footer content.
+ * @param {ModalContent|ModalContent[]} [data.title] - Title content.
+ * @param {ModalContent|ModalContent[]} [data.body] - Body content.
  * @returns {{ modal: bootstrap.Modal, html: TinyHtml<HTMLElement> }}
  */
 tinyLib.modal = (data) => {
@@ -146,7 +168,7 @@ tinyLib.modal = (data) => {
  * @param {string} [data.value]
  * @param {string} [data.placeholder]
  * @param {string} [data.help]
- * @param {{ enabled: boolean, value: any }} [data.checkbox]
+ * @param {{ enabled: boolean, value: string|number|boolean|null }} [data.checkbox]
  */
 tinyLib.formGroup = (data) => {
   if (typeof data.class !== 'string') {
@@ -196,7 +218,7 @@ tinyLib.formGroup = (data) => {
  * @param {string} [data.class]
  * @param {string} data.id
  * @param {string} [data.title]
- * @param {any} [data.value]
+ * @param {string|number|boolean|null} [data.value]
  */
 tinyLib.formGroupCheck = (data) => {
   if (typeof data.class !== 'string') {
@@ -242,7 +264,7 @@ tinyLib.getGitUrlPath = (text, type = 'g') => {
 tinyLib.upload = {};
 
 /**
- * @template {TinyHtml<any>} T
+ * @template {TinyHtmlAny} T
  * @param {{ multiple?: boolean; directory?: boolean; accept?: string; }} configs
  * @param {T} button
  * @param {(e: Event) => void} callback
@@ -273,10 +295,10 @@ tinyLib.upload.button = (configs, button, callback) => {
 /**
  * File base64 selector template
  *
- * @template {TinyHtml<any>} T
+ * @template {TinyHtmlAny} T
  * @param {T} button
  * @param {string} [baseFormat]
- * @param {(err: Error | null, data: any[] | string | null) => void} callback
+ * @param {(err: Error | null, data: string | null) => void} callback
  * @param {string} [accept='*']
  * @returns {T}
  */
@@ -302,11 +324,11 @@ tinyLib.upload.dataUrl = (button, callback, baseFormat, accept = '*') =>
 /**
  * Image upload
  *
- * @template {TinyHtml<any>} T
+ * @template {TinyHtmlAny} T
  * @param {T} button
- * @param {string} [baseFormat='image']
- * @param {(err: Error | null, data: any[] | string | null) => void} callback
+ * @param {(err: Error | null, data: string | null) => void} callback
  * @param {string} [accept='*']
+ * @param {string} [baseFormat='image']
  * @returns {T}
  */
 tinyLib.upload.img = (button, callback, accept = '*', baseFormat = 'image') =>
@@ -315,9 +337,9 @@ tinyLib.upload.img = (button, callback, accept = '*', baseFormat = 'image') =>
 /**
  * Json upload
  *
- * @template {TinyHtml<any>} T
+ * @template {TinyHtmlAny} T
  * @param {T} button
- * @param {(err: Error | null, data: any[] | Record<string | number | symbol, any> | null) => void} callback
+ * @param {(err: Error | null, data: JsonValue | null) => void} callback
  * @returns {T}
  */
 tinyLib.upload.json = (button, callback) =>
@@ -338,11 +360,12 @@ tinyLib.upload.json = (button, callback) =>
 tinyLib.bs = {};
 
 /**
- * Button
+ * Builds a Bootstrap button.
  *
- * @param {string|Record<string, string>} [className='primary']
- * @param {string} [tag='button']
- * @param {boolean} [isButton=true]
+ * @param {string|{ class?: string, dsBtn?: boolean, id?: string, toggle?: string, target?: string }} [className] - Class list or options.
+ * @param {string} [tag] - Tag name of the element.
+ * @param {boolean} [isButton] - Whether the element behaves as a button.
+ * @returns {TinyHtmlAny} The button element.
  */
 tinyLib.bs.button = (className = 'primary', tag = 'button', isButton = true) => {
   const buttonClass =
@@ -405,7 +428,7 @@ tinyLib.bs.navbar.title = (text, href) =>
  * @param {string} dir
  * @param {string} className
  * @param {string} id
- * @param {TinyHtml<any>} content
+ * @param {TinyHtmlAny|null} content
  */
 tinyLib.bs.navbar.collapse = (dir, className, id, content) =>
   TinyHtml.createFrom('div', {
@@ -423,7 +446,7 @@ tinyLib.bs.navbar.collapse = (dir, className, id, content) =>
  * @param {string} [where='start']
  * @param {string} [id='']
  * @param {string} [title='']
- * @param {TinyHtml<any>|null} [content]
+ * @param {TinyHtmlAny|null} [content]
  * @param {boolean} [closeButtonInverse=false]
  * @param {number} [tabIndex=-1]
  */
@@ -477,7 +500,7 @@ tinyLib.bs.container = (id = null, classItems = null, tag = 'div') =>
 /**
  * Alert
  * @param {string} type
- * @param {TinyHtml<any>|string|(TinyHtml<any>|string)[]|null} content
+ * @param {TinyHtmlAny|string|(TinyHtmlAny|string)[]|null} content
  * @param {boolean} isDismissible
  */
 tinyLib.bs.alert = (type = 'primary', content = null, isDismissible = false) => {
@@ -501,9 +524,9 @@ tinyLib.bs.alert = (type = 'primary', content = null, isDismissible = false) => 
 
 /**
  * Dropdown
- * @param {TinyHtml<any>} place
- * @param {any[]} data
- * @param {(li: TinyHtml<HTMLElement>, props: TippyInstance<TippyProps>[] & TippyInstance<TippyProps>, item: any, index: number) => void} callbackInsert
+ * @param {TinyHtmlAny} place
+ * @param {DropdownItem[]} data
+ * @param {(li: TinyHtml<HTMLElement>, props: TippyInstance<TippyProps>[] & TippyInstance<TippyProps>, item: DropdownItem, index: number) => void} callbackInsert
  */
 tinyLib.bs.dropdownClick = (place, data, callbackInsert) => {
   const elem = place.get(0);

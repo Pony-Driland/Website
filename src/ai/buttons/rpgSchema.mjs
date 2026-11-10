@@ -44,10 +44,12 @@ export const rpgSchemaSettingsMenu = () => {
       ),
     );
 
+    /** @param {unknown} data - Schema received from the server. */
     const loadJsonData = (data) => {
       $roomSchema.setVal(isJsonObject(data) ? JSON.stringify(data, null, 2) : '');
     };
 
+    /** @param {unknown} data - Schema received from the server. */
     const roomEditDetector = (data) => loadJsonData(data);
     tinyIo.client.on('rpgSchemaUpdates', roomEditDetector);
 
@@ -94,12 +96,12 @@ export const rpgSchemaSettingsMenu = () => {
       if (!cantEdit) {
         $editError.empty(); // limpa erros anteriores
 
-        const newData = $roomSchema.val().trim();
+        const newData = String($roomSchema.val() ?? '').trim();
         let jsonResult;
         try {
           jsonResult = JSON.parse(newData);
         } catch (err) {
-          $editError.setText(`${err.message}`);
+          $editError.setText(`${err instanceof Error ? err.message : String(err)}`);
           console.error(err);
           jsonResult = null;
         }

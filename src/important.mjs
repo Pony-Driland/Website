@@ -28,6 +28,7 @@ export const tinyLs = new TinyLocalStorage('pony-driland');
 // App Data
 export const appData = {
   youtube: {},
+  /** @type {{ using: boolean, interval: ReturnType<typeof setInterval>|null, secondsUsed: number }} */
   ai: { using: false, interval: null, secondsUsed: 0 },
   emitter: new EventEmitter(),
 };
@@ -108,8 +109,10 @@ export function isNoNsfw(biggerAge = 18) {
   return isNoNsfw;
 }
 
-// Fic Data
+/** Cached character prompts, loaded once during the bootstrap. */
 export const ficCache = {
+  /** Raw prompt template. */
   charPrompts: '',
-  charListPrompts: [],
+  /** Parsed list of character prompts. */
+  charListPrompts: /** @type {Record<string, string>[]} */ ([]),
 };

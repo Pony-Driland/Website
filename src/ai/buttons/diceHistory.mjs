@@ -5,10 +5,14 @@ import { tinyIo } from '../software/base.mjs';
 import { isOnline } from '../software/enablerContent.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import { loaderScreen } from '../../important.mjs';
-import moment from 'moment/moment';
+import moment from 'moment';
 import { createDiceSpecialHtml } from './dice.mjs';
 
 const { Form, Button, TextInput, DateTimeInput, NumberInput } = TinyHtmlElems;
+
+/**
+ * @import { TinyHtmlAny } from 'tiny-essentials/libs/html/TinyHtml';
+ */
 
 /**
  * Opens the dice history browser, with filters by author, date range and dice
@@ -29,106 +33,110 @@ export const openDiceHistory = () => {
   const cardBody = TinyHtml.createFrom('div', { class: 'card-body' });
 
   // Form
-  const form = new Form({ id: 'searchForm', mainClass: 'row', tags: 'g-3' }).on('submit', (e) => {
-    e.preventDefault();
+  const form = new Form({ mainClass: 'row', tags: 'g-3' })
+    .setAttr('id', 'searchForm')
+    .on('submit', (e) => {
+      e.preventDefault();
 
-    const result = {
-      userId: userInput.valTxt(),
-      perPage: null,
-      page: null,
-      start: null,
-      end: null,
-    };
+      /** @type {DiceHistorySearchQuery} */
+      const result = {
+        userId: userInput.valTxt(),
+        perPage: null,
+        page: null,
+        start: null,
+        end: null,
+      };
 
-    /**
-     * @param {string} name
-     * @param {import('tiny-essentials/libs/html/TinyHtml').TinyHtmlAny} input
-     */
-    const dateValidator = (name, input) => {
-      try {
-        result[name] = input.valDate()?.valueOf() ?? null;
-      } catch {
-        result[name] = null;
-      }
-    };
-
-    /**
-     * @param {string} name
-     * @param {import('tiny-essentials/libs/html/TinyHtml').TinyHtmlAny} input
-     */
-    const numberValidator = (name, input) => {
-      try {
-        result[name] = input.valNb();
-      } catch {
-        result[name] = null;
-      }
-    };
-
-    dateValidator('start', dateStartInput);
-    dateValidator('end', dateEndInput);
-
-    numberValidator('perPage', perPageInput);
-    numberValidator('page', pageInput);
-
-    if (result.userId.length < 1) result.userId = null;
-    loaderScreen.start();
-
-    // Receive results
-    tinyIo.client
-      .loadDiceHistory({
-        page: result.page,
-        perPage: result.perPage,
-        userId: result.userId,
-        start: result.start,
-        end: result.end,
-      })
-      .then(async (data) => {
-        resultsBox.empty();
-        // Error
-        if (data.error) {
-          resultsBox.append(
-            TinyHtml.createFrom('div', { class: 'text-danger' }).setText(result.msg),
-            TinyHtml.createFrom('div', { class: 'small' }).setText(result.code),
-          );
-          pagesCount.empty();
-          loaderScreen.stop();
-          return;
+      /**
+       * @param {'start'|'end'} name
+       * @param {TinyHtmlAny} input
+       */
+      const dateValidator = (name, input) => {
+        try {
+          result[name] = input.valDate()?.valueOf() ?? null;
+        } catch {
+          result[name] = null;
         }
+      };
 
-        // No results
-        if (!data.history.length) {
-          resultsBox.append(
-            TinyHtml.createFrom('p', { class: 'text-muted m-0' }).setText('No results found.'),
-          );
-          pagesCount.empty();
-          loaderScreen.stop();
-          return;
+      /**
+       * @param {'perPage'|'page'} name
+       * @param {TinyHtmlAny} input
+       */
+      const numberValidator = (name, input) => {
+        try {
+          result[name] = input.valNb();
+        } catch {
+          result[name] = null;
         }
+      };
 
-        // Table wrapper
-        const tableWrapper = TinyHtml.createFrom('div', { class: 'table-responsive' });
+      dateValidator('start', dateStartInput);
+      dateValidator('end', dateEndInput);
 
-        // Table
-        const table = TinyHtml.createFrom('table', {
-          class: 'table table-hover table-bordered table-striped table-sm align-middle',
-        });
+      numberValidator('perPage', perPageInput);
+      numberValidator('page', pageInput);
 
-        // Tbody
-        const tbody = TinyHtml.createFrom('tbody');
+      if (!result.userId || result.userId.length < 1) result.userId = null;
+      loaderScreen.start();
 
-        const promises = [];
-        data.history.reverse().forEach((item) => {
-          const row = TinyHtml.createFrom('tr');
-          promises.push(
-            new Promise(async (resolve, reject) => {
-              try {
-                const date = moment(item.date);
-                const msgBase = TinyHtml.createFrom('span', {
-                  class: 'msg-data',
-                  id: `dice-roll-${item.id}`,
-                });
-                const colMessage = TinyHtml.createFrom('td', { class: 'p-3' });
-                /**const openDice = new Button({
+      // Receive results
+      tinyIo.client
+        .loadDiceHistory({
+          page: result.page ?? undefined,
+          perPage: result.perPage,
+          userId: result.userId,
+          start: result.start,
+          end: result.end,
+        })
+        .then(async (data) => {
+          resultsBox.empty();
+          // Error
+          if (data.error) {
+            resultsBox.append(
+              TinyHtml.createFrom('div', { class: 'text-danger' }).setText(result.msg),
+              TinyHtml.createFrom('div', { class: 'small' }).setText(result.code),
+            );
+            pagesCount.empty();
+            loaderScreen.stop();
+            return;
+          }
+
+          // No results
+          if (!data.history.length) {
+            resultsBox.append(
+              TinyHtml.createFrom('p', { class: 'text-muted m-0' }).setText('No results found.'),
+            );
+            pagesCount.empty();
+            loaderScreen.stop();
+            return;
+          }
+
+          // Table wrapper
+          const tableWrapper = TinyHtml.createFrom('div', { class: 'table-responsive' });
+
+          // Table
+          const table = TinyHtml.createFrom('table', {
+            class: 'table table-hover table-bordered table-striped table-sm align-middle',
+          });
+
+          // Tbody
+          const tbody = TinyHtml.createFrom('tbody');
+
+          /** @type {Promise<unknown>[]} */
+          const promises = [];
+          data.history.reverse().forEach((/** @type {DiceHistoryEntry} */ item) => {
+            const row = TinyHtml.createFrom('tr');
+            promises.push(
+              new Promise(async (resolve, reject) => {
+                try {
+                  const date = moment(item.date);
+                  const msgBase = TinyHtml.createFrom('span', {
+                    class: 'msg-data',
+                    id: `dice-roll-${item.id}`,
+                  });
+                  const colMessage = TinyHtml.createFrom('td', { class: 'p-3' });
+                  /**const openDice = new Button({
                     mainClass: 'btn',
                     tags: 'w-100 btn-md btn-outline-info',
                     type: 'button',
@@ -136,61 +144,61 @@ export const openDiceHistory = () => {
                   }).on('click', () => openDice.replaceWith(createDiceSpecialHtml(item)));
                   
                 msgBase.append(openDice); */
-                msgBase.append(createDiceSpecialHtml(item));
+                  msgBase.append(createDiceSpecialHtml(item));
 
-                colMessage.append(
-                  msgBase,
-                  TinyHtml.createFrom('hr', { class: 'msg-hr m-0 mt-2' }),
-                  TinyHtml.createFrom('div').append(
-                    TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
-                      date.isValid() ? date.format('YYYY-MM-DD HH:mm:ss') : '',
-                    ),
-                    TinyHtml.createFrom('small', {
-                      class: `${item.userId !== tinyIo.client.getUserId() ? `text-muted` : 'text-primary'} me-2`,
-                    }).setText(item.userId),
-                    TinyHtml.createFrom('div', { class: 'small' })
-                      .setText(`Id: `)
-                      .append(
-                        TinyHtml.createFrom('span', { class: 'text-muted' }).setText(item.id),
+                  colMessage.append(
+                    msgBase,
+                    TinyHtml.createFrom('hr', { class: 'msg-hr m-0 mt-2' }),
+                    TinyHtml.createFrom('div').append(
+                      TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
+                        date.isValid() ? date.format('YYYY-MM-DD HH:mm:ss') : '',
                       ),
-                  ),
-                );
+                      TinyHtml.createFrom('small', {
+                        class: `${item.userId !== tinyIo.client.getUserId() ? `text-muted` : 'text-primary'} me-2`,
+                      }).setText(item.userId),
+                      TinyHtml.createFrom('div', { class: 'small' })
+                        .setText(`Id: `)
+                        .append(
+                          TinyHtml.createFrom('span', { class: 'text-muted' }).setText(item.id),
+                        ),
+                    ),
+                  );
 
-                row.append(colMessage);
-                resolve(undefined);
-              } catch (err) {
-                reject(err);
-              }
-            }),
-          );
-          tbody.append(row);
+                  row.append(colMessage);
+                  resolve(undefined);
+                } catch (err) {
+                  reject(err);
+                }
+              }),
+            );
+            tbody.append(row);
+          });
+
+          // Assemble
+          await Promise.all(promises);
+          table.append(tbody);
+          tableWrapper.append(table);
+
+          resultsBox.append(tableWrapper);
+          pagesCount
+            .empty()
+            .setText(
+              `Pages: ${data.totalPages} | Page: ${result.page ?? data.page} | Items: ${data.totalItems}`,
+            );
+
+          // Success
+          loaderScreen.stop();
+        })
+        // Error
+        .catch((err) => {
+          resultsBox
+            .empty()
+            .append(TinyHtml.createFrom('div', { class: 'text-danger' }).setText(err.message));
+          pagesCount.empty();
+          console.error(err);
+          loaderScreen.stop();
         });
-
-        // Assemble
-        await Promise.all(promises);
-        table.append(tbody);
-        tableWrapper.append(table);
-
-        resultsBox.append(tableWrapper);
-        pagesCount
-          .empty()
-          .setText(
-            `Pages: ${data.totalPages} | Page: ${result.page ?? data.page} | Items: ${data.totalItems}`,
-          );
-
-        // Success
-        loaderScreen.stop();
-      })
-      // Error
-      .catch((err) => {
-        resultsBox
-          .empty()
-          .append(TinyHtml.createFrom('div', { class: 'text-danger' }).setText(err.message));
-        pagesCount.empty();
-        console.error(err);
-        loaderScreen.stop();
-      });
-  });
+    });
 
   // --- User Filter ---
   const userGroup = TinyHtml.createFrom('div', { class: 'col-md-12' });
@@ -199,7 +207,6 @@ export const openDiceHistory = () => {
   );
   const userInput = new TextInput({
     mainClass: 'form-control',
-    id: 'searchUser',
     placeholder: 'User ID',
   });
   userGroup.append(userLabel, userInput);
@@ -211,7 +218,6 @@ export const openDiceHistory = () => {
   );
   const dateStartInput = new DateTimeInput({
     mainClass: 'form-control',
-    id: 'searchStart',
   });
   dateStartGroup.append(dateStartLabel, dateStartInput);
 
@@ -219,7 +225,6 @@ export const openDiceHistory = () => {
   const dateEndLabel = TinyHtml.createFrom('label', { class: 'form-label' }).setText('End Date');
   const dateEndInput = new DateTimeInput({
     mainClass: 'form-control',
-    id: 'searchEnd',
   });
   dateEndGroup.append(dateEndLabel, dateEndInput);
 
@@ -230,7 +235,6 @@ export const openDiceHistory = () => {
   );
   const perPageInput = new NumberInput({
     mainClass: 'form-control',
-    id: 'searchPerPage',
     min: 1,
   }).setVal(tinyIo.client.getRateLimit().size.history);
   perPageGroup.append(perPageLabel, perPageInput);
@@ -240,7 +244,6 @@ export const openDiceHistory = () => {
   const pageLabel = TinyHtml.createFrom('label', { class: 'form-label' }).setText('Page');
   const pageInput = new NumberInput({
     mainClass: 'form-control',
-    id: 'searchPage',
     min: 1,
   }).setVal(1);
   pageGroup.append(pageLabel, pageInput);

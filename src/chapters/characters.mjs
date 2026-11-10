@@ -1,9 +1,3 @@
-/**
- * Registers the character metadata (name, colours, avatar) on the story config.
- *
- * @module chapters/characters
- */
-
 import storyCfg from './config.mjs';
 
 if (!storyCfg.custom_url) {

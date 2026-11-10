@@ -14,10 +14,8 @@ export const isOnline = () => (!noOnlineMode() && tinyIo.client ? true : false);
  * @returns {boolean}
  */
 export const noOnlineMode = () => {
-  return (
-    contentEnabler.rpgCfg &&
-    (typeof contentEnabler.rpgCfg.ip !== 'string' || contentEnabler.rpgCfg.ip.length < 1)
-  );
+  const cfg = contentEnabler.rpgCfg;
+  return Boolean(cfg && (typeof cfg.ip !== 'string' || cfg.ip.length < 1));
 };
 
 /**
@@ -27,14 +25,61 @@ export const noOnlineMode = () => {
  * registers them here, then this class toggles their enabled/disabled state as
  * the session changes (loading, streaming, multiplayer read-only mode, ...).
  *
- * @extends EventEmitter
+ * @extends {EventEmitter}
  */
 class EnablerAiContent extends EventEmitter {
-  #validateMultiplayer;
-  #enabledFirstDialogue;
+  /** @type {(value: boolean, needAi?: boolean, allowMulti?: boolean, ignoreAi?: boolean) => boolean} */
+  #validateMultiplayer = () => false;
+  /** @type {(value: boolean) => void} */
+  #enabledFirstDialogue = () => {};
 
   /** @type {undefined|RpgData} */
   rpgData;
+
+  /** @type {((event: Event) => void)|null} */
+  #cancelHandler = null;
+
+  /** @type {Record<string, unknown>} */
+  rpgCfg = {};
+
+  /** @type {TinyHtmlAny|undefined} */
+  resetSettingsButton;
+  /** @type {TinyRanger|undefined} */
+  temperature;
+  /** @type {TinyRanger|undefined} */
+  topP;
+  /** @type {TinyRanger|undefined} */
+  topK;
+  /** @type {TinyRanger|undefined} */
+  presencePenalty;
+  /** @type {TinyRanger|undefined} */
+  frequencyPenalty;
+  /** @type {TinyHtmlAny|undefined} */
+  outputLength;
+  /** @type {TinyHtmlAny[]|undefined} */
+  ficPromptItems;
+  /** @type {TinyHtmlAny|undefined} */
+  chatContainer;
+  /** @type {TinyHtmlAny|undefined} */
+  msgSubmit;
+  /** @type {TinyHtmlAny|undefined} */
+  msgInput;
+  /** @type {TinyHtmlAny|undefined} */
+  cancelSubmit;
+  /** @type {TinyHtmlAny|undefined} */
+  aiSubmit;
+  /** @type {Record<string, unknown>|undefined} */
+  submitCache;
+  /** @type {TinyHtmlAny[]|undefined} */
+  ficResets;
+  /** @type {TinyHtmlAny[]|undefined} */
+  ficTemplates;
+  /** @type {TinyHtmlAny[]|undefined} */
+  importItems;
+  /** @type {TinyHtmlAny|undefined} */
+  modelSelector;
+  /** @type {TinyHtmlAny[]|undefined} */
+  rpgContentButtons;
 
   constructor() {
     super();
@@ -45,15 +90,16 @@ class EnablerAiContent extends EventEmitter {
   /**
    * Loads the provider config of the selected AI and stores it on the instance.
    *
-   * @returns {Object} The provider configuration object.
+   * @returns {Record<string, unknown>} The provider configuration object.
    */
   setRpgCfg() {
-    this.rpgCfg = tinyStorage.getApiKey(tinyStorage.selectedAi()) || {};
+    const cfg = tinyStorage.getApiKey(String(tinyStorage.selectedAi() ?? ''));
+    this.rpgCfg = cfg && typeof cfg === 'object' ? { ...cfg } : {};
     return this.rpgCfg;
   }
 
   /**
-   * @param {*} resetSettingsButton - "Reset default settings" button.
+   * @param {TinyHtmlAny} resetSettingsButton - "Reset default settings" button.
    * @returns {void}
    */
   setResetSettingsButton(resetSettingsButton) {
@@ -61,7 +107,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {*} temperature - Temperature ranger control.
+   * @param {TinyRanger} temperature - Temperature ranger control.
    * @returns {void}
    */
   setTemperature(temperature) {
@@ -69,7 +115,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {*} topP - Top-P ranger control.
+   * @param {TinyRanger} topP - Top-P ranger control.
    * @returns {void}
    */
   setTopP(topP) {
@@ -77,7 +123,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {*} topK - Top-K ranger control.
+   * @param {TinyRanger} topK - Top-K ranger control.
    * @returns {void}
    */
   setTopK(topK) {
@@ -85,7 +131,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {*} presencePenalty - Presence penalty ranger control.
+   * @param {TinyRanger} presencePenalty - Presence penalty ranger control.
    * @returns {void}
    */
   setPresencePenalty(presencePenalty) {
@@ -93,7 +139,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {*} frequencyPenalty - Frequency penalty ranger control.
+   * @param {TinyRanger} frequencyPenalty - Frequency penalty ranger control.
    * @returns {void}
    */
   setFrequencyPenalty(frequencyPenalty) {
@@ -101,7 +147,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {*} outputLength - Max output tokens input.
+   * @param {TinyHtmlAny} outputLength - Max output tokens input.
    * @returns {void}
    */
   setOutputLength(outputLength) {
@@ -117,7 +163,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {Array<*>} ficPromptItems - Prompt editor buttons (instructions, prompt, first dialogue).
+   * @param {TinyHtmlAny[]} ficPromptItems - Prompt editor buttons (instructions, prompt, first dialogue).
    * @returns {void}
    */
   setFicPromptItems(ficPromptItems) {
@@ -125,7 +171,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {*} chatContainer - Scrollable chat container.
+   * @param {TinyHtmlAny} chatContainer - Scrollable chat container.
    * @returns {void}
    */
   setChatContainer(chatContainer) {
@@ -133,7 +179,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {*} msgSubmit - Send button.
+   * @param {TinyHtmlAny} msgSubmit - Send button.
    * @returns {void}
    */
   setMsgSubmit(msgSubmit) {
@@ -141,7 +187,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {*} msgInput - Message textarea.
+   * @param {TinyHtmlAny} msgInput - Message textarea.
    * @returns {void}
    */
   setMsgInput(msgInput) {
@@ -149,7 +195,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {*} cancelSubmit - Cancel generation button.
+   * @param {TinyHtmlAny} cancelSubmit - Cancel generation button.
    * @returns {void}
    */
   setCancelSubmit(cancelSubmit) {
@@ -157,7 +203,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {*} aiSubmit - AI submit button.
+   * @param {TinyHtmlAny} aiSubmit - AI submit button.
    * @returns {void}
    */
   setAiSubmit(aiSubmit) {
@@ -165,7 +211,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {*} submitCache - Cache describing the in-flight submission.
+   * @param {Record<string, unknown>} submitCache - Cache describing the in-flight submission.
    * @returns {void}
    */
   setSubmitCache(submitCache) {
@@ -173,7 +219,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {Array<*>} ficResets - Reset buttons of the sidebar.
+   * @param {TinyHtmlAny[]} ficResets - Reset buttons of the sidebar.
    * @returns {void}
    */
   setFicResets(ficResets) {
@@ -181,7 +227,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {Array<*>} ficTemplates - Fic preset buttons.
+   * @param {TinyHtmlAny[]} ficTemplates - Fic preset buttons.
    * @returns {void}
    */
   setFicTemplates(ficTemplates) {
@@ -189,7 +235,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {Array<*>} importItems - Import buttons.
+   * @param {TinyHtmlAny[]} importItems - Import buttons.
    * @returns {void}
    */
   setImportItems(importItems) {
@@ -197,7 +243,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {*} modelSelector - AI model `<select>` element.
+   * @param {TinyHtmlAny} modelSelector - AI model `<select>` element.
    * @returns {void}
    */
   setModelSelector(modelSelector) {
@@ -205,7 +251,8 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {Function} validateMultiplayer - Predicate telling whether the control must be locked.
+   * @param {(value: boolean, needAi?: boolean, allowMulti?: boolean, ignoreAi?: boolean) => boolean} validateMultiplayer
+   * Predicate telling whether the control must be locked.
    * @returns {void}
    */
   setValidateMultiplayer(validateMultiplayer) {
@@ -213,7 +260,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {Function} enabledFirstDialogue - Toggles the "First Dialogue" button.
+   * @param {(value: boolean) => void} enabledFirstDialogue - Toggles the "First Dialogue" button.
    * @returns {void}
    */
   setEnabledFirstDialogue(enabledFirstDialogue) {
@@ -221,7 +268,7 @@ class EnablerAiContent extends EventEmitter {
   }
 
   /**
-   * @param {Array<*>} rpgContentButtons - "View Data" / "View Private" buttons.
+   * @param {TinyHtmlAny[]} rpgContentButtons - "View Data" / "View Private" buttons.
    * @returns {void}
    */
   setRpgContentButton(rpgContentButtons) {
@@ -233,13 +280,14 @@ class EnablerAiContent extends EventEmitter {
   /**
    * Applies the read-only state to a single control.
    *
-   * @param {Object} item - Control to update.
-   * @param {*} value - Value forwarded to the multiplayer validator.
+   * @param {TinyHtmlAny|undefined} item - Control to update.
+   * @param {boolean} value - Value forwarded to the multiplayer validator.
    * @param {boolean} [needAi=true] - Whether the control requires an AI provider.
    * @param {boolean} [allowMulti=false] - Whether the control stays enabled in multiplayer.
    * @returns {void}
    */
   #readOnlyTemplate(item, value, needAi = true, allowMulti = false) {
+    if (!item) return;
     const isEnabled = this.#validateMultiplayer(value, needAi, allowMulti);
     item.toggleProp('disabled', isEnabled);
     if (isEnabled) {
@@ -257,16 +305,17 @@ class EnablerAiContent extends EventEmitter {
    * @returns {Promise<void>}
    */
   async initRpgData() {
+    if (!this.rpgData) return;
     await this.rpgData.init();
-    const tinyRpgData = this.rpgData.data.public.getValue();
-    const tinyRpgPrivateData = this.rpgData.data.private.getValue();
+    const tinyRpgData = this.rpgData.data.public?.getValue();
+    const tinyRpgPrivateData = this.rpgData.data.private?.getValue();
     if (tinyRpgData) {
-      this.rpgData.setAllowAiUse(tinyRpgData.allowAiUse, 'public');
-      this.rpgData.setAllowAiSchemaUse(tinyRpgData.allowAiSchemaUse, 'public');
+      this.rpgData.setAllowAiUse(Boolean(tinyRpgData.allowAiUse), 'public');
+      this.rpgData.setAllowAiSchemaUse(Boolean(tinyRpgData.allowAiSchemaUse), 'public');
     }
     if (tinyRpgPrivateData) {
-      this.rpgData.setAllowAiUse(tinyRpgPrivateData.allowAiUse, 'private');
-      this.rpgData.setAllowAiSchemaUse(tinyRpgPrivateData.allowAiSchemaUse, 'private');
+      this.rpgData.setAllowAiUse(Boolean(tinyRpgPrivateData.allowAiUse), 'private');
+      this.rpgData.setAllowAiSchemaUse(Boolean(tinyRpgPrivateData.allowAiSchemaUse), 'private');
     }
   }
 
@@ -278,7 +327,7 @@ class EnablerAiContent extends EventEmitter {
    * @returns {void}
    */
   deRpgContent() {
-    this.rpgContentButtons.forEach((item) => {
+    this.rpgContentButtons?.forEach((item) => {
       item.addClass('disabled').addProp('disabled');
     });
   }
@@ -289,7 +338,7 @@ class EnablerAiContent extends EventEmitter {
    * @returns {void}
    */
   enRpgContent() {
-    this.rpgContentButtons.forEach((item) => {
+    this.rpgContentButtons?.forEach((item) => {
       item.removeClass('disabled').removeProp('disabled');
     });
   }
@@ -304,11 +353,16 @@ class EnablerAiContent extends EventEmitter {
    */
   #enableModelReadOnly(value = true) {
     const isEnabled = this.#validateMultiplayer(value);
-    this.outputLength.toggleProp('disabled', isEnabled);
+    this.outputLength?.toggleProp('disabled', isEnabled);
     this.#enableModelSelectorReadOnly(isEnabled);
 
-    const validateChange = (where) =>
-      this[where][isEnabled || this[where].valString2().trim().length < 1 ? 'disable' : 'enable']();
+    /** @param {'temperature'|'topP'|'topK'|'presencePenalty'|'frequencyPenalty'} where */
+    const validateChange = (where) => {
+      const target = this[where];
+      if (!target) return;
+      const method = isEnabled || target.valString2().trim().length < 1 ? 'disable' : 'enable';
+      target[method]();
+    };
 
     validateChange('temperature');
     validateChange('topP');
@@ -317,11 +371,11 @@ class EnablerAiContent extends EventEmitter {
     validateChange('frequencyPenalty');
 
     if (isEnabled) {
-      this.outputLength.addClass('disabled');
-      this.resetSettingsButton.addClass('disabled');
+      this.outputLength?.addClass('disabled');
+      this.resetSettingsButton?.addClass('disabled');
     } else {
-      this.outputLength.removeClass('disabled');
-      this.resetSettingsButton.removeClass('disabled');
+      this.outputLength?.removeClass('disabled');
+      this.resetSettingsButton?.removeClass('disabled');
     }
   }
 
@@ -353,19 +407,27 @@ class EnablerAiContent extends EventEmitter {
    */
   #disablePromptButtons(value = false) {
     const isDisabled = this.#validateMultiplayer(value, false);
+
     // Execute disable script
-    for (const item in this.rpgData.ready) {
-      if (this.rpgData.ready[item]) {
-        if (isDisabled) this.rpgData.data[item].disable();
-        else this.rpgData.data[item].enable();
+    const rpgData = this.rpgData;
+    if (rpgData) {
+      /** @type {import('./rpgData.mjs').RpgDataScope[]} */
+      const scopes = ['public', 'private'];
+      for (const item of scopes) {
+        if (!rpgData.ready[item]) continue;
+        const editor = rpgData.data[item];
+        if (!editor) continue;
+        if (isDisabled) editor.disable();
+        else editor.enable();
       }
     }
 
-    for (const index in this.ficPromptItems) {
-      this.ficPromptItems[index].toggleProp('disabled', value);
-      if (value) this.ficPromptItems[index].addClass('disabled');
-      else this.ficPromptItems[index].removeClass('disabled');
-    }
+    this.ficPromptItems?.forEach((item) => {
+      item.toggleProp('disabled', value);
+      if (value) item.addClass('disabled');
+      else item.removeClass('disabled');
+    });
+
     // First dialogue script
     this.#enabledFirstDialogue(!isDisabled);
   }
@@ -398,8 +460,8 @@ class EnablerAiContent extends EventEmitter {
    */
   #enableMessageButtons(value = true) {
     const isEnabled = this.#validateMultiplayer(value, false);
-    if (isEnabled) this.chatContainer.removeClass('hide-msg-buttons');
-    else this.chatContainer.addClass('hide-msg-buttons');
+    if (isEnabled) this.chatContainer?.removeClass('hide-msg-buttons');
+    else this.chatContainer?.addClass('hide-msg-buttons');
   }
 
   /**
@@ -435,25 +497,31 @@ class EnablerAiContent extends EventEmitter {
     this.#readOnlyTemplate(this.aiSubmit, isEnabled, false, true);
     this.#readOnlyTemplate(this.cancelSubmit, !isEnabled || !controller, false);
     if (controller) {
-      this.msgSubmit.addClass('d-none');
-      this.aiSubmit.addClass('d-none');
-      this.cancelSubmit.removeClass('d-none');
-      this.cancelSubmit.on('click', () => {
-        enableReadOnly(false);
-        enableMessageButtons(true);
+      this.msgSubmit?.addClass('d-none');
+      this.aiSubmit?.addClass('d-none');
+      this.cancelSubmit?.removeClass('d-none');
+      const cancelHandler = () => {
+        this.#enableReadOnly(false);
+        this.#enableMessageButtons(true);
         try {
-          if (this.submitCache.cancel) this.submitCache.cancel();
+          if (this.submitCache && typeof this.submitCache.cancel === 'function')
+            this.submitCache.cancel();
           controller.abort();
         } catch (err) {
           console.error(err);
-          alert(err.message);
+          alert(/** @type {Error} */ (err).message);
         }
-      });
+      };
+      this.#cancelHandler = cancelHandler;
+      this.cancelSubmit?.on('click', cancelHandler);
     } else {
-      this.msgSubmit.removeClass('d-none');
-      this.aiSubmit.removeClass('d-none');
-      this.cancelSubmit.addClass('d-none');
-      this.cancelSubmit.off('click');
+      this.msgSubmit?.removeClass('d-none');
+      this.aiSubmit?.removeClass('d-none');
+      this.cancelSubmit?.addClass('d-none');
+      if (this.#cancelHandler) {
+        this.cancelSubmit?.off('click', this.#cancelHandler);
+        this.#cancelHandler = null;
+      }
     }
   }
 
@@ -486,12 +554,9 @@ class EnablerAiContent extends EventEmitter {
    * @returns {void}
    */
   #modelChangerReadOnly(isEnabled = true) {
-    for (const index in this.ficResets)
-      this.#readOnlyTemplate(this.ficResets[index], isEnabled, false);
-    for (const index in this.ficTemplates)
-      this.#readOnlyTemplate(this.ficTemplates[index], isEnabled, false);
-    for (const index in this.importItems)
-      this.#readOnlyTemplate(this.importItems[index], isEnabled, false);
+    this.ficResets?.forEach((item) => this.#readOnlyTemplate(item, isEnabled, false));
+    this.ficTemplates?.forEach((item) => this.#readOnlyTemplate(item, isEnabled, false));
+    this.importItems?.forEach((item) => this.#readOnlyTemplate(item, isEnabled, false));
   }
 
   /**
@@ -522,9 +587,9 @@ class EnablerAiContent extends EventEmitter {
    */
   #enableModelSelectorReadOnly(value = true) {
     const isEnabled = this.#validateMultiplayer(value);
-    this.modelSelector.toggleProp('disabled', isEnabled);
-    if (isEnabled) this.modelSelector.addClass('disabled');
-    else this.modelSelector.removeClass('disabled');
+    this.modelSelector?.toggleProp('disabled', isEnabled);
+    if (isEnabled) this.modelSelector?.addClass('disabled');
+    else this.modelSelector?.removeClass('disabled');
   }
 
   /**

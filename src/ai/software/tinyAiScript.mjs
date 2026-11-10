@@ -73,7 +73,10 @@ export const tinyAiScript = {
 
       // Google Generative
       if (selectedAi === 'google-generative')
-        setTinyGoogleAi(tinyAi, tinyStorage.getApiKey('google-generative')?.key);
+        setTinyGoogleAi(
+          /** @type {import('tiny-ai-api').TinyAiInstance} */ (/** @type {unknown} */ (tinyAi)),
+          /** @type {AiCredential} */ (tinyStorage.getApiKey('google-generative')).key ?? '',
+        );
 
       // Tiny Chat --> this is a multiplayer client session
       if (selectedAi === 'tiny-chat') tinyAiScript.mpClient = true;
@@ -104,7 +107,7 @@ export const tinyAiScript = {
     selector.append(TinyHtml.createFrom('option', { value: 'NONE' }).setText('None'));
     const apiPlace = TinyHtml.createFrom('span');
     selector.on('change', () => {
-      const value = selector.val();
+      const value = String(selector.val() ?? '');
       const html =
         tinyAiHtml[value] && tinyAiHtml[value].inputs ? tinyAiHtml[value].inputs() : null;
       apiPlace.empty();
@@ -114,9 +117,11 @@ export const tinyAiScript = {
     });
 
     selector.toggleProp('disabled', appData.ai.using);
+    /** @type {Record<string, AiProviderEntry>} */
     const tinyAiHtml = {};
 
     // Server login inputs
+    /** @param {TinyHtmlAny[]} tinyInput @param {AiCredential} values */
     const insertServerLogin = (tinyInput, values) => {
       const indexs = [];
       tinyInput.push(
@@ -175,14 +180,19 @@ export const tinyAiScript = {
       return indexs;
     };
 
-    // Save server login
+    /**
+     * Save server login
+     * @param {TinyHtmlAny[]} inputs
+     * @param {number[]} ids
+     * @returns {AiCredential}
+     */
     const insertSaveServerLogin = (inputs, ids) => {
       return {
-        ip: inputs[ids[0]].val(),
-        username: inputs[ids[1]].val(),
-        password: inputs[ids[2]].val(),
-        roomId: inputs[ids[3]].val(),
-        roomPassword: inputs[ids[4]].val(),
+        ip: String(inputs[ids[0]].val() ?? ''),
+        username: String(inputs[ids[1]].val() ?? ''),
+        password: String(inputs[ids[2]].val() ?? ''),
+        roomId: String(inputs[ids[3]].val() ?? ''),
+        roomPassword: String(inputs[ids[4]].val() ?? ''),
       };
     };
 
@@ -200,6 +210,7 @@ export const tinyAiScript = {
         ),
       );
 
+    /** @param {TinyHtmlAny[]} inputs @param {number} [tinyBig] */
     const hostButton = (inputs, tinyBig = -1) =>
       TinyHtml.createFrom('div').append(
         tinyLib.bs
@@ -207,7 +218,7 @@ export const tinyAiScript = {
           .setText('Show host settings (Alpha)')
           .on('click', () => {
             for (const index in inputs) {
-              if (index > tinyBig) {
+              if (Number(index) > tinyBig) {
                 inputs[index].toggleClass('d-none');
               }
             }
@@ -219,7 +230,7 @@ export const tinyAiScript = {
     tinyAiHtml['no-ai'] = {};
     const noAi = tinyAiHtml['no-ai'];
     noAi.inputs = () => {
-      const data = { input: [] };
+      const data = /** @type {AiProviderForm} */ ({ input: [] });
       data.input.push(hostButton(data.input, 0));
       data.input.push(insertServerAbout());
       const values = tinyStorage.getApiKey('no-ai') || {};
@@ -234,6 +245,7 @@ export const tinyAiScript = {
         .button('info mx-4 mt-4')
         .setText('Set Settings')
         .on('click', () => {
+          /** @type {AiCredential} */
           const result = insertSaveServerLogin(data.input, ids);
           tinyStorage.setApiKey('no-ai', result);
           tinyAiScript.checkTitle();
@@ -257,7 +269,7 @@ export const tinyAiScript = {
     tinyAiHtml['google-generative'] = {};
     const googleAi = tinyAiHtml['google-generative'];
     googleAi.inputs = () => {
-      const data = { input: [] };
+      const data = /** @type {AiProviderForm} */ ({ input: [] });
 
       data.input.push(
         TinyHtml.createFrom('input', {
@@ -268,7 +280,8 @@ export const tinyAiScript = {
 
       data.input.push(hostButton(data.input, 1));
       data.input.push(insertServerAbout());
-      const values = tinyStorage.getApiKey('google-generative') || {};
+      /** @type {AiCredential} */
+      const values = /** @type {AiCredential} */ (tinyStorage.getApiKey('google-generative') || {});
       data.input[0].setVal(values.key ?? null).toggleProp('disabled', appData.ai.using);
       const ids = insertServerLogin(data.input, values);
       new TinyHtml(data.input[1].find(':scope > button')).trigger('click');
@@ -286,8 +299,9 @@ export const tinyAiScript = {
         .button('info mx-4 mt-4')
         .setText('Set API Tokens')
         .on('click', () => {
+          /** @type {AiCredential} */
           const result = insertSaveServerLogin(data.input, ids);
-          result.key = data.input[0].val();
+          result.key = String(data.input[0].val() ?? '');
           tinyStorage.setApiKey('google-generative', result);
           tinyAiScript.checkTitle();
           TinyHtml.query('#ai_connection')?.data('BootstrapModal').hide();
@@ -309,7 +323,7 @@ export const tinyAiScript = {
     tinyAiHtml['tiny-chat'] = {};
     const tinyChat = tinyAiHtml['tiny-chat'];
     tinyChat.inputs = () => {
-      const data = { input: [] };
+      const data = /** @type {AiProviderForm} */ ({ input: [] });
       const values = tinyStorage.getApiKey('tiny-chat') || {};
       const ids = insertServerLogin(data.input, values);
       data.desc = insertServerAbout();

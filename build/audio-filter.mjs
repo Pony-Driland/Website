@@ -26,7 +26,7 @@ const MEGABYTE = KILOBYTE * KILOBYTE;
 /** @typedef {import('fs').Dirent} Dirent */
 
 /**
- * @typedef {object} AudioFilterOptions
+ * @typedef {Object} AudioFilterOptions
  * @property {boolean} [enabled] When false, nothing is ever skipped.
  * @property {string[]} [audioDirs] Folders (relative to `root`) that hold audio assets.
  * @property {string[]} [heavyExtensions] Extensions that may be removed from the build.

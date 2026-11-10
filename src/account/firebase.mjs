@@ -18,6 +18,17 @@ import { tinyLs } from '../important.mjs';
  */
 
 /**
+ * Raw birthday entry as returned by the Google People API.
+ *
+ * Every field is untrusted and must be validated before use, so the values are
+ * intentionally typed as `unknown` instead of the final `UserBirthday` shape.
+ *
+ * @typedef {Object} RawUserBirthday
+ * @property {unknown} [date] - Untrusted date object.
+ * @property {unknown} [metadata] - Untrusted metadata object.
+ */
+
+/**
  * Callback function triggered when the Firebase authentication state changes.
  *
  * Use this type when subscribing to auth state changes, e.g., with `onAuthStateChanged`.
@@ -189,7 +200,7 @@ class FirebaseAccount extends EventEmitter {
    * Invalid entries are discarded, and only the validated fields are returned.
    *
    * @private
-   * @param {any} birthdays - Raw `birthdays` array from Google People API.
+   * @param {RawUserBirthday[]|unknown} birthdays - Raw `birthdays` array from Google People API.
    * @returns {UserBirthday[]} An array of validated and normalized UserBirthday objects.
    */
   _birthdayValidator(birthdays) {

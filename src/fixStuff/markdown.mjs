@@ -22,6 +22,10 @@ import { convertIsoStringsToCalendar } from '../files/utils.mjs';
 const { Icon } = TinyHtmlElems;
 
 /**
+ * @import { TinyHtmlAny } from 'tiny-essentials/libs/html/TinyHtml';
+ */
+
+/**
  * Remove Fic Data
  */
 export const clearFicData = () => {
@@ -53,7 +57,7 @@ export const clearFicData = () => {
   TinyHtml.query('#fic-chapter')?.empty();
   storyData.readFic = false;
   storyData.chapter.html = {};
-  storyData.chapter.line = null;
+  storyData.chapter.line = 0;
   storyData.chapter.nav = {};
   storyData.chapter.selected = 0;
 
@@ -66,7 +70,7 @@ export const clearFicData = () => {
  * @param {string} url
  * @param {string} [title]
  * @param {boolean} [isPopState=false]
- * @param {Record<string, any>} [extra={}]
+ * @param {Record<string, string|number|boolean>} [extra={}]
  */
 export const urlUpdate = (url, title, isPopState = false, extra = {}) => {
   // Page Title
@@ -86,6 +90,7 @@ export const urlUpdate = (url, title, isPopState = false, extra = {}) => {
     }
   }
 
+  /** @type {string} */
   let newUrl =
     typeof url === 'string' && !url.startsWith('/') && url !== 'read-fic' && url !== 'ai'
       ? `/${url}`
@@ -96,7 +101,7 @@ export const urlUpdate = (url, title, isPopState = false, extra = {}) => {
     extraReady += `&${item}=${extra[item]}`;
   }
 
-  document.title = title;
+  document.title = title ?? storyCfg.title;
   storyData.urlPage = newUrl;
 
   // Google
@@ -111,7 +116,7 @@ export const urlUpdate = (url, title, isPopState = false, extra = {}) => {
   // Pop State
   if (!isPopState) {
     if (typeof newUrl === 'string' && newUrl.length > 0) {
-      if (!storyCfg.custom_url[newUrl]) {
+      if (!storyCfg.custom_url?.[newUrl]) {
         window.history.pushState(
           { pageTitle: title },
           '',
@@ -119,9 +124,9 @@ export const urlUpdate = (url, title, isPopState = false, extra = {}) => {
         );
       } else {
         window.history.pushState(
-          { pageTitle: storyCfg.custom_url[newUrl].title },
+          { pageTitle: storyCfg.custom_url?.[newUrl].title },
           '',
-          storyCfg.custom_url[newUrl].url + extraReady,
+          storyCfg.custom_url?.[newUrl].url + extraReady,
         );
       }
     } else {
@@ -131,13 +136,56 @@ export const urlUpdate = (url, title, isPopState = false, extra = {}) => {
 };
 
 /**
+ * A single entry of the wiki character card table.
+ *
+ * @typedef {Object} MarkdownCharTableLink
+ * @property {string} text - Link label.
+ * @property {string} url - Link target.
+ * @property {string|null} [isRepUrl] - Repository relative path, when it points to another page.
+ */
+
+/**
+ * A row of the wiki character card table: `[label, value]`.
+ *
+ * @typedef {[string, string|MarkdownCharTableLink]} MarkdownCharTableRow
+ */
+
+/**
+ * A single entry of the markdown content list. Either a plain title or a
+ * `[title, ...children]` tuple describing a nested list.
+ *
+ * @typedef {string|string[]} MarkdownContentListItem
+ */
+
+/**
+ * Metadata extracted from the markdown front matter.
+ *
  * @typedef {Object} MarkdownMetadata
- * @property {any[]} [contentList]
- * @property {any[]} [charTable]
+ * @property {MarkdownContentListItem[]} [contentList]
+ * @property {MarkdownCharTableRow[]} [charTable]
  * @property {string} [name]
  * @property {string} [cardUrl]
  * @property {string} [subName]
  * @property {string} [mode]
+ * @property {string} [title]
+ */
+
+/**
+ * A single leaf value stored in the markdown front matter metadata.
+ *
+ * @typedef {string|number|boolean|MarkdownMetadata|MarkdownCharTableLink} MarkdownMetadataLeaf
+ */
+
+/**
+ * A nested list of markdown metadata values.
+ *
+ * @typedef {Array<MarkdownMetadataLeaf|MarkdownMetadataValue[]>} MarkdownMetadataValue
+ */
+
+/**
+ * Front matter metadata indexed by its raw key.
+ *
+ * @typedef {MarkdownMetadata & Record<string, MarkdownMetadataValue|MarkdownMetadataLeaf>} MarkdownMetadataMap
  */
 
 /**
@@ -153,7 +201,8 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
   let data = '';
 
   // Fix Html
-  if (!isHTML) data = marked.parse(text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ''));
+  if (!isHTML)
+    data = String(marked.parse(text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, '')));
   else data = text;
 
   // Fix URLs
@@ -173,9 +222,11 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
   else data = data.replace('{{content_list}}', '');
 
   // Markdown page ways
+  /** @type {Record<string, () => void>} */
   const pageTypes = {
     // Wiki
     wiki: () => {
+      if (!metadata) return;
       // Row
       const row = TinyHtml.createFrom('div', { class: 'wiki-page' });
 
@@ -194,9 +245,9 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
 
       const card = TinyHtml.createFrom('div', { class: 'card position-relative' });
       const cardImg = TinyHtml.createFrom('img', {
-        src: metadata.cardUrl,
+        src: metadata.cardUrl ?? null,
         class: 'card-img-top',
-        alt: metadata.name,
+        alt: metadata.name ?? null,
       });
 
       // Card body
@@ -279,6 +330,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
     topPage.addClass('d-none');
   }
 
+  /** @param {string} text */
   const markdownHid = (text) =>
     `tiny-wiki-${encodeURIComponent(
       text
@@ -290,7 +342,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
 
   const markdownItems = new TinyHtml(markdownBase.find(`h1,h2,h3,h4,h5`));
   markdownItems.forEach((item) => {
-    item.setAttr('id', markdownHid(item.text()));
+    item.setAttr('id', markdownHid(item.text() ?? ''));
   });
 
   // Content List
@@ -331,7 +383,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
        * @param {boolean} [isLast=false]
        * @param {string|number} [index]
        * @param {string|number|null} [index2=null]
-       * @param {TinyHtml<any>|null} [extraElement=null]
+       * @param {TinyHtmlAny|null} [extraElement=null]
        *
        * @returns {TinyHtml<HTMLElement>}
        */
@@ -360,32 +412,20 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
 
       // Read data
       let isLast = false;
-      for (let index = 0; index < metadata.contentList.length; index++) {
-        isLast = index === metadata.contentList.length - 1;
-        if (typeof metadata.contentList[index] === 'string')
-          ul.append(insertLi('list-group-item pt-0', metadata.contentList[index], isLast, index));
-        else if (
-          Array.isArray(metadata.contentList[index]) &&
-          metadata.contentList[index].length > 0
-        ) {
+      const contentList = metadata.contentList ?? [];
+      for (let index = 0; index < contentList.length; index++) {
+        const contentItem = contentList[index];
+        isLast = index === contentList.length - 1;
+        if (typeof contentItem === 'string')
+          ul.append(insertLi('list-group-item pt-0', contentItem, isLast, index));
+        else if (Array.isArray(contentItem) && contentItem.length > 0) {
           const ul2 = TinyHtml.createFrom('ul', { class: 'my-0' });
 
-          ul.append(
-            insertLi(
-              'list-group-item py-0',
-              metadata.contentList[index][0],
-              null,
-              index,
-              null,
-              ul2,
-            ),
-          );
+          ul.append(insertLi('list-group-item py-0', contentItem[0], false, index, null, ul2));
 
-          for (const index2 in metadata.contentList[index])
-            if (Number(index2) !== 0 && typeof metadata.contentList[index][index2] === 'string')
-              ul2.append(
-                insertLi(`pt-0`, metadata.contentList[index][index2], isLast, index, index2),
-              );
+          for (const index2 in contentItem)
+            if (Number(index2) !== 0 && typeof contentItem[index2] === 'string')
+              ul2.append(insertLi(`pt-0`, contentItem[index2], isLast, index, index2));
         }
       }
 
@@ -401,7 +441,11 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
     });
 
   // Convert File URLs
-  new TinyHtml(markdownBase.find('a[file]')).forEach(fixFileUrl(openMDFile));
+  new TinyHtml(markdownBase.find('a[file]')).forEach(
+    fixFileUrl((file) => {
+      if (typeof file === 'string') openMDFile(file);
+    }),
+  );
 
   new TinyHtml(markdownBase.find('a:not([file])')).forEach(fixHref);
   new TinyHtml(markdownBase.find('img')).forEach(fixImageSrc);
@@ -427,10 +471,7 @@ export const openMDFile = async (url, isMain = false) => {
       // Load ajax
       const fileData = await fetch(
         `${url.startsWith('/') ? url : `/${url}`}${window.fileVersion ?? ''}`,
-        {
-          method: 'GET',
-          dataType: 'text',
-        },
+        { method: 'GET' },
       )
         .then((res) => res.text())
         .catch((err) => {
@@ -447,8 +488,8 @@ export const openMDFile = async (url, isMain = false) => {
         const title = md.title;
 
         // Prepare metadata (script created by ChatGPT)
-        /** @type {MarkdownMetadata} */
-        const metadata = {};
+        /** @type {MarkdownMetadataMap} */
+        const metadata = /** @type {MarkdownMetadataMap} */ ({});
         const githubRegex = tinyLib.getGitUrlPath('{url}public\\/');
         for (const key in md) {
           const match = key.match(/^([^_]+)(?:_(\d+))+/);
@@ -460,12 +501,13 @@ export const openMDFile = async (url, isMain = false) => {
               metadata[name] = [];
             }
 
-            let currentLevel = metadata[name];
+            /** @type {MarkdownMetadataValue} */
+            let currentLevel = /** @type {MarkdownMetadataValue} */ (metadata[name]);
             for (let i = 0; i < indices.length - 1; i++) {
               if (!currentLevel[indices[i]]) {
                 currentLevel[indices[i]] = [];
               }
-              currentLevel = currentLevel[indices[i]];
+              currentLevel = /** @type {MarkdownMetadataValue} */ (currentLevel[indices[i]]);
             }
 
             const markdownLink = md[key].match(/^\[(.*?)\]\((.*?)\)$/);
@@ -494,26 +536,31 @@ export const openMDFile = async (url, isMain = false) => {
         // Error!
         loaderScreen.stop();
         console.error(err);
-        alert(err.message);
+        alert(/** @type {Error} */ (err).message);
       }
     }
 
     // Main page
     else {
-      insertMarkdownFile(storyData.readme, null, isMain, true);
-      urlUpdate();
+      insertMarkdownFile(storyData.readme ?? '', null, isMain, true);
+      urlUpdate('');
     }
     return;
   }
   throw new Error('Invalid Md File Url!');
 };
 
+/**
+ * @param {Record<string, string>} data - Query string parameters.
+ * @param {boolean} [isPopState] - Whether this comes from a popstate event.
+ * @param {boolean} [useCustom] - Whether custom URLs are allowed.
+ */
 export const openNewAddress = (data, isPopState = false, useCustom = false) => {
   // File Path
   const filePath = data.path;
 
   // Prepare Custom URL
-  if (useCustom && storyCfg.custom_url[data.path]) {
+  if (useCustom && storyCfg.custom_url?.[data.path]) {
     isPopState = false;
   }
 
@@ -525,13 +572,13 @@ export const openNewAddress = (data, isPopState = false, useCustom = false) => {
     filePath.indexOf('http://') > -1 ||
     filePath.indexOf('https://') > -1
   ) {
-    insertMarkdownFile(storyData.readme, null, true, true);
+    insertMarkdownFile(storyData.readme ?? '', null, true, true);
   } else {
     openMDFile(filePath);
     if (typeof data.title === 'string' && data.title.length > 0) {
       urlUpdate(data.path, data.title, isPopState);
     } else {
-      urlUpdate(data.path, null, isPopState);
+      urlUpdate(data.path, undefined, isPopState);
     }
   }
 };

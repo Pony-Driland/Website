@@ -21,7 +21,13 @@ import { markdownBase } from '../html/base.mjs';
 const { Icon, Button, Anchor } = TinyHtmlElems;
 
 /**
- * @typedef {{ content: any; line: number; }} FicPaginationData
+ * @typedef {Object} FicPaginationData
+ * @property {StoryLineData} content - Line payload.
+ * @property {number} line - Line number.
+ */
+
+/**
+ * @import { TinyHtmlAny } from 'tiny-essentials/libs/html/TinyHtml';
  */
 
 /**
@@ -29,8 +35,13 @@ const { Icon, Button, Anchor } = TinyHtmlElems;
  * @typedef {import('tiny-essentials/libs/array/TinyArrayPaginator').GetterResult<T>} GetterResult
  */
 
+/**
+ * Pre-rendered raindrop markup.
+ *
+ * @type {{ drops: string, backDrops: string }}
+ */
 /*  Rain made by Aaron Rickle */
-const rainConfig = {};
+const rainConfig = { drops: '', backDrops: '' };
 (() => {
   var increment = 0;
   rainConfig.drops = '';
@@ -102,10 +113,45 @@ const rainMode = {
   },
 };
 
+/**
+ * @typedef {Object} StoryLineData
+ * @property {string} [value]
+ * @property {string} [value_alternative]
+ * @property {string} [character]
+ * @property {boolean} [flashback]
+ * @property {string[]} [nsfw]
+ * @property {'action'|'dialogue'|'telepathy'|'think'} [type]
+ */
+
+/**
+ * A single chunk produced by {@link storyDialogue.extractAiTags}.
+ *
+ * @typedef {[text: string, isInsideAiTag: boolean, hasLeadingSpace: boolean, hasTrailingSpace: boolean]} StoryAiTagChunk
+ */
+
+/**
+ * Line renderer used by the chapter reader.
+ *
+ * @typedef {Object} StoryDialogue
+ * @property {(input: string) => StoryAiTagChunk[]} extractAiTags Extracts the AI tags of a text.
+ * @property {(data: StoryLineData, line: string|number, items: TinyHtmlAny[], type: string, msgTag: string, baseWidth?: string|null, baseName?: string) => void} template Renders a single line.
+ * @property {(data: StoryLineData) => string|null} nsfwChecker Returns the visible text of a line, if any.
+ * @property {(line: string|number, items: TinyHtmlAny[], data: StoryLineData) => void} action Renders an action line.
+ * @property {(line: string|number, items: TinyHtmlAny[], data: StoryLineData) => void} dialogue Renders a dialogue line.
+ * @property {(line: string|number, items: TinyHtmlAny[], data: StoryLineData) => void} telepathy Renders a telepathy line.
+ * @property {(line: string|number, items: TinyHtmlAny[], data: StoryLineData) => void} think Renders a thought line.
+ */
+
+/** @type {StoryDialogue} */
 const storyDialogue = {
-  // Extract Ai tag (script created by ChatGPT)
+  /**
+   * Extract Ai tag (script created by ChatGPT)
+   * @param {string} input - Raw text.
+   * @returns {StoryAiTagChunk[]} Extracted chunks.
+   */
   extractAiTags: (input) => {
     const regex = /(<ai>(.*?)<\/ai>|[^<]+)/gs;
+    /** @type {StoryAiTagChunk[]} */
     const result = [];
     let match;
     let previousIndex = null;
@@ -127,7 +173,17 @@ const storyDialogue = {
     return result;
   },
 
-  // Template
+  /**
+   * Template
+   * @param {StoryLineData} data - Line data.
+   * @param {string|number} line - Line number.
+   * @param {TinyHtmlAny[]} items - Output rows.
+   * @param {string} type - Badge label.
+   * @param {string} msgTag - Tag used for the message.
+   * @param {string|null} [baseWidth] - Width of the type column.
+   * @param {string} [baseName] - Character name.
+   * @returns {void}
+   */
   template: (data, line, items, type, msgTag, baseWidth = null, baseName = '') => {
     const message = storyDialogue.nsfwChecker(data);
     if (message) {
@@ -165,12 +221,15 @@ const storyDialogue = {
     }
   },
 
-  // Mature Content Checker
+  /**
+   * Mature Content Checker
+   * @param {StoryLineData} data - Line data.
+   */
   nsfwChecker: (data) => {
     if (Array.isArray(data.nsfw)) {
       let nsfwValue = false;
       for (const item in data.nsfw) {
-        nsfwValue = TinyHtml.boolCheck(tinyLs.getItem('NSFW' + data.nsfw[item]));
+        nsfwValue = TinyHtml.boolCheck(tinyLs.getItem('NSFW' + data.nsfw[item]) ?? '');
         if (nsfwValue) {
           break;
         }
@@ -186,29 +245,53 @@ const storyDialogue = {
     }
   },
 
-  // Action
+  /**
+   * Action
+   * @param {string|number} line @param {TinyHtmlAny[]} items @param {StoryLineData} data
+   */
   action: (line, items, data) => storyDialogue.template(data, line, items, 'Action', 'strong'),
 
-  // Dialogue
+  /**
+   * Dialogue
+   * @param {string|number} line @param {TinyHtmlAny[]} items @param {StoryLineData} data
+   */
   dialogue: (line, items, data) =>
     storyDialogue.template(data, line, items, 'Character', 'span', '15%', data.character),
 
-  // Telepathy
+  /**
+   * Telepathy
+   * @param {string|number} line @param {TinyHtmlAny[]} items @param {StoryLineData} data
+   */
   telepathy: (line, items, data) =>
     storyDialogue.template(data, line, items, 'Telepathy', 'small', '15%', data.character),
 
-  // Think
+  /**
+   * Think
+   * @param {string|number} line @param {TinyHtmlAny[]} items @param {StoryLineData} data
+   */
   think: (line, items, data) =>
     storyDialogue.template(data, line, items, 'Thought', 'small', '15%', data.character),
 };
 
+/**
+ * @typedef {Object} ChapterMenuParams
+ * @property {string} [chapter] - Chapter id.
+ * @property {string|number} [line] - Line to scroll to.
+ * @property {string} [path] - Current route.
+ * @property {string} [title] - Page title.
+ */
+
+/** @param {ChapterMenuParams} [params] */
 export const openChapterMenu = (params = {}) => {
   // Prepare Data
   clearFicData();
   markdownBase.empty();
   storyData.chapter.blockLineSave = false;
 
-  // Get Page Data
+  /**
+   * Get Page Data
+   * @param {number|null} line @param {string|number} chapter
+   */
   const getPageData = (line, chapter) => {
     // Prepare data
     let page = 1;
@@ -227,7 +310,7 @@ export const openChapterMenu = (params = {}) => {
       let counter = 1;
       for (const i in storyData.data[chapter]) {
         if (storyDialogue.nsfwChecker(storyData.data[chapter][i])) {
-          if (i < selectedLine) {
+          if (Number(i) < Number(selectedLine)) {
             // Reset
             if (counter > storyCfg.itemsPerPage) {
               counter = 1;
@@ -272,13 +355,15 @@ export const openChapterMenu = (params = {}) => {
     table.empty();
 
     // Items
+    /** @type {TinyHtmlAny[]} */
     const items = [];
 
     // pagination.items is the array returned by TinyArrayPaginator.get()
     for (const item of pagination.items) {
       const pagData = item.content;
-      if (typeof storyDialogue[pagData.type] === 'function') {
-        storyDialogue[pagData.type](item.line, items, pagData);
+      const lineType = pagData.type;
+      if (lineType && typeof storyDialogue[lineType] === 'function') {
+        storyDialogue[lineType](item.line, items, pagData);
       }
     }
 
@@ -290,7 +375,11 @@ export const openChapterMenu = (params = {}) => {
     table.append(items);
   };
 
-  // New Read
+  /**
+   * New Read
+   * @param {number} chapter
+   * @param {number|null} [selectedLine]
+   */
   const newRead = async (chapter = 1, selectedLine = null) => {
     // Clear Update Warn
     TinyHtml.query('#fic-start')?.setText('Read Fic').prepend(new Icon('fab fa-readme me-2'));
@@ -323,12 +412,16 @@ export const openChapterMenu = (params = {}) => {
             if (typeof storyCfg.sfx[item].module !== 'string') {
               storyCfg.sfx[item].module = 'all';
             }
-            await musicManager
-              .insertSFX(item, storyCfg.sfx[item].loop, storyCfg.sfx[item].module)
-              .catch((err) => {
-                console.error(err);
-                alert(err.message);
-              });
+            try {
+              await musicManager.insertSFX(
+                item,
+                storyCfg.sfx[item].loop,
+                storyCfg.sfx[item].module,
+              );
+            } catch (err) {
+              console.error(err);
+              alert(/** @type {Error} */ (err).message);
+            }
           }
         }
       }
@@ -359,7 +452,7 @@ export const openChapterMenu = (params = {}) => {
     // Items
     const table = TinyHtml.createFrom('tbody');
 
-    /** @type {Record<string, TinyHtml[]>} */
+    /** @type {Record<string, TinyHtmlAny[]>} */
     const tinyPag = {
       base: [],
       default: [],
@@ -387,12 +480,16 @@ export const openChapterMenu = (params = {}) => {
         alignment: 'center',
         onPageChanged: () => {
           // Process Data
-          const targetPage = Number(new TinyHtml(tinyPag[where][0].find('.active')).text().trim());
+          const targetPage = Number(
+            (new TinyHtml(tinyPag[where][0].find('.active')).text() ?? '').trim(),
+          );
           const tPage = paginatorInstance.get({ page: targetPage, perPage: storyCfg.itemsPerPage });
           insertTableData(table, tPage);
 
           // Scroll
-          TinyHtml.setWinScrollTop(TinyHtml.getById('app').offset().top);
+          TinyHtml.setWinScrollTop(
+            /** @type {TinyHtmlAny} */ (TinyHtml.getById('app')).offset().top,
+          );
           pagination2.show(targetPage);
           tinyWin.trigger('scroll');
         },
@@ -407,7 +504,9 @@ export const openChapterMenu = (params = {}) => {
         alignment: 'center',
         onPageChanged: () => {
           // Get Page
-          const targetPage = Number(new TinyHtml(tinyPag[where][1].find('.active')).text().trim());
+          const targetPage = Number(
+            (new TinyHtml(tinyPag[where][1].find('.active')).text() ?? '').trim(),
+          );
           pagination1.show(targetPage);
         },
       });
@@ -421,15 +520,33 @@ export const openChapterMenu = (params = {}) => {
 
     // Search
     storyData.chapter.blockLineSave = false;
+    /**
+     * @type {{
+     *   base: TinyHtmlAny;
+     *   character: TinyHtmlAny;
+     *   message: TinyHtmlAny;
+     * }}
+     */
     const searchItems = {
       base: TinyHtml.createFrom('div', { class: 'input-group mb-3' }),
+      character: TinyHtml.createFrom('input', {
+        type: 'text',
+        class: 'form-control',
+        placeholder: 'Character Name',
+      }),
+      message: TinyHtml.createFrom('input', {
+        type: 'text',
+        class: 'form-control',
+        placeholder: 'Dialogue / Action',
+        style: 'width: 60%',
+      }),
     };
 
     // Search checker
     const searchCheck = () => {
       // Get values
-      const character = searchItems.character.val().toLowerCase();
-      const message = searchItems.message.val().toLowerCase();
+      const character = String(searchItems.character.val() ?? '').toLowerCase();
+      const message = String(searchItems.message.val() ?? '').toLowerCase();
 
       // Nope
       if (character.length < 1 && message.length < 1) {
@@ -471,22 +588,9 @@ export const openChapterMenu = (params = {}) => {
         insertTableData(table, searchPagination);
       }
 
-      TinyHtml.setWinScrollTop(TinyHtml.getById('app').offset().top);
+      TinyHtml.setWinScrollTop(/** @type {TinyHtmlAny} */ (TinyHtml.getById('app')).offset().top);
       tinyWin.trigger('scroll');
     };
-
-    searchItems.character = TinyHtml.createFrom('input', {
-      type: 'text',
-      class: 'form-control',
-      placeholder: 'Character Name',
-    });
-
-    searchItems.message = TinyHtml.createFrom('input', {
-      type: 'text',
-      class: 'form-control',
-      placeholder: 'Dialogue / Action',
-      style: 'width: 60%',
-    });
 
     searchItems.character.on('change', searchCheck);
     searchItems.message.on('change', searchCheck);
@@ -575,12 +679,13 @@ export const openChapterMenu = (params = {}) => {
       }
     }
 
+    /** @type {Record<string, string|number>} */
     const newParams = { chapter: params.chapter };
-    if (params.line) newParams.line = params.line;
+    if (params.line) newParams.line = Number(params.line);
 
     // Send Data
-    urlUpdate(`read-fic`, null, false, newParams);
-    newRead(Number(params.chapter), params.line, true);
+    urlUpdate(`read-fic`, undefined, false, newParams);
+    newRead(Number(params.chapter), params.line !== null ? Number(params.line) : null);
   }
 
   // Nope. Choose One
@@ -592,10 +697,10 @@ export const openChapterMenu = (params = {}) => {
       }
     }
 
-    /** @type {TinyHtmlElems.Button[]} */
+    /** @type {InstanceType<typeof Button>[]} */
     const spoilersButton = [];
 
-    /** @param {number} chapter */
+    /** @param {string|number} chapter */
     const getCanSpoilerMsg = (chapter) => {
       const canSpoiler = tinyLs.getBool(`bookmarkCanSpoiler${chapter}`);
       return canSpoiler ? 'Disable spoiler auto-reveal' : 'Enable spoiler auto-reveal';
@@ -616,7 +721,7 @@ export const openChapterMenu = (params = {}) => {
       }
 
       for (const item of spoilersButton) {
-        item.setLabel(getCanSpoilerMsg(item.attrNumber('chapter')));
+        item.setLabel(getCanSpoilerMsg(String(item.attrNumber('chapter') ?? '')));
       }
     });
 
@@ -633,7 +738,7 @@ export const openChapterMenu = (params = {}) => {
           href: '#warnings',
           'data-bs-toggle': 'collapse',
           role: 'button',
-          'aria-expanded': false,
+          'aria-expanded': 'false',
           'aria-controls': 'warnings',
         }).setText('Important Warnings'),
 
@@ -647,7 +752,7 @@ export const openChapterMenu = (params = {}) => {
             const content = [];
             for (const item in storyData.characters.data) {
               const charData = storyData.characters.data[item];
-              const isNpc = storyCfg.characters[`npc/${charData.id}`];
+              const isNpc = storyCfg.characters?.[`npc/${charData.id}`];
               if (!charData.value.startsWith('???') && !isNpc) {
                 // Prepare Data
                 const dataBase = TinyHtml.createFrom('div', { class: 'card-body' }).append(
@@ -831,13 +936,16 @@ export const openChapterMenu = (params = {}) => {
             .on('click', () => {
               // Nothing NSFW
               let existNSFW = false;
-              let nsfwContent = TinyHtml.createFrom('center', {
+              /** @type {TinyHtmlAny[]} */
+              const nsfwItems = [];
+              const nsfwContent = TinyHtml.createFrom('center', {
                 class: 'm-3 small text-warning',
               })
                 .addClass('made-by-ai')
                 .setText(
                   'No mature content has been detected. However, some may be added in the future.',
                 );
+              /** @type {string[]} */
               const nsfwList = [];
 
               // Detect Fic Mature Content
@@ -850,18 +958,15 @@ export const openChapterMenu = (params = {}) => {
                         const NSFWITEM = storyData.data[fic][item].nsfw[nsfwItem];
                         nsfwList.push(NSFWITEM);
 
-                        // Convert Mature Content
-                        if (!existNSFW) {
-                          nsfwContent = [];
-                        }
-
                         // Exist Now
                         existNSFW = true;
 
                         // Add Mature Content Item
                         if (storyCfg.nsfw[NSFWITEM]) {
                           // Get Value
-                          let nsfwValue = TinyHtml.boolCheck(tinyLs.getItem('NSFW' + NSFWITEM));
+                          let nsfwValue = TinyHtml.boolCheck(
+                            tinyLs.getItem('NSFW' + NSFWITEM) ?? '',
+                          );
 
                           // Set Button Text
                           let buttonClass = 'success';
@@ -872,7 +977,7 @@ export const openChapterMenu = (params = {}) => {
                           }
 
                           const nsfwButton = tinyLib.bs.button(buttonClass);
-                          nsfwContent.push(
+                          nsfwItems.push(
                             TinyHtml.createFrom('div', {
                               class: `col-sm-${storyCfg.nsfw[NSFWITEM].size}`,
                             }).append(
@@ -925,7 +1030,7 @@ export const openChapterMenu = (params = {}) => {
 
               // Mature Content Item
               const nsfwDIV = TinyHtml.createFrom('div');
-              nsfwDIV.append(nsfwContent);
+              nsfwDIV.append(existNSFW ? nsfwItems : nsfwContent);
               if (existNSFW) nsfwDIV.addClass('row');
 
               // Modal
@@ -953,12 +1058,13 @@ export const openChapterMenu = (params = {}) => {
     for (let i = 0; i < storyData.chapter.amount; i++) {
       // Chapter Number
       const chapter = String(i + 1);
-      let isNewValue = '';
-      if (storyData.isNew[chapter] === 2) {
+      /** @type {TinyHtmlAny|null} */
+      let isNewValue = null;
+      if (storyData.isNew?.[chapter] === 2) {
         isNewValue = TinyHtml.createFrom('span', {
           class: 'badge chapter-notification badge-primary ms-3',
         }).setText('NEW');
-      } else if (storyData.isNew[chapter] === 1) {
+      } else if (storyData.isNew?.[chapter] === 1) {
         isNewValue = TinyHtml.createFrom('span', {
           class: 'badge chapter-notification badge-secondary ms-3',
         }).setText('UPDATE');
@@ -969,7 +1075,7 @@ export const openChapterMenu = (params = {}) => {
         isNewValue.on('click', () => {
           // Clear is new value
           tinyLs.setItem('chapter' + chapter + 'MD5', objHash(storyData.data[chapter]));
-          storyData.isNew[chapter] = 0;
+          if (storyData.isNew) storyData.isNew[chapter] = 0;
 
           // Remove tooltip
           const tooltip = isNewValue.data('BootstrapToolTip');
@@ -994,7 +1100,7 @@ export const openChapterMenu = (params = {}) => {
         .on('click', (e) => {
           e.preventDefault();
           // Start Chapter
-          urlUpdate(`read-fic`, null, false, { chapter });
+          urlUpdate(`read-fic`, undefined, false, { chapter });
           newRead(Number(chapterButton.attr('chapter')));
         });
 
@@ -1007,13 +1113,13 @@ export const openChapterMenu = (params = {}) => {
       })
         .setAttr('chapter', chapter)
         .on('click', () => {
-          tinyLs.setBool(bmValueName, !tinyLs.getBool(bmValueName) ?? true);
+          tinyLs.setBool(bmValueName, !tinyLs.getBool(bmValueName));
           chapterSpoiler.setLabel(getCanSpoilerMsg(chapter));
         });
 
       spoilersButton.push(chapterSpoiler);
 
-      new Tooltip(
+      Tooltip(
         chapterSpoiler.setAttr(
           'title',
           'Do you want every spoiler of this chapter to be automatically revealed on the website?',
@@ -1029,13 +1135,13 @@ export const openChapterMenu = (params = {}) => {
               .setText('Chapter ' + chapter)
               .append(isNewValue),
             TinyHtml.createFrom('p', { class: 'card-text' }).setText(
-              storyCfg.chapterName[chapter].title,
+              storyCfg.chapterName[Number(chapter)].title,
             ),
             TinyHtml.createFrom('span', { class: 'card-text small me-1' }).setText(
               `${storyData.data[chapter].length} Lines`,
             ),
             TinyHtml.createFrom('span', { class: 'card-text small me-2' }).setText(
-              `${Math.ceil(storyData.data[chapter].length / storyCfg.itemsPerPage)} Pages`,
+              `${Math.ceil(Object.keys(storyData.data[chapter]).length / storyCfg.itemsPerPage)} Pages`,
             ),
             TinyHtml.createFrom('span', { class: 'card-text small ms-1' }).setText(
               `${storyData.lettersCount[chapter]} Letters`,
@@ -1044,7 +1150,7 @@ export const openChapterMenu = (params = {}) => {
               `${storyData.wordsCount[chapter]} Words`,
             ),
             TinyHtml.createFrom('p', { class: 'card-text small' }).setText(
-              storyCfg.chapterName[chapter].description,
+              storyCfg.chapterName[Number(chapter)].description,
             ),
             // Load Chapter
             TinyHtml.createFrom('div', { class: 'd-flex justify-content-between px-3' }).append(

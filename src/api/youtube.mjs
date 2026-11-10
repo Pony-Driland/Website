@@ -9,6 +9,47 @@ import { head } from '../html/query.mjs';
 
 import { musicApp } from '../chapter_manager/music/html.mjs';
 
+/**
+ * Response returned by the YouTube oEmbed endpoint
+ * (`https://www.youtube.com/oembed`).
+ *
+ * @typedef {Object} YoutubeEmbedData
+ * @property {string} title - Video title.
+ * @property {string} author_name - Channel display name.
+ * @property {string} author_url - Channel URL.
+ * @property {string} provider_name - Provider name ("YouTube").
+ * @property {string} thumbnail_url - Video thumbnail URL.
+ */
+
+/**
+ * Event payload emitted by the YouTube IFrame Player API.
+ *
+ * @typedef {Object} YoutubePlayerEvent
+ * @property {string|number} [data] - Event payload (state or quality).
+ * @property {YoutubePlayerInstance} [target] - Player that fired the event.
+ */
+
+/**
+ * Subset of the YouTube IFrame Player API used by this module.
+ *
+ * @typedef {Object} YoutubePlayerInstance
+ * @property {() => number} getVolume - Current volume (0-100).
+ * @property {(volume: number) => void} setVolume - Sets the volume (0-100).
+ * @property {() => string} getPlaybackQuality - Current playback quality.
+ * @property {(quality: string) => void} setPlaybackQuality - Sets the quality.
+ * @property {() => string[]} getAvailableQualityLevels - Available qualities.
+ * @property {(seconds: number) => void} seekTo - Seeks to a position.
+ * @property {(options: { videoId: string, startSeconds?: number }) => void} [loadVideoById] - Loads a video.
+ * @property {() => void} [playVideo] - Resumes playback.
+ * @property {() => void} [pauseVideo] - Pauses playback.
+ * @property {() => void} stopVideo - Stops playback.
+ * @property {(loop: boolean) => void} setLoop - Enables/disables looping.
+ * @property {(shuffle: boolean) => void} setShuffle - Enables/disables shuffle.
+ * @property {() => number} getDuration - Video duration in seconds.
+ * @property {() => number} getCurrentTime - Current playback position.
+ * @property {() => string} getVideoUrl - Public video URL.
+ */
+
 const ytElemId = 'youtubePlayer';
 
 export const ytElem = new TinyHtml(`#${ytElemId}`);
@@ -18,12 +59,19 @@ class YoutubeApi extends EventEmitter {
     super();
   }
 
-  /** @type {any} */
+  /** @type {YoutubePlayerInstance|null} */
   #player = null;
 
-  /** @returns {any} */
+  /**
+   * The underlying YouTube player.
+   *
+   * Only available after {@link YoutubeApi.install} has run, which is
+   * guaranteed by the `exists` guard used by every consumer.
+   *
+   * @returns {YoutubePlayerInstance}
+   */
   get player() {
-    return this.#player;
+    return /** @type {YoutubePlayerInstance} */ (this.#player);
   }
 
   // Check Youtube Values
@@ -31,10 +79,15 @@ class YoutubeApi extends EventEmitter {
     return typeof YT !== 'undefined' && this.#player && YT.PlayerState;
   }
 
-  /** @type {Record<string, any>|null} */
+  /**
+   * Cached oEmbed payload. An empty object acts as an in-flight sentinel
+   * while the request is running, so every field is optional here.
+   *
+   * @type {Partial<YoutubeEmbedData>|null}
+   */
   #embed = null;
 
-  /** @returns {Record<string, any>|null} */
+  /** @returns {Partial<YoutubeEmbedData>|null} */
   get embed() {
     return this.#embed;
   }
@@ -64,7 +117,7 @@ class YoutubeApi extends EventEmitter {
   }
 
   /** @type {number} */
-  #duration = false;
+  #duration = 0;
 
   /** @returns {number} */
   get duration() {
@@ -130,7 +183,7 @@ class YoutubeApi extends EventEmitter {
 
   /**
    * Volume
-   * @param {string|number} value
+   * @param {string|number} number
    */
   setVolume(number) {
     tinyLs.setItem('storyVolume', Number(number));
@@ -160,7 +213,6 @@ class YoutubeApi extends EventEmitter {
               encodeURIComponent(`https://www.youtube.com/watch?v=` + this.#videoId),
             {
               method: 'GET',
-              dataType: 'json',
             },
           )
             .then((res) => res.json())
@@ -298,6 +350,7 @@ class YoutubeApi extends EventEmitter {
 
   #events = {
     // Ready API
+    /** @param {YoutubePlayerEvent} event */
     onReady: (event) => {
       // Get Data
       this.#volume = this.player.getVolume();
@@ -341,30 +394,35 @@ class YoutubeApi extends EventEmitter {
     },
 
     // State Change
+    /** @param {YoutubePlayerEvent} event */
     onStateChange: (event) => {
       // Event
       if (event) {
-        this.#state = event.data;
+        this.#state = event.data ?? null;
         this.#qualityList = this.player.getAvailableQualityLevels();
       }
       this.emit('onStateChange', event);
     },
 
     // Quality
+    /** @param {YoutubePlayerEvent} event */
     onPlaybackQualityChange: (event) => {
-      if (event) this.#quality = event.data;
+      if (event) this.#quality = event.data !== undefined ? String(event.data) : null;
       this.emit('onPlaybackQualityChange', event);
       /* player.setPlaybackQuality('default') */
     },
 
     // Other
+    /** @param {YoutubePlayerEvent} event */
     onPlaybackRateChange: (event) => {
       this.emit('onPlaybackRateChange', event);
     },
+    /** @param {YoutubePlayerEvent} event */
     onError: (event) => {
       console.error(event);
       this.emit('onError', event);
     },
+    /** @param {YoutubePlayerEvent} event */
     onApiChange: (event) => {
       this.emit('onApiChange', event);
     },

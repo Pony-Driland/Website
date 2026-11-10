@@ -15,12 +15,16 @@ import {
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import { BootstrapDialogs } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
+/**
+ * @import { TinyHtmlAny } from 'tiny-essentials/libs/html/TinyHtml';
+ */
+
 BootstrapDialogs.Modal = BsModal;
 
 /**
  * Initializes and returns a Bootstrap Modal instance bound to a TinyHtml element.
  *
- * @param {TinyHtml<any>} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
+ * @param {TinyHtmlAny} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
  * @param {Partial<BsModal.Options>} [options] - Configuration options for the Bootstrap Modal.
  * @param {boolean} [autoStart=false] - Whether the modal should be shown immediately after initialization.
  * @returns {BsModal} The initialized Bootstrap Modal instance.
@@ -44,7 +48,7 @@ export function Modal(instance, options, autoStart = false) {
 /**
  * Initializes and returns a Bootstrap Tooltip instance bound to a TinyHtml element.
  *
- * @param {TinyHtml<any>} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
+ * @param {TinyHtmlAny} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
  * @param {Partial<BsTooltip.Options>} [options] - Configuration options for the Bootstrap Tooltip.
  * @returns {BsTooltip} The initialized Bootstrap Tooltip instance.
  * @throws {TypeError} If `instance` is not a TinyHtml instance.
@@ -66,7 +70,7 @@ export function Tooltip(instance, options) {
 /**
  * Initializes and returns a Bootstrap Alert instance bound to a TinyHtml element.
  *
- * @param {TinyHtml<any>} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
+ * @param {TinyHtmlAny} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
  * @returns {BsAlert} The initialized Bootstrap Alert instance.
  * @throws {TypeError} If `instance` is not a TinyHtml instance.
  * @throws {Error} If `instance` does not wrap a valid DOM Element.
@@ -86,7 +90,7 @@ export function Alert(instance) {
 /**
  * Initializes and returns a Bootstrap Button instance bound to a TinyHtml element.
  *
- * @param {TinyHtml<any>} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
+ * @param {TinyHtmlAny} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
  * @returns {BsButton} The initialized Bootstrap Button instance.
  * @throws {TypeError} If `instance` is not a TinyHtml instance.
  * @throws {Error} If `instance` does not wrap a valid DOM Element.
@@ -106,7 +110,7 @@ export function Button(instance) {
 /**
  * Initializes and returns a Bootstrap Carousel instance bound to a TinyHtml element.
  *
- * @param {TinyHtml<any>} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
+ * @param {TinyHtmlAny} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
  * @param {Partial<BsCarousel.Options>} [options] - Configuration options for the Bootstrap Carousel.
  * @returns {BsCarousel} The initialized Bootstrap Carousel instance.
  * @throws {TypeError} If `instance` is not a TinyHtml instance.
@@ -127,7 +131,7 @@ export function Carousel(instance, options) {
 /**
  * Initializes and returns a Bootstrap Collapse instance bound to a TinyHtml element.
  *
- * @param {TinyHtml<any>} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
+ * @param {TinyHtmlAny} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
  * @param {Partial<BsCollapse.Options>} [options] - Configuration options for the Bootstrap Collapse.
  * @returns {BsCollapse} The initialized Bootstrap Collapse instance.
  * @throws {TypeError} If `instance` is not a TinyHtml instance.
@@ -148,7 +152,7 @@ export function Collapse(instance, options) {
 /**
  * Initializes and returns a Bootstrap Dropdown instance bound to a TinyHtml element.
  *
- * @param {TinyHtml<any>} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
+ * @param {TinyHtmlAny} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
  * @param {Partial<BsDropdown.Options>} [options] - Configuration options for the Bootstrap Dropdown.
  * @returns {BsDropdown} The initialized Bootstrap Dropdown instance.
  * @throws {TypeError} If `instance` is not a TinyHtml instance.
@@ -169,7 +173,7 @@ export function Dropdown(instance, options) {
 /**
  * Initializes and returns a Bootstrap Offcanvas instance bound to a TinyHtml element.
  *
- * @param {TinyHtml<any>} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
+ * @param {TinyHtmlAny} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
  * @param {Partial<BsOffcanvas.Options>} [options] - Configuration options for the Bootstrap Offcanvas.
  * @param {boolean} [autoStart=false] - Whether the offcanvas should be shown immediately after initialization.
  * @returns {BsOffcanvas} The initialized Bootstrap Offcanvas instance.
@@ -193,7 +197,7 @@ export function Offcanvas(instance, options, autoStart = false) {
 /**
  * Initializes and returns a Bootstrap Popover instance bound to a TinyHtml element.
  *
- * @param {TinyHtml<any>} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
+ * @param {TinyHtmlAny} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
  * @param {Partial<BsPopover.Options>} [options] - Configuration options for the Bootstrap Popover.
  * @returns {BsPopover} The initialized Bootstrap Popover instance.
  * @throws {TypeError} If `instance` is not a TinyHtml instance.
@@ -214,7 +218,7 @@ export function Popover(instance, options) {
 /**
  * Initializes and returns a Bootstrap ScrollSpy instance bound to a TinyHtml element.
  *
- * @param {TinyHtml<any>} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
+ * @param {TinyHtmlAny} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
  * @param {Partial<BsScrollSpy.Options>} [options] - Configuration options for the Bootstrap ScrollSpy.
  * @returns {BsScrollSpy} The initialized Bootstrap ScrollSpy instance.
  * @throws {TypeError} If `instance` is not a TinyHtml instance.
@@ -235,7 +239,7 @@ export function ScrollSpy(instance, options) {
 /**
  * Initializes and returns a Bootstrap Tab instance bound to a TinyHtml element.
  *
- * @param {TinyHtml<any>} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
+ * @param {TinyHtmlAny} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
  * @returns {BsTab} The initialized Bootstrap Tab instance.
  * @throws {TypeError} If `instance` is not a TinyHtml instance.
  * @throws {Error} If `instance` does not wrap a valid DOM Element.
@@ -255,7 +259,7 @@ export function Tab(instance) {
 /**
  * Initializes and returns a Bootstrap Toast instance bound to a TinyHtml element.
  *
- * @param {TinyHtml<any>} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
+ * @param {TinyHtmlAny} instance - A TinyHtml element wrapper. Must contain a valid DOM element.
  * @param {Partial<BsToast.Options>} [options] - Configuration options for the Bootstrap Toast.
  * @param {boolean} [autoStart=false] - Whether the toast should be shown immediately after initialization.
  * @returns {BsToast} The initialized Bootstrap Toast instance.

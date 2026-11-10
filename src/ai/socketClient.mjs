@@ -4,27 +4,40 @@ import { countObj, isJsonObject } from 'tiny-essentials/basics/objChecker';
 
 /** @typedef {{ error: boolean; msg: string; code: number; }} SocketError */
 
+/**
+ * @typedef {Object} TinyClientIoConfig
+ * @property {string} [ip] - Socket.IO server URL.
+ * @property {string|null} [roomId] - Current room id.
+ * @property {string|null} [username] - Current username.
+ * @property {string|null} [password] - Current user password.
+ * @property {string|null} [roomPassword] - Current room password.
+ */
+
 class TinyClientIo extends EventEmitter {
+  /** @type {TinyClientIoConfig} */
   #cfg = {
-    /** @type {string|null} */
     roomId: null,
-    /** @type {string|null} */
     username: null,
-    /** @type {string|null} */
     password: null,
-    /** @type {string|null} */
     roomPassword: null,
   };
 
   /** @type {string|null} */
   id = null;
 
-  ratelimit = {};
+  /** @type {RatelimitState} */
+  ratelimit = { limit: {}, size: {} };
+  /** @type {RoomState} */
   room = {};
+  /** @type {RoomDataValues} */
   roomData = {};
+  /** @type {RoomDataValues} */
   roomPrivateData = {};
+  /** @type {SocketUser} */
   user = {};
+  /** @type {Record<string, SocketUserEntry>} */
   users = {};
+  /** @type {SocketHistoryEntry[]} */
   history = [];
 
   /** @type {string[]} */
@@ -33,21 +46,34 @@ class TinyClientIo extends EventEmitter {
   connected = false;
   active = false;
 
+  /** @type {RpgSchemaValues} */
+  rpgSchema = {};
+
+  /** @type {DiceSkin} */
+  dice = {};
+
+  /** @type {import('socket.io-client').Socket|null} */
+  socket = null;
+
+  /**
+   * @param {TinyClientIoConfig} cfg - Client configuration.
+   */
   constructor(cfg) {
     super();
     this.#cfg = cfg;
 
-    /** @type {Io|null} */
     this.socket = typeof cfg.ip === 'string' && cfg.ip.length > 0 ? Io(cfg.ip) : null;
 
     this.resetData();
 
-    if (this.socket) {
+    const socket = this.socket;
+
+    if (socket) {
       console.log('[socket.io] Starting...');
-      this.socket.on('disconnect', (reason, details) => {
-        this.active = this.socket.active;
+      socket.on('disconnect', (reason, details) => {
+        this.active = socket.active;
         this.id = null;
-        this.connected = this.socket.connected;
+        this.connected = socket.connected;
 
         console.log(
           `[socket-io] [disconnect]${typeof reason === 'string' ? ` ${reason}` : ''}`,
@@ -55,35 +81,35 @@ class TinyClientIo extends EventEmitter {
         );
       });
 
-      this.socket.on('connect_error', (err) => {
-        this.active = this.socket.active;
-        if (!this.socket.active) {
+      socket.on('connect_error', () => {
+        this.active = socket.active;
+        if (!socket.active) {
           // the connection was denied by the server
           // in that case, `socket.connect()` must be manually called in order to reconnect
         }
       });
 
-      this.socket.on('connect', () => {
-        this.active = this.socket.active;
-        console.log(`[socket.io] Connected! Id: ${this.socket.id}`);
-        this.id = this.socket.id;
-        this.connected = this.socket.connected;
+      socket.on('connect', () => {
+        this.active = socket.active;
+        console.log(`[socket.io] Connected! Id: ${socket.id}`);
+        this.id = socket.id ?? null;
+        this.connected = socket.connected;
       });
 
-      this.socket.io.on('reconnect_attempt', () => {
-        this.active = this.socket.active;
+      socket.io.on('reconnect_attempt', () => {
+        this.active = socket.active;
         console.log('[socket.io] Trying to reconnect...');
       });
 
-      this.socket.io.on('reconnect', () => {
-        this.active = this.socket.active;
+      socket.io.on('reconnect', () => {
+        this.active = socket.active;
         console.log('[socket.io] Reconnecting...');
       });
     }
   }
 
   /**
-   * @param {string} userId
+   * @param {string|null} [userId]
    * @returns {boolean}
    */
   isRoomMod(userId = this.getUserId()) {
@@ -93,7 +119,7 @@ class TinyClientIo extends EventEmitter {
   }
 
   /**
-   * @param {string} userId
+   * @param {string|null} [userId]
    * @returns {boolean}
    */
   isRoomOwner(userId = this.getUserId()) {
@@ -111,7 +137,7 @@ class TinyClientIo extends EventEmitter {
    * @returns {string|null}
    */
   getUserId() {
-    return this.#cfg.username;
+    return this.#cfg.username ?? null;
   }
 
   // Is connected
@@ -124,12 +150,12 @@ class TinyClientIo extends EventEmitter {
    * @returns {string|null}
    */
   getRoomId() {
-    return this.#cfg.roomId;
+    return this.#cfg.roomId ?? null;
   }
 
   // Reset data
   resetData() {
-    this.ratelimit = {};
+    this.ratelimit = { limit: {}, size: {} };
     this.room = {};
     this.rpgSchema = {};
     this.roomData = {};
@@ -141,6 +167,7 @@ class TinyClientIo extends EventEmitter {
   }
 
   // Rate limit
+  /** @param {unknown} [result] */
   setRateLimit(result) {
     this.ratelimit = { limit: {}, size: {}, time: null, loadAllHistory: false };
     if (isJsonObject(result)) {
@@ -198,10 +225,11 @@ class TinyClientIo extends EventEmitter {
   }
 
   // Dice
+  /** @param {unknown} [result] */
   setDice(result) {
     this.dice = {};
     if (isJsonObject(result)) {
-      const ratelimit = this.getRateLimit()?.dice;
+      const ratelimit = this.getRateLimit()?.dice ?? {};
       this.dice.img =
         typeof result.img === 'string'
           ? result.img.substring(0, ratelimit.img || result.img.length)
@@ -237,6 +265,7 @@ class TinyClientIo extends EventEmitter {
   }
 
   // User (local)
+  /** @param {unknown} result */
   setUser(result) {
     if (isJsonObject(result)) {
       this.user = {
@@ -259,11 +288,15 @@ class TinyClientIo extends EventEmitter {
   }
 
   // Users
+  /** @param {unknown} result */
   setUsers(result) {
-    this.users = isJsonObject(result) ? result : {};
+    this.users = isJsonObject(result)
+      ? /** @type {Record<string, SocketUserEntry>} */ (result)
+      : {};
   }
 
   // Add user (Local)
+  /** @param {unknown} result */
   addUser(result) {
     if (!this.users) this.users = {};
     if (isJsonObject(result) && typeof result.userId === 'string') {
@@ -276,6 +309,7 @@ class TinyClientIo extends EventEmitter {
   }
 
   // Edit user (Local)
+  /** @param {unknown} result */
   editUser(result) {
     if (!this.users) this.users = {};
     if (isJsonObject(result) && typeof result.userId === 'string') {
@@ -286,6 +320,7 @@ class TinyClientIo extends EventEmitter {
   }
 
   // Remove user (Local)
+  /** @param {unknown} result */
   removeUser(result) {
     if (isJsonObject(result) && this.users) {
       if (typeof result.userId === 'string' && this.users[result.userId]) {
@@ -302,6 +337,8 @@ class TinyClientIo extends EventEmitter {
   }
 
   // Set Room (Local)
+  /** @param {unknown} result */
+  /** @param {unknown} result */
   setRoom(result) {
     if (isJsonObject(result)) {
       this.room = {
@@ -344,6 +381,9 @@ class TinyClientIo extends EventEmitter {
     }
   }
 
+  /**
+   * @param {unknown} result
+   */
   setRpgSchema(result) {
     if (isJsonObject(result)) {
       this.rpgSchema = result;
@@ -351,7 +391,10 @@ class TinyClientIo extends EventEmitter {
     }
   }
 
-  // Set Room Data (Local)
+  /**
+   * Set Room Data (Local)
+   * @param {unknown} result
+   */
   setRoomData(result) {
     if (
       isJsonObject(result) &&
@@ -364,7 +407,10 @@ class TinyClientIo extends EventEmitter {
     }
   }
 
-  // Set room base (Local)
+  /**
+   * Set room base (Local)
+   * @param {unknown} result
+   */
   setRoomBase(result) {
     if (
       isJsonObject(result) &&
@@ -383,7 +429,11 @@ class TinyClientIo extends EventEmitter {
 
       // Users
       this.setUsers({});
-      for (const item in result.users) this.addUser({ userId: item, ...result.users[item] });
+      for (const item in result.users)
+        this.addUser({
+          userId: item,
+          .../** @type {Record<string, unknown>} */ (result.users[item]),
+        });
 
       // Mods
       this.setMods([]);
@@ -436,6 +486,7 @@ class TinyClientIo extends EventEmitter {
    * (Local)
    * @param {string[]} result
    */
+  /** @param {unknown} result */
   setMods(result) {
     this.mods = Array.isArray(result) ? result : [];
   }
@@ -443,6 +494,7 @@ class TinyClientIo extends EventEmitter {
   /**
    * (Local)
    */
+  /** @param {string} userId */
   addModUser(userId) {
     if (this.mods.indexOf(userId) < 0) this.mods.push(userId);
   }
@@ -450,164 +502,304 @@ class TinyClientIo extends EventEmitter {
   /**
    * (Local)
    */
+  /** @param {string} userId */
   removeModUser(userId) {
     const index = this.mods.indexOf(userId);
     if (index > -1) this.mods.splice(index, 1);
   }
 
-  // Socket emit
+  /**
+   * Emits a socket event and resolves with the server acknowledgement.
+   *
+   * @template {SocketAck} T
+   * @param {string} where - Event name.
+   * @param {unknown} data - Event payload.
+   * @returns {Promise<T>} The server acknowledgement.
+   */
   #socketEmitApi(where, data) {
-    return new Promise((resolve) => this.socket.emit(where, data, (result) => resolve(result)));
+    return new Promise((resolve) => {
+      if (!this.socket) {
+        resolve(/** @type {T} */ (/** @type {unknown} */ ({ error: true })));
+        return;
+      }
+      this.socket.emit(where, data, (/** @type {T} */ result) => resolve(result));
+    });
   }
 
-  // On connection
+  /**
+   * Registers a listener on the underlying socket.
+   *
+   * @param {string} event - Socket event name.
+   * @param {SocketListener} callback - Listener invoked by the server.
+   * @returns {void}
+   */
+  #socketOn(event, callback) {
+    if (!this.socket) return;
+    this.socket.on(event, callback);
+  }
+
+  /**
+   * Removes a listener from the underlying socket.
+   *
+   * @param {string} event - Socket event name.
+   * @param {SocketListener} callback - Listener to remove.
+   * @returns {void}
+   */
+  #socketOff(event, callback) {
+    if (!this.socket) return;
+    this.socket.off(event, callback);
+  }
+
+  /**
+   * On connection
+   * @param {SocketListener} callback
+   */
   onConnect(callback) {
-    this.socket.on('connect', callback);
+    this.#socketOn('connect', callback);
   }
 
+  /**
+   * @param {SocketListener} callback
+   */
   offConnect(callback) {
-    this.socket.off('connect', callback);
+    this.#socketOff('connect', callback);
   }
+
+  /**
+   * @param {SocketListener} callback
+   **/
   onDisconnect(callback) {
-    this.socket.on('disconnect', callback);
+    this.#socketOn('disconnect', callback);
   }
 
+  /**
+   * @param {SocketListener} callback
+   */
   offDisconnect(callback) {
-    this.socket.off('disconnect', callback);
+    this.#socketOff('disconnect', callback);
   }
 
-  // On user updated
+  /**
+   * On user updated
+   * @param {SocketListener} callback
+   */
   onUserUpdated(callback) {
-    this.socket.on('user-updated', callback);
+    this.#socketOn('user-updated', callback);
   }
 
+  /**
+   * @param {SocketListener} callback
+   */
   offUserUpdated(callback) {
-    this.socket.off('user-updated', callback);
+    this.#socketOff('user-updated', callback);
   }
 
-  // On message load
+  /**
+   * On message load
+   * @param {SocketListener} callback
+   */
   onRoomEnter(callback) {
-    this.socket.on('room-entered', callback);
+    this.#socketOn('room-entered', callback);
   }
 
+  /**
+   * @param {SocketListener} callback
+   */
   offRoomEnter(callback) {
-    this.socket.off('room-entered', callback);
+    this.#socketOff('room-entered', callback);
   }
 
-  // On new message
+  /**
+   * On new message
+   * @param {SocketListener} callback
+   */
   onNewMessage(callback) {
-    this.socket.on('new-message', callback);
+    this.#socketOn('new-message', callback);
   }
 
+  /**
+   * @param {SocketListener} callback
+   */
   offNewMessage(callback) {
-    this.socket.off('new-message', callback);
+    this.#socketOff('new-message', callback);
   }
 
-  // On message edit
+  /**
+   * On message edit
+   * @param {SocketListener} callback
+   * */
   onMessageEdit(callback) {
-    this.socket.on('message-updated', callback);
+    this.#socketOn('message-updated', callback);
   }
 
+  /**
+   * @param {SocketListener} callback
+   * */
   offMessageEdit(callback) {
-    this.socket.off('message-updated', callback);
+    this.#socketOff('message-updated', callback);
   }
 
-  // On message delete
+  /**
+   * On message delete
+   * @param {SocketListener} callback
+   * */
   onMessageDelete(callback) {
-    this.socket.on('message-deleted', callback);
+    this.#socketOn('message-deleted', callback);
   }
 
+  /**
+   * @param {SocketListener} callback
+   * */
   offMessageDelete(callback) {
-    this.socket.off('message-deleted', callback);
+    this.#socketOff('message-deleted', callback);
   }
 
-  // On dice result
+  /**
+   * On dice result
+   * @param {SocketListener} callback
+   */
   onDiceRoll(callback) {
-    this.socket.on('roll-result', callback);
+    this.#socketOn('roll-result', callback);
   }
 
+  /**
+   * @param {SocketListener} callback
+   */
   offDiceRoll(callback) {
-    this.socket.off('roll-result', callback);
+    this.#socketOff('roll-result', callback);
   }
 
-  // On server ratelimit load
+  /**
+   * On server ratelimit load
+   * @param {SocketListener} callback
+   */
   onGetRateLimit(callback) {
-    this.socket.on('ratelimt-updated', callback);
+    this.#socketOn('ratelimt-updated', callback);
   }
 
+  /**
+   * @param {SocketListener} callback
+   */
   offGetRateLimit(callback) {
-    this.socket.off('ratelimt-updated', callback);
+    this.#socketOff('ratelimt-updated', callback);
   }
 
-  // On room updates
+  /**
+   * On room updates
+   * @param {SocketListener} callback
+   */
   onRpgSchemaUpdates(callback) {
-    this.socket.on('rpg-schema-updated', callback);
+    this.#socketOn('rpg-schema-updated', callback);
   }
 
-  // On room updates
+  /**
+   * On room updates
+   * @param {SocketListener} callback
+   */
   onRoomUpdates(callback) {
-    this.socket.on('room-updated', callback);
+    this.#socketOn('room-updated', callback);
   }
 
+  /**
+   * @param {SocketListener} callback
+   */
   offRoomUpdates(callback) {
-    this.socket.off('room-updated', callback);
+    this.#socketOff('room-updated', callback);
   }
 
-  // On user banned from room
+  /**
+   *  On user banned from room
+   * @param {SocketListener} callback
+   */
   onRoomBan(callback) {
-    this.socket.on('user-banned', callback);
+    this.#socketOn('user-banned', callback);
   }
 
+  /**
+   * @param {SocketListener} callback
+   */
   offRoomBan(callback) {
-    this.socket.off('user-banned', callback);
+    this.#socketOff('user-banned', callback);
   }
 
-  // On kicked from room
+  /**
+   * On kicked from room
+   * @param {SocketListener} callback
+   */
   onRoomKick(callback) {
-    this.socket.on('user-kicked', callback);
+    this.#socketOn('user-kicked', callback);
   }
 
+  /**
+   * @param {SocketListener} callback
+   */
   offRoomKick(callback) {
-    this.socket.off('user-kicked', callback);
+    this.#socketOff('user-kicked', callback);
   }
 
-  // On user left room
+  /**
+   * On user left room
+   * @param {SocketListener} callback
+   */
   onUserLeft(callback) {
-    this.socket.on('user-left', callback);
+    this.#socketOn('user-left', callback);
   }
 
+  /**
+   * @param {SocketListener} callback
+   */
   offUserLeft(callback) {
-    this.socket.off('user-left', callback);
+    this.#socketOff('user-left', callback);
   }
 
-  // On user join room
+  /**
+   * On user join room
+   * @param {SocketListener} callback
+   */
   onUserJoin(callback) {
-    this.socket.on('user-joined', callback);
+    this.#socketOn('user-joined', callback);
   }
 
+  /**
+   * @param {SocketListener} callback
+   */
   offUserJoin(callback) {
-    this.socket.off('user-joined', callback);
+    this.#socketOff('user-joined', callback);
   }
 
-  // On room data
+  /**
+   * On room data
+   * @param {SocketListener} callback
+   */
   onRoomData(callback) {
-    this.socket.on('room-data-updated', callback);
+    this.#socketOn('room-data-updated', callback);
   }
 
+  /**
+   * @param {SocketListener} callback
+   */
   offRoomData(callback) {
-    this.socket.off('room-data-updated', callback);
+    this.#socketOff('room-data-updated', callback);
   }
 
-  // On mod change
+  /**
+   * On mod change
+   * @param {SocketListener} callback
+   */
   onRoomModChange(callback) {
-    this.socket.on('room-mod-updated', callback);
+    this.#socketOn('room-mod-updated', callback);
   }
 
+  /**
+   * @param {SocketListener} callback
+   */
   offRoomModChange(callback) {
-    this.socket.off('room-mod-updated', callback);
+    this.#socketOff('room-mod-updated', callback);
   }
 
-  // Login account
+  /**
+   * Login account
+   */
   login() {
     return this.#socketEmitApi('login', {
       userId: this.#cfg.username,
@@ -615,7 +807,9 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
-  // Join room
+  /**
+   * Join room
+   */
   joinRoom() {
     return this.#socketEmitApi('join', {
       roomId: this.#cfg.roomId,
@@ -623,14 +817,18 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
-  // Leave room
+  /**
+   * Leave room
+   */
   leaveRoom() {
     return this.#socketEmitApi('leave', {
       roomId: this.#cfg.roomId,
     });
   }
 
-  // Ban user room
+  /**
+   * Ban user room
+   */
   banUser(userId = '') {
     return this.#socketEmitApi('ban-from-room', {
       userId,
@@ -638,7 +836,9 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
-  // Unban user room
+  /**
+   * Unban user room
+   */
   unbanUser(userId = '') {
     return this.#socketEmitApi('unban-from-room', {
       userId,
@@ -646,7 +846,10 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
-  // Kick user room
+  /**
+   * Kick user room
+   * @param {string|string[]} userId
+   */
   kickUser(userId = '') {
     return this.#socketEmitApi('kick-from-room', {
       userId,
@@ -654,21 +857,28 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
-  // Login account
+  /**
+   * Login account
+   * @param {DiceSkin} diceSkin
+   */
   setAccountDice(diceSkin) {
     return this.#socketEmitApi('set-dice', {
       diceSkin,
     });
   }
 
-  // Create room
+  /**
+   * Create room
+   */
   existsRoom() {
     return this.#socketEmitApi('exists-room', {
       roomId: this.#cfg.roomId,
     });
   }
 
-  // Create room
+  /**
+   * Create room
+   */
   createRoom(title = '') {
     return this.#socketEmitApi('create-room', {
       roomId: this.#cfg.roomId,
@@ -677,7 +887,10 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
-  // Delete room
+  /**
+   * Delete room
+   * @param {string} password
+   */
   deleteRoom(password) {
     return this.#socketEmitApi('delete-room', {
       roomId: this.#cfg.roomId,
@@ -685,7 +898,9 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
-  // Disable readOnly room
+  /**
+   * Disable readOnly room
+   */
   disableReadOnlyRoom() {
     return new Promise((resolve, reject) =>
       this.#socketEmitApi('disable-readonly-room', {
@@ -699,7 +914,9 @@ class TinyClientIo extends EventEmitter {
     );
   }
 
-  // Enable readOnly room
+  /**
+   * Enable readOnly room
+   */
   enableReadOnlyRoom() {
     return new Promise((resolve, reject) =>
       this.#socketEmitApi('enable-readonly-room', {
@@ -713,7 +930,9 @@ class TinyClientIo extends EventEmitter {
     );
   }
 
-  // Disable room
+  /**
+   * Disable room
+   */
   disableRoom() {
     return new Promise((resolve, reject) =>
       this.#socketEmitApi('disable-room', {
@@ -727,7 +946,9 @@ class TinyClientIo extends EventEmitter {
     );
   }
 
-  // Enable room
+  /**
+   * Enable room
+   */
   enableRoom() {
     return new Promise((resolve, reject) =>
       this.#socketEmitApi('enable-room', {
@@ -741,7 +962,10 @@ class TinyClientIo extends EventEmitter {
     );
   }
 
-  // Add room mods
+  /**
+   * Add room mods
+   * @param {string[]} mods
+   */
   addMod(mods = []) {
     return this.#socketEmitApi('room-add-mod', {
       roomId: this.#cfg.roomId,
@@ -749,7 +973,10 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
-  // Remove room mods
+  /**
+   * Remove room mods
+   * @param {string[]} mods
+   */
   removeMod(mods = []) {
     return this.#socketEmitApi('room-remove-mod', {
       roomId: this.#cfg.roomId,
@@ -757,7 +984,9 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
-  // Update room settings
+  /**
+   * Update room settings
+   */
   updateRoomSettings(settings = {}) {
     return this.#socketEmitApi('update-room', {
       roomId: this.#cfg.roomId,
@@ -765,7 +994,9 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
-  // Update room schema
+  /**
+   * Update room schema
+   */
   updateRpgSchema(schemaData = {}) {
     return new Promise((resolve, reject) =>
       this.#socketEmitApi('update-rpg-schema', {
@@ -780,7 +1011,9 @@ class TinyClientIo extends EventEmitter {
     );
   }
 
-  // Update room data
+  /**
+   * Update room data
+   */
   updateRoomData(values = {}, isPrivate = false) {
     return this.#socketEmitApi('update-room-data', {
       roomId: this.#cfg.roomId,
@@ -789,21 +1022,27 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
-  // Is moderator
+  /**
+   * Is moderator
+   */
   accountIsMod(userId = '') {
     return this.#socketEmitApi('user-is-mod', {
       userId,
     });
   }
 
-  // Is Owner
+  /**
+   * Is Owner
+   */
   accountIsOwner(userId = '') {
     return this.#socketEmitApi('user-is-owner', {
       userId,
     });
   }
 
-  // Ban a server account
+  /**
+   * Ban a server account
+   */
   banAccount(userId = '', reason = '') {
     return this.#socketEmitApi('ban', {
       userId,
@@ -811,21 +1050,27 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
-  // Unban a server account
+  /**
+   * Unban a server account
+   */
   unbanAccount(userId = '') {
     return this.#socketEmitApi('unban', {
       userId,
     });
   }
 
-  // Kick a server account
+  /**
+   * Kick a server account
+   */
   kickAccount(userId = '') {
     return this.#socketEmitApi('kick', {
       userId,
     });
   }
 
-  // Change your password
+  /**
+   * Change your password
+   */
   changePassword(oldPassword = '', password = '') {
     return this.#socketEmitApi('change-password', {
       password,
@@ -833,7 +1078,9 @@ class TinyClientIo extends EventEmitter {
     });
   }
 
-  // Change your nickname
+  /**
+   * Change your nickname
+   */
   changeNickname(nickname = '') {
     return new Promise((resolve, reject) =>
       this.#socketEmitApi('change-nickname', {
@@ -847,7 +1094,9 @@ class TinyClientIo extends EventEmitter {
     );
   }
 
-  // Register account
+  /**
+   * Register account
+   */
   register(userId = '', password = '', nickname = '') {
     return this.#socketEmitApi('register', {
       userId,
@@ -859,26 +1108,15 @@ class TinyClientIo extends EventEmitter {
   /**
    * Load messages
    *
-   * @returns {Promise<{
-   *  messages: {
-   *    chapter: number;
-   *    date: number;
-   *    edited: number;
-   *    errorCode: string|null;
-   *    hash: string;
-   *    historyId: string;
-   *    isModel: boolean;
-   *    model: string;
-   *    roomdId: string;
-   *    text: string;
-   *    tokens: number;
-   *    userId: string;
-   *  }[];
-   *  page: number;
-   *  success: boolean;
-   *  totalItems: number;
-   *  totalPages: number;
-   * }>}
+   * @param {Object} [filters] - Search filters.
+   * @param {string|null} [filters.text] - Free text filter.
+   * @param {number|null} [filters.chapter] - Chapter filter.
+   * @param {string|null} [filters.userId] - Author filter.
+   * @param {number|null} [filters.start] - Start of the date range.
+   * @param {number|null} [filters.end] - End of the date range.
+   * @param {number} [filters.page] - Page number.
+   * @param {number|null} [filters.perPage] - Items per page.
+   * @returns {Promise<HistorySearchResult>}
    */
   loadMessages({
     text = null,
@@ -887,8 +1125,8 @@ class TinyClientIo extends EventEmitter {
     start = null,
     end = null,
     page = 1,
-    perPage = this.getRateLimit().size.history ?? null,
-  }) {
+    perPage = this.getRateLimit().size?.history ?? null,
+  } = {}) {
     return new Promise((resolve, reject) =>
       this.#socketEmitApi('load-messages', {
         roomId: this.#cfg.roomId,
@@ -901,20 +1139,30 @@ class TinyClientIo extends EventEmitter {
         userId,
       })
         .then((result) => {
-          resolve(result);
+          /** @type {(value: never) => void} */ (resolve)(/** @type {never} */ (result));
         })
         .catch(reject),
     );
   }
 
-  // Load Dice History
+  /**
+   * Load the dice history.
+   *
+   * @param {Object} [filters] - Search filters.
+   * @param {string|null} [filters.userId] - Author filter.
+   * @param {number|null} [filters.start] - Start of the date range.
+   * @param {number|null} [filters.end] - End of the date range.
+   * @param {number} [filters.page] - Page number.
+   * @param {number|null} [filters.perPage] - Items per page.
+   * @returns {Promise<DiceHistorySearchResult>}
+   */
   loadDiceHistory({
     userId = null,
     start = null,
     end = null,
     page = 1,
-    perPage = this.getRateLimit().size.history ?? null,
-  }) {
+    perPage = this.getRateLimit().size?.history ?? null,
+  } = {}) {
     return new Promise((resolve, reject) =>
       this.#socketEmitApi('load-dice-history', {
         roomId: this.#cfg.roomId,
@@ -925,13 +1173,17 @@ class TinyClientIo extends EventEmitter {
         userId,
       })
         .then((result) => {
-          resolve(result);
+          resolve(/** @type {DiceHistorySearchResult} */ (/** @type {unknown} */ (result)));
         })
         .catch(reject),
     );
   }
 
-  // Send room message
+  /**
+   * Send room message
+   * @param {string} message
+   * @param {{ tokens?: unknown, model?: string, hash?: string, isModel?: boolean }} options
+   */
   sendMessage(message = '', { tokens, model, hash, isModel = false }) {
     return new Promise((resolve, reject) =>
       this.#socketEmitApi('send-message', {
@@ -949,8 +1201,16 @@ class TinyClientIo extends EventEmitter {
     );
   }
 
-  // Edit room message
-  editMessage({ message = '', hash = null, tokens = null }, msgId = '') {
+  /**
+   * Edit room message
+   * @param {{ message?: string, hash?: string|null, tokens?: unknown }} data - Message payload.
+   * @param {string|number|undefined} msgId - Message id.
+   * @returns {Promise<SocketAck>} The server acknowledgement.
+   */
+  editMessage(
+    { message = '', hash = null, tokens = null },
+    msgId = /** @type {string|number|undefined} */ (''),
+  ) {
     return new Promise((resolve, reject) =>
       this.#socketEmitApi('edit-message', {
         roomId: this.#cfg.roomId,
@@ -966,7 +1226,9 @@ class TinyClientIo extends EventEmitter {
     );
   }
 
-  // Delete room message
+  /**
+   * Delete room message
+   */
   deleteMessage(msgId = '') {
     return new Promise((resolve, reject) =>
       this.#socketEmitApi('delete-message', {
@@ -980,8 +1242,13 @@ class TinyClientIo extends EventEmitter {
     );
   }
 
-  // Roll Dice
-  rollDice(dice = [], canZero = false, modifiers = {}) {
+  /**
+   * Roll Dice
+   * @param {DiceRollResult[]|number[]} dice
+   * @param {boolean} canZero
+   * @param {DiceRollModifier[]} modifiers
+   */
+  rollDice(dice = [], canZero = false, modifiers = []) {
     return this.#socketEmitApi('roll-dice', {
       roomId: this.#cfg.roomId,
       canZero,
@@ -995,26 +1262,32 @@ class TinyClientIo extends EventEmitter {
   }
 
   connect() {
-    this.socket.connect();
+    this.socket?.connect();
   }
 
   disconnect() {
-    this.socket.disconnect();
+    this.socket?.disconnect();
   }
 
   destroy() {
-    if (this.socket) this.socket.destroy();
+    if (this.socket)
+      /** @type {{ destroy: () => void }} */ (/** @type {unknown} */ (this.socket)).destroy();
   }
 
-  /** @returns {boolean} */
+  /**
+   * @param {unknown} result
+   * @returns {boolean}
+   */
   checkRoomId(result) {
     return isJsonObject(result) && result.roomId === this.getRoomId();
   }
 
+  /** @param {SocketAiScript} tinyAiScript */
   install(tinyAiScript) {
     // Dice
-    this.onDiceRoll((result) => {
+    this.onDiceRoll((/** @type {SocketPayload} */ result) => {
       if (this.checkRoomId(result)) {
+        /** @type {DiceRollEventData} */
         const data = {
           results: null,
           modifiers: null,
@@ -1022,7 +1295,7 @@ class TinyClientIo extends EventEmitter {
           canZero: null,
           skin: null,
           id: null,
-          date: 0,
+          date: null,
         };
 
         // Skin
@@ -1048,22 +1321,23 @@ class TinyClientIo extends EventEmitter {
         if (
           Array.isArray(result.results) &&
           result.results.every(
-            (item) => typeof item.value === 'number' && typeof item.sides === 'number',
+            (/** @type {SocketPayload} */ item) =>
+              typeof item.value === 'number' && typeof item.sides === 'number',
           )
         )
-          data.results = result.results;
+          data.results = /** @type {DiceRollResult[]} */ (result.results);
 
         if (
-          Array.isArray(result.modifiers) ||
+          Array.isArray(result.modifiers) &&
           result.modifiers.every(
-            (item) =>
+            (/** @type {SocketPayload} */ item) =>
               countObj(item) === 3 &&
               typeof item.index === 'number' &&
               typeof item.expression === 'string' &&
               typeof item.original === 'string',
           )
         ) {
-          data.modifiers = result.modifiers;
+          data.modifiers = /** @type {DiceRollModifier[]} */ (result.modifiers);
           data.original = result.original;
           data.index = result.index;
         }
@@ -1268,8 +1542,8 @@ class TinyClientIo extends EventEmitter {
     });
 
     // Disconnect
-    this.onDisconnect((reason, details) => {
-      this.emit('disconnect', reason, details);
+    this.onDisconnect((/** @type {SocketPayload} */ reason) => {
+      this.emit('disconnect', reason);
     });
   }
 }
