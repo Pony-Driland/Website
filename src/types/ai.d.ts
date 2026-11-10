@@ -270,15 +270,22 @@ type ValidateMultiplayerFn = (
   isInverse?: boolean,
 ) => boolean;
 
-/** A single part of an AI message. */
-interface TinyAiMessagePart {
-  /** Textual content. */
-  text?: string;
-  /** Inline binary content. */
-  inlineData?: { mime_type: string; data: string } | null;
-  /** Any other provider field. */
-  [key: string]: unknown;
-}
+/**
+ * Payload of a single message part.
+ *
+ * The provider types every part as
+ * `Record<"text" | "inlineData", string | { mime_type, data } | null>`, so both
+ * keys have to accept the very same union.
+ */
+type TinyAiPartContent = string | { mime_type: string; data: string } | null;
+
+/**
+ * A single part of an AI message.
+ *
+ * Mirrors the provider type, which declares both keys as required, so the
+ * messages built here can be handed back to `tiny-ai-api`.
+ */
+type TinyAiMessagePart = Record<'text' | 'inlineData', TinyAiPartContent>;
 
 /** A single entry of the AI session history. */
 interface TinyAiSessionMessage {
@@ -309,25 +316,25 @@ interface TinyAiModel {
   /** Human readable name. */
   displayName: string | null;
   /** Category the model belongs to, when it is a group. */
-  category?: string;
+  category?: string | null;
   /** Models of a category. */
-  data?: TinyAiModel[];
+  data?: TinyAiModel[] | null;
   /** Maximum amount of tokens accepted by the model context. */
-  inputTokenLimit?: number;
+  inputTokenLimit?: number | null;
   /** Maximum amount of tokens the model can output. */
-  outputTokenLimit?: number;
+  outputTokenLimit?: number | null;
   /** Maximum temperature accepted by the model. */
-  maxTemperature?: number;
+  maxTemperature?: number | null;
   /** Default temperature of the model. */
-  temperature?: number;
+  temperature?: number | null;
   /** Default top-P of the model. */
-  topP?: number;
+  topP?: number | null;
   /** Default top-K of the model. */
-  topK?: number;
+  topK?: number | null;
   /** Default presence penalty of the model. */
-  presencePenalty?: number;
+  presencePenalty?: number | null;
   /** Default frequency penalty of the model. */
-  frequencyPenalty?: number;
+  frequencyPenalty?: number | null;
   /** Any other provider field. */
   [key: string]: unknown;
 }

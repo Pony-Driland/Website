@@ -63,6 +63,72 @@ const getClient = () => {
   return client;
 };
 
+/**
+ * Tells whether an entry of `getModelsList()` is a category group.
+ *
+ * @param {import('tiny-ai-api/TinyAiInstance').AiModel|import('tiny-ai-api/TinyAiInstance').AiCategory} entry - Model list entry.
+ * @returns {entry is import('tiny-ai-api/TinyAiInstance').AiCategory} `true` for category groups.
+ */
+const isModelCategory = (entry) => 'category' in entry && typeof entry.category === 'string';
+
+/**
+ * A single message of a `tiny-ai-api` session.
+ *
+ * @typedef {import('tiny-ai-api/TinyAiInstance').SessionDataContent['data'][number]} AiContentData
+ */
+
+/**
+ * Token payload accepted by `tiny-ai-api`.
+ *
+ * The published types do not declare the `msgId` field, but the library stores
+ * the object untouched, so the multiplayer mode relies on it.
+ *
+ * @typedef {{ count: number|null, hide?: boolean, msgId?: number }} AiTokenPayload
+ */
+
+/**
+ * Builds a single session message.
+ *
+ * `buildContents()` is typed as returning `AIContentData | number` because it
+ * can also push into an array. When no array is given it always returns the
+ * built content, so the union is narrowed here once for the whole page.
+ *
+ * @param {Record<string, any>} item - Content to build.
+ * @param {string|null} [role] - Role of the content.
+ * @returns {AiContentData} The built content.
+ */
+const buildContent = (item, role = null) =>
+  /** @type {AiContentData} */ (
+    /** @type {unknown} */ (tinyAi.buildContents(undefined, item, role))
+  );
+
+/**
+ * Builds a token payload for `tiny-ai-api`.
+ *
+ * @param {AiTokenPayload} data - Token data.
+ * @returns {{ count: number|null, hide?: boolean }} The payload.
+ */
+const tokenPayload = (data) => /** @type {{ count: number|null, hide?: boolean }} */ (data);
+
+/**
+ * Reads the server message id stored in a token payload.
+ *
+ * @param {{ count: number|null, hide?: boolean }|null|undefined} data - Token data.
+ * @returns {number|undefined} The stored message id, when there is one.
+ */
+const getTokenMsgId = (data) => {
+  const msgId = data ? /** @type {AiTokenPayload} */ (data).msgId : undefined;
+  return typeof msgId === 'number' ? msgId : undefined;
+};
+
+/**
+ * Reads the text of a message part.
+ *
+ * @param {TinyAiMessagePart|undefined} part - Message part.
+ * @returns {string|undefined} The text, when the part holds one.
+ */
+const partText = (part) => (part && typeof part.text === 'string' ? part.text : undefined);
+
 export const AiScriptStart = async () => {
   let sessionEnabled = true;
   // Update Url
@@ -545,11 +611,7 @@ export const AiScriptStart = async () => {
     if (Array.isArray(data)) {
       for (const index in data) {
         const msgId = !readOnly
-          ? tinyAi.addData(
-              tinyAi.buildContents(null, data[index], data[index].role),
-              tokens[index],
-              sId,
-            )
+          ? tinyAi.addData(buildContent(data[index], data[index].role), tokens[index], sId)
           : tinyAi.getIdByIndex(Number(index));
 
         if (!sId) {
@@ -657,7 +719,7 @@ export const AiScriptStart = async () => {
       // Set Instruction
       if (canSandBox(sessionId))
         tinyAi.setSystemInstruction(
-          file.systemInstruction,
+          file.systemInstruction ?? undefined,
           file.tokens ? file.tokens.systemInstruction : 0,
         );
       else if (instructionId && aiTemplates.instructions[instructionId])
@@ -1173,7 +1235,7 @@ export const AiScriptStart = async () => {
           TinyHtml.createFrom('hr', { class: 'border-white mt-0 mb-2' }),
           connectionInfoBar,
           TinyHtml.createFrom('span').setText(
-            !tinyAi.noai
+            !tinyAiScript.noai
               ? 'AI makes mistakes, so double-check it. AI does not replace the fic literature (Careful! AI can type spoilers!).'
               : '',
           ),
@@ -1312,24 +1374,21 @@ export const AiScriptStart = async () => {
 
         // Get models
         for (const index in models) {
-          // Normal insert
-          if (!models[index].category && !Array.isArray(models[index].data))
-            insertItem(models[index].id, models[index].displayName);
+          const entry = models[index];
+
           // Category insert
-          else {
+          if (isModelCategory(entry)) {
             // Category
-            insertItem(
-              models[index].category,
-              models[index].displayName || models[index].category,
-              true,
-            );
+            insertItem(entry.category, entry.displayName || entry.category, true);
 
             // Category items
-            const categoryItems = models[index].data ?? [];
-            for (const index2 in categoryItems) {
-              insertItem(categoryItems[index2].id, categoryItems[index2].displayName);
+            for (const index2 in entry.data) {
+              insertItem(entry.data[index2].id, entry.data[index2].displayName);
             }
           }
+
+          // Normal insert
+          else insertItem(entry.id, entry.displayName);
         }
 
         // New model value
@@ -1349,7 +1408,7 @@ export const AiScriptStart = async () => {
    * @returns {void}
    */
   const insertDefaultSettings = (model, newModel) => {
-    tinyAi.setModel(newModel, ficConfigs.selected);
+    tinyAi.setModel(newModel, ficConfigs.selected ?? undefined);
     presencePenalty.disable();
     frequencyPenalty.disable();
 
@@ -1389,7 +1448,7 @@ export const AiScriptStart = async () => {
       if (model) {
         insertDefaultSettings(model, newModel);
         tinyLs.setItem('tiny-ai-storage-model-selected', newModel);
-        if (tinyAi.getData()) tinyAi.setModel(newModel, ficConfigs.selected);
+        if (tinyAi.getData()) tinyAi.setModel(newModel, ficConfigs.selected ?? undefined);
       } else {
         tokenCount.total.setText(0);
         temperature.reset().disable();
@@ -1811,10 +1870,11 @@ export const AiScriptStart = async () => {
               tinyAi.getMsgTokensByIndex(msgIndex) || { count: null },
               (newCount) => {
                 const tokenData = tinyAi.getMsgTokensByIndex(msgIndex);
-                tinyAi.replaceIndex(msgIndex, undefined, {
-                  count: newCount,
-                  msgId: tokenData ? tokenData.msgId : undefined,
-                });
+                tinyAi.replaceIndex(
+                  msgIndex,
+                  undefined,
+                  tokenPayload({ count: newCount, msgId: getTokenMsgId(tokenData) }),
+                );
                 if (isOnline()) {
                   const hash = tinyAi.getMsgHashByIndex(msgIndex);
                   const message = tinyAi.getMsgByIndex(msgIndex);
@@ -1822,8 +1882,8 @@ export const AiScriptStart = async () => {
                   const client = getClient();
                   client
                     .editMessage(
-                      { message: message.parts[0].text, hash, tokens: newCount },
-                      tokenData ? tokenData.msgId : undefined,
+                      { message: partText(message.parts[0]), hash, tokens: newCount },
+                      getTokenMsgId(tokenData),
                     )
                     .then((result) => {
                       if (result.error) alert(result.msg ?? 'Unknown error', { title: 'ERROR!' });
@@ -2016,68 +2076,76 @@ export const AiScriptStart = async () => {
         if (typeof tinyCache.cancel !== 'undefined') delete tinyCache.cancel;
       };
 
+      /**
+       * Applies a chunk streamed by the model.
+       *
+       * @param {TinyAiStreamChunk} chuck - Streamed chunk.
+       * @returns {void}
+       */
+      const onStreamChunk = (chuck) => {
+        isComplete = Boolean(chuck.done);
+        // Update tokens
+        buildAmountTokens(chuck.tokenUsage);
+        const promptTokens = amountTokens.data.candidates || 0;
+
+        // Read contents
+        if (chuck.contents) {
+          for (const index in chuck.contents) {
+            const streamed = chuck.contents[index];
+            // Update history
+            if (typeof tinyCache.msgId === 'undefined') {
+              tinyCache.msgId = tinyAi.addData(streamed, {
+                count: promptTokens || null,
+              });
+              ballon.msgId = tinyCache.msgId;
+            } else
+              tinyAi.replaceIndex(tinyAi.getIndexOfId(tinyCache.msgId), streamed, {
+                count: promptTokens || null,
+              });
+
+            // Send insert request
+            if (typeof streamed.parts[0].text === 'string')
+              insertMessage(
+                streamed.parts[0].text,
+                promptTokens,
+                streamed.role ?? 'model',
+                String(streamed.finishReason ?? ''),
+              );
+
+            // Update message cache
+            const currentBalloon = tinyCache.msgBallon;
+            if (!currentBalloon) continue;
+            const oldBallonCache = currentBalloon.data('tiny-ai-cache');
+            oldBallonCache.msg = streamed.parts[0].text;
+            currentBalloon.setData('tiny-ai-cache', oldBallonCache);
+            ballon.cache = oldBallonCache;
+
+            // Add class
+            currentBalloon.addClass('entering-ai-message');
+          }
+        }
+
+        // Remove class
+        if (isComplete) {
+          const notificationError = () =>
+            tinyNotification.send('System', { body: 'Your message was not processed.' });
+
+          if (tinyCache.msgBallon) {
+            tinyCache.msgBallon.removeClass('entering-ai-message');
+            const ballonCache = tinyCache.msgBallon.data('tiny-ai-cache');
+            if (body.hasClass('windowHidden')) {
+              if (ballonCache) tinyNotification.send(ballonCache.role, { body: ballonCache.msg });
+              else notificationError();
+            }
+          } else if (body.hasClass('windowHidden')) notificationError();
+          completeTask();
+        }
+      };
+
       // Content Generator
       tinyAi
-        .genContent(content, tinyAi.getModel(), tinyController, (chuck) => {
-          isComplete = Boolean(chuck.done);
-          // Update tokens
-          buildAmountTokens(chuck.tokenUsage);
-          const promptTokens = amountTokens.data.candidates || 0;
-
-          // Read contents
-          if (chuck.contents) {
-            for (const index in chuck.contents) {
-              const streamed = chuck.contents[index];
-              // Update history
-              if (typeof tinyCache.msgId === 'undefined') {
-                tinyCache.msgId = tinyAi.addData(streamed, {
-                  count: promptTokens || null,
-                });
-                ballon.msgId = tinyCache.msgId;
-              } else
-                tinyAi.replaceIndex(tinyAi.getIndexOfId(tinyCache.msgId), streamed, {
-                  count: promptTokens || null,
-                });
-
-              // Send insert request
-              if (typeof streamed.parts[0].text === 'string')
-                insertMessage(
-                  streamed.parts[0].text,
-                  promptTokens,
-                  streamed.role ?? 'model',
-                  String(streamed.finishReason ?? ''),
-                );
-
-              // Update message cache
-              const currentBalloon = tinyCache.msgBallon;
-              if (!currentBalloon) continue;
-              const oldBallonCache = currentBalloon.data('tiny-ai-cache');
-              oldBallonCache.msg = streamed.parts[0].text;
-              currentBalloon.setData('tiny-ai-cache', oldBallonCache);
-              ballon.cache = oldBallonCache;
-
-              // Add class
-              currentBalloon.addClass('entering-ai-message');
-            }
-          }
-
-          // Remove class
-          if (isComplete) {
-            const notificationError = () =>
-              tinyNotification.send('System', { body: 'Your message was not processed.' });
-
-            if (tinyCache.msgBallon) {
-              tinyCache.msgBallon.removeClass('entering-ai-message');
-              const ballonCache = tinyCache.msgBallon.data('tiny-ai-cache');
-              if (body.hasClass('windowHidden')) {
-                if (ballonCache) tinyNotification.send(ballonCache.role, { body: ballonCache.msg });
-                else notificationError();
-              }
-            } else if (body.hasClass('windowHidden')) notificationError();
-            completeTask();
-          }
-        })
-        .then((result) => {
+        .genContent(content, tinyAi.getModel() ?? undefined, tinyController, onStreamChunk)
+        .then((/** @type {TinyAiGenResult} */ result) => {
           if (!result.error) {
             // Insert tokens
             buildAmountTokens(result.tokenUsage);
@@ -2275,11 +2343,7 @@ export const AiScriptStart = async () => {
       try {
         // Exist message
         if (typeof msg === 'string' && msg.length > 0) {
-          const newMsg = tinyAi.buildContents(
-            null,
-            { role: 'user', parts: [{ text: msg }] },
-            'user',
-          );
+          const newMsg = buildContent({ role: 'user', parts: [{ text: msg }] }, 'user');
 
           // Get tokens
           const newTokens =
@@ -2351,10 +2415,11 @@ export const AiScriptStart = async () => {
         });
 
         if (!msgData.error && typeof sentId === 'number') {
-          tinyAi.replaceIndex(tinyAi.getIndexOfId(sentId), null, {
-            count: sendData.tokens,
-            msgId: msgData.id,
-          });
+          tinyAi.replaceIndex(
+            tinyAi.getIndexOfId(sentId),
+            undefined,
+            tokenPayload({ count: sendData.tokens, msgId: msgData.id }),
+          );
           addMessage(
             makeMessage(
               {
@@ -2455,7 +2520,7 @@ export const AiScriptStart = async () => {
           if (theMsg) {
             const client = getClient();
             await client
-              .sendMessage(theMsg.parts[0].text, sendData)
+              .sendMessage(partText(theMsg.parts[0]), sendData)
               .then((result) => {
                 if (result.error) {
                   alert(result.msg ?? 'Unknown error', { title: 'ERROR!' });
@@ -2469,10 +2534,11 @@ export const AiScriptStart = async () => {
                   cache.edited = 0;
                   if (typeof cache.update === 'function') cache.update();
                 }
-                tinyAi.replaceIndex(tinyAi.getIndexOfId(msgId), null, {
-                  count: sendData.tokens,
-                  msgId: result.id,
-                });
+                tinyAi.replaceIndex(
+                  tinyAi.getIndexOfId(msgId),
+                  undefined,
+                  tokenPayload({ count: sendData.tokens, msgId: result.id }),
+                );
               })
               .catch((err) => {
                 alert(err.message, { title: 'ERROR!' });
@@ -2539,8 +2605,7 @@ export const AiScriptStart = async () => {
     // Insert first message
     if (history && history.data.length < 1 && typeof history.firstDialogue === 'string') {
       const msgId = tinyAi.addData(
-        tinyAi.buildContents(
-          null,
+        buildContent(
           {
             role: 'model',
             parts: [{ text: history.firstDialogue }],
@@ -2575,10 +2640,11 @@ export const AiScriptStart = async () => {
             msgData.id = result.id;
             msgData.date = result.date;
             msgData.chapter = result.chapter;
-            tinyAi.replaceIndex(tinyAi.getIndexOfId(msgId), null, {
-              count: sendData.tokens,
-              msgId: result.id,
-            });
+            tinyAi.replaceIndex(
+              tinyAi.getIndexOfId(msgId),
+              undefined,
+              tokenPayload({ count: sendData.tokens, msgId: result.id }),
+            );
           })
           .catch((err) => {
             alert(err.message, { title: 'ERROR!' });
@@ -2897,7 +2963,7 @@ export const AiScriptStart = async () => {
             const closeReplace = () => {
               msgBallon.removeClass('w-100').empty();
               tinyCache.updateText();
-              const msg = tinyAi.getMsgById();
+              const msg = tinyAi.getMsgByIndex(tinyIndex);
               tinyErrorAlert.updateText(msg ? msg.finishReason : null);
             };
 
@@ -2920,10 +2986,14 @@ export const AiScriptStart = async () => {
                 newContent.parts[0].text = tinyCache.msg ?? '';
 
                 // Replace content
-                tinyAi.replaceIndex(tinyIndex, newContent, {
-                  count: null,
-                  msgId: typeof tinyCache.msgId === 'number' ? tinyCache.msgId : undefined,
-                });
+                tinyAi.replaceIndex(
+                  tinyIndex,
+                  newContent,
+                  tokenPayload({
+                    count: null,
+                    msgId: typeof tinyCache.msgId === 'number' ? tinyCache.msgId : undefined,
+                  }),
+                );
                 let isError = false;
                 if (isOnline()) {
                   const isNoAi = tinyAiScript.noai || tinyAiScript.mpClient;
@@ -2955,10 +3025,14 @@ export const AiScriptStart = async () => {
                   textInput.removeClass('disabled').removeProp('disabled');
                   newContent.parts[0].text = oldMsg ?? '';
                   tinyCache.msg = oldMsg;
-                  tinyAi.replaceIndex(tinyIndex, newContent, {
-                    count: oldTokens,
-                    msgId: typeof tinyCache.msgId === 'number' ? tinyCache.msgId : undefined,
-                  });
+                  tinyAi.replaceIndex(
+                    tinyIndex,
+                    newContent,
+                    tokenPayload({
+                      count: oldTokens,
+                      msgId: typeof tinyCache.msgId === 'number' ? tinyCache.msgId : undefined,
+                    }),
+                  );
                   return;
                 }
 
@@ -3960,11 +4034,11 @@ export const AiScriptStart = async () => {
         const addNewMsg = (msgData, msgId) => {
           const role = msgData.isModel ? 'model' : 'user';
           const sentId = tinyAi.addData(
-            tinyAi.buildContents(null, { role, parts: [{ text: msgData.text }] }, role),
-            {
+            buildContent({ role, parts: [{ text: msgData.text }] }, role),
+            tokenPayload({
               count: typeof msgData.tokens === 'number' ? msgData.tokens : null,
               msgId: typeof msgId === 'number' ? msgId : undefined,
-            },
+            }),
           );
 
           addMessage(
@@ -4027,7 +4101,9 @@ export const AiScriptStart = async () => {
           } else {
             const data = tinyAi.getData();
             if (!isJsonObject(data)) return;
-            const index = data.tokens.data.findIndex((token) => token.msgId === msgData.id);
+            const index = data.tokens.data.findIndex(
+              (token) => getTokenMsgId(token) === msgData.id,
+            );
             if (index < 0) return;
 
             const newContent = tinyAi.getMsgByIndex(index);
