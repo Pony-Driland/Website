@@ -2865,8 +2865,8 @@ export const AiScriptStart = async () => {
       },
     };
 
-    const client = getClient();
-    const isNotYou = !isOnline() || client.getUserId() !== username;
+    const client = tinyIo.client;
+    const isNotYou = !isOnline() || (client && client.getUserId() !== username);
 
     const msgBase = TinyHtml.createFrom('div', {
       class: `p-3${typeof username !== 'string' || !isNotYou ? ' d-flex flex-column align-items-end' : ''} ai-chat-data`,
@@ -3023,7 +3023,7 @@ export const AiScriptStart = async () => {
                   };
 
                   await client
-                    .editMessage(sendData, tinyCache.msgId ?? undefined)
+                    ?.editMessage(sendData, tinyCache.msgId ?? undefined)
                     .then((result) => {
                       if (result.error) {
                         alert(result.msg ?? 'Unknown error', { title: 'ERROR!' });
