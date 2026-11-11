@@ -38,7 +38,9 @@ import './scss/dark.scss';
 import './scss/main.scss';
 import './scss/carousel.scss';
 import './scss/rpg.scss';
-import { openMDFile, openNewAddress, clearFicData } from './fixStuff/markdown.mjs';
+import { openMDFile, openHomePage } from './fixStuff/markdown.mjs';
+import { startRouter } from './router/index.mjs';
+import { getPagePath } from './router/pages.mjs';
 import { app, body, head, tinyWin, topPage } from './html/query.mjs';
 import { markdownBase } from './html/base.mjs';
 import { fileEnd, fileStart } from './ai/values/defaults.mjs';
@@ -212,48 +214,42 @@ export const saveRoleplayFormat = (chapter, saveAsFile = true, tinyCfg = {}) => 
   else return { data: `${info}\n\n${file}`, mime: 'text/plain' };
 };
 
-// Get Params
-const getParams = () => {
-  const urlSearchParams = new URLSearchParams(document.location.search);
-  return Object.fromEntries(urlSearchParams.entries());
+/**
+ * Renders a page resolved by the router.
+ *
+ * @param {import('./router/pages.mjs').RouterPage} page - Page resolved from the current URL.
+ * @returns {Promise<void>}
+ */
+const renderPage = async (page) => {
+  // The carousel is exclusive to the homepage. Toggling it here keeps the
+  // behaviour correct on the browser back/forward buttons too.
+  topPage.toggleClass('d-none', page.name !== 'home');
+
+  switch (page.name) {
+    case 'read-fic':
+      openChapterMenu(page.query);
+      return;
+
+    case 'ai':
+      loaderScreen.start();
+      await tinyNotification.requestPerm();
+      loaderScreen.stop();
+      await AiScriptStart();
+      return;
+
+    case 'character':
+    case 'markdown':
+      await openMDFile(getPagePath(page) ?? '');
+      return;
+
+    case 'chapter':
+      openChapterMenu({ chapter: String(page.chapter), ...page.query });
+      return;
+
+    default:
+      openHomePage();
+  }
 };
-
-// Pop State
-tinyWin.on('popstate', () => {
-  // Remove Fic Data
-  clearFicData();
-
-  // Get Params
-  const params = getParams();
-
-  // Load Page
-  const loadPage = () => {
-    if (storyData.urlPage !== params.path) {
-      storyData.urlPage = params.path;
-      if (params.path === 'read-fic') openChapterMenu(params);
-      if (params.path === 'ai') return;
-      else openNewAddress(params, true);
-    }
-  };
-
-  // Default
-  if (document.location.pathname === '/') {
-    loadPage();
-  }
-
-  // Custom
-  else {
-    // Get Data
-    const urlData = Object.entries(storyCfg.custom_url ?? {}).find(
-      (item) => item[1].url === document.location.pathname,
-    );
-    if (urlData) {
-      params.path = urlData[0];
-      params.title = urlData[1].title ?? '';
-      loadPage();
-    }
-  }
-});
 
 // Start App
 export const rootApp = new TinyDomReadyManager();
@@ -1177,12 +1173,12 @@ rootApp.onReady(() => {
 
         const slides = [
           {
-            img: './img/homepage/banner/pony_driland.jpg',
+            img: '/img/homepage/banner/pony_driland.jpg',
             title: 'Pony Driland',
             text: 'Discover a science fiction story mixed with horror, mystery, and adventure. A mysterious dimension has just been discovered!',
           },
           {
-            img: './img/homepage/banner/discord.jpg',
+            img: '/img/homepage/banner/discord.jpg',
             title: 'Discord Server',
             text: '<a href="https://discord.gg/sSkysVtj7y" target="_blank">Join the Discord official server to see real-time updates.</a>',
           },
@@ -1214,15 +1210,9 @@ rootApp.onReady(() => {
           TinyHtml.createFrom('p', { class: 'px-5' }).setHtml(slide.text).appendTo(caption);
         });
 
-        // Start Readme
-        const params = getParams();
-        if (params.path === 'read-fic') openChapterMenu(params);
-        else if (params.path === 'ai') {
-          loaderScreen.start();
-          await tinyNotification.requestPerm();
-          loaderScreen.stop();
-          AiScriptStart();
-        } else openNewAddress(params, true, true);
+        // Start the router. It renders the page of the current URL and keeps
+        // handling the browser back/forward buttons from now on.
+        await startRouter(renderPage);
 
         // Final part
         fn();

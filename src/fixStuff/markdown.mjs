@@ -13,6 +13,8 @@ import { fixFileUrl, fixHref, fixImageSrc, fixSpoilers } from './urls.mjs';
 import { body, topPage } from '../html/query.mjs';
 import { yt } from '../api/youtube.mjs';
 import { markdownBase } from '../html/base.mjs';
+import { updateUrl } from '../router/index.mjs';
+import { getCharacterByPath } from '../router/pages.mjs';
 
 import '../markdown/dropdown.mjs';
 import '../markdown/spoiler.mjs';
@@ -67,18 +69,19 @@ export const clearFicData = () => {
 /**
  * URL Update
  *
- * @param {string} url
- * @param {string} [title]
- * @param {boolean} [isPopState=false]
- * @param {Record<string, string|number|boolean>} [extra={}]
+ * Keeps the browser URL in sync with the page that is currently rendered. The
+ * URL itself is built by the router, so the URL format is described in a
+ * single place.
+ *
+ * @param {import('../router/pages.mjs').RouterPage} page - Page being rendered.
+ * @param {boolean} [isPopState=false] - Whether this comes from a popstate event.
+ * @returns {void}
  */
-export const urlUpdate = (url, title, isPopState = false, extra = {}) => {
-  // Page Title
-  if (typeof title !== 'string' || title.length < 1) {
-    title = storyCfg.title;
-  }
+export const urlUpdate = (page, isPopState = false) => {
+  const title =
+    typeof page.title === 'string' && page.title.length > 0 ? page.title : storyCfg.title;
 
-  if (url === 'ai') {
+  if (page.name === 'ai') {
     if (!appData.ai.using) {
       appData.ai.using = true;
       appData.emitter.emit('isUsingAI', true);
@@ -90,49 +93,19 @@ export const urlUpdate = (url, title, isPopState = false, extra = {}) => {
     }
   }
 
-  /** @type {string} */
-  let newUrl =
-    typeof url === 'string' && !url.startsWith('/') && url !== 'read-fic' && url !== 'ai'
-      ? `/${url}`
-      : url;
-
-  let extraReady = '';
-  for (const item in extra) {
-    extraReady += `&${item}=${extra[item]}`;
-  }
-
-  document.title = title ?? storyCfg.title;
-  storyData.urlPage = newUrl;
+  document.title = title;
+  storyData.urlPage = page.path ?? page.name;
 
   // Google
   if (typeof storyCfg.gtag === 'string') {
     gtag('event', 'url', {
       event_title: title,
       event_category: 'open_url',
-      url: newUrl,
+      url: storyData.urlPage,
     });
   }
 
-  // Pop State
-  if (!isPopState) {
-    if (typeof newUrl === 'string' && newUrl.length > 0) {
-      if (!storyCfg.custom_url?.[newUrl]) {
-        window.history.pushState(
-          { pageTitle: title },
-          '',
-          '/?path=' + encodeURIComponent(newUrl) + extraReady,
-        );
-      } else {
-        window.history.pushState(
-          { pageTitle: storyCfg.custom_url?.[newUrl].title },
-          '',
-          storyCfg.custom_url?.[newUrl].url + extraReady,
-        );
-      }
-    } else {
-      window.history.pushState({ pageTitle: title }, '', '/');
-    }
-  }
+  if (!isPopState) updateUrl({ ...page, title });
 };
 
 /**
@@ -459,20 +432,22 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
  */
 export const openMDFile = async (url, isMain = false) => {
   if (typeof url === 'string') {
+    // Normalize the path so `pages/x.md` and `/pages/x.md` are the same page.
+    const filePath = url.startsWith('/') ? url : `/${url}`;
+
     // Remove Fic Data
     clearFicData();
 
     // New page
     if (url !== 'MAIN') {
       // Read Data Base
-      console.log(`Opening MD file "${url}"...`);
+      console.log(`Opening MD file "${filePath}"...`);
       loaderScreen.start('Loading page...');
 
       // Load ajax
-      const fileData = await fetch(
-        `${url.startsWith('/') ? url : `/${url}`}${window.fileVersion ?? ''}`,
-        { method: 'GET' },
-      )
+      const fileData = await fetch(`${filePath}${window.fileVersion ?? ''}`, {
+        method: 'GET',
+      })
         .then((res) => res.text())
         .catch((err) => {
           loaderScreen.stop();
@@ -531,7 +506,15 @@ export const openMDFile = async (url, isMain = false) => {
 
         TinyHtml.setWinScrollTop(0);
         loaderScreen.stop();
-        urlUpdate(url, title);
+
+        // Keep the address bar in sync with the page that was just rendered.
+        // `updateUrl` is a no-op while the router is the one rendering.
+        const character = getCharacterByPath(filePath);
+        urlUpdate(
+          character
+            ? { name: 'character', slug: character.slug, title: character.title ?? title }
+            : { name: 'markdown', path: filePath, title },
+        );
       } catch (err) {
         // Error!
         loaderScreen.stop();
@@ -543,7 +526,7 @@ export const openMDFile = async (url, isMain = false) => {
     // Main page
     else {
       insertMarkdownFile(storyData.readme ?? '', null, isMain, true);
-      urlUpdate('');
+      urlUpdate({ name: 'home' });
     }
     return;
   }
@@ -551,34 +534,12 @@ export const openMDFile = async (url, isMain = false) => {
 };
 
 /**
- * @param {Record<string, string>} data - Query string parameters.
- * @param {boolean} [isPopState] - Whether this comes from a popstate event.
- * @param {boolean} [useCustom] - Whether custom URLs are allowed.
+ * Renders the home page (readme).
+ *
+ * @returns {void}
  */
-export const openNewAddress = (data, isPopState = false, useCustom = false) => {
-  // File Path
-  const filePath = data.path;
-
-  // Prepare Custom URL
-  if (useCustom && storyCfg.custom_url?.[data.path]) {
-    isPopState = false;
-  }
-
-  if (
-    !data ||
-    typeof filePath !== 'string' ||
-    filePath.length < 1 ||
-    !filePath.startsWith('/') ||
-    filePath.indexOf('http://') > -1 ||
-    filePath.indexOf('https://') > -1
-  ) {
-    insertMarkdownFile(storyData.readme ?? '', null, true, true);
-  } else {
-    openMDFile(filePath);
-    if (typeof data.title === 'string' && data.title.length > 0) {
-      urlUpdate(data.path, data.title, isPopState);
-    } else {
-      urlUpdate(data.path, undefined, isPopState);
-    }
-  }
+export const openHomePage = () => {
+  clearFicData();
+  insertMarkdownFile(storyData.readme ?? '', null, true, true);
+  urlUpdate({ name: 'home' });
 };

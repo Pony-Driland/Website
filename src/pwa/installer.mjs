@@ -1,12 +1,17 @@
+/*
+ * PWA controller.
+ *
+ * Thin wrapper around `TinyServiceWorker`, which owns the registration, the
+ * update flow and the display-mode detection. This module only exposes the
+ * pieces the UI needs.
+ *
+ * @module pwa/installer
+ */
+
 import { EventEmitter } from 'events';
-import forPromise from 'for-promise';
+import TinyServiceWorker from 'tiny-essentials/libs/sw/browser/TinyServiceWorker';
 import TinyDomReadyManager from 'tiny-essentials/libs/html/TinyDomReadyManager';
 import { body } from '../html/query.mjs';
-
-/**
- * @typedef {Object} MessageData
- * @property {string} type - The type of message being sent to the Service Worker.
- */
 
 /**
  * A tab rendered by the install banner.
@@ -17,265 +22,6 @@ import { body } from '../html/query.mjs';
  * @property {string} [icon] - Icon class of the tab.
  * @property {() => void} [onClick] - Click handler of the tab.
  */
-
-/**
- * Sends a message to the active Service Worker controller.
- *
- * @param {MessageData} data - The message payload to be sent.
- * @throws {TypeError} If data is null or not an object.
- * @returns {void|null}
- */
-const postMessage = (data) => {
-  if (!data || typeof data !== 'object') {
-    throw new TypeError('The data parameter must be a valid object.');
-  }
-
-  if (
-    ('serviceWorker' in navigator || 'ServiceWorker' in navigator) &&
-    navigator.serviceWorker.controller &&
-    navigator.serviceWorker.controller.postMessage
-  ) {
-    return navigator.serviceWorker.controller.postMessage(data);
-  }
-  return null;
-};
-
-let firstTime = true;
-let deferredPrompt;
-window.matchMedia('(display-mode: standalone)').addEventListener('change', (evt) => {
-  body.removeClass('window-browser', 'window-standalone');
-
-  let displayMode = 'browser';
-  if (evt.matches) {
-    displayMode = 'standalone';
-  }
-
-  // Log display mode change to analytics
-  console.log(`[PWA] DISPLAY_MODE_CHANGED`, displayMode);
-  tinyPwa.emit('displayMode', displayMode);
-  body?.addClass(`window-${displayMode}`);
-});
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent the mini-infobar from appearing on mobile
-  // e.preventDefault();
-
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-
-  // Update UI notify the user they can install the PWA
-  // showInstallPromotion();
-
-  // Optionally, send analytics event that PWA install promo was shown.
-  tinyPwa.emit('deferredPrompt', deferredPrompt);
-  console.log(`[PWA] 'beforeinstallprompt' event was fired.`, deferredPrompt);
-});
-
-window.addEventListener('appinstalled', () => {
-  // Hide the app-provided install promotion
-  // hideInstallPromotion();
-
-  // Clear the deferredPrompt so it can be garbage collected
-  deferredPrompt = null;
-
-  // Optionally, send analytics event to indicate successful install
-  tinyPwa.emit('deferredPrompt', deferredPrompt);
-  console.log(`[PWA] PWA was installed`);
-});
-
-/**
- * Determines the current PWA display mode.
- *
- * @returns {'twa' | 'standalone' | 'browser'}
- */
-function getPWADisplayMode() {
-  const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
-
-  if (document.referrer.startsWith('android-app://')) {
-    return 'twa';
-  }
-
-  if (/** @type {{ standalone?: boolean }} */ (navigator).standalone || isStandalone) {
-    return 'standalone';
-  }
-
-  return 'browser';
-}
-
-/**
- * @returns {boolean}
- */
-function isUsingPWA() {
-  return tinyPwa.enabled;
-}
-
-/**
- * Clears the fetch cache via Service Worker message.
- * @returns {void}
- */
-function clearFetchPwaCache() {
-  postMessage({
-    type: 'CLEAR_FETCH_CACHE',
-  });
-}
-
-if ('serviceWorker' in navigator || 'ServiceWorker' in navigator) {
-  /** @type {Record<string, (event: MessageEvent) => void>} */
-  const msgEvents = {};
-  navigator.serviceWorker.addEventListener('message', (event) => {
-    if (event.data && typeof msgEvents[event.data.type] === 'function')
-      msgEvents[event.data.type](event);
-  });
-}
-
-/**
- * Main function to handle Service Worker installation and updates.
- * Refactored for readability while maintaining original logic.
- *
- * @returns {void}
- */
-function installPWA() {
-  if ('serviceWorker' in navigator || 'ServiceWorker' in navigator) {
-    /**
-     * Validates Service Worker state changes.
-     * @param {ServiceWorker|null} sw - The Service Worker instance.
-     */
-    const tinyCheck = (sw) => {
-      if (sw) {
-        console.log(`[PWA State] ${sw.state}`);
-        if (sw.state === 'installed') {
-          tinyPwa._setNeedRefresh(true);
-          location.reload();
-        } else if (sw.state === 'activated' && !tinyPwa.needRefresh)
-          if (firstTime) firstTime = false;
-      }
-    };
-
-    // Initial check for active worker
-    navigator.serviceWorker.ready.then((reg) => tinyCheck(reg.active));
-
-    /**
-     * Sets up listeners for Service Worker updates.
-     * @param {ServiceWorkerRegistration} registration - The Service Worker registration.
-     */
-    const tinyRegistrationChecker = (registration) => {
-      // updatefound is also fired for the very first install. ¯\_(ツ)_/¯
-      registration.addEventListener('updatefound', () => {
-        tinyCheck(registration.active);
-        registration.installing?.addEventListener('statechange', () =>
-          tinyCheck(registration.installing),
-        );
-      });
-    };
-
-    // Get Items
-    const cacheChecker = { count: 0, removed: false, keep: false };
-    navigator.serviceWorker
-      .getRegistrations()
-      .then((items) => {
-        // Register new Service Worker
-        const registerNewService = () =>
-          navigator.serviceWorker
-            .register('./service-worker.js', { scope: './' })
-            // Complete
-            .then((registration) => {
-              console.log('[PWA] Service Worker Registered.');
-              tinyPwa._setIsEnabled(true);
-              tinyRegistrationChecker(registration);
-            })
-            // Error
-            .catch((err) => {
-              console.log('[PWA] Service Worker Failed to Register.');
-              console.error(err);
-              tinyPwa._init();
-            });
-
-        if (items.length > 0) {
-          forPromise(
-            { data: items },
-            async (
-              /** @type {number} */ item,
-              /** @type {() => void} */ fn,
-              /** @type {(err: unknown) => void} */ fnErr,
-            ) => {
-              // Get Url data
-              /** @type {URL|{ pathname?: string }} */
-              const tinyUrl =
-                items[item].active &&
-                typeof items[item].active.scriptURL === 'string' &&
-                items[item].active.scriptURL.length > 0
-                  ? new URL(items[item].active.scriptURL)
-                  : {};
-
-              // Remove old stuff
-              if (
-                cacheChecker.count > 0 ||
-                !items[item].active ||
-                (items[item].active.state !== 'activated' &&
-                  items[item].active.state !== 'activating') ||
-                tinyUrl.pathname !== '/service-worker.js'
-              ) {
-                items[item]
-                  .unregister()
-                  .then((success) => {
-                    if (!success)
-                      console.error(`[PWA] Fail to remove the Service Worker ${items[item].scope}`);
-                    else cacheChecker.removed = true;
-                    fn();
-                  })
-                  .catch(fnErr);
-              }
-
-              // Update tiny stuff
-              else if (tinyUrl.pathname === '/service-worker.js') {
-                tinyRegistrationChecker(items[item]);
-                if (
-                  items[item].active &&
-                  (items[item].active.state === 'activated' ||
-                    items[item].active.state === 'activating')
-                ) {
-                  items[item]
-                    .update()
-                    .then((success) => {
-                      if (!success)
-                        console.error(
-                          `[PWA] Fail to update the Service Worker ${items[item].scope}`,
-                        );
-                      else {
-                        console.log('[PWA] Service Worker Updated.');
-                        cacheChecker.keep = true;
-                        tinyPwa._setIsEnabled(true);
-                      }
-                      fn();
-                    })
-                    .catch(fnErr);
-                }
-              }
-
-              // Add count
-              cacheChecker.count++;
-            },
-          )
-            // Remove progress complete
-            .then(() => {
-              if (cacheChecker.removed && !cacheChecker.keep) registerNewService();
-            })
-            // Error
-            .catch((err) => {
-              console.log('[PWA] Service Worker Failed to Unregister.');
-              console.error(err);
-              tinyPwa._init();
-            });
-        } else registerNewService();
-      })
-      // Error
-      .catch((err) => {
-        console.log('[PWA] Service Worker Failed to get Register list.');
-        console.error(err);
-        tinyPwa._init();
-      });
-  } else tinyPwa._init();
-}
 
 /**
  * Class representing the PWA management system.
@@ -355,7 +101,7 @@ class TinyPwa extends EventEmitter {
   }
 
   getTabId() {
-    this.tabId;
+    return this.tabId;
   }
 
   isEnabled() {
@@ -363,38 +109,83 @@ class TinyPwa extends EventEmitter {
   }
 
   getDisplayMode() {
-    return getPWADisplayMode();
+    return worker.displayMode;
   }
 
   clearFetchCache() {
-    return clearFetchPwaCache();
+    return worker.emitMessage('CLEAR_FETCH_CACHE');
   }
+}
+
+/** Shared PWA state. */
+export const tinyPwa = new TinyPwa();
+
+/**
+ * The service worker manager.
+ *
+ * `TinyServiceWorker` handles the registration, the version check, the update
+ * prompt and the display-mode detection.
+ */
+export const worker = new TinyServiceWorker({
+  id: 'pony-driland',
+  swUrl: '/service-worker.js',
+  version: String(window.fileVersion ?? '1').replace(/^\?v=/, ''),
+});
+
+// `TinyServiceWorker` emits these lifecycle events at runtime, but they are not
+// part of the public `TinyDebuggerEvents` map, so the emitter is widened here.
+const swEvents = /** @type {import('events').EventEmitter} */ (/** @type {unknown} */ (worker));
+
+swEvents.on('sw:VersionUpdateAvailable', () => tinyPwa._setNeedRefresh(true));
+swEvents.on('sw:NewVersionReady', () => tinyPwa._setNeedRefresh(true));
+
+/**
+ * Registers the service worker and wires the PWA state into the UI.
+ *
+ * @returns {void}
+ */
+function installPWA() {
+  worker
+    // The service worker is bundled as an ES module (it imports the
+    // `TinyServiceWorkerEngine`), so the browser has to load it as one.
+    .register({ scope: '/', type: 'module' })
+    .then(() => {
+      tinyPwa._setIsEnabled(!worker.isFailed);
+    })
+    .catch((err) => {
+      console.log('[PWA] Service Worker Failed to Register.');
+      console.error(err);
+    })
+    .finally(() => tinyPwa._init());
 }
 
 const initDom = new TinyDomReadyManager();
 
-/**
- * Shared PWA controller: handles the install prompt, the update flow and the
- * display-mode detection.
- */
-export const tinyPwa = new TinyPwa();
 initDom.onReady(() => {
-  if (window.matchMedia('(display-mode: standalone)').matches) {
-    console.log(`[PWA] This is running as standalone.`);
-    body.addClass(`window-standalone`);
-    tinyPwa.emit('displayMode', 'standalone');
-  } else {
-    console.log(`[PWA] This is running as browser.`);
-    body.addClass(`window-browser`);
-    tinyPwa.emit('displayMode', 'browser');
-  }
+  const displayMode = worker.displayMode;
+  console.log(`[PWA] This is running as ${displayMode}.`);
+  body.addClass(`window-${displayMode}`);
+  tinyPwa.emit('displayMode', displayMode);
 });
 
 export const vanillaPwa = {
-  postMessage,
-  getDisplayMode: getPWADisplayMode,
-  isUsing: isUsingPWA,
-  clearFetch: clearFetchPwaCache,
+  /**
+   * Sends a message to the active Service Worker controller.
+   *
+   * @param {{ type: string, data?: unknown }} data - The message payload.
+   * @returns {boolean} `true` when the message was sent.
+   */
+  postMessage: (data) => {
+    if (!data || typeof data !== 'object') {
+      throw new TypeError('The data parameter must be a valid object.');
+    }
+    if (!worker.isSwAvailable) return false;
+    worker.postMessage(data);
+    return true;
+  },
+  getDisplayMode: () => worker.displayMode,
+  isUsing: () => tinyPwa.enabled,
+  clearFetch: () => tinyPwa.clearFetchCache(),
   install: installPWA,
 };
 

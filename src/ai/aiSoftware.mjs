@@ -144,7 +144,7 @@ const partText = (part) => (part && typeof part.text === 'string' ? part.text : 
 export const AiScriptStart = async () => {
   let sessionEnabled = true;
   // Update Url
-  urlUpdate('ai', 'AI Page');
+  urlUpdate({ name: 'ai', title: 'AI Page' });
 
   // Clear page
   clearFicData();

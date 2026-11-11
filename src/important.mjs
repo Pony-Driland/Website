@@ -20,7 +20,7 @@ TinyHtml.elemDebug = true;
 TinyHtml.defaultDisplay = '';
 
 // Start jsStore
-export const connStore = new JsStore.Connection(new Worker('jsstore.worker.min.js'));
+export const connStore = new JsStore.Connection(new Worker('/jsstore.worker.min.js'));
 
 // Localstorage
 export const tinyLs = new TinyLocalStorage('pony-driland');

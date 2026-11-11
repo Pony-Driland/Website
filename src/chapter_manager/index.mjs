@@ -679,13 +679,14 @@ export const openChapterMenu = (params = {}) => {
       }
     }
 
-    /** @type {Record<string, string|number>} */
-    const newParams = { chapter: params.chapter };
-    if (params.line) newParams.line = Number(params.line);
+    /** @type {Record<string, string>} */
+    const newParams = {};
+    if (params.line) newParams.line = String(params.line);
 
     // Send Data
-    urlUpdate(`read-fic`, undefined, false, newParams);
-    newRead(Number(params.chapter), params.line !== null ? Number(params.line) : null);
+    urlUpdate({ name: 'chapter', chapter: Number(params.chapter), query: newParams });
+    newRead(Number(params.chapter), params.line ? Number(params.line) : null);
+    return;
   }
 
   // Nope. Choose One
@@ -1100,7 +1101,7 @@ export const openChapterMenu = (params = {}) => {
         .on('click', (e) => {
           e.preventDefault();
           // Start Chapter
-          urlUpdate(`read-fic`, undefined, false, { chapter });
+          urlUpdate({ name: 'chapter', chapter: Number(chapter) });
           newRead(Number(chapterButton.attr('chapter')));
         });
 
@@ -1169,5 +1170,5 @@ export const openChapterMenu = (params = {}) => {
         If the character's name matches a character with a page, it will be a link to access the page.
 
     */
-  urlUpdate('read-fic', 'Read Fic');
+  urlUpdate({ name: 'read-fic', title: 'Read Fic' });
 };

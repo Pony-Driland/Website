@@ -36,7 +36,7 @@ export const tiny = new TinyBuilder({
       type: 'css', // gera arquivo CSS separado
     }),
   ], // adds Node.js polyfills for browser builds
-  entryPoints: ['start.mjs', 'redirect.mjs'], // main entry points
+  entryPoints: ['start.mjs', 'redirect.mjs', 'service-worker.mjs'], // main entry points
   format: 'esm', // output as ES modules
   define: {
     global: 'window', // fix libraries that expect "global" to exist

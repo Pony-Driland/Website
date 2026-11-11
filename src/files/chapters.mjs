@@ -121,12 +121,10 @@ export const storyData = {
       const chapter = i + 1;
       loaderScreen.update(`Loading chapter ${chapter}...`);
       console.log(`Loading Chapter ${chapter}...`);
-      console.log(
-        './chapters/' + storyData.lang.active + '/' + chapter + '.json' + window.fileVersion,
-      );
-      const data = await fetchJson(
-        './chapters/' + storyData.lang.active + '/' + chapter + '.json' + window.fileVersion,
-      ).catch((err) => {
+      const chapterUrl =
+        '/chapters/' + storyData.lang.active + '/' + chapter + '.json' + window.fileVersion;
+      console.log(chapterUrl);
+      const data = await fetchJson(chapterUrl).catch((err) => {
         console.log(`Chapter ${chapter} failed during the load!`);
         loaderScreen.stop();
         failApp(err);
