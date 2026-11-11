@@ -28,7 +28,7 @@ import { makeMsgRenderer, userStatus } from './msgRender.mjs';
 
 import './values/jsonTemplate.mjs';
 
-import { canSandBox, tinyAi, tinyIo } from './software/base.mjs';
+import { canSandBox, getClient, tinyAi, tinyIo } from './software/base.mjs';
 import { tinyAiScript } from './software/tinyAiScript.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
@@ -56,12 +56,6 @@ import { openDiceHistory } from './buttons/diceHistory.mjs';
 import { rpgSchemaSettingsMenu } from './buttons/rpgSchema.mjs';
 
 const { Icon } = TinyHtmlElems;
-
-const getClient = () => {
-  const client = tinyIo.client;
-  if (!client) throw new Error('IO Client not found!');
-  return client;
-};
 
 /**
  * Tells whether an entry of `getModelsList()` is a category group.

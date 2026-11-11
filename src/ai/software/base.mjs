@@ -15,6 +15,12 @@ import TinyClientIo from '../socketClient.mjs';
 /** @type {TinyIo} */
 export const tinyIo = { client: null, firstTime: true };
 
+export const getClient = () => {
+  const client = tinyIo.client;
+  if (!client) throw new Error('IO Client not found!');
+  return client;
+};
+
 /**
  * Shared `tiny-ai-api` instance used by every AI screen.
  */

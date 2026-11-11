@@ -112,6 +112,13 @@ body.is-using-ai {
 
   /* AI Chatbox */
   #chat-history-search {
+    /* Delete button turns red while the shift key is held (skip confirmation) */
+    .shift-danger .delete-button {
+      background-color: var(--bs-danger) !important;
+      border-color: var(--bs-danger) !important;
+      color: #fff !important;
+    }
+
     .modal-dialog {
       max-width: none;
       width: 80%;

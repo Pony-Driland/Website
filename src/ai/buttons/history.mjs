@@ -2,7 +2,7 @@ import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
-import { tinyIo } from '../software/base.mjs';
+import { getClient, tinyIo } from '../software/base.mjs';
 import { isOnline } from '../software/enablerContent.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import { loaderScreen } from '../../important.mjs';
@@ -24,9 +24,34 @@ const { Form, Button, TextInput, DateTimeInput, NumberInput, Textarea } = TinyHt
  */
 export const openHistory = () => {
   if (!isOnline()) return;
-  const room = tinyIo.client.getRoom();
+  const client = getClient();
+
+  const room = client.getRoom();
 
   const $root = TinyHtml.createFrom('div');
+
+  // TITLE: Shift danger hint
+  // Highlights every delete button while the shift key is held, warning the user that
+  // the next click will delete the message without asking for confirmation.
+  /** @param {boolean} active */
+  const setShiftDanger = (active) => $root.toggleClass('shift-danger', active);
+
+  /** @param {KeyboardEvent} event */
+  const onShiftKeyDown = (event) => {
+    if (event.key === 'Shift') setShiftDanger(true);
+  };
+
+  /** @param {KeyboardEvent} event */
+  const onShiftKeyUp = (event) => {
+    if (event.key === 'Shift') setShiftDanger(false);
+  };
+
+  // Safety net: the browser may swallow the keyup while the tab is unfocused
+  const onShiftBlur = () => setShiftDanger(false);
+
+  window.addEventListener('keydown', onShiftKeyDown);
+  window.addEventListener('keyup', onShiftKeyUp);
+  window.addEventListener('blur', onShiftBlur);
 
   // Form Card
   const card = TinyHtml.createFrom('div', { class: 'card border' });
@@ -85,7 +110,7 @@ export const openHistory = () => {
       loaderScreen.start();
 
       // Receive results
-      tinyIo.client
+      client
         .loadMessages({
           page: result.page ?? undefined,
           perPage: result.perPage,
@@ -182,7 +207,7 @@ export const openHistory = () => {
                         loaderScreen.start();
 
                         let isError = false;
-                        await tinyIo.client
+                        await client
                           .editMessage(
                             {
                               message: newText,
@@ -206,8 +231,8 @@ export const openHistory = () => {
                               );
 
                               tokensContainer.empty();
-                              tinyIo.client.emit('messageEdit', result);
-                              tinyIo.client.emit('needUpdateTokens');
+                              client.emit('messageEdit', result);
+                              client.emit('needUpdateTokens');
                             }
                           })
                           .catch((err) => {
@@ -235,40 +260,49 @@ export const openHistory = () => {
                       tags: 'btn-sm btn-outline-danger',
                       type: 'button',
                       label: 'Delete',
-                    });
+                    }).addClass('delete-button');
 
-                    deleteBtn.on('click', () => {
+                    // Deletes the message right away, without any confirmation step
+                    const deleteMessage = async () => {
+                      loaderScreen.start();
+                      let isError = false;
+                      await client
+                        .deleteMessage(item.historyId)
+                        .then((result) => {
+                          if (result.error) {
+                            alert(result.msg ?? '', { title: 'ERROR!' });
+                            isError = true;
+                          } else client.emit('messageDelete', result);
+                        })
+                        .catch((err) => {
+                          alert(err.message, { title: 'ERROR!' });
+                          console.error(err);
+                          isError = true;
+                        });
+                      loaderScreen.stop();
+                      if (isError) return;
+                      row.remove();
+                    };
+
+                    deleteBtn.on('click', (event) => {
+                      // Holding shift deletes the message without asking for confirmation
+                      if (/** @type {MouseEvent} */ (event)?.shiftKey) {
+                        deleteMessage();
+                        return;
+                      }
+
                       const confirmBtn = new Button({
                         mainClass: 'btn',
                         tags: 'btn-sm btn-outline-danger',
                         type: 'button',
                         label: 'Confirm Delete',
                         disabled: true,
-                      });
+                      }).addClass('delete-button');
 
                       deleteBtn.replaceWith(confirmBtn);
                       setTimeout(() => confirmBtn.removeProp('disabled'), 3000);
 
-                      confirmBtn.on('click', async () => {
-                        loaderScreen.start();
-                        let isError = false;
-                        await tinyIo.client
-                          .deleteMessage(item.historyId)
-                          .then((result) => {
-                            if (result.error) {
-                              alert(result.msg ?? '', { title: 'ERROR!' });
-                              isError = true;
-                            } else tinyIo.client.emit('messageDelete', result);
-                          })
-                          .catch((err) => {
-                            alert(err.message, { title: 'ERROR!' });
-                            console.error(err);
-                            isError = true;
-                          });
-                        loaderScreen.stop();
-                        if (isError) return;
-                        row.remove();
-                      });
+                      confirmBtn.on('click', deleteMessage);
                     });
 
                     colActions.append(editBtn, deleteBtn);
@@ -337,7 +371,7 @@ export const openHistory = () => {
                         date.isValid() ? date.format('YYYY-MM-DD HH:mm:ss') : '',
                       ),
                       TinyHtml.createFrom('small', {
-                        class: `${item.isModel || item.userId !== tinyIo.client.getUserId() ? (!item.isModel ? `text-muted` : 'text-info') : 'text-primary'} me-2`,
+                        class: `${item.isModel || item.userId !== client.getUserId() ? (!item.isModel ? `text-muted` : 'text-info') : 'text-primary'} me-2`,
                       }).setText(!item.isModel ? (item.userId ?? '') : 'Model'),
                       TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
                         `Chapter ${item.chapter}`,
@@ -439,7 +473,7 @@ export const openHistory = () => {
   const perPageInput = new NumberInput({
     mainClass: 'form-control',
     min: 1,
-  }).setVal(tinyIo.client.getRateLimit().size.history);
+  }).setVal(client.getRateLimit().size.history);
   perPageGroup.append(perPageLabel, perPageInput);
 
   // --- Page Number ---
@@ -495,5 +529,10 @@ export const openHistory = () => {
     dialog: 'modal-lg',
     id: 'chat-history-search',
     body: $root,
+    hidden: () => {
+      window.removeEventListener('keydown', onShiftKeyDown);
+      window.removeEventListener('keyup', onShiftKeyUp);
+      window.removeEventListener('blur', onShiftBlur);
+    },
   });
 };
