@@ -240,7 +240,12 @@ const renderPage = async (page) => {
 
     case 'character':
     case 'markdown':
-      await openMDFile(getPagePath(page) ?? '');
+      // `openMDFile` resolves to `false` when the file does not exist, so a
+      // broken link renders the 404 page instead of an empty document.
+      if ((await openMDFile(getPagePath(page) ?? '')) === false) {
+        document.title = 'ERROR 404 - not found';
+        renderNotFound();
+      }
       return;
 
     case 'chapter':

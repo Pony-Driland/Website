@@ -445,17 +445,26 @@ export const openMDFile = async (url, isMain = false) => {
       loaderScreen.start('Loading page...');
 
       // Load ajax
-      const fileData = await fetch(`${filePath}${window.fileVersion ?? ''}`, {
-        method: 'GET',
-      })
-        .then((res) => res.text())
-        .catch((err) => {
-          loaderScreen.stop();
-          console.error(err);
-          alert(err.message);
-        });
+      let fileData;
+      try {
+        const res = await fetch(`${filePath}${window.fileVersion ?? ''}`, { method: 'GET' });
+        if (!res.ok) throw new Error(`Failed to load "${filePath}" (${res.status}).`);
 
-      if (!fileData) return;
+        // A missing file is often answered with the SPA shell or with an HTML
+        // error page, so the content type is the only reliable signal.
+        const contentType = res.headers.get('content-type') ?? '';
+        if (contentType.includes('text/html') && !filePath.endsWith('.html')) {
+          throw new Error(`"${filePath}" is not a markdown file.`);
+        }
+
+        fileData = await res.text();
+      } catch (err) {
+        loaderScreen.stop();
+        console.error(err);
+        return false;
+      }
+
+      if (!fileData) return false;
       try {
         // Get metadata
         const fileLines = tinyLib.mdManager.removeMetadata(fileData);
