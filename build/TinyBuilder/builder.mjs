@@ -22,6 +22,16 @@ const exec = promisify(execCallback);
 // Capture CLI argument (e.g., "debug")
 const arg = process.argv[2];
 
+/**
+ * `true` when the current build is a development one.
+ *
+ * `npm start` and `npm run build:files:debug` pass `debug` as the first
+ * argument.
+ *
+ * @type {boolean}
+ */
+const isDev = arg === 'debug';
+
 // --------------------------------------------------
 // TITLE: Build Configurations
 // --------------------------------------------------
@@ -42,7 +52,7 @@ export const tiny = new TinyBuilder({
     global: 'window', // fix libraries that expect "global" to exist
   },
   platform: 'browser', // target environment is the browser
-  sourcemap: arg === 'debug' ? true : false, // enable sourcemaps in debug mode
+  sourcemap: isDev, // enable sourcemaps in debug mode
   minify: true, // minify output
   bundle: true, // bundle dependencies together
   splitting: true, // enable code splitting
@@ -83,18 +93,23 @@ async function resetDir(dirPath) {
  * Runs a shell command and prints its live output to the console.
  * If the command fails, the script stops.
  * @param {string} command - Shell command to run
+ * @param {{ fatal?: boolean }} [options] - `fatal: false` resolves instead of exiting.
+ * @returns {Promise<boolean>} `true` when the command succeeded.
  */
-async function run(command) {
+async function run(command, options = {}) {
+  const { fatal = true } = options;
   console.log(`▶ Running: ${command}`);
   try {
     const { stdout, stderr } = await exec(command);
     if (stdout) process.stdout.write(stdout);
     if (stderr) process.stderr.write(stderr);
+    return true;
   } catch (error) {
     console.error(`❌ Error in command: ${command}`);
     // @ts-ignore
     console.error(error.message);
-    process.exit(1);
+    if (fatal) process.exit(1);
+    return false;
   }
 }
 
@@ -115,9 +130,18 @@ export const prepareFolders = async () => {
 
 /**
  * Step 2a: Run Prettier on source code for formatting.
+ *
+ * Prettier exits with an error when one of the glob results is an empty folder
+ * (`No supported files were found in the directory`). Formatting is a developer
+ * convenience, so a failure here must not abort the build: the previous version
+ * of this step killed the whole build (and the watcher) whenever `src/` had an
+ * empty folder.
  */
 export const prettierSrc = async () => {
-  await run('prettier --write ./src/*');
+  const ok = await run('prettier --write "./src/**/*.{mjs,js,ts,json,css,scss,html,md}"', {
+    fatal: false,
+  });
+  if (!ok) console.warn('⚠️  Prettier failed, keeping the files untouched.');
 };
 
 /**

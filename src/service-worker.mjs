@@ -13,6 +13,8 @@
 import TinyServiceWorkerEngine from 'tiny-essentials/libs/sw/service/TinyServiceWorkerEngine';
 import GlobCachePlugin from 'tiny-essentials/libs/sw/service/plugins/GlobCachePlugin';
 
+import isDev from './dev.mjs';
+
 /** Cache bucket used by the runtime cache plugin. */
 const CACHE_NAME = 'pony-driland-v1';
 
@@ -65,14 +67,22 @@ engine.addFetchGlobalListener('spa-navigation-only', (fetchObj, result) => {
   }
 });
 
-// Static assets are cached on the fly.
-engine.installPlugin(GlobCachePlugin, {
-  cacheName: CACHE_NAME,
-  patterns: [
-    '**/*.{js,css,woff,woff2,ttf,eot,png,jpg,jpeg,gif,svg,webp,avif,mp3,mp4,wav,ogg,opus}',
-  ],
-  exclude: ['/service-worker.js', '/index.html'],
-});
+if (isDev) {
+  // A previous (cached) run may have left files behind. They are dropped so the
+  // browser can not answer a request with a build that no longer exists.
+  engine.on('beforeActivated', ({ event }) => {
+    event.waitUntil(caches.delete(CACHE_NAME));
+  });
+} else {
+  // Static assets are cached on the fly.
+  engine.installPlugin(GlobCachePlugin, {
+    cacheName: CACHE_NAME,
+    patterns: [
+      '**/*.{js,css,woff,woff2,ttf,eot,png,jpg,jpeg,gif,svg,webp,avif,mp3,mp4,wav,ogg,opus}',
+    ],
+    exclude: ['/service-worker.js', '/index.html'],
+  });
+}
 
 engine.init();
 

@@ -19,6 +19,16 @@ http.init(); // prepares internal middleware and routing
 const port = 3000;
 tiny.port = port + 1;
 
+// The development build must never be served from the browser cache. Otherwise a
+// module (or a chapter JSON) keeps its previous version until a hard reload,
+// which makes the whole build look broken.
+http.root.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  next();
+});
+
 // Serve static files from dist/public (your build output)
 http.root.use(express.static(path.join(__dirname, '../../dist/public')));
 
