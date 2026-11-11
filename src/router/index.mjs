@@ -240,7 +240,7 @@ const registerRoutes = (instance) => {
     },
     (match) => {
       const path = resolveMarkdownSlug(match.params.slug);
-      if (!path) return render({ name: 'home' });
+      if (!path) return render({ name: 'not-found' });
       return render({ name: 'markdown', path, query: queryToObject(match.query) });
     },
   );
@@ -259,6 +259,7 @@ export const startRouter = async (handler) => {
   router = new TinyRouter({
     onRouteNotFound: (match) => {
       console.warn(`[router] No route matched "${match.path}".`);
+      return render({ name: 'not-found' });
     },
   });
 

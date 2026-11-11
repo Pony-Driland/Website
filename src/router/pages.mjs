@@ -26,7 +26,7 @@
 import storyCfg from '../chapters/config.mjs';
 
 /**
- * @typedef {'home'|'markdown'|'read-fic'|'ai'|'character'|'chapter'} PageName
+ * @typedef {'home'|'markdown'|'read-fic'|'ai'|'character'|'chapter'|'not-found'} PageName
  */
 
 /**

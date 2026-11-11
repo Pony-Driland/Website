@@ -39,6 +39,17 @@ const engine = new TinyServiceWorkerEngine({
   messaging: { enabled: true },
 });
 
+// Serve the static 404 page for every request the router can not answer.
+// `spaMode` already answers navigations with `/index.html`, so this only kicks
+// in for the requests that fall through (for example a missing asset).
+engine.updateGlobalMsgCode({
+  404: {
+    path: '/404.html',
+    msg: 'Not Found',
+    logMsg: 'Route not found',
+  },
+});
+
 // The engine starts every request with `code: 404` and expects a plugin to
 // promote it. A navigation must be promoted to `200`, otherwise the shell is
 // served with a 404 status and the browser refuses to render it.

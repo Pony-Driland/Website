@@ -38,9 +38,10 @@ import './scss/dark.scss';
 import './scss/main.scss';
 import './scss/carousel.scss';
 import './scss/rpg.scss';
-import { openMDFile, openHomePage } from './fixStuff/markdown.mjs';
+import { openMDFile, openHomePage, clearFicData } from './fixStuff/markdown.mjs';
 import { startRouter } from './router/index.mjs';
 import { getPagePath } from './router/pages.mjs';
+import { renderNotFound } from './html/notFound.mjs';
 import { app, body, head, tinyWin, topPage } from './html/query.mjs';
 import { markdownBase } from './html/base.mjs';
 import { fileEnd, fileStart } from './ai/values/defaults.mjs';
@@ -244,6 +245,12 @@ const renderPage = async (page) => {
 
     case 'chapter':
       openChapterMenu({ chapter: String(page.chapter), ...page.query });
+      return;
+
+    case 'not-found':
+      clearFicData();
+      document.title = 'ERROR 404 - not found';
+      renderNotFound();
       return;
 
     default:
