@@ -251,15 +251,21 @@ export const createSky = (canvas) => {
   const snowScroll = [0, 0, 0];
 
   /**
-   * Base speed of each precipitation layer, in screens per second.
+   * Base speed of each rain layer, in screens per second.
    *
    * 1.0 means the drop crosses the whole viewport in one second, which is what
    * the eye reads as falling rain. The presets scale this up for storms.
    */
   const RAIN_LAYER_SPEED = [0.75, 1.05, 1.45];
 
-  /** Base speed of each snow layer, in screens per second. */
-  const SNOW_LAYER_SPEED = [0.06, 0.10, 0.16];
+  /**
+   * Base speed of each snow layer, in screens per second.
+   *
+   * Snow is an order of magnitude slower than rain and the layers are much
+   * closer together, so the fall reads as calm and weightless. Only the
+   * `snowstorm` preset pushes this up, through `snowSpeed`.
+   */
+  const SNOW_LAYER_SPEED = [0.022, 0.034, 0.05];
 
   // Interpolated values, so a weather change fades instead of popping.
   const current = { ...resolveSkyState(null, null) };

@@ -5,6 +5,10 @@
  * by a single full screen fragment shader, so the whole weather costs one draw
  * call and zero layout work.
  *
+ * The precipitation lives in its own module (`./shaders/rain` and
+ * `./shaders/snow`) so the two never have to share a uniform or a helper.
+ * This file only composes them into the final program.
+ *
  * ## Why the scroll offsets are uniforms
  *
  * The precipitation used to do `p.y += u_time * speed`. That looks harmless,
@@ -19,6 +23,9 @@
  *
  * @module chapter_manager/weather/shaders
  */
+
+import { RAIN_GLSL } from './shaders/rain.mjs';
+import { SNOW_GLSL } from './shaders/snow.mjs';
 
 /** Full screen triangle strip. */
 export const SKY_VERTEX_SHADER = `
@@ -150,85 +157,9 @@ float gust(float t) {
   return sin(t * 0.31) * 0.5 + sin(t * 0.13 + 1.7) * 0.3 + sin(t * 0.07 + 4.1) * 0.2;
 }
 
-/**
- * One depth layer of rain.
- *
- * The streak is a capsule (a segment with rounded caps) instead of a stretched
- * dot, so it keeps its brightness when the wind tilts it. The head is brighter
- * than the tail, which is what a real long-exposure raindrop looks like.
- *
- * @param vec2 uv        Aspect corrected coordinates.
- * @param float scale    Cells per screen. Higher is smaller and further away.
- * @param float scroll   Pre-wrapped 0..1 scroll offset.
- * @param float seed     Per-layer randomisation.
- * @param float density  Fraction of cells that contain a drop (0..1).
- * @param float width    Half width of the streak, in cell units.
- * @param float length   Length of the streak, in cell units.
- */
-float rainLayer(vec2 uv, float scale, float scroll, float seed, float density, float width, float length) {
-  // Tilt the whole layer with the wind. The shear is applied before the cell
-  // lookup, so the drops themselves stay aligned with their own motion.
-  float shear = u_wind * 1.8 + gust(u_time * 0.7 + seed) * 0.12 * u_wind;
+${RAIN_GLSL}
 
-  vec2 p = uv * scale;
-  p.y += scroll * scale;
-  p.x += p.y * shear;
-
-  vec2 id = floor(p);
-  vec2 f = fract(p) - 0.5;
-
-  // Sparse: only some cells hold a drop.
-  if (hash21(id + seed) > density) return 0.0;
-
-  // Random sub-cell offset so the grid never shows up.
-  vec2 offset = vec2(hash21(id + seed + 1.7), hash21(id + seed + 3.1)) - 0.5;
-  vec2 local = f - offset * 0.55;
-
-  // The drop is a vertical capsule. The along axis follows the fall direction,
-  // so the streak stays glued to the motion when the wind tilts it.
-  vec2 dir = normalize(vec2(shear, 1.0));
-  float along = dot(local, dir);
-  float across = dot(local, vec2(dir.y, -dir.x));
-
-  float body = 1.0 - smoothstep(0.0, width, abs(across));
-  float tail = 1.0 - smoothstep(0.0, length, abs(along));
-
-  // Bright head, fading tail.
-  float head = mix(0.35, 1.0, smoothstep(-length, length, along));
-
-  return body * tail * head;
-}
-
-/**
- * One depth layer of snow.
- *
- * Each flake falls at its own terminal velocity and drifts with a noise field
- * instead of a single sine, which removes the "conveyor belt" look.
- */
-float snowLayer(vec2 uv, float scale, float scroll, float seed, float density, float radius) {
-  vec2 p = uv * scale;
-  p.y += scroll * scale;
-
-  // Turbulence. Sampling the noise at the flake position keeps neighbours
-  // moving together, like real air.
-  float drift = noise2d(p * 0.35 + seed) - 0.5;
-  p.x += drift * 1.6 + u_wind * 2.0;
-
-  vec2 id = floor(p);
-  vec2 f = fract(p) - 0.5;
-
-  float rnd = hash21(id + seed);
-  if (rnd > density) return 0.0;
-
-  // Every flake has its own size and its own little orbit.
-  vec2 offset = vec2(hash21(id + seed + 5.3), hash21(id + seed + 9.1)) - 0.5;
-  float size = radius * (0.45 + 0.55 * hash21(id + seed + 13.7));
-  float d = length(f - offset * 0.6);
-
-  // Soft edge, brighter core.
-  float flake = 1.0 - smoothstep(size * 0.4, size, d);
-  return flake * (0.55 + 0.45 * rnd);
-}
+${SNOW_GLSL}
 
 /** Moon disc with its phase. */
 float moonShape(vec2 p, float phase) {
