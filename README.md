@@ -40,3 +40,16 @@ Some specific folders may have instructions on how to use them. Then feel free t
 - TTS Speaker to read the story through audio.
 - Wiki page integrated into the website to view character information.
 - AI chatbot for the user to have fun with the fic universe through roleplay, or natural conversations.
+
+---
+
+> 🧠 **Note**: This documentation was written by [ChatGPT](https://openai.com/chatgpt), [Gemini](https://gemini.google.com), and [DeepSeek v4.1 Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash), based on the project structure and descriptions provided by the repository author.  
+> If you find any inaccuracies or need improvements, feel free to contribute or open an issue!
+
+---
+
+<div align="center">
+<a href="./test/img/"><img src="./test/img/5ec92aff-7a9d-4b86-bcc3-fe715def537a.png" height="300" /></a>
+<br/>
+Made with tiny love!
+</div>
