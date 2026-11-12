@@ -860,7 +860,7 @@ rootApp.onReady(() => {
                 href: '/ai',
                 id: 'ai-access-page',
               })
-                .setText('AI Page')
+                .setText('Roleplay Page')
                 .prepend(new Icon('fa-solid fa-server me-2'))
                 .on('click', async (e) => {
                   e.preventDefault();

@@ -138,7 +138,7 @@ const partText = (part) => (part && typeof part.text === 'string' ? part.text : 
 export const AiScriptStart = async () => {
   let sessionEnabled = true;
   // Update Url
-  urlUpdate({ name: 'ai', title: 'AI Page' });
+  urlUpdate({ name: 'ai', title: 'Roleplay Page' });
 
   // Clear page
   clearFicData();
@@ -183,7 +183,7 @@ export const AiScriptStart = async () => {
   if (!tinyAiScript.isEnabled()) {
     alert(
       'AI mode is currently disabled for your session. Please click the robot icon to activate it, then come back here.',
-      { title: 'AI Page' },
+      { title: 'Roleplay Page' },
     );
     return;
   }
