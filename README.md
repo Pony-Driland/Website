@@ -49,7 +49,7 @@ Some specific folders may have instructions on how to use them. Then feel free t
 ---
 
 <div align="center">
-<a href="./test/img/"><img src="./test/img/5ec92aff-7a9d-4b86-bcc3-fe715def537a.png" height="300" /></a>
+<a href="./images/ai"><img src="./images/ai/5ec92aff-7a9d-4b86-bcc3-fe715def537a.png" height="300" /></a>
 <br/>
 Made with tiny love!
 </div>
