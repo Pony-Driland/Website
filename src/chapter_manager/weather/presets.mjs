@@ -7,8 +7,18 @@
  * into shader friendly numbers, so adding a new weather never touches the
  * renderer.
  *
+ * The actual colors live in `./palettes.mjs`.
+ *
  * @module chapter_manager/weather/presets
  */
+
+import {
+  AUTO_MOON_PHASES,
+  MOON_PHASES,
+  SKY_PALETTE_COLORS,
+  WEATHER_PRESET_COLORS,
+  hex,
+} from './palettes.mjs';
 
 /**
  * @typedef {Object} SkyPalette
@@ -41,27 +51,22 @@
  */
 
 /**
- * Hex color to a normalized RGB tuple.
- *
- * @param {string} hex - Color in the `#rrggbb` format.
- * @returns {[number, number, number]} Normalized color.
- */
-const hex = (hex) => {
-  const int = parseInt(hex.replace('#', ''), 16);
-  return [((int >> 16) & 255) / 255, ((int >> 8) & 255) / 255, (int & 255) / 255];
-};
-
-/**
- * Palettes indexed by the day/night cycle key.
+ * Palettes indexed by the day/night cycle key, with the colors already
+ * converted to the 0..1 range.
  *
  * @type {Record<string, SkyPalette>}
  */
-export const SKY_PALETTES = {
-  morning: { top: hex('#3d5f96'), bottom: hex('#b9cde3'), stars: 0, moon: 0 },
-  evening: { top: hex('#2b2340'), bottom: hex('#c4814f'), stars: 0.12, moon: 0.35 },
-  night: { top: hex('#03050c'), bottom: hex('#0d1526'), stars: 1, moon: 1 },
-  lateAtNight: { top: hex('#010206'), bottom: hex('#060a14'), stars: 1, moon: 1 },
-};
+export const SKY_PALETTES = Object.fromEntries(
+  Object.entries(SKY_PALETTE_COLORS).map(([key, palette]) => [
+    key,
+    {
+      top: hex(palette.top),
+      bottom: hex(palette.bottom),
+      stars: palette.stars,
+      moon: palette.moon,
+    },
+  ]),
+);
 
 /** Palette used before the story sets a day/night cycle. */
 export const DEFAULT_PALETTE = SKY_PALETTES.night;
@@ -71,35 +76,12 @@ export const DEFAULT_PALETTE = SKY_PALETTES.night;
  *
  * @type {Record<string, WeatherPreset>}
  */
-export const WEATHER_PRESETS = {
-  sun: { rain: 0, snow: 0, clouds: 0.55, lightning: false, wind: 0 },
-  rain: { rain: 0.6, snow: 0, clouds: 0.85, lightning: false, wind: 0.1 },
-  heavyrain: { rain: 1, snow: 0, clouds: 1, lightning: false, wind: 0.22 },
-  bolt: { rain: 0.9, snow: 0, clouds: 1, lightning: true, wind: 0.3 },
-  snow: { rain: 0, snow: 1, clouds: 0.8, lightning: false, wind: 0.05 },
-};
+export const WEATHER_PRESETS = WEATHER_PRESET_COLORS;
 
 /** Weather used when the story does not define one. */
 export const DEFAULT_WEATHER = 'sun';
 
-/**
- * Moon phases, in the order the story walks through them.
- *
- * The shader only understands a single number (0 = new, 1 = full), so the
- * phase is stored as an index and converted by {@link getMoonPhase}.
- *
- * @type {string[]}
- */
-export const MOON_PHASES = [
-  'new',
-  'waxing-crescent',
-  'first-quarter',
-  'waxing-gibbous',
-  'full',
-  'waning-gibbous',
-  'last-quarter',
-  'waning-crescent',
-];
+export { MOON_PHASES };
 
 /**
  * Converts a moon phase name into the 0..1 value used by the shader.
@@ -116,6 +98,14 @@ export const getMoonPhase = (phase) => {
   if (index < 0) return 1;
   return index / (MOON_PHASES.length - 1);
 };
+
+/**
+ * Returns the moon phase the story would use for a day/night cycle.
+ *
+ * @param {string|null|undefined} dayCycle - Day/night cycle key.
+ * @returns {string|null} Phase name, or `null` when unknown.
+ */
+export const getAutoMoonPhase = (dayCycle) => AUTO_MOON_PHASES[String(dayCycle)] ?? null;
 
 /**
  * Resolves the full sky state for a weather/day-cycle pair.
@@ -142,6 +132,20 @@ export const resolveSkyState = (weather, dayCycle) => {
     top: palette.top,
     bottom: palette.bottom,
   };
+};
+
+/**
+ * Whether the moon is hidden for the given day/night cycle.
+ *
+ * The phase is only allowed to change while the moon is not on screen, so the
+ * reader uses this to decide when it may pick a new phase.
+ *
+ * @param {string|null|undefined} dayCycle - Day/night cycle key.
+ * @returns {boolean} `true` when the moon is not visible.
+ */
+export const isMoonHidden = (dayCycle) => {
+  const palette = SKY_PALETTES[String(dayCycle)];
+  return !palette || palette.moon <= 0.001;
 };
 
 /**

@@ -1,5 +1,6 @@
 import { SKY_FRAGMENT_SHADER, SKY_VERTEX_SHADER } from './shaders.mjs';
 import { getMoonPhase, resolveSkyState } from './presets.mjs';
+import { createMoon } from './moon.mjs';
 
 /**
  * Cloud texture, served from `public/`.
@@ -429,10 +430,13 @@ export const createSky = (canvas) => {
  * @property {SkyRenderer|null} renderer - Active renderer, if any.
  * @property {string|null} weather - Current weather key.
  * @property {string|null} dayCycle - Current day/night cycle key.
- * @property {string|number|null} moonPhase - Current moon phase.
+ * @property {ReturnType<typeof createMoon>|null} moon - Moon phase controller.
+ * @property {number} night - Identifier of the current night.
  * @property {() => void} ensure - Creates the canvas once and keeps it alive.
  * @property {(weather?: string|null, dayCycle?: string|null) => void} setState - Applies a weather state.
- * @property {(phase: string|number|null) => void} setMoonPhase - Changes the moon phase.
+ * @property {(phase: string|null) => void} setMoonPhase - Pins the moon phase for this night.
+ * @property {() => void} nextNight - Starts a new night.
+ * @property {() => void} syncMoon - Recomputes the moon phase.
  * @property {(visible: boolean) => void} setVisible - Shows or hides the sky.
  * @property {() => void} destroy - Removes the canvas and releases the GPU resources.
  * @property {() => boolean} isMounted - Whether the sky is currently mounted.
@@ -450,7 +454,8 @@ export const sky = {
   renderer: null,
   weather: null,
   dayCycle: null,
-  moonPhase: null,
+  moon: null,
+  night: 0,
 
   /**
    * Creates the canvas and the WebGL context on first use.
@@ -460,6 +465,8 @@ export const sky = {
   ensure() {
     if (this.canvas) return;
 
+    if (!this.moon) this.moon = createMoon();
+
     const canvas = document.createElement('canvas');
     canvas.className = 'sky-canvas';
     canvas.setAttribute('aria-hidden', 'true');
@@ -468,7 +475,7 @@ export const sky = {
     this.canvas = canvas;
     this.renderer = createSky(canvas);
     this.renderer.start();
-    this.renderer.setMoonPhase(this.moonPhase);
+    this.renderer.setMoonPhase(this.moon.get());
     this.renderer.setState(this.weather, this.dayCycle);
   },
 
@@ -485,14 +492,47 @@ export const sky = {
     // has been closed. Only the canvas owner is allowed to create it again.
     if (!this.canvas) return;
     if (this.renderer) this.renderer.setState(this.weather, this.dayCycle);
+
+    // The moon may only change while it is hidden, so it has to be told about
+    // every cycle change.
+    this.syncMoon();
   },
 
   /**
-   * @param {string|number|null} phase - Moon phase name or index.
+   * Pins the moon phase for the current night.
+   *
+   * The phase is only committed while the moon is hidden, so the disc never
+   * changes shape in front of the reader. Pass `null` to fall back to the
+   * automatic phase of the day/night cycle.
+   *
+   * @param {string|null} phase - Phase name or `null`.
    * @returns {void}
    */
   setMoonPhase(phase) {
-    this.moonPhase = phase;
+    if (!this.moon) this.moon = createMoon();
+    this.moon.setManual(phase);
+    this.syncMoon();
+  },
+
+  /**
+   * Starts a new night, so the next phase is allowed to be picked again.
+   *
+   * @returns {void}
+   */
+  nextNight() {
+    this.night++;
+    if (this.moon) this.moon.reset();
+  },
+
+  /**
+   * Recomputes the moon phase and forwards it to the renderer.
+   *
+   * @returns {void}
+   */
+  syncMoon() {
+    if (!this.moon) return;
+
+    const phase = this.moon.update(this.dayCycle, this.night);
     if (this.renderer) this.renderer.setMoonPhase(phase);
   },
 
@@ -512,6 +552,8 @@ export const sky = {
     if (this.canvas && this.canvas.parentNode) this.canvas.parentNode.removeChild(this.canvas);
     this.renderer = null;
     this.canvas = null;
+    this.moon = null;
+    this.night = 0;
     this.setVisible(false);
   },
 

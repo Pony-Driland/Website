@@ -519,6 +519,9 @@ const chapterSet = {
         );
       }
 
+      // A new day means a new night: the moon may pick a fresh phase.
+      sky.nextNight();
+
       new TinyHtml(storyData.nc.base.right.find(':scope > #status #day')).setText(`Day: ${value}`);
     }
   },
@@ -533,14 +536,9 @@ const chapterSet = {
       storyData.chapter.nextDayNightCycle = value;
       sky.setState(storyData.chapter.nextWeather ?? null, value);
 
-      // The moon walks through its phases as the night advances.
-      const moonPhases = {
-        morning: 'new',
-        evening: 'waxing-crescent',
-        night: 'full',
-        lateAtNight: 'waning-gibbous',
-      };
-      if (moonPhases[value]) sky.setMoonPhase(moonPhases[value]);
+      // The moon phase is resolved by the sky controller, which only commits a
+      // new phase while the moon is hidden.
+      sky.syncMoon();
 
       body
         ?.removeClass(`fic-daycicle-morning`)
@@ -589,6 +587,23 @@ const chapterSet = {
         }
         obj.removeAttr('title').append(new Icon(types[value].icon));
       }
+    }
+  },
+
+  /**
+   * Pins the moon phase for the current night.
+   *
+   * The value only applies to the night it was declared on: the reader bumps
+   * the night counter whenever the day/night cycle leaves the night, so the
+   * next night falls back to the automatic phase.
+   *
+   * @param {string} value - Moon phase name, or `auto` to clear the override.
+   * @param {boolean} [actionFromNow] - Whether the action happens now.
+   */
+  moonPhase: (value, actionFromNow = false) => {
+    if (actionFromNow) {
+      storyData.chapter.nextMoonPhase = value === 'auto' ? null : value;
+      sky.setMoonPhase(storyData.chapter.nextMoonPhase);
     }
   },
 

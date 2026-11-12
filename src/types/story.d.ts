@@ -34,6 +34,13 @@ interface FicPageSet {
   dayNightCycle?: string;
   /** Weather key. */
   weather?: string;
+  /**
+   * Pins the moon phase for the current night.
+   *
+   * Use `auto` (or omit the key) to fall back to the automatic phase of the
+   * day/night cycle. The value only applies to the night it was declared on.
+   */
+  moonPhase?: string;
   /** Location name. */
   where?: string;
 }
@@ -198,6 +205,8 @@ interface StoryData {
     weather?: string;
     /** Weather of the next line. */
     nextWeather?: string;
+    /** Moon phase pinned by the story for the current night. */
+    nextMoonPhase?: string | null;
     /** Day/night cycle of the next line. */
     nextDayNightCycle?: string;
     /** Rendered lines, indexed by line number. */
