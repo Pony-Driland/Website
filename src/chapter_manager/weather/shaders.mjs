@@ -265,9 +265,9 @@ void main() {
   // Snow.
   if (u_snow > 0.001) {
     float snow = 0.0;
-    snow += snowLayer(uv, 9.0, u_snowScroll.x, 2.3, 0.55, 0.10) * 0.45;
-    snow += snowLayer(uv, 16.0, u_snowScroll.y, 7.9, 0.60, 0.13) * 0.70;
-    snow += snowLayer(uv, 26.0, u_snowScroll.z, 19.1, 0.65, 0.16) * 1.00;
+    snow += snowLayer(uv, 9.0, u_snowScroll.x, 2.3, 0.72, 0.055) * 0.45;
+    snow += snowLayer(uv, 16.0, u_snowScroll.y, 7.9, 0.76, 0.070) * 0.70;
+    snow += snowLayer(uv, 26.0, u_snowScroll.z, 19.1, 0.80, 0.085) * 1.00;
 
     color = mix(color, vec3(0.96, 0.97, 1.0), clamp(snow * u_snow, 0.0, 1.0));
   }
