@@ -11,6 +11,7 @@
 import TinyServiceWorker from 'tiny-essentials/libs/sw/browser/TinyServiceWorker';
 import TinyDomReadyManager from 'tiny-essentials/libs/html/TinyDomReadyManager';
 import { body } from '../html/query.mjs';
+import { fileVersion } from '../important.mjs';
 import isDev from '../dev.mjs';
 
 /**
@@ -22,7 +23,7 @@ import isDev from '../dev.mjs';
 export const worker = new TinyServiceWorker({
   id: 'pony-driland',
   swUrl: '/service-worker.js',
-  version: String(window.fileVersion ?? '1').replace(/^\?v=/, ''),
+  version: String(fileVersion ?? '1').replace(/^\?v=/, ''),
 });
 
 /**

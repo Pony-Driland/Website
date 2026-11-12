@@ -7,7 +7,7 @@ import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/Bootstrap
 
 import tinyLib from './tinyLib.mjs';
 import storyCfg from '../chapters/config.mjs';
-import { connStore, ficCache, loaderScreen, tinyLs } from '../important.mjs';
+import { connStore, ficCache, loaderScreen, tinyLs, fileVersion } from '../important.mjs';
 
 /**
  * Loads and caches the chapter list, the readme and the per-chapter progress.
@@ -103,7 +103,7 @@ export const storyData = {
     loaderScreen.start('Loading readme...');
 
     // Read Data Base
-    const readme = await fetch('/readme.html' + window.fileVersion, {
+    const readme = await fetch('/readme.html' + fileVersion, {
       method: 'GET',
     })
       .then((res) => res.text())
@@ -122,7 +122,7 @@ export const storyData = {
       loaderScreen.update(`Loading chapter ${chapter}...`);
       console.log(`Loading Chapter ${chapter}...`);
       const chapterUrl =
-        '/chapters/' + storyData.lang.active + '/' + chapter + '.json' + window.fileVersion;
+        '/chapters/' + storyData.lang.active + '/' + chapter + '.json' + fileVersion;
       console.log(chapterUrl);
       const data = await fetchJson(chapterUrl).catch((err) => {
         console.log(`Chapter ${chapter} failed during the load!`);

@@ -106,7 +106,5 @@ declare global {
     tinyIo: unknown;
     /** Tiny AI client instance exposed for debugging. */
     tinyAi: unknown;
-    /** Cache-busting query string appended to static asset requests. */
-    fileVersion: string;
   }
 }

@@ -5,7 +5,7 @@ import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/Bootstrap
 import tinyLib from '../files/tinyLib.mjs';
 
 import { storyData } from '../files/chapters.mjs';
-import { appData, gtag, loaderScreen } from '../important.mjs';
+import { appData, gtag, loaderScreen, fileVersion } from '../important.mjs';
 import { tinyAiScript } from '../ai/software/tinyAiScript.mjs';
 import storyCfg from '../chapters/config.mjs';
 
@@ -447,7 +447,7 @@ export const openMDFile = async (url, isMain = false) => {
       // Load ajax
       let fileData;
       try {
-        const res = await fetch(`${filePath}${window.fileVersion ?? ''}`, { method: 'GET' });
+        const res = await fetch(`${filePath}${fileVersion ?? ''}`, { method: 'GET' });
         if (!res.ok) throw new Error(`Failed to load "${filePath}" (${res.status}).`);
 
         // A missing file is often answered with the SPA shell or with an HTML
