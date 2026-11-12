@@ -5,6 +5,18 @@
  * by a single full screen fragment shader, so the whole weather costs one draw
  * call and zero layout work.
  *
+ * ## Why the scroll offsets are uniforms
+ *
+ * The precipitation used to do `p.y += u_time * speed`. That looks harmless,
+ * but `u_time` grows forever and a GPU float only has 24 bits of mantissa (and
+ * as little as 10 on the `mediump` fallback). After a minute the product is so
+ * large that `fract()` no longer has any fractional bits left, the pattern
+ * freezes and the rain visibly crawls.
+ *
+ * The offsets are therefore computed in JS with a double, wrapped to 0..1 and
+ * uploaded as uniforms. Adding an integer to a scroll offset is invisible
+ * because the shader only ever reads `fract(p)`, so wrapping is free.
+ *
  * @module chapter_manager/weather/shaders
  */
 
@@ -35,6 +47,12 @@ uniform float u_lightning;
 uniform float u_stars;
 uniform float u_wind;
 
+// Scroll offsets, already wrapped to 0..1 by the renderer. One component per
+// depth layer, so every layer can move at its own speed without ever feeding a
+// large number to the GPU.
+uniform vec3 u_rainScroll;
+uniform vec3 u_snowScroll;
+
 // Sky gradient.
 uniform vec3 u_skyTop;
 uniform vec3 u_skyBottom;
@@ -48,6 +66,8 @@ uniform float u_moonVisible;
 uniform sampler2D u_cloudTexture;
 uniform float u_cloudOffset;
 uniform float u_cloudReady;
+
+const float TAU = 6.28318530718;
 
 float hash21(vec2 p) {
   p = fract(p * vec2(123.34, 456.21));
@@ -113,41 +133,101 @@ float starLayer(vec2 uv, float density, float seed, float t) {
 
   float size = 0.012 + 0.05 * hash21(id + seed + 37.0);
   float speed = 0.25 + 3.2 * hash21(id + seed + 53.0);
-  float phase = hash21(id + seed + 71.0) * 6.2831;
+  float phase = hash21(id + seed + 71.0) * TAU;
   float twinkle = 0.35 + 0.65 * (0.5 + 0.5 * sin(t * speed + phase));
 
   return smoothstep(size, 0.0, d) * twinkle;
 }
 
-/** One layer of slanted rain streaks. */
-float rainLayer(vec2 uv, float scale, float speed, float density, float seed, float t) {
+/**
+ * Gusts: a slow, smooth wind modulation.
+ *
+ * Real rain never falls at a constant angle. Three sines at very different
+ * speeds are enough to make the rain feel like it is being pushed around by
+ * the same air the reader is imagining.
+ */
+float gust(float t) {
+  return sin(t * 0.31) * 0.5 + sin(t * 0.13 + 1.7) * 0.3 + sin(t * 0.07 + 4.1) * 0.2;
+}
+
+/**
+ * One depth layer of rain.
+ *
+ * The streak is a capsule (a segment with rounded caps) instead of a stretched
+ * dot, so it keeps its brightness when the wind tilts it. The head is brighter
+ * than the tail, which is what a real long-exposure raindrop looks like.
+ *
+ * @param vec2 uv        Aspect corrected coordinates.
+ * @param float scale    Cells per screen. Higher is smaller and further away.
+ * @param float scroll   Pre-wrapped 0..1 scroll offset.
+ * @param float seed     Per-layer randomisation.
+ * @param float density  Fraction of cells that contain a drop (0..1).
+ * @param float width    Half width of the streak, in cell units.
+ * @param float length   Length of the streak, in cell units.
+ */
+float rainLayer(vec2 uv, float scale, float scroll, float seed, float density, float width, float length) {
+  // Tilt the whole layer with the wind. The shear is applied before the cell
+  // lookup, so the drops themselves stay aligned with their own motion.
+  float shear = u_wind * 1.8 + gust(u_time * 0.7 + seed) * 0.12 * u_wind;
+
   vec2 p = uv * scale;
-  p.y += t * speed;
-  p.x += p.y * 0.22 + u_wind * 4.0;
+  p.y += scroll * scale;
+  p.x += p.y * shear;
 
   vec2 id = floor(p);
   vec2 f = fract(p) - 0.5;
 
-  if (hash21(id + seed) < density) return 0.0;
+  // Sparse: only some cells hold a drop.
+  if (hash21(id + seed) > density) return 0.0;
 
-  float streak = 1.0 - smoothstep(0.0, 0.05, abs(f.x));
-  float tail = 1.0 - smoothstep(0.0, 0.55, abs(f.y));
-  return streak * tail;
+  // Random sub-cell offset so the grid never shows up.
+  vec2 offset = vec2(hash21(id + seed + 1.7), hash21(id + seed + 3.1)) - 0.5;
+  vec2 local = f - offset * 0.55;
+
+  // The drop is a vertical capsule. The along axis follows the fall direction,
+  // so the streak stays glued to the motion when the wind tilts it.
+  vec2 dir = normalize(vec2(shear, 1.0));
+  float along = dot(local, dir);
+  float across = dot(local, vec2(dir.y, -dir.x));
+
+  float body = 1.0 - smoothstep(0.0, width, abs(across));
+  float tail = 1.0 - smoothstep(0.0, length, abs(along));
+
+  // Bright head, fading tail.
+  float head = mix(0.35, 1.0, smoothstep(-length, length, along));
+
+  return body * tail * head;
 }
 
-/** One layer of drifting snowflakes. */
-float snowLayer(vec2 uv, float scale, float speed, float seed, float t) {
+/**
+ * One depth layer of snow.
+ *
+ * Each flake falls at its own terminal velocity and drifts with a noise field
+ * instead of a single sine, which removes the "conveyor belt" look.
+ */
+float snowLayer(vec2 uv, float scale, float scroll, float seed, float density, float radius) {
   vec2 p = uv * scale;
-  p.y += t * speed;
-  p.x += sin(t * 0.4 + p.y * 0.5) * 0.5;
+  p.y += scroll * scale;
+
+  // Turbulence. Sampling the noise at the flake position keeps neighbours
+  // moving together, like real air.
+  float drift = noise2d(p * 0.35 + seed) - 0.5;
+  p.x += drift * 1.6 + u_wind * 2.0;
 
   vec2 id = floor(p);
   vec2 f = fract(p) - 0.5;
 
   float rnd = hash21(id + seed);
-  if (rnd < 0.7) return 0.0;
+  if (rnd > density) return 0.0;
 
-  return (1.0 - smoothstep(0.0, 0.18, length(f))) * (0.4 + 0.6 * rnd);
+  // Every flake has its own size and its own little orbit.
+  vec2 offset = vec2(hash21(id + seed + 5.3), hash21(id + seed + 9.1)) - 0.5;
+  float size = radius * (0.45 + 0.55 * hash21(id + seed + 13.7));
+  float d = length(f - offset * 0.6);
+
+  // Soft edge, brighter core.
+  float flake = 1.0 - smoothstep(size * 0.4, size, d);
+  return flake * (0.55 + 0.45 * rnd);
 }
 
 /** Moon disc with its phase. */
@@ -164,7 +244,7 @@ float moonShape(vec2 p, float phase) {
 
 void main() {
   // Wrapping the clock keeps the hash inputs small on very long sessions.
-  float t = mod(u_time, 3600.0);
+  float t = mod(u_time, 600.0);
 
   vec2 uv = gl_FragCoord.xy / max(u_resolution, vec2(1.0));
 
@@ -183,11 +263,12 @@ void main() {
     color += vec3(0.88, 0.92, 1.0) * stars * u_stars;
   }
 
-  // Moon.
+  // Moon. The 5.2 factor keeps it a small detail in the corner instead of a
+  // huge disc competing with the text.
   if (u_moonVisible > 0.001) {
     vec2 moonUv = (centered - u_moonPos) * 5.2;
     float moon = moonShape(moonUv, u_moonPhase);
-    float halo = (1.0 - smoothstep(0.0, 1.1, length(moonUv))) * 0.16;
+    float halo = (1.0 - smoothstep(0.0, 1.1, length(moonUv))) * 0.14;
 
     color += vec3(0.85, 0.89, 1.0) * halo * u_moonVisible * (0.35 + 0.65 * u_stars);
     color = mix(color, vec3(0.97, 0.97, 0.93), moon * u_moonVisible);
@@ -209,8 +290,6 @@ void main() {
     cloud = mix(procedural, max(cloud, procedural * 0.85), u_cloudReady);
 
     // Shape the density so the clouds have defined edges instead of a haze.
-    // The threshold is generous on purpose: a clear night sky is almost black,
-    // so the clouds need all the density they can get to stay readable.
     cloud = smoothstep(0.18, 0.62, cloud);
 
     // Clouds are dark blue-grey at night and bright white during the day.
@@ -227,29 +306,42 @@ void main() {
       cloudColor += vec3(0.18, 0.22, 0.32) * rim * (1.0 - daylight);
     }
 
-    // Keep a floor so a clear night still shows the clouds.
+    // Lightning lights the clouds from the inside.
+    cloudColor += vec3(0.55, 0.62, 0.85) * u_lightning * 0.8;
+
     float opacity = u_clouds * mix(0.85, 1.0, u_clouds);
     color = mix(color, cloudColor, cloud * opacity);
   }
 
   // Rain.
+  //
+  // Three depth layers. The far one is dense and faint, the near one is sparse
+  // and bright, which is what sells the volume.
   if (u_rain > 0.001) {
     float rain = 0.0;
-    rain += rainLayer(uv, 26.0, 2.4, 0.55, 1.7, t);
-    rain += rainLayer(uv, 44.0, 3.4, 0.72, 7.3, t) * 0.7;
-    rain += rainLayer(uv, 70.0, 4.6, 0.85, 13.1, t) * 0.45;
-    color += vec3(0.62, 0.74, 0.92) * rain * u_rain * 0.6;
+    rain += rainLayer(uv, 14.0, u_rainScroll.x, 3.1, 0.55, 0.012, 0.30) * 0.35;
+    rain += rainLayer(uv, 26.0, u_rainScroll.y, 11.7, 0.60, 0.016, 0.34) * 0.60;
+    rain += rainLayer(uv, 44.0, u_rainScroll.z, 27.3, 0.68, 0.022, 0.38) * 1.00;
+
+    // Rain scatters the light, so it reads as a pale veil over the sky.
+    color += vec3(0.62, 0.72, 0.90) * rain * u_rain * 0.85;
+
+    // Splash haze near the bottom of the screen.
+    float splash = smoothstep(0.35, 0.0, uv.y) * u_rain * 0.05;
+    color += vec3(0.55, 0.65, 0.82) * splash;
   }
 
   // Snow.
   if (u_snow > 0.001) {
     float snow = 0.0;
-    snow += snowLayer(uv, 14.0, 0.35, 3.1, t);
-    snow += snowLayer(uv, 24.0, 0.55, 9.7, t) * 0.7;
-    color = mix(color, vec3(0.95, 0.97, 1.0), clamp(snow * u_snow, 0.0, 1.0));
+    snow += snowLayer(uv, 9.0, u_snowScroll.x, 2.3, 0.55, 0.10) * 0.45;
+    snow += snowLayer(uv, 16.0, u_snowScroll.y, 7.9, 0.60, 0.13) * 0.70;
+    snow += snowLayer(uv, 26.0, u_snowScroll.z, 19.1, 0.65, 0.16) * 1.00;
+
+    color = mix(color, vec3(0.96, 0.97, 1.0), clamp(snow * u_snow, 0.0, 1.0));
   }
 
-  // Lightning flash.
+  // Lightning flash. The envelope is shaped in JS so it can flicker.
   color += vec3(0.85, 0.9, 1.0) * u_lightning * 0.55;
 
   gl_FragColor = vec4(clamp(color, 0.0, 1.0), 1.0);

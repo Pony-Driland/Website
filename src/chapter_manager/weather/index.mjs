@@ -38,6 +38,21 @@ const LIGHTNING_MIN_DELAY = 4000;
 const LIGHTNING_MAX_DELAY = 14000;
 
 /**
+ * Envelope of a single lightning strike.
+ *
+ * The first entry is the leader (dim and short), the second is the return
+ * stroke (the bright one) and the third is the afterglow that lights the
+ * clouds from the inside.
+ *
+ * @type {{ delay: number, duration: number, strength: number }[]}
+ */
+const LIGHTNING_PULSES = [
+  { delay: 0, duration: 90, strength: 0.55 },
+  { delay: 90, duration: 130, strength: 1 },
+  { delay: 260, duration: 420, strength: 0.45 },
+];
+
+/**
  * @typedef {Object} SkyUniforms
  * @property {WebGLUniformLocation|null} resolution
  * @property {WebGLUniformLocation|null} time
@@ -55,6 +70,8 @@ const LIGHTNING_MAX_DELAY = 14000;
  * @property {WebGLUniformLocation|null} cloudTexture
  * @property {WebGLUniformLocation|null} cloudOffset
  * @property {WebGLUniformLocation|null} cloudReady
+ * @property {WebGLUniformLocation|null} rainScroll
+ * @property {WebGLUniformLocation|null} snowScroll
  */
 
 /**
@@ -85,7 +102,7 @@ const compileShader = (gl, type, source) => {
  * @typedef {Object} SkyRenderer
  * @property {() => void} start - Starts the render loop.
  * @property {() => void} stop - Stops the render loop.
- * @property {(weather?: string|null, dayCycle?: string|null) => void} setState - Applies a weather state.
+ * @property {(weather?: string|null, dayCycle?: string|null, overrides?: { wind?: number, speed?: number }|null) => void} setState - Applies a weather state.
  * @property {(phase: string|number|null) => void} setMoonPhase - Changes the moon phase.
  * @property {() => void} destroy - Releases the WebGL resources.
  * @property {boolean} supported - Whether WebGL is available.
@@ -174,6 +191,8 @@ export const createSky = (canvas) => {
     cloudTexture: gl.getUniformLocation(program, 'u_cloudTexture'),
     cloudOffset: gl.getUniformLocation(program, 'u_cloudOffset'),
     cloudReady: gl.getUniformLocation(program, 'u_cloudReady'),
+    rainScroll: gl.getUniformLocation(program, 'u_rainScroll'),
+    snowScroll: gl.getUniformLocation(program, 'u_snowScroll'),
   };
 
   // Cloud texture.
@@ -224,6 +243,23 @@ export const createSky = (canvas) => {
   let lightningTimer = 0;
   let lightningIntensity = 0;
   let cloudOffset = 0;
+
+  // Scroll offsets, in "screens scrolled". They are accumulated in double
+  // precision and wrapped to 0..1 before being uploaded, which is what keeps
+  // the precipitation from slowing down after a few minutes.
+  const rainScroll = [0, 0, 0];
+  const snowScroll = [0, 0, 0];
+
+  /**
+   * Base speed of each precipitation layer, in screens per second.
+   *
+   * 1.0 means the drop crosses the whole viewport in one second, which is what
+   * the eye reads as falling rain. The presets scale this up for storms.
+   */
+  const RAIN_LAYER_SPEED = [0.75, 1.05, 1.45];
+
+  /** Base speed of each snow layer, in screens per second. */
+  const SNOW_LAYER_SPEED = [0.06, 0.10, 0.16];
 
   // Interpolated values, so a weather change fades instead of popping.
   const current = { ...resolveSkyState(null, null) };
@@ -293,6 +329,17 @@ export const createSky = (canvas) => {
     // Clouds drift slowly to the side.
     cloudOffset = (cloudOffset + delta * 0.0000045) % 1;
 
+    // Advance the precipitation. `delta` is in milliseconds, so the speeds are
+    // converted to seconds here. The modulo keeps the values inside 0..1
+    // forever, which is what the shader needs to stay precise.
+    const seconds = delta / 1000;
+    for (let i = 0; i < 3; i++) {
+      rainScroll[i] =
+        (rainScroll[i] + RAIN_LAYER_SPEED[i] * current.rainSpeed * seconds) % 1;
+      snowScroll[i] =
+        (snowScroll[i] + SNOW_LAYER_SPEED[i] * current.snowSpeed * seconds) % 1;
+    }
+
     // Interpolate towards the target state.
     const progress =
       transitionDuration > 0 ? Math.min(1, (now - transitionStart) / transitionDuration) : 1;
@@ -326,8 +373,18 @@ export const createSky = (canvas) => {
       lightningTimer = 0;
     }
 
+    // A real strike is not a single pulse: the leader hits, the sky goes dark
+    // for a moment and then the return stroke flashes brighter. Three decaying
+    // pulses are enough to sell the effect.
     const sinceFlash = now - lightningAt;
-    lightningIntensity = sinceFlash < 420 ? Math.max(0, 1 - sinceFlash / 420) : 0;
+    lightningIntensity = 0;
+    for (let i = 0; i < LIGHTNING_PULSES.length; i++) {
+      const pulse = LIGHTNING_PULSES[i];
+      const age = sinceFlash - pulse.delay;
+      if (age < 0 || age > pulse.duration) continue;
+      const fade = 1 - age / pulse.duration;
+      lightningIntensity = Math.max(lightningIntensity, fade * fade * pulse.strength);
+    }
 
     resize();
 
@@ -339,6 +396,8 @@ export const createSky = (canvas) => {
     gl.uniform1f(uniforms.lightning, lightningIntensity);
     gl.uniform1f(uniforms.stars, current.stars);
     gl.uniform1f(uniforms.wind, current.wind);
+    gl.uniform3f(uniforms.rainScroll, rainScroll[0], rainScroll[1], rainScroll[2]);
+    gl.uniform3f(uniforms.snowScroll, snowScroll[0], snowScroll[1], snowScroll[2]);
     gl.uniform3f(uniforms.skyTop, current.top[0], current.top[1], current.top[2]);
     gl.uniform3f(uniforms.skyBottom, current.bottom[0], current.bottom[1], current.bottom[2]);
 
@@ -381,10 +440,11 @@ export const createSky = (canvas) => {
   /**
    * @param {string|null} [weather] - Weather key.
    * @param {string|null} [dayCycle] - Day/night cycle key.
+   * @param {{ wind?: number, speed?: number }|null} [overrides] - Motion overrides.
    * @returns {void}
    */
-  api.setState = (weather = null, dayCycle = null) => {
-    const next = resolveSkyState(weather, dayCycle);
+  api.setState = (weather = null, dayCycle = null, overrides = null) => {
+    const next = resolveSkyState(weather, dayCycle, overrides ?? {});
 
     // Copy the values that are currently on screen, so a state change in the
     // middle of a transition does not jump.
@@ -430,10 +490,12 @@ export const createSky = (canvas) => {
  * @property {SkyRenderer|null} renderer - Active renderer, if any.
  * @property {string|null} weather - Current weather key.
  * @property {string|null} dayCycle - Current day/night cycle key.
+ * @property {{ wind?: number, speed?: number }|null} overrides - Motion overrides.
  * @property {ReturnType<typeof createMoon>|null} moon - Moon phase controller.
  * @property {number} night - Identifier of the current night.
  * @property {() => void} ensure - Creates the canvas once and keeps it alive.
  * @property {(weather?: string|null, dayCycle?: string|null) => void} setState - Applies a weather state.
+ * @property {(overrides: { wind?: number, speed?: number }|null) => void} setOverrides - Overrides the motion.
  * @property {(phase: string|null) => void} setMoonPhase - Pins the moon phase for this night.
  * @property {() => void} nextNight - Starts a new night.
  * @property {() => void} syncMoon - Recomputes the moon phase.
@@ -454,6 +516,7 @@ export const sky = {
   renderer: null,
   weather: null,
   dayCycle: null,
+  overrides: null,
   moon: null,
   night: 0,
 
@@ -491,11 +554,26 @@ export const sky = {
     // The reader updates the state on every scroll, including right after it
     // has been closed. Only the canvas owner is allowed to create it again.
     if (!this.canvas) return;
-    if (this.renderer) this.renderer.setState(this.weather, this.dayCycle);
+    if (this.renderer) this.renderer.setState(this.weather, this.dayCycle, this.overrides);
 
     // The moon may only change while it is hidden, so it has to be told about
     // every cycle change.
     this.syncMoon();
+  },
+
+  /**
+   * Overrides how the precipitation moves.
+   *
+   * Both values are optional: whatever is omitted keeps the preset default, so
+   * a line only has to declare what makes it different. Passing null clears
+   * the override and restores the preset.
+   *
+   * @param {{ wind?: number, speed?: number }|null} overrides - Overrides.
+   * @returns {void}
+   */
+  setOverrides(overrides) {
+    this.overrides = overrides ?? null;
+    if (this.renderer) this.renderer.setState(this.weather, this.dayCycle, this.overrides);
   },
 
   /**

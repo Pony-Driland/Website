@@ -1,11 +1,11 @@
 /*
  * Weather and day/night presets for the WebGL sky.
  *
- * The story only knows a handful of keys (`rain`, `bolt`, `heavyrain`, `snow`
- * for the weather and `morning`/`evening`/`night`/`lateAtNight` for the
- * day/night cycle). This module is the single place that translates those keys
- * into shader friendly numbers, so adding a new weather never touches the
- * renderer.
+ * The story only knows a handful of keys (`rain`, `bolt`, `heavyrain`, `snow`,
+ * `snowstorm` for the weather and `morning`/`evening`/`night`/`lateAtNight`
+ * for the day/night cycle). This module is the single place that translates
+ * those keys into shader friendly numbers, so adding a new weather never
+ * touches the renderer.
  *
  * The actual colors live in `./palettes.mjs`.
  *
@@ -16,6 +16,7 @@ import {
   AUTO_MOON_PHASES,
   MOON_PHASES,
   SKY_PALETTE_COLORS,
+  WEATHER_LIMITS,
   WEATHER_PRESET_COLORS,
   hex,
 } from './palettes.mjs';
@@ -34,7 +35,9 @@ import {
  * @property {number} snow - Snow intensity.
  * @property {number} clouds - Cloud coverage.
  * @property {boolean} lightning - Whether the preset has lightning.
- * @property {number} wind - Horizontal drift applied to the rain.
+ * @property {number} wind - Horizontal drift applied to the precipitation.
+ * @property {number} rainSpeed - Rain motion multiplier.
+ * @property {number} snowSpeed - Snow motion multiplier.
  */
 
 /**
@@ -46,9 +49,24 @@ import {
  * @property {number} stars
  * @property {number} moon
  * @property {number} wind
+ * @property {number} rainSpeed
+ * @property {number} snowSpeed
  * @property {[number, number, number]} top
  * @property {[number, number, number]} bottom
  */
+
+/**
+ * Clamps a value to the given range, falling back when it is not a number.
+ *
+ * @param {unknown} value - Raw value.
+ * @param {[number, number]} range - Minimum and maximum.
+ * @param {number} fallback - Value used when `value` is not usable.
+ * @returns {number} Safe value.
+ */
+const clamp = (value, range, fallback) => {
+  if (typeof value !== 'number' || !isFinite(value)) return fallback;
+  return Math.min(range[1], Math.max(range[0], value));
+};
 
 /**
  * Palettes indexed by the day/night cycle key, with the colors already
@@ -112,11 +130,17 @@ export const getAutoMoonPhase = (dayCycle) => AUTO_MOON_PHASES[String(dayCycle)]
  *
  * @param {string|null|undefined} weather - Weather key.
  * @param {string|null|undefined} dayCycle - Day/night cycle key.
+ * @param {{ wind?: number, speed?: number }} [overrides] - Per-line overrides.
  * @returns {SkyState} Shader ready state.
  */
-export const resolveSkyState = (weather, dayCycle) => {
+export const resolveSkyState = (weather, dayCycle, overrides = {}) => {
   const preset = WEATHER_PRESETS[String(weather)] ?? WEATHER_PRESETS[DEFAULT_WEATHER];
   const palette = SKY_PALETTES[String(dayCycle)] ?? DEFAULT_PALETTE;
+
+  // A story override always wins over the preset, but it is clamped so a typo
+  // can never freeze or invert the sky.
+  const wind = clamp(overrides.wind, WEATHER_LIMITS.wind, preset.wind);
+  const speed = clamp(overrides.speed, WEATHER_LIMITS.speed, 1);
 
   // Overcast weather hides the stars and the moon.
   const overcast = Math.max(preset.rain, preset.snow) * 0.8;
@@ -128,7 +152,9 @@ export const resolveSkyState = (weather, dayCycle) => {
     lightning: preset.lightning ? 1 : 0,
     stars: palette.stars * (1 - overcast),
     moon: palette.moon * (1 - overcast),
-    wind: preset.wind,
+    wind,
+    rainSpeed: preset.rainSpeed * speed,
+    snowSpeed: preset.snowSpeed * speed,
     top: palette.top,
     bottom: palette.bottom,
   };

@@ -608,6 +608,22 @@ const chapterSet = {
   },
 
   /**
+   * Overrides how the precipitation moves.
+   *
+   * Both values are optional: whatever is omitted keeps the preset default, so
+   * a line only has to declare what makes it different.
+   *
+   * @param {{ wind?: number, speed?: number }|null} value - Overrides.
+   * @param {boolean} [actionFromNow] - Whether the action happens now.
+   */
+  weatherConfig: (value, actionFromNow = false) => {
+    if (actionFromNow) {
+      storyData.chapter.nextWeatherConfig = value ?? null;
+      sky.setOverrides(value ?? null);
+    }
+  },
+
+  /**
    * @param {string} value - Weather key.
    * @param {boolean} [actionFromNow] - Whether the action happens now.
    */
@@ -636,6 +652,7 @@ const chapterSet = {
         bolt: { icon: 'fas fa-bolt', title: 'Thunderbolt' },
         heavyrain: { icon: 'fas fa-cloud-showers-heavy', title: 'Heavy Rain' },
         snow: { icon: 'fas fa-snowflake', title: 'Snow' },
+        snowstorm: { icon: 'fas fa-snowflake', title: 'Snowstorm' },
       };
 
       storyData.chapter.nextWeather = value;

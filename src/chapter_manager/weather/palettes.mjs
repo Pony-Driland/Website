@@ -46,16 +46,75 @@ export const SKY_PALETTE_COLORS = {
  * - `clouds` - cloud coverage. This is the ceiling, not the opacity: the
  *   shader still multiplies it by the cloud density.
  * - `lightning` - whether the preset can produce lightning flashes.
- * - `wind` - horizontal drift applied to the rain.
+ * - `wind` - horizontal drift applied to the precipitation.
+ * - `rainSpeed` / `snowSpeed` - motion multiplier. `1` is the tuned default,
+ *   `2` is twice as fast. The story can override them per line.
  *
- * @type {Record<string, { rain: number, snow: number, clouds: number, lightning: boolean, wind: number }>}
+ * @type {Record<string, {
+ *   rain: number,
+ *   snow: number,
+ *   clouds: number,
+ *   lightning: boolean,
+ *   wind: number,
+ *   rainSpeed: number,
+ *   snowSpeed: number,
+ * }>}
  */
 export const WEATHER_PRESET_COLORS = {
-  sun: { rain: 0, snow: 0, clouds: 0.55, lightning: false, wind: 0 },
-  rain: { rain: 0.6, snow: 0, clouds: 0.85, lightning: false, wind: 0.1 },
-  heavyrain: { rain: 1, snow: 0, clouds: 1, lightning: false, wind: 0.22 },
-  bolt: { rain: 0.9, snow: 0, clouds: 1, lightning: true, wind: 0.3 },
-  snow: { rain: 0, snow: 1, clouds: 0.8, lightning: false, wind: 0.05 },
+  sun: {
+    rain: 0,
+    snow: 0,
+    clouds: 0.55,
+    lightning: false,
+    wind: 0,
+    rainSpeed: 1,
+    snowSpeed: 1,
+  },
+  rain: {
+    rain: 0.6,
+    snow: 0,
+    clouds: 0.85,
+    lightning: false,
+    wind: 0.1,
+    rainSpeed: 1,
+    snowSpeed: 1,
+  },
+  heavyrain: {
+    rain: 1,
+    snow: 0,
+    clouds: 1,
+    lightning: false,
+    wind: 0.22,
+    rainSpeed: 1.85,
+    snowSpeed: 1,
+  },
+  bolt: {
+    rain: 0.9,
+    snow: 0,
+    clouds: 1,
+    lightning: true,
+    wind: 0.42,
+    rainSpeed: 2.9,
+    snowSpeed: 1,
+  },
+  snow: {
+    rain: 0,
+    snow: 1,
+    clouds: 0.8,
+    lightning: false,
+    wind: 0.05,
+    rainSpeed: 1,
+    snowSpeed: 1,
+  },
+  snowstorm: {
+    rain: 0,
+    snow: 1,
+    clouds: 0.95,
+    lightning: false,
+    wind: 0.55,
+    rainSpeed: 1,
+    snowSpeed: 3.2,
+  },
 };
 
 /**
@@ -90,4 +149,17 @@ export const AUTO_MOON_PHASES = {
   evening: 'waxing-crescent',
   night: 'full',
   lateAtNight: 'waning-gibbous',
+};
+
+/**
+ * Limits applied to the per-line overrides.
+ *
+ * A typo in the story file must never be able to freeze the sky, so every
+ * override is clamped to a sane range.
+ *
+ * @type {{ speed: [number, number], wind: [number, number] }}
+ */
+export const WEATHER_LIMITS = {
+  speed: [0.1, 6],
+  wind: [0, 1],
 };
