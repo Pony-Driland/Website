@@ -384,6 +384,9 @@ export const openChapterMenu = (params = {}) => {
     // Clear Update Warn
     TinyHtml.query('#fic-start')?.setText('Read Fic').prepend(new Icon('fab fa-readme me-2'));
 
+    // The previous chapter stopped every sound, so the cache must be rebuilt
+    cacheChapterUpdater.resetSounds();
+
     // Load Sounds
     if (storyCfg.sfx) {
       console.log(`Loading Audio Data...`);

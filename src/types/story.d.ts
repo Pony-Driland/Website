@@ -25,7 +25,7 @@ interface StoryWordEntry {
 /** Scene state applied by a line. */
 interface FicPageSet {
   /** Sound effect to play. */
-  playEffect?: { file?: string };
+  playEffect?: ChapterSoundConfig;
   /** Soundtrack playlist key. */
   playlistPlay?: string;
   /** Day number. */

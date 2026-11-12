@@ -27,7 +27,7 @@ const { Icon } = TinyHtmlElems;
  *
  * @typedef {Object} SoundCacheEntry
  * @property {boolean} [playing] - Whether the sound is currently playing.
- * @property {boolean} [waiting] - Whether the entry still needs to be processed.
+ * @property {boolean} [instant] - Whether the running sound was started in instant mode.
  * @property {ChapterSoundConfig} [value] - The sound configuration attached to the entry.
  */
 
@@ -36,16 +36,20 @@ const { Icon } = TinyHtmlElems;
  *
  * @typedef {Object} ChapterUpdater
  * @property {Record<string, SoundCacheEntry>} soundCache - Sound effects by file name.
+ * @property {Record<number, { line: number, file: string, value: ChapterSoundConfig }[]>} [soundTimeline] - `playEffect` entries of each chapter, sorted by line.
  * @property {boolean} [locked] - Prevents re-entrant scroll handling.
  * @property {ReturnType<typeof setTimeout>} [timeoutChecker] - Pending scroll debounce timer.
  * @property {(item: number, scrollIntoView?: boolean) => void} setActiveItem - Selects a line.
  * @property {() => void} scrollData - Applies the state of the current line.
  * @property {(lastPage: number) => void} data - Renders the given line.
+ * @property {(line: number) => Record<string, ChapterSoundConfig>} getSoundState - Resolves the sounds of a line.
+ * @property {(soundState: Record<string, ChapterSoundConfig>) => void} applySounds - Applies a resolved sound state.
+ * @property {() => void} resetSounds - Forgets every tracked sound.
  */
 
 // Prepare Cache
 /** @type {ChapterUpdater} */
-const cacheChapterUpdater = /** @type {ChapterUpdater} */ ({ soundCache: {} });
+const cacheChapterUpdater = /** @type {ChapterUpdater} */ ({ soundCache: {}, soundTimeline: {} });
 
 /**
  * @param {number} item - Line to activate.
@@ -197,44 +201,135 @@ cacheChapterUpdater.scrollData = () => {
   }
 
   // Manager Other Sounds
-  for (const file in cacheChapterUpdater.soundCache) {
-    // Value Data
-    const value = cacheChapterUpdater.soundCache[file].value;
-    if (!value) continue;
+  cacheChapterUpdater.applySounds(cacheChapterUpdater.getSoundState(storyData.chapter.line ?? 0));
+};
 
-    if (cacheChapterUpdater.soundCache[value.file].waiting) {
-      // Progress
-      cacheChapterUpdater.soundCache[value.file].waiting = false;
+/**
+ * Collects every `playEffect` of a chapter, ordered by line.
+ *
+ * @param {number} chapter - Chapter number.
+ * @returns {{ line: number, file: string, value: ChapterSoundConfig }[]} Timeline entries.
+ */
+const getSoundTimeline = (chapter) => {
+  const cached = cacheChapterUpdater.soundTimeline?.[chapter];
+  if (cached) return cached;
 
-      // Play
-      if (
-        !storyData.chapter.blockLineSave &&
-        value.enabled &&
-        !cacheChapterUpdater.soundCache[value.file].playing
-      ) {
-        console.log(`[${value.file}] Playing...`);
-        cacheChapterUpdater.soundCache[value.file].playing = true;
+  /** @type {{ line: number, file: string, value: ChapterSoundConfig }[]} */
+  const timeline = [];
+  const data = storyData.data[chapter];
 
-        if (!value.instant) {
-          storyData.sfx[value.file].show();
-        } else {
-          storyData.sfx[value.file].play();
-        }
+  if (data) {
+    for (const index in data) {
+      const effect = data[index].set?.playEffect;
+      if (!effect || typeof effect.file !== 'string' || effect.file.length < 1) continue;
+      timeline.push({ line: Number(index) + 1, file: effect.file, value: effect });
+    }
+
+    timeline.sort((a, b) => a.line - b.line);
+  }
+
+  if (!cacheChapterUpdater.soundTimeline) cacheChapterUpdater.soundTimeline = {};
+  cacheChapterUpdater.soundTimeline[chapter] = timeline;
+  return timeline;
+};
+
+/**
+ * Rebuilds the sound state of a line by replaying every `playEffect` from the
+ * beginning of the chapter.
+ *
+ * The state is derived from the reading position instead of being mutated while
+ * scrolling, so a sound that has no explicit "off" line in the story is still
+ * stopped as soon as the reader goes back before the line that started it.
+ *
+ * @param {number} line - Last line to consider.
+ * @returns {Record<string, ChapterSoundConfig>} Sounds indexed by file name.
+ */
+cacheChapterUpdater.getSoundState = (line) => {
+  /** @type {Record<string, ChapterSoundConfig>} */
+  const state = {};
+  const timeline = getSoundTimeline(storyData.chapter.selected);
+
+  for (const entry of timeline) {
+    if (entry.line > line) break;
+    state[entry.file] = entry.value;
+  }
+
+  return state;
+};
+
+/**
+ * Applies a resolved sound state, starting and stopping only the difference.
+ *
+ * @param {Record<string, ChapterSoundConfig>} state - Desired sound state.
+ * @returns {void}
+ */
+cacheChapterUpdater.applySounds = (state) => {
+  // Search results and other temporary renders must not touch the audio
+  if (storyData.chapter.blockLineSave) return;
+
+  // Start or keep the sounds of the current state
+  for (const file in state) {
+    const value = state[file];
+    const sound = storyData.sfx[file];
+    if (!sound) continue;
+
+    const cache = (cacheChapterUpdater.soundCache[file] ??= { playing: false });
+    cache.value = value;
+
+    const shouldPlay = value.enabled === true;
+    if (shouldPlay === Boolean(cache.playing)) continue;
+
+    cache.playing = shouldPlay;
+    cache.instant = Boolean(value.instant);
+
+    if (shouldPlay) {
+      console.log(`[${file}] Playing...`);
+      if (value.instant) {
+        sound.play();
+      } else {
+        sound.show();
       }
-
-      // Stop
-      else if (!value.enabled && cacheChapterUpdater.soundCache[value.file].playing) {
-        console.log(`[${value.file}] Stopping...`);
-        cacheChapterUpdater.soundCache[value.file].playing = false;
-
-        if (!value.instant) {
-          storyData.sfx[value.file].hide();
-        } else {
-          storyData.sfx[value.file].stop();
-        }
+    } else {
+      console.log(`[${file}] Stopping...`);
+      if (value.instant) {
+        sound.stop();
+      } else {
+        sound.hide();
       }
     }
   }
+
+  // Stop everything that is not part of the current state anymore
+  for (const file in cacheChapterUpdater.soundCache) {
+    if (state[file]) continue;
+
+    const cache = cacheChapterUpdater.soundCache[file];
+    if (!cache.playing) continue;
+
+    cache.playing = false;
+
+    const sound = storyData.sfx[file];
+    if (!sound) continue;
+
+    console.log(`[${file}] Stopping...`);
+    if (cache.instant) {
+      sound.stop();
+    } else {
+      sound.hide();
+    }
+  }
+};
+
+/**
+ * Forgets every tracked sound. Must be called whenever the audio is stopped
+ * behind the reader's back (leaving the chapter, for example), so the next
+ * render starts the sounds again from scratch.
+ *
+ * @returns {void}
+ */
+cacheChapterUpdater.resetSounds = () => {
+  cacheChapterUpdater.soundCache = {};
+  cacheChapterUpdater.soundTimeline = {};
 };
 
 /**
@@ -377,21 +472,6 @@ cacheChapterUpdater.data = (lastPage) => {
 
 /** @type {Record<string, (value: never, actionFromNow?: boolean) => void>} */
 const chapterSet = {
-  /**
-   * @param {ChapterSoundConfig} value - Sound configuration.
-   * @param {boolean} [actionFromNow] - Whether the action happens now.
-   */
-  playEffect: (value, actionFromNow = false) => {
-    if (actionFromNow && value && value.file && storyData.sfx[value.file]) {
-      if (!cacheChapterUpdater.soundCache[value.file]) {
-        cacheChapterUpdater.soundCache[value.file] = { playing: false };
-      }
-
-      cacheChapterUpdater.soundCache[value.file].waiting = true;
-      cacheChapterUpdater.soundCache[value.file].value = value;
-    }
-  },
-
   /**
    * @param {string} value - Playlist key.
    * @param {boolean} [actionFromNow] - Whether the action happens now.
