@@ -18,16 +18,6 @@ import isDev from '../dev.mjs';
 /** Cache bucket used by the runtime cache plugin. */
 const CACHE_NAME = 'pony-driland-v1';
 
-// Cross-origin requests (analytics, fonts, APIs, ...) must be handled by the
-// browser itself. `TinyServiceWorkerEngine` calls `event.respondWith()` for
-// every request, which turns a blocked third-party request into an unhandled
-// rejection. Stopping the event here keeps those requests untouched.
-self.addEventListener('fetch', (/** @type {FetchEvent} */ event) => {
-  if (new URL(event.request.url).origin !== self.location.origin) {
-    event.stopImmediatePropagation();
-  }
-});
-
 const engine = new TinyServiceWorkerEngine({
   // Every navigation is answered with the SPA shell. The router resolves the
   // real page on the client.
@@ -39,6 +29,17 @@ const engine = new TinyServiceWorkerEngine({
   push: { enabled: false },
   sync: { enabled: false },
   messaging: { enabled: true },
+});
+
+// Cross-origin requests (analytics, fonts, APIs, ...) must be handled by the
+// browser itself. `TinyServiceWorkerEngine` calls `event.respondWith()` for
+// every request, which turns a blocked third-party request into an unhandled
+// rejection. Stopping the event here keeps those requests untouched.
+engine.on('fetchRequested', ({ event, url, result }) => {
+  if (url.origin !== self.location.origin) {
+    event.stopImmediatePropagation();
+    result.canStart = false;
+  }
 });
 
 // Serve the static 404 page for every request the router can not answer.
