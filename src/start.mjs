@@ -857,7 +857,7 @@ rootApp.onReady(() => {
             TinyHtml.createFrom('li', { class: 'nav-item nav-ai' }).prepend(
               TinyHtml.createFrom('a', {
                 class: 'nav-link',
-                href: '/?path=ai',
+                href: '/ai',
                 id: 'ai-access-page',
               })
                 .setText('AI Page')
@@ -897,7 +897,7 @@ rootApp.onReady(() => {
                 TinyHtml.createFrom('a', {
                   id: 'fic-start',
                   class: 'nav-link',
-                  href: '/?path=read-fic',
+                  href: '/read-fic',
                 })
                   .setText('Read Fic')
                   .append(isNewValue)
@@ -1106,7 +1106,7 @@ rootApp.onReady(() => {
           TinyHtml.createFrom('li')
             .prepend(
               TinyHtml.createFrom('a', {
-                href: '/?path=%2FLICENSE.md',
+                href: '/license',
                 id: 'license',
               })
                 .setText('License')
@@ -1122,7 +1122,7 @@ rootApp.onReady(() => {
           TinyHtml.createFrom('li')
             .prepend(
               TinyHtml.createFrom('a', {
-                href: '/?path=%2FPRIVACY.md',
+                href: '/privacy',
                 id: 'privacy-policy',
               })
                 .setText('Privacy Policy')
