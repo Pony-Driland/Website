@@ -13,7 +13,7 @@
 import TinyServiceWorkerEngine from 'tiny-essentials/libs/sw/service/TinyServiceWorkerEngine';
 import GlobCachePlugin from 'tiny-essentials/libs/sw/service/plugins/GlobCachePlugin';
 
-import isDev from './dev.mjs';
+import isDev from '../dev.mjs';
 
 /** Cache bucket used by the runtime cache plugin. */
 const CACHE_NAME = 'pony-driland-v1';

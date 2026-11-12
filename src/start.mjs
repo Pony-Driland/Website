@@ -8,7 +8,7 @@ import moment from 'moment';
 import { saveAs } from 'file-saver';
 import { Offcanvas } from 'bootstrap';
 
-import { vanillaPwa } from './pwa/installer.mjs';
+import { installPWA } from './pwa/installer.mjs';
 import './chapters/sound.mjs';
 import './chapters/counter.mjs';
 import './chapters/characters.mjs';
@@ -269,7 +269,7 @@ rootApp.onReady(() => {
   if (typeof (/** @type {WindowWithEthereum} */ (window).ethereum) !== 'undefined')
     document.body.classList.add('browser-with-web3');
   installWindowHiddenScript();
-  vanillaPwa.install();
+  installPWA();
 
   const startApp = () => {
     console.log('Starting App...');

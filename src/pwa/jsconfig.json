@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "removeComments": true,
+    "strict": false,
+    "strictNullChecks": true,
+    "module": "NodeNext",
+    "target": "ESNext",
+    "lib": ["ESNext", "WebWorker"],
+    "moduleResolution": "NodeNext",
+    "checkJs": true
+  }
+}
