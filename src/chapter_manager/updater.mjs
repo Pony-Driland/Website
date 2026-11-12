@@ -12,6 +12,7 @@ import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { body, tinyWin } from '../html/query.mjs';
 import { markdownBase } from '../html/base.mjs';
 import { musicApp } from './music/html.mjs';
+import { sky } from './weather/index.mjs';
 
 const { Icon } = TinyHtmlElems;
 
@@ -175,28 +176,35 @@ cacheChapterUpdater.scrollData = () => {
     });
   }
 
-  // Remove All Weather
-  const removeAllWeather = () => {
-    storyData.sfx['heavy-rain'].hide();
-    storyData.sfx['heavy-rain-little-thunder'].hide();
-    body.removeClass('raining-sky', 'thunder-effect');
+  // Weather
+  //
+  // The sky is rendered by the WebGL module, so this only has to keep the
+  // renderer and the ambient sound in sync with the current line.
+  const weather = storyData.chapter.nextWeather ?? null;
+  const dayCycle = storyData.chapter.nextDayNightCycle ?? null;
+
+  sky.setState(weather, dayCycle);
+
+  // Ambient sound that belongs to the weather. `show()` restarts the track, so
+  // it may only run when the weather actually changes - otherwise scrolling
+  // would restart the rain on every single line.
+  /** @type {Record<string, string>} */
+  const weatherSounds = {
+    heavyrain: 'heavy-rain',
+    bolt: 'heavy-rain-little-thunder',
   };
 
-  // Set Weather
-  const oldWeather = storyData.chapter.weather;
-  storyData.chapter.weather = storyData.chapter.nextWeather;
+  const weatherChanged = storyData.chapter.weather !== weather;
+  storyData.chapter.weather = weather ?? undefined;
 
-  // Change Sound
-  if (oldWeather !== storyData.chapter.weather) {
-    removeAllWeather();
-    if (!storyData.chapter.blockLineSave) {
-      if (storyData.chapter.weather === 'heavyrain') {
-        storyData.sfx['heavy-rain'].show();
-        // body.addClass('raining-sky');
-      } else if (storyData.chapter.weather === 'bolt') {
-        storyData.sfx['heavy-rain-little-thunder'].show();
-        // body.addClass('raining-sky', 'thunder-effect');
-      }
+  if (weatherChanged) {
+    for (const key in weatherSounds) {
+      const sound = storyData.sfx[weatherSounds[key]];
+      if (!sound || typeof sound.hide !== 'function') continue;
+
+      const shouldPlay = !storyData.chapter.blockLineSave && weather === key;
+      if (shouldPlay && typeof sound.show === 'function') sound.show();
+      else sound.hide();
     }
   }
 
@@ -521,6 +529,19 @@ const chapterSet = {
    */
   dayNightCycle: (value, actionFromNow = false) => {
     if (actionFromNow) {
+      // The sky needs the raw key, the body class below is only a styling hook.
+      storyData.chapter.nextDayNightCycle = value;
+      sky.setState(storyData.chapter.nextWeather ?? null, value);
+
+      // The moon walks through its phases as the night advances.
+      const moonPhases = {
+        morning: 'new',
+        evening: 'waxing-crescent',
+        night: 'full',
+        lateAtNight: 'waning-gibbous',
+      };
+      if (moonPhases[value]) sky.setMoonPhase(moonPhases[value]);
+
       body
         ?.removeClass(`fic-daycicle-morning`)
         .removeClass(`fic-daycicle-evening`)
@@ -595,6 +616,7 @@ const chapterSet = {
       // Types
       /** @type {Record<string, { icon: string, title: string }>} */
       const types = {
+        sun: { icon: 'fas fa-sun', title: 'Clear Sky' },
         rain: { icon: 'fas fa-cloud-rain', title: 'Rain' },
         bolt: { icon: 'fas fa-bolt', title: 'Thunderbolt' },
         heavyrain: { icon: 'fas fa-cloud-showers-heavy', title: 'Heavy Rain' },
@@ -602,6 +624,8 @@ const chapterSet = {
       };
 
       storyData.chapter.nextWeather = value;
+      sky.setState(value, storyData.chapter.nextDayNightCycle ?? null);
+
       const obj = new TinyHtml(storyData.nc.base.right.find(':scope > #status #weather'));
       obj.empty();
       if (types[value]) {

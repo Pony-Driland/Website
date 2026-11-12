@@ -1,0 +1,526 @@
+import { SKY_FRAGMENT_SHADER, SKY_VERTEX_SHADER } from './shaders.mjs';
+import { getMoonPhase, resolveSkyState } from './presets.mjs';
+
+/**
+ * Cloud texture, served from `public/`.
+ *
+ * It cannot be imported through the bundler: the file loader emits a relative
+ * URL that the browser resolves against the current route (`/chapter/...`),
+ * which 404s. A root relative path always points at the deployed asset.
+ *
+ * @type {string}
+ */
+const CLOUD_TEXTURE = '/img/bg/sky-stars/clouds3.png';
+
+/**
+ * GPU rendered sky used by the chapter reader.
+ *
+ * The old implementation spawned a few hundred `<div>` elements and animated
+ * them with CSS keyframes, which forced the browser to repaint the whole
+ * viewport on every frame. This module keeps a single `<canvas>` and one
+ * full screen shader, so the weather costs one draw call and no layout work.
+ *
+ * The renderer is intentionally defensive: when WebGL is unavailable (or the
+ * shader fails to compile) every method becomes a no-op and the reader keeps
+ * working with a plain background.
+ *
+ * @module chapter_manager/weather
+ */
+
+/** Milliseconds used to fade between two weather states. */
+const TRANSITION_DURATION = 1200;
+
+/** Minimum time between two lightning flashes. */
+const LIGHTNING_MIN_DELAY = 4000;
+
+/** Maximum time between two lightning flashes. */
+const LIGHTNING_MAX_DELAY = 14000;
+
+/**
+ * @typedef {Object} SkyUniforms
+ * @property {WebGLUniformLocation|null} resolution
+ * @property {WebGLUniformLocation|null} time
+ * @property {WebGLUniformLocation|null} rain
+ * @property {WebGLUniformLocation|null} snow
+ * @property {WebGLUniformLocation|null} clouds
+ * @property {WebGLUniformLocation|null} lightning
+ * @property {WebGLUniformLocation|null} stars
+ * @property {WebGLUniformLocation|null} wind
+ * @property {WebGLUniformLocation|null} skyTop
+ * @property {WebGLUniformLocation|null} skyBottom
+ * @property {WebGLUniformLocation|null} moonPos
+ * @property {WebGLUniformLocation|null} moonPhase
+ * @property {WebGLUniformLocation|null} moonVisible
+ * @property {WebGLUniformLocation|null} cloudTexture
+ * @property {WebGLUniformLocation|null} cloudOffset
+ * @property {WebGLUniformLocation|null} cloudReady
+ */
+
+/**
+ * Compiles a shader, returning `null` when the driver rejects it.
+ *
+ * @param {WebGLRenderingContext} gl - WebGL context.
+ * @param {number} type - `gl.VERTEX_SHADER` or `gl.FRAGMENT_SHADER`.
+ * @param {string} source - Shader source.
+ * @returns {WebGLShader|null} Compiled shader.
+ */
+const compileShader = (gl, type, source) => {
+  const shader = gl.createShader(type);
+  if (!shader) return null;
+
+  gl.shaderSource(shader, source);
+  gl.compileShader(shader);
+
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    console.error('[weather] Shader compilation failed:', gl.getShaderInfoLog(shader));
+    gl.deleteShader(shader);
+    return null;
+  }
+
+  return shader;
+};
+
+/**
+ * @typedef {Object} SkyRenderer
+ * @property {() => void} start - Starts the render loop.
+ * @property {() => void} stop - Stops the render loop.
+ * @property {(weather?: string|null, dayCycle?: string|null) => void} setState - Applies a weather state.
+ * @property {(phase: string|number|null) => void} setMoonPhase - Changes the moon phase.
+ * @property {() => void} destroy - Releases the WebGL resources.
+ * @property {boolean} supported - Whether WebGL is available.
+ * @property {string|number|null} moonPhase - Current moon phase.
+ */
+
+/**
+ * Creates the sky renderer attached to the given canvas.
+ *
+ * @param {HTMLCanvasElement} canvas - Canvas that will host the sky.
+ * @returns {SkyRenderer} Renderer instance.
+ */
+export const createSky = (canvas) => {
+  /** @type {WebGLRenderingContext|null} */
+  const gl = /** @type {WebGLRenderingContext|null} */ (
+    canvas.getContext('webgl', {
+      alpha: false,
+      antialias: false,
+      depth: false,
+      stencil: false,
+      powerPreference: 'low-power',
+      preserveDrawingBuffer: false,
+    }) || canvas.getContext('experimental-webgl')
+  );
+
+  /** @type {SkyRenderer} */
+  const api = {
+    supported: !!gl,
+    moonPhase: /** @type {string|number|null} */ (null),
+    start: () => {},
+    stop: () => {},
+    setState: () => {},
+    setMoonPhase: () => {},
+    destroy: () => {},
+  };
+
+  if (!gl) {
+    console.warn('[weather] WebGL is not available, the sky will stay static.');
+    return api;
+  }
+
+  const vertexShader = compileShader(gl, gl.VERTEX_SHADER, SKY_VERTEX_SHADER);
+  const fragmentShader = compileShader(gl, gl.FRAGMENT_SHADER, SKY_FRAGMENT_SHADER);
+  const program = gl.createProgram();
+
+  if (!vertexShader || !fragmentShader || !program) {
+    console.warn('[weather] Unable to build the sky shader, the sky will stay static.');
+    return api;
+  }
+
+  gl.attachShader(program, vertexShader);
+  gl.attachShader(program, fragmentShader);
+  gl.linkProgram(program);
+
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    console.error('[weather] Unable to link the sky shader:', gl.getProgramInfoLog(program));
+    return api;
+  }
+
+  gl.useProgram(program);
+
+  // Full screen triangle strip.
+  const buffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+
+  const position = gl.getAttribLocation(program, 'a_position');
+  gl.enableVertexAttribArray(position);
+  gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
+
+  /** @type {SkyUniforms} */
+  const uniforms = {
+    resolution: gl.getUniformLocation(program, 'u_resolution'),
+    time: gl.getUniformLocation(program, 'u_time'),
+    rain: gl.getUniformLocation(program, 'u_rain'),
+    snow: gl.getUniformLocation(program, 'u_snow'),
+    clouds: gl.getUniformLocation(program, 'u_clouds'),
+    lightning: gl.getUniformLocation(program, 'u_lightning'),
+    stars: gl.getUniformLocation(program, 'u_stars'),
+    wind: gl.getUniformLocation(program, 'u_wind'),
+    skyTop: gl.getUniformLocation(program, 'u_skyTop'),
+    skyBottom: gl.getUniformLocation(program, 'u_skyBottom'),
+    moonPos: gl.getUniformLocation(program, 'u_moonPos'),
+    moonPhase: gl.getUniformLocation(program, 'u_moonPhase'),
+    moonVisible: gl.getUniformLocation(program, 'u_moonVisible'),
+    cloudTexture: gl.getUniformLocation(program, 'u_cloudTexture'),
+    cloudOffset: gl.getUniformLocation(program, 'u_cloudOffset'),
+    cloudReady: gl.getUniformLocation(program, 'u_cloudReady'),
+  };
+
+  // Cloud texture.
+  //
+  // The texture is 1985x669, so it is NOT a power of two. WebGL 1 rejects
+  // REPEAT on a NPOT texture and leaves it incomplete (sampling pure black),
+  // which is why the tiling is done with fract() in the shader and the wrap
+  // mode stays at CLAMP_TO_EDGE.
+  const cloudTexture = gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_2D, cloudTexture);
+  gl.texImage2D(
+    gl.TEXTURE_2D,
+    0,
+    gl.RGBA,
+    1,
+    1,
+    0,
+    gl.RGBA,
+    gl.UNSIGNED_BYTE,
+    new Uint8Array([0, 0, 0, 0]),
+  );
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+
+  let cloudReady = 0;
+
+  const cloudImage = new Image();
+  cloudImage.crossOrigin = 'anonymous';
+  cloudImage.onload = () => {
+    gl.bindTexture(gl.TEXTURE_2D, cloudTexture);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, cloudImage);
+    cloudReady = 1;
+  };
+  cloudImage.onerror = () => {
+    console.error('[weather] Unable to load the cloud texture:', CLOUD_TEXTURE);
+  };
+  cloudImage.src = CLOUD_TEXTURE;
+
+  let frame = 0;
+  let running = false;
+  let destroyed = false;
+  let startedAt = 0;
+  let lastFrame = 0;
+  let lightningAt = 0;
+  let lightningTimer = 0;
+  let lightningIntensity = 0;
+  let cloudOffset = 0;
+
+  // Interpolated values, so a weather change fades instead of popping.
+  const current = { ...resolveSkyState(null, null) };
+  const target = { ...resolveSkyState(null, null) };
+  const from = { ...current };
+  let transitionStart = 0;
+  let transitionDuration = 0;
+
+  /**
+   * Resizes the drawing buffer to the CSS size of the canvas.
+   *
+   * The device pixel ratio is capped at 2 so a 4K monitor does not allocate a
+   * 8K back buffer, but it is still respected, which is what keeps the sky
+   * sharp on HiDPI and 2K/4K screens.
+   *
+   * @returns {void}
+   */
+  const resize = () => {
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+
+    // `clientWidth` is 0 while the canvas is still `display: none` (the reader
+    // adds the class a tick later), so fall back to the viewport instead of
+    // allocating a 1x1 buffer and drawing nothing.
+    const cssWidth = canvas.clientWidth || window.innerWidth || 1;
+    const cssHeight = canvas.clientHeight || window.innerHeight || 1;
+
+    const width = Math.max(1, Math.round(cssWidth * ratio));
+    const height = Math.max(1, Math.round(cssHeight * ratio));
+
+    if (canvas.width !== width || canvas.height !== height) {
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    gl.viewport(0, 0, width, height);
+  };
+
+  /**
+   * Schedules the next lightning flash.
+   *
+   * @param {number} now - Current timestamp.
+   * @returns {void}
+   */
+  const scheduleLightning = (now) => {
+    lightningTimer =
+      now + LIGHTNING_MIN_DELAY + Math.random() * (LIGHTNING_MAX_DELAY - LIGHTNING_MIN_DELAY);
+  };
+
+  /**
+   * @param {number} now - Current timestamp.
+   * @returns {void}
+   */
+  const render = (now) => {
+    if (!running || destroyed) return;
+
+    frame = requestAnimationFrame(render);
+
+    // Cap the frame rate at ~30fps: the sky is a background, it does not need
+    // to fight the reader for the GPU.
+    if (now - lastFrame < 33) return;
+    const delta = lastFrame ? Math.min(now - lastFrame, 100) : 16;
+    lastFrame = now;
+
+    if (!startedAt) startedAt = now;
+    const elapsed = (now - startedAt) / 1000;
+
+    // Clouds drift slowly to the side.
+    cloudOffset = (cloudOffset + delta * 0.0000045) % 1;
+
+    // Interpolate towards the target state.
+    const progress =
+      transitionDuration > 0 ? Math.min(1, (now - transitionStart) / transitionDuration) : 1;
+    const eased = progress * progress * (3 - 2 * progress);
+
+    current.rain = from.rain + (target.rain - from.rain) * eased;
+    current.snow = from.snow + (target.snow - from.snow) * eased;
+    current.clouds = from.clouds + (target.clouds - from.clouds) * eased;
+    current.stars = from.stars + (target.stars - from.stars) * eased;
+    current.moon = from.moon + (target.moon - from.moon) * eased;
+    current.wind = from.wind + (target.wind - from.wind) * eased;
+    current.top = [
+      from.top[0] + (target.top[0] - from.top[0]) * eased,
+      from.top[1] + (target.top[1] - from.top[1]) * eased,
+      from.top[2] + (target.top[2] - from.top[2]) * eased,
+    ];
+    current.bottom = [
+      from.bottom[0] + (target.bottom[0] - from.bottom[0]) * eased,
+      from.bottom[1] + (target.bottom[1] - from.bottom[1]) * eased,
+      from.bottom[2] + (target.bottom[2] - from.bottom[2]) * eased,
+    ];
+
+    // Lightning only exists while the weather asks for it.
+    if (target.lightning > 0) {
+      if (!lightningTimer) scheduleLightning(now);
+      else if (now >= lightningTimer) {
+        lightningAt = now;
+        lightningTimer = 0;
+      }
+    } else {
+      lightningTimer = 0;
+    }
+
+    const sinceFlash = now - lightningAt;
+    lightningIntensity = sinceFlash < 420 ? Math.max(0, 1 - sinceFlash / 420) : 0;
+
+    resize();
+
+    gl.uniform2f(uniforms.resolution, canvas.width, canvas.height);
+    gl.uniform1f(uniforms.time, elapsed);
+    gl.uniform1f(uniforms.rain, current.rain);
+    gl.uniform1f(uniforms.snow, current.snow);
+    gl.uniform1f(uniforms.clouds, current.clouds);
+    gl.uniform1f(uniforms.lightning, lightningIntensity);
+    gl.uniform1f(uniforms.stars, current.stars);
+    gl.uniform1f(uniforms.wind, current.wind);
+    gl.uniform3f(uniforms.skyTop, current.top[0], current.top[1], current.top[2]);
+    gl.uniform3f(uniforms.skyBottom, current.bottom[0], current.bottom[1], current.bottom[2]);
+
+    // Moon, anchored to the top right corner.
+    gl.uniform2f(uniforms.moonPos, 0.36, 0.34);
+    gl.uniform1f(uniforms.moonPhase, getMoonPhase(api.moonPhase));
+    gl.uniform1f(uniforms.moonVisible, current.moon);
+
+    // Clouds.
+    gl.activeTexture(gl.TEXTURE0);
+    gl.bindTexture(gl.TEXTURE_2D, cloudTexture);
+    gl.uniform1i(uniforms.cloudTexture, 0);
+    gl.uniform1f(uniforms.cloudOffset, cloudOffset);
+    gl.uniform1f(uniforms.cloudReady, cloudReady);
+
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  };
+
+  api.start = () => {
+    if (running || destroyed) return;
+    running = true;
+    lastFrame = 0;
+    frame = requestAnimationFrame(render);
+  };
+
+  /**
+   * @param {string|number|null} phase - Moon phase name or index.
+   * @returns {void}
+   */
+  api.setMoonPhase = (phase) => {
+    api.moonPhase = phase;
+  };
+
+  api.stop = () => {
+    running = false;
+    if (frame) cancelAnimationFrame(frame);
+    frame = 0;
+  };
+
+  /**
+   * @param {string|null} [weather] - Weather key.
+   * @param {string|null} [dayCycle] - Day/night cycle key.
+   * @returns {void}
+   */
+  api.setState = (weather = null, dayCycle = null) => {
+    const next = resolveSkyState(weather, dayCycle);
+
+    // Copy the values that are currently on screen, so a state change in the
+    // middle of a transition does not jump.
+    from.rain = current.rain;
+    from.snow = current.snow;
+    from.clouds = current.clouds;
+    from.stars = current.stars;
+    from.moon = current.moon;
+    from.wind = current.wind;
+    from.top = [...current.top];
+    from.bottom = [...current.bottom];
+
+    target.rain = next.rain;
+    target.snow = next.snow;
+    target.clouds = next.clouds;
+    target.stars = next.stars;
+    target.moon = next.moon;
+    target.wind = next.wind;
+    target.top = next.top;
+    target.bottom = next.bottom;
+    target.lightning = next.lightning;
+
+    transitionStart = performance.now();
+    transitionDuration = TRANSITION_DURATION;
+  };
+
+  api.destroy = () => {
+    api.stop();
+    destroyed = true;
+    gl.deleteTexture(cloudTexture);
+    gl.deleteBuffer(buffer);
+    gl.deleteProgram(program);
+    gl.deleteShader(vertexShader);
+    gl.deleteShader(fragmentShader);
+  };
+
+  return api;
+};
+
+/**
+ * @typedef {Object} SkyController
+ * @property {HTMLCanvasElement|null} canvas - Canvas that hosts the sky.
+ * @property {SkyRenderer|null} renderer - Active renderer, if any.
+ * @property {string|null} weather - Current weather key.
+ * @property {string|null} dayCycle - Current day/night cycle key.
+ * @property {string|number|null} moonPhase - Current moon phase.
+ * @property {() => void} ensure - Creates the canvas once and keeps it alive.
+ * @property {(weather?: string|null, dayCycle?: string|null) => void} setState - Applies a weather state.
+ * @property {(phase: string|number|null) => void} setMoonPhase - Changes the moon phase.
+ * @property {(visible: boolean) => void} setVisible - Shows or hides the sky.
+ * @property {() => void} destroy - Removes the canvas and releases the GPU resources.
+ * @property {() => boolean} isMounted - Whether the sky is currently mounted.
+ */
+
+/**
+ * The sky lives directly inside `<body>` (and not inside the markdown container)
+ * because the reader rebuilds its own DOM on every page change. Keeping the
+ * canvas outside of it means the WebGL context survives the navigation.
+ *
+ * @type {SkyController}
+ */
+export const sky = {
+  canvas: null,
+  renderer: null,
+  weather: null,
+  dayCycle: null,
+  moonPhase: null,
+
+  /**
+   * Creates the canvas and the WebGL context on first use.
+   *
+   * @returns {void}
+   */
+  ensure() {
+    if (this.canvas) return;
+
+    const canvas = document.createElement('canvas');
+    canvas.className = 'sky-canvas';
+    canvas.setAttribute('aria-hidden', 'true');
+    document.body.prepend(canvas);
+
+    this.canvas = canvas;
+    this.renderer = createSky(canvas);
+    this.renderer.start();
+    this.renderer.setMoonPhase(this.moonPhase);
+    this.renderer.setState(this.weather, this.dayCycle);
+  },
+
+  /**
+   * @param {string|null} [weather] - Weather key.
+   * @param {string|null} [dayCycle] - Day/night cycle key.
+   * @returns {void}
+   */
+  setState(weather = null, dayCycle = null) {
+    if (typeof weather === 'string') this.weather = weather;
+    if (typeof dayCycle === 'string') this.dayCycle = dayCycle;
+
+    // The reader updates the state on every scroll, including right after it
+    // has been closed. Only the canvas owner is allowed to create it again.
+    if (!this.canvas) return;
+    if (this.renderer) this.renderer.setState(this.weather, this.dayCycle);
+  },
+
+  /**
+   * @param {string|number|null} phase - Moon phase name or index.
+   * @returns {void}
+   */
+  setMoonPhase(phase) {
+    this.moonPhase = phase;
+    if (this.renderer) this.renderer.setMoonPhase(phase);
+  },
+
+  /**
+   * @param {boolean} visible - Whether the sky must be visible.
+   * @returns {void}
+   */
+  setVisible(visible) {
+    document.body.classList.toggle('sky-visible', visible);
+  },
+
+  /**
+   * @returns {void}
+   */
+  destroy() {
+    if (this.renderer) this.renderer.destroy();
+    if (this.canvas && this.canvas.parentNode) this.canvas.parentNode.removeChild(this.canvas);
+    this.renderer = null;
+    this.canvas = null;
+    this.setVisible(false);
+  },
+
+  /**
+   * @returns {boolean} Whether the sky is mounted.
+   */
+  isMounted() {
+    return this.canvas !== null;
+  },
+};
+
+export default sky;

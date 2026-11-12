@@ -198,6 +198,8 @@ interface StoryData {
     weather?: string;
     /** Weather of the next line. */
     nextWeather?: string;
+    /** Day/night cycle of the next line. */
+    nextDayNightCycle?: string;
     /** Rendered lines, indexed by line number. */
     html: Record<string | number, TinyHtmlAny>;
     /** Lines visible with the current filters. */

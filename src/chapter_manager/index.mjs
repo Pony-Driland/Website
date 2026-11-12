@@ -17,6 +17,7 @@ import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
 import { body, tinyWin } from '../html/query.mjs';
 import { markdownBase } from '../html/base.mjs';
+import { sky } from './weather/index.mjs';
 
 const { Icon, Button, Anchor } = TinyHtmlElems;
 
@@ -34,84 +35,6 @@ const { Icon, Button, Anchor } = TinyHtmlElems;
  * @template T
  * @typedef {import('tiny-essentials/libs/array/TinyArrayPaginator').GetterResult<T>} GetterResult
  */
-
-/**
- * Pre-rendered raindrop markup.
- *
- * @type {{ drops: string, backDrops: string }}
- */
-/*  Rain made by Aaron Rickle */
-const rainConfig = { drops: '', backDrops: '' };
-(() => {
-  var increment = 0;
-  rainConfig.drops = '';
-  rainConfig.backDrops = '';
-  while (increment < 100) {
-    //couple random numbers to use for various randomizations
-    //random number between 98 and 1
-    var randoHundo = Math.floor(Math.random() * (98 - 1 + 1) + 1);
-    //random number between 5 and 2
-    var randoFiver = Math.floor(Math.random() * (5 - 2 + 1) + 2);
-    //increment
-    increment += randoFiver;
-    //add in a new raindrop with various randomizations to certain CSS properties
-    rainConfig.drops +=
-      '<div class="drop" style="left: ' +
-      increment +
-      '%; bottom: ' +
-      (randoFiver + randoFiver - 1 + 100) +
-      '%; animation-delay: 0.' +
-      randoHundo +
-      's; animation-duration: 0.5' +
-      randoHundo +
-      's;"><div class="stem" style="animation-delay: 0.' +
-      randoHundo +
-      's; animation-duration: 0.5' +
-      randoHundo +
-      's;"></div><div class="splat" style="animation-delay: 0.' +
-      randoHundo +
-      's; animation-duration: 0.5' +
-      randoHundo +
-      's;"></div></div>';
-    rainConfig.backDrops +=
-      '<div class="drop" style="right: ' +
-      increment +
-      '%; bottom: ' +
-      (randoFiver + randoFiver - 1 + 100) +
-      '%; animation-delay: 0.' +
-      randoHundo +
-      's; animation-duration: 0.5' +
-      randoHundo +
-      's;"><div class="stem" style="animation-delay: 0.' +
-      randoHundo +
-      's; animation-duration: 0.5' +
-      randoHundo +
-      's;"></div><div class="splat" style="animation-delay: 0.' +
-      randoHundo +
-      's; animation-duration: 0.5' +
-      randoHundo +
-      's;"></div></div>';
-  }
-
-  return;
-})();
-
-// Start Rain
-const rainMode = {
-  start: () => {
-    TinyHtml.queryAll('.rain').empty();
-    TinyHtml.queryAll('.rain.front-row').append(TinyHtml.createFromHTML(rainConfig.drops));
-    TinyHtml.queryAll('.rain.back-row').append(TinyHtml.createFromHTML(rainConfig.backDrops));
-  },
-
-  on: () => {
-    body.addClass('raining-sky');
-  },
-
-  off: () => {
-    body.addClass('raining-sky');
-  },
-};
 
 /**
  * @typedef {Object} StoryLineData
@@ -287,6 +210,10 @@ export const openChapterMenu = (params = {}) => {
   clearFicData();
   markdownBase.empty();
   storyData.chapter.blockLineSave = false;
+
+  // The sky lives outside the markdown container, so it survives the re-render.
+  sky.ensure();
+  sky.setVisible(true);
 
   /**
    * Get Page Data
@@ -642,16 +569,6 @@ export const openChapterMenu = (params = {}) => {
 
       // Pagination
       tinyPag.base[1],
-
-      // Night Effects
-      TinyHtml.createFrom('div', { id: 'bg-sky' }).append(
-        TinyHtml.createFrom('div', { class: 'flash' }),
-        TinyHtml.createFrom('div', { class: 'rain front-row' }),
-        TinyHtml.createFrom('div', { class: 'rain back-row' }),
-        TinyHtml.createFrom('div', { class: 'stars' }),
-        TinyHtml.createFrom('div', { class: 'twinkling' }),
-        TinyHtml.createFrom('div', { class: 'clouds' }),
-      ),
     );
 
     // Fic Mode
@@ -663,7 +580,6 @@ export const openChapterMenu = (params = {}) => {
       const tinyLine = new TinyHtml(markdownBase.find('[line="' + line + '"]'));
       if (tinyLine.size > 0) TinyHtml.setWinScrollTop(tinyLine.offset().top);
     }
-    rainMode.start();
     return;
   };
 

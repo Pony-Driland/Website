@@ -20,6 +20,7 @@ import '../markdown/dropdown.mjs';
 import '../markdown/spoiler.mjs';
 import '../markdown/ai-tag.mjs';
 import { convertIsoStringsToCalendar } from '../files/utils.mjs';
+import { sky } from '../chapter_manager/weather/index.mjs';
 
 const { Icon } = TinyHtmlElems;
 
@@ -54,6 +55,12 @@ export const clearFicData = () => {
     .removeClass(`fic-daycicle-evening`)
     .removeClass(`fic-daycicle-night`)
     .removeClass(`fic-daycicle-lateAtNight`);
+
+  // The sky owns a WebGL context, so it must be released when the reader closes.
+  sky.destroy();
+  storyData.chapter.weather = undefined;
+  storyData.chapter.nextWeather = undefined;
+  storyData.chapter.nextDayNightCycle = undefined;
 
   new TinyHtml(storyData.nc.base.right.find(':scope > #status')).empty();
   TinyHtml.query('#fic-chapter')?.empty();
