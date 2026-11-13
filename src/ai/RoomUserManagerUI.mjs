@@ -87,8 +87,9 @@ class UserRoomManager {
    * @param {RoomModerator[]} [options.moderators=[]] - An array of moderator objects, each containing at least a `userId`.
    * @param {RoomPermissionEntry[]} [options.permissions=[]] - Users allowed to speak in the room.
    * @param {boolean} [options.isOwner=false] - Whether the current user is the room owner.
+   * @param {(() => void)|null} [options.onClose] - Closes the manager modal.
    */
-  constructor({ client, root, currentUserId, users, moderators, permissions, isOwner }) {
+  constructor({ client, root, currentUserId, users, moderators, permissions, isOwner, onClose }) {
     this.$root = root;
     this.#client = client;
 
@@ -97,6 +98,7 @@ class UserRoomManager {
     this.moderators = moderators || [];
     this.setPermissions(permissions);
     this.isOwner = isOwner === true;
+    this.onClose = typeof onClose === 'function' ? onClose : null;
     this.isModerator = false;
 
     this.readOnly = false;
@@ -107,6 +109,7 @@ class UserRoomManager {
     this.$footer = null;
     this.$searchInput = null;
     this.$userList = TinyHtml.createFrom('div');
+    this.$moderatorList = TinyHtml.createFrom('div').addClass('mb-3');
 
     this.init();
   }
@@ -179,6 +182,9 @@ class UserRoomManager {
 
     if (this.$kickAll)
       this.$kickAll.toggleProp('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
+
+    if (this.$banInput)
+      this.$banInput.toggleProp('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
 
     for (const item of this.#usersHtml) {
       const needDisable =
@@ -278,11 +284,202 @@ class UserRoomManager {
       .addClass('flex-grow-1')
       .append(this.$searchInput);
 
-    this.$header.append(this.$kickAll, $readonlyBtn, $roomStatus, $searchWrapper);
-    this.$root.append(this.$header, this.$userList);
+    // Banned users
+    const $bannedBtn = tinyLib.bs.button('secondary').setText('Banned users');
+    $bannedBtn.on('click', () => {
+      this.onClose?.();
+      this.openBannedUsers();
+    });
+
+    this.$header.append(this.$kickAll, $readonlyBtn, $roomStatus, $bannedBtn, $searchWrapper);
+    this.$root.append(this.$header, this.$moderatorList, this.$userList);
 
     this.updateRoomStatusButton();
     this.updateReadonlyButton();
+  }
+
+  /**
+   * Renders the list of room moderators.
+   *
+   * The owner uses it to know who can moderate the room without opening the
+   * user list.
+   *
+   * @returns {void}
+   */
+  renderModerators() {
+    this.$moderatorList.empty();
+    if (!Array.isArray(this.moderators) || this.moderators.length < 1) return;
+
+    const $wrapper = TinyHtml.createFrom('div').addClass('small');
+    $wrapper.append(TinyHtml.createFrom('strong').setText('Moderators: '));
+
+    this.moderators.forEach((mod, index) => {
+      if (index > 0) $wrapper.append(TinyHtml.createFrom('span').setText(', '));
+      $wrapper.append(TinyHtml.createFrom('span').addClass('text-muted').setText(mod.userId));
+    });
+
+    this.$moderatorList.append($wrapper);
+  }
+
+  /**
+   * Opens the list of users banned from the room.
+   *
+   * @returns {void}
+   */
+  openBannedUsers() {
+    const $root = TinyHtml.createFrom('div');
+    const $list = TinyHtml.createFrom('div').addClass('mt-3');
+    const $pagination = TinyHtml.createFrom('div').addClass(
+      'd-flex justify-content-between align-items-center mt-3',
+    );
+    $root.append($list, $pagination);
+
+    let page = 1;
+    let totalPages = 1;
+
+    /** Loads the ban list from the server. */
+    const load = () => {
+      $list.empty();
+      $pagination.empty();
+      $list.append(TinyHtml.createFrom('div').addClass('text-muted').setText('Loading...'));
+
+      this.#client
+        .listRoomBanned(page, 10)
+        .then((result) => {
+          $list.empty();
+
+          if (result.error) {
+            $list.append(
+              TinyHtml.createFrom('div')
+                .addClass('text-danger')
+                .setText(result.msg ?? 'Error'),
+            );
+            return;
+          }
+
+          totalPages = typeof result.totalPages === 'number' ? result.totalPages : 1;
+
+          const users = Array.isArray(result.users) ? result.users : [];
+          if (users.length < 1) {
+            $list.append(
+              TinyHtml.createFrom('div').addClass('text-muted').setText('No banned users.'),
+            );
+            return;
+          }
+
+          for (const user of users) {
+            const $row = TinyHtml.createFrom('div').addClass(
+              'd-flex align-items-center gap-2 border-bottom py-2',
+            );
+
+            const $info = TinyHtml.createFrom('div').addClass('flex-grow-1');
+            $info.append(
+              TinyHtml.createFrom('strong').setText(user.userId),
+              TinyHtml.createFrom('div')
+                .addClass('small text-muted')
+                .setText(user.reason || 'No reason given'),
+            );
+
+            const $unban = tinyLib.bs
+              .button('success btn-sm')
+              .addClass('unban-button')
+              .setText('Unban');
+            /** @type {NodeJS.Timeout|null} */
+            let confirmTimer = null;
+            let isConfirming = false;
+
+            $unban.on('click', async (event) => {
+              // Holding shift skips the confirmation.
+              const mouseEvent = /** @type {MouseEvent} */ (event);
+              const skipConfirm = Boolean(mouseEvent?.shiftKey);
+
+              // First click arms the button, the second one really unbans.
+              if (!skipConfirm && !isConfirming) {
+                isConfirming = true;
+                $unban.removeClass('btn-success').addClass('btn-danger').setText('Confirm?');
+
+                confirmTimer = setTimeout(() => {
+                  isConfirming = false;
+                  $unban.removeClass('btn-danger').addClass('btn-success').setText('Unban');
+                }, 5000);
+                return;
+              }
+
+              if (confirmTimer) clearTimeout(confirmTimer);
+              $unban.addClass('disabled').addProp('disabled');
+              await this.#client.unbanUser(user.userId);
+              load();
+            });
+
+            $row.append($info, $unban);
+            $list.append($row);
+          }
+
+          // Pagination
+          const $prev = tinyLib.bs.button('secondary btn-sm').setText('Previous');
+          $prev.toggleProp('disabled', page <= 1);
+          $prev.on('click', () => {
+            if (page <= 1) return;
+            page--;
+            load();
+          });
+
+          const $next = tinyLib.bs.button('secondary btn-sm').setText('Next');
+          $next.toggleProp('disabled', page >= totalPages);
+          $next.on('click', () => {
+            if (page >= totalPages) return;
+            page++;
+            load();
+          });
+
+          $pagination.append(
+            $prev,
+            TinyHtml.createFrom('span')
+              .addClass('small text-muted')
+              .setText(`Page ${page} / ${totalPages}`),
+            $next,
+          );
+        })
+        .catch((err) => {
+          $list.empty();
+          $list.append(
+            TinyHtml.createFrom('div')
+              .addClass('text-danger')
+              .setText(err instanceof Error ? err.message : String(err)),
+          );
+        });
+    };
+
+    const { html } = tinyLib.modal({
+      title: 'Banned users',
+      dialog: 'modal-lg',
+      id: 'room-banned-users',
+      body: $root,
+    });
+
+    // Highlights the unban buttons while shift is held, warning that the click
+    // skips the confirmation.
+    /** @param {boolean} active */
+    const setShiftDanger = (active) => html.toggleClass('shift-danger', active);
+    const onKeyDown = (/** @type {KeyboardEvent} */ e) => {
+      if (e.key === 'Shift') setShiftDanger(true);
+    };
+    const onKeyUp = (/** @type {KeyboardEvent} */ e) => {
+      if (e.key === 'Shift') setShiftDanger(false);
+    };
+    const onBlur = () => setShiftDanger(false);
+
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('keyup', onKeyUp);
+    window.addEventListener('blur', onBlur);
+
+    html.on('hidden.bs.modal', () => {
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('keyup', onKeyUp);
+      window.removeEventListener('blur', onBlur);
+    });
+
+    load();
   }
 
   /**
@@ -345,6 +542,8 @@ class UserRoomManager {
       'd-flex mt-4 gap-2 align-items-center',
     );
 
+    const $banWrapper = TinyHtml.createFrom('div').addClass('d-flex mt-4 gap-2 align-items-center');
+
     this.$unbanInput = TinyHtml.createFrom('input')
       .addClass('form-control')
       .setAttr('type', 'text')
@@ -364,6 +563,17 @@ class UserRoomManager {
         if (/** @type {KeyboardEvent} */ (e).key === 'Enter') {
           e.preventDefault();
           $removeModButton.trigger('click');
+        }
+      });
+
+    this.$banInput = TinyHtml.createFrom('input')
+      .addClass('form-control')
+      .setAttr('type', 'text')
+      .setAttr('placeholder', 'Enter user ID to ban')
+      .on('keydown', (e) => {
+        if (/** @type {KeyboardEvent} */ (e).key === 'Enter') {
+          e.preventDefault();
+          $banButton.trigger('click');
         }
       });
 
@@ -389,9 +599,21 @@ class UserRoomManager {
       }
     });
 
+    const $banButton = tinyLib.bs.button('danger').setText('Ban');
+    $banButton.on('click', () => {
+      if (this.$banInput && !this.$banInput.hasProp('disabled')) {
+        const userId = String(this.$banInput?.val() ?? '').trim();
+        if (userId) {
+          this.$banInput.setVal('');
+          this.banUser(userId);
+        }
+      }
+    });
+
     $unbanWrapper.append(this.$unbanInput, $unbanButton);
     $removeModWrapper.append(this.$remveModInput, $removeModButton);
-    this.$footer.append($unbanWrapper, $removeModWrapper);
+    $banWrapper.append(this.$banInput, $banButton);
+    this.$footer.append($unbanWrapper, $removeModWrapper, $banWrapper);
     this.$root.append(this.$footer);
   }
 
@@ -444,6 +666,8 @@ class UserRoomManager {
    * @param {string} [filter=''] - Optional filter string to match against nickname or userId.
    */
   renderUserList(filter = '') {
+    this.renderModerators();
+
     for (const item of this.#usersHtml) item.tooltips.forEach((tooltip) => tooltip.hide());
     this.$userList.empty();
     this.#usersHtml = [];

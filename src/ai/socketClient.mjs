@@ -966,6 +966,19 @@ class TinyClientIo extends EventEmitter {
   }
 
   /**
+   * Lists the users banned from the current room.
+   *
+   * @returns {Promise<SocketAck>}
+   */
+  listRoomBanned(page = 1, perPage = 10) {
+    return this.#socketEmitApi('list-room-banned', {
+      roomId: this.#cfg.roomId,
+      page,
+      perPage,
+    });
+  }
+
+  /**
    * Unban user room
    */
   unbanUser(userId = '') {

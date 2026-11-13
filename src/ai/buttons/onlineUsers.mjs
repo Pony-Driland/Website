@@ -108,11 +108,6 @@ export const openOnlineUsers = () => {
       if (user.isOwner) $badges.append(makeBadge('fas fa-crown', 'Server owner', 'warning'));
       else if (user.isMod) $badges.append(makeBadge('fas fa-shield-halved', 'Staff', 'info'));
 
-      if (user.banned)
-        $badges.append(
-          makeBadge('fas fa-ban', user.banReason || 'Banned', 'danger', user.banReason || 'Banned'),
-        );
-
       $badges.append(
         makeBadge(
           'fas fa-door-open',
@@ -121,6 +116,21 @@ export const openOnlineUsers = () => {
           user.rooms.length > 0 ? user.rooms.join(', ') : 'No room',
         ),
       );
+
+      // The ban reason can be long, so it gets its own line.
+      if (user.banned)
+        $badges.append(
+          TinyHtml.createFrom('div')
+            .addClass('mt-1')
+            .append(
+              makeBadge(
+                'fas fa-ban',
+                user.banReason || 'Banned',
+                'danger',
+                user.banReason || 'Banned',
+              ),
+            ),
+        );
 
       $info.append(
         TinyHtml.createFrom('strong').setText(user.nickname || user.userId),

@@ -17,7 +17,7 @@ export const userButtonActions = () => {
     const $root = TinyHtml.createFrom('div');
 
     // Start modal
-    const { html } = tinyLib.modal({
+    const { html, modal } = tinyLib.modal({
       title: 'User manager',
       dialog: 'modal-lg',
       id: 'user-manager',
@@ -35,6 +35,7 @@ export const userButtonActions = () => {
       users: structuredClone(tinyIo.client.getUsers()),
       moderators: [],
       permissions: tinyIo.client.getPermissions(),
+      onClose: () => modal.hide(),
     });
 
     const mods = tinyIo.client.getMods() || [];
