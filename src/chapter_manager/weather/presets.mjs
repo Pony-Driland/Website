@@ -38,6 +38,7 @@ import {
  * @property {number} wind - Horizontal drift applied to the precipitation.
  * @property {number} rainSpeed - Rain motion multiplier.
  * @property {number} snowSpeed - Snow motion multiplier.
+ * @property {boolean} [storm] - Whether this preset is a snowstorm.
  */
 
 /**
@@ -51,6 +52,7 @@ import {
  * @property {number} wind
  * @property {number} rainSpeed
  * @property {number} snowSpeed
+ * @property {number} storm - 0 for calm snow, 1 for a snowstorm.
  * @property {[number, number, number]} top
  * @property {[number, number, number]} bottom
  */
@@ -155,6 +157,7 @@ export const resolveSkyState = (weather, dayCycle, overrides = {}) => {
     wind,
     rainSpeed: preset.rainSpeed * speed,
     snowSpeed: preset.snowSpeed * speed,
+    storm: preset.storm ? 1 : 0,
     top: palette.top,
     bottom: palette.bottom,
   };

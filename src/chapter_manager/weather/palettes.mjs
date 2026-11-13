@@ -58,6 +58,7 @@ export const SKY_PALETTE_COLORS = {
  *   wind: number,
  *   rainSpeed: number,
  *   snowSpeed: number,
+ *   storm?: boolean,
  * }>}
  */
 export const WEATHER_PRESET_COLORS = {
@@ -113,7 +114,11 @@ export const WEATHER_PRESET_COLORS = {
     lightning: false,
     wind: 0.55,
     rainSpeed: 1,
-    snowSpeed: 3.2,
+    // The storm is driven almost entirely by the wind, so the fall speed is
+    // what sells it. Anything under ~4 reads as heavy snow instead of a
+    // blizzard, and the shader stretches the streaks from the same value.
+    snowSpeed: 6,
+    storm: true,
   },
 };
 

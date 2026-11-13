@@ -72,6 +72,7 @@ const LIGHTNING_PULSES = [
  * @property {WebGLUniformLocation|null} cloudReady
  * @property {WebGLUniformLocation|null} rainScroll
  * @property {WebGLUniformLocation|null} snowScroll
+ * @property {WebGLUniformLocation|null} storm
  */
 
 /**
@@ -193,6 +194,7 @@ export const createSky = (canvas) => {
     cloudReady: gl.getUniformLocation(program, 'u_cloudReady'),
     rainScroll: gl.getUniformLocation(program, 'u_rainScroll'),
     snowScroll: gl.getUniformLocation(program, 'u_snowScroll'),
+    storm: gl.getUniformLocation(program, 'u_storm'),
   };
 
   // Cloud texture.
@@ -340,10 +342,8 @@ export const createSky = (canvas) => {
     // forever, which is what the shader needs to stay precise.
     const seconds = delta / 1000;
     for (let i = 0; i < 3; i++) {
-      rainScroll[i] =
-        (rainScroll[i] + RAIN_LAYER_SPEED[i] * current.rainSpeed * seconds) % 1;
-      snowScroll[i] =
-        (snowScroll[i] + SNOW_LAYER_SPEED[i] * current.snowSpeed * seconds) % 1;
+      rainScroll[i] = (rainScroll[i] + RAIN_LAYER_SPEED[i] * current.rainSpeed * seconds) % 1;
+      snowScroll[i] = (snowScroll[i] + SNOW_LAYER_SPEED[i] * current.snowSpeed * seconds) % 1;
     }
 
     // Interpolate towards the target state.
@@ -357,6 +357,9 @@ export const createSky = (canvas) => {
     current.stars = from.stars + (target.stars - from.stars) * eased;
     current.moon = from.moon + (target.moon - from.moon) * eased;
     current.wind = from.wind + (target.wind - from.wind) * eased;
+    current.storm = from.storm + (target.storm - from.storm) * eased;
+    current.rainSpeed = from.rainSpeed + (target.rainSpeed - from.rainSpeed) * eased;
+    current.snowSpeed = from.snowSpeed + (target.snowSpeed - from.snowSpeed) * eased;
     current.top = [
       from.top[0] + (target.top[0] - from.top[0]) * eased,
       from.top[1] + (target.top[1] - from.top[1]) * eased,
@@ -404,6 +407,7 @@ export const createSky = (canvas) => {
     gl.uniform1f(uniforms.wind, current.wind);
     gl.uniform3f(uniforms.rainScroll, rainScroll[0], rainScroll[1], rainScroll[2]);
     gl.uniform3f(uniforms.snowScroll, snowScroll[0], snowScroll[1], snowScroll[2]);
+    gl.uniform1f(uniforms.storm, current.storm);
     gl.uniform3f(uniforms.skyTop, current.top[0], current.top[1], current.top[2]);
     gl.uniform3f(uniforms.skyBottom, current.bottom[0], current.bottom[1], current.bottom[2]);
 
@@ -460,6 +464,9 @@ export const createSky = (canvas) => {
     from.stars = current.stars;
     from.moon = current.moon;
     from.wind = current.wind;
+    from.storm = current.storm;
+    from.rainSpeed = current.rainSpeed;
+    from.snowSpeed = current.snowSpeed;
     from.top = [...current.top];
     from.bottom = [...current.bottom];
 
@@ -469,6 +476,9 @@ export const createSky = (canvas) => {
     target.stars = next.stars;
     target.moon = next.moon;
     target.wind = next.wind;
+    target.storm = next.storm;
+    target.rainSpeed = next.rainSpeed;
+    target.snowSpeed = next.snowSpeed;
     target.top = next.top;
     target.bottom = next.bottom;
     target.lightning = next.lightning;

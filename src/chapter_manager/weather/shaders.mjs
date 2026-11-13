@@ -26,6 +26,7 @@
 
 import { RAIN_GLSL } from './shaders/rain.mjs';
 import { SNOW_GLSL } from './shaders/snow.mjs';
+import { SNOWSTORM_GLSL } from './shaders/snowstorm.mjs';
 
 /** Full screen triangle strip. */
 export const SKY_VERTEX_SHADER = `
@@ -49,6 +50,7 @@ uniform float u_time;
 // Weather intensities, all in the 0..1 range.
 uniform float u_rain;
 uniform float u_snow;
+uniform float u_storm;
 uniform float u_clouds;
 uniform float u_lightning;
 uniform float u_stars;
@@ -161,6 +163,8 @@ ${RAIN_GLSL}
 
 ${SNOW_GLSL}
 
+${SNOWSTORM_GLSL}
+
 /** Moon disc with its phase. */
 float moonShape(vec2 p, float phase) {
   float radius = 0.5;
@@ -262,12 +266,32 @@ void main() {
     color += vec3(0.55, 0.65, 0.82) * splash;
   }
 
-  // Snow.
+  // Snow. u_storm crossfades between the calm flakes and the storm, so a
+  // scene can go from one to the other without a hard cut.
+  //
+  // Each branch is skipped when it contributes nothing, so a calm scene never
+  // pays for the three extra storm layers and vice versa.
   if (u_snow > 0.001) {
     float snow = 0.0;
-    snow += snowLayer(uv, 9.0, u_snowScroll.x, 2.3, 0.72, 0.055) * 0.45;
-    snow += snowLayer(uv, 16.0, u_snowScroll.y, 7.9, 0.76, 0.070) * 0.70;
-    snow += snowLayer(uv, 26.0, u_snowScroll.z, 19.1, 0.80, 0.085) * 1.00;
+
+    if (u_storm < 0.999) {
+      float calm = 0.0;
+      calm += snowLayer(uv, 9.0, u_snowScroll.x, 2.3, 0.72, 0.055) * 0.45;
+      calm += snowLayer(uv, 16.0, u_snowScroll.y, 7.9, 0.76, 0.070) * 0.70;
+      calm += snowLayer(uv, 26.0, u_snowScroll.z, 19.1, 0.80, 0.085) * 1.00;
+      snow += calm * (1.0 - u_storm);
+    }
+
+    if (u_storm > 0.001) {
+      // Denser and finer than the calm snow: a blizzard is a wall of small
+      // flakes, not a few big ones. The seeds are offset so the storm never
+      // lines up with the calm field it is crossfading from.
+      float storm = 0.0;
+      storm += snowstormLayer(uv, 11.0, u_snowScroll.x, 61.3, 0.86, 0.048) * 0.45;
+      storm += snowstormLayer(uv, 19.0, u_snowScroll.y, 83.7, 0.90, 0.060) * 0.70;
+      storm += snowstormLayer(uv, 31.0, u_snowScroll.z, 107.1, 0.93, 0.074) * 1.00;
+      snow += storm * u_storm;
+    }
 
     color = mix(color, vec3(0.96, 0.97, 1.0), clamp(snow * u_snow, 0.0, 1.0));
   }
