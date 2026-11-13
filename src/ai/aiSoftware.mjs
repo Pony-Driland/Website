@@ -3729,6 +3729,7 @@ export const AiScriptStart = async () => {
           3: 'This account is already in use. Close the other session and try again.',
           4: "You're already logged in!",
           5: "You're banned from this server.",
+          6: 'The server reached the maximum number of online accounts. Try again later.',
         };
 
         /**
