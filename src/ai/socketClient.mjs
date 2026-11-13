@@ -1176,13 +1176,24 @@ class TinyClientIo extends EventEmitter {
   }
 
   /**
-   * Lists the users currently connected to the server.
+   * Lists the accounts of the server.
    *
-   * @param {string|null} [search] - Free text filter.
+   * @param {Object} [filters] - Search filters.
+   * @param {string|null} [filters.search] - Free text filter.
+   * @param {boolean} [filters.all] - Search every account instead of the online ones.
+   * @param {boolean} [filters.bannedOnly] - Only banned accounts.
+   * @param {number} [filters.page] - Page number.
+   * @param {number} [filters.perPage] - Items per page.
    * @returns {Promise<SocketAck>}
    */
-  listUsers(search = null) {
-    return this.#socketEmitApi('list-users', { search });
+  listUsers({ search = null, all = false, bannedOnly = false, page = 1, perPage = 20 } = {}) {
+    return this.#socketEmitApi('list-users', {
+      search,
+      all,
+      bannedOnly,
+      page,
+      perPage,
+    });
   }
 
   /**
@@ -1239,6 +1250,26 @@ class TinyClientIo extends EventEmitter {
     return this.#socketEmitApi('user-is-owner', {
       userId,
     });
+  }
+
+  /**
+   * Promotes an account to server staff.
+   *
+   * @param {string} userId - Account id.
+   * @returns {Promise<SocketAck>}
+   */
+  promoteAccount(userId = '') {
+    return this.#socketEmitApi('add-mod', { userId });
+  }
+
+  /**
+   * Removes the server staff from an account.
+   *
+   * @param {string} userId - Account id.
+   * @returns {Promise<SocketAck>}
+   */
+  demoteAccount(userId = '') {
+    return this.#socketEmitApi('remove-mod', { userId });
   }
 
   /**
