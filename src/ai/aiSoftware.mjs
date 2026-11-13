@@ -987,12 +987,28 @@ export const AiScriptStart = async () => {
 
   const rpgContentButtons = [];
 
+  /**
+   * Tells whether the signed-in account may edit the RPG data of the room.
+   *
+   * @returns {boolean}
+   */
+  const canEditRpgData = () => {
+    const client = getClient();
+    const user = client.getUser() || {};
+    const room = client.getRoom() || {};
+    return room.ownerId === client.getUserId() || Boolean(user.isOwner);
+  };
+
   // Load rpg data
   const loadRpgSchemaData = async () => {
     loaderScreen.start();
     // Is online
     if (isOnline()) {
       const client = getClient();
+      // The editor must be locked before the JSON editor boots, otherwise the
+      // user would be able to type in a room that does not belong to them.
+      rpgData.setReadOnly(!canEditRpgData());
+
       // Get rpg schema
       let rpgSchema = client.getRpgSchema();
       // No one? Create new one
@@ -1000,16 +1016,13 @@ export const AiScriptStart = async () => {
         rpgSchema = aiTemplates.funcs.jsonTemplate();
         tinyAi.setCustomValue('rpgSchema', rpgSchema);
 
-        const user = client.getUser() || {};
-        const room = client.getRoom() || {};
-        const cantEdit = room.ownerId !== client.getUserId() && !user.isOwner;
-
-        if (!cantEdit) await client.updateRpgSchema(rpgSchema);
+        if (canEditRpgData()) await client.updateRpgSchema(rpgSchema);
       }
       // Use the one
       else tinyAi.setCustomValue('rpgSchema', rpgSchema);
       // Init Rpg Data
       await contentEnabler.initRpgData();
+      rpgData.setReadOnly(!canEditRpgData());
     }
     loaderScreen.stop();
   };
@@ -3676,15 +3689,43 @@ export const AiScriptStart = async () => {
         const { client } = tinyIo;
         // Connection
 
+        /**
+         * Friendly messages for the login errors sent by the server.
+         *
+         * @type {Record<number, string>}
+         */
+        const loginErrorMessages = {
+          1: 'Invalid password. Please check the account password and try again.',
+          2: 'This user does not exist. Check the user id and try again.',
+          3: 'This account is already in use. Close the other session and try again.',
+          4: "You're already logged in!",
+          5: "You're banned from this server.",
+        };
+
+        /**
+         * Friendly messages for the room errors sent by the server.
+         *
+         * @type {Record<number, string>}
+         */
+        const roomErrorMessages = {
+          1: 'Room not found. Check the room id and try again.',
+          2: 'Incorrect room password.',
+          3: 'This room is full. Try again later.',
+          4: 'This room is disabled.',
+          5: "You're banned from this room.",
+        };
+
         // Send error message
-        /** @param {Record<string, unknown>} result */
-        const sendSocketError = (result) =>
-          makeTempMessage(
-            typeof result.msg === 'string'
-              ? `${result.msg} (Code: ${typeof result.code === 'number' ? result.code : 0})`
-              : 'Unknown error!',
-            String(rpgCfg.ip ?? ''),
-          );
+        /**
+         * @param {Record<string, unknown>} result - Error payload sent by the server.
+         * @param {Record<number, string>} [messages] - Friendly messages, by error code.
+         */
+        const sendSocketError = (result, messages = {}) => {
+          const code = typeof result.code === 'number' ? result.code : 0;
+          const friendly = typeof messages[code] === 'string' ? messages[code] : null;
+          const text = friendly ?? (typeof result.msg === 'string' ? result.msg : 'Unknown error!');
+          makeTempMessage(`${text} (Code: ${code})`, String(rpgCfg.ip ?? ''));
+        };
 
         // Install scripts
         client.install(tinyAiScript);
@@ -3944,7 +3985,7 @@ export const AiScriptStart = async () => {
           }
           // Error
           else {
-            sendSocketError(result);
+            sendSocketError(result, loginErrorMessages);
             loaderScreen.stop();
           }
         });
@@ -3952,14 +3993,17 @@ export const AiScriptStart = async () => {
         // Error
         client.on('roomError', (result) => {
           clearIsLoadingMsgs();
-          sendSocketError(result);
+          sendSocketError(result, roomErrorMessages);
           loaderScreen.stop();
         });
 
         // Not found
         client.on('roomNotFound', () => {
           clearIsLoadingMsgs();
-          makeTempMessage('The room was not found', String(rpgCfg.ip ?? ''));
+          makeTempMessage(
+            'The room was not found. Check the room id and try again.',
+            String(rpgCfg.ip ?? ''),
+          );
           loaderScreen.stop();
         });
 

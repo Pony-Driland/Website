@@ -1688,6 +1688,7 @@ class TinyClientIo extends EventEmitter {
       // Login
       this.login().then((result) => {
         // Check room
+        this.emit('login', result);
         this.emit('join', result);
         if (!result.error) {
           // Insert data

@@ -53,6 +53,15 @@ class RpgData extends EventEmitter {
     this.offcanvas = { public: null, private: null };
     /** @type {{ public: boolean, private: boolean }} */
     this.ready = { public: false, private: false };
+    /**
+     * Whether the editors must be rendered in read-only mode.
+     *
+     * Only the room owner (or the server owner) is allowed to change the RPG
+     * data, so every other user gets a disabled editor.
+     *
+     * @type {boolean}
+     */
+    this.readOnly = false;
 
     /** @type {{ public: JSONEditor<RpgDataValues>|null, private: JSONEditor<RpgDataValues>|null }} */
     this.data = {
@@ -89,6 +98,27 @@ class RpgData extends EventEmitter {
   }
 
   // TITLE: Config
+
+  /**
+   * Enables or disables the read-only mode of both editors.
+   *
+   * The room owner is the only one allowed to change the RPG data, so every
+   * other user must receive a disabled editor.
+   *
+   * @param {boolean} [value=true] - `true` to lock the editors.
+   * @returns {void}
+   */
+  setReadOnly(value = true) {
+    this.readOnly = Boolean(value);
+    /** @type {RpgDataScope[]} */
+    const scopes = ['public', 'private'];
+    for (const where of scopes) {
+      const editor = this.data[where];
+      if (!editor || !this.ready[where]) continue;
+      if (this.readOnly) editor.disable();
+      else editor.enable();
+    }
+  }
 
   /**
    * Stores whether the AI is allowed to read the given data scope.
@@ -224,7 +254,7 @@ class RpgData extends EventEmitter {
             rpgEditor.validate();
 
             // Change events
-            if (!ficConfigs.selected) rpgEditor.disable();
+            if (!ficConfigs.selected || this.readOnly) rpgEditor.disable();
             if (isFirstTime) {
               rpgEditor.on('change', () => {
                 rpgEditor.validate();
