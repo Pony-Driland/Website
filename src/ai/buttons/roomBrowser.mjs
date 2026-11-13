@@ -342,7 +342,7 @@ export const openRoomBrowser = () => {
         TinyHtml.createFrom('div')
           .addClass('small text-muted')
           .setText(
-            `${room.roomId} - ${room.ownerNickname || room.ownerId} - ${formatDate(room.lastMessage)}`,
+            `${room.roomId} - ${room.ownerNickname ? `${room.ownerNickname} (${room.ownerId})` : room.ownerId} - ${formatDate(room.lastMessage)}`,
           ),
         $badges,
       );
