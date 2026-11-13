@@ -1008,10 +1008,10 @@ class TinyClientIo extends EventEmitter {
   /**
    * Create room
    */
-  createRoom(title = '') {
+  createRoom(title = '', roomId = this.#cfg.roomId, password = this.#cfg.roomPassword) {
     return this.#socketEmitApi('create-room', {
-      roomId: this.#cfg.roomId,
-      password: this.#cfg.roomPassword,
+      roomId,
+      password,
       title,
     });
   }
@@ -1152,6 +1152,37 @@ class TinyClientIo extends EventEmitter {
     return this.#socketEmitApi('room-permissions', {
       roomId: this.#cfg.roomId,
     });
+  }
+
+  /**
+   * Lists the rooms the signed-in account is allowed to see.
+   *
+   * @param {Object} [filters] - Search filters.
+   * @param {string|null} [filters.search] - Free text filter.
+   * @param {'mine'|'visited'|'all'|null} [filters.scope] - Room scope.
+   * @param {boolean} [filters.openOnly] - Only rooms that are open for access.
+   * @param {number} [filters.page] - Page number.
+   * @param {number} [filters.perPage] - Items per page.
+   * @returns {Promise<SocketAck>}
+   */
+  listRooms({ search = null, scope = null, openOnly = false, page = 1, perPage = 20 } = {}) {
+    return this.#socketEmitApi('list-rooms', {
+      search,
+      scope,
+      openOnly,
+      page,
+      perPage,
+    });
+  }
+
+  /**
+   * Lists the users currently connected to the server.
+   *
+   * @param {string|null} [search] - Free text filter.
+   * @returns {Promise<SocketAck>}
+   */
+  listUsers(search = null) {
+    return this.#socketEmitApi('list-users', { search });
   }
 
   /**
@@ -1696,6 +1727,7 @@ class TinyClientIo extends EventEmitter {
           console.log('[socket-io] [user-data]', this.getUser());
           console.log('[socket-io] [dice]', this.getDice());
           console.log('[socket-io] [ratelimit]', this.getRateLimit());
+
           this.existsRoom().then((result2) => {
             // Join room
             const joinRoom = () =>
@@ -1708,16 +1740,10 @@ class TinyClientIo extends EventEmitter {
 
             // Error
             if (result2.error) this.emit('roomError', result2);
-            // Exists?
+            // The room is never created automatically: the user picks one
+            // from the room browser instead.
             else if (result2.exists) joinRoom();
-            else {
-              if (!tinyAiScript.mpClient)
-                this.createRoom().then((result3) => {
-                  if (!result3.error) joinRoom();
-                  else this.emit('roomError', result3);
-                });
-              else this.emit('roomNotFound', result2);
-            }
+            else this.emit('roomNotFound', result2);
           });
         }
       });

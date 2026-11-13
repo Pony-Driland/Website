@@ -152,6 +152,12 @@ class UserRoomManager {
     this.roomActive = active;
     this.isWaitingRoomStatus = false;
     this.updateRoomStatusButton();
+
+    // Disabling a room kicks everybody out, so the list has to be rebuilt
+    // from the client state instead of the stale local copy.
+    this.users = structuredClone(this.#client.getUsers());
+    this.renderUserList(this.#getSearch());
+    this.checkPerms();
   }
 
   /**

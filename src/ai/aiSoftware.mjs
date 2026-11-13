@@ -51,6 +51,8 @@ import { openDownloadsList } from './buttons/downloads.mjs';
 import { openCreateAccount } from './buttons/createAccount.mjs';
 import { openChangePassword } from './buttons/changePassword.mjs';
 import { openAccountAdmin } from './buttons/accountAdmin.mjs';
+import { openRoomBrowser } from './buttons/roomBrowser.mjs';
+import { openOnlineUsers } from './buttons/onlineUsers.mjs';
 import { tinyModalTextarea } from './buttons/modalTextarea.mjs';
 import { openHistory } from './buttons/history.mjs';
 import { openDiceHistory } from './buttons/diceHistory.mjs';
@@ -994,6 +996,9 @@ export const AiScriptStart = async () => {
   /** @type {TinyHtmlAny|null} */
   let accountAdminButton = null;
 
+  /** @type {TinyHtmlAny|null} */
+  let onlineUsersButton = null;
+
   /**
    * Tells whether the signed-in account may edit the RPG data of the room.
    *
@@ -1078,6 +1083,12 @@ export const AiScriptStart = async () => {
     leftMenu.push(TinyHtml.createFrom('h5').setText('Online'));
     leftMenu.push(createButtonSidebar('fas fa-users', 'Room settings', roomSettingsMenu));
     leftMenu.push(createButtonSidebar('fas fa-users', 'User manager', userButtonActions));
+    leftMenu.push(createButtonSidebar('fas fa-door-open', 'Browse rooms', () => openRoomBrowser()));
+
+    // Server staff only: every online user of the server.
+    onlineUsersButton = createButtonSidebar('fas fa-globe', 'Online users', openOnlineUsers);
+    onlineUsersButton.addClass('d-none');
+    leftMenu.push(onlineUsersButton);
     leftMenu.push(
       createButtonSidebar('fa-solid fa-book', 'Rpg Schema settings', rpgSchemaSettingsMenu),
     );
@@ -1213,7 +1224,7 @@ export const AiScriptStart = async () => {
       'Account manager',
       openAccountAdmin,
     );
-    accountAdminButton.addClass('d-hide');
+    accountAdminButton.addClass('d-none');
     leftMenu.push(accountAdminButton);
   }
 
@@ -3942,6 +3953,7 @@ export const AiScriptStart = async () => {
 
           // Only the server staff can ban, unban or kick accounts.
           accountAdminButton?.toggleClass('d-none', !userStatus.isAdmin && !userStatus.isMod);
+          onlineUsersButton?.toggleClass('d-none', !userStatus.isAdmin && !userStatus.isMod);
 
           if (!tinyAiScript.noai) {
             sidebarRight.toggleClass('d-none', !userStatus.isAdmin);
