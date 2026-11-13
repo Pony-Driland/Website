@@ -70,6 +70,7 @@ const LIGHTNING_PULSES = [
  * @property {WebGLUniformLocation|null} cloudTexture
  * @property {WebGLUniformLocation|null} cloudOffset
  * @property {WebGLUniformLocation|null} cloudReady
+ * @property {WebGLUniformLocation|null} cloudSeed
  * @property {WebGLUniformLocation|null} rainScroll
  * @property {WebGLUniformLocation|null} snowScroll
  * @property {WebGLUniformLocation|null} storm
@@ -192,6 +193,7 @@ export const createSky = (canvas) => {
     cloudTexture: gl.getUniformLocation(program, 'u_cloudTexture'),
     cloudOffset: gl.getUniformLocation(program, 'u_cloudOffset'),
     cloudReady: gl.getUniformLocation(program, 'u_cloudReady'),
+    cloudSeed: gl.getUniformLocation(program, 'u_cloudSeed'),
     rainScroll: gl.getUniformLocation(program, 'u_rainScroll'),
     snowScroll: gl.getUniformLocation(program, 'u_snowScroll'),
     storm: gl.getUniformLocation(program, 'u_storm'),
@@ -245,6 +247,12 @@ export const createSky = (canvas) => {
   let lightningTimer = 0;
   let lightningIntensity = 0;
   let cloudOffset = 0;
+
+  // A random offset into the procedural cloud field, drawn once per session.
+  // Every reload starts under a different sky, and because it is a plain
+  // translation of the sample point it can never introduce a seam or a
+  // visible repeat.
+  const cloudSeed = [Math.random() * 512, Math.random() * 512];
 
   // Scroll offsets, in "screens scrolled". They are accumulated in double
   // precision and wrapped to 0..1 before being uploaded, which is what keeps
@@ -422,6 +430,7 @@ export const createSky = (canvas) => {
     gl.uniform1i(uniforms.cloudTexture, 0);
     gl.uniform1f(uniforms.cloudOffset, cloudOffset);
     gl.uniform1f(uniforms.cloudReady, cloudReady);
+    gl.uniform2f(uniforms.cloudSeed, cloudSeed[0], cloudSeed[1]);
 
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
   };

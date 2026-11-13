@@ -117,7 +117,7 @@ export const WEATHER_PRESET_COLORS = {
     // The storm is driven almost entirely by the wind, so the fall speed is
     // what sells it. Anything under ~4 reads as heavy snow instead of a
     // blizzard, and the shader stretches the streaks from the same value.
-    snowSpeed: 6,
+    snowSpeed: 7,
     storm: true,
   },
 };

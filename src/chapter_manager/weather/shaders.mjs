@@ -76,6 +76,11 @@ uniform sampler2D u_cloudTexture;
 uniform float u_cloudOffset;
 uniform float u_cloudReady;
 
+// Per-session offset into the cloud field. Shifting the sample point is what
+// makes two page loads start under a different sky without ever recompiling
+// the shader or uploading a new texture.
+uniform vec2 u_cloudSeed;
+
 const float TAU = 6.28318530718;
 
 float hash21(vec2 p) {
@@ -96,26 +101,59 @@ float noise2d(vec2 p) {
 }
 
 /**
- * Procedural cloud density.
+ * Fractal value noise with a rotation between octaves.
  *
- * Four octaves of value noise, normalised back to the 0..1 range (the sum of
- * the amplitudes is 0.9375, so the raw value never reaches 1 without the
- * division).
+ * Rotating each octave is what stops the lattice from lining up with itself.
+ * Without it the axes of every octave agree and the result has the classic
+ * "blobs on a grid" look, no matter how many octaves are stacked.
+ *
+ * The octave count is a parameter instead of a constant so the domain warp
+ * below can ask for a cheap two octave field without paying for four.
  */
-float cloudNoise(vec2 uv, float t) {
-  vec2 p = vec2(uv.x * 2.4 + t * 0.004, uv.y * 3.4);
+float cloudFbm(vec2 p, int octaves) {
+  mat2 rot = mat2(0.80, 0.60, -0.60, 0.80);
   float value = 0.0;
   float amplitude = 0.5;
   float total = 0.0;
 
   for (int i = 0; i < 4; i++) {
-    value += amplitude * noise2d(p);
-    total += amplitude;
-    p *= 2.03;
+    // Octaves past the requested count are weighted to zero instead of being
+    // skipped with a break: WebGL 1 wants a constant loop bound, and the
+    // weight costs one multiply.
+    float active = step(float(i), float(octaves) - 0.5);
+
+    value += active * amplitude * noise2d(p);
+    total += active * amplitude;
+    p = rot * p * 2.02;
     amplitude *= 0.5;
   }
 
-  return clamp(value / total, 0.0, 1.0);
+  return value / max(total, 0.0001);
+}
+
+/**
+ * Procedural cloud density.
+ *
+ * Plain fBm reads as fog, not as cloud, because every point is independent of
+ * its neighbours. Real cloud is a thin sheet folded by the wind, so the sample
+ * point is displaced by a second, much lower frequency noise field before it
+ * is read. That is the domain warp, and it is the difference between "noise"
+ * and "vapour".
+ *
+ * The cloud seed shifts the whole field, so two page loads never produce the
+ * same sky even though the shader itself is deterministic.
+ */
+float cloudNoise(vec2 uv, float t) {
+  // The horizontal drift is the wind, the vertical scale is what squashes the
+  // cells into the wide, flat shapes a cloud deck actually has.
+  vec2 p = vec2(uv.x * 2.1 + t * 0.004, uv.y * 3.1) + u_cloudSeed;
+
+  // Domain warp. Two octaves are enough for the displacement: it only has to
+  // be smooth, all the detail comes from the field it distorts.
+  vec2 warp = vec2(cloudFbm(p, 2), cloudFbm(p + vec2(5.2, 1.3), 2));
+  p += (warp - 0.5) * 1.7;
+
+  return clamp(cloudFbm(p, 4), 0.0, 1.0);
 }
 
 /**
@@ -225,7 +263,12 @@ void main() {
     cloud = mix(procedural, max(cloud, procedural * 0.85), u_cloudReady);
 
     // Shape the density so the clouds have defined edges instead of a haze.
-    cloud = smoothstep(0.18, 0.62, cloud);
+    //
+    // The threshold is not constant: the procedural field shifts it, so the
+    // sky is broken into denser and clearer patches instead of one uniform
+    // sheet. Without this every screen looks like the same overcast day.
+    float coverage = 0.18 - (procedural - 0.5) * 0.22;
+    cloud = smoothstep(coverage, coverage + 0.44, cloud);
 
     // Clouds are dark blue-grey at night and bright white during the day.
     float daylight = clamp(1.0 - u_stars, 0.0, 1.0);
