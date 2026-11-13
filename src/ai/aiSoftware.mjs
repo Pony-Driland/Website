@@ -50,6 +50,7 @@ import { openDonatePage } from './buttons/donate.mjs';
 import { openDownloadsList } from './buttons/downloads.mjs';
 import { openCreateAccount } from './buttons/createAccount.mjs';
 import { openChangePassword } from './buttons/changePassword.mjs';
+import { openAccountAdmin } from './buttons/accountAdmin.mjs';
 import { tinyModalTextarea } from './buttons/modalTextarea.mjs';
 import { openHistory } from './buttons/history.mjs';
 import { openDiceHistory } from './buttons/diceHistory.mjs';
@@ -1202,6 +1203,15 @@ export const AiScriptStart = async () => {
     );
     createAccountButton.addClass('d-hide');
     leftMenu.push(createAccountButton);
+
+    // Server staff only: ban, unban and kick accounts.
+    const accountAdminButton = createButtonSidebar(
+      'fas fa-user-shield',
+      'Account manager',
+      openAccountAdmin,
+    );
+    accountAdminButton.addClass('d-hide');
+    leftMenu.push(accountAdminButton);
   }
 
   // Import
@@ -3926,6 +3936,9 @@ export const AiScriptStart = async () => {
             'd-none',
             !userStatus.server.isAdmin && !client.getRateLimit()?.openRegistration,
           );
+
+          // Only the server staff can ban, unban or kick accounts.
+          accountAdminButton.toggleClass('d-none', !userStatus.isAdmin && !userStatus.isMod);
 
           if (!tinyAiScript.noai) {
             sidebarRight.toggleClass('d-none', !userStatus.isAdmin);
