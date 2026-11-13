@@ -1,6 +1,6 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
-import { tinyIo } from '../software/base.mjs';
+import { getClient } from '../software/base.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 
 /**
@@ -13,8 +13,10 @@ import tinyLib from '../../files/tinyLib.mjs';
  * @returns {void}
  */
 export const openChangePassword = () => {
+  const client = getClient();
+
   // Root
-  const ratelimit = tinyIo.client.getRateLimit() || { size: {} };
+  const ratelimit = client.getRateLimit() || { size: {} };
   const $root = TinyHtml.createFrom('div');
 
   // Error place
@@ -97,7 +99,7 @@ export const openChangePassword = () => {
     // Tiny okay!
     $errorBox.addClass('d-none');
     modal.hide();
-    tinyIo.client.changePassword(currentVal, newVal).then((result) => {
+    client.changePassword(currentVal, newVal).then((result) => {
       if (result.error) alert(`${result.msg}\nCode ${result.code}`);
       else alert('Your password has been changed successfully!');
     });

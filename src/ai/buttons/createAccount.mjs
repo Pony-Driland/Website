@@ -1,7 +1,7 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 import tinyLib from '../../files/tinyLib.mjs';
-import { tinyIo } from '../software/base.mjs';
+import { getClient } from '../software/base.mjs';
 
 /**
  * Opens the "Create account" modal for the current room.
@@ -13,9 +13,10 @@ import { tinyIo } from '../software/base.mjs';
  * @returns {void}
  */
 export const openCreateAccount = () => {
+  const client = getClient();
   // Get data
-  const ratelimit = tinyIo.client.getRateLimit() || { size: {} };
-  const userData = tinyIo.client.getUser() || {};
+  const ratelimit = client.getRateLimit() || { size: {} };
+  const userData = client.getUser() || {};
   if (ratelimit.openRegistration || userData.isAdmin) {
     // Root container
     const $root = TinyHtml.createFrom('div');
@@ -120,7 +121,7 @@ export const openCreateAccount = () => {
       // Tiny okay!
       $errorBox.addClass('d-none');
       modal.hide();
-      tinyIo.client.register(userId, password, nickname).then((result) => {
+      client.register(userId, password, nickname).then((result) => {
         if (result.error) alert(`${result.msg}\nCode ${result.code}`);
         else alert(`The new account was successfully created!`);
       });

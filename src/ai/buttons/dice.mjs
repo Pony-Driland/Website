@@ -6,7 +6,7 @@ import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/Bootstrap
 import TinyDices from 'tiny-dices';
 import { saveAs } from 'file-saver';
 
-import { tinyIo } from '../software/base.mjs';
+import { getClient, tinyIo } from '../software/base.mjs';
 import { isOnline } from '../software/enablerContent.mjs';
 import { tinyLs } from '../../important.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
@@ -147,6 +147,7 @@ function generateRandomId(length = 8) {
  * @param {DiceSpecialData} data - Dice roll payload.
  */
 export const createDiceSpecialHtml = (data) => {
+  const client = getClient();
   const $root = TinyHtml.createFrom('div');
   const $diceContainer = TinyHtml.createFrom('div');
   const dice = new TinyDices(/** @type {HTMLElement} */ ($diceContainer.get(0)));
@@ -174,7 +175,7 @@ export const createDiceSpecialHtml = (data) => {
     dice.insertDiceElement(item.value, item.sides, data.canZero);
   }
 
-  const user = tinyIo.client.getUsers()[data.userId] ?? null;
+  const user = client.getUsers()[data.userId] ?? null;
   const date = data.date instanceof Date ? data.date : data.date ? new Date(data.date) : null;
 
   /** @param {Date} date */
@@ -229,6 +230,7 @@ export const openDiceSpecialModal = (data) => {
 };
 
 export const openTinyDices = () => {
+  const client = getClient();
   // Root
   const $root = TinyHtml.createFrom('div');
   const $formRow = TinyHtml.createFrom('div').addClass('row g-3');
@@ -249,8 +251,8 @@ export const openTinyDices = () => {
   };
 
   if (tinyCfg.isOnline) {
-    tinyCfg.data = tinyIo.client.getDice() || {};
-    const ratelimit = tinyIo.client.getRateLimit() || { dice: {}, size: {} };
+    tinyCfg.data = client.getDice() || {};
+    const ratelimit = client.getRateLimit() || { dice: {}, size: {} };
     if (isJsonObject(ratelimit.dice)) tinyCfg.rateLimit = ratelimit.dice;
   } else {
     tinyCfg.data.img = tinyLs.getItem(`tiny-dice-img`) || undefined;
@@ -391,7 +393,7 @@ export const openTinyDices = () => {
 
       // Get result
       $rollButton.addProp('disabled').addClass('disabled');
-      const result = await tinyIo.client.rollDice(sides, canZero, parsedPerDie.modifiers);
+      const result = await client.rollDice(sides, canZero, parsedPerDie.modifiers);
       $idBase.setText(result.id);
       $rollButton.removeProp('disabled').removeClass('disabled');
 
@@ -643,11 +645,11 @@ export const openTinyDices = () => {
             configs[readSkinValues[index][0]].addProp('disabled').addClass('disabled').val() ?? '',
           ).trim();
 
-        const result = await tinyIo.client.setAccountDice(diceSkin);
+        const result = await client.setAccountDice(diceSkin);
         if (result.error) $totalBaseNumber.addClass('text-danger').setText(result.msg);
         else {
           $totalBaseNumber.removeClass('text-danger').setText(0);
-          tinyIo.client.setDice(diceSkin);
+          client.setDice(diceSkin);
         }
 
         // Enable buttons again
