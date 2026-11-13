@@ -137,6 +137,55 @@ class TinyAiStorage extends EventEmitter {
       ? { key: this.storage[name] }
       : this.storage[name] || { key: null };
   }
+
+  /**
+   * Finds the provider that stores the multiplayer server settings.
+   *
+   * The room browser can be opened before a provider is selected, so the
+   * lookup falls back to every stored credential and picks the first one that
+   * already looks like a server config.
+   *
+   * @returns {string} Provider name that owns the room settings.
+   */
+  getRoomProvider() {
+    const selected = this.selectedAi();
+    if (typeof selected === 'string' && selected.length > 0) return selected;
+
+    for (const name in this.storage) {
+      const value = this.storage[name];
+      if (isJsonObject(value) && typeof value.roomId === 'string') return name;
+    }
+
+    return 'tiny-chat';
+  }
+
+  /**
+   * Points the multiplayer provider to another room.
+   *
+   * The provider is resolved automatically, so the caller does not need to know
+   * which entry of the storage holds the server settings.
+   *
+   * @param {string} roomId - Room that will be joined.
+   * @param {string} [roomPassword] - Password of the room.
+   * @param {string} [name] - Provider name. Defaults to the active one.
+   * @returns {void}
+   */
+  setRoom(roomId, roomPassword = '', name = this.getRoomProvider()) {
+    const current = this.getApiKey(name);
+    const next = {
+      ...(isJsonObject(current) ? current : {}),
+      roomId,
+      roomPassword,
+    };
+
+    this.setApiKey(name, next);
+
+    // Read it back: a quota error would otherwise leave the user stuck in the
+    // previous room after the reload.
+    const stored = this.getApiKey(name);
+    if (!isJsonObject(stored) || stored.roomId !== roomId)
+      throw new Error('Could not save the selected room.');
+  }
 }
 
 export default TinyAiStorage;

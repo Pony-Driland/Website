@@ -1,4 +1,5 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
 import { tinyIo, tinyStorage } from '../software/base.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
@@ -94,11 +95,15 @@ const askPasswordAndStore = (roomId) => {
   /** Stores the new room and reloads the page. */
   const submit = () => {
     const roomPassword = String($input.val() ?? '');
-    const credential = tinyStorage.getApiKey('tiny-chat');
 
-    // The credential is written before the modals are closed, so the reload
-    // always reads the room the user just picked.
-    tinyStorage.setApiKey('tiny-chat', { ...credential, roomId, roomPassword });
+    try {
+      // Written and verified before the reload, so a failed write never sends
+      // the user back to the previous room.
+      tinyStorage.setRoom(roomId, roomPassword);
+    } catch (err) {
+      alert(err instanceof Error ? err.message : String(err));
+      return;
+    }
 
     modal.hide();
 
