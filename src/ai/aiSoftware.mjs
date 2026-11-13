@@ -4084,17 +4084,13 @@ export const AiScriptStart = async () => {
             let msgCount = 0;
             let isError = false;
 
-            // A read-only guest is not allowed to read the room history.
-            if (client.isGuest()) {
-              isLoadingMsgs = false;
-              enabledFirstDialogue(false);
-              updateAiTokenCounterData();
-              return;
-            }
-
             /** @type {{ page: number, perPage?: number|null }} */
             const loadCfg = { page: 1 };
-            if (!tinyAiScript.mpClient || client.getRateLimit().loadAllHistory)
+
+            // A read-only guest may only load the last page, so the room never
+            // looks empty for them.
+            if (client.isGuest()) loadCfg.perPage = client.getRateLimit().size?.history ?? null;
+            else if (!tinyAiScript.mpClient || client.getRateLimit().loadAllHistory)
               loadCfg.perPage = null;
 
             await client
