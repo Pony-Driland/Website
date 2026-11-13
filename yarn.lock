@@ -3576,10 +3576,10 @@ lru-cache@^5.1.1:
   dependencies:
     yallist "^3.0.2"
 
-marked@^18.0.9:
-  version "18.0.9"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-18.0.9.tgz#729fb57203a4fd58dd5ddc551917ef40daf5036a"
-  integrity sha512-/Sa4qiiHZxf0/FQdBBowr9q4r10krCwMvpK48FUBdXdUXScDxiQGR9zCPrFgRVR5LU3iySOiIjy09ZQvADir1w==
+marked@^18.1.3:
+  version "18.1.3"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-18.1.3.tgz#2b1f2aff274503e3ec053c412c6eb979bd7c8194"
+  integrity sha512-9ChMH8EVVgjgID49nsL6IWxWk5c6GtAsq/xw7U1ggkjkU5AGuv68oLTVlFRtvcUYZtpbNyjyvGo3YDu0fGapiw==
 
 math-expression-evaluator@^1.2.14:
   version "1.4.0"
