@@ -4861,10 +4861,10 @@ write-file-stdout@0.0.2:
   resolved "https://registry.yarnpkg.com/write-file-stdout/-/write-file-stdout-0.0.2.tgz#c252d7c7c5b1b402897630e3453c7bfe690d9ca1"
   integrity sha512-KofbSPeePSre3soWCMaqcWHVZy9t/rbJaEMa2h19cupODsvc4eh7390Se1TjzZEL77rS+D6dznu0TLXyCbR+sw==
 
-ws@^8.22.0:
-  version "8.22.0"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-8.22.0.tgz#40f16e1d7588ac0575041be5c49b8eb261c28e73"
-  integrity sha512-Ydggc987+RO0AnWtZ/7Wq9FtNvcrL1b/RO0ud9mWjUPgDrsAAwQSF51sm2hm1XofbU/4jkpGEsLFsZZxU+1DOg==
+ws@^8.22.2:
+  version "8.22.2"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.22.2.tgz#b1762f4e4ac87ab44aa358f680cdf5d08b166d37"
+  integrity sha512-/rEZ2ejown2N5gxVTHUu9bVVC7ttu0/Tgzf5hbTOixR3Fs7mbbXgn2DbdbcKgJOmpQMtrIUWivtYuVMnp/W/yA==
 
 ws@~8.21.0:
   version "8.21.3"
