@@ -3753,6 +3753,33 @@ export const AiScriptStart = async () => {
           guestNotice.toggleClass('d-none', !isGuest);
         };
 
+        /**
+         * Tells whether the page is hidden from the user.
+         *
+         * `installWindowHiddenScript()` keeps the `windowVisible`/`windowHidden`
+         * classes in sync with the tab focus, but only after the first focus or
+         * visibility event. Before that the browser is asked directly.
+         *
+         * @returns {boolean}
+         */
+        const isWindowHidden = () => {
+          if (body.hasClass('windowHidden')) return true;
+          if (body.hasClass('windowVisible')) return false;
+          return document.visibilityState !== 'visible' || !document.hasFocus();
+        };
+
+        /**
+         * Sends a browser notification, but only while the page is hidden.
+         *
+         * @param {string} title - Notification title.
+         * @param {string} message - Notification body.
+         * @returns {void}
+         */
+        const notifyWhenHidden = (title, message) => {
+          if (!isWindowHidden()) return;
+          tinyNotification.send(title, { body: message });
+        };
+
         // Install prompts
         /**
          * @param {boolean} allowEdit - Whether the room data may be applied.
@@ -4161,6 +4188,15 @@ export const AiScriptStart = async () => {
         client.on('newMessage', (msgData) => {
           addNewMsg(msgData, msgData.id);
           updateAiTokenCounterData();
+
+          // The author already knows about their own message.
+          if (msgData.userId === client.getUserId()) return;
+
+          // A model answer has no author, so it is labelled instead.
+          const author = client.getUsers()[String(msgData.userId ?? '')];
+          const title = msgData.isModel ? 'Model' : (author?.nickname ?? msgData.userId ?? 'User');
+
+          notifyWhenHidden(title, msgData.text);
         });
 
         client.on('messageDelete', (msgData) => {
@@ -4225,8 +4261,8 @@ export const AiScriptStart = async () => {
 
           const text = `${!isYou ? (data?.data.nickname ?? data.userId) : 'You'} left the room.`;
 
-          if (body.hasClass('windowVisible')) tinyToast.show(text);
-          if (body.hasClass('windowHidden')) tinyNotification.send('User', { body: text });
+          if (isWindowHidden()) tinyNotification.send('User', { body: text });
+          else tinyToast.show(text);
         });
 
         client.on('userJoined', (data) => {
@@ -4235,8 +4271,8 @@ export const AiScriptStart = async () => {
 
           const text = `${!isYou ? (data?.data.nickname ?? data.userId) : 'You'} joined the room.`;
 
-          if (body.hasClass('windowVisible')) tinyToast.show(text);
-          if (body.hasClass('windowHidden')) tinyNotification.send('User', { body: text });
+          if (isWindowHidden()) tinyNotification.send('User', { body: text });
+          else tinyToast.show(text);
         });
 
         // Dice roll
