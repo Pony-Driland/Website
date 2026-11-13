@@ -207,6 +207,8 @@ interface StoryData {
     nextWeather?: string;
     /** Moon phase pinned by the story for the current night. */
     nextMoonPhase?: string | null;
+    /** Precipitation motion overrides pinned by the story. */
+    nextWeatherConfig?: { wind?: number; speed?: number } | null;
     /** Day/night cycle of the next line. */
     nextDayNightCycle?: string;
     /** Rendered lines, indexed by line number. */

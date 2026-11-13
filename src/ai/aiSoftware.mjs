@@ -991,6 +991,9 @@ export const AiScriptStart = async () => {
   /** @type {TinyHtmlAny|null} */
   let historyButton = null;
 
+  /** @type {TinyHtmlAny|null} */
+  let accountAdminButton = null;
+
   /**
    * Tells whether the signed-in account may edit the RPG data of the room.
    *
@@ -1205,7 +1208,7 @@ export const AiScriptStart = async () => {
     leftMenu.push(createAccountButton);
 
     // Server staff only: ban, unban and kick accounts.
-    const accountAdminButton = createButtonSidebar(
+    accountAdminButton = createButtonSidebar(
       'fas fa-user-shield',
       'Account manager',
       openAccountAdmin,
@@ -3938,7 +3941,7 @@ export const AiScriptStart = async () => {
           );
 
           // Only the server staff can ban, unban or kick accounts.
-          accountAdminButton.toggleClass('d-none', !userStatus.isAdmin && !userStatus.isMod);
+          accountAdminButton?.toggleClass('d-none', !userStatus.isAdmin && !userStatus.isMod);
 
           if (!tinyAiScript.noai) {
             sidebarRight.toggleClass('d-none', !userStatus.isAdmin);
