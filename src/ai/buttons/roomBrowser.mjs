@@ -60,9 +60,8 @@ const makeBadge = (icon, title, color = 'secondary') =>
  * reloading the page so the connection is rebuilt from scratch.
  *
  * @param {string} roomId - Room that will be joined.
- * @param {() => void} onClose - Called before the room is joined.
  */
-const askPasswordAndStore = (roomId, onClose) => {
+const askPasswordAndStore = (roomId) => {
   const $root = TinyHtml.createFrom('div');
 
   const $input = TinyHtml.createFrom('input').addClass('form-control').setAttr({
@@ -97,11 +96,14 @@ const askPasswordAndStore = (roomId, onClose) => {
     const roomPassword = String($input.val() ?? '');
     const credential = tinyStorage.getApiKey('tiny-chat');
 
+    // The credential is written before the modals are closed, so the reload
+    // always reads the room the user just picked.
     tinyStorage.setApiKey('tiny-chat', { ...credential, roomId, roomPassword });
 
     modal.hide();
-    onClose();
-    window.location.reload();
+
+    // Let Bootstrap finish hiding the modals before the page goes away.
+    setTimeout(() => window.location.reload(), 0);
   };
 
   $join.on('click', submit);
@@ -190,7 +192,9 @@ const openCreateRoom = (onCreated) => {
       tinyStorage.setApiKey('tiny-chat', { ...credential, roomId, roomPassword: password });
 
       modal.hide();
-      onCreated();
+
+      // Let Bootstrap finish hiding the modal before the page goes away.
+      setTimeout(onCreated, 0);
     } catch (err) {
       showError(err instanceof Error ? err.message : String(err));
     } finally {
@@ -344,7 +348,10 @@ export const openRoomBrowser = () => {
         .setText(isCurrent ? 'Current' : 'Join')
         .toggleProp('disabled', isCurrent);
 
-      $join.on('click', () => askPasswordAndStore(room.roomId, () => modal?.hide()));
+      $join.on('click', () => {
+        modal?.hide();
+        askPasswordAndStore(room.roomId);
+      });
 
       $row.append($info, $join);
       $list.append($row);
