@@ -1080,18 +1080,28 @@ export const AiScriptStart = async () => {
 
   // TITLE: Online Mode options
   if (!isOfflineMode) {
+    /** @param {string} text */
+    const addGroup = (text) =>
+      leftMenu.push(TinyHtml.createFrom('h6').addClass('text-uppercase small mt-3').setText(text));
+
     leftMenu.push(TinyHtml.createFrom('h5').setText('Online'));
+
+    // Room
+    addGroup('Room');
     leftMenu.push(createButtonSidebar('fas fa-users', 'Room settings', roomSettingsMenu));
     leftMenu.push(createButtonSidebar('fas fa-users', 'User manager', userButtonActions));
+    leftMenu.push(
+      createButtonSidebar('fa-solid fa-book', 'Rpg Schema settings', rpgSchemaSettingsMenu),
+    );
+
+    // Navigation
+    addGroup('Navigation');
     leftMenu.push(createButtonSidebar('fas fa-door-open', 'Browse rooms', () => openRoomBrowser()));
 
     // Server staff only: every online user of the server.
     onlineUsersButton = createButtonSidebar('fas fa-globe', 'Online users', openOnlineUsers);
     onlineUsersButton.addClass('d-none');
     leftMenu.push(onlineUsersButton);
-    leftMenu.push(
-      createButtonSidebar('fa-solid fa-book', 'Rpg Schema settings', rpgSchemaSettingsMenu),
-    );
 
     /**
      * Builds a sidebar entry that edits a single string field of the room.
@@ -1180,6 +1190,17 @@ export const AiScriptStart = async () => {
       );
     };
 
+    // History
+    addGroup('History');
+
+    // Read-only guests are not allowed to read the room history.
+    historyButton = createButtonSidebar('fa-solid fa-timeline', 'Room History', openHistory, false);
+    leftMenu.push(historyButton);
+    leftMenu.push(createButtonSidebar('fa-solid fa-timeline', 'Dice History', openDiceHistory));
+
+    // Account
+    addGroup('Account');
+
     // Edit nickname
     templateChangeInfo(
       'edit-nickname', // Id
@@ -1203,11 +1224,6 @@ export const AiScriptStart = async () => {
         });
       },
     );
-
-    // Read-only guests are not allowed to read the room history.
-    historyButton = createButtonSidebar('fa-solid fa-timeline', 'Room History', openHistory, false);
-    leftMenu.push(historyButton);
-    leftMenu.push(createButtonSidebar('fa-solid fa-timeline', 'Dice History', openDiceHistory));
 
     leftMenu.push(createButtonSidebar('fas fa-key', 'Change password', openChangePassword));
     createAccountButton = createButtonSidebar(
