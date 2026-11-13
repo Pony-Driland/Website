@@ -139,24 +139,27 @@ export const openOnlineUsers = () => {
             .on('click', () => run(() => client.kickAccount(user.userId), 'User kicked.')),
         );
 
-      if (user.banned)
-        $actions.append(
-          tinyLib.bs
-            .button('success btn-sm')
-            .setText('Unban')
-            .on('click', () => run(() => client.unbanAccount(user.userId), 'User unbanned.')),
-        );
-      else
-        $actions.append(
-          tinyLib.bs
-            .button('danger btn-sm')
-            .setText('Ban')
-            .on('click', async () => {
-              const reason = await prompt(`Reason to ban "${user.userId}":`, '');
-              if (reason === null) return;
-              run(() => client.banAccount(user.userId, reason), 'User banned.');
-            }),
-        );
+      // The server owner can never be banned.
+      if (!user.isOwner) {
+        if (user.banned)
+          $actions.append(
+            tinyLib.bs
+              .button('success btn-sm')
+              .setText('Unban')
+              .on('click', () => run(() => client.unbanAccount(user.userId), 'User unbanned.')),
+          );
+        else
+          $actions.append(
+            tinyLib.bs
+              .button('danger btn-sm')
+              .setText('Ban')
+              .on('click', async () => {
+                const reason = await prompt(`Reason to ban "${user.userId}":`, '');
+                if (reason === null) return;
+                run(() => client.banAccount(user.userId, reason), 'User banned.');
+              }),
+          );
+      }
 
       // Only the server owner can promote or demote the staff.
       if (isOwner && !user.isOwner)
