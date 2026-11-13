@@ -987,6 +987,9 @@ export const AiScriptStart = async () => {
 
   const rpgContentButtons = [];
 
+  /** @type {TinyHtmlAny|null} */
+  let historyButton = null;
+
   /**
    * Tells whether the signed-in account may edit the RPG data of the room.
    *
@@ -1186,7 +1189,9 @@ export const AiScriptStart = async () => {
       },
     );
 
-    leftMenu.push(createButtonSidebar('fa-solid fa-timeline', 'Room History', openHistory));
+    // Read-only guests are not allowed to read the room history.
+    historyButton = createButtonSidebar('fa-solid fa-timeline', 'Room History', openHistory, false);
+    leftMenu.push(historyButton);
     leftMenu.push(createButtonSidebar('fa-solid fa-timeline', 'Dice History', openDiceHistory));
 
     leftMenu.push(createButtonSidebar('fas fa-key', 'Change password', openChangePassword));
@@ -3751,6 +3756,10 @@ export const AiScriptStart = async () => {
           container.toggleClass('is-guest', isGuest);
           textInputWrapper.blur().toggleClass('d-none', isReadOnly);
           guestNotice.toggleClass('d-none', !isGuest);
+
+          // The room history is not available for read-only guests.
+          historyButton?.toggleClass('disabled', isGuest);
+          historyButton?.toggleProp('disabled', isGuest);
         };
 
         /**
@@ -4074,6 +4083,15 @@ export const AiScriptStart = async () => {
           const startMsgSystem = async () => {
             let msgCount = 0;
             let isError = false;
+
+            // A read-only guest is not allowed to read the room history.
+            if (client.isGuest()) {
+              isLoadingMsgs = false;
+              enabledFirstDialogue(false);
+              updateAiTokenCounterData();
+              return;
+            }
+
             /** @type {{ page: number, perPage?: number|null }} */
             const loadCfg = { page: 1 };
             if (!tinyAiScript.mpClient || client.getRateLimit().loadAllHistory)
