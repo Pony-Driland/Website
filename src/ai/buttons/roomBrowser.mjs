@@ -276,6 +276,7 @@ export const openRoomBrowser = () => {
     }
 
     const currentRoom = client.getRoomId();
+    const isInsideRoom = Object.keys(client.getRoom()).length > 0;
     const visibleRooms = rooms;
 
     if (visibleRooms.length < 1) {
@@ -346,11 +347,14 @@ export const openRoomBrowser = () => {
         $badges,
       );
 
-      const isCurrent = room.roomId === currentRoom;
+      // The room data is only filled after a successful `room-entered`, so an
+      // empty object means the join never completed (wrong password, room
+      // full, ...) and the user must be able to try again.
+      const isCurrent = room.roomId === currentRoom && isInsideRoom;
       const $join = tinyLib.bs
         .button(isCurrent ? 'secondary' : 'primary')
         .addClass('btn-sm')
-        .setText(isCurrent ? 'Current' : 'Join')
+        .setText(isCurrent ? 'Current' : room.roomId === currentRoom ? 'Rejoin' : 'Join')
         .toggleProp('disabled', isCurrent);
 
       $join.on('click', () => {
