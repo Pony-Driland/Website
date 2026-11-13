@@ -8,6 +8,7 @@ import { storyData } from '../files/chapters.mjs';
 import storyCfg from '../chapters/config.mjs';
 import ttsManager from './tts/tts.mjs';
 import musicManager from './music/index.mjs';
+import audioUnlock from './audioUnlock.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { body, tinyWin } from '../html/query.mjs';
 import { markdownBase } from '../html/base.mjs';
@@ -203,8 +204,12 @@ cacheChapterUpdater.scrollData = () => {
       if (!sound || typeof sound.hide !== 'function') continue;
 
       const shouldPlay = !storyData.chapter.blockLineSave && weather === key;
-      if (shouldPlay && typeof sound.show === 'function') sound.show();
-      else sound.hide();
+      if (shouldPlay && typeof sound.show === 'function') {
+        // The browser blocks the audio until the visitor interacts with the page
+        audioUnlock.whenReady(() => sound.show(), `weather:${key}`);
+      } else {
+        sound.hide();
+      }
     }
   }
 
@@ -291,12 +296,15 @@ cacheChapterUpdater.applySounds = (state) => {
     cache.instant = Boolean(value.instant);
 
     if (shouldPlay) {
-      console.log(`[${file}] Playing...`);
-      if (value.instant) {
-        sound.play();
-      } else {
-        sound.show();
-      }
+      // The browser blocks the audio until the visitor interacts with the page
+      audioUnlock.whenReady(() => {
+        console.log(`[${file}] Playing...`);
+        if (value.instant) {
+          sound.play();
+        } else {
+          sound.show();
+        }
+      }, `sfx:${file}`);
     } else {
       console.log(`[${file}] Stopping...`);
       if (value.instant) {

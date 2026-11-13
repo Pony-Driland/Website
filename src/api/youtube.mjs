@@ -3,6 +3,7 @@ import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/Bootstrap
 import { EventEmitter } from 'events';
 import { storyData } from '../files/chapters.mjs';
 import musicManager from '../chapter_manager/music/index.mjs';
+import audioUnlock from '../chapter_manager/audioUnlock.mjs';
 import storyCfg from '../chapters/config.mjs';
 import { tinyLs, gtag } from '../important.mjs';
 import { head } from '../html/query.mjs';
@@ -290,6 +291,17 @@ class YoutubeApi extends EventEmitter {
    * @param {string} videoID
    */
   play(videoID) {
+    // The browser only starts the playback after the visitor interacts with the
+    // page, so the request is held until the audio is unlocked.
+    audioUnlock.whenReady(() => this.#play(videoID), 'youtube');
+  }
+
+  /**
+   * Starts the playback, which must already be allowed by the browser.
+   *
+   * @param {string} videoID
+   */
+  #play(videoID) {
     // Read Data Base
     if (!this.#loading && storyData.readFic) {
       musicApp.loading = true;

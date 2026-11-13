@@ -2,6 +2,7 @@ import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import tinyLib from '../../files/tinyLib.mjs';
 import { storyData } from '../../files/chapters.mjs';
+import audioUnlock from '../audioUnlock.mjs';
 import cacheChapterUpdater from '../updater.mjs';
 
 const { Icon } = TinyHtmlElems;
@@ -139,6 +140,7 @@ const ttsManager = {
   },
   disable: () => {
     ttsManager.enabled = false;
+    audioUnlock.cancel('tts');
     ttsManager.synth.cancel();
   },
 
@@ -202,17 +204,25 @@ const ttsManager = {
       ttsManager.ttsTimeout = null;
     }
 
-    // And add new timeout
-    if (ttsManager.voice == null) {
-      ttsManager.ttsTimeout = setTimeout(() => {
-        ttsManager.readLine(line);
-      }, 500);
-      return;
-    }
+    // The browser blocks the speech until the visitor interacts with the page,
+    // so the line is only scheduled once the audio is unlocked. The key makes
+    // every new line replace the previous pending one.
+    audioUnlock.whenReady(() => {
+      // TTS was disabled while waiting for the interaction
+      if (!ttsManager.enabled) return;
 
-    ttsManager.ttsTimeout = setTimeout(() => {
-      ttsManager.readLineInternal(line);
-    }, 500);
+      // And add new timeout
+      if (ttsManager.voice == null) {
+        ttsManager.ttsTimeout = setTimeout(() => {
+          ttsManager.readLine(line);
+        }, 500);
+        return;
+      }
+
+      ttsManager.ttsTimeout = setTimeout(() => {
+        ttsManager.readLineInternal(line);
+      }, 500);
+    }, 'tts');
   },
 
   // Next Utterance
