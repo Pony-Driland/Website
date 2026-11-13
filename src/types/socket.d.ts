@@ -128,6 +128,38 @@ interface RoomState {
   [key: string]: unknown;
 }
 
+/**
+ * Role of an user inside a room.
+ *
+ * - `owner`: the room owner (or the server owner).
+ * - `moderator`: a room moderator or a server moderator.
+ * - `member`: a regular user allowed to speak.
+ * - `guest`: read-only visitor. This is the default for every new user.
+ */
+type RoomRole = 'owner' | 'moderator' | 'member' | 'guest';
+
+/** A user allowed to speak inside a room. */
+interface RoomPermissionEntry {
+  /** User that received the permission. */
+  userId: string;
+  /** User that granted the permission. */
+  grantedBy?: string | null;
+  /** Grant timestamp. */
+  date?: number;
+}
+
+/** Payload emitted by the `room-permission-updated` event. */
+interface RoomPermissionUpdate {
+  /** Room id. */
+  roomId: string;
+  /** What happened with the permissions. */
+  type: 'grant' | 'revoke';
+  /** Users affected by the change. */
+  users: string[];
+  /** Full permission list after the change. */
+  permissions: RoomPermissionEntry[];
+}
+
 /** Free form JSON stored in a room. */
 type RoomDataValues = Record<string, unknown>;
 

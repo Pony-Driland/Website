@@ -43,6 +43,30 @@ class TinyClientIo extends EventEmitter {
   /** @type {string[]} */
   mods = [];
 
+  /** @type {RoomRole} */
+  role = 'guest';
+
+  /**
+   * Whether the server reported the room roles.
+   *
+   * Older servers do not know about the room permissions, so the client must
+   * keep the composer enabled for everybody in that case.
+   *
+   * @type {boolean}
+   */
+  rolesEnabled = false;
+
+  /** @type {RoomPermissionEntry[]} */
+  permissions = [];
+
+  /** @type {Record<string, string>} */
+  roles = {
+    OWNER: 'owner',
+    MODERATOR: 'moderator',
+    MEMBER: 'member',
+    GUEST: 'guest',
+  };
+
   connected = false;
   active = false;
 
@@ -164,6 +188,90 @@ class TinyClientIo extends EventEmitter {
     this.users = {};
     this.history = [];
     this.mods = [];
+    this.role = 'guest';
+    this.rolesEnabled = false;
+    this.permissions = [];
+  }
+
+  /**
+   * Role of the signed-in account inside the room.
+   *
+   * @returns {RoomRole}
+   */
+  getRole() {
+    return this.role;
+  }
+
+  /**
+   * Stores the role of the signed-in account inside the room.
+   *
+   * @param {unknown} role - Role sent by the server.
+   * @returns {RoomRole} The stored role.
+   */
+  setRole(role) {
+    const roles = Object.values(this.roles);
+    const isValid = typeof role === 'string' && roles.includes(role);
+    this.rolesEnabled = isValid;
+    this.role = /** @type {RoomRole} */ (isValid ? role : 'guest');
+    return this.role;
+  }
+
+  /**
+   * Tells whether the signed-in account is a read-only guest.
+   *
+   * A guest can read the room, but cannot send messages, edit or delete them.
+   *
+   * @returns {boolean}
+   */
+  isGuest() {
+    return this.rolesEnabled && this.role === 'guest';
+  }
+
+  /**
+   * Tells whether the signed-in account may talk in the room.
+   *
+   * @returns {boolean}
+   */
+  canSpeak() {
+    return !this.isGuest();
+  }
+
+  /**
+   * Replaces the list of users allowed to speak in the room.
+   *
+   * @param {unknown} permissions - Permission list sent by the server.
+   * @returns {RoomPermissionEntry[]} The stored list.
+   */
+  setPermissions(permissions) {
+    this.permissions = Array.isArray(permissions)
+      ? permissions
+          .filter((item) => isJsonObject(item) && typeof item.userId === 'string')
+          .map((item) => ({
+            userId: String(item.userId),
+            grantedBy: typeof item.grantedBy === 'string' ? item.grantedBy : null,
+            date: typeof item.date === 'number' ? item.date : 0,
+          }))
+      : [];
+    return this.permissions;
+  }
+
+  /**
+   * List of users allowed to speak in the room.
+   *
+   * @returns {RoomPermissionEntry[]}
+   */
+  getPermissions() {
+    return this.permissions || [];
+  }
+
+  /**
+   * Tells whether an user is allowed to speak in the room.
+   *
+   * @param {string} userId - User id.
+   * @returns {boolean}
+   */
+  canUserSpeak(userId) {
+    return this.getPermissions().some((item) => item.userId === userId);
   }
 
   // Rate limit
@@ -427,6 +535,10 @@ class TinyClientIo extends EventEmitter {
       // Room data
       this.setRoom(result.data);
 
+      // Role and permissions of the signed-in account
+      this.setRole(result.role);
+      this.setPermissions(result.permissions);
+
       // Users
       this.setUsers({});
       for (const item in result.users)
@@ -454,6 +566,8 @@ class TinyClientIo extends EventEmitter {
       this.setRoom({});
       this.setUsers({});
       this.setMods([]);
+      this.setRole('guest');
+      this.setPermissions([]);
       return false;
     }
   }
@@ -783,6 +897,21 @@ class TinyClientIo extends EventEmitter {
   }
 
   /**
+   * On room permission change
+   * @param {SocketListener} callback
+   */
+  onRoomPermissionChange(callback) {
+    this.#socketOn('room-permission-updated', callback);
+  }
+
+  /**
+   * @param {SocketListener} callback
+   */
+  offRoomPermissionChange(callback) {
+    this.#socketOff('room-permission-updated', callback);
+  }
+
+  /**
    * On mod change
    * @param {SocketListener} callback
    */
@@ -981,6 +1110,47 @@ class TinyClientIo extends EventEmitter {
     return this.#socketEmitApi('room-remove-mod', {
       roomId: this.#cfg.roomId,
       mods,
+    });
+  }
+
+  /**
+   * Grant the permission to speak to a list of users.
+   *
+   * Only the room owner (or the server owner) is allowed to do it.
+   *
+   * @param {string[]} userIds - Users that will be allowed to talk.
+   * @returns {Promise<SocketAck>}
+   */
+  grantPermission(userIds = []) {
+    return this.#socketEmitApi('room-grant-permission', {
+      roomId: this.#cfg.roomId,
+      userIds,
+    });
+  }
+
+  /**
+   * Revoke the permission to speak of a list of users.
+   *
+   * Only the room owner (or the server owner) is allowed to do it.
+   *
+   * @param {string[]} userIds - Users that will lose the permission to talk.
+   * @returns {Promise<SocketAck>}
+   */
+  revokePermission(userIds = []) {
+    return this.#socketEmitApi('room-revoke-permission', {
+      roomId: this.#cfg.roomId,
+      userIds,
+    });
+  }
+
+  /**
+   * Load the role of the signed-in account and the room permission list.
+   *
+   * @returns {Promise<SocketAck>}
+   */
+  loadPermissions() {
+    return this.#socketEmitApi('room-permissions', {
+      roomId: this.#cfg.roomId,
     });
   }
 
@@ -1475,6 +1645,17 @@ class TinyClientIo extends EventEmitter {
           roomData: this.getRoomData(),
           roomPrivateData: this.getRoomPrivateData(),
         });
+      }
+    });
+
+    // Permission list update
+    this.onRoomPermissionChange((result) => {
+      if (this.checkRoomId(result)) {
+        const permissions = this.setPermissions(result.permissions);
+        const users = Array.isArray(result.users) ? result.users : [];
+        const type = result.type === 'revoke' ? 'revoke' : 'grant';
+        this.emit('roomPermissionChange', type, users, permissions);
+        console.log('[socket-io] [room-permissions]', { type, users, permissions });
       }
     });
 

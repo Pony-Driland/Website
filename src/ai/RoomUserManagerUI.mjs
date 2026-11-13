@@ -12,7 +12,7 @@ import TinyClientIo from './socketClient.mjs';
  *
  * @typedef {Object} RoomUserHtml
  * @property {import('bootstrap').Tooltip[]} tooltips - Tooltips attached to the row.
- * @property {{ kick: TinyHtmlAny; ban: TinyHtmlAny; mod: TinyHtmlAny }} actions - Row action buttons.
+ * @property {{ kick: TinyHtmlAny; ban: TinyHtmlAny; mod: TinyHtmlAny; permission: TinyHtmlAny }} actions - Row action buttons.
  * @property {string} userId - User id.
  */
 
@@ -58,6 +58,9 @@ class UserRoomManager {
   /** @type {RoomUserHtml[]} */
   #usersHtml = [];
 
+  /** @type {string[]} */
+  #permissions = [];
+
   /** @type {TinyClientIo} */
   #client;
 
@@ -82,15 +85,17 @@ class UserRoomManager {
    * @param {string} options.currentUserId - The ID of the current user.
    * @param {Record<string, RoomUserData>} [options.users={}] - An object containing user data, keyed by user ID.
    * @param {RoomModerator[]} [options.moderators=[]] - An array of moderator objects, each containing at least a `userId`.
+   * @param {RoomPermissionEntry[]} [options.permissions=[]] - Users allowed to speak in the room.
    * @param {boolean} [options.isOwner=false] - Whether the current user is the room owner.
    */
-  constructor({ client, root, currentUserId, users, moderators, isOwner }) {
+  constructor({ client, root, currentUserId, users, moderators, permissions, isOwner }) {
     this.$root = root;
     this.#client = client;
 
     this.currentUserId = currentUserId;
     this.users = users || {};
     this.moderators = moderators || [];
+    this.setPermissions(permissions);
     this.isOwner = isOwner === true;
     this.isModerator = false;
 
@@ -530,6 +535,24 @@ class UserRoomManager {
       actions.mod = $modBtn;
       tooltips.push(Tooltip($modBtn));
 
+      // Allow / revoke the permission to speak in the room.
+      const canSpeak = this.canSpeak(user.userId);
+      const $permBtn = tinyLib.bs
+        .button(canSpeak ? 'secondary' : 'success')
+        .append(
+          TinyHtml.createFrom('i').addClass(canSpeak ? 'fas fa-comment-slash' : 'fas fa-comment'),
+        )
+        .setAttr('title', canSpeak ? 'Revoke permission to speak' : 'Allow to speak')
+        .toggleProp('disabled', !this.isOwner);
+      $permBtn.on('click', () => {
+        if (canSpeak) this.revokePermission(user.userId);
+        else this.grantPermission(user.userId);
+      });
+
+      $actions.append($permBtn);
+      actions.permission = $permBtn;
+      tooltips.push(Tooltip($permBtn));
+
       if (user.isSelf)
         $info.append(
           TinyHtml.createFrom('span').addClass('badge bg-secondary ms-2').setText('You'),
@@ -620,6 +643,66 @@ class UserRoomManager {
     this.moderators = Array.isArray(moderatorList) ? moderatorList : [];
     this.renderUserList(this.#getSearch());
     this.checkPerms();
+  }
+
+  /**
+   * Replaces the list of users allowed to speak in the room.
+   *
+   * @param {RoomPermissionEntry[]|undefined} permissions - Permission list sent by the server.
+   * @returns {void}
+   */
+  setPermissions(permissions) {
+    this.#permissions = Array.isArray(permissions)
+      ? permissions
+          .filter((item) => item && typeof item.userId === 'string')
+          .map((item) => item.userId)
+      : [];
+  }
+
+  /**
+   * Tells whether an user is allowed to speak in the room.
+   *
+   * @param {string} userId - User id.
+   * @returns {boolean}
+   */
+  canSpeak(userId) {
+    return this.#permissions.indexOf(userId) > -1;
+  }
+
+  /**
+   * Sends a request to allow an user to speak in the room.
+   *
+   * @param {string} userId - User id.
+   * @returns {Promise<void>}
+   */
+  async grantPermission(userId) {
+    const html = this.#usersHtml.find((item) => item.userId === userId);
+    if (html) html.actions.permission.addProp('disabled');
+    const result = await this.#client.grantPermission([userId]);
+    if (html) html.actions.permission.removeProp('disabled').removeClass('disabled');
+    if (!result.error) {
+      this.#permissions.push(userId);
+      this.renderUserList(this.#getSearch());
+      this.checkPerms();
+    }
+  }
+
+  /**
+   * Sends a request to remove the permission to speak of an user.
+   *
+   * @param {string} userId - User id.
+   * @returns {Promise<void>}
+   */
+  async revokePermission(userId) {
+    const html = this.#usersHtml.find((item) => item.userId === userId);
+    if (html) html.actions.permission.addProp('disabled');
+    const result = await this.#client.revokePermission([userId]);
+    if (html) html.actions.permission.removeProp('disabled').removeClass('disabled');
+    if (!result.error) {
+      this.#permissions = this.#permissions.filter((id) => id !== userId);
+      this.renderUserList(this.#getSearch());
+      this.checkPerms();
+    }
   }
 
   /**

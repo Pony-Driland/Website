@@ -34,6 +34,7 @@ export const userButtonActions = () => {
       root: $root,
       users: structuredClone(tinyIo.client.getUsers()),
       moderators: [],
+      permissions: tinyIo.client.getPermissions(),
     });
 
     const mods = tinyIo.client.getMods() || [];
@@ -60,6 +61,8 @@ export const userButtonActions = () => {
       userManager.setRoomStatus(!roomData.disabled);
       userManager.setReadonly(roomData.readOnly);
     };
+    /** @param {RoomPermissionEntry[]} permissions */
+    const permissionUpdated = (permissions) => userManager.setPermissions(permissions);
 
     // const userUpdated = (data) => console.log(data);
 
@@ -70,18 +73,22 @@ export const userButtonActions = () => {
     tinyIo.client.on('userBanned', usersRemoved);
     tinyIo.client.on('roomModChange', userModUpdated);
     tinyIo.client.on('roomUpdates', roomStatusUpdate);
+    tinyIo.client.on('roomPermissionChange', permissionUpdated);
     // tinyIo.client.on('userUpdated', userUpdated);
 
     // Close modal
     html.on('hidden.bs.modal', () => {
-      tinyIo.client.off('userPing', usersAdded);
-      tinyIo.client.off('userJoined', usersAdded);
-      tinyIo.client.off('userLeft', usersRemoved);
-      tinyIo.client.off('userKicked', usersRemoved);
-      tinyIo.client.off('userBanned', usersRemoved);
-      tinyIo.client.off('roomModChange', userModUpdated);
-      tinyIo.client.off('roomUpdates', roomStatusUpdate);
-      // tinyIo.client.off('userUpdated', userUpdated);
+      const client = tinyIo.client;
+      if (!client) return;
+      client.off('userPing', usersAdded);
+      client.off('userJoined', usersAdded);
+      client.off('userLeft', usersRemoved);
+      client.off('userKicked', usersRemoved);
+      client.off('userBanned', usersRemoved);
+      client.off('roomModChange', userModUpdated);
+      client.off('roomUpdates', roomStatusUpdate);
+      client.off('roomPermissionChange', permissionUpdated);
+      // client.off('userUpdated', userUpdated);
       userManager.destroy();
     });
   }

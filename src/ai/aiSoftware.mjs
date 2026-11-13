@@ -3155,6 +3155,17 @@ export const AiScriptStart = async () => {
     msgSubmit,
   );
 
+  // Read-only notice shown to the room guests
+  const guestNotice = TinyHtml.createFrom('div', {
+    class: 'alert alert-warning mx-3 mb-0 d-none',
+    role: 'alert',
+  }).append(
+    TinyHtml.createFrom('i', { class: 'fa-solid fa-lock me-2' }),
+    TinyHtml.createFrom('span').setText(
+      'You are a visitor in this room. Wait for the room owner to allow you to send messages.',
+    ),
+  );
+
   const textInputWrapper = TinyHtml.createFrom('div', {
     class: 'px-3 d-inline-block w-100',
   }).append(textInputContainer);
@@ -3170,6 +3181,9 @@ export const AiScriptStart = async () => {
       TinyHtml.createFrom('div', { class: 'justify-content-center h-100' }).append(
         // Chat Messages Area
         chatContainer.append(msgList),
+
+        // Read-only notice (guests)
+        guestNotice,
 
         // Input Area
         textInputWrapper,
@@ -3683,14 +3697,19 @@ export const AiScriptStart = async () => {
         // Read Only Mode
         /** @param {RoomState} roomData */
         const updateReadOnlyMode = (roomData) => {
+          // A guest is a read-only visitor: the server blocks every write.
+          const isGuest = client.isGuest();
           const isReadOnly =
+            isGuest ||
             !client.getUsers()[String(client.getRoom().ownerId ?? '')] ||
             (roomData.readOnly && !userStatus.isAdmin && !userStatus.isMod)
               ? true
               : false;
 
           container.toggleClass('read-only', isReadOnly);
+          container.toggleClass('is-guest', isGuest);
           textInputWrapper.blur().toggleClass('d-none', isReadOnly);
+          guestNotice.toggleClass('d-none', !isGuest);
         };
 
         // Install prompts
@@ -3844,6 +3863,28 @@ export const AiScriptStart = async () => {
           }
         });
 
+        // The room owner changed the list of users allowed to talk.
+        client.on('roomPermissionChange', () => {
+          const userId = String(client.getUserId() ?? '');
+          const isMod = client.getMods().indexOf(userId) > -1;
+          const isOwner = client.getRoom().ownerId === userId;
+
+          // The role is resolved by the server, so it has to be reloaded.
+          client
+            .loadPermissions()
+            .then((result) => {
+              if (result.error) return;
+              client.setRole(result.role);
+              client.setPermissions(result.permissions);
+            })
+            .catch(console.error)
+            .finally(() => {
+              userStatus.role = client.getRole();
+              userStatus.isGuest = client.isGuest();
+              updateIsMod(isMod, isOwner);
+            });
+        });
+
         client.on('roomEnter', () => {
           clearIsLoadingMsgs();
           const user = client.getUser();
@@ -3852,6 +3893,8 @@ export const AiScriptStart = async () => {
 
           userStatus.server.isAdmin = Boolean(user.isAdmin);
           userStatus.server.isMod = Boolean(user.isMod);
+          userStatus.role = client.getRole();
+          userStatus.isGuest = client.isGuest();
 
           container.toggleClass('is-admin', Boolean(user.isAdmin));
           container.toggleClass('is-mod', Boolean(user.isMod));

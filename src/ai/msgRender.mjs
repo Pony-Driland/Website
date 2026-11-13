@@ -3,6 +3,9 @@ import { marked } from 'marked';
 export const userStatus = {
   isMod: false,
   isAdmin: false,
+  /** @type {'owner'|'moderator'|'member'|'guest'} */
+  role: 'guest',
+  isGuest: true,
   room: {
     isAdmin: false,
     isMod: false,
