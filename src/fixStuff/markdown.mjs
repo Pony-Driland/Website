@@ -11,7 +11,6 @@ import storyCfg from '../chapters/config.mjs';
 
 import { fixFileUrl, fixHref, fixImageSrc, fixSpoilers } from './urls.mjs';
 import { body, topPage } from '../html/query.mjs';
-import { yt } from '../api/youtube.mjs';
 import { markdownBase } from '../html/base.mjs';
 import { updateUrl } from '../router/index.mjs';
 import { getCharacterByPath } from '../router/pages.mjs';
@@ -21,6 +20,7 @@ import '../markdown/spoiler.mjs';
 import '../markdown/ai-tag.mjs';
 import { convertIsoStringsToCalendar } from '../files/utils.mjs';
 import { sky } from '../chapter_manager/weather/index.mjs';
+import musicManager from '../chapter_manager/music/index.mjs';
 
 const { Icon } = TinyHtmlElems;
 
@@ -38,6 +38,9 @@ export const clearFicData = () => {
     appData.ai.secondsUsed = 0;
   }
   tinyAiScript.killIo();
+
+  // The soundtrack belongs to the chapter, so it must not survive it.
+  musicManager.resetPlaylist();
 
   for (const item in storyData.sfx) {
     if (typeof storyData.sfx[item].hide === 'function') {
@@ -69,8 +72,6 @@ export const clearFicData = () => {
   storyData.chapter.line = 0;
   storyData.chapter.nav = {};
   storyData.chapter.selected = 0;
-
-  if (yt.exists && yt.state === YT.PlayerState.PLAYING) yt.player.stopVideo();
 };
 
 /**

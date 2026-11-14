@@ -1,8 +1,9 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import { storyData } from '../../files/chapters.mjs';
+import storyCfg from '../../chapters/config.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
-import { yt } from '../../api/youtube.mjs';
+import musicPlayer from './player.mjs';
 
 const { Icon } = TinyHtmlElems;
 
@@ -15,7 +16,6 @@ const { Icon } = TinyHtmlElems;
 
 /**
  * @typedef {Object} MusicApp
- * @property {boolean} isStopping
  * @property {boolean} useThis
  * @property {string|null} value
  * @property {{ playlist: string|null, index: number }} now
@@ -23,7 +23,6 @@ const { Icon } = TinyHtmlElems;
  * @property {boolean} disabled
  * @property {boolean} playing
  * @property {boolean} paused
- * @property {boolean} stoppabled
  * @property {boolean} buffering
  * @property {number} volume
  * @property {StoryTrack[]} playlist
@@ -31,12 +30,10 @@ const { Icon } = TinyHtmlElems;
  * @property {boolean} loading
  * @property {string} title
  * @property {string} author_name
- * @property {string} author_url
  * @property {string} provider_name
  * @property {string} thumbnail_url
  * @property {number} currentTime
  * @property {number} duration
- * @property {boolean} showing
  * @property {boolean} playingUsed
  * @property {Record<string, TinyHtmlAny>} nav
  * @property {() => void} songVolumeUpdate
@@ -44,7 +41,6 @@ const { Icon } = TinyHtmlElems;
 
 /** @type {MusicApp} */
 export const musicApp = {
-  isStopping: false,
   useThis: true,
   value: null,
   now: { playlist: null, index: -1 },
@@ -52,20 +48,17 @@ export const musicApp = {
   disabled: true,
   playing: false,
   paused: false,
-  stoppabled: true,
   buffering: false,
-  volume: 0,
+  volume: storyCfg.defaultYoutubeVolume,
   playlist: [],
   playlistPlaying: [],
   loading: false,
   title: '',
   author_name: '',
-  author_url: '',
   provider_name: '',
   thumbnail_url: '',
   currentTime: 0,
   duration: 0,
-  showing: false,
   playingUsed: false,
 
   nav: {
@@ -108,9 +101,8 @@ musicBaseItems.push(
     title: 'Source',
   })
     .on('click', () => {
-      if (!musicApp.loading) {
-        open(yt.player.getVideoUrl(), '_blank');
-      }
+      const url = musicPlayer.getSourceUrl();
+      if (!musicApp.loading && url) open(url, '_blank');
     })
     .append(musicApp.nav.info),
 
@@ -121,12 +113,11 @@ musicBaseItems.push(
     title: 'Play/Pause',
   })
     .on('click', () => {
-      if (!musicApp.loading) {
-        if (yt.state === YT.PlayerState.PLAYING) {
-          if (yt.player.pauseVideo) yt.player.pauseVideo();
-        } else {
-          if (yt.player.playVideo) yt.player.playVideo();
-        }
+      if (musicApp.loading) return;
+      if (musicApp.playing) {
+        musicPlayer.pause();
+      } else {
+        musicPlayer.resume();
       }
     })
     .append(musicApp.nav.play),
@@ -138,10 +129,7 @@ musicBaseItems.push(
     title: 'Stop',
   })
     .on('click', () => {
-      if (!musicApp.loading) {
-        musicApp.isStopping = true;
-        yt.player.stopVideo();
-      }
+      if (!musicApp.loading) musicPlayer.stop();
     })
     .append(musicApp.nav.stop),
 
@@ -152,40 +140,40 @@ musicBaseItems.push(
     title: 'Volume',
   })
     .on('click', () => {
-      if (!musicApp.loading) {
-        const input = TinyHtml.createFrom('input', {
-          class: 'form-control range',
-          type: 'range',
-          min: 0,
-          max: 100,
-        });
+      if (musicApp.loading) return;
 
-        // Modal
-        tinyLib.modal({
-          title: [new Icon('fas fa-volume me-3'), 'Song Volume'],
-          body: TinyHtml.createFrom('center').append(
-            TinyHtml.createFrom('p').setText('Change the page music volume'),
-            input
-              .on('change', () => yt.setVolume(Number(input.val())))
-              .setVal(musicApp.volume ?? null),
-          ),
-          dialog: 'modal-lg',
-        });
-      }
+      const input = TinyHtml.createFrom('input', {
+        class: 'form-control range',
+        type: 'range',
+        min: 0,
+        max: 100,
+      });
+
+      // Modal
+      tinyLib.modal({
+        title: [new Icon('fas fa-volume me-3'), 'Song Volume'],
+        body: TinyHtml.createFrom('center').append(
+          TinyHtml.createFrom('p').setText('Change the page music volume'),
+          input
+            .on('change', () => musicPlayer.setVolume(Number(input.val())))
+            .setVal(musicApp.volume ?? null),
+        ),
+        dialog: 'modal-lg',
+      });
     })
     .append(musicApp.nav.volume),
 
   // Disable
   disableButton
     .on('click', () => {
-      if (!musicApp.loading) {
-        if (musicApp.useThis) {
-          musicApp.useThis = false;
-          musicApp.nav.disable.addClass('text-danger');
-        } else {
-          musicApp.useThis = true;
-          musicApp.nav.disable.removeClass('text-danger');
-        }
+      if (musicApp.loading) return;
+
+      if (musicApp.useThis) {
+        musicApp.useThis = false;
+        musicApp.nav.disable.addClass('text-danger');
+      } else {
+        musicApp.useThis = true;
+        musicApp.nav.disable.removeClass('text-danger');
       }
     })
     .append(musicApp.nav.disable),

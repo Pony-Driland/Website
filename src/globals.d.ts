@@ -2,55 +2,6 @@
 
 import type { formatCustomTimer } from 'tiny-essentials/basics/clock';
 
-/**
- * A single entry of the `YT.PlayerState` enum.
- *
- * @see https://developers.google.com/youtube/iframe_api_reference#Playback_status
- */
-type YoutubePlayerState = -1 | 0 | 1 | 2 | 3 | 5;
-
-/**
- * Subset of the YouTube IFrame Player API used by the application.
- *
- * @see https://developers.google.com/youtube/iframe_api_reference
- */
-interface YoutubePlayerInstance {
-  getVolume(): number;
-  setVolume(volume: number): void;
-  getPlaybackQuality(): string;
-  setPlaybackQuality(quality: string): void;
-  getAvailableQualityLevels(): string[];
-  seekTo(seconds: number, allowSeekAhead?: boolean): void;
-  playVideo(): void;
-  pauseVideo(): void;
-  stopVideo(): void;
-  setLoop(loop: boolean): void;
-  setShuffle(shuffle: boolean): void;
-  getDuration(): number;
-  getCurrentTime(): number;
-  getVideoUrl(): string;
-}
-
-/** Constructor signature of `YT.Player`. */
-type YoutubePlayerConstructor = new (
-  elementId: string | HTMLElement,
-  options: Record<string, unknown>,
-) => YoutubePlayerInstance;
-
-/** Namespace injected by `https://www.youtube.com/iframe_api`. */
-interface YoutubeIframeApi {
-  Player: YoutubePlayerConstructor;
-  PlayerState: {
-    UNSTARTED: -1;
-    ENDED: 0;
-    PLAYING: 1;
-    PAUSED: 2;
-    BUFFERING: 3;
-    VIDEO_CUED: 5;
-    CUED: 5;
-  };
-}
-
 interface SongAlternativeFile {
   category?: string | string[];
   generators_used?: string[];

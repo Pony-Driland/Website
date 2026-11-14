@@ -5,10 +5,14 @@ type CryptoWalletKey = 'dogecoin' | 'bitcoin' | 'ethereum' | 'bnb' | 'polygon';
 
 /** A single soundtrack entry. */
 interface StoryTrack {
-  /** YouTube video id. */
+  /** YouTube video id or audio file URL. */
   id: string;
-  /** Track provider (`youtube`). */
+  /** Track provider (`youtube` or `audio`). */
   type: string;
+  /** Optional track title. */
+  title?: string;
+  /** Optional track artist. */
+  artist?: string;
 }
 
 /** A single sound effect entry. */

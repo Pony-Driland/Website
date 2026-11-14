@@ -6,17 +6,21 @@ import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 
 import SeamlessLoop from '../../../build/bundle/SeamlessLoop.mjs';
 import BuffAudio from '../../../build/bundle/buffaudio.mjs';
-import { yt } from '../../api/youtube.mjs';
 
 import { storyData } from '../../files/chapters.mjs';
 import storyCfg from '../../chapters/config.mjs';
 import ttsManager from '../tts/tts.mjs';
 import { Tooltip } from '../../modules/TinyBootstrap.mjs';
+import musicPlayer from './player.mjs';
 import { musicApp, musicBase } from './html.mjs';
 
 /**
  * Music manager: resolves the soundtrack of each scene, cross-fades between
- * tracks and keeps the YouTube and Pizzicato players in sync.
+ * tracks and keeps the sound effects in sync with the reader.
+ *
+ * The soundtrack itself is played by {@link module:chapter_manager/music/player},
+ * which wraps `TinyMediaPlayer`. This module only decides *which* track of the
+ * story playlist should be playing.
  *
  * @module chapter_manager/music
  */
@@ -33,7 +37,12 @@ import { musicApp, musicBase } from './html.mjs';
  * @property {(item: string, loop?: boolean, type?: string) => void} insertSFX
  * @property {() => void} startPlaylist
  * @property {() => Promise<void>} stopPlaylist
+ * @property {() => Promise<void>} resetPlaylist
  * @property {MusicStartBackends} start
+ */
+
+/**
+ * @typedef {import('./player.mjs').MusicTimeData} MusicTimeData
  */
 
 /**
@@ -113,33 +122,15 @@ const musicManager = {
 
   // Next Song
   nextMusic: () => {
-    if (
-      typeof musicApp.now.index === 'number' &&
-      !isNaN(musicApp.now.index) &&
-      isFinite(musicApp.now.index) &&
-      musicApp.now.index > -1 &&
-      storyData.readFic
-    ) {
-      musicApp.now.index++;
-      if (!musicApp.playlist[musicApp.now.index]) {
-        musicApp.now.index = 0;
-      }
+    if (!Array.isArray(musicApp.playlist) || musicApp.playlist.length < 1) return;
+    if (!storyData.readFic) return;
 
-      // Play
-      const song = musicApp.playlist[musicApp.now.index];
-      if (
-        song &&
-        typeof song.id === 'string' &&
-        song.id.length > 0 &&
-        typeof song.type === 'string' &&
-        song.type.length > 0
-      ) {
-        // Youtube
-        if (song.type === 'youtube') {
-          setTimeout(() => yt.play(song.id), 1000);
-        }
-      }
+    musicApp.now.index++;
+    if (!musicApp.playlist[musicApp.now.index]) {
+      musicApp.now.index = 0;
     }
+
+    playCurrent();
   },
 
   disable: (react = true) => {
@@ -159,9 +150,6 @@ const musicManager = {
       // Update
       musicApp.songVolumeUpdate();
 
-      // Fix Youtube Player
-      //youtubePlayer.removeClass('hidden');
-
       // Prepare
       if (!storyData.chapter.nav) {
         storyData.chapter.nav = {};
@@ -177,9 +165,6 @@ const musicManager = {
       new TinyHtml(storyData.nc.base.right.find(':scope > #status')).prepend([
         // Music
         storyData.chapter.nav.music,
-
-        // Youtube
-        //TinyHtml.createFrom('a', { class: 'nav-item nav-link mx-3 p-0', indexitem: '0', id: 'youtube-thumb' }).append(youtubePlayer),
       ]);
     }
   },
@@ -189,7 +174,7 @@ const musicManager = {
     TinyHtml.query('#music-player')?.addClass('border').removeClass('d-none').addClass('me-3');
 
     // Buff
-    if (musicApp.buffering || musicApp.loading || !musicApp.usingSystem || !yt.exists) {
+    if (musicApp.buffering || musicApp.loading || !musicApp.usingSystem) {
       TinyHtml.queryAll('#music-player > a').addClass('disabled');
     } else {
       TinyHtml.queryAll('#music-player > a').removeClass('disabled');
@@ -197,7 +182,7 @@ const musicManager = {
 
     // Title
     if (typeof musicApp.title === 'string' && musicApp.title.length > 0) {
-      const newTitle = `Youtube - ${musicApp.author_name} - ${musicApp.title}`;
+      const newTitle = `${musicApp.provider_name} - ${musicApp.author_name} - ${musicApp.title}`;
       const divBase = new TinyHtml(TinyHtml.queryAll('#music-player > a').has(musicApp.nav.info));
 
       if (divBase.size > 0 && divBase.data('bs-tooltip-data') !== newTitle) {
@@ -210,14 +195,7 @@ const musicManager = {
     // Playing
     if (musicApp.playing) {
       musicApp.nav.play.addClass('fa-pause').removeClass('fa-play');
-    } else if (musicApp.paused) {
-      musicApp.nav.play.addClass('fa-play').removeClass('fa-pause');
-    } else if (
-      musicApp.stoppabled ||
-      typeof musicApp.currentTime !== 'number' ||
-      typeof musicApp.duration !== 'number' ||
-      musicApp.currentTime === musicApp.duration
-    ) {
+    } else {
       musicApp.nav.play.addClass('fa-play').removeClass('fa-pause');
     }
 
@@ -345,117 +323,114 @@ const musicManager = {
   },
 
   stopPlaylist: async () => {
-    if (musicApp.usingSystem) {
-      // Playing Used
-      if (musicApp.playing) {
-        musicApp.playingUsed = true;
-      }
+    if (!musicApp.usingSystem) return;
 
-      // Using System
-      musicApp.usingSystem = false;
+    // The track is only paused, never unloaded: the reader scrolls back and
+    // forth all the time, so the position has to survive a stop/start cycle.
+    musicApp.usingSystem = false;
+    musicApp.playing = false;
+    musicApp.paused = false;
 
-      // Hide Progress
-      const hideTimeout = 50;
-      let volume = musicApp.volume;
-      for (let i = 0; i < 100; i++) {
-        if (!musicApp.usingSystem) {
-          await new Promise((resolve) => {
-            setTimeout(() => {
-              // Volume
-              volume--;
+    await musicPlayer.pause();
+    musicManager.updatePlayer();
+  },
 
-              // Youtube Player
-              if (yt.player && typeof yt.player.setVolume === 'function') {
-                yt.player.setVolume(volume);
-              }
+  /**
+   * Stops the soundtrack and drops the current track.
+   *
+   * Called when the reader is closed, so the next chapter always starts from a
+   * clean state instead of resuming the previous one.
+   *
+   * @returns {Promise<void>}
+   */
+  resetPlaylist: async () => {
+    musicApp.usingSystem = false;
+    musicApp.playing = false;
+    musicApp.paused = false;
+    musicApp.playlist = [];
+    musicApp.playlistPlaying = [];
+    musicApp.now.index = -1;
+    musicApp.now.playlist = null;
+    musicApp.value = null;
+    musicApp.title = '';
+    musicApp.author_name = '';
+    musicApp.provider_name = '';
+    musicApp.thumbnail_url = '';
+    musicApp.currentTime = 0;
+    musicApp.duration = 0;
 
-              if (i === 100) {
-                // Youtube Player
-                if (yt.player) {
-                  yt.player.stopVideo();
-                }
-              }
-
-              resolve(undefined);
-            }, hideTimeout);
-          });
-        }
-      }
-    }
-    return;
+    await musicPlayer.reset();
   },
 
   startPlaylist: () => {
-    if (storyData.readFic && objHash(musicApp.playlist) !== objHash(musicApp.playlistPlaying)) {
-      // Check Status
-      if (Array.isArray(musicApp.playlist) && musicApp.playlist.length > 0) {
-        // Play Song
-        shuffleArray(musicApp.playlist);
+    if (!storyData.readFic) return;
+    if (!Array.isArray(musicApp.playlist) || musicApp.playlist.length < 1) return;
 
-        const playSong = () => {
-          if (
-            typeof musicApp.now.index === 'number' &&
-            !isNaN(musicApp.now.index) &&
-            isFinite(musicApp.now.index) &&
-            musicApp.now.index > -1
-          ) {
-            // Update Cache
-            musicApp.playlistPlaying = musicApp.playlist;
-
-            // Play
-            const song = musicApp.playlist[musicApp.now.index];
-            if (
-              song &&
-              typeof song.id === 'string' &&
-              song.id.length > 0 &&
-              typeof song.type === 'string' &&
-              song.type.length > 0
-            ) {
-              // Youtube
-              if (song.type === 'youtube') {
-                setTimeout(() => yt.play(song.id), 100);
-              }
-            }
-          }
-        };
-
-        // Exist
-        if (
-          musicApp.now.playlist === null ||
-          musicApp.now.index === -1 ||
-          musicApp.now.playlist !== musicApp.value
-        ) {
-          // Fix Index
-          if (musicApp.now.index < 0 || musicApp.now.playlist !== musicApp.value) {
-            musicApp.now.index = 0;
-          }
-
-          // Now
-          musicApp.now.playlist = musicApp.value;
-
-          // Play
-          playSong();
-        }
-
-        // Resume
-        else if (musicApp.playingUsed) {
-          if (musicApp.playingUsed) {
-            playSong();
-          }
-
-          musicApp.playingUsed = false;
-        }
-      }
-
-      // Check Data
+    // Same playlist: just resume where it stopped.
+    if (objHash(musicApp.playlist) === objHash(musicApp.playlistPlaying)) {
       musicApp.usingSystem = true;
+      musicPlayer.resume();
+      return;
     }
+
+    // New playlist: start from the beginning.
+    shuffleArray(musicApp.playlist);
+    musicApp.playlistPlaying = musicApp.playlist;
+    musicApp.now.index = 0;
+    musicApp.now.playlist = musicApp.value;
+    musicApp.usingSystem = true;
+
+    playCurrent();
   },
 };
 
-// Music Updater
+/**
+ * Plays the track selected by {@link musicApp}.`now.index`.
+ *
+ * @returns {void}
+ */
+function playCurrent() {
+  const song = musicApp.playlist[musicApp.now.index];
+  if (!song || typeof song.id !== 'string' || song.id.length === 0) return;
+  if (typeof song.type !== 'string' || song.type.length === 0) return;
+
+  musicApp.usingSystem = true;
+  musicPlayer.playTrack(song);
+}
+
+// Keep the UI in sync with the player.
+musicPlayer.on('play', () => {
+  musicApp.playing = true;
+  musicApp.paused = false;
+  musicManager.updatePlayer();
+});
+
+musicPlayer.on('volumeChange', (/** @type {number} */ volume) => {
+  musicApp.volume = Math.round(volume * 100);
+  musicApp.songVolumeUpdate();
+});
+
+musicPlayer.on('pause', () => {
+  musicApp.playing = false;
+  musicApp.paused = true;
+  musicManager.updatePlayer();
+});
+
+musicPlayer.on('stop', () => {
+  musicApp.playing = false;
+  musicApp.paused = false;
+  musicManager.updatePlayer();
+});
+
+musicPlayer.on('ended', () => musicManager.nextMusic());
+
+musicPlayer.on('timeupdate', (/** @type {MusicTimeData} */ data) => {
+  musicApp.currentTime = data.current;
+  musicApp.duration = data.total;
+});
 
 // TTS Updater
+
 ttsManager.updatePlayer = () => {
   if (storyData.tts.nav) {
     // View
@@ -1157,11 +1132,5 @@ musicManager.start.vanilla = (
     false,
   );
 };
-
-// Insert SFX
-
-// Stop Playlist
-
-// Start Playlist
 
 export default musicManager;
