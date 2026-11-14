@@ -37,4 +37,28 @@ body.ficMode {
   &.sky-visible .sky-canvas {
     opacity: 1;
   }
+
+  /*
+   * Readability veil.
+   *
+   * The sky is a full screen shader, so a bright scene (a noon sun, a white
+   * flash of lightning) can wash out the text sitting on top of it. This layer
+   * darkens the canvas just enough to keep the text legible without flattening
+   * the artwork: it is a plain colour, so it costs nothing to composite and it
+   * never intercepts the pointer.
+   */
+  &::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transition: opacity 1s linear;
+  }
+
+  &.sky-visible::after {
+    opacity: 1;
+  }
 }
