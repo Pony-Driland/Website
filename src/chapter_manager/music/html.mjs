@@ -65,13 +65,22 @@ export const musicApp = {
 // Base
 export const musicBase = TinyHtml.createFrom('div', { id: 'music-player', class: 'd-none' });
 
+/**
+ * Buttons that must be locked while the soundtrack is disabled. The disable
+ * button itself is not part of the list: it is the only way back.
+ *
+ * @type {TinyHtmlAny[]}
+ */
+export const musicButtons = [];
+
 // Items
 /** @type {TinyHtmlAny[]} */
 export const musicBaseItems = [];
 
+// This one never gets the `disabled` class: it is the only way back.
 const disableButton = TinyHtml.createFrom('a', {
   href: 'javascript:void(0)',
-  class: 'disabled text-white',
+  class: 'text-white',
   title: 'Disable',
 });
 
@@ -109,9 +118,7 @@ musicBaseItems.push(
     class: 'disabled text-white',
     title: 'Stop',
   })
-    .on('click', () => {
-      musicPlayer.stop();
-    })
+    .on('click', () => musicPlayer.stop())
     .append(musicApp.nav.stop),
 
   // Volume
@@ -144,13 +151,12 @@ musicBaseItems.push(
 
   // Disable
   disableButton
-    .on('click', () => {
-      if (typeof musicApp.onDisabledChange === 'function') {
-        musicApp.onDisabledChange(!musicApp.disabled);
-      }
-    })
+    .on('click', () => musicApp.onDisabledChange?.(!musicApp.disabled))
     .append(musicApp.nav.disable),
 );
+
+// Every button but the last one (disable) is locked while the music is off.
+musicButtons.push(...musicBaseItems.slice(0, -1));
 
 // Insert Items
 musicBase.append(...musicBaseItems);

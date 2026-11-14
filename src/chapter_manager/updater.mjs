@@ -147,19 +147,13 @@ tinyWin.on(['resize', 'scroll'], () => {
 
 cacheChapterUpdater.scrollData = () => {
   // Set Playlist
-  if (Array.isArray(musicApp.playlist)) {
-    musicManager.disable(false);
-  } else {
+  if (!Array.isArray(musicApp.playlist)) {
     musicApp.playlist = [];
   }
 
-  // Exist Playlist
-  if (
-    !storyData.chapter.blockLineSave &&
-    !musicApp.disabled &&
-    Array.isArray(musicApp.playlist) &&
-    musicApp.playlist.length > 0
-  ) {
+  // Exist Playlist. `musicApp.disabled` is the visitor's own switch, so it is
+  // the only thing that can keep the soundtrack off here.
+  if (!storyData.chapter.blockLineSave && !musicApp.disabled && musicApp.playlist.length > 0) {
     musicManager.startPlaylist();
   }
 

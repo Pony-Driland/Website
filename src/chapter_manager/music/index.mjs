@@ -9,10 +9,11 @@ import BuffAudio from '../../../build/bundle/buffaudio.mjs';
 
 import { storyData } from '../../files/chapters.mjs';
 import storyCfg from '../../chapters/config.mjs';
+import { tinyLs } from '../../important.mjs';
 import ttsManager from '../tts/tts.mjs';
 import { Tooltip } from '../../modules/TinyBootstrap.mjs';
 import musicPlayer from './player.mjs';
-import { musicApp, musicBase } from './html.mjs';
+import { musicApp, musicBase, musicButtons } from './html.mjs';
 
 /**
  * Music manager: resolves the soundtrack of each scene, cross-fades between
@@ -140,10 +141,11 @@ const musicManager = {
   },
 
   /**
-   * Enables or disables the soundtrack.
+   * Turns the soundtrack on or off.
    *
-   * Called on every scroll, so it must stay idempotent: it only touches the
-   * player when the state actually changes.
+   * This is the visitor's own switch, not a playback state: while it is off the
+   * player must stay silent no matter where the reader scrolls to. The choice is
+   * remembered between visits.
    *
    * @param {boolean} [disabled] - Whether the soundtrack is disabled.
    * @returns {void}
@@ -152,14 +154,16 @@ const musicManager = {
     if (musicApp.disabled === disabled) return;
 
     musicApp.disabled = disabled;
-    musicApp.nav.disable.toggleClass('text-danger', disabled);
-    TinyHtml.query('#music-player')?.[disabled ? 'addClass' : 'removeClass']('disabled-player');
+    tinyLs.setBool('musicDisabled', disabled);
 
     if (disabled) {
       musicPlayer.pause();
     } else if (musicApp.usingSystem) {
       musicPlayer.resume();
     }
+
+    // Repaints the toolbar (locked buttons + red icon).
+    musicManager.updatePlayer();
   },
 
   // Start Base
@@ -186,18 +190,22 @@ const musicManager = {
         storyData.chapter.nav.music,
       ]);
     }
+
+    // The toolbar must be visible even when the soundtrack is off, otherwise
+    // there would be no way to turn it back on.
+    musicManager.updatePlayer();
   },
 
   updatePlayer: () => {
     // View
     TinyHtml.query('#music-player')?.addClass('border').removeClass('d-none').addClass('me-3');
 
-    // Buff
-    if (!musicApp.usingSystem) {
-      TinyHtml.queryAll('#music-player > a').addClass('disabled');
-    } else {
-      TinyHtml.queryAll('#music-player > a').removeClass('disabled');
-    }
+    // The disable button is the only one that never locks: it is the way back.
+    musicApp.nav.disable.toggleClass('text-danger', musicApp.disabled);
+
+    // Every other button is locked while the player is off or still loading.
+    const locked = musicApp.disabled || !musicApp.usingSystem;
+    musicButtons.forEach((button) => button.toggleClass('disabled', locked));
 
     // Playing
     if (musicApp.playing) {
@@ -396,6 +404,9 @@ function playCurrent() {
   musicApp.usingSystem = true;
   musicPlayer.playTrack(song);
 }
+
+// Restore the visitor's choice from the previous visit.
+musicManager.disable(tinyLs.getBool('musicDisabled') === true);
 
 // The disable button lives in the toolbar, so it talks to the manager through
 // this callback instead of importing it (which would be a cycle).
