@@ -158,7 +158,7 @@ class TinyAiStorage extends EventEmitter {
    * Reads the credential of a provider.
    *
    * @param {string} name - Provider name.
-   * @returns {{ key: string|null }|AiCredential} `{ key }` for string credentials, otherwise the stored object.
+   * @returns {AiCredential} `{ key }` for string credentials, otherwise the stored object.
    */
   getApiKey(name) {
     return typeof this.storage[name] === 'string'
