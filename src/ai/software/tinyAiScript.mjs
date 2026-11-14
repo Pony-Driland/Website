@@ -91,6 +91,11 @@ export const tinyAiScript = {
       new TinyHtml(tinyAiScript.aiLogin.button.find(':scope > i')).addClass('text-danger-emphasis');
       tinyAiScript.aiLogin.title = 'AI/RP Disabled';
       body.removeClass('can-ai');
+
+      // Reset the provider flags, otherwise a provider switched off during the
+      // session would keep leaking its mode into the next one.
+      tinyAiScript.mpClient = false;
+      tinyAiScript.noai = false;
       tinyAiScript.enabled = false;
     }
 
@@ -112,7 +117,11 @@ export const tinyAiScript = {
         tinyAiHtml[value] && tinyAiHtml[value].inputs ? tinyAiHtml[value].inputs() : null;
       apiPlace.empty();
       if (html) apiPlace.append(html.desc, html.input, html.submit);
-      tinyStorage.setSelectedAi(value);
+
+      // Picking a provider only previews its form. The selection is committed
+      // by the form submit, otherwise closing the modal without saving would
+      // leave the page pointing at a provider that has no credential yet.
+      if (!html) tinyStorage.setSelectedAi(value);
       tinyAiScript.checkTitle();
     });
 
@@ -248,6 +257,7 @@ export const tinyAiScript = {
           /** @type {AiCredential} */
           const result = insertSaveServerLogin(data.input, ids);
           tinyStorage.setApiKey('no-ai', result);
+          tinyStorage.setSelectedAi('no-ai');
           tinyAiScript.checkTitle();
           TinyHtml.query('#ai_connection')?.data('BootstrapModal').hide();
         })
@@ -303,6 +313,7 @@ export const tinyAiScript = {
           const result = insertSaveServerLogin(data.input, ids);
           result.key = String(data.input[0].val() ?? '');
           tinyStorage.setApiKey('google-generative', result);
+          tinyStorage.setSelectedAi('google-generative');
           tinyAiScript.checkTitle();
           TinyHtml.query('#ai_connection')?.data('BootstrapModal').hide();
           window.location.reload();
@@ -333,6 +344,7 @@ export const tinyAiScript = {
         .setText('Set connection settings')
         .on('click', () => {
           tinyStorage.setApiKey('tiny-chat', insertSaveServerLogin(data.input, ids));
+          tinyStorage.setSelectedAi('tiny-chat');
           tinyAiScript.checkTitle();
           TinyHtml.query('#ai_connection')?.data('BootstrapModal').hide();
         })

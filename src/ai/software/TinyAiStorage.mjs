@@ -44,50 +44,78 @@ class TinyAiStorage extends EventEmitter {
   }
 
   /**
+   * Tells whether a provider already has a credential stored.
+   *
+   * @private
+   * @param {string} name - Provider name.
+   * @returns {boolean} `true` when the provider has a credential.
+   */
+  _hasCredential(name) {
+    const value = this.storage[name];
+    return (
+      (typeof value === 'string' && value.length > 0) ||
+      typeof value === 'number' ||
+      isJsonObject(value)
+    );
+  }
+
+  /**
+   * Persists the current selection when it points to a configured provider.
+   *
+   * @private
+   * @returns {void}
+   */
+  _saveSelectedAi() {
+    if (this._selected && this._hasCredential(this._selected))
+      tinyLs.setItem('tiny-ai-storage-selected', this._selected);
+    else tinyLs.removeItem('tiny-ai-storage-selected');
+  }
+
+  /**
    * Clears the selected provider when its credential no longer exists.
    *
    * @private
    * @returns {void}
    */
   _updateExistsAi() {
-    if (
-      this._selected &&
-      (typeof this.storage[this._selected] !== 'string' ||
-        this.storage[this._selected].length < 1) &&
-      typeof this.storage[this._selected] !== 'number' &&
-      !isJsonObject(this.storage[this._selected])
-    ) {
+    if (this._selected && !this._hasCredential(this._selected)) {
       this._selected = null;
       tinyLs.removeItem('tiny-ai-storage-selected');
+      return;
     }
+
+    // The credential may have just been written by `setApiKey()`, so the
+    // selection has to be flushed to the storage now.
+    this._saveSelectedAi();
   }
 
   /**
    * Marks a provider as the active one.
    *
-   * @param {string} value - Provider name. Ignored when it has no stored credential.
+   * The selection is accepted even before the credential exists, because the
+   * provider form is filled before it is saved. `selectedAi()` keeps reporting
+   * the provider as inactive until `setApiKey()` stores the credential, and
+   * `_updateExistsAi()` persists the selection right after that.
+   *
+   * @param {string} value - Provider name.
    * @returns {void}
    */
   setSelectedAi(value) {
     this._selected =
-      typeof value === 'string' &&
-      ((typeof this.storage[value] === 'string' && this.storage[value].length > 0) ||
-        typeof this.storage[value] === 'number' ||
-        isJsonObject(this.storage[value]))
-        ? value
-        : null;
-
-    if (this._selected) tinyLs.setItem('tiny-ai-storage-selected', this._selected);
-    else tinyLs.removeItem('tiny-ai-storage-selected');
+      typeof value === 'string' && value.length > 0 && value !== 'NONE' ? value : null;
+    this._saveSelectedAi();
   }
 
   /**
    * Returns the name of the active provider.
    *
+   * A provider without a stored credential is reported as inactive, so a
+   * selection made before the form is saved never enables the AI by itself.
+   *
    * @returns {string|null} The provider name, or `null` when none is selected.
    */
   selectedAi() {
-    return this._selected;
+    return this._selected && this._hasCredential(this._selected) ? this._selected : null;
   }
 
   /**
