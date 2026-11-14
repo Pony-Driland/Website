@@ -66,8 +66,9 @@ export const musicApp = {
 export const musicBase = TinyHtml.createFrom('div', { id: 'music-player', class: 'd-none' });
 
 /**
- * Buttons that must be locked while the soundtrack is disabled. The disable
- * button itself is not part of the list: it is the only way back.
+ * Buttons that must be locked while the soundtrack is disabled. The volume and
+ * the disable button are not part of the list: the volume also drives the sound
+ * effects and the disable button is the only way back.
  *
  * @type {TinyHtmlAny[]}
  */
@@ -77,12 +78,21 @@ export const musicButtons = [];
 /** @type {TinyHtmlAny[]} */
 export const musicBaseItems = [];
 
-// This one never gets the `disabled` class: it is the only way back.
+// These never get the `disabled` class: the volume also controls the sound
+// effects, and the disable button is the only way back.
+const volumeButton = TinyHtml.createFrom('a', {
+  href: 'javascript:void(0)',
+  class: 'text-white',
+  title: 'Volume',
+});
+
 const disableButton = TinyHtml.createFrom('a', {
   href: 'javascript:void(0)',
   class: 'text-white',
   title: 'Disable',
 });
+
+const alwaysEnabled = [volumeButton, disableButton];
 
 musicBaseItems.push(
   // Info
@@ -121,12 +131,8 @@ musicBaseItems.push(
     .on('click', () => musicPlayer.stop())
     .append(musicApp.nav.stop),
 
-  // Volume
-  TinyHtml.createFrom('a', {
-    href: 'javascript:void(0)',
-    class: 'disabled text-white',
-    title: 'Volume',
-  })
+  // Volume. It also drives the sound effects, so it is never locked.
+  volumeButton
     .on('click', () => {
       const input = TinyHtml.createFrom('input', {
         class: 'form-control range',
@@ -137,9 +143,9 @@ musicBaseItems.push(
 
       // Modal
       tinyLib.modal({
-        title: [new Icon('fas fa-volume me-3'), 'Song Volume'],
+        title: [new Icon('fas fa-volume me-3'), 'Volume'],
         body: TinyHtml.createFrom('center').append(
-          TinyHtml.createFrom('p').setText('Change the page music volume'),
+          TinyHtml.createFrom('p').setText('Change the music and sound effects volume'),
           input
             .on('change', () => musicPlayer.setVolume(Number(input.val())))
             .setVal(musicApp.volume ?? null),
@@ -155,8 +161,10 @@ musicBaseItems.push(
     .append(musicApp.nav.disable),
 );
 
-// Every button but the last one (disable) is locked while the music is off.
-musicButtons.push(...musicBaseItems.slice(0, -1));
+// Everything except the volume and the disable button is locked while the music
+// is off: the volume also drives the sound effects, and the disable button is
+// the only way back.
+musicButtons.push(...musicBaseItems.filter((item) => !alwaysEnabled.includes(item)));
 
 // Insert Items
 musicBase.append(...musicBaseItems);
