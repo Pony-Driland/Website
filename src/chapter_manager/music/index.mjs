@@ -42,7 +42,13 @@ import { musicApp, musicBase } from './html.mjs';
  */
 
 /**
- * @typedef {import('./player.mjs').MusicTimeData} MusicTimeData
+ * Playback progress of the current track.
+ *
+ * @typedef {Object} MusicTimeData
+ * @property {number} total - Total duration in milliseconds.
+ * @property {number} current - Current position in milliseconds.
+ * @property {number} remaining - Remaining time in milliseconds.
+ * @property {number} playbackPercentage - Played percentage (0-100).
  */
 
 /**
@@ -133,13 +139,26 @@ const musicManager = {
     playCurrent();
   },
 
-  disable: (react = true) => {
-    if (react) {
-      musicApp.disabled = true;
-      TinyHtml.query('#music-player')?.addClass('disabled-player');
-    } else {
-      musicApp.disabled = false;
-      TinyHtml.query('#music-player')?.removeClass('disabled-player');
+  /**
+   * Enables or disables the soundtrack.
+   *
+   * Called on every scroll, so it must stay idempotent: it only touches the
+   * player when the state actually changes.
+   *
+   * @param {boolean} [disabled] - Whether the soundtrack is disabled.
+   * @returns {void}
+   */
+  disable: (disabled = true) => {
+    if (musicApp.disabled === disabled) return;
+
+    musicApp.disabled = disabled;
+    musicApp.nav.disable.toggleClass('text-danger', disabled);
+    TinyHtml.query('#music-player')?.[disabled ? 'addClass' : 'removeClass']('disabled-player');
+
+    if (disabled) {
+      musicPlayer.pause();
+    } else if (musicApp.usingSystem) {
+      musicPlayer.resume();
     }
   },
 
@@ -174,22 +193,10 @@ const musicManager = {
     TinyHtml.query('#music-player')?.addClass('border').removeClass('d-none').addClass('me-3');
 
     // Buff
-    if (musicApp.buffering || musicApp.loading || !musicApp.usingSystem) {
+    if (!musicApp.usingSystem) {
       TinyHtml.queryAll('#music-player > a').addClass('disabled');
     } else {
       TinyHtml.queryAll('#music-player > a').removeClass('disabled');
-    }
-
-    // Title
-    if (typeof musicApp.title === 'string' && musicApp.title.length > 0) {
-      const newTitle = `${musicApp.provider_name} - ${musicApp.author_name} - ${musicApp.title}`;
-      const divBase = new TinyHtml(TinyHtml.queryAll('#music-player > a').has(musicApp.nav.info));
-
-      if (divBase.size > 0 && divBase.data('bs-tooltip-data') !== newTitle) {
-        divBase.setData('bs-tooltip-data', newTitle);
-        const bsToolTip = divBase.data('BootstrapToolTip');
-        if (bsToolTip) bsToolTip.setContent({ '.tooltip-inner': newTitle });
-      }
     }
 
     // Playing
@@ -329,7 +336,6 @@ const musicManager = {
     // forth all the time, so the position has to survive a stop/start cycle.
     musicApp.usingSystem = false;
     musicApp.playing = false;
-    musicApp.paused = false;
 
     await musicPlayer.pause();
     musicManager.updatePlayer();
@@ -346,24 +352,17 @@ const musicManager = {
   resetPlaylist: async () => {
     musicApp.usingSystem = false;
     musicApp.playing = false;
-    musicApp.paused = false;
     musicApp.playlist = [];
     musicApp.playlistPlaying = [];
     musicApp.now.index = -1;
     musicApp.now.playlist = null;
     musicApp.value = null;
-    musicApp.title = '';
-    musicApp.author_name = '';
-    musicApp.provider_name = '';
-    musicApp.thumbnail_url = '';
-    musicApp.currentTime = 0;
-    musicApp.duration = 0;
 
     await musicPlayer.reset();
   },
 
   startPlaylist: () => {
-    if (!storyData.readFic) return;
+    if (!storyData.readFic || musicApp.disabled) return;
     if (!Array.isArray(musicApp.playlist) || musicApp.playlist.length < 1) return;
 
     // Same playlist: just resume where it stopped.
@@ -398,36 +397,32 @@ function playCurrent() {
   musicPlayer.playTrack(song);
 }
 
-// Keep the UI in sync with the player.
-musicPlayer.on('play', () => {
+// The disable button lives in the toolbar, so it talks to the manager through
+// this callback instead of importing it (which would be a cycle).
+musicApp.onDisabledChange = (disabled) => musicManager.disable(disabled);
+
+// Keep the UI in sync with the player. `TinyMediaPlayer` already emits every
+// event we need, so there is no reason to wrap them again.
+const { player } = musicPlayer;
+
+player.on('play', () => {
   musicApp.playing = true;
-  musicApp.paused = false;
   musicManager.updatePlayer();
 });
 
-musicPlayer.on('volumeChange', (/** @type {number} */ volume) => {
-  musicApp.volume = Math.round(volume * 100);
-  musicApp.songVolumeUpdate();
-});
-
-musicPlayer.on('pause', () => {
+player.on('pause', () => {
   musicApp.playing = false;
-  musicApp.paused = true;
   musicManager.updatePlayer();
 });
 
-musicPlayer.on('stop', () => {
+player.on('stop', () => {
   musicApp.playing = false;
-  musicApp.paused = false;
   musicManager.updatePlayer();
 });
 
-musicPlayer.on('ended', () => musicManager.nextMusic());
+player.on('ended', () => musicManager.nextMusic());
 
-musicPlayer.on('timeupdate', (/** @type {MusicTimeData} */ data) => {
-  musicApp.currentTime = data.current;
-  musicApp.duration = data.total;
-});
+player.on('volumeChange', () => musicApp.songVolumeUpdate());
 
 // TTS Updater
 

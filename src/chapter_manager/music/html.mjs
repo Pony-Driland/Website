@@ -1,7 +1,6 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import { storyData } from '../../files/chapters.mjs';
-import storyCfg from '../../chapters/config.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import musicPlayer from './player.mjs';
 
@@ -16,49 +15,32 @@ const { Icon } = TinyHtmlElems;
 
 /**
  * @typedef {Object} MusicApp
- * @property {boolean} useThis
  * @property {string|null} value
  * @property {{ playlist: string|null, index: number }} now
  * @property {boolean} usingSystem
  * @property {boolean} disabled
  * @property {boolean} playing
- * @property {boolean} paused
- * @property {boolean} buffering
  * @property {number} volume
  * @property {StoryTrack[]} playlist
  * @property {StoryTrack[]} playlistPlaying
- * @property {boolean} loading
- * @property {string} title
- * @property {string} author_name
- * @property {string} provider_name
- * @property {string} thumbnail_url
- * @property {number} currentTime
- * @property {number} duration
  * @property {boolean} playingUsed
  * @property {Record<string, TinyHtmlAny>} nav
  * @property {() => void} songVolumeUpdate
+ * @property {(disabled: boolean) => void} [onDisabledChange]
  */
 
 /** @type {MusicApp} */
 export const musicApp = {
-  useThis: true,
   value: null,
   now: { playlist: null, index: -1 },
   usingSystem: false,
   disabled: true,
   playing: false,
-  paused: false,
-  buffering: false,
-  volume: storyCfg.defaultYoutubeVolume,
+  get volume() {
+    return Math.round(musicPlayer.player.volume * 100);
+  },
   playlist: [],
   playlistPlaying: [],
-  loading: false,
-  title: '',
-  author_name: '',
-  provider_name: '',
-  thumbnail_url: '',
-  currentTime: 0,
-  duration: 0,
   playingUsed: false,
 
   nav: {
@@ -102,7 +84,7 @@ musicBaseItems.push(
   })
     .on('click', () => {
       const url = musicPlayer.getSourceUrl();
-      if (!musicApp.loading && url) open(url, '_blank');
+      if (url) open(url, '_blank');
     })
     .append(musicApp.nav.info),
 
@@ -113,7 +95,6 @@ musicBaseItems.push(
     title: 'Play/Pause',
   })
     .on('click', () => {
-      if (musicApp.loading) return;
       if (musicApp.playing) {
         musicPlayer.pause();
       } else {
@@ -129,7 +110,7 @@ musicBaseItems.push(
     title: 'Stop',
   })
     .on('click', () => {
-      if (!musicApp.loading) musicPlayer.stop();
+      musicPlayer.stop();
     })
     .append(musicApp.nav.stop),
 
@@ -140,8 +121,6 @@ musicBaseItems.push(
     title: 'Volume',
   })
     .on('click', () => {
-      if (musicApp.loading) return;
-
       const input = TinyHtml.createFrom('input', {
         class: 'form-control range',
         type: 'range',
@@ -166,14 +145,8 @@ musicBaseItems.push(
   // Disable
   disableButton
     .on('click', () => {
-      if (musicApp.loading) return;
-
-      if (musicApp.useThis) {
-        musicApp.useThis = false;
-        musicApp.nav.disable.addClass('text-danger');
-      } else {
-        musicApp.useThis = true;
-        musicApp.nav.disable.removeClass('text-danger');
+      if (typeof musicApp.onDisabledChange === 'function') {
+        musicApp.onDisabledChange(!musicApp.disabled);
       }
     })
     .append(musicApp.nav.disable),
