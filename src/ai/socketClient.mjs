@@ -1012,10 +1012,8 @@ class TinyClientIo extends EventEmitter {
   /**
    * Create room
    */
-  existsRoom() {
-    return this.#socketEmitApi('exists-room', {
-      roomId: this.#cfg.roomId,
-    });
+  existsRoom(roomId = this.#cfg.roomId) {
+    return this.#socketEmitApi('exists-room', { roomId });
   }
 
   /**

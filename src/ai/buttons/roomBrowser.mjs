@@ -219,6 +219,104 @@ const openCreateRoom = (onCreated) => {
 };
 
 /**
+ * Opens the "join room" form.
+ *
+ * The room must already exist, so the id is validated against the server
+ * before the credentials are stored.
+ *
+ * @param {() => void} onJoined - Called after the room is joined.
+ * @returns {void}
+ */
+const openJoinRoom = (onJoined) => {
+  const client = tinyIo.client;
+  if (!client) return;
+
+  const ratelimit = client.getRateLimit() || { size: {} };
+  const $root = TinyHtml.createFrom('div');
+  const $errorBox = tinyLib.bs.alert('danger', '', false).addClass('d-none');
+
+  const $roomId = TinyHtml.createFrom('input').addClass('form-control').setAttr({
+    type: 'text',
+    id: 'room-join-id',
+    placeholder: 'Room id',
+    maxLength: ratelimit.size?.roomId,
+  });
+
+  const $password = TinyHtml.createFrom('input').addClass('form-control').setAttr({
+    type: 'password',
+    id: 'room-join-password',
+    placeholder: 'Room password',
+    maxLength: ratelimit.size?.password,
+  });
+
+  const $submit = tinyLib.bs.button('primary').addClass('w-100 mt-3').setText('Join room');
+
+  $root.append(
+    $errorBox,
+    TinyHtml.createFrom('label')
+      .addClass('form-label')
+      .setAttr('for', 'room-join-id')
+      .setText('Room id'),
+    $roomId,
+    TinyHtml.createFrom('label')
+      .addClass('form-label mt-3')
+      .setAttr('for', 'room-join-password')
+      .setText('Room password'),
+    $password,
+    $submit,
+  );
+
+  const { modal, html } = tinyLib.modal({
+    title: 'Join room',
+    dialog: 'modal-lg',
+    id: 'room-join',
+    body: $root,
+  });
+
+  /** @param {string} msg */
+  const showError = (msg) => $errorBox.removeClass('d-none').setText(msg);
+
+  const submit = async () => {
+    const roomId = String($roomId.val() ?? '').trim();
+    const password = String($password.val() ?? '');
+
+    if (roomId.length < 1) return showError('Please enter a room id.');
+
+    $submit.addProp('disabled');
+    $errorBox.addClass('d-none');
+
+    try {
+      // The room has to exist before we point the client to it.
+      const exists = await client.existsRoom(roomId);
+      if (exists.error) return showError(exists.msg ?? 'Unknown error');
+      if (!exists.exists) return showError(`The room "${roomId}" does not exist.`);
+
+      const credential = tinyStorage.getApiKey('tiny-chat');
+      tinyStorage.setApiKey('tiny-chat', { ...credential, roomId, roomPassword: password });
+
+      modal.hide();
+
+      // Let Bootstrap finish hiding the modal before the page goes away.
+      setTimeout(onJoined, 0);
+    } catch (err) {
+      showError(err instanceof Error ? err.message : String(err));
+    } finally {
+      $submit.removeProp('disabled').removeClass('disabled');
+    }
+  };
+
+  $submit.on('click', submit);
+  $password.on('keydown', (e) => {
+    if (/** @type {KeyboardEvent} */ (e).key === 'Enter') {
+      e.preventDefault();
+      submit();
+    }
+  });
+
+  html.on('shown.bs.modal', () => $roomId.trigger('focus'));
+};
+
+/**
  * Opens the room browser.
  *
  * A regular account only sees the rooms it owns or already joined. The server
@@ -516,7 +614,15 @@ export const openRoomBrowser = () => {
     modal?.hide();
     openCreateRoom(() => window.location.reload());
   });
-  $header.append($create);
+
+  // Manual join, for the rooms that are not on the list yet.
+  const $join = tinyLib.bs.button('primary').setText('Join room');
+  $join.on('click', () => {
+    modal?.hide();
+    openJoinRoom(() => window.location.reload());
+  });
+
+  $header.append($join, $create);
 
   $root.append($errorBox, $header, $list, $pagination);
 
