@@ -5,6 +5,12 @@ import {
   registerNsfwFilterExpression,
 } from '../nsfw.mjs';
 
+/** Matches the opening fence of a mature content block. */
+const OPEN_FENCE = /^:::nsfw(?:[ \t]+(.*))?$/;
+
+/** Matches the closing fence of a mature content block. */
+const CLOSE_FENCE = /^:::[ \t]*$/;
+
 /**
  * Marked extension that renders reader-dependent content.
  *
@@ -36,7 +42,8 @@ const nsfwExtension = {
    * @returns {number | void} Index of the block.
    */
   start(src) {
-    return src.match(/^:::nsfw(?:\s|$)/m)?.index;
+    const index = src.search(/^:::nsfw(?:[ \t]|$)/m);
+    return index < 0 ? undefined : index;
   },
 
   /**
@@ -47,34 +54,46 @@ const nsfwExtension = {
    * @returns {import('marked').Tokens.Generic | undefined} The mature content token.
    */
   tokenizer(src) {
-    // The block ends on the first line that only holds the closing fence, so a
-    // branch header (`:::nsfw <expression>`) never terminates the block.
-    const rule = /^:::nsfw[ \t]*([^\n]*)\n([\s\S]*?)^:::[ \t]*$/m;
-    const match = rule.exec(src);
-    if (!match) return undefined;
+    // Markdown files are commonly stored with CRLF line endings, so the block is
+    // always read line by line instead of relying on a single multi-line regex.
+    const lines = src.split('\n');
+    const first = OPEN_FENCE.exec(stripCr(lines[0]));
+    if (!first) return undefined;
 
-    /** @type {{ expression: string, text: string }[]} */
-    const branches = [];
-    let expression = match[1].trim();
-    let buffer = [];
+    /** @type {{ expression: string, lines: string[] }[]} */
+    const branches = [{ expression: (first[1] ?? '').trim(), lines: [] }];
+    let closed = false;
+    let index = 1;
 
-    // Split the body on every `:::nsfw <expression>` header.
-    for (const line of match[2].split('\n')) {
-      const header = /^:::nsfw[ \t]*(.*)$/.exec(line);
+    for (; index < lines.length; index++) {
+      const line = stripCr(lines[index]);
+
+      // A closing fence ends the whole block.
+      if (CLOSE_FENCE.test(line)) {
+        closed = true;
+        index++;
+        break;
+      }
+
+      // A new header starts another branch of the same block.
+      const header = OPEN_FENCE.exec(line);
       if (header) {
-        branches.push({ expression, text: buffer.join('\n').trim() });
-        expression = header[1].trim();
-        buffer = [];
-      } else buffer.push(line);
+        branches.push({ expression: (header[1] ?? '').trim(), lines: [] });
+        continue;
+      }
+
+      branches[branches.length - 1].lines.push(line);
     }
-    branches.push({ expression, text: buffer.join('\n').trim() });
+
+    // An unterminated block is not a mature content block at all.
+    if (!closed) return undefined;
 
     return {
       type: 'nsfw-block',
-      raw: match[0],
+      raw: lines.slice(0, index).join('\n'),
       branches: branches.map((branch) => ({
         expression: branch.expression,
-        tokens: this.lexer.blockTokens(branch.text, []),
+        tokens: this.lexer.blockTokens(branch.lines.join('\n').trim(), []),
       })),
     };
   },
@@ -110,6 +129,16 @@ const nsfwExtension = {
     return `<div class="nsfw-group">\n${html.join('\n')}\n</div>\n`;
   },
 };
+
+/**
+ * Removes the trailing carriage return of a CRLF line.
+ *
+ * @param {string} line - Raw line.
+ * @returns {string} The line without the trailing `\r`.
+ */
+function stripCr(line) {
+  return line.endsWith('\r') ? line.slice(0, -1) : line;
+}
 
 /**
  * Escapes a value so it can be used inside a double quoted attribute.
