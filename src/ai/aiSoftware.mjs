@@ -4132,11 +4132,11 @@ export const AiScriptStart = async () => {
             /** @type {{ page: number, perPage?: number|null }} */
             const loadCfg = { page: 1 };
 
-            // A read-only guest may only load the last page, so the room never
-            // looks empty for them.
-            if (client.isGuest()) loadCfg.perPage = client.getRateLimit().size?.history ?? null;
-            else if (!tinyAiScript.mpClient || client.getRateLimit().loadAllHistory)
-              loadCfg.perPage = null;
+            // Only the server can decide that the whole history may be loaded.
+            // A read-only guest is always limited to the last page, so the
+            // room never looks empty for them.
+            if (client.getRateLimit().loadAllHistory && !client.isGuest()) loadCfg.perPage = null;
+            else loadCfg.perPage = client.getRateLimit().size?.history ?? null;
 
             await client
               .loadMessages(loadCfg)
