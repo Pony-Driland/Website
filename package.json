@@ -12,8 +12,7 @@
         "update-base64": "node ./build/base64",
         "update-chapter": "node ./build/chapter",
         "update-characters": "node ./build/characters",
-        "update-sitemap": "node ./build/sitemap",
-        "deploy-keybase": "node ./build/deploy-keybase"
+        "update-sitemap": "node ./build/sitemap"
     },
     "author": {
         "name": "JasminDreasond (Yasmin Seidel)",
