@@ -769,6 +769,22 @@ class TinyClientIo extends EventEmitter {
    * On message delete
    * @param {SocketListener} callback
    * */
+  onDiceRollDelete(callback) {
+    this.#socketOn('dice-roll-deleted', callback);
+  }
+
+  /**
+   * @param {SocketListener} callback
+   */
+  offDiceRollDelete(callback) {
+    this.#socketOff('dice-roll-deleted', callback);
+  }
+
+  /**
+   * On message delete
+   * @param {SocketListener} callback
+   *
+   */
   onMessageDelete(callback) {
     this.#socketOn('message-deleted', callback);
   }
@@ -1596,6 +1612,18 @@ class TinyClientIo extends EventEmitter {
   }
 
   /**
+   * Delete a dice roll
+   * @param {string} rollId - Roll id.
+   * @returns {Promise<SocketAck>}
+   */
+  deleteDiceRoll(rollId = '') {
+    return this.#socketEmitApi('delete-dice-roll', {
+      roomId: this.#cfg.roomId,
+      rollId,
+    });
+  }
+
+  /**
    * Roll Dice
    * @param {DiceRollResult[]|number[]} dice
    * @param {boolean} canZero
@@ -1794,6 +1822,14 @@ class TinyClientIo extends EventEmitter {
       if (this.checkRoomId(result)) {
         this.emit('newMessage', result);
         console.log('[socket-io] [message-add]', result);
+      }
+    });
+
+    // Dice roll delete
+    this.onDiceRollDelete((result) => {
+      if (this.checkRoomId(result)) {
+        this.emit('diceRollDelete', result);
+        console.log('[socket-io] [dice-roll-delete]', result);
       }
     });
 

@@ -1,5 +1,6 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
 import { getClient, tinyIo } from '../software/base.mjs';
 import { isOnline } from '../software/enablerContent.mjs';
@@ -7,6 +8,7 @@ import tinyLib from '../../files/tinyLib.mjs';
 import { loaderScreen } from '../../important.mjs';
 import moment from 'moment';
 import { createDiceSpecialHtml } from './dice.mjs';
+import { userStatus } from '../msgRender.mjs';
 
 const { Form, Button, TextInput, DateTimeInput, NumberInput } = TinyHtmlElems;
 
@@ -128,6 +130,7 @@ export const openDiceHistory = () => {
 
           /** @type {Promise<unknown>[]} */
           const promises = [];
+          const isStaff = userStatus.isAdmin || userStatus.isMod;
           data.history.reverse().forEach((/** @type {DiceHistoryEntry} */ item) => {
             const row = TinyHtml.createFrom('tr');
             if (typeof item.id === 'string') rowsByRollId.set(item.id, row);
@@ -168,7 +171,63 @@ export const openDiceHistory = () => {
                     ),
                   );
 
-                  row.append(colMessage);
+                  // Staff can delete a single roll, exactly like the message history.
+                  if (isStaff) {
+                    const colActions = TinyHtml.createFrom('td', { class: 'text-center' });
+                    const deleteBtn = new Button({
+                      mainClass: 'btn',
+                      tags: 'btn-sm btn-outline-danger',
+                      type: 'button',
+                      label: 'Delete',
+                    }).addClass('delete-button');
+
+                    // Deletes the roll right away, without any confirmation step
+                    const deleteRoll = async () => {
+                      loaderScreen.start();
+                      let isError = false;
+                      await client
+                        .deleteDiceRoll(item.id)
+                        .then((result) => {
+                          if (result.error) {
+                            alert(result.msg ?? '', { title: 'ERROR!' });
+                            isError = true;
+                          } else client.emit('diceRollDelete', result);
+                        })
+                        .catch((err) => {
+                          alert(err.message, { title: 'ERROR!' });
+                          console.error(err);
+                          isError = true;
+                        });
+                      loaderScreen.stop();
+                      if (isError) return;
+                      row.remove();
+                    };
+
+                    deleteBtn.on('click', (event) => {
+                      // Holding shift deletes the roll without asking for confirmation
+                      if (/** @type {MouseEvent} */ (event)?.shiftKey) {
+                        deleteRoll();
+                        return;
+                      }
+
+                      const confirmBtn = new Button({
+                        mainClass: 'btn',
+                        tags: 'btn-sm btn-outline-danger',
+                        type: 'button',
+                        label: 'Confirm Delete',
+                        disabled: true,
+                      }).addClass('delete-button');
+
+                      deleteBtn.replaceWith(confirmBtn);
+                      setTimeout(() => confirmBtn.removeProp('disabled'), 3000);
+
+                      confirmBtn.on('click', deleteRoll);
+                    });
+
+                    colActions.append(deleteBtn);
+                    row.append(colMessage, colActions);
+                  } else row.append(colMessage);
+
                   resolve(undefined);
                 } catch (err) {
                   reject(err);
