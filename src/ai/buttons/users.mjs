@@ -62,8 +62,14 @@ export const userButtonActions = () => {
       userManager.setRoomStatus(!roomData.disabled);
       userManager.setReadonly(roomData.readOnly);
     };
-    /** @param {RoomPermissionEntry[]} permissions */
-    const permissionUpdated = (permissions) => userManager.setPermissions(permissions);
+    /**
+     * The event carries the full permission list as the third argument.
+     *
+     * @param {'grant'|'revoke'} type - What happened.
+     * @param {string[]} users - Users affected by the change.
+     * @param {RoomPermissionEntry[]} permissions - Full permission list.
+     */
+    const permissionUpdated = (type, users, permissions) => userManager.setPermissions(permissions);
     /**
      * @param {string} userId
      * @param {boolean} isStaff

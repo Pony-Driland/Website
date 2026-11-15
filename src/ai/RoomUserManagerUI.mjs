@@ -62,6 +62,17 @@ class UserRoomManager {
   /** @type {string[]} */
   #permissions = [];
 
+  /**
+   * Last known nickname of every user seen in the room.
+   *
+   * The permission list is not limited to the online users, so the
+   * nicknames are cached to keep the member list readable after an user
+   * goes offline.
+   *
+   * @type {Record<string, string>}
+   */
+  #nicknames = {};
+
   /** @type {TinyClientIo} */
   #client;
 
@@ -70,6 +81,9 @@ class UserRoomManager {
 
   /** @type {TinyHtmlAny|null} */
   $remveModInput = null;
+
+  /** @type {TinyHtmlAny|null} */
+  $guestInput = null;
 
   /** @type {TinyHtmlAny|null} */
   $readonlyButton = null;
@@ -96,6 +110,7 @@ class UserRoomManager {
 
     this.currentUserId = currentUserId;
     this.users = users || {};
+    this.#cacheNicknames(this.users);
     this.moderators = moderators || [];
     this.setPermissions(permissions);
     this.isOwner = isOwner === true;
@@ -111,6 +126,7 @@ class UserRoomManager {
     this.$searchInput = null;
     this.$userList = TinyHtml.createFrom('div');
     this.$moderatorList = TinyHtml.createFrom('div').addClass('mb-3');
+    this.$memberList = TinyHtml.createFrom('div').addClass('mb-3');
 
     this.init();
   }
@@ -202,6 +218,9 @@ class UserRoomManager {
 
     if (this.$kickAll)
       this.$kickAll.toggleProp('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
+
+    if (this.$guestInput)
+      this.$guestInput.toggleProp('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
 
     if (this.$banInput)
       this.$banInput.toggleProp('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
@@ -318,10 +337,30 @@ class UserRoomManager {
       this.$header.append($searchWrapper);
     }
 
-    this.$root.append(this.$header, this.$moderatorList, this.$userList);
+    this.$root.append(this.$header, this.$moderatorList, this.$memberList, this.$userList);
 
     this.updateRoomStatusButton();
     this.updateReadonlyButton();
+  }
+
+  /**
+   * Remembers the nickname of the given users.
+   *
+   * The member list must survive the user going offline, so the names are
+   * kept around instead of being read from the live user list.
+   *
+   * @param {Record<string, { nickname?: string|null }|undefined>} users - Users keyed by id.
+   * @returns {void}
+   */
+  #cacheNicknames(users) {
+    if (!users || typeof users !== 'object') return;
+
+    for (const userId in users) {
+      const nickname = users[userId]?.nickname;
+      if (typeof nickname === 'string' && nickname.length > 0) {
+        this.#nicknames[userId] = nickname;
+      }
+    }
   }
 
   /**
@@ -345,6 +384,55 @@ class UserRoomManager {
     });
 
     this.$moderatorList.append($wrapper);
+  }
+
+  /**
+   * Renders the list of users that are not guests anymore.
+   *
+   * Every user joins the room as a read-only guest. This list shows who
+   * already received the permission to talk, so the owner can revoke it
+   * without opening the whole user list.
+   *
+   * @returns {void}
+   */
+  renderMembers() {
+    if (!this.$memberList) return;
+    this.$memberList.empty();
+    if (!this.canModerate()) return;
+
+    const $wrapper = TinyHtml.createFrom('div').addClass('small');
+    $wrapper.append(TinyHtml.createFrom('strong').setText('Members: '));
+
+    // The permission list is the source of truth here: it contains every
+    // user that is not a guest anymore, online or not.
+    const members = this.#permissions.filter(
+      (userId, index, list) => typeof userId === 'string' && list.indexOf(userId) === index,
+    );
+
+    if (members.length < 1) {
+      $wrapper.append(TinyHtml.createFrom('span').addClass('text-muted').setText('None'));
+      this.$memberList.append($wrapper);
+      return;
+    }
+
+    members.forEach((userId, index) => {
+      if (index > 0) $wrapper.append(TinyHtml.createFrom('span').setText(', '));
+
+      const nickname = this.#nicknames[userId];
+      const label = nickname && nickname !== userId ? `${nickname} (${userId})` : userId;
+      const $member = TinyHtml.createFrom('span')
+        .addClass('text-muted')
+        .setText(label)
+        .setStyle('cursor', 'pointer')
+        .setAttr('title', 'Fill the user ID')
+        .on('click', () => {
+          if (this.$guestInput) this.$guestInput.setVal(userId).trigger('focus');
+        });
+
+      $wrapper.append($member);
+    });
+
+    this.$memberList.append($wrapper);
   }
 
   /**
@@ -575,6 +663,10 @@ class UserRoomManager {
 
     const $banWrapper = TinyHtml.createFrom('div').addClass('d-flex mt-4 gap-2 align-items-center');
 
+    const $guestWrapper = TinyHtml.createFrom('div').addClass(
+      'd-flex mt-4 gap-2 align-items-center',
+    );
+
     this.$unbanInput = TinyHtml.createFrom('input')
       .addClass('form-control')
       .setAttr('type', 'text')
@@ -605,6 +697,17 @@ class UserRoomManager {
         if (/** @type {KeyboardEvent} */ (e).key === 'Enter') {
           e.preventDefault();
           $banButton.trigger('click');
+        }
+      });
+
+    this.$guestInput = TinyHtml.createFrom('input')
+      .addClass('form-control')
+      .setAttr('type', 'text')
+      .setAttr('placeholder', 'Enter user ID to set as guest')
+      .on('keydown', (e) => {
+        if (/** @type {KeyboardEvent} */ (e).key === 'Enter') {
+          e.preventDefault();
+          $guestButton.trigger('click');
         }
       });
 
@@ -641,10 +744,22 @@ class UserRoomManager {
       }
     });
 
+    const $guestButton = tinyLib.bs.button('warning').setText('Set as Guest');
+    $guestButton.on('click', () => {
+      if (this.$guestInput && !this.$guestInput.hasProp('disabled')) {
+        const userId = String(this.$guestInput?.val() ?? '').trim();
+        if (userId) {
+          this.$guestInput.setVal('');
+          this.revokePermission(userId).catch((err) => alert(err.message));
+        }
+      }
+    });
+
     $unbanWrapper.append(this.$unbanInput, $unbanButton);
     $removeModWrapper.append(this.$remveModInput, $removeModButton);
     $banWrapper.append(this.$banInput, $banButton);
-    this.$footer.append($unbanWrapper, $removeModWrapper, $banWrapper);
+    $guestWrapper.append(this.$guestInput, $guestButton);
+    this.$footer.append($unbanWrapper, $removeModWrapper, $banWrapper, $guestWrapper);
     this.$root.append(this.$footer);
   }
 
@@ -698,6 +813,7 @@ class UserRoomManager {
    */
   renderUserList(filter = '') {
     this.renderModerators();
+    this.renderMembers();
 
     for (const item of this.#usersHtml) item.tooltips.forEach((tooltip) => tooltip.hide());
     this.$userList.empty();
@@ -874,6 +990,7 @@ class UserRoomManager {
    * @param {{nickname?: string, ping: number|string|Date, isStaff?: boolean}} data - User data, including nickname, ping timestamp and server staff flag.
    */
   addUser(userId, data) {
+    this.#cacheNicknames({ [userId]: data });
     const oldHash = this.users[userId] ? objHash(this.users[userId]) : null;
     this.users[userId] = {
       nickname: data.nickname || userId,
@@ -962,11 +1079,14 @@ class UserRoomManager {
    * @returns {void}
    */
   setPermissions(permissions) {
-    this.#permissions = Array.isArray(permissions)
-      ? permissions
-          .filter((item) => item && typeof item.userId === 'string')
-          .map((item) => item.userId)
-      : [];
+    // A malformed payload must never wipe the list, so anything that is not
+    // an array is simply ignored.
+    if (!Array.isArray(permissions)) return;
+
+    this.#permissions = permissions
+      .filter((item) => item && typeof item.userId === 'string')
+      .map((item) => item.userId);
+    this.renderMembers();
   }
 
   /**
@@ -991,7 +1111,7 @@ class UserRoomManager {
     const result = await this.#client.grantPermission([userId]);
     if (html) html.actions.permission.removeProp('disabled').removeClass('disabled');
     if (!result.error) {
-      this.#permissions.push(userId);
+      if (this.#permissions.indexOf(userId) < 0) this.#permissions.push(userId);
       this.renderUserList(this.#getSearch());
       this.checkPerms();
     }
