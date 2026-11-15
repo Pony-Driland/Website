@@ -4,12 +4,10 @@ import {
   matchesNsfwExpression,
   registerNsfwFilterExpression,
 } from '../nsfw.mjs';
+import { scanFence, stripCr } from './fence.mjs';
 
 /** Matches the opening fence of a mature content block. */
 const OPEN_FENCE = /^:::nsfw(?:[ \t]+(.*))?$/;
-
-/** Matches the closing fence of a mature content block. */
-const CLOSE_FENCE = /^:::[ \t]*$/;
 
 /**
  * Marked extension that renders reader-dependent content.
@@ -62,35 +60,31 @@ const nsfwExtension = {
 
     /** @type {{ expression: string, lines: string[] }[]} */
     const branches = [{ expression: (first[1] ?? '').trim(), lines: [] }];
-    let closed = false;
-    let index = 1;
 
-    for (; index < lines.length; index++) {
-      const line = stripCr(lines[index]);
+    // `scanFence` understands nested `:::` blocks, so a `:::collapse` inside a
+    // branch does not close the mature content block by accident.
+    const end = scanFence(
+      lines,
+      1,
+      (line) => {
+        // A new header starts another branch of the same block.
+        const header = OPEN_FENCE.exec(line);
+        if (header) {
+          branches.push({ expression: (header[1] ?? '').trim(), lines: [] });
+          return;
+        }
 
-      // A closing fence ends the whole block.
-      if (CLOSE_FENCE.test(line)) {
-        closed = true;
-        index++;
-        break;
-      }
-
-      // A new header starts another branch of the same block.
-      const header = OPEN_FENCE.exec(line);
-      if (header) {
-        branches.push({ expression: (header[1] ?? '').trim(), lines: [] });
-        continue;
-      }
-
-      branches[branches.length - 1].lines.push(line);
-    }
+        branches[branches.length - 1].lines.push(line);
+      },
+      (line) => OPEN_FENCE.test(line),
+    );
 
     // An unterminated block is not a mature content block at all.
-    if (!closed) return undefined;
+    if (end < 0) return undefined;
 
     return {
       type: 'nsfw-block',
-      raw: lines.slice(0, index).join('\n'),
+      raw: lines.slice(0, end + 1).join('\n'),
       branches: branches.map((branch) => ({
         expression: branch.expression,
         tokens: this.lexer.blockTokens(branch.lines.join('\n').trim(), []),
@@ -129,16 +123,6 @@ const nsfwExtension = {
     return `<div class="nsfw-group">\n${html.join('\n')}\n</div>\n`;
   },
 };
-
-/**
- * Removes the trailing carriage return of a CRLF line.
- *
- * @param {string} line - Raw line.
- * @returns {string} The line without the trailing `\r`.
- */
-function stripCr(line) {
-  return line.endsWith('\r') ? line.slice(0, -1) : line;
-}
 
 /**
  * Escapes a value so it can be used inside a double quoted attribute.

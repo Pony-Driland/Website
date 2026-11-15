@@ -1,14 +1,21 @@
 import { marked } from 'marked';
+import { readTagBody } from './fence.mjs';
 
 /**
  * Creates a custom extension configuration for marked to parse specific XML-like tags.
  * Spreads the target class into child elements or wraps them in a span if no wrapper tag exists.
+ *
+ * The body is read with {@link readTagBody}, so a tag nested inside another one of
+ * the same kind is kept as content instead of closing the outer tag.
  *
  * @param {string} tagName - The name of the tag to match (e.g., 'ai', 'semi-ai').
  * @param {string} className - The CSS class name to apply to the inner elements.
  * @returns {import('marked').TokenizerAndRendererExtension} The marked extension object.
  */
 function createTagExtension(tagName, className) {
+  const openTag = new RegExp(`<${tagName}>`, 'g');
+  const closeTag = new RegExp(`</${tagName}>`, 'g');
+
   return {
     name: `${tagName}-tag`,
     level: 'block',
@@ -32,24 +39,19 @@ function createTagExtension(tagName, className) {
      * @returns {import('marked').Tokens.Generic | undefined} The generated token.
      */
     tokenizer(src) {
-      /** @type {RegExp} */
-      const rule = new RegExp(`^<${tagName}>([\\s\\S]*?)<\\/${tagName}>`);
-      const match = rule.exec(src);
+      const block = readTagBody(src, openTag, closeTag);
+      if (!block) return undefined;
 
-      if (match) {
-        /** @type {string} */
-        const content = match[1].trim();
+      /** @type {string} */
+      const content = block.body.trim();
 
-        return {
-          type: `${tagName}-tag`,
-          raw: match[0],
-          text: content,
-          // Generate child block tokens safely
-          tokens: this.lexer.blockTokens(content),
-        };
-      }
-
-      return undefined;
+      return {
+        type: `${tagName}-tag`,
+        raw: src.slice(0, block.end),
+        text: content,
+        // Generate child block tokens safely
+        tokens: this.lexer.blockTokens(content),
+      };
     },
 
     /**
