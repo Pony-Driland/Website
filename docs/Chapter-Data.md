@@ -235,7 +235,7 @@ A storm that builds up, breaks, and leaves a clear night behind:
 
 ## Tuning the presets
 
-If you are changing the look of a weather rather than using it, the values live in [`src/chapter_manager/weather/palettes.mjs`](../../src/chapter_manager/weather/palettes.mjs):
+If you are changing the look of a weather rather than using it, the values live in [`src/chapter_manager/weather/palettes.mjs`](../src/chapter_manager/weather/palettes.mjs):
 
 | Export | What it controls |
 | --- | --- |
@@ -245,4 +245,4 @@ If you are changing the look of a weather rather than using it, the values live 
 | `AUTO_MOON_PHASES` | Which phase each day/night cycle uses when the story is silent. |
 | `WEATHER_LIMITS` | The clamp applied to `weatherConfig`. |
 
-Adding a weather is a matter of adding a key to `WEATHER_PRESET_COLORS` and an icon to the `types` map in [`src/chapter_manager/updater.mjs`](../../src/chapter_manager/updater.mjs).
+Adding a weather is a matter of adding a key to `WEATHER_PRESET_COLORS` and an icon to the `types` map in [`src/chapter_manager/updater.mjs`](../src/chapter_manager/updater.mjs).
