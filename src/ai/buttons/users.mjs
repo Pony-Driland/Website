@@ -47,8 +47,19 @@ export const userButtonActions = () => {
     // Add events
     /** @param {{ userId: string, data: { nickname?: string, ping: string|number|Date } }} data */
     const usersAdded = (data) => userManager.addUser(data.userId, structuredClone(data.data));
-    /** @param {string} userId */
-    const usersRemoved = (userId) => userManager.removeUser(userId);
+    /**
+     * Removes an user from the list.
+     *
+     * `userLeft` carries `{ data, userId }` while `userKicked` and
+     * `userBanned` carry the bare id, so both shapes are accepted here.
+     *
+     * @param {string|{ userId?: string }} data - User id or event payload.
+     * @returns {void}
+     */
+    const usersRemoved = (data) => {
+      const userId = typeof data === 'string' ? data : data?.userId;
+      if (typeof userId === 'string' && userId.length > 0) userManager.removeUser(userId);
+    };
     /**
      * @param {'add'|'remove'} type
      * @param {string} userId
