@@ -345,6 +345,7 @@ export const openRoomBrowser = () => {
   let page = 1;
   let totalPages = 1;
   let openOnly = false;
+  let ownedOnly = false;
 
   const $root = TinyHtml.createFrom('div');
   const $errorBox = tinyLib.bs.alert('danger', '', false).addClass('d-none');
@@ -540,6 +541,7 @@ export const openRoomBrowser = () => {
         search: search.length > 0 ? search : null,
         scope,
         openOnly,
+        ownedOnly,
         page,
         perPage: 20,
       });
@@ -616,6 +618,30 @@ export const openRoomBrowser = () => {
           .addClass('form-check-label')
           .setAttr('for', 'room-browser-open')
           .setText('Open only'),
+      ),
+  );
+
+  // Only the rooms owned by the signed-in account.
+  const $ownedOnly = TinyHtml.createFrom('input').setAttr({
+    type: 'checkbox',
+    id: 'room-browser-owned',
+  });
+
+  $ownedOnly.on('change', () => {
+    ownedOnly = Boolean($ownedOnly.prop('checked'));
+    page = 1;
+    load();
+  });
+
+  $header.append(
+    TinyHtml.createFrom('div')
+      .addClass('form-check form-check-inline mb-0')
+      .append(
+        $ownedOnly.addClass('form-check-input mt-0'),
+        TinyHtml.createFrom('label')
+          .addClass('form-check-label')
+          .setAttr('for', 'room-browser-owned')
+          .setText('Mine only'),
       ),
   );
 

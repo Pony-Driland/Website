@@ -1199,15 +1199,24 @@ class TinyClientIo extends EventEmitter {
    * @param {string|null} [filters.search] - Free text filter.
    * @param {'mine'|'visited'|'all'|null} [filters.scope] - Room scope.
    * @param {boolean} [filters.openOnly] - Only rooms that are open for access.
+   * @param {boolean} [filters.ownedOnly] - Only rooms owned by the account.
    * @param {number} [filters.page] - Page number.
    * @param {number} [filters.perPage] - Items per page.
    * @returns {Promise<SocketAck>}
    */
-  listRooms({ search = null, scope = null, openOnly = false, page = 1, perPage = 20 } = {}) {
+  listRooms({
+    search = null,
+    scope = null,
+    openOnly = false,
+    ownedOnly = false,
+    page = 1,
+    perPage = 20,
+  } = {}) {
     return this.#socketEmitApi('list-rooms', {
       search,
       scope,
       openOnly,
+      ownedOnly,
       page,
       perPage,
     });
