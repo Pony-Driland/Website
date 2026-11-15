@@ -17,6 +17,7 @@ import tinyLib from '../../files/tinyLib.mjs';
  * @property {boolean} readOnly - Whether the room is read-only.
  * @property {boolean} hasPassword - Whether the room requires a password.
  * @property {boolean} public - Whether the room is listed publicly.
+ * @property {number|null} visitedAt - When the account last joined the room.
  * @property {boolean} isOwner - Whether the signed-in account owns the room.
  * @property {boolean} isModerator - Whether the signed-in account moderates the room.
  * @property {number|null} lastMessage - Date of the last message.
@@ -474,8 +475,9 @@ export const openRoomBrowser = () => {
       const $actions = TinyHtml.createFrom('div').addClass('d-flex gap-1');
       $actions.append($join);
 
-      // The owner cannot forget their own room, it always belongs to them.
-      if (!room.isOwner) {
+      // Only the visited rooms can be forgotten, and never the ones the
+      // account owns.
+      if (!room.isOwner && room.visitedAt !== null) {
         const $forget = tinyLib.bs
           .button('outline-danger btn-sm')
           .setAttr('title', 'Forget this room')
