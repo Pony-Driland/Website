@@ -632,6 +632,7 @@ export const AiScriptStart = async () => {
                   message: msg.parts[0].text,
                   tokens: tokens[index] ? tokens[index].count : null,
                   id: Number(msgId),
+                  msgId: getTokenMsgId(tokens[index]),
                 },
                 msg.role === 'user' ? null : toTitleCase(msg.role ?? ''),
               ),
@@ -4258,13 +4259,38 @@ export const AiScriptStart = async () => {
           notifyWhenHidden(title, msgData.text);
         });
 
+        /**
+         * Removes every rendered message whose server id is in `ids`.
+         *
+         * The cache is the source of truth here: the `msgid` attribute is
+         * only a mirror of it and may be missing on older messages.
+         *
+         * @param {unknown[]} ids - Server message ids.
+         * @returns {boolean} Whether something was removed.
+         */
+        const removeMessagesById = (ids) => {
+          const wanted = new Set(ids.map(String));
+          let removed = false;
+
+          for (const el of msgList.find(':scope > .ai-chat-data')) {
+            const cfg = new TinyHtml(el).data('tiny-ai-cache');
+            if (!cfg || !wanted.has(String(cfg.msgId))) continue;
+            cfg.remove();
+            removed = true;
+          }
+
+          return removed;
+        };
+
         client.on('messageDelete', (msgData) => {
-          const html = new TinyHtml(
-            `#ai-element-root #ai-chatbox .ai-chat-data[msgid="${msgData.id}"]`,
-          );
-          if (html.size < 1) return;
-          const cfg = html.data('tiny-ai-cache');
-          if (cfg) cfg.remove();
+          if (removeMessagesById([msgData.id])) updateAiTokenCounterData();
+        });
+
+        // The room owner purged the messages of an user: drop them from the
+        // chat so the screen matches what is stored on the server.
+        client.on('messagesPurged', (data) => {
+          if (!Array.isArray(data?.ids) || data.ids.length < 1) return;
+          if (removeMessagesById(data.ids)) updateAiTokenCounterData();
         });
 
         client.on('needUpdateTokens', () => updateAiTokenCounterData());

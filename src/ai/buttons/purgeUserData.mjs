@@ -21,7 +21,7 @@ const PURGE_OPTIONS = [
   { value: 'days', label: '7 days ago', unit: 'days', fallback: 7 },
   { value: 'hours', label: 'Custom (hours)', unit: 'hours', fallback: 2 },
   { value: 'days', label: 'Custom (days)', unit: 'days', fallback: 2 },
-  { value: 'count', label: 'Custom (messages)', unit: 'count', fallback: 100 },
+  { value: 'count', label: 'Custom (data amount)', unit: 'count', fallback: 100 },
   { value: 'all', label: 'All records', unit: null, fallback: 0 },
 ];
 

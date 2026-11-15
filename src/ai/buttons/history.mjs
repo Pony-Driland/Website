@@ -30,6 +30,9 @@ export const openHistory = () => {
 
   const $root = TinyHtml.createFrom('div');
 
+  /** @type {Map<string, TinyHtmlAny>} */
+  const rowsByHistoryId = new Map();
+
   // TITLE: Shift danger hint
   // Highlights every delete button while the shift key is held, warning the user that
   // the next click will delete the message without asking for confirmation.
@@ -159,6 +162,7 @@ export const openHistory = () => {
           const isStaff = userStatus.isAdmin || userStatus.isMod;
           data.messages.forEach((item) => {
             const row = TinyHtml.createFrom('tr');
+            if (typeof item.historyId === 'string') rowsByHistoryId.set(item.historyId, row);
             promises.push(
               new Promise(async (resolve, reject) => {
                 try {
@@ -417,6 +421,21 @@ export const openHistory = () => {
         });
     });
 
+  // The room owner may purge an user while the results are open.
+  /** @param {{ ids?: string[] }} data */
+  const onMessagesPurged = (data) => {
+    if (!Array.isArray(data?.ids)) return;
+
+    for (const historyId of data.ids) {
+      const $row = rowsByHistoryId.get(historyId);
+      if (!$row) continue;
+      $row.remove();
+      rowsByHistoryId.delete(historyId);
+    }
+  };
+
+  client.on('messagesPurged', onMessagesPurged);
+
   // --- Text Search ---
   const textGroup = TinyHtml.createFrom('div', { class: 'col-md-6' });
   const textLabel = TinyHtml.createFrom('label', { class: 'form-label' }).setText('Text Contains');
@@ -533,6 +552,8 @@ export const openHistory = () => {
       window.removeEventListener('keydown', onShiftKeyDown);
       window.removeEventListener('keyup', onShiftKeyUp);
       window.removeEventListener('blur', onShiftBlur);
+      client.off('messagesPurged', onMessagesPurged);
+      rowsByHistoryId.clear();
     },
   });
 };

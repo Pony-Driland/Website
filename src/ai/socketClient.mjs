@@ -924,6 +924,21 @@ class TinyClientIo extends EventEmitter {
   }
 
   /**
+   * On dice rolls purged
+   * @param {SocketListener} callback
+   */
+  onDiceRollsPurged(callback) {
+    this.#socketOn('dice-rolls-purged', callback);
+  }
+
+  /**
+   * @param {SocketListener} callback
+   */
+  offDiceRollsPurged(callback) {
+    this.#socketOff('dice-rolls-purged', callback);
+  }
+
+  /**
    * On room permission change
    * @param {SocketListener} callback
    */
@@ -1821,6 +1836,14 @@ class TinyClientIo extends EventEmitter {
       if (this.checkRoomId(result) && Array.isArray(result.ids)) {
         this.emit('messagesPurged', result);
         console.log('[socket-io] [messages-purged]', result);
+      }
+    });
+
+    // Dice rolls purged
+    this.onDiceRollsPurged((result) => {
+      if (this.checkRoomId(result) && Array.isArray(result.ids)) {
+        this.emit('diceRollsPurged', result);
+        console.log('[socket-io] [dice-rolls-purged]', result);
       }
     });
 

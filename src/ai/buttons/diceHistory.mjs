@@ -1,7 +1,7 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 
-import { tinyIo } from '../software/base.mjs';
+import { getClient, tinyIo } from '../software/base.mjs';
 import { isOnline } from '../software/enablerContent.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import { loaderScreen } from '../../important.mjs';
@@ -24,9 +24,12 @@ const { Form, Button, TextInput, DateTimeInput, NumberInput } = TinyHtmlElems;
  */
 export const openDiceHistory = () => {
   if (!isOnline()) return;
-  const room = tinyIo.client.getRoom();
+  const client = getClient();
 
   const $root = TinyHtml.createFrom('div');
+
+  /** @type {Map<string, TinyHtmlAny>} */
+  const rowsByRollId = new Map();
 
   // Form Card
   const card = TinyHtml.createFrom('div', { class: 'card border' });
@@ -81,7 +84,7 @@ export const openDiceHistory = () => {
       loaderScreen.start();
 
       // Receive results
-      tinyIo.client
+      client
         .loadDiceHistory({
           page: result.page ?? undefined,
           perPage: result.perPage,
@@ -94,8 +97,8 @@ export const openDiceHistory = () => {
           // Error
           if (data.error) {
             resultsBox.append(
-              TinyHtml.createFrom('div', { class: 'text-danger' }).setText(result.msg),
-              TinyHtml.createFrom('div', { class: 'small' }).setText(result.code),
+              TinyHtml.createFrom('div', { class: 'text-danger' }).setText(data.msg ?? ''),
+              TinyHtml.createFrom('div', { class: 'small' }).setText(data.code ?? ''),
             );
             pagesCount.empty();
             loaderScreen.stop();
@@ -127,6 +130,7 @@ export const openDiceHistory = () => {
           const promises = [];
           data.history.reverse().forEach((/** @type {DiceHistoryEntry} */ item) => {
             const row = TinyHtml.createFrom('tr');
+            if (typeof item.id === 'string') rowsByRollId.set(item.id, row);
             promises.push(
               new Promise(async (resolve, reject) => {
                 try {
@@ -154,7 +158,7 @@ export const openDiceHistory = () => {
                         date.isValid() ? date.format('YYYY-MM-DD HH:mm:ss') : '',
                       ),
                       TinyHtml.createFrom('small', {
-                        class: `${item.userId !== tinyIo.client.getUserId() ? `text-muted` : 'text-primary'} me-2`,
+                        class: `${item.userId !== client.getUserId() ? `text-muted` : 'text-primary'} me-2`,
                       }).setText(item.userId),
                       TinyHtml.createFrom('div', { class: 'small' })
                         .setText(`Id: `)
@@ -200,6 +204,21 @@ export const openDiceHistory = () => {
         });
     });
 
+  // The room owner may purge an user while the results are open.
+  /** @param {{ ids?: string[] }} data */
+  const onDiceRollsPurged = (data) => {
+    if (!Array.isArray(data?.ids)) return;
+
+    for (const rollId of data.ids) {
+      const $row = rowsByRollId.get(rollId);
+      if (!$row) continue;
+      $row.remove();
+      rowsByRollId.delete(rollId);
+    }
+  };
+
+  client.on('diceRollsPurged', onDiceRollsPurged);
+
   // --- User Filter ---
   const userGroup = TinyHtml.createFrom('div', { class: 'col-md-12' });
   const userLabel = TinyHtml.createFrom('label', { class: 'form-label' }).setText(
@@ -236,7 +255,7 @@ export const openDiceHistory = () => {
   const perPageInput = new NumberInput({
     mainClass: 'form-control',
     min: 1,
-  }).setVal(tinyIo.client.getRateLimit().size.history);
+  }).setVal(client.getRateLimit().size.history);
   perPageGroup.append(perPageLabel, perPageInput);
 
   // --- Page Number ---
@@ -283,5 +302,9 @@ export const openDiceHistory = () => {
     dialog: 'modal-lg',
     id: 'chat-history-search',
     body: $root,
+    hidden: () => {
+      tinyIo.client?.off('diceRollsPurged', onDiceRollsPurged);
+      rowsByRollId.clear();
+    },
   });
 };
