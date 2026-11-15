@@ -39,6 +39,7 @@ import './scss/main.scss';
 import './scss/carousel.scss';
 import './scss/rpg.scss';
 import { openMDFile, openHomePage, clearFicData } from './fixStuff/markdown.mjs';
+import { nsfwSettingsNavItem } from './nsfw-settings.mjs';
 import { startRouter } from './router/index.mjs';
 import { getPagePath } from './router/pages.mjs';
 import { renderNotFound } from './html/notFound.mjs';
@@ -888,6 +889,9 @@ rootApp.onReady(() => {
 
             // Login
             loginAccount.base ? loginAccount.base : null,
+
+            // Mature Content Settings
+            nsfwSettingsNavItem(),
 
             // Read Fic
             TinyHtml.createFrom('li', {

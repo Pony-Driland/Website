@@ -20,7 +20,6 @@ import '../markdown/spoiler.mjs';
 import '../markdown/ai-tag.mjs';
 import '../markdown/nsfw.mjs';
 import { refreshNsfwBlocks } from '../markdown/nsfw-runtime.mjs';
-import { nsfwSettingsButton } from '../nsfw-settings.mjs';
 import { convertIsoStringsToCalendar } from '../files/utils.mjs';
 import { sky } from '../chapter_manager/weather/index.mjs';
 import musicManager from '../chapter_manager/music/index.mjs';
@@ -171,24 +170,6 @@ export const urlUpdate = (page, isPopState = false) => {
  *
  * @typedef {MarkdownMetadata & Record<string, MarkdownMetadataValue|MarkdownMetadataLeaf>} MarkdownMetadataMap
  */
-
-/**
- * Adds the mature content button to a page that renders `:::nsfw` blocks.
- *
- * The button is only added when the page actually has a mature content block,
- * so a regular page never grows an extra control.
- *
- * @param {ParentNode} root - Rendered page.
- * @returns {void}
- */
-const insertNsfwSettingsButton = (root) => {
-  const firstBlock = root.querySelector('.nsfw-block');
-  if (!firstBlock || !firstBlock.parentElement) return;
-
-  TinyHtml.createFrom('div', { class: 'my-3 text-center' })
-    .append(nsfwSettingsButton())
-    .insertBefore(firstBlock);
-};
 
 /**
  * Insert Maarkdown File
@@ -457,7 +438,6 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
   // change a filter at any time, so the visibility is always resolved here.
   const root = /** @type {ParentNode} */ (markdownBase.get(0) ?? document);
   refreshNsfwBlocks(root);
-  insertNsfwSettingsButton(root);
 };
 
 /**

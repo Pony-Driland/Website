@@ -2,8 +2,9 @@ import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 
 import storyCfg from './chapters/config.mjs';
-import { isNoNsfw, tinyLs } from './important.mjs';
+import { fa, isNoNsfw, tinyLs } from './important.mjs';
 import tinyLib from './files/tinyLib.mjs';
+import { Tooltip } from './modules/TinyBootstrap.mjs';
 import { getUsedNsfwFilters, notifyNsfwChange, NSFW_STORAGE_PREFIX } from './nsfw.mjs';
 
 const { Icon } = TinyHtmlElems;
@@ -126,20 +127,53 @@ export const openNsfwSettings = (extra = []) => {
 };
 
 /**
- * Builds the button that opens the settings dialog.
+ * Checks whether the mature content settings can be used right now.
  *
- * @param {string} [className='btn-info'] - Bootstrap color of the button.
- * @returns {import('tiny-essentials/libs/html/TinyHtml').default<HTMLElement>} The button.
+ * When the age gate is disabled the settings are always available. Otherwise the
+ * reader must be signed in with an account that is old enough.
+ *
+ * @returns {boolean} `true` when the settings may be opened.
  */
-export const nsfwSettingsButton = (className = 'btn-info') => {
-  const cantNsfw = isNoNsfw();
-  return tinyLib.bs
-    .button(!cantNsfw ? className : 'danger')
-    .setText(
-      !cantNsfw
-        ? 'Choose Optional Mature Content'
-        : 'Unavailable in your region (Login with an 18+ account)',
-    )
-    .toggleProp('disabled', cantNsfw)
-    .on('click', () => openNsfwSettings());
+export const canUseNsfwSettings = () => !isNoNsfw();
+
+/**
+ * Builds the navbar entry that opens the mature content settings.
+ *
+ * The entry follows the same markup as the other navbar icons, so it lines up
+ * with the `Read Fic` link. It is hidden while the reader is not allowed to use
+ * the mature content settings and reacts to the account state on its own.
+ *
+ * @returns {import('tiny-essentials/libs/html/TinyHtml').default<HTMLElement>} The navbar item.
+ */
+export const nsfwSettingsNavItem = () => {
+  const item = TinyHtml.createFrom('li', { class: 'nav-item' });
+  const link = TinyHtml.createFrom('a', {
+    class: 'nav-link',
+    href: 'javascript:void(0)',
+    id: 'nsfw-settings',
+    title: 'Mature Content Settings',
+    'aria-label': 'Mature Content Settings',
+  });
+
+  link.append(new Icon('fa-solid fa-eye'));
+  item.append(link);
+
+  Tooltip(link);
+
+  // The entry only exists while the reader is allowed to change the filters.
+  const sync = () => item.toggleClass('d-none', !canUseNsfwSettings());
+  sync();
+
+  link.on('click', (e) => {
+    e.preventDefault();
+    openNsfwSettings();
+  });
+
+  // The account state can change at any time (login, logout, birthday load).
+  fa.on('login', sync);
+  fa.on('logout', sync);
+  fa.on('authStateChanged', sync);
+  fa.on('birthdayFetched', sync);
+
+  return item;
 };

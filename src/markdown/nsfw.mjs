@@ -42,7 +42,7 @@ const nsfwExtension = {
    * @returns {number | void} Index of the block.
    */
   start(src) {
-    const index = src.search(/^:::nsfw(?:[ \t]|$)/m);
+    const index = src.search(/^:::nsfw(?:[ \t\r]|$)/m);
     return index < 0 ? undefined : index;
   },
 
