@@ -29,6 +29,7 @@ import TinyClientIo from './socketClient.mjs';
  * @typedef {Object} RoomUserData
  * @property {string|null} [nickname] - Display name.
  * @property {import('moment').Moment|number|string|Date} [ping] - Last ping.
+ * @property {boolean} [isStaff] - Whether the account belongs to the server staff.
  */
 
 /**
@@ -870,7 +871,7 @@ class UserRoomManager {
    * it triggers a re-render of the user list and re-checks permissions.
    *
    * @param {string} userId - Unique identifier of the user.
-   * @param {{nickname?: string, ping: number|string|Date}} data - User data, including nickname and ping timestamp.
+   * @param {{nickname?: string, ping: number|string|Date, isStaff?: boolean}} data - User data, including nickname, ping timestamp and server staff flag.
    */
   addUser(userId, data) {
     const oldHash = this.users[userId] ? objHash(this.users[userId]) : null;
