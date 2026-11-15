@@ -115,6 +115,25 @@ class UserRoomManager {
   }
 
   /**
+   * Tells whether the signed-in account can moderate the room.
+   *
+   * The client is the source of truth here: it already knows the room owner
+   * and the moderator list, while `this.moderators` is only filled after the
+   * first render.
+   *
+   * @returns {boolean}
+   */
+  canModerate() {
+    if (this.isOwner) return true;
+    if (this.moderators.some((mod) => mod.userId === this.currentUserId)) return true;
+
+    const room = this.#client.getRoom() || {};
+    if (room.ownerId && room.ownerId === this.currentUserId) return true;
+
+    return this.#client.getMods().includes(this.currentUserId);
+  }
+
+  /**
    * Retrieves the current search input value in lowercase.
    *
    * @returns {string} The trimmed, lowercase search query or an empty string if not valid.
@@ -291,7 +310,13 @@ class UserRoomManager {
       this.openBannedUsers();
     });
 
-    this.$header.append(this.$kickAll, $readonlyBtn, $roomStatus, $bannedBtn, $searchWrapper);
+    // A regular user only gets the search box.
+    if (this.canModerate()) {
+      this.$header.append(this.$kickAll, $readonlyBtn, $roomStatus, $bannedBtn, $searchWrapper);
+    } else {
+      this.$header.append($searchWrapper);
+    }
+
     this.$root.append(this.$header, this.$moderatorList, this.$userList);
 
     this.updateRoomStatusButton();
@@ -534,6 +559,11 @@ class UserRoomManager {
    */
   renderFooter() {
     this.$footer = TinyHtml.createFrom('div');
+    if (!this.canModerate()) {
+      this.$root.append(this.$footer);
+      return;
+    }
+
     const $unbanWrapper = TinyHtml.createFrom('div').addClass(
       'd-flex mt-4 gap-2 align-items-center',
     );
@@ -679,6 +709,9 @@ class UserRoomManager {
         return modStatus;
       });
 
+    const room = this.#client.getRoom() || {};
+    const canModerate = this.canModerate();
+
     const sortedUsers = Object.entries(this.users)
       .map(([userId, data]) => ({
         userId,
@@ -686,6 +719,7 @@ class UserRoomManager {
         ping: moment(data.ping),
         isSelf: userId === this.currentUserId,
         isModerator: isMod(userId),
+        isRoomOwner: userId === room.ownerId,
       }))
       .sort((a, b) => {
         if (a.isSelf) return -1;
@@ -719,12 +753,34 @@ class UserRoomManager {
         .setText(`(${user.userId})`);
       $info.append($nickname, $userIdText);
 
+      // Role badges
+      if (user.isRoomOwner)
+        $info.append(
+          TinyHtml.createFrom('i')
+            .addClass('fas fa-crown text-warning')
+            .setAttr('title', 'Room owner'),
+        );
+
+      if (user.isModerator)
+        $info.append(
+          TinyHtml.createFrom('i')
+            .addClass('fas fa-shield-halved text-info')
+            .setAttr('title', 'Server staff'),
+        );
+
       const $ping = TinyHtml.createFrom('div')
         .addClass('text-muted small text-nowrap')
         .setText(user.ping.fromNow());
       const $actions = TinyHtml.createFrom('div').addClass('d-flex flex-wrap gap-2');
       const tooltips = [];
       const actions = {};
+
+      // A regular user only sees the list, never the moderation actions.
+      if (!canModerate) {
+        $row.append($info.addClass('col-8'), $ping.addClass('col-4 text-end'));
+        this.$userList.append($row);
+        return;
+      }
 
       const $kickBtn = tinyLib.bs
         .button('warning')
