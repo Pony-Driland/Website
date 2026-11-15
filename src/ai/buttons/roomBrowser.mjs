@@ -16,6 +16,7 @@ import tinyLib from '../../files/tinyLib.mjs';
  * @property {boolean} disabled - Whether the room is disabled.
  * @property {boolean} readOnly - Whether the room is read-only.
  * @property {boolean} hasPassword - Whether the room requires a password.
+ * @property {boolean} public - Whether the room is listed publicly.
  * @property {boolean} isOwner - Whether the signed-in account owns the room.
  * @property {boolean} isModerator - Whether the signed-in account moderates the room.
  * @property {number|null} lastMessage - Date of the last message.
@@ -431,6 +432,13 @@ export const openRoomBrowser = () => {
 
       // Password
       if (room.hasPassword) $badges.append(makeBadge('fas fa-key', 'Password', 'secondary'));
+
+      // Public / private room list visibility.
+      $badges.append(
+        room.public
+          ? makeBadge('fas fa-globe', 'Public room', 'success')
+          : makeBadge('fas fa-lock', 'Private room', 'secondary'),
+      );
 
       // Role of the signed-in account inside the room.
       if (room.isOwner) $badges.append(makeBadge('fas fa-crown', 'You own this room', 'info'));
