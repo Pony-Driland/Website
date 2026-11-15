@@ -9,7 +9,7 @@ import tinyLib from '../../files/tinyLib.mjs';
  * `hours`, `days` and `count` open an extra number input, the other ones are
  * applied straight away.
  *
- * @type {{ value: import('../socketClient.mjs').PurgeMode, label: string, unit: 'hours'|'days'|'count'|null, fallback: number }[]}
+ * @type {{ value: PurgeMode, label: string, unit: 'hours'|'days'|'count'|null, fallback: number }[]}
  */
 const PURGE_OPTIONS = [
   { value: 'none', label: 'No records', unit: null, fallback: 0 },
@@ -36,7 +36,7 @@ const PURGE_OPTIONS = [
  * @param {string} options.title - Modal title.
  * @param {string} options.description - Text shown above the selector.
  * @param {string} options.confirmLabel - Label of the confirm button.
- * @param {(userId: string, mode: import('../socketClient.mjs').PurgeMode, amount?: number) => Promise<{ error?: boolean, msg?: string, deleted?: number }>} options.onConfirm - Runs the purge.
+ * @param {(userId: string, mode: PurgeMode, amount?: number) => Promise<{ error?: boolean, msg?: string, deleted?: number }>} options.onConfirm - Runs the purge.
  * @returns {void}
  */
 export const openPurgeUserData = ({ id, title, description, confirmLabel, onConfirm }) => {
