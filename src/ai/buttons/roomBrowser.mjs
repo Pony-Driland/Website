@@ -331,6 +331,9 @@ export const openRoomBrowser = () => {
   const user = client.getUser() || {};
   const isStaff = Boolean(user.isAdmin || user.isMod);
 
+  // The server owner can make the room list public for every account.
+  const canListAll = isStaff || Boolean(client.getRateLimit()?.publicRooms);
+
   /** @type {RoomBrowserEntry[]} */
   let rooms = [];
   /** @type {'mine'|'all'} */
@@ -556,8 +559,8 @@ export const openRoomBrowser = () => {
   // Build all
   const $header = TinyHtml.createFrom('div').addClass('d-flex flex-wrap gap-2 align-items-center');
 
-  // Staff only: search the whole server instead of the account rooms.
-  if (isStaff) {
+  // Search the whole server instead of the account rooms.
+  if (canListAll) {
     const $scope = TinyHtml.createFrom('input').setAttr({
       type: 'checkbox',
       id: 'room-browser-all',

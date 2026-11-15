@@ -284,6 +284,8 @@ class TinyClientIo extends EventEmitter {
       this.ratelimit.time = typeof result.time === 'number' ? result.time : 0;
       this.ratelimit.openRegistration =
         typeof result.openRegistration === 'boolean' ? result.openRegistration : false;
+      this.ratelimit.publicRooms =
+        typeof result.publicRooms === 'boolean' ? result.publicRooms : false;
 
       if (isJsonObject(result.limit)) {
         this.ratelimit.limit = {

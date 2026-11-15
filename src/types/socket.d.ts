@@ -104,6 +104,8 @@ interface RatelimitState {
   time?: number | null;
   loadAllHistory?: boolean;
   openRegistration?: boolean;
+  /** Whether every account can list every room of the server. */
+  publicRooms?: boolean;
 }
 
 /** Public settings of a room. */
