@@ -15,6 +15,8 @@ import storyCfg from '../chapters/config.mjs';
 import BootstrapPaginator from '../modules/bootstrap-paginator.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
+import { openNsfwSettings } from '../nsfw-settings.mjs';
+import { getFicNsfwFilters } from '../nsfw.mjs';
 import { body, tinyWin } from '../html/query.mjs';
 import { markdownBase } from '../html/base.mjs';
 import { sky } from './weather/index.mjs';
@@ -853,118 +855,7 @@ export const openChapterMenu = (params = {}) => {
                 : 'Unavailable in your region (Login with an 18+ account)',
             )
             .toggleProp('disabled', cantNsfw)
-            .on('click', () => {
-              // Nothing NSFW
-              let existNSFW = false;
-              /** @type {TinyHtmlAny[]} */
-              const nsfwItems = [];
-              const nsfwContent = TinyHtml.createFrom('center', {
-                class: 'm-3 small text-warning',
-              })
-                .addClass('made-by-ai')
-                .setText(
-                  'No mature content has been detected. However, some may be added in the future.',
-                );
-              /** @type {string[]} */
-              const nsfwList = [];
-
-              // Detect Fic Mature Content
-              for (const fic in storyData.data) {
-                for (const item in storyData.data[fic]) {
-                  if (storyData.data[fic][item].nsfw) {
-                    for (const nsfwItem in storyData.data[fic][item].nsfw) {
-                      if (nsfwList.indexOf(storyData.data[fic][item].nsfw[nsfwItem]) < 0) {
-                        // Add Item
-                        const NSFWITEM = storyData.data[fic][item].nsfw[nsfwItem];
-                        nsfwList.push(NSFWITEM);
-
-                        // Exist Now
-                        existNSFW = true;
-
-                        // Add Mature Content Item
-                        if (storyCfg.nsfw[NSFWITEM]) {
-                          // Get Value
-                          let nsfwValue = TinyHtml.boolCheck(
-                            tinyLs.getItem('NSFW' + NSFWITEM) ?? '',
-                          );
-
-                          // Set Button Text
-                          let buttonClass = 'success';
-                          let allowButton = 'Enable';
-                          if (nsfwValue) {
-                            allowButton = 'Disable';
-                            buttonClass = 'danger';
-                          }
-
-                          const nsfwButton = tinyLib.bs.button(buttonClass);
-                          nsfwItems.push(
-                            TinyHtml.createFrom('div', {
-                              class: `col-sm-${storyCfg.nsfw[NSFWITEM].size}`,
-                            }).append(
-                              TinyHtml.createFrom('div', { class: 'card' }).append(
-                                TinyHtml.createFrom('div', { class: 'card-body' }).append(
-                                  TinyHtml.createFrom('h5', { class: 'card-title' }).setText(
-                                    storyCfg.nsfw[NSFWITEM].name,
-                                  ),
-                                  TinyHtml.createFrom('p', {
-                                    class: `card-text small${storyCfg.nsfw[NSFWITEM].aiMsg ? ' made-by-ai' : ''}`,
-                                  }).setText(storyCfg.nsfw[NSFWITEM].description),
-
-                                  nsfwButton
-                                    .on('click', () => {
-                                      // Enable
-                                      if (!nsfwValue) {
-                                        tinyLs.setItem('NSFW' + NSFWITEM, true);
-                                        nsfwValue = true;
-                                        nsfwButton
-                                          .removeClass('btn-success')
-                                          .addClass('btn-danger')
-                                          .setText('Disable');
-                                      }
-
-                                      // Disable
-                                      else {
-                                        tinyLs.setItem('NSFW' + NSFWITEM, false);
-                                        nsfwValue = false;
-                                        nsfwButton
-                                          .removeClass('btn-danger')
-                                          .addClass('btn-success')
-                                          .setText('Enable');
-                                      }
-                                    })
-                                    .setText(allowButton),
-                                ),
-                              ),
-                            ),
-                          );
-                        }
-
-                        // Unknown
-                        else {
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-
-              // Mature Content Item
-              const nsfwDIV = TinyHtml.createFrom('div');
-              nsfwDIV.append(existNSFW ? nsfwItems : nsfwContent);
-              if (existNSFW) nsfwDIV.addClass('row');
-
-              // Modal
-              tinyLib.modal({
-                title: [new Icon('fas fa-eye me-3'), 'Mature Content Settings'],
-                body: TinyHtml.createFrom('center').append(
-                  TinyHtml.createFrom('p', { class: 'text-danger made-by-ai' }).setText(
-                    "Don't expect any explicit 18+ content here. The mature themes are not graphic and are only used to add depth to the story — for example, to make certain scenes feel more realistic. By enabling these settings, you confirm that you are over 18 and accept full responsibility for the content you choose to view.",
-                  ),
-                  nsfwDIV,
-                ),
-                dialog: 'modal-lg',
-              });
-            }),
+            .on('click', () => openNsfwSettings(getFicNsfwFilters())),
         ),
       TinyHtml.createFrom('h5')
         .addClass('made-by-ai')
