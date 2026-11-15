@@ -364,26 +364,84 @@ class UserRoomManager {
   }
 
   /**
+   * Builds the display label of an user.
+   *
+   * The nickname is only shown when it is known and different from the id,
+   * so the list never renders `name (name)`.
+   *
+   * @param {string} userId - User id.
+   * @returns {string}
+   */
+  #getUserLabel(userId) {
+    const nickname = this.#nicknames[userId];
+    return nickname && nickname !== userId ? `${nickname} (${userId})` : userId;
+  }
+
+  /**
+   * Renders a comma separated list of clickable users.
+   *
+   * Clicking an user fills the given input with its id, so the owner does
+   * not need to type the whole id by hand.
+   *
+   * @param {TinyHtmlAny} $target - Container of the list.
+   * @param {string} title - Label rendered before the list.
+   * @param {string[]} userIds - Users to render.
+   * @param {() => (TinyHtmlAny|null)} getInput - Resolves the input filled on click.
+   * @returns {void}
+   */
+  #renderUserChips($target, title, userIds, getInput) {
+    $target.empty();
+
+    const $wrapper = TinyHtml.createFrom('div').addClass('small');
+    $wrapper.append(TinyHtml.createFrom('strong').setText(`${title}: `));
+
+    // Duplicated ids would render the same user twice.
+    const users = userIds.filter(
+      (userId, index, list) =>
+        typeof userId === 'string' && userId.length > 0 && list.indexOf(userId) === index,
+    );
+
+    if (users.length < 1) {
+      $wrapper.append(TinyHtml.createFrom('span').addClass('text-muted').setText('None'));
+      $target.append($wrapper);
+      return;
+    }
+
+    users.forEach((userId, index) => {
+      if (index > 0) $wrapper.append(TinyHtml.createFrom('span').setText(', '));
+
+      const $user = TinyHtml.createFrom('span')
+        .addClass('text-muted')
+        .setText(this.#getUserLabel(userId))
+        .setStyle('cursor', 'pointer')
+        .setAttr('title', 'Fill the user ID')
+        .on('click', () => {
+          const $input = getInput();
+          if ($input) $input.setVal(userId).trigger('focus');
+        });
+
+      $wrapper.append($user);
+    });
+
+    $target.append($wrapper);
+  }
+
+  /**
    * Renders the list of room moderators.
    *
    * The owner uses it to know who can moderate the room without opening the
-   * user list.
+   * user list. Clicking a moderator fills the "Remove Mod" input.
    *
    * @returns {void}
    */
   renderModerators() {
-    this.$moderatorList.empty();
-    if (!Array.isArray(this.moderators) || this.moderators.length < 1) return;
+    if (!this.$moderatorList) return;
 
-    const $wrapper = TinyHtml.createFrom('div').addClass('small');
-    $wrapper.append(TinyHtml.createFrom('strong').setText('Moderators: '));
+    const moderators = Array.isArray(this.moderators)
+      ? this.moderators.map((mod) => mod.userId)
+      : [];
 
-    this.moderators.forEach((mod, index) => {
-      if (index > 0) $wrapper.append(TinyHtml.createFrom('span').setText(', '));
-      $wrapper.append(TinyHtml.createFrom('span').addClass('text-muted').setText(mod.userId));
-    });
-
-    this.$moderatorList.append($wrapper);
+    this.#renderUserChips(this.$moderatorList, 'Moderators', moderators, () => this.$remveModInput);
   }
 
   /**
@@ -397,42 +455,14 @@ class UserRoomManager {
    */
   renderMembers() {
     if (!this.$memberList) return;
-    this.$memberList.empty();
-    if (!this.canModerate()) return;
-
-    const $wrapper = TinyHtml.createFrom('div').addClass('small');
-    $wrapper.append(TinyHtml.createFrom('strong').setText('Members: '));
-
-    // The permission list is the source of truth here: it contains every
-    // user that is not a guest anymore, online or not.
-    const members = this.#permissions.filter(
-      (userId, index, list) => typeof userId === 'string' && list.indexOf(userId) === index,
-    );
-
-    if (members.length < 1) {
-      $wrapper.append(TinyHtml.createFrom('span').addClass('text-muted').setText('None'));
-      this.$memberList.append($wrapper);
+    if (!this.canModerate()) {
+      this.$memberList.empty();
       return;
     }
 
-    members.forEach((userId, index) => {
-      if (index > 0) $wrapper.append(TinyHtml.createFrom('span').setText(', '));
-
-      const nickname = this.#nicknames[userId];
-      const label = nickname && nickname !== userId ? `${nickname} (${userId})` : userId;
-      const $member = TinyHtml.createFrom('span')
-        .addClass('text-muted')
-        .setText(label)
-        .setStyle('cursor', 'pointer')
-        .setAttr('title', 'Fill the user ID')
-        .on('click', () => {
-          if (this.$guestInput) this.$guestInput.setVal(userId).trigger('focus');
-        });
-
-      $wrapper.append($member);
-    });
-
-    this.$memberList.append($wrapper);
+    // The permission list is the source of truth here: it contains every
+    // user that is not a guest anymore, online or not.
+    this.#renderUserChips(this.$memberList, 'Members', this.#permissions, () => this.$guestInput);
   }
 
   /**
