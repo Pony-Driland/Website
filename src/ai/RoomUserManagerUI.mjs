@@ -6,6 +6,7 @@ import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/Bootstrap
 import tinyLib from '../files/tinyLib.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import TinyClientIo from './socketClient.mjs';
+import { openPurgeUserData } from './buttons/purgeUserData.mjs';
 
 /**
  * A single user row rendered by the manager.
@@ -330,9 +331,43 @@ class UserRoomManager {
       this.openBannedUsers();
     });
 
+    // Purge messages
+    const $purgeMessagesBtn = tinyLib.bs.button('outline-danger').setText('Purge messages');
+    $purgeMessagesBtn.on('click', () => {
+      openPurgeUserData({
+        id: 'purge-user-messages',
+        title: 'Delete user messages',
+        description:
+          'Choose how much of the message history of this user must be deleted. This cannot be undone.',
+        confirmLabel: 'Delete messages',
+        onConfirm: (userId, mode, amount) => this.#client.purgeUserMessages(userId, mode, amount),
+      });
+    });
+
+    // Purge dice history
+    const $purgeDiceBtn = tinyLib.bs.button('outline-danger').setText('Purge dice history');
+    $purgeDiceBtn.on('click', () => {
+      openPurgeUserData({
+        id: 'purge-user-dice',
+        title: 'Delete user dice history',
+        description:
+          'Choose how much of the dice history of this user must be deleted. This cannot be undone.',
+        confirmLabel: 'Delete dice history',
+        onConfirm: (userId, mode, amount) => this.#client.purgeUserDice(userId, mode, amount),
+      });
+    });
+
     // A regular user only gets the search box.
     if (this.canModerate()) {
-      this.$header.append(this.$kickAll, $readonlyBtn, $roomStatus, $bannedBtn, $searchWrapper);
+      this.$header.append(
+        this.$kickAll,
+        $readonlyBtn,
+        $roomStatus,
+        $bannedBtn,
+        $purgeMessagesBtn,
+        $purgeDiceBtn,
+        $searchWrapper,
+      );
     } else {
       this.$header.append($searchWrapper);
     }

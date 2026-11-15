@@ -162,6 +162,9 @@ interface RoomPermissionUpdate {
   permissions: RoomPermissionEntry[];
 }
 
+/** Window used when purging the records of an user. */
+type PurgeMode = 'none' | 'hours' | 'days' | 'count' | 'all';
+
 /** Free form JSON stored in a room. */
 type RoomDataValues = Record<string, unknown>;
 

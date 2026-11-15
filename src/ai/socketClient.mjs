@@ -909,6 +909,21 @@ class TinyClientIo extends EventEmitter {
   }
 
   /**
+   * On messages purged
+   * @param {SocketListener} callback
+   */
+  onMessagesPurged(callback) {
+    this.#socketOn('messages-purged', callback);
+  }
+
+  /**
+   * @param {SocketListener} callback
+   */
+  offMessagesPurged(callback) {
+    this.#socketOff('messages-purged', callback);
+  }
+
+  /**
    * On room permission change
    * @param {SocketListener} callback
    */
@@ -1023,6 +1038,40 @@ class TinyClientIo extends EventEmitter {
     return this.#socketEmitApi('kick-from-room', {
       userId,
       roomId: this.#cfg.roomId,
+    });
+  }
+
+  /**
+   * Deletes the messages of an user, following the window picked by the owner.
+   *
+   * @param {string} userId - Author of the messages.
+   * @param {PurgeMode} mode - Window mode.
+   * @param {number} [amount] - Custom value of the `hours`, `days` and `count` modes.
+   * @returns {Promise<SocketAck>}
+   */
+  purgeUserMessages(userId, mode, amount) {
+    return this.#socketEmitApi('purge-user-messages', {
+      roomId: this.#cfg.roomId,
+      userId,
+      mode,
+      amount,
+    });
+  }
+
+  /**
+   * Deletes the dice history of an user, following the window picked by the owner.
+   *
+   * @param {string} userId - Author of the rolls.
+   * @param {PurgeMode} mode - Window mode.
+   * @param {number} [amount] - Custom value of the `hours`, `days` and `count` modes.
+   * @returns {Promise<SocketAck>}
+   */
+  purgeUserDice(userId, mode, amount) {
+    return this.#socketEmitApi('purge-user-dice', {
+      roomId: this.#cfg.roomId,
+      userId,
+      mode,
+      amount,
     });
   }
 
@@ -1764,6 +1813,14 @@ class TinyClientIo extends EventEmitter {
           roomData: this.getRoomData(),
           roomPrivateData: this.getRoomPrivateData(),
         });
+      }
+    });
+
+    // Messages purged
+    this.onMessagesPurged((result) => {
+      if (this.checkRoomId(result) && Array.isArray(result.ids)) {
+        this.emit('messagesPurged', result);
+        console.log('[socket-io] [messages-purged]', result);
       }
     });
 
