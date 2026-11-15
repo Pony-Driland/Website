@@ -334,6 +334,7 @@ class UserRoomManager {
     // Purge messages
     const $purgeMessagesBtn = tinyLib.bs.button('outline-danger').setText('Purge messages');
     $purgeMessagesBtn.on('click', () => {
+      this.onClose?.();
       openPurgeUserData({
         id: 'purge-user-messages',
         title: 'Delete user messages',
@@ -347,6 +348,7 @@ class UserRoomManager {
     // Purge dice history
     const $purgeDiceBtn = tinyLib.bs.button('outline-danger').setText('Purge dice history');
     $purgeDiceBtn.on('click', () => {
+      this.onClose?.();
       openPurgeUserData({
         id: 'purge-user-dice',
         title: 'Delete user dice history',
