@@ -64,6 +64,11 @@ export const userButtonActions = () => {
     };
     /** @param {RoomPermissionEntry[]} permissions */
     const permissionUpdated = (permissions) => userManager.setPermissions(permissions);
+    /**
+     * @param {string} userId
+     * @param {boolean} isStaff
+     */
+    const userStaffUpdated = (userId, isStaff) => userManager.setUserStaff(userId, isStaff);
 
     // const userUpdated = (data) => console.log(data);
 
@@ -75,6 +80,7 @@ export const userButtonActions = () => {
     tinyIo.client.on('roomModChange', userModUpdated);
     tinyIo.client.on('roomUpdates', roomStatusUpdate);
     tinyIo.client.on('roomPermissionChange', permissionUpdated);
+    tinyIo.client.on('userStaffChange', userStaffUpdated);
     // tinyIo.client.on('userUpdated', userUpdated);
 
     // Close modal
@@ -89,6 +95,7 @@ export const userButtonActions = () => {
       client.off('roomModChange', userModUpdated);
       client.off('roomUpdates', roomStatusUpdate);
       client.off('roomPermissionChange', permissionUpdated);
+      client.off('userStaffChange', userStaffUpdated);
       // client.off('userUpdated', userUpdated);
       userManager.destroy();
     });

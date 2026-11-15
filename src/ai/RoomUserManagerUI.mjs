@@ -720,6 +720,7 @@ class UserRoomManager {
         isSelf: userId === this.currentUserId,
         isModerator: isMod(userId),
         isRoomOwner: userId === room.ownerId,
+        isServerStaff: data.isStaff === true,
       }))
       .sort((a, b) => {
         if (a.isSelf) return -1;
@@ -765,6 +766,13 @@ class UserRoomManager {
         $info.append(
           TinyHtml.createFrom('i')
             .addClass('fas fa-shield-halved text-info')
+            .setAttr('title', 'Room moderator'),
+        );
+
+      if (user.isServerStaff)
+        $info.append(
+          TinyHtml.createFrom('i')
+            .addClass('fas fa-user-shield text-danger')
             .setAttr('title', 'Server staff'),
         );
 
@@ -869,6 +877,7 @@ class UserRoomManager {
     this.users[userId] = {
       nickname: data.nickname || userId,
       ping: moment(data.ping),
+      isStaff: data.isStaff === true,
     };
     const newHash = objHash(this.users[userId]);
     if (newHash !== oldHash) {
@@ -904,6 +913,20 @@ class UserRoomManager {
       this.renderUserList(this.#getSearch());
       this.checkPerms();
     }
+  }
+
+  /**
+   * Updates the server staff badge of an user in place.
+   *
+   * @param {string} userId - Account that changed.
+   * @param {boolean} isStaff - New staff state.
+   * @returns {void}
+   */
+  setUserStaff(userId, isStaff) {
+    const user = this.users[userId];
+    if (!user) return;
+    user.isStaff = isStaff === true;
+    this.renderUserList(this.#getSearch());
   }
 
   /**

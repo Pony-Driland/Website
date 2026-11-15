@@ -413,6 +413,7 @@ class TinyClientIo extends EventEmitter {
       this.users[result.userId] = {
         ping: typeof result.ping === 'number' ? result.ping : 0,
         nickname: typeof result.nickname === 'string' ? result.nickname : null,
+        isStaff: result.isStaff === true,
       };
       return { data: this.users[result.userId], userId: result.userId };
     }
@@ -920,6 +921,21 @@ class TinyClientIo extends EventEmitter {
    */
   offRoomPermissionChange(callback) {
     this.#socketOff('room-permission-updated', callback);
+  }
+
+  /**
+   * On server staff role change
+   * @param {SocketListener} callback
+   */
+  onUserStaffChange(callback) {
+    this.#socketOn('user-staff-updated', callback);
+  }
+
+  /**
+   * @param {SocketListener} callback
+   */
+  offUserStaffChange(callback) {
+    this.#socketOff('user-staff-updated', callback);
   }
 
   /**
@@ -1750,6 +1766,17 @@ class TinyClientIo extends EventEmitter {
         const type = result.type === 'revoke' ? 'revoke' : 'grant';
         this.emit('roomPermissionChange', type, users, permissions);
         console.log('[socket-io] [room-permissions]', { type, users, permissions });
+      }
+    });
+
+    // Server staff role update
+    this.onUserStaffChange((result) => {
+      if (this.checkRoomId(result) && typeof result.userId === 'string') {
+        const isStaff = result.isStaff === true;
+        const user = this.users[result.userId];
+        if (user) user.isStaff = isStaff;
+        this.emit('userStaffChange', result.userId, isStaff);
+        console.log('[socket-io] [user-staff]', result.userId, isStaff);
       }
     });
 
