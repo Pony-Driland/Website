@@ -141,7 +141,7 @@ const partText = (part) => (part && typeof part.text === 'string' ? part.text : 
 export const AiScriptStart = async () => {
   let sessionEnabled = true;
   // Update Url
-  urlUpdate({ name: 'ai', title: 'Roleplay Page' });
+  urlUpdate({ name: 'roleplay', title: 'Roleplay Page' });
 
   // Clear page
   clearFicData();

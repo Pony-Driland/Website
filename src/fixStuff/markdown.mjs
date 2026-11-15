@@ -92,7 +92,7 @@ export const urlUpdate = (page, isPopState = false) => {
   const title =
     typeof page.title === 'string' && page.title.length > 0 ? page.title : storyCfg.title;
 
-  if (page.name === 'ai') {
+  if (page.name === 'roleplay') {
     if (!appData.ai.using) {
       appData.ai.using = true;
       appData.emitter.emit('isUsingAI', true);

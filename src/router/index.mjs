@@ -102,7 +102,8 @@ const resolveQueryPage = (search) => {
   const query = queryToObject(search);
 
   if (path === 'read-fic') return { name: 'read-fic', title: 'Read Fic', query };
-  if (path === 'ai') return { name: 'ai', title: 'Roleplay Page', query };
+  if (path === 'ai' || path === 'roleplay')
+    return { name: 'roleplay', title: 'Roleplay Page', query };
   if (path.length < 1) return { name: 'home', query };
 
   const character = getCharacterByPath(path);
@@ -184,7 +185,7 @@ const registerRoutes = (instance) => {
 
   // AI page.
   instance.add(AI_PATH, (match) =>
-    render({ name: 'ai', title: 'Roleplay Page', query: queryToObject(match.query) }),
+    render({ name: 'roleplay', title: 'Roleplay Page', query: queryToObject(match.query) }),
   );
 
   // Character pages (`/characters/amy.html`).

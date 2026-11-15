@@ -12,7 +12,7 @@
  * | home      | `/`                        |
  * | markdown  | `/<slug>`                  |
  * | read-fic  | `/read-fic`                |
- * | ai        | `/ai`                      |
+ * | ai        | `/roleplay`                |
  * | character | `/characters/<slug>.html`  |
  * | chapter   | `/chapter/<id>.html`       |
  *
@@ -26,7 +26,7 @@
 import storyCfg from '../chapters/config.mjs';
 
 /**
- * @typedef {'home'|'markdown'|'read-fic'|'ai'|'character'|'chapter'|'not-found'} PageName
+ * @typedef {'home'|'markdown'|'read-fic'|'roleplay'|'character'|'chapter'|'not-found'} PageName
  */
 
 /**
@@ -45,7 +45,7 @@ import storyCfg from '../chapters/config.mjs';
 export const READ_FIC_PATH = '/read-fic';
 
 /** Route of the AI page. */
-export const AI_PATH = '/ai';
+export const AI_PATH = '/roleplay';
 
 /** Base path of the character pages. */
 export const CHARACTER_BASE = '/characters';
@@ -164,7 +164,7 @@ const buildPath = (page) => {
   switch (page.name) {
     case 'read-fic':
       return READ_FIC_PATH;
-    case 'ai':
+    case 'roleplay':
       return AI_PATH;
     case 'chapter':
       return `${CHAPTER_BASE}/${page.chapter}.html`;

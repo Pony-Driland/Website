@@ -231,7 +231,7 @@ const renderPage = async (page) => {
       openChapterMenu(page.query);
       return;
 
-    case 'ai':
+    case 'roleplay':
       loaderScreen.start();
       await tinyNotification.requestPerm();
       loaderScreen.stop();
@@ -857,7 +857,7 @@ rootApp.onReady(() => {
             TinyHtml.createFrom('li', { class: 'nav-item nav-ai' }).prepend(
               TinyHtml.createFrom('a', {
                 class: 'nav-link',
-                href: '/ai',
+                href: '/roleplay',
                 id: 'ai-access-page',
               })
                 .setText('Roleplay Page')
