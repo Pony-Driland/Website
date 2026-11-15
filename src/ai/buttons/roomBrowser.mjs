@@ -362,7 +362,33 @@ export const openRoomBrowser = () => {
         askPasswordAndStore(room.roomId);
       });
 
-      $row.append($info, $join);
+      const $actions = TinyHtml.createFrom('div').addClass('d-flex gap-1');
+      $actions.append($join);
+
+      // The owner cannot forget their own room, it always belongs to them.
+      if (!room.isOwner) {
+        const $forget = tinyLib.bs
+          .button('outline-danger btn-sm')
+          .setAttr('title', 'Forget this room')
+          .append(TinyHtml.createFrom('i').addClass('fas fa-eye-slash'));
+
+        $forget.on('click', async () => {
+          $forget.addClass('disabled').addProp('disabled');
+          const result = await client.forgetRoom(room.roomId);
+
+          if (result.error) {
+            $forget.removeClass('disabled').removeProp('disabled');
+            showError(result.msg ?? 'Unknown error');
+            return;
+          }
+
+          load();
+        });
+
+        $actions.append($forget);
+      }
+
+      $row.append($info, $actions);
       $list.append($row);
     }
 

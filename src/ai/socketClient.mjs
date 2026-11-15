@@ -1210,6 +1210,16 @@ class TinyClientIo extends EventEmitter {
   }
 
   /**
+   * Forgets that the signed-in account visited a room.
+   *
+   * @param {string} roomId - Room id.
+   * @returns {Promise<SocketAck>}
+   */
+  forgetRoom(roomId) {
+    return this.#socketEmitApi('forget-room', { roomId });
+  }
+
+  /**
    * Update room settings
    */
   updateRoomSettings(settings = {}) {
