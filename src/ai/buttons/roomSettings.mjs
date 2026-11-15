@@ -130,6 +130,25 @@ export const roomSettingsMenu = () => {
         ),
     );
 
+    // Public room list
+    const $public = TinyHtml.createFrom('input')
+      .addClass('form-check-input')
+      .setAttr({ type: 'checkbox', id: 'roomPublic' })
+      .toggleProp('disabled', cantEdit);
+    $public.setProp('checked', Boolean(room.public));
+
+    $editForm.append(
+      TinyHtml.createFrom('div')
+        .addClass('form-check mb-3')
+        .append(
+          $public,
+          TinyHtml.createFrom('label')
+            .addClass('form-check-label')
+            .setAttr('for', 'roomPublic')
+            .setText('Show this room on the public room list'),
+        ),
+    );
+
     // New password
     $editForm.append(
       TinyHtml.createFrom('div')
@@ -247,7 +266,7 @@ export const roomSettingsMenu = () => {
         }
 
         /** @type {Record<string, unknown>} */
-        const newSettings = { title, maxUsers, chapter };
+        const newSettings = { title, maxUsers, chapter, public: Boolean($public.prop('checked')) };
         if (typeof password === 'string' && password.length > 0) newSettings.password = password;
 
         modal.hide();

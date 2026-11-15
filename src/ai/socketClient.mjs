@@ -486,6 +486,15 @@ class TinyClientIo extends EventEmitter {
             : typeof result.readOnly === 'boolean'
               ? result.readOnly
               : false,
+
+        public:
+          typeof result.public === 'number'
+            ? result.public
+              ? true
+              : false
+            : typeof result.public === 'boolean'
+              ? result.public
+              : false,
       };
       return this.room;
     }
