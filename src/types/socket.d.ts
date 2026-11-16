@@ -51,7 +51,43 @@ interface SocketAck {
   [key: string]: unknown;
 }
 
-/** A user connected to a room. */
+/**
+ * First event of a chunked payload.
+ *
+ * The index signature keeps the type assignable from `SocketPayload`, so the
+ * socket listeners can narrow it without a cast.
+ */
+interface SocketStreamStart {
+  [key: string]: unknown;
+  /** Transfer id, shared by every chunk. */
+  id: string;
+  /** Event that will be replayed once the payload is complete. */
+  event: string;
+  /** Amount of chunks that will be sent. */
+  total: number;
+  /** Payload size in bytes. */
+  size?: number;
+}
+
+/** A single chunk of a chunked payload. */
+interface SocketStreamChunk {
+  [key: string]: unknown;
+  /** Transfer id. */
+  id: string;
+  /** Position of the chunk. */
+  index: number;
+  /** Slice of the serialized payload. */
+  data: string;
+}
+
+/** Last event of a chunked payload. */
+interface SocketStreamEnd {
+  [key: string]: unknown;
+  /** Transfer id. */
+  id: string;
+}
+
+/** A user connected to the room. */
 interface SocketUserEntry {
   /** Last measured latency in milliseconds. */
   ping?: number;

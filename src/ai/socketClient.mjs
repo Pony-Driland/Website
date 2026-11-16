@@ -76,6 +76,16 @@ class TinyClientIo extends EventEmitter {
   /** @type {DiceSkin} */
   dice = {};
 
+  /**
+   * Payloads that are still being received.
+   *
+   * The server splits anything above `STREAM_THRESHOLD` into `stream-chunk`
+   * events so the browser never has to parse a multi-megabyte packet.
+   *
+   * @type {Map<string, { event: string, total: number, parts: string[] }>}
+   */
+  #streams = new Map();
+
   /** @type {import('socket.io-client').Socket|null} */
   socket = null;
 
@@ -1663,6 +1673,50 @@ class TinyClientIo extends EventEmitter {
     return isJsonObject(result) && result.roomId === this.getRoomId();
   }
 
+  /**
+   * Reassembles the chunked payloads sent by the server.
+   *
+   * The chunks are concatenated as plain strings and only parsed once the
+   * whole payload arrived, so a huge message never blocks the tab while it
+   * is still being received.
+   *
+   * @returns {void}
+   */
+  #installStream() {
+    this.#socketOn('stream-start', (result) => {
+      const { id, event, total } = /** @type {SocketStreamStart} */ (result);
+      if (typeof id !== 'string' || typeof event !== 'string') return;
+      this.#streams.set(id, { event, total: Number(total) || 0, parts: [] });
+    });
+
+    this.#socketOn('stream-chunk', (result) => {
+      const { id, index, data } = /** @type {SocketStreamChunk} */ (result);
+      const stream = this.#streams.get(id);
+      if (!stream) return;
+      stream.parts[Number(index)] = data;
+    });
+
+    this.#socketOn('stream-end', (result) => {
+      const { id } = /** @type {SocketStreamEnd} */ (result);
+      const stream = this.#streams.get(id);
+      if (!stream) return;
+      this.#streams.delete(id);
+
+      let data;
+      try {
+        data = JSON.parse(stream.parts.join(''));
+      } catch (err) {
+        console.error('[socket-io] [stream] Failed to parse payload', err);
+        return;
+      }
+
+      // Dispatch to the local listeners only. `socket.emit` would send the
+      // payload back to the server instead of notifying this tab.
+      if (!this.socket) return;
+      for (const listener of this.socket.listeners(stream.event)) listener(data);
+    });
+  }
+
   /** @param {SocketAiScript} tinyAiScript */
   install(tinyAiScript) {
     // Dice
@@ -1926,6 +1980,9 @@ class TinyClientIo extends EventEmitter {
         console.log('[socket-io] [mod-data]', this.getMods());
       }
     });
+
+    // Chunked transfer
+    this.#installStream();
 
     // Connect
     this.onConnect(() => {
