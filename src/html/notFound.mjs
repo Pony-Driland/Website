@@ -22,7 +22,7 @@ export const renderNotFound = () => {
       TinyHtml.createFrom('div', { class: 'col-sm-12 my-auto' }).append(
         TinyHtml.createFrom('center').append(
           TinyHtml.createFrom('img', {
-            src: '/img/error.png',
+            src: '/img/error/404.png',
             class: 'img-fluid',
             alt: 'error',
           }),
