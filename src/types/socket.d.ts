@@ -57,6 +57,8 @@ interface SocketUserEntry {
   ping?: number;
   /** Display name chosen by the user. */
   nickname?: string | null;
+  /** Whether the account belongs to the server staff. */
+  isStaff?: boolean;
 }
 
 /** The account currently signed in. */
