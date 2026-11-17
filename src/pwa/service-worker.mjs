@@ -31,15 +31,18 @@ const engine = new TinyServiceWorkerEngine({
   messaging: { enabled: true },
 });
 
-// Cross-origin requests (analytics, fonts, APIs, ...) must be handled by the
-// browser itself. `TinyServiceWorkerEngine` calls `event.respondWith()` for
-// every request, which turns a blocked third-party request into an unhandled
-// rejection. Stopping the event here keeps those requests untouched.
-engine.on('fetchRequested', ({ event, url, result }) => {
-  if (url.origin !== self.location.origin) {
-    event.stopImmediatePropagation();
-    result.canStart = false;
-  }
+// This worker only owns the requests of this website. Everything else
+// (analytics, fonts, CDNs, third-party APIs, browser extensions, ...) belongs to
+// the browser and must never be touched by the engine.
+//
+// `TinyServiceWorkerEngine` calls `event.respondWith()` for every request it
+// accepts, so a cross-origin request would be re-issued by the worker instead of
+// being handled natively by the browser. That breaks opaque responses, CORS
+// preflights and `no-cors` requests, and it turns a blocked third-party request
+// into an unhandled rejection. Setting `canStart` to `false` makes the engine
+// return before `respondWith()`, leaving the event completely untouched.
+engine.on('fetchRequested', ({ request, result }) => {
+  if (!TinyServiceWorkerEngine.isSameOrigin(request)) result.canStart = false;
 });
 
 // Serve the static 404 page for every request the router can not answer.
