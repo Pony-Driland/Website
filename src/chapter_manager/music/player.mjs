@@ -75,6 +75,14 @@ let youtube = null;
 /** @type {string|null} */
 let currentId = null;
 
+/** @type {boolean} */
+let youtubeApiReady = false;
+
+
+window.onYouTubeIframeAPIReady = function() {
+  youtubeApiReady = true;
+}
+
 /**
  * Runs a playback task, giving up when it takes too long.
  *
@@ -135,9 +143,9 @@ if (window.localStorage.getItem(VOLUME_STORAGE_KEY) === null) {
  * the container can only be created once the first video id is known.
  *
  * @param {string} videoId - First video that will be played.
- * @returns {void}
+ * @returns {Promise<void>}
  */
-const ensureYoutube = (videoId) => {
+const ensureYoutube = async (videoId) => {
   if (youtube) return;
 
   YoutubeMediaAdapter.defaultContainer = YoutubeMediaAdapter.createIframeContainer({
@@ -149,6 +157,7 @@ const ensureYoutube = (videoId) => {
 
   youtube = new YoutubeMediaAdapter();
   player.registerAdapter(youtube);
+  await waitForTrue(() => youtubeApiReady === true);
 };
 
 /**
@@ -167,9 +176,8 @@ const playTrack = (track) => {
     const isYoutube = track.type === 'youtube';
     const id = `${track.type}:${track.id}`;
 
-    if (isYoutube) ensureYoutube(track.id);
-
     enqueue(async () => {
+      if (isYoutube) await ensureYoutube(track.id);
       if (currentId === id) {
         await player.play();
         return;
