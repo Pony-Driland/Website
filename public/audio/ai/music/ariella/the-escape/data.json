@@ -5,7 +5,7 @@
     "bpm": [130, 131, 132, 133, 127],
     "beta": true,
     "suno_start": "00:00.355",
-    "creation_date": 0,
+    "creation_date": 1794953202000,
     "production_steps": [
         {
             "id": "suno_v6",
