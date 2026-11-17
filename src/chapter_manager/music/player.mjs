@@ -35,9 +35,9 @@ const VOLUME_STORAGE_KEY = 'storyMusicVolume';
  * Maximum time a single playback task may block the queue.
  *
  * `YoutubeMediaAdapter.play()` only resolves after the iframe fires `onReady`.
- * A blocked or offline iframe would never settle that promise, so the queue is
- * released by force instead of freezing the soundtrack for the rest of the
- * session.
+ * A player that never becomes ready would hang the promise forever, so the
+ * queue is released by force instead of freezing the soundtrack for the rest
+ * of the session.
  */
 const PLAYBACK_TIMEOUT = 20000;
 
@@ -57,15 +57,8 @@ player.registerAdapter(new HtmlAudioAdapter());
 /**
  * Serializes every call that touches the player.
  *
- * `TinyMediaPlayer` is not re-entrant. `YoutubeMediaAdapter.play()` assigns the
- * `YT.Player` instance to its internal field *before* awaiting `onReady`, so a
- * second call made while the first one is still booting sees a truthy (but not
- * yet functional) player and runs `this.#player.loadVideoById(...)` on the
- * iframe stub. That is what throws
- * `TypeError: this.#player?.loadVideoById is not a function`.
- *
  * The reader asks for a track on every scroll event, so overlapping calls are
- * the norm, not the exception.
+ * the norm. Running them one at a time keeps the adapter state predictable.
  */
 const queue = new TinyPromiseQueue();
 
@@ -74,6 +67,85 @@ let youtube = null;
 
 /** @type {string|null} */
 let currentId = null;
+
+/**
+ * Builds the iframe that hosts the YouTube player.
+ *
+ * The iframe must stay inside the viewport. `createIframeContainer({ hidden:
+ * true })` parks it at `top: -9999px`, and Chrome throttles off-screen frames
+ * hard enough that the embedded player boots without any media adapter. The
+ * player then never fires `onReady`, so `YoutubeMediaAdapter` keeps a `YT.Player`
+ * that has none of the playback methods and every call fails with
+ * `TypeError: this.#player?.loadVideoById is not a function`.
+ *
+ * A 1x1 transparent frame in the corner is invisible but still rendered, which
+ * is what the player needs to initialize.
+ *
+ * @param {string} videoId - First video that will be played.
+ * @returns {HTMLIFrameElement}
+ */
+const createYoutubeContainer = (videoId) => {
+  const iframe = YoutubeMediaAdapter.createIframeContainer({
+    videoId,
+    hidden: false,
+    autoplay: false,
+    controls: false,
+  });
+
+  Object.assign(iframe.style, {
+    position: 'fixed',
+    left: '0',
+    bottom: '0',
+    width: '1px',
+    height: '1px',
+    border: '0',
+    opacity: '0',
+    pointerEvents: 'none',
+  });
+
+  document.body.appendChild(iframe);
+  return iframe;
+};
+
+/**
+ * Creates the YouTube adapter on demand: it binds itself to a single iframe, so
+ * the container can only be created once the first video id is known.
+ *
+ * @param {string} videoId - First video that will be played.
+ * @returns {YoutubeMediaAdapter}
+ */
+const ensureYoutube = (videoId) => {
+  if (youtube) return youtube;
+
+  YoutubeMediaAdapter.defaultContainer = createYoutubeContainer(videoId);
+
+  youtube = new YoutubeMediaAdapter();
+  player.registerAdapter(youtube);
+
+  return youtube;
+};
+
+/**
+ * Drops the YouTube adapter so the next track builds a brand new player.
+ *
+ * A `YT.Player` that failed to initialize can not be recovered, and the adapter
+ * keeps a reference to it forever. Recreating the adapter is the only way back
+ * from a broken iframe.
+ *
+ * @returns {void}
+ */
+const resetYoutube = () => {
+  if (!youtube) return;
+
+  try {
+    player.destroyAdapter(youtube);
+  } catch (err) {
+    console.error(err);
+  }
+
+  youtube = null;
+  currentId = null;
+};
 
 /**
  * Runs a playback task, giving up when it takes too long.
@@ -100,8 +172,6 @@ const withTimeout = async (task, timeout = PLAYBACK_TIMEOUT) => {
   // unhandled rejection.
   playback.catch(() => {});
 
-  // Resolves as soon as the playback settles or the deadline is reached,
-  // whichever comes first.
   const deadline = waitForTrue(
     () => settled || Date.now() - startedAt >= timeout,
     TIMEOUT_CHECK_INTERVAL,
@@ -131,27 +201,6 @@ if (window.localStorage.getItem(VOLUME_STORAGE_KEY) === null) {
 }
 
 /**
- * Creates the YouTube adapter on demand: it binds itself to a single iframe, so
- * the container can only be created once the first video id is known.
- *
- * @param {string} videoId - First video that will be played.
- * @returns {void}
- */
-const ensureYoutube = (videoId) => {
-  if (youtube) return;
-
-  YoutubeMediaAdapter.defaultContainer = YoutubeMediaAdapter.createIframeContainer({
-    videoId,
-    hidden: true,
-    autoplay: false,
-    controls: false,
-  });
-
-  youtube = new YoutubeMediaAdapter();
-  player.registerAdapter(youtube);
-};
-
-/**
  * Plays a story track.
  *
  * The playback is held until the browser allows audio to start, because the
@@ -167,13 +216,13 @@ const playTrack = (track) => {
     const isYoutube = track.type === 'youtube';
     const id = `${track.type}:${track.id}`;
 
-    if (isYoutube) ensureYoutube(track.id);
-
     enqueue(async () => {
       if (currentId === id) {
         await player.play();
         return;
       }
+
+      if (isYoutube) ensureYoutube(track.id);
 
       // The `playlist` setter restarts the playback on its own (and does not
       // await it) when the player was playing, which would run `play()` twice
@@ -197,7 +246,13 @@ const playTrack = (track) => {
       ];
 
       await player.play();
-    }).catch((err) => console.error(err));
+    }).catch((err) => {
+      console.error(err);
+
+      // A YouTube player that never became ready can not be reused, so the next
+      // attempt starts from a brand new iframe.
+      if (isYoutube) resetYoutube();
+    });
   }, 'music');
 };
 
