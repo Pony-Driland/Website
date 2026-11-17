@@ -2,7 +2,7 @@
     "format": ["mp3"],
     "file": "the-escape",
     "generators_used": ["suno"],
-    "bpm": [130, 131, 132, 133],
+    "bpm": [130, 131, 132, 133, 127],
     "beta": true,
     "suno_start": "00:00.355",
     "creation_date": 0,
