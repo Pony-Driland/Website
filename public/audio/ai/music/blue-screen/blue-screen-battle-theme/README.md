@@ -16,6 +16,12 @@ The audio editing work remains **entirely authored by JasminDreasond**.
 
 All audio editing credit belongs to JasminDreasond.
 
+## Animation Merge
+
+This animation gif is the tumblr animation + thumbnail animation.
+
+By: JasminDreasond in Krita
+
 ## Summary
 
 - **Cover art:** blujetink (hand-drawn)
