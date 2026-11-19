@@ -1,0 +1,1 @@
+ffmpeg -i entrada.wav -codec:a libmp3lame -q:a 2 saida.mp3
