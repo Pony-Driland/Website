@@ -131,26 +131,6 @@ if (isDev) {
   });
 }
 
-// Safety net. `RegisterGlobCachePlugin` gives up (and leaves `customResponse` unset)
-// when the network fails or the storage quota is exceeded, and the engine would
-// then fall back to a bare `fetch(event.request)` that rejects the whole event.
-// This listener is registered last, so it only runs when nothing else answered,
-// and it always resolves with a `Response`.
-engine.addFetchRegExpListener('.*', async (fetchObj, result) => {
-  if (result.customResponse) return;
-  if (TinyServiceWorkerEngine.isNavigate(fetchObj.request)) return;
-
-  try {
-    result.customResponse = await fetch(fetchObj.request);
-  } catch (error) {
-    console.error('Request failed:', fetchObj.url.toString(), error);
-    result.customResponse = new Response('', {
-      status: 504,
-      statusText: 'Gateway Timeout',
-    });
-  }
-});
-
 engine.init();
 
 export default engine;
