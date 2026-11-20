@@ -18,6 +18,28 @@ import isDev from '../dev.mjs';
 /** Cache bucket used by the runtime cache plugin. */
 const CACHE_NAME = 'pony-driland-v1';
 
+/**
+ * Static assets handled by `GlobCachePlugin`.
+ *
+ * Media files are intentionally **not** listed. The Cache API refuses to store
+ * a `206 Partial Content` response, and `<audio>`/`<video>` rely on range
+ * requests, so caching them made `cache.put()` reject on every seek and kept
+ * the whole file in memory for nothing.
+ */
+const CACHE_PATTERNS = ['**/*.{js,css,woff,woff2,ttf,eot,png,jpg,jpeg,gif,svg,webp,avif}'];
+
+/** Matches the extensions above, used to decide if a request is worth owning. */
+const CACHEABLE_ASSET = /\.(?:js|css|woff2?|ttf|eot|png|jpe?g|gif|svg|webp|avif)$/i;
+
+/**
+ * Paths that must always be answered by the network.
+ *
+ * `/service-worker.js` is the worker itself, and `/index.html` is the document
+ * the SPA fallback fetches. Letting the router answer them would either loop or
+ * replace the shell with the 404 page.
+ */
+const BYPASS = new Set(['/service-worker.js', '/index.html']);
+
 const engine = new TinyServiceWorkerEngine({
   // Every navigation is answered with the SPA shell. The router resolves the
   // real page on the client.
@@ -31,18 +53,41 @@ const engine = new TinyServiceWorkerEngine({
   messaging: { enabled: true },
 });
 
-// This worker only owns the requests of this website. Everything else
-// (analytics, fonts, CDNs, third-party APIs, browser extensions, ...) belongs to
-// the browser and must never be touched by the engine.
-//
-// `TinyServiceWorkerEngine` calls `event.respondWith()` for every request it
-// accepts, so a cross-origin request would be re-issued by the worker instead of
-// being handled natively by the browser. That breaks opaque responses, CORS
-// preflights and `no-cors` requests, and it turns a blocked third-party request
-// into an unhandled rejection. Setting `canStart` to `false` makes the engine
-// return before `respondWith()`, leaving the event completely untouched.
-engine.on('fetchRequested', ({ request, result }) => {
-  if (!TinyServiceWorkerEngine.isSameOrigin(request)) result.canStart = false;
+const console = engine.toConsole();
+
+/**
+ * Decides which requests this worker is allowed to answer.
+ *
+ * `TinyServiceWorkerEngine` calls `event.respondWith()` for every request it
+ * accepts and finishes with a bare `fetch(event.request)` when no plugin claims
+ * it. That promise has no `catch`, so a single network failure (offline, an
+ * aborted navigation, a worker being replaced mid-flight, a `Range` request for
+ * a video) rejects the whole `FetchEvent` and the browser reports
+ * `TypeError: Failed to fetch` for the navigation.
+ *
+ * Only the two cases this worker can actually answer are accepted:
+ *
+ * - **navigations**, answered with the SPA shell;
+ * - **static assets**, answered by `GlobCachePlugin`.
+ *
+ * Everything else (chapter JSON, the API, cross-origin requests, media) is left
+ * completely untouched and handled natively by the browser.
+ */
+engine.on('fetchRequested', ({ request, url, result }) => {
+  if (!TinyServiceWorkerEngine.isSameOrigin(request)) {
+    result.canStart = false;
+    return;
+  }
+
+  if (BYPASS.has(url.pathname)) {
+    result.canStart = false;
+    return;
+  }
+
+  if (TinyServiceWorkerEngine.isNavigate(request)) return;
+  if (CACHEABLE_ASSET.test(url.pathname)) return;
+
+  result.canStart = false;
 });
 
 // Serve the static 404 page for every request the router can not answer.
@@ -60,9 +105,9 @@ engine.updateGlobalMsgCode({
 // promote it. A navigation must be promoted to `200`, otherwise the shell is
 // served with a 404 status and the browser refuses to render it.
 //
-// Every other same-origin request (`fetch('/readme.html')`, the chapter JSON
-// files, the API, ...) must skip the router completely, otherwise the app would
-// receive the HTML shell where it expects data.
+// Every other request that reaches this point is a static asset, which must skip
+// the router completely, otherwise the app would receive the HTML shell where it
+// expects a script, a stylesheet or an image.
 engine.addFetchGlobalListener('spa-navigation-only', (fetchObj, result) => {
   if (TinyServiceWorkerEngine.isNavigate(fetchObj.request)) {
     result.code = 200;
@@ -81,12 +126,30 @@ if (isDev) {
   // Static assets are cached on the fly.
   engine.installPlugin(GlobCachePlugin, {
     cacheName: CACHE_NAME,
-    patterns: [
-      '**/*.{js,css,woff,woff2,ttf,eot,png,jpg,jpeg,gif,svg,webp,avif,mp3,mp4,wav,ogg,opus}',
-    ],
+    patterns: CACHE_PATTERNS,
     exclude: ['/service-worker.js', '/index.html'],
   });
 }
+
+// Safety net. `GlobCachePlugin` gives up (and leaves `customResponse` unset)
+// when the network fails or the storage quota is exceeded, and the engine would
+// then fall back to a bare `fetch(event.request)` that rejects the whole event.
+// This listener is registered last, so it only runs when nothing else answered,
+// and it always resolves with a `Response`.
+engine.addFetchRegExpListener('.*', async (fetchObj, result) => {
+  if (result.customResponse) return;
+  if (TinyServiceWorkerEngine.isNavigate(fetchObj.request)) return;
+
+  try {
+    result.customResponse = await fetch(fetchObj.request);
+  } catch (error) {
+    console.error('Request failed:', fetchObj.url.toString(), error);
+    result.customResponse = new Response('', {
+      status: 504,
+      statusText: 'Gateway Timeout',
+    });
+  }
+});
 
 engine.init();
 
