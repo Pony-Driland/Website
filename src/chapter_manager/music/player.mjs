@@ -78,10 +78,9 @@ let currentId = null;
 /** @type {boolean} */
 let youtubeApiReady = false;
 
-
-window.onYouTubeIframeAPIReady = function() {
+window.onYouTubeIframeAPIReady = function () {
   youtubeApiReady = true;
-}
+};
 
 /**
  * Runs a playback task, giving up when it takes too long.

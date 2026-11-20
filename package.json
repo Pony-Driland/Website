@@ -4,7 +4,7 @@
         "node": ">=24.0.0"
     },
     "scripts": {
-        "start": "node ./build/TinyBuilder/index.mjs debug",
+        "dev": "node ./build/TinyBuilder/index.mjs debug",
         "prettier": "prettier --write ./src/* && prettier --write ./build/bundle/* && prettier --write ./build/TinyBuilder/* && prettier --write ./temp/*",
         "update-chapter": "node ./build/chapter",
         "build": "npm run build:files && node ./build/merge-website.mjs",
