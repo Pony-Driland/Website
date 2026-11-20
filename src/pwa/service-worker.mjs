@@ -11,7 +11,7 @@
  */
 
 import TinyServiceWorkerEngine from 'tiny-essentials/libs/sw/service/TinyServiceWorkerEngine';
-import GlobCachePlugin from 'tiny-essentials/libs/sw/service/plugins/GlobCachePlugin';
+import RegisterGlobCachePlugin from 'tiny-essentials/libs/sw/service/plugins/GlobCachePlugin';
 
 import isDev from '../dev.mjs';
 
@@ -19,7 +19,7 @@ import isDev from '../dev.mjs';
 const CACHE_NAME = 'pony-driland-v1';
 
 /**
- * Static assets handled by `GlobCachePlugin`.
+ * Static assets handled by `RegisterGlobCachePlugin`.
  *
  * Media files are intentionally **not** listed. The Cache API refuses to store
  * a `206 Partial Content` response, and `<audio>`/`<video>` rely on range
@@ -68,7 +68,7 @@ const console = engine.toConsole();
  * Only the two cases this worker can actually answer are accepted:
  *
  * - **navigations**, answered with the SPA shell;
- * - **static assets**, answered by `GlobCachePlugin`.
+ * - **static assets**, answered by `RegisterGlobCachePlugin`.
  *
  * Everything else (chapter JSON, the API, cross-origin requests, media) is left
  * completely untouched and handled natively by the browser.
@@ -124,14 +124,14 @@ if (isDev) {
   });
 } else {
   // Static assets are cached on the fly.
-  engine.installPlugin(GlobCachePlugin, {
+  engine.installPlugin(RegisterGlobCachePlugin, {
     cacheName: CACHE_NAME,
     patterns: CACHE_PATTERNS,
-    exclude: ['/service-worker.js', '/index.html'],
+    exclude: Array.from(BYPASS),
   });
 }
 
-// Safety net. `GlobCachePlugin` gives up (and leaves `customResponse` unset)
+// Safety net. `RegisterGlobCachePlugin` gives up (and leaves `customResponse` unset)
 // when the network fails or the storage quota is exceeded, and the engine would
 // then fall back to a bare `fetch(event.request)` that rejects the whole event.
 // This listener is registered last, so it only runs when nothing else answered,
