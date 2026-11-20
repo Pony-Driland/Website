@@ -68,7 +68,7 @@
         "express": "^5.2.1",
         "fs-extra": "^11.4.1",
         "glob": "^13.0.6",
-        "prettier": "3.9.10",
+        "prettier": "3.10.1",
         "typescript": "^7.0.2"
     },
     "private": true
