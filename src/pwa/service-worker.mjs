@@ -50,7 +50,33 @@ const engine = new TinyServiceWorkerEngine({
   messaging: { enabled: true },
 });
 
-const console = engine.toConsole();
+// const console = engine.toConsole();
+
+if (isDev) {
+  // A previous (cached) run may have left files behind. They are dropped so the
+  // browser can not answer a request with a build that no longer exists.
+  engine.on('beforeActivated', ({ event }) => {
+    event.waitUntil(caches.delete(CACHE_NAME));
+  });
+} else {
+  // Static assets are cached on the fly.
+  engine.installPlugin(RegisterGlobCachePlugin, {
+    cacheName: CACHE_NAME,
+    patterns: CACHE_PATTERNS,
+    exclude: Array.from(BYPASS),
+  });
+}
+
+// Serve the static 404 page for every request the router can not answer.
+// `spaMode` already answers navigations with `/index.html`, so this only kicks
+// in for the requests that fall through (for example a missing asset).
+engine.updateGlobalMsgCode({
+  404: {
+    path: '/404.html',
+    msg: 'Not Found',
+    logMsg: 'Route not found',
+  },
+});
 
 /**
  * Decides which requests this worker is allowed to answer.
@@ -86,17 +112,6 @@ engine.on('fetchRequested', ({ request, url, result }) => {
   result.canStart = false;
 });
 
-// Serve the static 404 page for every request the router can not answer.
-// `spaMode` already answers navigations with `/index.html`, so this only kicks
-// in for the requests that fall through (for example a missing asset).
-engine.updateGlobalMsgCode({
-  404: {
-    path: '/404.html',
-    msg: 'Not Found',
-    logMsg: 'Route not found',
-  },
-});
-
 // The engine starts every request with `code: 404` and expects a plugin to
 // promote it. A navigation must be promoted to `200`, otherwise the shell is
 // served with a 404 status and the browser refuses to render it.
@@ -111,21 +126,6 @@ engine.addFetchGlobalListener('spa-navigation-only', (fetchObj, result) => {
     result.needValidation = false;
   }
 });
-
-if (isDev) {
-  // A previous (cached) run may have left files behind. They are dropped so the
-  // browser can not answer a request with a build that no longer exists.
-  engine.on('beforeActivated', ({ event }) => {
-    event.waitUntil(caches.delete(CACHE_NAME));
-  });
-} else {
-  // Static assets are cached on the fly.
-  engine.installPlugin(RegisterGlobCachePlugin, {
-    cacheName: CACHE_NAME,
-    patterns: CACHE_PATTERNS,
-    exclude: Array.from(BYPASS),
-  });
-}
 
 engine.init();
 
