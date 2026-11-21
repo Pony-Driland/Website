@@ -46,6 +46,7 @@ import { renderNotFound } from './html/notFound.mjs';
 import { app, body, head, tinyWin, topPage } from './html/query.mjs';
 import { markdownBase } from './html/base.mjs';
 import { fileEnd, fileStart } from './ai/values/defaults.mjs';
+import { installAnalyticsListeners, trackNotFound } from './analytics.mjs';
 
 const { Icon } = TinyHtmlElems;
 addAiMarkerShortcut();
@@ -245,6 +246,7 @@ const renderPage = async (page) => {
       // broken link renders the 404 page instead of an empty document.
       if ((await openMDFile(getPagePath(page) ?? '')) === false) {
         document.title = 'ERROR 404 - not found';
+        trackNotFound(getPagePath(page) ?? undefined);
         renderNotFound();
       }
       return;
@@ -256,6 +258,7 @@ const renderPage = async (page) => {
     case 'not-found':
       clearFicData();
       document.title = 'ERROR 404 - not found';
+      trackNotFound();
       renderNotFound();
       return;
 
@@ -271,6 +274,7 @@ rootApp.onReady(() => {
     document.body.classList.add('browser-with-web3');
   installWindowHiddenScript();
   installPWA();
+  installAnalyticsListeners();
 
   const startApp = () => {
     console.log('Starting App...');

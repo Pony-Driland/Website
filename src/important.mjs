@@ -9,6 +9,7 @@ import TinyToastNotify from 'tiny-essentials/libs/html/notification/TinyToastNot
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import storyCfg from './chapters/config.mjs';
 import FirebaseAccount from './account/firebase.mjs';
+import { initAnalytics } from './analytics.mjs';
 
 // Loading
 export const loaderScreen = new TinyLoadingScreen();
@@ -54,20 +55,8 @@ export const appData = {
   emitter: new EventEmitter(),
 };
 
-// gtag
-// @ts-ignore
-window.dataLayer = window.dataLayer || [];
-export function gtag() {
-  if (location.hostname === 'localhost') return;
-  // @ts-ignore
-  dataLayer.push(arguments);
-}
-
-if (typeof storyCfg.gtag === 'string') {
-  gtag('js', new Date());
-
-  gtag('config', storyCfg.gtag);
-}
+// Google Analytics
+initAnalytics();
 
 // Notifications
 export const tinyNotification = new TinyNotifications({

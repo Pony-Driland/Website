@@ -16,6 +16,7 @@ import BootstrapPaginator from '../modules/bootstrap-paginator.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
 import { openNsfwSettings } from '../nsfw-settings.mjs';
+import { trackChapterOpen } from '../analytics.mjs';
 import { getFicNsfwFilters } from '../nsfw.mjs';
 import { body, tinyWin } from '../html/query.mjs';
 import { markdownBase } from '../html/base.mjs';
@@ -310,6 +311,9 @@ export const openChapterMenu = (params = {}) => {
    * @param {number|null} [selectedLine]
    */
   const newRead = async (chapter = 1, selectedLine = null) => {
+    // Google Analytics
+    trackChapterOpen(chapter);
+
     // Clear Update Warn
     TinyHtml.query('#fic-start')?.setText('Read Fic').prepend(new Icon('fab fa-readme me-2'));
 
@@ -849,11 +853,7 @@ export const openChapterMenu = (params = {}) => {
         .append(
           tinyLib.bs
             .button(`${!cantNsfw ? 'info' : 'danger'} btn-sm ms-3`)
-            .setText(
-              !cantNsfw
-                ? 'Choose Optional Mature Content'
-                : 'Login with an 18+ account',
-            )
+            .setText(!cantNsfw ? 'Choose Optional Mature Content' : 'Login with an 18+ account')
             .toggleProp('disabled', cantNsfw)
             .on('click', () => openNsfwSettings(getFicNsfwFilters())),
         ),

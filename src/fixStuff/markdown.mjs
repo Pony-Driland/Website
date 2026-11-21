@@ -5,9 +5,10 @@ import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/Bootstrap
 import tinyLib from '../files/tinyLib.mjs';
 
 import { storyData } from '../files/chapters.mjs';
-import { appData, gtag, loaderScreen, fileVersion } from '../important.mjs';
+import { appData, loaderScreen, fileVersion } from '../important.mjs';
 import { tinyAiScript } from '../ai/software/tinyAiScript.mjs';
 import storyCfg from '../chapters/config.mjs';
+import { trackPageView } from '../analytics.mjs';
 
 import { fixFileUrl, fixHref, fixImageSrc, fixSpoilers } from './urls.mjs';
 import { body, topPage } from '../html/query.mjs';
@@ -110,14 +111,8 @@ export const urlUpdate = (page, isPopState = false) => {
   document.title = title;
   storyData.urlPage = page.path ?? page.name;
 
-  // Google
-  if (typeof storyCfg.gtag === 'string') {
-    gtag('event', 'url', {
-      event_title: title,
-      event_category: 'open_url',
-      url: storyData.urlPage,
-    });
-  }
+  // Google Analytics
+  trackPageView({ ...page, title });
 
   if (!isPopState) updateUrl({ ...page, title });
 };

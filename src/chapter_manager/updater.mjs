@@ -2,7 +2,8 @@ import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import TinyAfterScrollWatcher from 'tiny-essentials/libs/html/scroll/TinyAfterScrollWatcher';
 
-import { tinyLs, gtag } from '../important.mjs';
+import { tinyLs } from '../important.mjs';
+import { trackChapterProgress } from '../analytics.mjs';
 import tinyLib from '../files/tinyLib.mjs';
 import { storyData } from '../files/chapters.mjs';
 import storyCfg from '../chapters/config.mjs';
@@ -162,13 +163,13 @@ cacheChapterUpdater.scrollData = () => {
     musicManager.stopPlaylist();
   }
 
-  // Google
-  if (!storyData.chapter.blockLineSave && typeof storyCfg.gtag === 'string' && gtag) {
-    gtag('event', 'chapter', {
-      event_chapter: `Chapter ${storyData.chapter.selected}`,
-      event_category: 'line',
-      event_line: storyData.chapter.line,
-    });
+  // Google Analytics
+  if (!storyData.chapter.blockLineSave) {
+    trackChapterProgress(
+      storyData.chapter.selected,
+      storyData.chapter.line ?? 0,
+      storyData.data[storyData.chapter.selected],
+    );
   }
 
   // Weather
