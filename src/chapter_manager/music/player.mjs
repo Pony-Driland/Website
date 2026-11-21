@@ -1,8 +1,10 @@
 import TinyMediaPlayer from 'tiny-essentials/libs/media/TinyMediaPlayer';
-import { YoutubeMediaAdapter } from 'tiny-essentials/libs/media/TinyMediaPlayer/Youtube';
+import {
+  YoutubeMediaAdapter,
+  loadYoutubeApi,
+} from 'tiny-essentials/libs/media/TinyMediaPlayer/Youtube';
 import { HtmlAudioAdapter } from 'tiny-essentials/libs/media/TinyMediaPlayer/HtmlAudio';
 import TinyPromiseQueue from 'tiny-essentials/libs/utils/TinyPromiseQueue';
-import { waitForTrue } from 'tiny-essentials/basics/promiseUtils';
 
 import storyCfg from '../../chapters/config.mjs';
 import audioUnlock from '../audioUnlock.mjs';
@@ -32,17 +34,14 @@ import audioUnlock from '../audioUnlock.mjs';
 const VOLUME_STORAGE_KEY = 'storyMusicVolume';
 
 /**
- * Maximum time a single playback task may block the queue.
+ * Time after which a slow playback is reported in the console.
  *
- * `YoutubeMediaAdapter.play()` only resolves after the iframe fires `onReady`.
- * A blocked or offline iframe would never settle that promise, so the queue is
- * released by force instead of freezing the soundtrack for the rest of the
- * session.
+ * `YoutubeMediaAdapter.play()` only resolves after the iframe fires `onReady`,
+ * which can take a while on a cold cache. The task is never abandoned (that
+ * would let the queue re-enter the adapter mid-initialization), it is only
+ * logged so a stuck iframe is easy to spot.
  */
 const PLAYBACK_TIMEOUT = 20000;
-
-/** How often the playback deadline is checked, in milliseconds. */
-const TIMEOUT_CHECK_INTERVAL = 250;
 
 const player = new TinyMediaPlayer({
   persistVolume: true,
@@ -77,48 +76,37 @@ let audioPlayer = null;
 /** @type {string|null} */
 let currentId = null;
 
-/** @type {boolean} */
-let youtubeApiReady = false;
-
-window.onYouTubeIframeAPIReady = function () {
-  youtubeApiReady = true;
-};
-
 /**
- * Runs a playback task, giving up when it takes too long.
+ * Runs a playback task to completion, warning when it takes too long.
  *
- * `waitForTrue` is used as the clock instead of `setTimeout`, so the deadline
- * is polled and no timer outlives the call.
+ * The queue must never move on before the task settles. `YoutubeMediaAdapter`
+ * stores its `YT.Player` instance *before* the iframe fires `onReady`, so a
+ * second task that starts while the first one is still booting calls
+ * `loadVideoById()` on the not-yet-functional stub and throws
+ * `TypeError: this.#player?.loadVideoById is not a function`.
+ *
+ * The previous implementation raced the task against a deadline and rejected on
+ * timeout, which released the queue while the playback kept running. That was
+ * the production crash: the iframe boots slower there, the deadline fired
+ * first and the next scroll event re-entered the half-initialized adapter.
+ *
+ * The deadline is now only a diagnostic and never abandons the task, so the
+ * queue stays serialized no matter how slow the iframe is.
  *
  * @param {() => Promise<void>} task - Playback to run.
- * @param {number} [timeout] - Maximum time to wait, in milliseconds.
+ * @param {number} [timeout] - Time after which a warning is logged, in milliseconds.
  * @returns {Promise<void>}
  */
-const withTimeout = async (task, timeout = PLAYBACK_TIMEOUT) => {
-  let settled = false;
-  const startedAt = Date.now();
+const runPlayback = async (task, timeout = PLAYBACK_TIMEOUT) => {
+  const timer = setTimeout(() => {
+    console.warn(`[music] Playback is taking longer than ${timeout}ms, still waiting...`);
+  }, timeout);
 
-  const playback = Promise.resolve()
-    .then(task)
-    .finally(() => {
-      settled = true;
-    });
-
-  // The deadline may win the race below, leaving the playback running. Its
-  // rejection is already reported by the caller, so it must not surface as an
-  // unhandled rejection.
-  playback.catch(() => {});
-
-  // Resolves as soon as the playback settles or the deadline is reached,
-  // whichever comes first.
-  const deadline = waitForTrue(
-    () => settled || Date.now() - startedAt >= timeout,
-    TIMEOUT_CHECK_INTERVAL,
-  );
-
-  await Promise.race([playback, deadline]);
-
-  if (!settled) throw new Error('Playback timed out.');
+  try {
+    await task();
+  } finally {
+    clearTimeout(timer);
+  }
 };
 
 /**
@@ -128,7 +116,7 @@ const withTimeout = async (task, timeout = PLAYBACK_TIMEOUT) => {
  * @param {() => Promise<void>} task - Playback to run.
  * @returns {Promise<void>}
  */
-const enqueue = (task) => queue.enqueue(() => withTimeout(task));
+const enqueue = (task) => queue.enqueue(() => runPlayback(task));
 
 if (window.localStorage.getItem(VOLUME_STORAGE_KEY) === null) {
   const volume = Number(storyCfg.defaultYoutubeVolume);
@@ -138,6 +126,22 @@ if (window.localStorage.getItem(VOLUME_STORAGE_KEY) === null) {
   // afterwards, so the volume has to be pushed to them again.
   player.volume = player.volume;
 }
+
+/**
+ * Resolves once the YouTube IFrame API is usable.
+ *
+ * The adapter only exposes the API through a module-private singleton, and the
+ * previous `window.onYouTubeIframeAPIReady` hook was unreliable: the global is
+ * a single slot that any other script can overwrite, and it never fires when
+ * the API was already cached by the browser. Awaiting the library's own loader
+ * removes the race entirely.
+ *
+ * @returns {Promise<void>}
+ */
+const waitForYoutubeApi = () => {
+  if (typeof window !== 'undefined' && window.YT && window.YT.Player) return Promise.resolve();
+  return loadYoutubeApi();
+};
 
 /**
  * Creates the player adapter on demand: it binds itself to a single iframe, so
@@ -160,7 +164,7 @@ const ensurePlayer = async (videoId) => {
 
     youtube = new YoutubeMediaAdapter();
     player.registerAdapter(youtube);
-    await waitForTrue(() => youtubeApiReady === true);
+    await waitForYoutubeApi();
   }
 
   if (!audioPlayer) {
