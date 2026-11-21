@@ -15,6 +15,11 @@
             ]
         }
     ],
-    "instrument_prompt": "bleak snowstorm ambient, lost explorer theme, sorrowful piano, distant music box, ethereal shivering strings, emotional buildup, hopeless adventure, freezing atmosphere, dark academia, lonely",
+    "production_steps": [
+        {
+            "id": "suno_v5",
+            "instrument_prompt": "bleak snowstorm ambient, lost explorer theme, sorrowful piano, distant music box, ethereal shivering strings, emotional buildup, hopeless adventure, freezing atmosphere, dark academia, lonely"
+        }
+    ],
     "reference_songs": []
 }

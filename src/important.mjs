@@ -19,8 +19,11 @@ TinyHtml.classCanWhitespace = true;
 TinyHtml.elemDebug = true;
 TinyHtml.defaultDisplay = '';
 
+/** Cache-busting query string appended to static asset requests. */
+export const fileVersion = '?v=501';
+
 // Start jsStore
-export const connStore = new JsStore.Connection(new Worker('jsstore.worker.min.js'));
+export const connStore = new JsStore.Connection(new Worker('/jsstore.worker.min.js'));
 
 // Localstorage
 export const tinyLs = new TinyLocalStorage('pony-driland');
@@ -28,6 +31,7 @@ export const tinyLs = new TinyLocalStorage('pony-driland');
 // App Data
 export const appData = {
   youtube: {},
+  /** @type {{ using: boolean, interval: ReturnType<typeof setInterval>|null, secondsUsed: number }} */
   ai: { using: false, interval: null, secondsUsed: 0 },
   emitter: new EventEmitter(),
 };
@@ -56,6 +60,10 @@ export const tinyNotification = new TinyNotifications({
 export const tinyToast = new TinyToastNotify('bottom', 'right', 3000, 60);
 
 // Firebase
+/**
+ * Shared Firebase account manager instance (Google sign-in + People API).
+ * @type {FirebaseAccount}
+ */
 export const fa = new FirebaseAccount({
   apiKey: 'AIzaSyDl1CEbPJAUj3B1spAT_DiQz4JYZeeXRQU',
   authDomain: 'nyah-club.firebaseapp.com',
@@ -66,7 +74,15 @@ export const fa = new FirebaseAccount({
   appId: '1:1006395655918:web:4a8cf2722d68c3ea4a55ff',
 });
 
-/** @returns {boolean} */
+/**
+ * Checks whether the current visitor must pass the age verification gate.
+ *
+ * The check is driven by the `user-country` entry in local storage and by the
+ * `noNsfw` list in the story config. When the list contains `ALL`, every
+ * visitor is gated; otherwise only the countries listed are gated.
+ *
+ * @returns {boolean} `true` when the visitor must verify their age.
+ */
 export function needsAgeVerification() {
   return tinyLs.getString('user-country') &&
     (storyCfg.noNsfw.includes('ALL') ||
@@ -96,8 +112,10 @@ export function isNoNsfw(biggerAge = 18) {
   return isNoNsfw;
 }
 
-// Fic Data
+/** Cached character prompts, loaded once during the bootstrap. */
 export const ficCache = {
+  /** Raw prompt template. */
   charPrompts: '',
-  charListPrompts: [],
+  /** Parsed list of character prompts. */
+  charListPrompts: /** @type {Record<string, string>[]} */ ([]),
 };

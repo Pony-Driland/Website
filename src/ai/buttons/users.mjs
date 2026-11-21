@@ -4,12 +4,20 @@ import { tinyIo } from '../software/base.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import UserRoomManager from '../RoomUserManagerUI.mjs';
 
+/**
+ * Opens the user manager modal, which lists the users in the current room and
+ * exposes the moderation actions available to the signed-in account.
+ *
+ * Does nothing when there is no active socket client.
+ *
+ * @returns {void}
+ */
 export const userButtonActions = () => {
   if (tinyIo.client) {
     const $root = TinyHtml.createFrom('div');
 
     // Start modal
-    const { html } = tinyLib.modal({
+    const { html, modal } = tinyLib.modal({
       title: 'User manager',
       dialog: 'modal-lg',
       id: 'user-manager',
@@ -21,30 +29,63 @@ export const userButtonActions = () => {
     const room = tinyIo.client.getRoom() || {};
     const userManager = new UserRoomManager({
       client: tinyIo.client,
-      currentUserId: user.userId,
+      currentUserId: user.userId ?? '',
       isOwner: user.userId === room.ownerId,
       root: $root,
       users: structuredClone(tinyIo.client.getUsers()),
       moderators: [],
+      permissions: tinyIo.client.getPermissions(),
+      onClose: () => modal.hide(),
     });
 
     const mods = tinyIo.client.getMods() || [];
     for (const userId of mods) userManager.promoteModerator(userId);
 
     userManager.setRoomStatus(!room.disabled);
-    userManager.setReadonly(room.readOnly);
+    userManager.setReadonly(Boolean(room.readOnly));
 
     // Add events
+    /** @param {{ userId: string, data: { nickname?: string, ping: string|number|Date } }} data */
     const usersAdded = (data) => userManager.addUser(data.userId, structuredClone(data.data));
-    const usersRemoved = (userId) => userManager.removeUser(userId);
+    /**
+     * Removes an user from the list.
+     *
+     * `userLeft` carries `{ data, userId }` while `userKicked` and
+     * `userBanned` carry the bare id, so both shapes are accepted here.
+     *
+     * @param {string|{ userId?: string }} data - User id or event payload.
+     * @returns {void}
+     */
+    const usersRemoved = (data) => {
+      const userId = typeof data === 'string' ? data : data?.userId;
+      if (typeof userId === 'string' && userId.length > 0) userManager.removeUser(userId);
+    };
+    /**
+     * @param {'add'|'remove'} type
+     * @param {string} userId
+     */
     const userModUpdated = (type, userId) => {
       if (type === 'add') userManager.promoteModerator(userId);
       if (type === 'remove') userManager.demoteModerator(userId);
     };
+    /** @param {{ disabled?: boolean, readOnly: boolean }} roomData */
     const roomStatusUpdate = (roomData) => {
       userManager.setRoomStatus(!roomData.disabled);
       userManager.setReadonly(roomData.readOnly);
     };
+    /**
+     * The event carries the full permission list as the third argument.
+     *
+     * @param {'grant'|'revoke'} type - What happened.
+     * @param {string[]} users - Users affected by the change.
+     * @param {RoomPermissionEntry[]} permissions - Full permission list.
+     */
+    const permissionUpdated = (type, users, permissions) => userManager.setPermissions(permissions);
+    /**
+     * @param {string} userId
+     * @param {boolean} isStaff
+     */
+    const userStaffUpdated = (userId, isStaff) => userManager.setUserStaff(userId, isStaff);
 
     // const userUpdated = (data) => console.log(data);
 
@@ -55,18 +96,24 @@ export const userButtonActions = () => {
     tinyIo.client.on('userBanned', usersRemoved);
     tinyIo.client.on('roomModChange', userModUpdated);
     tinyIo.client.on('roomUpdates', roomStatusUpdate);
+    tinyIo.client.on('roomPermissionChange', permissionUpdated);
+    tinyIo.client.on('userStaffChange', userStaffUpdated);
     // tinyIo.client.on('userUpdated', userUpdated);
 
     // Close modal
     html.on('hidden.bs.modal', () => {
-      tinyIo.client.off('userPing', usersAdded);
-      tinyIo.client.off('userJoined', usersAdded);
-      tinyIo.client.off('userLeft', usersRemoved);
-      tinyIo.client.off('userKicked', usersRemoved);
-      tinyIo.client.off('userBanned', usersRemoved);
-      tinyIo.client.off('roomModChange', userModUpdated);
-      tinyIo.client.off('roomUpdates', roomStatusUpdate);
-      // tinyIo.client.off('userUpdated', userUpdated);
+      const client = tinyIo.client;
+      if (!client) return;
+      client.off('userPing', usersAdded);
+      client.off('userJoined', usersAdded);
+      client.off('userLeft', usersRemoved);
+      client.off('userKicked', usersRemoved);
+      client.off('userBanned', usersRemoved);
+      client.off('roomModChange', userModUpdated);
+      client.off('roomUpdates', roomStatusUpdate);
+      client.off('roomPermissionChange', permissionUpdated);
+      client.off('userStaffChange', userStaffUpdated);
+      // client.off('userUpdated', userUpdated);
       userManager.destroy();
     });
   }

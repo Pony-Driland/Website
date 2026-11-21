@@ -1,3 +1,12 @@
+/**
+ * Cached TinyHtml wrappers around the singleton DOM nodes declared in
+ * `index.html`.
+ *
+ * Importing these avoids re-querying the document on every render.
+ *
+ * @module html/query
+ */
+
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 
 export const tinyWin = new TinyHtml(window);

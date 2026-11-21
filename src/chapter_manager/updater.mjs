@@ -8,16 +8,55 @@ import { storyData } from '../files/chapters.mjs';
 import storyCfg from '../chapters/config.mjs';
 import ttsManager from './tts/tts.mjs';
 import musicManager from './music/index.mjs';
+import audioUnlock from './audioUnlock.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { body, tinyWin } from '../html/query.mjs';
 import { markdownBase } from '../html/base.mjs';
 import { musicApp } from './music/html.mjs';
+import { sky } from './weather/index.mjs';
 
 const { Icon } = TinyHtmlElems;
 
-// Prepare Cache
-const cacheChapterUpdater = { soundCache: {} };
+/**
+ * Renders the chapter reader: builds the page list, restores the reading
+ * position and lazily loads the chapter content while scrolling.
+ *
+ * @module chapter_manager/updater
+ */
 
+/**
+ * A single sound effect tracked by the chapter reader.
+ *
+ * @typedef {Object} SoundCacheEntry
+ * @property {boolean} [playing] - Whether the sound is currently playing.
+ * @property {boolean} [instant] - Whether the running sound was started in instant mode.
+ * @property {ChapterSoundConfig} [value] - The sound configuration attached to the entry.
+ */
+
+/**
+ * Chapter reader cache and public API.
+ *
+ * @typedef {Object} ChapterUpdater
+ * @property {Record<string, SoundCacheEntry>} soundCache - Sound effects by file name.
+ * @property {Record<number, { line: number, file: string, value: ChapterSoundConfig }[]>} [soundTimeline] - `playEffect` entries of each chapter, sorted by line.
+ * @property {boolean} [locked] - Prevents re-entrant scroll handling.
+ * @property {ReturnType<typeof setTimeout>} [timeoutChecker] - Pending scroll debounce timer.
+ * @property {(item: number, scrollIntoView?: boolean) => void} setActiveItem - Selects a line.
+ * @property {() => void} scrollData - Applies the state of the current line.
+ * @property {(lastPage: number) => void} data - Renders the given line.
+ * @property {(line: number) => Record<string, ChapterSoundConfig>} getSoundState - Resolves the sounds of a line.
+ * @property {(soundState: Record<string, ChapterSoundConfig>) => void} applySounds - Applies a resolved sound state.
+ * @property {() => void} resetSounds - Forgets every tracked sound.
+ */
+
+// Prepare Cache
+/** @type {ChapterUpdater} */
+const cacheChapterUpdater = /** @type {ChapterUpdater} */ ({ soundCache: {}, soundTimeline: {} });
+
+/**
+ * @param {number} item - Line to activate.
+ * @param {boolean} [scrollIntoView] - Whether to scroll the line into view.
+ */
 cacheChapterUpdater.setActiveItem = (item, scrollIntoView = false) => {
   if (cacheChapterUpdater.locked) {
     return;
@@ -26,7 +65,7 @@ cacheChapterUpdater.setActiveItem = (item, scrollIntoView = false) => {
   // Validator
   if (storyData.chapter.selected > 0) {
     let selectedItem = Number(item);
-    let currentLine = storyData.chapter.line;
+    let currentLine = storyData.chapter.line ?? 0;
 
     if (currentLine == selectedItem) {
       return;
@@ -36,9 +75,13 @@ cacheChapterUpdater.setActiveItem = (item, scrollIntoView = false) => {
     if (element == null) {
       // Todo: handle correctly
       if (selectedItem > currentLine) {
-        document.querySelector('a[title="Go to next page"]').click();
+        /** @type {HTMLElement|null} */
+        const nextPage = document.querySelector('a[title="Go to next page"]');
+        if (nextPage) nextPage.click();
       } else if (selectedItem < currentLine) {
-        document.querySelector('a[title="Go to previous page"]').click();
+        /** @type {HTMLElement|null} */
+        const prevPage = document.querySelector('a[title="Go to previous page"]');
+        if (prevPage) prevPage.click();
       }
       return;
     }
@@ -49,11 +92,12 @@ cacheChapterUpdater.setActiveItem = (item, scrollIntoView = false) => {
         cacheChapterUpdater.locked = false;
       });
 
+      /** @type {Element|null} */
       let scrollTarget = document.querySelector(`tr[line="${selectedItem - 1}"]`);
       if (scrollTarget == null) {
-        scrollTarget = markdownBase.get(0);
+        scrollTarget = /** @type {Element} */ (markdownBase.get(0));
       }
-      scrollTarget.scrollIntoView();
+      if (scrollTarget) scrollTarget.scrollIntoView();
     }
 
     // Complete
@@ -103,19 +147,13 @@ tinyWin.on(['resize', 'scroll'], () => {
 
 cacheChapterUpdater.scrollData = () => {
   // Set Playlist
-  if (Array.isArray(musicApp.playlist)) {
-    musicManager.disable(false);
-  } else {
+  if (!Array.isArray(musicApp.playlist)) {
     musicApp.playlist = [];
   }
 
-  // Exist Playlist
-  if (
-    !storyData.chapter.blockLineSave &&
-    !musicApp.disabled &&
-    Array.isArray(musicApp.playlist) &&
-    musicApp.playlist.length > 0
-  ) {
+  // Exist Playlist. `musicApp.disabled` is the visitor's own switch, so it is
+  // the only thing that can keep the soundtrack off here.
+  if (!storyData.chapter.blockLineSave && !musicApp.disabled && musicApp.playlist.length > 0) {
     musicManager.startPlaylist();
   }
 
@@ -133,72 +171,183 @@ cacheChapterUpdater.scrollData = () => {
     });
   }
 
-  // Remove All Weather
-  const removeAllWeather = () => {
-    storyData.sfx['heavy-rain'].hide();
-    storyData.sfx['heavy-rain-little-thunder'].hide();
-    body.removeClass('raining-sky', 'thunder-effect');
+  // Weather
+  //
+  // The sky is rendered by the WebGL module, so this only has to keep the
+  // renderer and the ambient sound in sync with the current line.
+  const weather = storyData.chapter.nextWeather ?? null;
+  const dayCycle = storyData.chapter.nextDayNightCycle ?? null;
+
+  sky.setState(weather, dayCycle);
+
+  // Ambient sound that belongs to the weather. `show()` restarts the track, so
+  // it may only run when the weather actually changes - otherwise scrolling
+  // would restart the rain on every single line.
+  /** @type {Record<string, string>} */
+  const weatherSounds = {
+    heavyrain: 'heavy-rain',
+    bolt: 'heavy-rain-little-thunder',
   };
 
-  // Set Weather
-  const oldWeather = storyData.chapter.weather;
-  storyData.chapter.weather = storyData.chapter.nextWeather;
+  const weatherChanged = storyData.chapter.weather !== weather;
+  storyData.chapter.weather = weather ?? undefined;
 
-  // Change Sound
-  if (oldWeather !== storyData.chapter.weather) {
-    removeAllWeather();
-    if (!storyData.chapter.blockLineSave) {
-      if (storyData.chapter.weather === 'heavyrain') {
-        storyData.sfx['heavy-rain'].show();
-        // body.addClass('raining-sky');
-      } else if (storyData.chapter.weather === 'bolt') {
-        storyData.sfx['heavy-rain-little-thunder'].show();
-        // body.addClass('raining-sky', 'thunder-effect');
+  if (weatherChanged) {
+    for (const key in weatherSounds) {
+      const sound = storyData.sfx[weatherSounds[key]];
+      if (!sound || typeof sound.hide !== 'function') continue;
+
+      const shouldPlay = !storyData.chapter.blockLineSave && weather === key;
+      if (shouldPlay && typeof sound.show === 'function') {
+        // The browser blocks the audio until the visitor interacts with the page
+        audioUnlock.whenReady(() => sound.show(), `weather:${key}`);
+      } else {
+        sound.hide();
       }
     }
   }
 
   // Manager Other Sounds
+  cacheChapterUpdater.applySounds(cacheChapterUpdater.getSoundState(storyData.chapter.line ?? 0));
+};
+
+/**
+ * Collects every `playEffect` of a chapter, ordered by line.
+ *
+ * @param {number} chapter - Chapter number.
+ * @returns {{ line: number, file: string, value: ChapterSoundConfig }[]} Timeline entries.
+ */
+const getSoundTimeline = (chapter) => {
+  const cached = cacheChapterUpdater.soundTimeline?.[chapter];
+  if (cached) return cached;
+
+  /** @type {{ line: number, file: string, value: ChapterSoundConfig }[]} */
+  const timeline = [];
+  const data = storyData.data[chapter];
+
+  if (data) {
+    for (const index in data) {
+      const effect = data[index].set?.playEffect;
+      if (!effect || typeof effect.file !== 'string' || effect.file.length < 1) continue;
+      timeline.push({ line: Number(index) + 1, file: effect.file, value: effect });
+    }
+
+    timeline.sort((a, b) => a.line - b.line);
+  }
+
+  if (!cacheChapterUpdater.soundTimeline) cacheChapterUpdater.soundTimeline = {};
+  cacheChapterUpdater.soundTimeline[chapter] = timeline;
+  return timeline;
+};
+
+/**
+ * Rebuilds the sound state of a line by replaying every `playEffect` from the
+ * beginning of the chapter.
+ *
+ * The state is derived from the reading position instead of being mutated while
+ * scrolling, so a sound that has no explicit "off" line in the story is still
+ * stopped as soon as the reader goes back before the line that started it.
+ *
+ * @param {number} line - Last line to consider.
+ * @returns {Record<string, ChapterSoundConfig>} Sounds indexed by file name.
+ */
+cacheChapterUpdater.getSoundState = (line) => {
+  /** @type {Record<string, ChapterSoundConfig>} */
+  const state = {};
+  const timeline = getSoundTimeline(storyData.chapter.selected);
+
+  for (const entry of timeline) {
+    if (entry.line > line) break;
+    state[entry.file] = entry.value;
+  }
+
+  return state;
+};
+
+/**
+ * Applies a resolved sound state, starting and stopping only the difference.
+ *
+ * @param {Record<string, ChapterSoundConfig>} state - Desired sound state.
+ * @returns {void}
+ */
+cacheChapterUpdater.applySounds = (state) => {
+  // Search results and other temporary renders must not touch the audio
+  if (storyData.chapter.blockLineSave) return;
+
+  // Start or keep the sounds of the current state
+  for (const file in state) {
+    const value = state[file];
+    const sound = storyData.sfx[file];
+    if (!sound) continue;
+
+    const cache = (cacheChapterUpdater.soundCache[file] ??= { playing: false });
+    cache.value = value;
+
+    const shouldPlay = value.enabled === true;
+    if (shouldPlay === Boolean(cache.playing)) continue;
+
+    cache.playing = shouldPlay;
+    cache.instant = Boolean(value.instant);
+
+    if (shouldPlay) {
+      // The browser blocks the audio until the visitor interacts with the page
+      audioUnlock.whenReady(() => {
+        console.log(`[${file}] Playing...`);
+        if (value.instant) {
+          sound.play();
+        } else {
+          sound.show();
+        }
+      }, `sfx:${file}`);
+    } else {
+      console.log(`[${file}] Stopping...`);
+      if (value.instant) {
+        sound.stop();
+      } else {
+        sound.hide();
+      }
+    }
+  }
+
+  // Stop everything that is not part of the current state anymore
   for (const file in cacheChapterUpdater.soundCache) {
-    // Value Data
-    const value = cacheChapterUpdater.soundCache[file].value;
+    if (state[file]) continue;
 
-    if (cacheChapterUpdater.soundCache[value.file].waiting) {
-      // Progress
-      cacheChapterUpdater.soundCache[value.file].waiting = false;
+    const cache = cacheChapterUpdater.soundCache[file];
+    if (!cache.playing) continue;
 
-      // Play
-      if (
-        !storyData.chapter.blockLineSave &&
-        value.enabled &&
-        !cacheChapterUpdater.soundCache[value.file].playing
-      ) {
-        console.log(`[${value.file}] Playing...`);
-        cacheChapterUpdater.soundCache[value.file].playing = true;
+    cache.playing = false;
 
-        if (!value.instant) {
-          storyData.sfx[value.file].show();
-        } else {
-          storyData.sfx[value.file].play();
-        }
-      }
+    const sound = storyData.sfx[file];
+    if (!sound) continue;
 
-      // Stop
-      else if (!value.enabled && cacheChapterUpdater.soundCache[value.file].playing) {
-        console.log(`[${value.file}] Stopping...`);
-        cacheChapterUpdater.soundCache[value.file].playing = false;
-
-        if (!value.instant) {
-          storyData.sfx[value.file].hide();
-        } else {
-          storyData.sfx[value.file].stop();
-        }
-      }
+    console.log(`[${file}] Stopping...`);
+    if (cache.instant) {
+      sound.stop();
+    } else {
+      sound.hide();
     }
   }
 };
 
-// Update Cache
+/**
+ * Forgets every tracked sound. Must be called whenever the audio is stopped
+ * behind the reader's back (leaving the chapter, for example), so the next
+ * render starts the sounds again from scratch.
+ *
+ * @returns {void}
+ */
+cacheChapterUpdater.resetSounds = () => {
+  cacheChapterUpdater.soundCache = {};
+  cacheChapterUpdater.soundTimeline = {};
+};
+
+/**
+ * Renders the given line.
+ *
+ * @param {number} lastPage - Line that must be rendered.
+ * @returns {void}
+ */
 cacheChapterUpdater.data = (lastPage) => {
   if (storyData.chapter.selected > 0) {
     TinyHtml.queryAll('.selected-tr').removeClass('selected-tr');
@@ -214,7 +363,7 @@ cacheChapterUpdater.data = (lastPage) => {
       const tinyData = storyData.chapter.ficPageData.find(
         (ficData) => ficData.line === Number(lastPage),
       );
-      const ttsIndex = tinyData.line || -1;
+      const ttsIndex = tinyData ? tinyData.line : -1;
       if (ttsIndex > -1) ttsManager.readLine(ttsIndex);
     }
 
@@ -227,8 +376,12 @@ cacheChapterUpdater.data = (lastPage) => {
         // Get Data
         if (data[i].set) {
           for (const item in data[i].set) {
-            if (typeof chapterSet[item] === 'function') {
-              chapterSet[item](data[i].set[item], i < lastPage);
+            const setter = chapterSet[item];
+            if (typeof setter === 'function') {
+              setter(
+                /** @type {Record<string, never>} */ (data[i].set)[item],
+                Number(i) < lastPage,
+              );
             }
           }
         }
@@ -293,12 +446,15 @@ cacheChapterUpdater.data = (lastPage) => {
       });
     }
 
-    if (!storyData.chapter.blockLineSave) {
-      storyData.chapter.nav.bookmark.removeClass('disabled');
-      storyData.chapter.nav.bookmark.removeProp('disabled');
-    } else {
-      storyData.chapter.nav.bookmark.addClass('disabled');
-      storyData.chapter.nav.bookmark.addProp('disabled');
+    const bookmark = storyData.chapter.nav.bookmark;
+    if (bookmark) {
+      if (!storyData.chapter.blockLineSave) {
+        bookmark.removeClass('disabled');
+        bookmark.removeProp('disabled');
+      } else {
+        bookmark.addClass('disabled');
+        bookmark.addProp('disabled');
+      }
     }
 
     // Sortable  #status
@@ -324,23 +480,16 @@ cacheChapterUpdater.data = (lastPage) => {
   }
 };
 
-// Set Actions
+/** @type {Record<string, (value: never, actionFromNow?: boolean) => void>} */
 const chapterSet = {
-  playEffect: (value, actionFromNow = false) => {
-    if (actionFromNow && value && value.file && storyData.sfx[value.file]) {
-      if (!cacheChapterUpdater.soundCache[value.file]) {
-        cacheChapterUpdater.soundCache[value.file] = { playing: false };
-      }
-
-      cacheChapterUpdater.soundCache[value.file].waiting = true;
-      cacheChapterUpdater.soundCache[value.file].value = value;
-    }
-  },
-
+  /**
+   * @param {string} value - Playlist key.
+   * @param {boolean} [actionFromNow] - Whether the action happens now.
+   */
   playlistPlay: (value, actionFromNow = false) => {
     if (actionFromNow) {
       // Set Playlist
-      const playlist = storyCfg.playlist[value];
+      const playlist = storyCfg.playlist?.[value];
       if (Array.isArray(playlist)) {
         musicApp.value = value;
         musicApp.playlist = playlist;
@@ -351,6 +500,10 @@ const chapterSet = {
     }
   },
 
+  /**
+   * @param {number} value - Day number.
+   * @param {boolean} [actionFromNow] - Whether the action happens now.
+   */
   day: (value, actionFromNow = false) => {
     if (actionFromNow) {
       // Add Item Base
@@ -368,12 +521,27 @@ const chapterSet = {
         );
       }
 
+      // A new day means a new night: the moon may pick a fresh phase.
+      sky.nextNight();
+
       new TinyHtml(storyData.nc.base.right.find(':scope > #status #day')).setText(`Day: ${value}`);
     }
   },
 
+  /**
+   * @param {string} value - Day/night cycle key.
+   * @param {boolean} [actionFromNow] - Whether the action happens now.
+   */
   dayNightCycle: (value, actionFromNow = false) => {
     if (actionFromNow) {
+      // The sky needs the raw key, the body class below is only a styling hook.
+      storyData.chapter.nextDayNightCycle = value;
+      sky.setState(storyData.chapter.nextWeather ?? null, value);
+
+      // The moon phase is resolved by the sky controller, which only commits a
+      // new phase while the moon is hidden.
+      sky.syncMoon();
+
       body
         ?.removeClass(`fic-daycicle-morning`)
         .removeClass(`fic-daycicle-evening`)
@@ -397,6 +565,7 @@ const chapterSet = {
       }
 
       // Types
+      /** @type {Record<string, { icon: string, title: string }>} */
       const types = {
         morning: { icon: 'fas fa-sun', title: 'Morning' },
         evening: { icon: 'fas fa-cloud-sun', title: 'Evening' },
@@ -423,6 +592,43 @@ const chapterSet = {
     }
   },
 
+  /**
+   * Pins the moon phase for the current night.
+   *
+   * The value only applies to the night it was declared on: the reader bumps
+   * the night counter whenever the day/night cycle leaves the night, so the
+   * next night falls back to the automatic phase.
+   *
+   * @param {string} value - Moon phase name, or `auto` to clear the override.
+   * @param {boolean} [actionFromNow] - Whether the action happens now.
+   */
+  moonPhase: (value, actionFromNow = false) => {
+    if (actionFromNow) {
+      storyData.chapter.nextMoonPhase = value === 'auto' ? null : value;
+      sky.setMoonPhase(storyData.chapter.nextMoonPhase);
+    }
+  },
+
+  /**
+   * Overrides how the precipitation moves.
+   *
+   * Both values are optional: whatever is omitted keeps the preset default, so
+   * a line only has to declare what makes it different.
+   *
+   * @param {{ wind?: number, speed?: number }|null} value - Overrides.
+   * @param {boolean} [actionFromNow] - Whether the action happens now.
+   */
+  weatherConfig: (value, actionFromNow = false) => {
+    if (actionFromNow) {
+      storyData.chapter.nextWeatherConfig = value ?? null;
+      sky.setOverrides(value ?? null);
+    }
+  },
+
+  /**
+   * @param {string} value - Weather key.
+   * @param {boolean} [actionFromNow] - Whether the action happens now.
+   */
   weather: (value, actionFromNow = false) => {
     if (actionFromNow) {
       // Add Item Base
@@ -441,14 +647,19 @@ const chapterSet = {
       }
 
       // Types
+      /** @type {Record<string, { icon: string, title: string }>} */
       const types = {
+        sun: { icon: 'fas fa-sun', title: 'Clear Sky' },
         rain: { icon: 'fas fa-cloud-rain', title: 'Rain' },
         bolt: { icon: 'fas fa-bolt', title: 'Thunderbolt' },
         heavyrain: { icon: 'fas fa-cloud-showers-heavy', title: 'Heavy Rain' },
         snow: { icon: 'fas fa-snowflake', title: 'Snow' },
+        snowstorm: { icon: 'fas fa-snowflake', title: 'Snowstorm' },
       };
 
       storyData.chapter.nextWeather = value;
+      sky.setState(value, storyData.chapter.nextDayNightCycle ?? null);
+
       const obj = new TinyHtml(storyData.nc.base.right.find(':scope > #status #weather'));
       obj.empty();
       if (types[value]) {
@@ -459,6 +670,10 @@ const chapterSet = {
     }
   },
 
+  /**
+   * @param {string} value - Location name.
+   * @param {boolean} [actionFromNow] - Whether the action happens now.
+   */
   where: (value, actionFromNow = false) => {
     if (actionFromNow) {
       // Add Item Base

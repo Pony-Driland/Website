@@ -1,7 +1,10 @@
 {
     "file": "string|string[]",
+    "format?": ["string"],
     "category?": "string|string[]",
     "generators_used?": ["string"],
+    "bpm?": ["number"],
+    "suno_start?": "string",
     "alternative_files?": [
         {
             "category?": "string|string[]",
@@ -9,7 +12,17 @@
             "file":["string"]
         }
     ],
+    "production_steps?": [
+        {
+            "id": "string",
+            "weirdness?": 0.5,
+            "style_influence?": 0.5,
+            "audio_influence?": 0.25,
+            "max_mode": false,
+            "instrument_prompt": "string",
+            "instrument_negative_prompt?": "string"
+        }
+    ],
     "creation_date": "number",
-    "instrument_prompt?": "string",
     "reference_songs?": ["string"]
 }

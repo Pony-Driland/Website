@@ -14,11 +14,6 @@
         "module": "NodeNext",
         "moduleResolution": "NodeNext"
     },
-    "include": [
-        "src/modules", 
-        "src/account", 
-        "src/files/tinyLib.mjs",
-        "build/TinyBuilder"
-    ],
+    "include": ["src"],
     "exclude": ["node_modules"]
 }

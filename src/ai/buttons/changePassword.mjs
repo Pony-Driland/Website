@@ -1,16 +1,33 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
-import { tinyIo } from '../software/base.mjs';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
+import { getClient } from '../software/base.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 
+/**
+ * Opens the "Change password" modal for the signed-in room account.
+ *
+ * The form asks for the current password plus the new password twice, then
+ * forwards the request to the socket client. Server-side rate limits are read
+ * from the room config to cap the input lengths.
+ *
+ * @returns {void}
+ */
 export const openChangePassword = () => {
+  const client = getClient();
+
   // Root
-  const ratelimit = tinyIo.client.getRateLimit() || { size: {} };
+  const ratelimit = client.getRateLimit() || { size: {} };
   const $root = TinyHtml.createFrom('div');
 
   // Error place
   const $errorBox = tinyLib.bs.alert('danger', '', false).addClass('d-none');
 
   // Create label and input
+  /**
+   * @param {string} labelText
+   * @param {string} inputId
+   * @param {string} [type]
+   */
   const createInputGroup = (labelText, inputId, type = 'password') => {
     const $group = TinyHtml.createFrom('div').addClass('mb-3');
     const $label = TinyHtml.createFrom('label')
@@ -38,6 +55,7 @@ export const openChangePassword = () => {
   $root.append($errorBox, current.group, newPass.group, confirmPass.group, $button);
 
   // show error
+  /** @param {string} msg */
   const showError = (msg) => {
     $errorBox.setHtml(msg).removeClass('d-none');
   };
@@ -50,7 +68,7 @@ export const openChangePassword = () => {
   // Enter button
   [current.input, newPass.input, confirmPass.input].forEach(($input) => {
     $input.on('keydown', (e) => {
-      if (e.key === 'Enter') {
+      if (/** @type {KeyboardEvent} */ (e).key === 'Enter') {
         e.preventDefault();
         $button.trigger('click');
       }
@@ -59,9 +77,9 @@ export const openChangePassword = () => {
 
   // Button click
   $button.on('click', () => {
-    const currentVal = current.input.val().trim();
-    const newVal = newPass.input.val().trim();
-    const confirmVal = confirmPass.input.val().trim();
+    const currentVal = String(current.input.val() ?? '').trim();
+    const newVal = String(newPass.input.val() ?? '').trim();
+    const confirmVal = String(confirmPass.input.val() ?? '').trim();
 
     if (!currentVal || !newVal || !confirmVal) {
       showError('Please fill in all fields.');
@@ -81,7 +99,7 @@ export const openChangePassword = () => {
     // Tiny okay!
     $errorBox.addClass('d-none');
     modal.hide();
-    tinyIo.client.changePassword(currentVal, newVal).then((result) => {
+    client.changePassword(currentVal, newVal).then((result) => {
       if (result.error) alert(`${result.msg}\nCode ${result.code}`);
       else alert('Your password has been changed successfully!');
     });

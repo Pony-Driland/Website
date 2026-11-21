@@ -1,0 +1,17 @@
+{
+    "format": ["mp3"],
+    "file": "blue-screen-battle-theme",
+    "generators_used": ["suno"],
+    "bpm": [191],
+    "suno_start": "00:00.472",
+    "creation_date": 1794834007000,
+    "production_steps": [
+        {
+            "id": "suno_v6",
+            "weirdness": 0.25,
+            "max_mode": true,
+            "instrument_prompt": "purely instrumental, no vocals, 2D animation cinematic boss battle suite, progressive glitchcore, symphonic breakcore, dynamic arrangement, 178 BPM, evolving structure, deep atmospheric intro, cello ostinato, staccato string section, heroic yet menacing brass, bitcrushed chiptune arpeggios, distorted square wave lead, heavy reese bass, chopped amen breaks, digital buffer stutter, dial-up modem noise, dramatic timpani, haunting music box, epic finale"
+        }
+    ],
+    "reference_songs": ["the-rainbow-is-here"]
+}

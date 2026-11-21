@@ -1,11 +1,22 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
-import tinyLib, { alert } from '../../files/tinyLib.mjs';
-import { tinyIo } from '../software/base.mjs';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
+import tinyLib from '../../files/tinyLib.mjs';
+import { getClient } from '../software/base.mjs';
 
+/**
+ * Opens the "Create account" modal for the current room.
+ *
+ * Registration is only offered when the room has `openRegistration` enabled or
+ * when the signed-in user is an admin. Otherwise the function returns silently
+ * and no modal is created.
+ *
+ * @returns {void}
+ */
 export const openCreateAccount = () => {
+  const client = getClient();
   // Get data
-  const ratelimit = tinyIo.client.getRateLimit() || { size: {} };
-  const userData = tinyIo.client.getUser() || {};
+  const ratelimit = client.getRateLimit() || { size: {} };
+  const userData = client.getUser() || {};
   if (ratelimit.openRegistration || userData.isAdmin) {
     // Root container
     const $root = TinyHtml.createFrom('div');
@@ -14,6 +25,12 @@ export const openCreateAccount = () => {
     const $errorBox = tinyLib.bs.alert('danger', '', false).addClass('d-none');
 
     // Helper to build input fields
+    /**
+     * @param {string} labelText
+     * @param {string} inputId
+     * @param {number|null} [maxLength]
+     * @param {string} [type]
+     */
     const createInputGroup = (labelText, inputId, maxLength = null, type = 'text') => {
       const $group = TinyHtml.createFrom('div').addClass('mb-3');
       const $label = TinyHtml.createFrom('label')
@@ -54,6 +71,7 @@ export const openCreateAccount = () => {
     $root.append($errorBox, user.group, pass.group, confirm.group, nick.group, $button);
 
     // Show error message
+    /** @param {string} msg */
     const showError = (msg) => {
       $errorBox.setHtml(msg).removeClass('d-none');
     };
@@ -66,7 +84,7 @@ export const openCreateAccount = () => {
     // Handle Enter key
     [user.input, pass.input, confirm.input, nick.input].forEach(($input) => {
       $input.on('keydown', (e) => {
-        if (e.key === 'Enter') {
+        if (/** @type {KeyboardEvent} */ (e).key === 'Enter') {
           e.preventDefault();
           $button.trigger('click');
         }
@@ -75,10 +93,10 @@ export const openCreateAccount = () => {
 
     // Submit action
     $button.on('click', () => {
-      const userId = user.input.val().trim();
-      const password = pass.input.val().trim();
-      const confirmPassword = confirm.input.val().trim();
-      const nickname = nick.input.val().trim();
+      const userId = String(user.input.val() ?? '').trim();
+      const password = String(pass.input.val() ?? '').trim();
+      const confirmPassword = String(confirm.input.val() ?? '').trim();
+      const nickname = String(nick.input.val() ?? '').trim();
 
       if (!userId || !password || !confirmPassword) {
         showError('User ID and both password fields are required.');
@@ -103,7 +121,7 @@ export const openCreateAccount = () => {
       // Tiny okay!
       $errorBox.addClass('d-none');
       modal.hide();
-      tinyIo.client.register(userId, password, nickname).then((result) => {
+      client.register(userId, password, nickname).then((result) => {
         if (result.error) alert(`${result.msg}\nCode ${result.code}`);
         else alert(`The new account was successfully created!`);
       });

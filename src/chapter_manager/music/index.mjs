@@ -6,16 +6,66 @@ import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 
 import SeamlessLoop from '../../../build/bundle/SeamlessLoop.mjs';
 import BuffAudio from '../../../build/bundle/buffaudio.mjs';
-import { yt } from '../../api/youtube.mjs';
 
 import { storyData } from '../../files/chapters.mjs';
 import storyCfg from '../../chapters/config.mjs';
+import { tinyLs } from '../../important.mjs';
 import ttsManager from '../tts/tts.mjs';
 import { Tooltip } from '../../modules/TinyBootstrap.mjs';
-import { musicApp, musicBase } from './html.mjs';
+import musicPlayer from './player.mjs';
+import { musicApp, musicBase, musicButtons } from './html.mjs';
 
-// Music Manager
+/**
+ * Music manager: resolves the soundtrack of each scene, cross-fades between
+ * tracks and keeps the sound effects in sync with the reader.
+ *
+ * The soundtrack itself is played by {@link module:chapter_manager/music/player},
+ * which wraps `TinyMediaPlayer`. This module only decides *which* track of the
+ * story playlist should be playing.
+ *
+ * @module chapter_manager/music
+ */
+
+/**
+ * @typedef {Object} MusicManager
+ * @property {{ blob: Record<string, HTMLAudioElement>, buffer: Record<string, BuffAudio> }} cache
+ * @property {(url: string) => Promise<HTMLAudioElement>} loadAudio
+ * @property {(url: string) => Promise<BuffAudio>} loadAudioBuffer
+ * @property {() => void} nextMusic
+ * @property {(react?: boolean) => void} disable
+ * @property {() => void} startBase
+ * @property {() => void} updatePlayer
+ * @property {(item: string, loop?: boolean, type?: string) => void} insertSFX
+ * @property {() => void} startPlaylist
+ * @property {() => Promise<void>} stopPlaylist
+ * @property {() => Promise<void>} resetPlaylist
+ * @property {MusicStartBackends} start
+ */
+
+/**
+ * Playback progress of the current track.
+ *
+ * @typedef {Object} MusicTimeData
+ * @property {number} total - Total duration in milliseconds.
+ * @property {number} current - Current position in milliseconds.
+ * @property {number} remaining - Remaining time in milliseconds.
+ * @property {number} playbackPercentage - Played percentage (0-100).
+ */
+
+/**
+ * Backends that can start a sound, one per supported audio engine.
+ *
+ * @typedef {Object} MusicStartBackends
+ * @property {(item: string, loop: boolean, resolve: (value?: unknown) => void, url: string, forcePic?: boolean) => PizzicatoPlayer} pizzicato - Plays the sound through Pizzicato.
+ * @property {(item: string, newSound: SeamlessLoop) => void} seamlessloop - Plays the sound through the seamless loop engine.
+ * @property {(item: string, newSound: HTMLAudioElement) => void} vanilla - Plays the sound through a plain `HTMLAudioElement`.
+ */
+
+/** @type {MusicManager} */
 const musicManager = {
+  // Backends (pizzicato / seamlessloop / vanilla)
+  start: /** @type {MusicStartBackends} */ ({}),
+
   // Sound Cache
   cache: { blob: {}, buffer: {} },
 
@@ -63,7 +113,10 @@ const musicManager = {
         fetch(url, { method: 'GET' })
           .then((response) => response.arrayBuffer())
           .then((buffer) => {
-            const buffAudio = new BuffAudio(new AudioContext(), new Uint8Array(buffer));
+            const buffAudio = new BuffAudio(
+              new AudioContext(),
+              /** @type {AudioBuffer} */ (/** @type {unknown} */ (new Uint8Array(buffer))),
+            );
             musicManager.cache.buffer[vanillaURL] = buffAudio;
             resolve(buffAudio);
           })
@@ -76,43 +129,41 @@ const musicManager = {
 
   // Next Song
   nextMusic: () => {
-    if (
-      typeof musicApp.now.index === 'number' &&
-      !isNaN(musicApp.now.index) &&
-      isFinite(musicApp.now.index) &&
-      musicApp.now.index > -1 &&
-      storyData.readFic
-    ) {
-      musicApp.now.index++;
-      if (!musicApp.playlist[musicApp.now.index]) {
-        musicApp.now.index = 0;
-      }
+    if (!Array.isArray(musicApp.playlist) || musicApp.playlist.length < 1) return;
+    if (!storyData.readFic) return;
 
-      // Play
-      const song = musicApp.playlist[musicApp.now.index];
-      if (
-        song &&
-        typeof song.id === 'string' &&
-        song.id.length > 0 &&
-        typeof song.type === 'string' &&
-        song.type.length > 0
-      ) {
-        // Youtube
-        if (song.type === 'youtube') {
-          setTimeout(() => yt.play(song.id), 1000);
-        }
-      }
+    musicApp.now.index++;
+    if (!musicApp.playlist[musicApp.now.index]) {
+      musicApp.now.index = 0;
     }
+
+    playCurrent();
   },
 
-  disable: (react = true) => {
-    if (react) {
-      musicApp.disabled = true;
-      TinyHtml.query('#music-player')?.addClass('disabled-player');
-    } else {
-      musicApp.disabled = false;
-      TinyHtml.query('#music-player')?.removeClass('disabled-player');
+  /**
+   * Turns the soundtrack on or off.
+   *
+   * This is the visitor's own switch, not a playback state: while it is off the
+   * player must stay silent no matter where the reader scrolls to. The choice is
+   * remembered between visits.
+   *
+   * @param {boolean} [disabled] - Whether the soundtrack is disabled.
+   * @returns {void}
+   */
+  disable: (disabled = true) => {
+    if (musicApp.disabled === disabled) return;
+
+    musicApp.disabled = disabled;
+    tinyLs.setBool('musicDisabled', disabled);
+
+    if (disabled) {
+      musicPlayer.pause();
+    } else if (musicApp.usingSystem) {
+      musicPlayer.resume();
     }
+
+    // Repaints the toolbar (locked buttons + red icon).
+    musicManager.updatePlayer();
   },
 
   // Start Base
@@ -121,9 +172,6 @@ const musicManager = {
     if (storyData.nc.base.right.find(':scope > #status #music').length < 1) {
       // Update
       musicApp.songVolumeUpdate();
-
-      // Fix Youtube Player
-      //youtubePlayer.removeClass('hidden');
 
       // Prepare
       if (!storyData.chapter.nav) {
@@ -140,65 +188,255 @@ const musicManager = {
       new TinyHtml(storyData.nc.base.right.find(':scope > #status')).prepend([
         // Music
         storyData.chapter.nav.music,
-
-        // Youtube
-        //TinyHtml.createFrom('a', { class: 'nav-item nav-link mx-3 p-0', indexitem: '0', id: 'youtube-thumb' }).append(youtubePlayer),
       ]);
     }
+
+    // The toolbar must be visible even when the soundtrack is off, otherwise
+    // there would be no way to turn it back on.
+    musicManager.updatePlayer();
+  },
+
+  updatePlayer: () => {
+    // View
+    TinyHtml.query('#music-player')?.addClass('border').removeClass('d-none').addClass('me-3');
+
+    // The disable button is the only one that never locks: it is the way back.
+    musicApp.nav.disable.toggleClass('text-danger', musicApp.disabled);
+
+    // Every other button is locked while the player is off or still loading.
+    const locked = musicApp.disabled || !musicApp.usingSystem;
+    musicButtons.forEach((button) => button.toggleClass('disabled', locked));
+
+    // Playing
+    if (musicApp.playing) {
+      musicApp.nav.play.addClass('fa-pause').removeClass('fa-play');
+    } else {
+      musicApp.nav.play.addClass('fa-play').removeClass('fa-pause');
+    }
+
+    // Volume
+    musicApp.nav.volume.removeClass('fa-volume-mute').removeClass('fa-volume-up');
+    if (typeof musicApp.volume === 'number' && musicApp.volume > 0) {
+      musicApp.nav.volume.addClass('fa-volume-up');
+    } else {
+      musicApp.nav.volume.addClass('fa-volume-mute');
+    }
+
+    // Tooltip
+    TinyHtml.queryAll('#music-player > a[title]').forEach((instance) => Tooltip(instance));
+  },
+
+  insertSFX: (item, loop = true, type = 'all') => {
+    if (typeof loop !== 'boolean') {
+      loop = true;
+    }
+    return new Promise(async (resolve, reject) => {
+      if (!storyData.sfx[item]) {
+        // Prepare
+        storyData.sfx[item] = /** @type {SfxInstance} */ ({});
+
+        // Try
+        try {
+          // File URL
+          let url = null;
+
+          // IPFS
+          if (storyCfg.sfx?.[item].type === 'ipfs') {
+            url = storyCfg.ipfs?.host.replace('{cid}', storyCfg.sfx?.[item].value);
+          }
+
+          // Normal
+          else {
+            url = storyCfg.sfx?.[item].value;
+          }
+
+          // Exist URL
+          if (url) {
+            // Resolve
+            const tinyResolve = (/** @type {unknown} */ data) => {
+              console.log(`[${url}] Loaded!`);
+              resolve(data);
+            };
+
+            // Values
+            storyData.sfx[item].playing = false;
+            storyData.sfx[item].hiding = false;
+            storyData.sfx[item].loop = loop;
+
+            // Log
+            console.log(`[${url}] Loading...`);
+
+            const file = await musicManager.loadAudio(url);
+            storyData.sfx[item].file = file;
+
+            // Start Pizzicato
+            const startPizzicato = (forcePic = false) => {
+              return musicManager.start.pizzicato(
+                item,
+                loop,
+                tinyResolve,
+                file.currentSrc,
+                forcePic,
+              );
+            };
+
+            // Loop Audio
+            if (loop) {
+              // All Modules
+              if (type === 'all') {
+                const newSound = new SeamlessLoop();
+                newSound.addUri(file.currentSrc, file.duration * 1000, item);
+                newSound.callback(() => {
+                  musicManager.start.seamlessloop(item, newSound);
+                  startPizzicato();
+                });
+              } else if (type === 'pizzicato') {
+                startPizzicato(true);
+              } else if (type === 'main') {
+                const newSound = new SeamlessLoop();
+                newSound.addUri(file.currentSrc, file.duration * 1000, item);
+                newSound.callback(() => {
+                  musicManager.start.seamlessloop(item, newSound);
+                  tinyResolve(undefined);
+                });
+              } else {
+                reject(new Error('Invalid Module Type!'));
+              }
+            }
+
+            // Nope
+            else {
+              // All Modules
+              if (type === 'all') {
+                // Start
+                musicManager.start.vanilla(item, file);
+                startPizzicato();
+              } else if (type === 'pizzicato') {
+                startPizzicato(true);
+              } else if (type === 'main') {
+                musicManager.start.vanilla(item, file);
+                tinyResolve(undefined);
+              } else {
+                reject(new Error('Invalid Module Type!'));
+              }
+            }
+          } else {
+            reject(new Error('Invalid SFX File! ' + item));
+          }
+        } catch (err) {
+          // Fail
+          delete storyData.sfx[item];
+          reject(err);
+        }
+      } else {
+        resolve(undefined);
+      }
+
+      // Complete
+      return;
+    });
+  },
+
+  stopPlaylist: async () => {
+    if (!musicApp.usingSystem) return;
+
+    // The track is only paused, never unloaded: the reader scrolls back and
+    // forth all the time, so the position has to survive a stop/start cycle.
+    musicApp.usingSystem = false;
+    musicApp.playing = false;
+
+    await musicPlayer.pause();
+    musicManager.updatePlayer();
+  },
+
+  /**
+   * Stops the soundtrack and drops the current track.
+   *
+   * Called when the reader is closed, so the next chapter always starts from a
+   * clean state instead of resuming the previous one.
+   *
+   * @returns {Promise<void>}
+   */
+  resetPlaylist: async () => {
+    musicApp.usingSystem = false;
+    musicApp.playing = false;
+    musicApp.playlist = [];
+    musicApp.playlistPlaying = [];
+    musicApp.now.index = -1;
+    musicApp.now.playlist = null;
+    musicApp.value = null;
+
+    await musicPlayer.reset();
+  },
+
+  startPlaylist: () => {
+    if (!storyData.readFic || musicApp.disabled) return;
+    if (!Array.isArray(musicApp.playlist) || musicApp.playlist.length < 1) return;
+
+    // Same playlist: just resume where it stopped.
+    if (objHash(musicApp.playlist) === objHash(musicApp.playlistPlaying)) {
+      musicApp.usingSystem = true;
+      musicPlayer.resume();
+      return;
+    }
+
+    // New playlist: start from the beginning.
+    shuffleArray(musicApp.playlist);
+    musicApp.playlistPlaying = musicApp.playlist;
+    musicApp.now.index = 0;
+    musicApp.now.playlist = musicApp.value;
+    musicApp.usingSystem = true;
+
+    playCurrent();
   },
 };
 
-// Music Updater
-musicManager.updatePlayer = () => {
-  // View
-  TinyHtml.query('#music-player')?.addClass('border').removeClass('d-none').addClass('me-3');
+/**
+ * Plays the track selected by {@link musicApp}.`now.index`.
+ *
+ * @returns {void}
+ */
+function playCurrent() {
+  const song = musicApp.playlist[musicApp.now.index];
+  if (!song || typeof song.id !== 'string' || song.id.length === 0) return;
+  if (typeof song.type !== 'string' || song.type.length === 0) return;
 
-  // Buff
-  if (musicApp.buffering || musicApp.loading || !musicApp.usingSystem || !yt.exists) {
-    TinyHtml.queryAll('#music-player > a').addClass('disabled');
-  } else {
-    TinyHtml.queryAll('#music-player > a').removeClass('disabled');
-  }
+  musicApp.usingSystem = true;
+  musicPlayer.playTrack(song);
+}
 
-  // Title
-  if (typeof musicApp.title === 'string' && musicApp.title.length > 0) {
-    const newTitle = `Youtube - ${musicApp.author_name} - ${musicApp.title}`;
-    const divBase = new TinyHtml(TinyHtml.queryAll('#music-player > a').has(musicApp.nav.info));
+// Restore the visitor's choice from the previous visit.
+musicManager.disable(tinyLs.getBool('musicDisabled') === true);
 
-    if (divBase.size > 0 && divBase.data('bs-tooltip-data') !== newTitle) {
-      divBase.setData('bs-tooltip-data', newTitle);
-      const bsToolTip = divBase.data('BootstrapToolTip');
-      if (bsToolTip) bsToolTip.setContent({ '.tooltip-inner': newTitle });
-    }
-  }
+// The disable button lives in the toolbar, so it talks to the manager through
+// this callback instead of importing it (which would be a cycle).
+musicApp.onDisabledChange = (disabled) => musicManager.disable(disabled);
 
-  // Playing
-  if (musicApp.playing) {
-    musicApp.nav.play.addClass('fa-pause').removeClass('fa-play');
-  } else if (musicApp.paused) {
-    musicApp.nav.play.addClass('fa-play').removeClass('fa-pause');
-  } else if (
-    musicApp.stoppabled ||
-    typeof musicApp.currentTime !== 'number' ||
-    typeof musicApp.duration !== 'number' ||
-    musicApp.currentTime === musicApp.duration
-  ) {
-    musicApp.nav.play.addClass('fa-play').removeClass('fa-pause');
-  }
+// Keep the UI in sync with the player. `TinyMediaPlayer` already emits every
+// event we need, so there is no reason to wrap them again.
+const { player } = musicPlayer;
 
-  // Volume
-  musicApp.nav.volume.removeClass('fa-volume-mute').removeClass('fa-volume-up');
-  if (typeof musicApp.volume === 'number' && musicApp.volume > 0) {
-    musicApp.nav.volume.addClass('fa-volume-up');
-  } else {
-    musicApp.nav.volume.addClass('fa-volume-mute');
-  }
+player.on('play', () => {
+  musicApp.playing = true;
+  musicManager.updatePlayer();
+});
 
-  // Tooltip
-  TinyHtml.queryAll('#music-player > a[title]').forEach((instance) => Tooltip(instance));
-};
+player.on('pause', () => {
+  musicApp.playing = false;
+  musicManager.updatePlayer();
+});
+
+player.on('stop', () => {
+  musicApp.playing = false;
+  musicManager.updatePlayer();
+});
+
+player.on('ended', () => musicManager.nextMusic());
+
+player.on('volumeChange', () => musicApp.songVolumeUpdate());
 
 // TTS Updater
+
 ttsManager.updatePlayer = () => {
   if (storyData.tts.nav) {
     // View
@@ -209,30 +447,49 @@ ttsManager.updatePlayer = () => {
   }
 };
 
-musicManager.start = {};
+/**
+ * @typedef {Object} PizzicatoPlayer
+ * @property {boolean} playing - Whether the sound is playing.
+ * @property {boolean} hiding - Whether the sound is fading out.
+ * @property {boolean} showing - Whether the sound is fading in.
+ * @property {unknown} data - Underlying Pizzicato sound.
+ * @property {number} volume - Volume between 0 and 100.
+ * @property {() => void} stop - Stops the sound.
+ * @property {() => void} start - Starts the sound.
+ * @property {(volume?: number|null) => Promise<void>} play - Plays the sound.
+ * @property {(value?: number|null, notEdit?: boolean) => Promise<void>} setVolume - Sets the volume.
+ * @property {(hideTimeout?: number) => Promise<void>} hide - Fades the sound out.
+ * @property {(hideTimeout?: number) => Promise<void>} show - Fades the sound in.
+ */
 
+/**
+ * @param {string} item - Sound identifier.
+ * @param {boolean} loop - Whether the sound loops.
+ * @param {(value?: unknown) => void} resolve - Resolves the parent promise.
+ * @param {string} url - Sound URL.
+ * @param {boolean} [forcePic] - Forces the Pizzicato backend.
+ * @returns {PizzicatoPlayer} The created player.
+ */
 musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
   // Pizzicato Space
-  const pizzicato = {};
+  /** @type {PizzicatoPlayer} */
+  const pizzicato = /** @type {PizzicatoPlayer} */ ({});
 
   // Pizzicato File
   pizzicato.playing = false;
   pizzicato.hiding = false;
 
   const newSound = new Pizzicato.Sound(
-    {
-      source: 'file',
-      options: { path: url, loop: loop },
-    },
+    { source: 'file', options: { path: url, loop: loop } },
     () => {
-      resolve();
+      resolve(undefined);
     },
   );
 
   pizzicato.data = newSound;
 
   // Data
-  pizzicato.volume = newSound.volume * 100;
+  pizzicato.volume = Number(newSound.volume) * 100;
 
   // Stop
   pizzicato.stop = () => {
@@ -267,7 +524,7 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
           }
 
           pizzicato.start();
-          resolve();
+          resolve(undefined);
         } catch (err) {
           reject(err);
         }
@@ -276,7 +533,7 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
   };
 
   // Set Volume
-  pizzicato.setVolume = (value, notEdit = false) => {
+  pizzicato.setVolume = (/** @type {number|null|undefined} */ value, notEdit = false) => {
     return new Promise((resolve) => {
       let tinyValue = value;
       if (typeof tinyValue !== 'number') {
@@ -309,13 +566,13 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
         pizzicato.volume = tinyValue;
       }
 
-      resolve();
+      resolve(undefined);
     });
   };
 
   // Hide
   pizzicato.hide = async (hideTimeout = 50) => {
-    let volume = newSound.volume * 100;
+    let volume = Number(newSound.volume) * 100;
 
     pizzicato.hiding = true;
     pizzicato.showing = false;
@@ -335,7 +592,7 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
                 pizzicato.setVolume(volume, true);
               }
 
-              resolve();
+              resolve(undefined);
             }, hideTimeout);
           });
         }
@@ -386,7 +643,7 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
                 }
               }
 
-              resolve();
+              resolve(undefined);
             }, hideTimeout);
           });
         }
@@ -402,7 +659,7 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
   };
 
   // End Sound
-  newSound.on('end', () => {
+  /** @type {{ on: (event: string, cb: () => void) => void }} */ (newSound).on('end', () => {
     if (!loop) {
       pizzicato.hide(0);
     }
@@ -412,13 +669,22 @@ musicManager.start.pizzicato = (item, loop, resolve, url, forcePic = false) => {
   if (!forcePic) {
     storyData.sfx[item].pizzicato = pizzicato;
   } else {
-    for (const item2 in pizzicato) {
-      storyData.sfx[item][item2] = pizzicato[item2];
+    const target = /** @type {Record<string, unknown>} */ (
+      /** @type {unknown} */ (storyData.sfx[item])
+    );
+    const source = /** @type {Record<string, unknown>} */ (pizzicato);
+    for (const item2 in source) {
+      target[item2] = source[item2];
     }
   }
+
+  return pizzicato;
 };
 
-musicManager.start.seamlessloop = (item, newSound) => {
+musicManager.start.seamlessloop = (
+  /** @type {string} */ item,
+  /** @type {SeamlessLoop} */ newSound,
+) => {
   // Data
   storyData.sfx[item].data = newSound;
   storyData.sfx[item].volume = newSound._volume * 100;
@@ -456,7 +722,7 @@ musicManager.start.seamlessloop = (item, newSound) => {
           }
 
           storyData.sfx[item].start();
-          resolve();
+          resolve(undefined);
         } catch (err) {
           reject(err);
         }
@@ -465,7 +731,7 @@ musicManager.start.seamlessloop = (item, newSound) => {
   };
 
   // Set Volume
-  storyData.sfx[item].setVolume = (value, notEdit = false) => {
+  storyData.sfx[item].setVolume = (/** @type {number|null|undefined} */ value, notEdit = false) => {
     return new Promise((resolve) => {
       let tinyValue = value;
       if (typeof tinyValue !== 'number') {
@@ -498,7 +764,7 @@ musicManager.start.seamlessloop = (item, newSound) => {
         storyData.sfx[item].volume = tinyValue;
       }
 
-      resolve();
+      resolve(undefined);
     });
   };
 
@@ -524,7 +790,7 @@ musicManager.start.seamlessloop = (item, newSound) => {
                 storyData.sfx[item].setVolume(volume, true);
               }
 
-              resolve();
+              resolve(undefined);
             }, hideTimeout);
           });
         }
@@ -578,7 +844,7 @@ musicManager.start.seamlessloop = (item, newSound) => {
                 }
               }
 
-              resolve();
+              resolve(undefined);
             }, hideTimeout);
           });
         }
@@ -594,10 +860,13 @@ musicManager.start.seamlessloop = (item, newSound) => {
   };
 };
 
-musicManager.start.vanilla = (item, newSound) => {
+musicManager.start.vanilla = (
+  /** @type {string} */ item,
+  /** @type {HTMLAudioElement} */ newSound,
+) => {
   // Values
   storyData.sfx[item].paused = false;
-  storyData.sfx[item].volume = newSound.volume * 100;
+  storyData.sfx[item].volume = Number(newSound.volume) * 100;
   storyData.sfx[item].currentTime = 0;
   storyData.sfx[item].duration = newSound.duration;
 
@@ -629,7 +898,7 @@ musicManager.start.vanilla = (item, newSound) => {
           }
 
           newSound.play();
-          resolve();
+          resolve(undefined);
         } catch (err) {
           reject(err);
         }
@@ -638,16 +907,16 @@ musicManager.start.vanilla = (item, newSound) => {
   };
 
   // Seek To
-  storyData.sfx[item].seekTo = (value) => {
+  storyData.sfx[item].seekTo = (/** @type {number} */ value) => {
     return new Promise((resolve) => {
       storyData.sfx[item].currentTime = value;
       newSound.currentTime = value;
-      resolve();
+      resolve(undefined);
     });
   };
 
   // Set Volume
-  storyData.sfx[item].setVolume = (value, notEdit = false) => {
+  storyData.sfx[item].setVolume = (/** @type {number|null|undefined} */ value, notEdit = false) => {
     return new Promise((resolve) => {
       let tinyValue = value;
       if (typeof tinyValue !== 'number') {
@@ -677,7 +946,7 @@ musicManager.start.vanilla = (item, newSound) => {
         storyData.sfx[item].volume = tinyValue;
       }
 
-      resolve();
+      resolve(undefined);
     });
   };
 
@@ -697,7 +966,7 @@ musicManager.start.vanilla = (item, newSound) => {
           newSound.currentTime = 0;
           storyData.sfx[item].currentTime = 0;
           storyData.sfx[item].leftTime = storyData.sfx[item].duration;
-          resolve();
+          resolve(undefined);
         } catch (err) {
           reject(err);
         }
@@ -718,7 +987,7 @@ musicManager.start.vanilla = (item, newSound) => {
           storyData.sfx[item].playing = false;
           storyData.sfx[item].paused = true;
           newSound.pause();
-          resolve();
+          resolve(undefined);
         } catch (err) {
           reject(err);
         }
@@ -740,7 +1009,7 @@ musicManager.start.vanilla = (item, newSound) => {
           storyData.sfx[item].paused = false;
           storyData.sfx[item].setVolume(storyData.sfx[item].volume);
           newSound.play();
-          resolve();
+          resolve(undefined);
         } catch (err) {
           reject(err);
         }
@@ -750,7 +1019,7 @@ musicManager.start.vanilla = (item, newSound) => {
 
   // Hide
   storyData.sfx[item].hide = async (hideTimeout = 50) => {
-    let volume = newSound.volume * 100;
+    let volume = Number(newSound.volume) * 100;
 
     storyData.sfx[item].playing = true;
     storyData.sfx[item].paused = false;
@@ -772,7 +1041,7 @@ musicManager.start.vanilla = (item, newSound) => {
                 storyData.sfx[item].setVolume(volume, true);
               }
 
-              resolve();
+              resolve(undefined);
             }, hideTimeout);
           });
         }
@@ -831,7 +1100,7 @@ musicManager.start.vanilla = (item, newSound) => {
                 }
               }
 
-              resolve();
+              resolve(undefined);
             }, hideTimeout);
           });
         }
@@ -868,222 +1137,6 @@ musicManager.start.vanilla = (item, newSound) => {
     },
     false,
   );
-};
-
-// Insert SFX
-musicManager.insertSFX = (item, loop = true, type = 'all') => {
-  if (typeof loop !== 'boolean') {
-    loop = true;
-  }
-  return new Promise(async (resolve, reject) => {
-    if (!storyData.sfx[item]) {
-      // Prepare
-      storyData.sfx[item] = {};
-
-      // Try
-      try {
-        // File URL
-        let url = null;
-
-        // IPFS
-        if (storyCfg.sfx[item].type === 'ipfs') {
-          url = storyCfg.ipfs.host.replace('{cid}', storyCfg.sfx[item].value);
-        }
-
-        // Normal
-        else {
-          url = storyCfg.sfx[item].value;
-        }
-
-        // Exist URL
-        if (url) {
-          // Resolve
-          const tinyResolve = (data) => {
-            console.log(`[${url}] Loaded!`);
-            resolve(data);
-          };
-
-          // Values
-          storyData.sfx[item].playing = false;
-          storyData.sfx[item].hiding = false;
-          storyData.sfx[item].loop = loop;
-
-          // Log
-          console.log(`[${url}] Loading...`);
-
-          const file = await musicManager.loadAudio(url);
-          storyData.sfx[item].file = file;
-
-          // Start Pizzicato
-          const startPizzicato = (forcePic = false) => {
-            return musicManager.start.pizzicato(item, loop, tinyResolve, file.currentSrc, forcePic);
-          };
-
-          // Loop Audio
-          if (loop) {
-            // All Modules
-            if (type === 'all') {
-              const newSound = new SeamlessLoop();
-              newSound.addUri(file.currentSrc, file.duration * 1000, item);
-              newSound.callback(() => {
-                musicManager.start.seamlessloop(item, newSound);
-                startPizzicato();
-              });
-            } else if (type === 'pizzicato') {
-              startPizzicato(true);
-            } else if (type === 'main') {
-              const newSound = new SeamlessLoop();
-              newSound.addUri(file.currentSrc, file.duration * 1000, item);
-              newSound.callback(() => {
-                musicManager.start.seamlessloop(item, newSound);
-                tinyResolve();
-              });
-            } else {
-              reject(new Error('Invalid Module Type!'));
-            }
-          }
-
-          // Nope
-          else {
-            // All Modules
-            if (type === 'all') {
-              // Start
-              musicManager.start.vanilla(item, file);
-              startPizzicato();
-            } else if (type === 'pizzicato') {
-              startPizzicato(true);
-            } else if (type === 'main') {
-              musicManager.start.vanilla(item, file);
-              tinyResolve();
-            } else {
-              reject(new Error('Invalid Module Type!'));
-            }
-          }
-        } else {
-          reject(new Error('Invalid SFX File! ' + item));
-        }
-      } catch (err) {
-        // Fail
-        delete storyData.sfx[item];
-        reject(err);
-      }
-    } else {
-      resolve();
-    }
-
-    // Complete
-    return;
-  });
-};
-
-// Stop Playlist
-musicManager.stopPlaylist = async () => {
-  if (musicApp.usingSystem) {
-    // Playing Used
-    if (musicApp.playing) {
-      musicApp.playingUsed = true;
-    }
-
-    // Using System
-    musicApp.usingSystem = false;
-
-    // Hide Progress
-    const hideTimeout = 50;
-    let volume = musicApp.volume;
-    for (let i = 0; i < 100; i++) {
-      if (!musicApp.usingSystem) {
-        await new Promise((resolve) => {
-          setTimeout(() => {
-            // Volume
-            volume--;
-
-            // Youtube Player
-            if (yt.player && typeof yt.player.setVolume === 'function') {
-              yt.player.setVolume(volume);
-            }
-
-            if (i === 100) {
-              // Youtube Player
-              if (yt.player) {
-                yt.player.stopVideo();
-              }
-            }
-
-            resolve();
-          }, hideTimeout);
-        });
-      }
-    }
-  }
-  return;
-};
-
-// Start Playlist
-musicManager.startPlaylist = () => {
-  if (storyData.readFic && objHash(musicApp.playlist) !== objHash(musicApp.playlistPlaying)) {
-    // Check Status
-    if (Array.isArray(musicApp.playlist) && musicApp.playlist.length > 0) {
-      // Play Song
-      shuffleArray(musicApp.playlist);
-
-      const playSong = () => {
-        if (
-          typeof musicApp.now.index === 'number' &&
-          !isNaN(musicApp.now.index) &&
-          isFinite(musicApp.now.index) &&
-          musicApp.now.index > -1
-        ) {
-          // Update Cache
-          musicApp.playlistPlaying = musicApp.playlist;
-
-          // Play
-          const song = musicApp.playlist[musicApp.now.index];
-          if (
-            song &&
-            typeof song.id === 'string' &&
-            song.id.length > 0 &&
-            typeof song.type === 'string' &&
-            song.type.length > 0
-          ) {
-            // Youtube
-            if (song.type === 'youtube') {
-              setTimeout(() => yt.play(song.id), 100);
-            }
-          }
-        }
-      };
-
-      // Exist
-      if (
-        musicApp.now.playlist === null ||
-        musicApp.now.index === -1 ||
-        musicApp.now.playlist !== musicApp.value
-      ) {
-        // Fix Index
-        if (musicApp.now.index < 0 || musicApp.now.playlist !== musicApp.value) {
-          musicApp.now.index = 0;
-        }
-
-        // Now
-        musicApp.now.playlist = musicApp.value;
-
-        // Play
-        playSong();
-      }
-
-      // Resume
-      else if (musicApp.playingUsed) {
-        if (musicApp.playingUsed) {
-          playSong();
-        }
-
-        musicApp.playingUsed = false;
-      }
-    }
-
-    // Check Data
-    musicApp.usingSystem = true;
-  }
 };
 
 export default musicManager;

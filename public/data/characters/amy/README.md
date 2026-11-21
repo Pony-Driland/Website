@@ -47,7 +47,11 @@ Amy has always tried to rediscover the things she lost as a child, which ended u
 
 Due to her depression, she lost everything, and fled to the forest, looking to be alone, but she accidentally got lost in the forest and cannot return home. She was very hungry, and sad due to the fear of her possible end of life.
 
+:::nsfw extreme_violence
 When she was extremely sad and afraid to die, then she gave up on living, but during the last few seconds before she accepted her own death. Rainbow Queen appeared and interrupted her suicide attempt.
+:::nsfw default
+When she was extremely sad and afraid to die, then she gave up on living, but during the last few seconds before she accepted her own death. Rainbow Queen appeared and interrupted her death attempt.
+:::
 
 Rainbow Queen already knew she was feeling extremely sad, and tried to make Amy feel better together in the forest. Amy started feeling scared of Rainbow Queen due to Rainbow Queen's natural nature to be malignant, but as she spent more time together with Rainbow Queen getting to know her true Rainbow Queen personality. After a while Amy felt calmer, and everything that seemed to be a monster, she found that being friends with a possible monster could make her feel more secure.
 

@@ -8,6 +8,12 @@ import storyCfg from '../../chapters/config.mjs';
 
 const { Icon } = TinyHtmlElems;
 
+/**
+ * Opens the "Download content" modal, listing every chapter export plus a
+ * shortcut to save all chapters at once as a single roleplay text file.
+ *
+ * @returns {void}
+ */
 export const openDownloadsList = () => {
   const body = TinyHtml.createFrom('div');
   body.append(
@@ -48,7 +54,7 @@ export const openDownloadsList = () => {
           TinyHtml.createFrom('h5', { class: 'card-title m-0' })
             .setText(`Chapter ${chapter} - `)
             .append(
-              TinyHtml.createFrom('small').setText(storyCfg.chapterName[chapter].title),
+              TinyHtml.createFrom('small').setText(storyCfg.chapterName[Number(chapter)].title),
 
               tinyClick
                 .on('click', (e) => {

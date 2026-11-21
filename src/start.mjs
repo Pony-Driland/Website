@@ -2,17 +2,18 @@ import { installWindowHiddenScript, addAiMarkerShortcut } from 'tiny-essentials/
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import TinyDomReadyManager from 'tiny-essentials/libs/html/TinyDomReadyManager';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 import QRCode from 'qrcode';
 import moment from 'moment';
 import { saveAs } from 'file-saver';
 import { Offcanvas } from 'bootstrap';
 
-import { vanillaPwa } from './pwa/installer.mjs';
+import { installPWA } from './pwa/installer.mjs';
 import './chapters/sound.mjs';
 import './chapters/counter.mjs';
 import './chapters/characters.mjs';
 
-import tinyLib, { alert } from './files/tinyLib.mjs';
+import tinyLib from './files/tinyLib.mjs';
 import { storyData } from './files/chapters.mjs';
 import storyCfg from './chapters/config.mjs';
 import { openChapterMenu } from './chapter_manager/index.mjs';
@@ -37,7 +38,11 @@ import './scss/dark.scss';
 import './scss/main.scss';
 import './scss/carousel.scss';
 import './scss/rpg.scss';
-import { openMDFile, openNewAddress, clearFicData } from './fixStuff/markdown.mjs';
+import { openMDFile, openHomePage, clearFicData } from './fixStuff/markdown.mjs';
+import { nsfwSettingsNavItem } from './nsfw-settings.mjs';
+import { startRouter } from './router/index.mjs';
+import { getPagePath } from './router/pages.mjs';
+import { renderNotFound } from './html/notFound.mjs';
 import { app, body, head, tinyWin, topPage } from './html/query.mjs';
 import { markdownBase } from './html/base.mjs';
 import { fileEnd, fileStart } from './ai/values/defaults.mjs';
@@ -61,7 +66,22 @@ console.log(
 console.log(`Tags`, storyCfg.tags);
 console.groupEnd();
 
+/**
+ * @typedef {Object} SaveCfg
+ * @property {boolean} [dayNumber] - Include the day number.
+ * @property {boolean} [dayStatus] - Include the day/night cycle.
+ * @property {boolean} [weather] - Include the weather.
+ * @property {boolean} [location] - Include the location.
+ * @property {boolean} [curiosities] - Include the curiosities.
+ * @property {boolean} [ficLine] - Prefix each line with its fic line.
+ */
+
 // Roleplay format
+/**
+ * @param {string|number} chapter - Chapter id.
+ * @param {SaveCfg} [saveCfg] - What to include in the output.
+ * @returns {string} The rendered chapter.
+ */
 const renderRoleplayFormat = (chapter, saveCfg = {}) => {
   let data = '';
 
@@ -104,20 +124,28 @@ const renderRoleplayFormat = (chapter, saveCfg = {}) => {
 
     const isFlashBack = ficData.flashback ? ' from flashback scene' : '';
 
-    if (ficData.type === 'action') data += `\n${lineText}*${tinyLib.removeAiTags(ficData.value)}*`;
+    if (ficData.type === 'action')
+      data += `\n${lineText}*${tinyLib.removeAiTags(ficData.value ?? '')}*`;
 
     if (ficData.type === 'think')
-      data += `\n${lineText}${ficData.character}'s thinks${isFlashBack}: ${tinyLib.removeAiTags(ficData.value)}`;
+      data += `\n${lineText}${ficData.character}'s thinks${isFlashBack}: ${tinyLib.removeAiTags(ficData.value ?? '')}`;
     if (ficData.type === 'telepathy')
-      data += `\n${lineText}${ficData.character}'s telepathy voice${isFlashBack}: ${tinyLib.removeAiTags(ficData.value)}`;
+      data += `\n${lineText}${ficData.character}'s telepathy voice${isFlashBack}: ${tinyLib.removeAiTags(ficData.value ?? '')}`;
     if (ficData.type === 'dialogue')
-      data += `\n${lineText}${ficData.character}${isFlashBack}: ${tinyLib.removeAiTags(ficData.value)}`;
+      data += `\n${lineText}${ficData.character}${isFlashBack}: ${tinyLib.removeAiTags(ficData.value ?? '')}`;
   }
   return data;
 };
 
+/**
+ * @param {number|number[]|null} [chapter] - Chapter id, list of chapter ids, or `null` for every chapter.
+ * @param {boolean} [saveAsFile] - Whether to trigger a file download.
+ * @param {SaveCfg} [tinyCfg] - Overrides for the export options.
+ * @returns {{ data: string, mime: string }|undefined} The exported payload when `saveAsFile` is false.
+ */
 export const saveRoleplayFormat = (chapter, saveAsFile = true, tinyCfg = {}) => {
   // Save Config
+  /** @type {Record<string, boolean>} */
   const saveCfg = {
     dayNumber: true,
     dayStatus: true,
@@ -127,14 +155,17 @@ export const saveRoleplayFormat = (chapter, saveAsFile = true, tinyCfg = {}) => 
     ficLine: true,
   };
 
-  for (const item in tinyCfg) {
-    if (typeof tinyCfg[item] === 'boolean') saveCfg[item] = tinyCfg[item];
+  /** @type {Record<string, boolean>} */
+  const tinyCfgMap = tinyCfg;
+  for (const item in tinyCfgMap) {
+    if (typeof tinyCfgMap[item] === 'boolean') saveCfg[item] = tinyCfgMap[item];
   }
 
   // File start and end
   let file = ``;
 
   // Insert chapter
+  /** @param {string|number} cpId */
   const insertChapter = (cpId) => {
     file += `\n\n---------- Chapter ${cpId} ----------\n`;
     file += renderRoleplayFormat(cpId, saveCfg);
@@ -185,62 +216,68 @@ export const saveRoleplayFormat = (chapter, saveAsFile = true, tinyCfg = {}) => 
   else return { data: `${info}\n\n${file}`, mime: 'text/plain' };
 };
 
-// Get Params
-const getParams = () => {
-  const urlSearchParams = new URLSearchParams(document.location.search);
-  return Object.fromEntries(urlSearchParams.entries());
+/**
+ * Renders a page resolved by the router.
+ *
+ * @param {import('./router/pages.mjs').RouterPage} page - Page resolved from the current URL.
+ * @returns {Promise<void>}
+ */
+const renderPage = async (page) => {
+  // The carousel is exclusive to the homepage. Toggling it here keeps the
+  // behaviour correct on the browser back/forward buttons too.
+  topPage.toggleClass('d-none', page.name !== 'home');
+
+  switch (page.name) {
+    case 'read-fic':
+      openChapterMenu(page.query);
+      return;
+
+    case 'roleplay':
+      loaderScreen.start();
+      await tinyNotification.requestPerm();
+      loaderScreen.stop();
+      await AiScriptStart();
+      return;
+
+    case 'character':
+    case 'markdown':
+      // `openMDFile` resolves to `false` when the file does not exist, so a
+      // broken link renders the 404 page instead of an empty document.
+      if ((await openMDFile(getPagePath(page) ?? '')) === false) {
+        document.title = 'ERROR 404 - not found';
+        renderNotFound();
+      }
+      return;
+
+    case 'chapter':
+      openChapterMenu({ chapter: String(page.chapter), ...page.query });
+      return;
+
+    case 'not-found':
+      clearFicData();
+      document.title = 'ERROR 404 - not found';
+      renderNotFound();
+      return;
+
+    default:
+      openHomePage();
+  }
 };
-
-// Pop State
-tinyWin.on('popstate', () => {
-  // Remove Fic Data
-  clearFicData();
-
-  // Get Params
-  const params = getParams();
-
-  // Load Page
-  const loadPage = () => {
-    if (storyData.urlPage !== params.path) {
-      storyData.urlPage = params.path;
-      if (params.path === 'read-fic') openChapterMenu(params);
-      if (params.path === 'ai') return;
-      else openNewAddress(params, true);
-    }
-  };
-
-  // Default
-  if (document.location.pathname === '/') {
-    loadPage();
-  }
-
-  // Custom
-  else {
-    // Get Data
-    const urlData = Object.entries(storyCfg.custom_url).find(
-      (item) => item[1].url === document.location.pathname,
-    );
-    if (urlData) {
-      params.path = urlData[0];
-      params.title = urlData[1].title;
-      loadPage();
-    }
-  }
-});
 
 // Start App
 export const rootApp = new TinyDomReadyManager();
 rootApp.onReady(() => {
-  if (typeof window.ethereum !== 'undefined') document.body.classList.add('browser-with-web3');
+  if (typeof (/** @type {WindowWithEthereum} */ (window).ethereum) !== 'undefined')
+    document.body.classList.add('browser-with-web3');
   installWindowHiddenScript();
-  vanillaPwa.install();
+  installPWA();
 
   const startApp = () => {
     console.log('Starting App...');
-    storyData.start(
+    storyData.start?.(
       /**
-       * @param {Function} fn
-       * @param {string} readme
+       * @param {() => void} fn - Callback that reveals the page once the story is ready.
+       * @param {string} readme - Rendered readme markup.
        */
       async (fn, readme) => {
         // Custom Colors
@@ -357,6 +394,7 @@ rootApp.onReady(() => {
         storyData.readme = readme;
 
         // Read Updater
+        /** @type {string|TinyHtml<HTMLElement>} */
         let isNewValue = '';
         storyData.globalIsNew = 0;
         for (const chapter in storyData.isNew) {
@@ -386,6 +424,7 @@ rootApp.onReady(() => {
         }
 
         // Dropdown
+        /** @param {NavbarItems} newItem */
         const addDropdown = (newItem) => {
           for (const valueName in newItem.dropdowns) {
             const dataList = newItem.dbBase[valueName];
@@ -418,7 +457,7 @@ rootApp.onReady(() => {
 
               // Click
               if (typeof item.file === 'string')
-                li.on('click', () => openMDFile(aItem.attr('file')));
+                li.on('click', () => openMDFile(aItem.attr('file') ?? ''));
               if (item.click) li.on('click', item.click);
               li.on('click', () => {
                 element.hide();
@@ -431,47 +470,61 @@ rootApp.onReady(() => {
         // Insert Navbars
         const navbarItems = () => {
           // Base Crypto Modal
+          /** @type {import("bootstrap").Offcanvas|null} */
           let offCanvasEl = null;
+          /**
+           * @param {CryptoWalletKey} crypto_value - Crypto key in the story config.
+           * @param {string} title - Human readable network name.
+           * @returns {(e: Event) => void} Click handler.
+           */
           const baseCryptoModal = (crypto_value, title) => {
             return /** @param {Event} e */ (e) => {
               e.preventDefault();
+              const wallet = storyCfg[crypto_value];
+              if (!wallet) return;
               const qrcodeCanvas = TinyHtml.createFrom('canvas');
-              QRCode.toCanvas(qrcodeCanvas.get(0), storyCfg[crypto_value].address, (error) => {
-                if (error) {
-                  alert(error);
-                } else {
-                  // Prepare Text
-                  tinyLib.modal({
-                    title: title + ' Network Donation',
+              QRCode.toCanvas(
+                /** @type {HTMLCanvasElement} */ (qrcodeCanvas.get(0)),
+                wallet.address,
+                (error) => {
+                  if (error) {
+                    alert(String(error));
+                  } else {
+                    // Prepare Text
+                    tinyLib.modal({
+                      title: title + ' Network Donation',
 
-                    id: 'busd_request',
-                    dialog: 'modal-lg',
+                      id: 'busd_request',
+                      dialog: 'modal-lg',
 
-                    body: TinyHtml.createFrom('center').append(
-                      TinyHtml.createFrom('h4', { class: 'mb-5' }).setText(
-                        'Please enter the address correctly! Any type issue will be permanent loss of your funds!',
+                      body: TinyHtml.createFrom('center').append(
+                        TinyHtml.createFrom('h4', { class: 'mb-5' }).setText(
+                          'Please enter the address correctly! Any type issue will be permanent loss of your funds!',
+                        ),
+                        TinyHtml.createFrom('a', {
+                          target: '_blank',
+                          href: wallet.explorer + wallet.address,
+                        }).setText('Blockchain Explorer'),
+                        TinyHtml.createFrom('br'),
+                        TinyHtml.createFrom('span').setText(wallet.address),
+                        TinyHtml.createFrom('div', { class: 'mt-3' }).append(qrcodeCanvas),
                       ),
-                      TinyHtml.createFrom('a', {
-                        target: '_blank',
-                        href: storyCfg[crypto_value].explorer + storyCfg[crypto_value].address,
-                      }).setText('Blockchain Explorer'),
-                      TinyHtml.createFrom('br'),
-                      TinyHtml.createFrom('span').setText(storyCfg[crypto_value].address),
-                      TinyHtml.createFrom('div', { class: 'mt-3' }).append(qrcodeCanvas),
-                    ),
 
-                    footer: [],
-                  });
-                }
-              });
+                      footer: [],
+                    });
+                  }
+                },
+              );
             };
           };
 
           // Base
+          /** @type {NavbarItems} */
           const newItem = { dbBase: {} };
           newItem.dbBase.donations = [];
           newItem.dbBase.information = [];
           newItem.dbBase.characters = [];
+          /** @param {import("bootstrap").Offcanvas} newOffCanvas */
           newItem.setOffCanvas = (newOffCanvas) => {
             offCanvasEl = newOffCanvas;
           };
@@ -675,6 +728,7 @@ rootApp.onReady(() => {
           });
 
           // Login Account
+          /** @type {NavbarLoginAccount} */
           const loginAccount = {};
           if (needsAgeVerification()) {
             loginAccount.base = TinyHtml.createFrom('li', {
@@ -689,11 +743,14 @@ rootApp.onReady(() => {
               .setAttr('title', 'Sign in with Google');
             loginAccount.icon = new TinyHtmlElems.Icon(['fa-solid', 'fa-right-to-bracket']);
 
-            const tool = Tooltip(loginAccount.link);
-            loginAccount.base.append(loginAccount.link);
-            loginAccount.link.append(loginAccount.icon);
+            const loginLink = loginAccount.link;
+            const loginIcon = loginAccount.icon;
 
-            loginAccount.link.on('click', async () => {
+            const tool = Tooltip(loginLink);
+            loginAccount.base.append(loginLink);
+            loginLink.append(loginIcon);
+
+            loginLink.on('click', async () => {
               if (fa.currentUser) {
                 loaderScreen.start(`Logging out...`);
                 await fa.logout();
@@ -709,13 +766,13 @@ rootApp.onReady(() => {
             const checkStatus = /** @type {import('./account/firebase.mjs').OnAuthStateChanged} */ (
               user,
             ) => {
-              loginAccount.link.removeClass('disabled');
+              loginLink.removeClass('disabled');
               if (user) {
-                loginAccount.link.setAttr('data-bs-original-title', 'Logout');
-                loginAccount.icon.iconTags = ['fa-solid', 'fa-right-to-bracket'];
+                loginLink.setAttr('data-bs-original-title', 'Logout');
+                loginIcon.iconTags = ['fa-solid', 'fa-right-to-bracket'];
               } else {
-                loginAccount.link.setAttr('data-bs-original-title', 'Sign in with Google');
-                loginAccount.icon.iconTags = ['fa-solid', 'fa-right-from-bracket'];
+                loginLink.setAttr('data-bs-original-title', 'Sign in with Google');
+                loginIcon.iconTags = ['fa-solid', 'fa-right-from-bracket'];
               }
             };
 
@@ -801,10 +858,10 @@ rootApp.onReady(() => {
             TinyHtml.createFrom('li', { class: 'nav-item nav-ai' }).prepend(
               TinyHtml.createFrom('a', {
                 class: 'nav-link',
-                href: '/?path=ai',
+                href: '/roleplay',
                 id: 'ai-access-page',
               })
-                .setText('AI Page')
+                .setText('Roleplay Page')
                 .prepend(new Icon('fa-solid fa-server me-2'))
                 .on('click', async (e) => {
                   e.preventDefault();
@@ -833,6 +890,9 @@ rootApp.onReady(() => {
             // Login
             loginAccount.base ? loginAccount.base : null,
 
+            // Mature Content Settings
+            nsfwSettingsNavItem(),
+
             // Read Fic
             TinyHtml.createFrom('li', {
               class: 'nav-item font-weight-bold',
@@ -841,7 +901,7 @@ rootApp.onReady(() => {
                 TinyHtml.createFrom('a', {
                   id: 'fic-start',
                   class: 'nav-link',
-                  href: '/?path=read-fic',
+                  href: '/read-fic',
                 })
                   .setText('Read Fic')
                   .append(isNewValue)
@@ -869,8 +929,8 @@ rootApp.onReady(() => {
           offCanvasBase,
         );
 
-        const tinyCollapse1 = tinyLib.bs.navbar.collapse('left', 'small mdMenu', null);
-        const tinyCollapse2 = tinyLib.bs.navbar.collapse('right', 'small mdMenu', 'fic-nav');
+        const tinyCollapse1 = tinyLib.bs.navbar.collapse('left', 'small mdMenu', '', null);
+        const tinyCollapse2 = tinyLib.bs.navbar.collapse('right', 'small mdMenu', 'fic-nav', null);
 
         // Insert Navbar
         body.prepend(
@@ -899,12 +959,12 @@ rootApp.onReady(() => {
           ),
         );
 
-        storyData.nc = { base: {}, item: {} };
+        storyData.nc = /** @type {StoryNavbar} */ ({ base: {}, item: {} });
         storyData.nc.item.left = new TinyHtml(tinyCollapse1.find(':scope > ul'));
         storyData.nc.item.right = new TinyHtml(tinyCollapse2.find(':scope > ul'));
-        const offCanvasNavCfg = new Offcanvas(navbarOffCanvas.get(0));
+        const offCanvasNavCfg = new Offcanvas(/** @type {HTMLElement} */ (navbarOffCanvas.get(0)));
         addDropdown(navbarData);
-        navbarData.setOffCanvas(offCanvasNavCfg);
+        navbarData.setOffCanvas?.(offCanvasNavCfg);
 
         const checkWindowSize = () => {
           if (window.matchMedia('(min-width: 992px)').matches) {
@@ -926,6 +986,7 @@ rootApp.onReady(() => {
         app.append(markdownBase);
 
         // Footer Base
+        /** @type {{ 1: TinyHtmlAny[]; 2: TinyHtmlAny[] }} */
         const tinyFooter = { 1: [], 2: [] };
 
         // Footer 1
@@ -945,7 +1006,7 @@ rootApp.onReady(() => {
         }
 
         // CID32
-        if (storyData.cid32) {
+        if (storyData.cid32 && storyCfg.nftDomain) {
           tinyFooter[1].push(
             TinyHtml.createFrom('li').append(
               TinyHtml.createFrom('a', { href: `https://${storyData.cid32}.ipfs.dweb.link/` })
@@ -1049,7 +1110,7 @@ rootApp.onReady(() => {
           TinyHtml.createFrom('li')
             .prepend(
               TinyHtml.createFrom('a', {
-                href: '/?path=%2FLICENSE.md',
+                href: '/license',
                 id: 'license',
               })
                 .setText('License')
@@ -1065,7 +1126,7 @@ rootApp.onReady(() => {
           TinyHtml.createFrom('li')
             .prepend(
               TinyHtml.createFrom('a', {
-                href: '/?path=%2FPRIVACY.md',
+                href: '/privacy',
                 id: 'privacy-policy',
               })
                 .setText('Privacy Policy')
@@ -1088,7 +1149,7 @@ rootApp.onReady(() => {
                 // Logo
                 TinyHtml.createFrom('div', { class: 'col-md-6 mt-md-0 mt-3' }).append(
                   TinyHtml.createFrom('center').append(
-                    TinyHtml.createFrom('img', { class: 'img-fluid', src: '/img/logo.png' }),
+                    TinyHtml.createFrom('img', { class: 'img-fluid', src: '/img/blank.png' }),
                     TinyHtml.createFrom('br'),
                   ),
                 ),
@@ -1128,12 +1189,12 @@ rootApp.onReady(() => {
 
         const slides = [
           {
-            img: './img/homepage/banner/pony_driland.jpg',
+            img: '/img/homepage/banner/pony_driland.jpg',
             title: 'Pony Driland',
             text: 'Discover a science fiction story mixed with horror, mystery, and adventure. A mysterious dimension has just been discovered!',
           },
           {
-            img: './img/homepage/banner/discord.jpg',
+            img: '/img/homepage/banner/discord.jpg',
             title: 'Discord Server',
             text: '<a href="https://discord.gg/sSkysVtj7y" target="_blank">Join the Discord official server to see real-time updates.</a>',
           },
@@ -1165,15 +1226,9 @@ rootApp.onReady(() => {
           TinyHtml.createFrom('p', { class: 'px-5' }).setHtml(slide.text).appendTo(caption);
         });
 
-        // Start Readme
-        const params = getParams();
-        if (params.path === 'read-fic') openChapterMenu(params);
-        else if (params.path === 'ai') {
-          loaderScreen.start();
-          await tinyNotification.requestPerm();
-          loaderScreen.stop();
-          AiScriptStart();
-        } else openNewAddress(params, true, true);
+        // Start the router. It renders the page of the current URL and keeps
+        // handling the browser back/forward buttons from now on.
+        await startRouter(renderPage);
 
         // Final part
         fn();
@@ -1186,7 +1241,7 @@ rootApp.onReady(() => {
               `To read the fic, just click on the "Read Fic" link located in the top-right corner of the navbar. ` +
               `The same navbar also gives you access to fic-related tools like bookmarks and story progress tracking.` +
               `\n\nDue to restrictions from some countries, the website is required to track your country of origin to restrict some resources.`,
-            'Welcome to Pony Driland!',
+            { title: 'Welcome to Pony Driland!' },
           );
         }
       },

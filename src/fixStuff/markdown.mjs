@@ -1,24 +1,34 @@
 import { marked } from 'marked';
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
-import tinyLib, { alert } from '../files/tinyLib.mjs';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
+import tinyLib from '../files/tinyLib.mjs';
 
 import { storyData } from '../files/chapters.mjs';
-import { appData, gtag, loaderScreen } from '../important.mjs';
+import { appData, gtag, loaderScreen, fileVersion } from '../important.mjs';
 import { tinyAiScript } from '../ai/software/tinyAiScript.mjs';
 import storyCfg from '../chapters/config.mjs';
 
 import { fixFileUrl, fixHref, fixImageSrc, fixSpoilers } from './urls.mjs';
 import { body, topPage } from '../html/query.mjs';
-import { yt } from '../api/youtube.mjs';
 import { markdownBase } from '../html/base.mjs';
+import { updateUrl } from '../router/index.mjs';
+import { getCharacterByPath } from '../router/pages.mjs';
 
 import '../markdown/dropdown.mjs';
 import '../markdown/spoiler.mjs';
 import '../markdown/ai-tag.mjs';
+import '../markdown/nsfw.mjs';
+import { refreshNsfwBlocks } from '../markdown/nsfw-runtime.mjs';
 import { convertIsoStringsToCalendar } from '../files/utils.mjs';
+import { sky } from '../chapter_manager/weather/index.mjs';
+import musicManager from '../chapter_manager/music/index.mjs';
 
 const { Icon } = TinyHtmlElems;
+
+/**
+ * @import { TinyHtmlAny } from 'tiny-essentials/libs/html/TinyHtml';
+ */
 
 /**
  * Remove Fic Data
@@ -30,6 +40,9 @@ export const clearFicData = () => {
     appData.ai.secondsUsed = 0;
   }
   tinyAiScript.killIo();
+
+  // The soundtrack belongs to the chapter, so it must not survive it.
+  musicManager.resetPlaylist();
 
   for (const item in storyData.sfx) {
     if (typeof storyData.sfx[item].hide === 'function') {
@@ -48,32 +61,37 @@ export const clearFicData = () => {
     .removeClass(`fic-daycicle-night`)
     .removeClass(`fic-daycicle-lateAtNight`);
 
+  // The sky owns a WebGL context, so it must be released when the reader closes.
+  sky.destroy();
+  storyData.chapter.weather = undefined;
+  storyData.chapter.nextWeather = undefined;
+  storyData.chapter.nextDayNightCycle = undefined;
+
   new TinyHtml(storyData.nc.base.right.find(':scope > #status')).empty();
   TinyHtml.query('#fic-chapter')?.empty();
   storyData.readFic = false;
   storyData.chapter.html = {};
-  storyData.chapter.line = null;
+  storyData.chapter.line = 0;
   storyData.chapter.nav = {};
   storyData.chapter.selected = 0;
-
-  if (yt.exists && yt.state === YT.PlayerState.PLAYING) yt.player.stopVideo();
 };
 
 /**
  * URL Update
  *
- * @param {string} url
- * @param {string} [title]
- * @param {boolean} [isPopState=false]
- * @param {Record<string, any>} [extra={}]
+ * Keeps the browser URL in sync with the page that is currently rendered. The
+ * URL itself is built by the router, so the URL format is described in a
+ * single place.
+ *
+ * @param {import('../router/pages.mjs').RouterPage} page - Page being rendered.
+ * @param {boolean} [isPopState=false] - Whether this comes from a popstate event.
+ * @returns {void}
  */
-export const urlUpdate = (url, title, isPopState = false, extra = {}) => {
-  // Page Title
-  if (typeof title !== 'string' || title.length < 1) {
-    title = storyCfg.title;
-  }
+export const urlUpdate = (page, isPopState = false) => {
+  const title =
+    typeof page.title === 'string' && page.title.length > 0 ? page.title : storyCfg.title;
 
-  if (url === 'ai') {
+  if (page.name === 'roleplay') {
     if (!appData.ai.using) {
       appData.ai.using = true;
       appData.emitter.emit('isUsingAI', true);
@@ -85,58 +103,72 @@ export const urlUpdate = (url, title, isPopState = false, extra = {}) => {
     }
   }
 
-  let newUrl =
-    typeof url === 'string' && !url.startsWith('/') && url !== 'read-fic' && url !== 'ai'
-      ? `/${url}`
-      : url;
-
-  let extraReady = '';
-  for (const item in extra) {
-    extraReady += `&${item}=${extra[item]}`;
-  }
-
   document.title = title;
-  storyData.urlPage = newUrl;
+  storyData.urlPage = page.path ?? page.name;
 
   // Google
   if (typeof storyCfg.gtag === 'string') {
     gtag('event', 'url', {
       event_title: title,
       event_category: 'open_url',
-      url: newUrl,
+      url: storyData.urlPage,
     });
   }
 
-  // Pop State
-  if (!isPopState) {
-    if (typeof newUrl === 'string' && newUrl.length > 0) {
-      if (!storyCfg.custom_url[newUrl]) {
-        window.history.pushState(
-          { pageTitle: title },
-          '',
-          '/?path=' + encodeURIComponent(newUrl) + extraReady,
-        );
-      } else {
-        window.history.pushState(
-          { pageTitle: storyCfg.custom_url[newUrl].title },
-          '',
-          storyCfg.custom_url[newUrl].url + extraReady,
-        );
-      }
-    } else {
-      window.history.pushState({ pageTitle: title }, '', '/');
-    }
-  }
+  if (!isPopState) updateUrl({ ...page, title });
 };
 
 /**
+ * A single entry of the wiki character card table.
+ *
+ * @typedef {Object} MarkdownCharTableLink
+ * @property {string} text - Link label.
+ * @property {string} url - Link target.
+ * @property {string|null} [isRepUrl] - Repository relative path, when it points to another page.
+ */
+
+/**
+ * A row of the wiki character card table: `[label, value]`.
+ *
+ * @typedef {[string, string|MarkdownCharTableLink]} MarkdownCharTableRow
+ */
+
+/**
+ * A single entry of the markdown content list. Either a plain title or a
+ * `[title, ...children]` tuple describing a nested list.
+ *
+ * @typedef {string|string[]} MarkdownContentListItem
+ */
+
+/**
+ * Metadata extracted from the markdown front matter.
+ *
  * @typedef {Object} MarkdownMetadata
- * @property {any[]} [contentList]
- * @property {any[]} [charTable]
+ * @property {MarkdownContentListItem[]} [contentList]
+ * @property {MarkdownCharTableRow[]} [charTable]
  * @property {string} [name]
  * @property {string} [cardUrl]
  * @property {string} [subName]
  * @property {string} [mode]
+ * @property {string} [title]
+ */
+
+/**
+ * A single leaf value stored in the markdown front matter metadata.
+ *
+ * @typedef {string|number|boolean|MarkdownMetadata|MarkdownCharTableLink} MarkdownMetadataLeaf
+ */
+
+/**
+ * A nested list of markdown metadata values.
+ *
+ * @typedef {Array<MarkdownMetadataLeaf|MarkdownMetadataValue[]>} MarkdownMetadataValue
+ */
+
+/**
+ * Front matter metadata indexed by its raw key.
+ *
+ * @typedef {MarkdownMetadata & Record<string, MarkdownMetadataValue|MarkdownMetadataLeaf>} MarkdownMetadataMap
  */
 
 /**
@@ -152,7 +184,8 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
   let data = '';
 
   // Fix Html
-  if (!isHTML) data = marked.parse(text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ''));
+  if (!isHTML)
+    data = String(marked.parse(text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, '')));
   else data = text;
 
   // Fix URLs
@@ -172,9 +205,11 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
   else data = data.replace('{{content_list}}', '');
 
   // Markdown page ways
+  /** @type {Record<string, () => void>} */
   const pageTypes = {
     // Wiki
     wiki: () => {
+      if (!metadata) return;
       // Row
       const row = TinyHtml.createFrom('div', { class: 'wiki-page' });
 
@@ -193,9 +228,9 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
 
       const card = TinyHtml.createFrom('div', { class: 'card position-relative' });
       const cardImg = TinyHtml.createFrom('img', {
-        src: metadata.cardUrl,
+        src: metadata.cardUrl ?? null,
         class: 'card-img-top',
-        alt: metadata.name,
+        alt: metadata.name ?? null,
       });
 
       // Card body
@@ -278,6 +313,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
     topPage.addClass('d-none');
   }
 
+  /** @param {string} text */
   const markdownHid = (text) =>
     `tiny-wiki-${encodeURIComponent(
       text
@@ -289,7 +325,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
 
   const markdownItems = new TinyHtml(markdownBase.find(`h1,h2,h3,h4,h5`));
   markdownItems.forEach((item) => {
-    item.setAttr('id', markdownHid(item.text()));
+    item.setAttr('id', markdownHid(item.text() ?? ''));
   });
 
   // Content List
@@ -330,7 +366,7 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
        * @param {boolean} [isLast=false]
        * @param {string|number} [index]
        * @param {string|number|null} [index2=null]
-       * @param {TinyHtml<any>|null} [extraElement=null]
+       * @param {TinyHtmlAny|null} [extraElement=null]
        *
        * @returns {TinyHtml<HTMLElement>}
        */
@@ -359,32 +395,20 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
 
       // Read data
       let isLast = false;
-      for (let index = 0; index < metadata.contentList.length; index++) {
-        isLast = index === metadata.contentList.length - 1;
-        if (typeof metadata.contentList[index] === 'string')
-          ul.append(insertLi('list-group-item pt-0', metadata.contentList[index], isLast, index));
-        else if (
-          Array.isArray(metadata.contentList[index]) &&
-          metadata.contentList[index].length > 0
-        ) {
+      const contentList = metadata.contentList ?? [];
+      for (let index = 0; index < contentList.length; index++) {
+        const contentItem = contentList[index];
+        isLast = index === contentList.length - 1;
+        if (typeof contentItem === 'string')
+          ul.append(insertLi('list-group-item pt-0', contentItem, isLast, index));
+        else if (Array.isArray(contentItem) && contentItem.length > 0) {
           const ul2 = TinyHtml.createFrom('ul', { class: 'my-0' });
 
-          ul.append(
-            insertLi(
-              'list-group-item py-0',
-              metadata.contentList[index][0],
-              null,
-              index,
-              null,
-              ul2,
-            ),
-          );
+          ul.append(insertLi('list-group-item py-0', contentItem[0], false, index, null, ul2));
 
-          for (const index2 in metadata.contentList[index])
-            if (Number(index2) !== 0 && typeof metadata.contentList[index][index2] === 'string')
-              ul2.append(
-                insertLi(`pt-0`, metadata.contentList[index][index2], isLast, index, index2),
-              );
+          for (const index2 in contentItem)
+            if (Number(index2) !== 0 && typeof contentItem[index2] === 'string')
+              ul2.append(insertLi(`pt-0`, contentItem[index2], isLast, index, index2));
         }
       }
 
@@ -400,11 +424,20 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
     });
 
   // Convert File URLs
-  new TinyHtml(markdownBase.find('a[file]')).forEach(fixFileUrl(openMDFile));
+  new TinyHtml(markdownBase.find('a[file]')).forEach(
+    fixFileUrl((file) => {
+      if (typeof file === 'string') openMDFile(file);
+    }),
+  );
 
   new TinyHtml(markdownBase.find('a:not([file])')).forEach(fixHref);
   new TinyHtml(markdownBase.find('img')).forEach(fixImageSrc);
   new TinyHtml(markdownBase.find('.book-spoiler')).forEach(fixSpoilers);
+
+  // The mature content branches are rendered by the parser, but the reader can
+  // change a filter at any time, so the visibility is always resolved here.
+  const root = /** @type {ParentNode} */ (markdownBase.get(0) ?? document);
+  refreshNsfwBlocks(root);
 };
 
 /**
@@ -414,31 +447,39 @@ const insertMarkdownFile = (text, metadata = null, isMainPage = false, isHTML = 
  */
 export const openMDFile = async (url, isMain = false) => {
   if (typeof url === 'string') {
+    // Normalize the path so `pages/x.md` and `/pages/x.md` are the same page.
+    const filePath = url.startsWith('/') ? url : `/${url}`;
+
     // Remove Fic Data
     clearFicData();
 
     // New page
     if (url !== 'MAIN') {
       // Read Data Base
-      console.log(`Opening MD file "${url}"...`);
+      console.log(`Opening MD file "${filePath}"...`);
       loaderScreen.start('Loading page...');
 
       // Load ajax
-      const fileData = await fetch(
-        `${url.startsWith('/') ? url : `/${url}`}${window.fileVersion ?? ''}`,
-        {
-          method: 'GET',
-          dataType: 'text',
-        },
-      )
-        .then((res) => res.text())
-        .catch((err) => {
-          loaderScreen.stop();
-          console.error(err);
-          alert(err.message);
-        });
+      let fileData;
+      try {
+        const res = await fetch(`${filePath}${fileVersion ?? ''}`, { method: 'GET' });
+        if (!res.ok) throw new Error(`Failed to load "${filePath}" (${res.status}).`);
 
-      if (!fileData) return;
+        // A missing file is often answered with the SPA shell or with an HTML
+        // error page, so the content type is the only reliable signal.
+        const contentType = res.headers.get('content-type') ?? '';
+        if (contentType.includes('text/html') && !filePath.endsWith('.html')) {
+          throw new Error(`"${filePath}" is not a markdown file.`);
+        }
+
+        fileData = await res.text();
+      } catch (err) {
+        loaderScreen.stop();
+        console.error(err);
+        return false;
+      }
+
+      if (!fileData) return false;
       try {
         // Get metadata
         const fileLines = tinyLib.mdManager.removeMetadata(fileData);
@@ -446,8 +487,8 @@ export const openMDFile = async (url, isMain = false) => {
         const title = md.title;
 
         // Prepare metadata (script created by ChatGPT)
-        /** @type {MarkdownMetadata} */
-        const metadata = {};
+        /** @type {MarkdownMetadataMap} */
+        const metadata = /** @type {MarkdownMetadataMap} */ ({});
         const githubRegex = tinyLib.getGitUrlPath('{url}public\\/');
         for (const key in md) {
           const match = key.match(/^([^_]+)(?:_(\d+))+/);
@@ -459,12 +500,13 @@ export const openMDFile = async (url, isMain = false) => {
               metadata[name] = [];
             }
 
-            let currentLevel = metadata[name];
+            /** @type {MarkdownMetadataValue} */
+            let currentLevel = /** @type {MarkdownMetadataValue} */ (metadata[name]);
             for (let i = 0; i < indices.length - 1; i++) {
               if (!currentLevel[indices[i]]) {
                 currentLevel[indices[i]] = [];
               }
-              currentLevel = currentLevel[indices[i]];
+              currentLevel = /** @type {MarkdownMetadataValue} */ (currentLevel[indices[i]]);
             }
 
             const markdownLink = md[key].match(/^\[(.*?)\]\((.*?)\)$/);
@@ -488,49 +530,40 @@ export const openMDFile = async (url, isMain = false) => {
 
         TinyHtml.setWinScrollTop(0);
         loaderScreen.stop();
-        urlUpdate(url, title);
+
+        // Keep the address bar in sync with the page that was just rendered.
+        // `updateUrl` is a no-op while the router is the one rendering.
+        const character = getCharacterByPath(filePath);
+        urlUpdate(
+          character
+            ? { name: 'character', slug: character.slug, title: character.title ?? title }
+            : { name: 'markdown', path: filePath, title },
+        );
       } catch (err) {
         // Error!
         loaderScreen.stop();
         console.error(err);
-        alert(err.message);
+        alert(/** @type {Error} */ (err).message);
       }
     }
 
     // Main page
     else {
-      insertMarkdownFile(storyData.readme, null, isMain, true);
-      urlUpdate();
+      insertMarkdownFile(storyData.readme ?? '', null, isMain, true);
+      urlUpdate({ name: 'home' });
     }
     return;
   }
   throw new Error('Invalid Md File Url!');
 };
 
-export const openNewAddress = (data, isPopState = false, useCustom = false) => {
-  // File Path
-  const filePath = data.path;
-
-  // Prepare Custom URL
-  if (useCustom && storyCfg.custom_url[data.path]) {
-    isPopState = false;
-  }
-
-  if (
-    !data ||
-    typeof filePath !== 'string' ||
-    filePath.length < 1 ||
-    !filePath.startsWith('/') ||
-    filePath.indexOf('http://') > -1 ||
-    filePath.indexOf('https://') > -1
-  ) {
-    insertMarkdownFile(storyData.readme, null, true, true);
-  } else {
-    openMDFile(filePath);
-    if (typeof data.title === 'string' && data.title.length > 0) {
-      urlUpdate(data.path, data.title, isPopState);
-    } else {
-      urlUpdate(data.path, null, isPopState);
-    }
-  }
+/**
+ * Renders the home page (readme).
+ *
+ * @returns {void}
+ */
+export const openHomePage = () => {
+  clearFicData();
+  insertMarkdownFile(storyData.readme ?? '', null, true, true);
+  urlUpdate({ name: 'home' });
 };
