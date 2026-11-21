@@ -1,376 +1,446 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
-import { tinyIo } from '../software/base.mjs';
+import { getClient } from '../software/base.mjs';
 import { isOnline } from '../software/enablerContent.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import { loaderScreen } from '../../important.mjs';
-import moment from 'moment/moment';
+import moment from 'moment';
 import { makeMsgRenderer, userStatus } from '../msgRender.mjs';
 
 const { Form, Button, TextInput, DateTimeInput, NumberInput, Textarea } = TinyHtmlElems;
 
+/**
+ * @import { TinyHtmlAny } from 'tiny-essentials/libs/html/TinyHtml';
+ */
+
+/**
+ * Opens the room history browser, with filters by author, date range and text.
+ *
+ * Returns immediately when the app is not connected to a room.
+ *
+ * @returns {void}
+ */
 export const openHistory = () => {
   if (!isOnline()) return;
-  const room = tinyIo.client.getRoom();
+  const client = getClient();
+
+  const room = client.getRoom();
 
   const $root = TinyHtml.createFrom('div');
+
+  /** @type {Map<string, TinyHtmlAny>} */
+  const rowsByHistoryId = new Map();
+
+  // TITLE: Shift danger hint
+  // Highlights every delete button while the shift key is held, warning the user that
+  // the next click will delete the message without asking for confirmation.
+  /** @param {boolean} active */
+  const setShiftDanger = (active) => $root.toggleClass('shift-danger', active);
+
+  /** @param {KeyboardEvent} event */
+  const onShiftKeyDown = (event) => {
+    if (event.key === 'Shift') setShiftDanger(true);
+  };
+
+  /** @param {KeyboardEvent} event */
+  const onShiftKeyUp = (event) => {
+    if (event.key === 'Shift') setShiftDanger(false);
+  };
+
+  // Safety net: the browser may swallow the keyup while the tab is unfocused
+  const onShiftBlur = () => setShiftDanger(false);
+
+  window.addEventListener('keydown', onShiftKeyDown);
+  window.addEventListener('keyup', onShiftKeyUp);
+  window.addEventListener('blur', onShiftBlur);
 
   // Form Card
   const card = TinyHtml.createFrom('div', { class: 'card border' });
   const cardBody = TinyHtml.createFrom('div', { class: 'card-body' });
 
   // Form
-  const form = new Form({ id: 'searchForm', mainClass: 'row', tags: 'g-3' }).on('submit', (e) => {
-    e.preventDefault();
+  const form = new Form({ mainClass: 'row', tags: 'g-3' })
+    .setAttr('id', 'searchForm')
+    .on('submit', (e) => {
+      e.preventDefault();
 
-    const result = {
-      text: textInput.valTxt(),
-      userId: userInput.valTxt(),
-      chapter: null,
-      perPage: null,
-      page: null,
-      start: null,
-      end: null,
-    };
+      /** @type {HistorySearchQuery} */
+      const result = {
+        text: textInput.valTxt(),
+        userId: userInput.valTxt(),
+        chapter: null,
+        perPage: null,
+        page: null,
+        start: null,
+        end: null,
+      };
 
-    /**
-     * @param {string} name
-     * @param {import('tiny-essentials/libs/html/TinyHtml').TinyHtmlAny} input
-     */
-    const dateValidator = (name, input) => {
-      try {
-        result[name] = input.valDate()?.valueOf() ?? null;
-      } catch {
-        result[name] = null;
-      }
-    };
-
-    /**
-     * @param {string} name
-     * @param {import('tiny-essentials/libs/html/TinyHtml').TinyHtmlAny} input
-     */
-    const numberValidator = (name, input) => {
-      try {
-        result[name] = input.valNb();
-      } catch {
-        result[name] = null;
-      }
-    };
-
-    dateValidator('start', dateStartInput);
-    dateValidator('end', dateEndInput);
-
-    numberValidator('chapter', chapterInput);
-    numberValidator('perPage', perPageInput);
-    numberValidator('page', pageInput);
-
-    if (result.userId.length < 1) result.userId = null;
-    if (result.text.length < 1) result.text = null;
-    loaderScreen.start();
-
-    // Receive results
-    tinyIo.client
-      .loadMessages({
-        page: result.page,
-        perPage: result.perPage,
-        text: result.text,
-        chapter: result.chapter,
-        userId: result.userId,
-        start: result.start,
-        end: result.end,
-      })
-      .then(async (data) => {
-        resultsBox.empty();
-        // Error
-        if (data.error) {
-          resultsBox.append(
-            TinyHtml.createFrom('div', { class: 'text-danger' }).setText(result.msg),
-            TinyHtml.createFrom('div', { class: 'small' }).setText(result.code),
-          );
-          pagesCount.empty();
-          loaderScreen.stop();
-          return;
+      /**
+       * @param {'start'|'end'} name
+       * @param {TinyHtmlAny} input
+       */
+      const dateValidator = (name, input) => {
+        try {
+          result[name] = input.valDate()?.valueOf() ?? null;
+        } catch {
+          result[name] = null;
         }
+      };
 
-        // No results
-        if (!data.messages.length) {
-          resultsBox.append(
-            TinyHtml.createFrom('p', { class: 'text-muted m-0' }).setText('No results found.'),
-          );
-          pagesCount.empty();
-          loaderScreen.stop();
-          return;
+      /**
+       * @param {'chapter'|'perPage'|'page'} name
+       * @param {TinyHtmlAny} input
+       */
+      const numberValidator = (name, input) => {
+        try {
+          result[name] = input.valNb();
+        } catch {
+          result[name] = null;
         }
+      };
 
-        // Table wrapper
-        const tableWrapper = TinyHtml.createFrom('div', { class: 'table-responsive' });
+      dateValidator('start', dateStartInput);
+      dateValidator('end', dateEndInput);
 
-        // Table
-        const table = TinyHtml.createFrom('table', {
-          class: 'table table-hover table-bordered table-striped table-sm align-middle',
-        });
+      numberValidator('chapter', chapterInput);
+      numberValidator('perPage', perPageInput);
+      numberValidator('page', pageInput);
 
-        // Tbody
-        const tbody = TinyHtml.createFrom('tbody');
+      if (!result.userId || result.userId.length < 1) result.userId = null;
+      if (!result.text || result.text.length < 1) result.text = null;
+      loaderScreen.start();
 
-        const promises = [];
-        const isStaff = userStatus.isAdmin || userStatus.isMod;
-        data.messages.forEach((item) => {
-          const row = TinyHtml.createFrom('tr');
-          promises.push(
-            new Promise(async (resolve, reject) => {
-              try {
-                const colActions = TinyHtml.createFrom('td', { class: 'text-center' });
-                if (isStaff) {
-                  // EDIT BUTTON
-                  const editBtn = new Button({
-                    mainClass: 'btn',
-                    tags: 'btn-sm btn-outline-primary me-2',
-                    type: 'button',
-                    label: 'Edit',
-                  });
+      // Receive results
+      client
+        .loadMessages({
+          page: result.page ?? undefined,
+          perPage: result.perPage,
+          text: result.text,
+          chapter: result.chapter,
+          userId: result.userId,
+          start: result.start,
+          end: result.end,
+        })
+        .then(async (data) => {
+          resultsBox.empty();
+          // Error
+          if (/** @type {HistorySearchResult} */ (data).error) {
+            resultsBox.append(
+              TinyHtml.createFrom('div', { class: 'text-danger' }).setText(data.msg),
+              TinyHtml.createFrom('div', { class: 'small' }).setText(data.code),
+            );
+            pagesCount.empty();
+            loaderScreen.stop();
+            return;
+          }
 
-                  editBtn.on('click', () => {
-                    msgBase.empty();
+          // No results
+          if (!data.messages.length) {
+            resultsBox.append(
+              TinyHtml.createFrom('p', { class: 'text-muted m-0' }).setText('No results found.'),
+            );
+            pagesCount.empty();
+            loaderScreen.stop();
+            return;
+          }
 
-                    const editor = new Textarea({
-                      mainClass: 'form-control',
-                    })
-                      .setStyle('height', '180px')
-                      .setVal(item.text);
+          // Table wrapper
+          const tableWrapper = TinyHtml.createFrom('div', { class: 'table-responsive' });
 
-                    const saveBtn = new Button({
+          // Table
+          const table = TinyHtml.createFrom('table', {
+            class: 'table table-hover table-bordered table-striped table-sm align-middle',
+          });
+
+          // Tbody
+          const tbody = TinyHtml.createFrom('tbody');
+
+          /** @type {Promise<unknown>[]} */
+          const promises = [];
+          const isStaff = userStatus.isAdmin || userStatus.isMod;
+          data.messages.forEach((item) => {
+            const row = TinyHtml.createFrom('tr');
+            if (typeof item.historyId === 'string') rowsByHistoryId.set(item.historyId, row);
+            promises.push(
+              new Promise(async (resolve, reject) => {
+                try {
+                  const colActions = TinyHtml.createFrom('td', { class: 'text-center' });
+                  if (isStaff) {
+                    // EDIT BUTTON
+                    const editBtn = new Button({
                       mainClass: 'btn',
-                      tags: 'btn-primary mt-3',
+                      tags: 'btn-sm btn-outline-primary me-2',
                       type: 'button',
-                      label: 'Save',
+                      label: 'Edit',
                     });
 
-                    const cancelBtn = new Button({
-                      mainClass: 'btn',
-                      tags: 'btn-danger mt-3 me-2',
-                      type: 'button',
-                      label: 'Cancel',
-                    });
-
-                    const closeEditor = () => {
+                    editBtn.on('click', () => {
                       msgBase.empty();
-                      msgBase.append(TinyHtml.createFromHtml(msgFormat));
-                    };
 
-                    cancelBtn.on('click', closeEditor);
+                      const editor = new Textarea({
+                        mainClass: 'form-control',
+                      })
+                        .setStyle('height', '180px')
+                        .setVal(item.text ?? '');
 
-                    saveBtn.on('click', async () => {
-                      const newText = editor.valTxt();
-                      loaderScreen.start();
+                      const saveBtn = new Button({
+                        mainClass: 'btn',
+                        tags: 'btn-primary mt-3',
+                        type: 'button',
+                        label: 'Save',
+                      });
 
-                      let isError = false;
-                      await tinyIo.client
-                        .editMessage(
-                          {
-                            message: newText,
-                          },
-                          item.historyId,
-                        )
-                        .then(async (result) => {
-                          if (result.error) {
-                            alert(result.msg, 'ERROR!');
+                      const cancelBtn = new Button({
+                        mainClass: 'btn',
+                        tags: 'btn-danger mt-3 me-2',
+                        type: 'button',
+                        label: 'Cancel',
+                      });
+
+                      const closeEditor = () => {
+                        msgBase.empty();
+                        msgBase.append(TinyHtml.createFromHtml(msgFormat));
+                      };
+
+                      cancelBtn.on('click', closeEditor);
+
+                      saveBtn.on('click', async () => {
+                        const newText = editor.valTxt();
+                        loaderScreen.start();
+
+                        let isError = false;
+                        await client
+                          .editMessage(
+                            {
+                              message: newText,
+                            },
+                            item.historyId,
+                          )
+                          .then(async (result) => {
+                            if (result.error) {
+                              alert(result.msg ?? '', { title: 'ERROR!' });
+                              isError = true;
+                            } else {
+                              item.text = newText;
+                              msgFormat = await makeMsgRenderer(newText ?? '');
+                              item.edited = Number(result.edited);
+
+                              const edited = moment(item.edited);
+                              editedAtBase.setText(
+                                edited.isValid() && edited.valueOf() > 0
+                                  ? `${edited.format('YYYY-MM-DD HH:mm:ss')} (${edited.valueOf()})`
+                                  : 'never',
+                              );
+
+                              tokensContainer.empty();
+                              client.emit('messageEdit', result);
+                              client.emit('needUpdateTokens');
+                            }
+                          })
+                          .catch((err) => {
+                            alert(err.message, { title: 'ERROR!' });
+                            console.error(err);
                             isError = true;
-                          } else {
-                            item.text = newText;
-                            msgFormat = await makeMsgRenderer(newText ?? '');
-                            item.edited = result.edited;
+                          });
 
-                            const edited = moment(item.edited);
-                            editedAtBase.setText(
-                              edited.isValid() && edited.valueOf() > 0
-                                ? `${edited.format('YYYY-MM-DD HH:mm:ss')} (${edited.valueOf()})`
-                                : 'never',
-                            );
+                        loaderScreen.stop();
+                        if (isError) return;
+                        closeEditor();
+                      });
 
-                            tokensContainer.empty();
-                            tinyIo.client.emit('messageEdit', result);
-                            tinyIo.client.emit('needUpdateTokens');
-                          }
-                        })
-                        .catch((err) => {
-                          alert(err.message, 'ERROR!');
-                          console.error(err);
-                          isError = true;
-                        });
-
-                      loaderScreen.stop();
-                      if (isError) return;
-                      closeEditor();
+                      msgBase.append(
+                        TinyHtml.createFrom('label').setText('Edit the message:'),
+                        editor,
+                        cancelBtn,
+                        saveBtn,
+                      );
                     });
 
-                    msgBase.append(
-                      TinyHtml.createFrom('label').setText('Edit the message:'),
-                      editor,
-                      cancelBtn,
-                      saveBtn,
-                    );
-                  });
-
-                  // DELETE BUTTON
-                  const deleteBtn = new Button({
-                    mainClass: 'btn',
-                    tags: 'btn-sm btn-outline-danger',
-                    type: 'button',
-                    label: 'Delete',
-                  });
-
-                  deleteBtn.on('click', () => {
-                    const confirmBtn = new Button({
+                    // DELETE BUTTON
+                    const deleteBtn = new Button({
                       mainClass: 'btn',
                       tags: 'btn-sm btn-outline-danger',
                       type: 'button',
-                      label: 'Confirm Delete',
-                      disabled: true,
-                    });
+                      label: 'Delete',
+                    }).addClass('delete-button');
 
-                    deleteBtn.replaceWith(confirmBtn);
-                    setTimeout(() => confirmBtn.removeProp('disabled'), 3000);
-
-                    confirmBtn.on('click', async () => {
+                    // Deletes the message right away, without any confirmation step
+                    const deleteMessage = async () => {
                       loaderScreen.start();
                       let isError = false;
-                      await tinyIo.client
+                      await client
                         .deleteMessage(item.historyId)
                         .then((result) => {
                           if (result.error) {
-                            alert(result.msg, 'ERROR!');
+                            alert(result.msg ?? '', { title: 'ERROR!' });
                             isError = true;
-                          } else tinyIo.client.emit('messageDelete', result);
+                          } else client.emit('messageDelete', result);
                         })
                         .catch((err) => {
-                          alert(err.message, 'ERROR!');
+                          alert(err.message, { title: 'ERROR!' });
                           console.error(err);
                           isError = true;
                         });
                       loaderScreen.stop();
                       if (isError) return;
                       row.remove();
+                    };
+
+                    deleteBtn.on('click', (event) => {
+                      // Holding shift deletes the message without asking for confirmation
+                      if (/** @type {MouseEvent} */ (event)?.shiftKey) {
+                        deleteMessage();
+                        return;
+                      }
+
+                      const confirmBtn = new Button({
+                        mainClass: 'btn',
+                        tags: 'btn-sm btn-outline-danger',
+                        type: 'button',
+                        label: 'Confirm Delete',
+                        disabled: true,
+                      }).addClass('delete-button');
+
+                      deleteBtn.replaceWith(confirmBtn);
+                      setTimeout(() => confirmBtn.removeProp('disabled'), 3000);
+
+                      confirmBtn.on('click', deleteMessage);
                     });
+
+                    colActions.append(editBtn, deleteBtn);
+                  }
+
+                  const date = moment(item.date);
+                  const edited = moment(item.edited);
+                  // Container
+                  const buttonId = `history_collapse_${item.historyId}`;
+
+                  // Button that toggles collapse
+                  const btn = new Button({
+                    mainClass: 'btn',
+                    tags: 'btn-sm btn-link p-0 me-2',
+                    type: 'button',
+                    label: 'More Info',
+                  }).setAttr({
+                    'data-bs-toggle': 'collapse',
+                    'data-bs-target': `#${buttonId}`,
+                    'aria-expanded': 'false',
+                    'aria-controls': buttonId,
                   });
 
-                  colActions.append(editBtn, deleteBtn);
+                  // Collapse box
+                  const collapse = TinyHtml.createFrom('div', {
+                    class: 'collapse',
+                    id: buttonId,
+                  });
+
+                  const editedAtBase = TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
+                    edited.isValid() && edited.valueOf() > 0
+                      ? `${edited.format('YYYY-MM-DD HH:mm:ss')} (${edited.valueOf()})`
+                      : 'never',
+                  );
+
+                  const tokensContainer = TinyHtml.createFrom('div', { class: 'small' });
+                  const tokensBase = TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
+                    (item.tokens ?? 0) > 0 ? item.tokens : '0',
+                  );
+
+                  collapse.append(
+                    TinyHtml.createFrom('div', { class: 'small' })
+                      .setText(`Id: `)
+                      .append(
+                        TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
+                          item.historyId,
+                        ),
+                      ),
+                    tokensContainer.setText(`Tokens: `).append(tokensBase),
+                    TinyHtml.createFrom('div', { class: 'small' })
+                      .setText(`Edited at: `)
+                      .append(editedAtBase),
+                  );
+
+                  const msgBase = TinyHtml.createFrom('span', { class: 'msg-data' });
+                  const colMessage = TinyHtml.createFrom('td', { class: 'p-3' });
+                  let msgFormat = await makeMsgRenderer(item.text ?? '');
+                  msgBase.append(TinyHtml.createFromHtml(msgFormat));
+
+                  colMessage.append(
+                    msgBase,
+                    TinyHtml.createFrom('hr', { class: 'msg-hr m-0 mt-2' }),
+                    TinyHtml.createFrom('div').append(
+                      btn,
+                      TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
+                        date.isValid() ? date.format('YYYY-MM-DD HH:mm:ss') : '',
+                      ),
+                      TinyHtml.createFrom('small', {
+                        class: `${item.isModel || item.userId !== client.getUserId() ? (!item.isModel ? `text-muted` : 'text-info') : 'text-primary'} me-2`,
+                      }).setText(!item.isModel ? (item.userId ?? '') : 'Model'),
+                      TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
+                        `Chapter ${item.chapter}`,
+                      ),
+                      collapse,
+                    ),
+                  );
+
+                  row.append(colMessage);
+                  if (isStaff) row.append(colActions);
+                  resolve(undefined);
+                } catch (err) {
+                  reject(err);
                 }
+              }),
+            );
+            tbody.append(row);
+          });
 
-                const date = moment(item.date);
-                const edited = moment(item.edited);
-                // Container
-                const buttonId = `history_collapse_${item.historyId}`;
+          // Assemble
+          await Promise.all(promises);
+          table.append(tbody);
+          tableWrapper.append(table);
 
-                // Button that toggles collapse
-                const btn = new Button({
-                  mainClass: 'btn',
-                  tags: 'btn-sm btn-link p-0 me-2',
-                  type: 'button',
-                  label: 'More Info',
-                }).setAttr({
-                  'data-bs-toggle': 'collapse',
-                  'data-bs-target': `#${buttonId}`,
-                  'aria-expanded': 'false',
-                  'aria-controls': buttonId,
-                });
+          resultsBox.append(tableWrapper);
+          pagesCount
+            .empty()
+            .setText(
+              `Pages: ${data.totalPages} | Page: ${result.page ?? data.page} | Items: ${data.totalItems}`,
+            );
 
-                // Collapse box
-                const collapse = TinyHtml.createFrom('div', {
-                  class: 'collapse',
-                  id: buttonId,
-                });
-
-                const editedAtBase = TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
-                  edited.isValid() && edited.valueOf() > 0
-                    ? `${edited.format('YYYY-MM-DD HH:mm:ss')} (${edited.valueOf()})`
-                    : 'never',
-                );
-
-                const tokensContainer = TinyHtml.createFrom('div', { class: 'small' });
-                const tokensBase = TinyHtml.createFrom('span', { class: 'text-muted' }).setText(
-                  item.tokens > 0 ? item.tokens : '0',
-                );
-
-                collapse.append(
-                  TinyHtml.createFrom('div', { class: 'small' })
-                    .setText(`Id: `)
-                    .append(
-                      TinyHtml.createFrom('span', { class: 'text-muted' }).setText(item.historyId),
-                    ),
-                  tokensContainer.setText(`Tokens: `).append(tokensBase),
-                  TinyHtml.createFrom('div', { class: 'small' })
-                    .setText(`Edited at: `)
-                    .append(editedAtBase),
-                );
-
-                const msgBase = TinyHtml.createFrom('span', { class: 'msg-data' });
-                const colMessage = TinyHtml.createFrom('td', { class: 'p-3' });
-                let msgFormat = await makeMsgRenderer(item.text ?? '');
-                msgBase.append(TinyHtml.createFromHtml(msgFormat));
-
-                colMessage.append(
-                  msgBase,
-                  TinyHtml.createFrom('hr', { class: 'msg-hr m-0 mt-2' }),
-                  TinyHtml.createFrom('div').append(
-                    btn,
-                    TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
-                      date.isValid() ? date.format('YYYY-MM-DD HH:mm:ss') : '',
-                    ),
-                    TinyHtml.createFrom('small', {
-                      class: `${item.isModel || item.userId !== tinyIo.client.getUserId() ? (!item.isModel ? `text-muted` : 'text-info') : 'text-primary'} me-2`,
-                    }).setText(!item.isModel ? (item.userId ?? '') : 'Model'),
-                    TinyHtml.createFrom('small', { class: 'text-muted me-2' }).setText(
-                      `Chapter ${item.chapter}` ?? '',
-                    ),
-                    collapse,
-                  ),
-                );
-
-                row.append(colMessage);
-                if (isStaff) row.append(colActions);
-                resolve(undefined);
-              } catch (err) {
-                reject(err);
-              }
-            }),
-          );
-          tbody.append(row);
+          // Success
+          loaderScreen.stop();
+        })
+        // Error
+        .catch((err) => {
+          resultsBox
+            .empty()
+            .append(TinyHtml.createFrom('div', { class: 'text-danger' }).setText(err.message));
+          pagesCount.empty();
+          console.error(err);
+          loaderScreen.stop();
         });
+    });
 
-        // Assemble
-        await Promise.all(promises);
-        table.append(tbody);
-        tableWrapper.append(table);
+  // The room owner may purge an user while the results are open.
+  /** @param {{ ids?: string[] }} data */
+  const onMessagesPurged = (data) => {
+    if (!Array.isArray(data?.ids)) return;
 
-        resultsBox.append(tableWrapper);
-        pagesCount
-          .empty()
-          .setText(
-            `Pages: ${data.totalPages} | Page: ${result.page ?? data.page} | Items: ${data.totalItems}`,
-          );
+    for (const historyId of data.ids) {
+      const $row = rowsByHistoryId.get(historyId);
+      if (!$row) continue;
+      $row.remove();
+      rowsByHistoryId.delete(historyId);
+    }
+  };
 
-        // Success
-        loaderScreen.stop();
-      })
-      // Error
-      .catch((err) => {
-        resultsBox
-          .empty()
-          .append(TinyHtml.createFrom('div', { class: 'text-danger' }).setText(err.message));
-        pagesCount.empty();
-        console.error(err);
-        loaderScreen.stop();
-      });
-  });
+  client.on('messagesPurged', onMessagesPurged);
 
   // --- Text Search ---
   const textGroup = TinyHtml.createFrom('div', { class: 'col-md-6' });
   const textLabel = TinyHtml.createFrom('label', { class: 'form-label' }).setText('Text Contains');
   const textInput = new TextInput({
     mainClass: 'form-control',
-    id: 'searchText',
     placeholder: 'Search text...',
   });
   textGroup.append(textLabel, textInput);
@@ -382,7 +452,6 @@ export const openHistory = () => {
   );
   const userInput = new TextInput({
     mainClass: 'form-control',
-    id: 'searchUser',
     placeholder: 'User ID',
   });
   userGroup.append(userLabel, userInput);
@@ -394,7 +463,6 @@ export const openHistory = () => {
   );
   const dateStartInput = new DateTimeInput({
     mainClass: 'form-control',
-    id: 'searchStart',
   });
   dateStartGroup.append(dateStartLabel, dateStartInput);
 
@@ -402,7 +470,6 @@ export const openHistory = () => {
   const dateEndLabel = TinyHtml.createFrom('label', { class: 'form-label' }).setText('End Date');
   const dateEndInput = new DateTimeInput({
     mainClass: 'form-control',
-    id: 'searchEnd',
   });
   dateEndGroup.append(dateEndLabel, dateEndInput);
 
@@ -411,12 +478,11 @@ export const openHistory = () => {
   const chapterLabel = TinyHtml.createFrom('label', { class: 'form-label' }).setText('Chapter');
   const chapterInput = new NumberInput({
     mainClass: 'form-control',
-    id: 'searchChapter',
     placeholder: 'Number',
     min: 1,
   });
   chapterGroup.append(chapterLabel, chapterInput);
-  chapterInput.setVal(room.chapter);
+  chapterInput.setVal(room.chapter ?? 1);
 
   // --- Pagination ---
   const perPageGroup = TinyHtml.createFrom('div', { class: 'col-md-4' });
@@ -425,9 +491,8 @@ export const openHistory = () => {
   );
   const perPageInput = new NumberInput({
     mainClass: 'form-control',
-    id: 'searchPerPage',
     min: 1,
-  }).setVal(tinyIo.client.getRateLimit().size.history);
+  }).setVal(client.getRateLimit().size.history);
   perPageGroup.append(perPageLabel, perPageInput);
 
   // --- Page Number ---
@@ -435,7 +500,6 @@ export const openHistory = () => {
   const pageLabel = TinyHtml.createFrom('label', { class: 'form-label' }).setText('Page');
   const pageInput = new NumberInput({
     mainClass: 'form-control',
-    id: 'searchPage',
     min: 1,
   }).setVal(1);
   pageGroup.append(pageLabel, pageInput);
@@ -484,5 +548,12 @@ export const openHistory = () => {
     dialog: 'modal-lg',
     id: 'chat-history-search',
     body: $root,
+    hidden: () => {
+      window.removeEventListener('keydown', onShiftKeyDown);
+      window.removeEventListener('keyup', onShiftKeyUp);
+      window.removeEventListener('blur', onShiftBlur);
+      client.off('messagesPurged', onMessagesPurged);
+      rowsByHistoryId.clear();
+    },
   });
 };

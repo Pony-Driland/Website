@@ -6,6 +6,8 @@ import { formatCustomTimer } from 'tiny-essentials/basics/clock';
 const TIME_FACTOR = 5760 / 7; // ≈ 822.8571428571429
 
 /**
+ * Converts Earth minutes into Pony Driland minutes.
+ *
  * @param {number} earthMinutes - Earth Minutes
  * @returns {number} Pony Driland minutes
  */
@@ -17,6 +19,8 @@ export const earthTimeToPony = (earthMinutes) => {
 window.earthTimeToPony = earthTimeToPony;
 
 /**
+ * Converts Pony Driland minutes into Earth minutes.
+ *
  * @param {number} ponyMinutes - Pony Driland Minutes
  * @returns {number} Earth Minutes
  */

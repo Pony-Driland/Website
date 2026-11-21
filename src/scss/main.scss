@@ -151,21 +151,6 @@ body:not(.browser-with-web3) .web3-element {
   word-break: break-word !important;
 }
 
-/* Youtube */
-
-#youtubePlayer {
-  pointer-events: none;
-  /* height: 39px;
-    width: 39px; */
-  background-color: #000 !important;
-}
-
-#youtubePlayer.hidden {
-  position: fixed !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
 /* Markdown */
 
 #markdown-read {
@@ -240,8 +225,7 @@ body:not(.browser-with-web3) .web3-element {
   pointer-events: none !important;
 }
 
-.tts-player,
-.disabled-player {
+.tts-player {
   display: none !important;
 }
 
@@ -312,3 +296,4 @@ body:not(.browser-with-web3) .web3-element {
 @import './loading-overlay.scss';
 @import './spoiler.scss';
 @import './no-selection.scss';
+@import './nsfw.scss';

@@ -1,13 +1,22 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import { isJsonObject } from 'tiny-essentials/basics/objChecker';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
 import { tinyAi, tinyIo } from '../software/base.mjs';
-import tinyLib, { alert } from '../../files/tinyLib.mjs';
+import tinyLib from '../../files/tinyLib.mjs';
 import { loaderScreen } from '../../important.mjs';
 
 const { Textarea } = TinyHtmlElems;
 
+/**
+ * Opens the RPG schema settings modal, where the room owner (or an admin) can
+ * edit the JSON schema that describes the room RPG data.
+ *
+ * Does nothing when there is no active socket client.
+ *
+ * @returns {void}
+ */
 export const rpgSchemaSettingsMenu = () => {
   if (tinyIo.client) {
     const room = tinyIo.client.getRoom() || {};
@@ -35,10 +44,12 @@ export const rpgSchemaSettingsMenu = () => {
       ),
     );
 
+    /** @param {unknown} data - Schema received from the server. */
     const loadJsonData = (data) => {
       $roomSchema.setVal(isJsonObject(data) ? JSON.stringify(data, null, 2) : '');
     };
 
+    /** @param {unknown} data - Schema received from the server. */
     const roomEditDetector = (data) => loadJsonData(data);
     tinyIo.client.on('rpgSchemaUpdates', roomEditDetector);
 
@@ -85,12 +96,12 @@ export const rpgSchemaSettingsMenu = () => {
       if (!cantEdit) {
         $editError.empty(); // limpa erros anteriores
 
-        const newData = $roomSchema.val().trim();
+        const newData = String($roomSchema.val() ?? '').trim();
         let jsonResult;
         try {
           jsonResult = JSON.parse(newData);
         } catch (err) {
-          $editError.setText(`${err.message}`);
+          $editError.setText(`${err instanceof Error ? err.message : String(err)}`);
           console.error(err);
           jsonResult = null;
         }

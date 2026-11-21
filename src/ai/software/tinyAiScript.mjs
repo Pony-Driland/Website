@@ -1,3 +1,10 @@
+/**
+ * Global state of the AI page: the login button, the active provider and the
+ * helpers that boot or tear down the connection.
+ *
+ * @module ai/software/tinyAiScript
+ */
+
 import { setTinyGoogleAi } from 'tiny-ai-api';
 import { formatDayTimer } from 'tiny-essentials/basics/clock';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
@@ -33,6 +40,7 @@ export const tinyAiScript = {
     },
   },
 
+  // Destroys the socket client and reloads the page.
   killIo: () => {
     if (tinyIo.client) {
       tinyIo.client.destroy();
@@ -43,6 +51,8 @@ export const tinyAiScript = {
     } else return false;
   },
 
+  // Re-reads the selected provider and refreshes the login button and the
+  // `can-ai` body class accordingly.
   // Checker
   checkTitle: () => {
     // Get selected Ai
@@ -63,7 +73,10 @@ export const tinyAiScript = {
 
       // Google Generative
       if (selectedAi === 'google-generative')
-        setTinyGoogleAi(tinyAi, tinyStorage.getApiKey('google-generative')?.key);
+        setTinyGoogleAi(
+          /** @type {import('tiny-ai-api').TinyAiInstance} */ (/** @type {unknown} */ (tinyAi)),
+          /** @type {AiCredential} */ (tinyStorage.getApiKey('google-generative')).key ?? '',
+        );
 
       // Tiny Chat --> this is a multiplayer client session
       if (selectedAi === 'tiny-chat') tinyAiScript.mpClient = true;
@@ -78,6 +91,11 @@ export const tinyAiScript = {
       new TinyHtml(tinyAiScript.aiLogin.button.find(':scope > i')).addClass('text-danger-emphasis');
       tinyAiScript.aiLogin.title = 'AI/RP Disabled';
       body.removeClass('can-ai');
+
+      // Reset the provider flags, otherwise a provider switched off during the
+      // session would keep leaking its mode into the next one.
+      tinyAiScript.mpClient = false;
+      tinyAiScript.noai = false;
       tinyAiScript.enabled = false;
     }
 
@@ -85,6 +103,8 @@ export const tinyAiScript = {
     tinyAiScript.aiLogin.updateTitle();
   },
 
+  // Opens the provider picker modal, where the user chooses between the
+  // local providers and the multiplayer server.
   // Login button
   login: () => {
     // Selector
@@ -92,19 +112,25 @@ export const tinyAiScript = {
     selector.append(TinyHtml.createFrom('option', { value: 'NONE' }).setText('None'));
     const apiPlace = TinyHtml.createFrom('span');
     selector.on('change', () => {
-      const value = selector.val();
+      const value = String(selector.val() ?? '');
       const html =
         tinyAiHtml[value] && tinyAiHtml[value].inputs ? tinyAiHtml[value].inputs() : null;
       apiPlace.empty();
       if (html) apiPlace.append(html.desc, html.input, html.submit);
-      tinyStorage.setSelectedAi(value);
+
+      // Picking a provider only previews its form. The selection is committed
+      // by the form submit, otherwise closing the modal without saving would
+      // leave the page pointing at a provider that has no credential yet.
+      if (!html) tinyStorage.setSelectedAi(value);
       tinyAiScript.checkTitle();
     });
 
     selector.toggleProp('disabled', appData.ai.using);
+    /** @type {Record<string, AiProviderEntry>} */
     const tinyAiHtml = {};
 
     // Server login inputs
+    /** @param {TinyHtmlAny[]} tinyInput @param {AiCredential} values */
     const insertServerLogin = (tinyInput, values) => {
       const indexs = [];
       tinyInput.push(
@@ -163,14 +189,19 @@ export const tinyAiScript = {
       return indexs;
     };
 
-    // Save server login
+    /**
+     * Save server login
+     * @param {TinyHtmlAny[]} inputs
+     * @param {number[]} ids
+     * @returns {AiCredential}
+     */
     const insertSaveServerLogin = (inputs, ids) => {
       return {
-        ip: inputs[ids[0]].val(),
-        username: inputs[ids[1]].val(),
-        password: inputs[ids[2]].val(),
-        roomId: inputs[ids[3]].val(),
-        roomPassword: inputs[ids[4]].val(),
+        ip: String(inputs[ids[0]].val() ?? ''),
+        username: String(inputs[ids[1]].val() ?? ''),
+        password: String(inputs[ids[2]].val() ?? ''),
+        roomId: String(inputs[ids[3]].val() ?? ''),
+        roomPassword: String(inputs[ids[4]].val() ?? ''),
       };
     };
 
@@ -188,6 +219,7 @@ export const tinyAiScript = {
         ),
       );
 
+    /** @param {TinyHtmlAny[]} inputs @param {number} [tinyBig] */
     const hostButton = (inputs, tinyBig = -1) =>
       TinyHtml.createFrom('div').append(
         tinyLib.bs
@@ -195,7 +227,7 @@ export const tinyAiScript = {
           .setText('Show host settings (Alpha)')
           .on('click', () => {
             for (const index in inputs) {
-              if (index > tinyBig) {
+              if (Number(index) > tinyBig) {
                 inputs[index].toggleClass('d-none');
               }
             }
@@ -207,7 +239,7 @@ export const tinyAiScript = {
     tinyAiHtml['no-ai'] = {};
     const noAi = tinyAiHtml['no-ai'];
     noAi.inputs = () => {
-      const data = { input: [] };
+      const data = /** @type {AiProviderForm} */ ({ input: [] });
       data.input.push(hostButton(data.input, 0));
       data.input.push(insertServerAbout());
       const values = tinyStorage.getApiKey('no-ai') || {};
@@ -222,8 +254,10 @@ export const tinyAiScript = {
         .button('info mx-4 mt-4')
         .setText('Set Settings')
         .on('click', () => {
+          /** @type {AiCredential} */
           const result = insertSaveServerLogin(data.input, ids);
           tinyStorage.setApiKey('no-ai', result);
+          tinyStorage.setSelectedAi('no-ai');
           tinyAiScript.checkTitle();
           TinyHtml.query('#ai_connection')?.data('BootstrapModal').hide();
         })
@@ -245,7 +279,7 @@ export const tinyAiScript = {
     tinyAiHtml['google-generative'] = {};
     const googleAi = tinyAiHtml['google-generative'];
     googleAi.inputs = () => {
-      const data = { input: [] };
+      const data = /** @type {AiProviderForm} */ ({ input: [] });
 
       data.input.push(
         TinyHtml.createFrom('input', {
@@ -256,7 +290,8 @@ export const tinyAiScript = {
 
       data.input.push(hostButton(data.input, 1));
       data.input.push(insertServerAbout());
-      const values = tinyStorage.getApiKey('google-generative') || {};
+      /** @type {AiCredential} */
+      const values = /** @type {AiCredential} */ (tinyStorage.getApiKey('google-generative') || {});
       data.input[0].setVal(values.key ?? null).toggleProp('disabled', appData.ai.using);
       const ids = insertServerLogin(data.input, values);
       new TinyHtml(data.input[1].find(':scope > button')).trigger('click');
@@ -274,9 +309,11 @@ export const tinyAiScript = {
         .button('info mx-4 mt-4')
         .setText('Set API Tokens')
         .on('click', () => {
+          /** @type {AiCredential} */
           const result = insertSaveServerLogin(data.input, ids);
-          result.key = data.input[0].val();
+          result.key = String(data.input[0].val() ?? '');
           tinyStorage.setApiKey('google-generative', result);
+          tinyStorage.setSelectedAi('google-generative');
           tinyAiScript.checkTitle();
           TinyHtml.query('#ai_connection')?.data('BootstrapModal').hide();
           window.location.reload();
@@ -297,7 +334,7 @@ export const tinyAiScript = {
     tinyAiHtml['tiny-chat'] = {};
     const tinyChat = tinyAiHtml['tiny-chat'];
     tinyChat.inputs = () => {
-      const data = { input: [] };
+      const data = /** @type {AiProviderForm} */ ({ input: [] });
       const values = tinyStorage.getApiKey('tiny-chat') || {};
       const ids = insertServerLogin(data.input, values);
       data.desc = insertServerAbout();
@@ -307,6 +344,7 @@ export const tinyAiScript = {
         .setText('Set connection settings')
         .on('click', () => {
           tinyStorage.setApiKey('tiny-chat', insertSaveServerLogin(data.input, ids));
+          tinyStorage.setSelectedAi('tiny-chat');
           tinyAiScript.checkTitle();
           TinyHtml.query('#ai_connection')?.data('BootstrapModal').hide();
         })

@@ -1,3 +1,10 @@
+/**
+ * Soundtrack playlist keyed by scene name. Each entry lists the tracks that
+ * may be played while the scene is on screen.
+ *
+ * @module chapters/sound
+ */
+
 import storyCfg from './config.mjs';
 
 // Playlist

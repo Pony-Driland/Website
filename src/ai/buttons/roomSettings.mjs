@@ -1,9 +1,18 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlNumberInput from 'tiny-essentials/libs/html/TinyHtmlElems/Input/Number';
+import { alert, confirm } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
 import { tinyIo } from '../software/base.mjs';
-import tinyLib, { alert } from '../../files/tinyLib.mjs';
+import tinyLib from '../../files/tinyLib.mjs';
 
+/**
+ * Opens the room settings modal, allowing the owner (or an admin) to rename the
+ * room, change its password and delete it.
+ *
+ * Does nothing when there is no active socket client.
+ *
+ * @returns {void}
+ */
 export const roomSettingsMenu = () => {
   if (tinyIo.client) {
     const room = tinyIo.client.getRoom() || {};
@@ -21,6 +30,7 @@ export const roomSettingsMenu = () => {
     const $editForm = TinyHtml.createFrom('form').addClass('mb-4');
     $editForm.append(TinyHtml.createFrom('h5').setText('Edit Room Info'));
 
+    /** @param {Record<string, unknown>} data */
     const roomEditDetector = (data) => {
       if (typeof data.title === 'string') $roomTitle.setVal(data.title);
       if (typeof data.maxUsers === 'number') $maxUsers.setVal(data.maxUsers);
@@ -49,7 +59,7 @@ export const roomSettingsMenu = () => {
         maxLength: ratelimit.size.roomTitle,
       })
       .addClass('form-control')
-      .setVal(room.title)
+      .setVal(room.title ?? '')
       .toggleProp('disabled', cantEdit);
 
     const $maxUsers = new TinyHtmlNumberInput({
@@ -117,6 +127,25 @@ export const roomSettingsMenu = () => {
                 .setText('Chapter'),
               $chapter,
             ),
+        ),
+    );
+
+    // Public room list
+    const $public = TinyHtml.createFrom('input')
+      .addClass('form-check-input')
+      .setAttr({ type: 'checkbox', id: 'roomPublic' })
+      .toggleProp('disabled', cantEdit);
+    $public.setProp('checked', Boolean(room.public));
+
+    $editForm.append(
+      TinyHtml.createFrom('div')
+        .addClass('form-check mb-3')
+        .append(
+          $public,
+          TinyHtml.createFrom('label')
+            .addClass('form-check-label')
+            .setAttr('for', 'roomPublic')
+            .setText('Show this room on the public room list'),
         ),
     );
 
@@ -216,10 +245,10 @@ export const roomSettingsMenu = () => {
       if (!cantEdit) {
         $editError.empty(); // limpa erros anteriores
 
-        const title = $roomTitle.val().trim();
+        const title = String($roomTitle.val() ?? '').trim();
         const maxUsers = $maxUsers.valNb();
         const chapter = $chapter.valNb();
-        const password = new TinyHtml($editForm.find('#roomPassword')).val().trim();
+        const password = String(new TinyHtml($editForm.find('#roomPassword')).val() ?? '').trim();
 
         if (Number.isNaN(maxUsers) || maxUsers <= 0) {
           $editError.setText('Max users must be a positive number.');
@@ -236,7 +265,8 @@ export const roomSettingsMenu = () => {
           return;
         }
 
-        const newSettings = { title, maxUsers, chapter };
+        /** @type {Record<string, unknown>} */
+        const newSettings = { title, maxUsers, chapter, public: Boolean($public.prop('checked')) };
         if (typeof password === 'string' && password.length > 0) newSettings.password = password;
 
         modal.hide();
@@ -247,7 +277,7 @@ export const roomSettingsMenu = () => {
       }
     });
 
-    $deleteForm.on('submit', (e) => {
+    $deleteForm.on('submit', async (e) => {
       e.preventDefault();
       if (!cantEdit) {
         $deleteError.empty(); // limpa erros anteriores
@@ -259,7 +289,7 @@ export const roomSettingsMenu = () => {
           return;
         }
 
-        if (!confirm('Are you absolutely sure? This cannot be undone.')) return;
+        if (!(await confirm('Are you absolutely sure? This cannot be undone.'))) return;
 
         modal.hide();
         tinyIo.client.deleteRoom(password).then((result) => {

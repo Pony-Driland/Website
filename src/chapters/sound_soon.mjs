@@ -1,3 +1,9 @@
+/**
+ * Extra soundtrack entries that are not attached to a chapter yet.
+ *
+ * @module chapters/sound_soon
+ */
+
 import storyCfg from './config.mjs';
 
 // Playlist

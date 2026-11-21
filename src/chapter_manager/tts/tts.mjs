@@ -2,13 +2,42 @@ import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import tinyLib from '../../files/tinyLib.mjs';
 import { storyData } from '../../files/chapters.mjs';
+import audioUnlock from '../audioUnlock.mjs';
 import cacheChapterUpdater from '../updater.mjs';
 
 const { Icon } = TinyHtmlElems;
 
 // Base
-storyData.tts = {};
+storyData.tts = { enabled: false };
 
+/**
+ * Thin wrapper around the Web Speech API used to read chapters aloud.
+ *
+ * @module chapter_manager/tts
+ */
+
+/**
+ * @typedef {Object} TtsManager
+ * @property {boolean} enabled - Whether TTS playback is enabled.
+ * @property {string[]} voicePreferenceList - Preferred voice name fragments.
+ * @property {SpeechSynthesis} synth - Speech synthesis instance.
+ * @property {SpeechSynthesisVoice[]} voices - Available voices.
+ * @property {SpeechSynthesisVoice|null} voice - Selected voice.
+ * @property {number} lastLine - Last line that was read.
+ * @property {ReturnType<typeof setTimeout>|null} ttsTimeout - Pending timeout handle.
+ * @property {string[]} queue - Pending utterances.
+ * @property {(line: number, dontTryAgain?: boolean) => FicPageEntry|null} findLine - Finds a line entry.
+ * @property {() => void} startBase - Builds the player UI.
+ * @property {() => void} enable - Enables TTS.
+ * @property {() => void} disable - Disables TTS.
+ * @property {() => void} init - Loads the available voices.
+ * @property {(line: number) => void} readLine - Queues a line to be read.
+ * @property {() => void} nextUtterance - Plays the next queued utterance.
+ * @property {(line: number) => void} readLineInternal - Builds the utterance queue.
+ * @property {() => void} [updatePlayer] - Optional player refresh hook.
+ */
+
+/** @type {TtsManager} */
 const ttsManager = {
   enabled: false,
   voicePreferenceList: ['Zira - English', 'English (USA,l03)', 'DEFAULT'],
@@ -21,6 +50,10 @@ const ttsManager = {
   queue: [],
 
   // Find Line
+  /**
+   * @param {number} line
+   * @param {boolean} dontTryAgain
+   */
   findLine: (line, dontTryAgain = false) => {
     let index = storyData.chapter.ficPageData.findIndex((item) => line === item.line);
     const ficData = storyData.chapter.ficPageData[index];
@@ -90,25 +123,29 @@ const ttsManager = {
         storyData.chapter.nav.tts,
       ]);
     }
-    if (ttsManager.updatePlayer) {
+    if (typeof ttsManager.updatePlayer === 'function') {
       ttsManager.updatePlayer();
     }
-    setInterval(ttsManager.updatePlayer, 100);
+    setInterval(() => {
+      if (typeof ttsManager.updatePlayer === 'function') {
+        ttsManager.updatePlayer();
+      }
+    }, 100);
   },
 
   // Enable and disable
   enable: () => {
     ttsManager.enabled = true;
-    cacheChapterUpdater.data(storyData.chapter.line);
+    cacheChapterUpdater.data(storyData.chapter.line ?? 0);
   },
   disable: () => {
     ttsManager.enabled = false;
+    audioUnlock.cancel('tts');
     ttsManager.synth.cancel();
   },
 
   // Init data
   init: () => {
-    ttsManager.firstTime = false;
     // Get voices
     ttsManager.voices = ttsManager.synth.getVoices();
     if (ttsManager.voices.length === 0) {
@@ -138,6 +175,7 @@ const ttsManager = {
   },
 
   // Read line
+  /** @param {number} line */
   readLine(line) {
     // Nothing here
     if (!ttsManager.enabled) {
@@ -166,17 +204,25 @@ const ttsManager = {
       ttsManager.ttsTimeout = null;
     }
 
-    // And add new timeout
-    if (ttsManager.voice == null) {
-      ttsManager.ttsTimeout = setTimeout(() => {
-        ttsManager.readLine(line);
-      }, 500);
-      return;
-    }
+    // The browser blocks the speech until the visitor interacts with the page,
+    // so the line is only scheduled once the audio is unlocked. The key makes
+    // every new line replace the previous pending one.
+    audioUnlock.whenReady(() => {
+      // TTS was disabled while waiting for the interaction
+      if (!ttsManager.enabled) return;
 
-    ttsManager.ttsTimeout = setTimeout(() => {
-      ttsManager.readLineInternal(line);
-    }, 500);
+      // And add new timeout
+      if (ttsManager.voice == null) {
+        ttsManager.ttsTimeout = setTimeout(() => {
+          ttsManager.readLine(line);
+        }, 500);
+        return;
+      }
+
+      ttsManager.ttsTimeout = setTimeout(() => {
+        ttsManager.readLineInternal(line);
+      }, 500);
+    }, 'tts');
   },
 
   // Next Utterance
@@ -186,7 +232,7 @@ const ttsManager = {
       if (ficData) cacheChapterUpdater.setActiveItem(ficData.line, true);
       return;
     }
-    let text = ttsManager.queue.shift();
+    let text = ttsManager.queue.shift() ?? '';
     let utterance = new SpeechSynthesisUtterance();
     utterance.voice = ttsManager.voice;
     utterance.text = text;
@@ -195,6 +241,7 @@ const ttsManager = {
   },
 
   // Read line internal
+  /** @param {number} line */
   readLineInternal(line) {
     // Get data
     const data = ttsManager.findLine(line)?.content || {};
@@ -203,19 +250,20 @@ const ttsManager = {
     // Read info
     if (data.info) {
       for (let key of Object.keys(data.info)) {
-        if (typeof cumulativeData.info[key] === 'undefined') {
-          ttsManager.queue.push('Info ' + key + ': ' + tinyLib.removeAiTags(data.info[key]));
+        const infoValue = data.info[key];
+        if (typeof infoValue !== 'undefined') {
+          ttsManager.queue.push('Info ' + key + ': ' + tinyLib.removeAiTags(infoValue));
         }
       }
     }
 
     // Add action
-    let actionString = data.type;
+    let actionString = data.type ?? '';
     if (data.flashback) actionString += ' flashback';
     if (data.character) actionString += `: ${data.character}`;
 
     ttsManager.queue.push(actionString);
-    ttsManager.queue.push(tinyLib.removeAiTags(data.value));
+    ttsManager.queue.push(tinyLib.removeAiTags(data.value ?? ''));
 
     // Execute voice
     ttsManager.nextUtterance();

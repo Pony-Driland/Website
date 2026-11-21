@@ -1,9 +1,37 @@
 import moment from 'moment';
 import objHash from 'object-hash';
+import { isJsonObject } from 'tiny-essentials/basics/objChecker';
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
-import tinyLib, { alert } from '../files/tinyLib.mjs';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
+import tinyLib from '../files/tinyLib.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import TinyClientIo from './socketClient.mjs';
+import { openPurgeUserData } from './buttons/purgeUserData.mjs';
+
+/**
+ * A single user row rendered by the manager.
+ *
+ * @typedef {Object} RoomUserHtml
+ * @property {import('bootstrap').Tooltip[]} tooltips - Tooltips attached to the row.
+ * @property {{ kick: TinyHtmlAny; ban: TinyHtmlAny; mod: TinyHtmlAny; permission: TinyHtmlAny }} actions - Row action buttons.
+ * @property {string} userId - User id.
+ */
+
+/**
+ * A moderator entry.
+ *
+ * @typedef {Object} RoomModerator
+ * @property {string} userId - Moderator user id.
+ */
+
+/**
+ * A single user entry stored by the manager.
+ *
+ * @typedef {Object} RoomUserData
+ * @property {string|null} [nickname] - Display name.
+ * @property {import('moment').Moment|number|string|Date} [ping] - Last ping.
+ * @property {boolean} [isStaff] - Whether the account belongs to the server staff.
+ */
 
 /**
  * UserRoomManager
@@ -13,10 +41,10 @@ import TinyClientIo from './socketClient.mjs';
  * Created by: Yasmin Seidel (JasminDreasond)
  * Co-developed with: ChatGPT (OpenAI) as coding assistant
  *
- * @param {Object} config
+ * @param {Object} config - Manager configuration.
  * @param {string} config.currentUserId - The userId of the current logged-in user.
  * @param {boolean} config.isOwner - Whether the current user is the owner of the room.
- * @param {jQuery} config.target - DOM element where the manager will be rendered.
+ * @param {TinyHtmlAny} config.root - DOM element where the manager will be rendered.
  *
  * @example
  * const manager = new UserRoomManager({
@@ -29,30 +57,65 @@ import TinyClientIo from './socketClient.mjs';
  * manager.setModerators([{ userId: 'user1' }]);
  */
 class UserRoomManager {
+  /** @type {RoomUserHtml[]} */
   #usersHtml = [];
+
+  /** @type {string[]} */
+  #permissions = [];
+
+  /**
+   * Last known nickname of every user seen in the room.
+   *
+   * The permission list is not limited to the online users, so the
+   * nicknames are cached to keep the member list readable after an user
+   * goes offline.
+   *
+   * @type {Record<string, string>}
+   */
+  #nicknames = {};
 
   /** @type {TinyClientIo} */
   #client;
+
+  /** @type {TinyHtmlAny|null} */
+  $unbanInput = null;
+
+  /** @type {TinyHtmlAny|null} */
+  $remveModInput = null;
+
+  /** @type {TinyHtmlAny|null} */
+  $guestInput = null;
+
+  /** @type {TinyHtmlAny|null} */
+  $readonlyButton = null;
+
+  /** @type {TinyHtmlAny|null} */
+  $roomStatusButton = null;
 
   /**
    * Creates a new instance of the user room manager.
    *
    * @param {Object} options - The configuration object.
-   * @param {Object} options.client - The client instance used for communication.
-   * @param {jQuery} options.root - The root DOM element where the UI will be rendered.
+   * @param {TinyClientIo} options.client - The client instance used for communication.
+   * @param {TinyHtmlAny} options.root - The root DOM element where the UI will be rendered.
    * @param {string} options.currentUserId - The ID of the current user.
-   * @param {Object<string, Object>} [options.users={}] - An object containing user data, keyed by user ID.
-   * @param {Array<Object>} [options.moderators=[]] - An array of moderator objects, each containing at least a `userId`.
+   * @param {Record<string, RoomUserData>} [options.users={}] - An object containing user data, keyed by user ID.
+   * @param {RoomModerator[]} [options.moderators=[]] - An array of moderator objects, each containing at least a `userId`.
+   * @param {RoomPermissionEntry[]} [options.permissions=[]] - Users allowed to speak in the room.
    * @param {boolean} [options.isOwner=false] - Whether the current user is the room owner.
+   * @param {(() => void)|null} [options.onClose] - Closes the manager modal.
    */
-  constructor({ client, root, currentUserId, users, moderators, isOwner }) {
+  constructor({ client, root, currentUserId, users, moderators, permissions, isOwner, onClose }) {
     this.$root = root;
     this.#client = client;
 
     this.currentUserId = currentUserId;
     this.users = users || {};
+    this.#cacheNicknames(this.users);
     this.moderators = moderators || [];
+    this.setPermissions(permissions);
     this.isOwner = isOwner === true;
+    this.onClose = typeof onClose === 'function' ? onClose : null;
     this.isModerator = false;
 
     this.readOnly = false;
@@ -63,25 +126,47 @@ class UserRoomManager {
     this.$footer = null;
     this.$searchInput = null;
     this.$userList = TinyHtml.createFrom('div');
+    this.$moderatorList = TinyHtml.createFrom('div').addClass('mb-3');
+    this.$memberList = TinyHtml.createFrom('div').addClass('mb-3');
 
     this.init();
+  }
+
+  /**
+   * Tells whether the signed-in account can moderate the room.
+   *
+   * The client is the source of truth here: it already knows the room owner
+   * and the moderator list, while `this.moderators` is only filled after the
+   * first render.
+   *
+   * @returns {boolean}
+   */
+  canModerate() {
+    if (this.isOwner) return true;
+    if (this.moderators.some((mod) => mod.userId === this.currentUserId)) return true;
+
+    const room = this.#client.getRoom() || {};
+    if (room.ownerId && room.ownerId === this.currentUserId) return true;
+
+    return this.#client.getMods().includes(this.currentUserId);
   }
 
   /**
    * Retrieves the current search input value in lowercase.
    *
    * @returns {string} The trimmed, lowercase search query or an empty string if not valid.
-   * @private
    */
   #getSearch() {
-    const value = this.$searchInput?.val()?.trim().toLowerCase();
+    const value = String(this.$searchInput?.val() ?? '')
+      .trim()
+      .toLowerCase();
     return typeof value === 'string' ? value : '';
   }
 
   /**
    * Sets a new client instance for the manager.
    *
-   * @param {Object} client - The new client instance to assign.
+   * @param {TinyClientIo} client - The new client instance to assign.
    */
   setClient(client) {
     this.#client = client;
@@ -107,6 +192,12 @@ class UserRoomManager {
     this.roomActive = active;
     this.isWaitingRoomStatus = false;
     this.updateRoomStatusButton();
+
+    // Disabling a room kicks everybody out, so the list has to be rebuilt
+    // from the client state instead of the stale local copy.
+    this.users = structuredClone(this.#client.getUsers());
+    this.renderUserList(this.#getSearch());
+    this.checkPerms();
   }
 
   /**
@@ -128,6 +219,12 @@ class UserRoomManager {
 
     if (this.$kickAll)
       this.$kickAll.toggleProp('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
+
+    if (this.$guestInput)
+      this.$guestInput.toggleProp('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
+
+    if (this.$banInput)
+      this.$banInput.toggleProp('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
 
     for (const item of this.#usersHtml) {
       const needDisable =
@@ -159,6 +256,7 @@ class UserRoomManager {
     this.$kickAll = tinyLib.bs.button('danger').setText('Kick all');
     this.$kickAll.on('click', () => {
       const room = this.#client.getRoom() || {};
+      /** @type {string[]} */
       const userIds = [];
       Object.keys(this.users).forEach((userId) => {
         if (userId !== this.currentUserId && userId !== room.ownerId) userIds.push(userId);
@@ -215,18 +313,354 @@ class UserRoomManager {
       placeholder: 'Search users...',
     });
     this.$searchInput.on('input', () => {
-      this.renderUserList(this.$searchInput.val().trim().toLowerCase());
+      this.renderUserList(
+        String(this.$searchInput?.val() ?? '')
+          .trim()
+          .toLowerCase(),
+      );
     });
 
     const $searchWrapper = TinyHtml.createFrom('div')
       .addClass('flex-grow-1')
       .append(this.$searchInput);
 
-    this.$header.append(this.$kickAll, $readonlyBtn, $roomStatus, $searchWrapper);
-    this.$root.append(this.$header, this.$userList);
+    // Banned users
+    const $bannedBtn = tinyLib.bs.button('secondary').setText('Banned users');
+    $bannedBtn.on('click', () => {
+      this.onClose?.();
+      this.openBannedUsers();
+    });
+
+    // Purge messages
+    const $purgeMessagesBtn = tinyLib.bs.button('outline-danger').setText('Purge messages');
+    $purgeMessagesBtn.on('click', () => {
+      this.onClose?.();
+      openPurgeUserData({
+        id: 'purge-user-messages',
+        title: 'Delete user messages',
+        description:
+          'Choose how much of the message history of this user must be deleted. This cannot be undone.',
+        confirmLabel: 'Delete messages',
+        onConfirm: (userId, mode, amount) => this.#client.purgeUserMessages(userId, mode, amount),
+      });
+    });
+
+    // Purge dice history
+    const $purgeDiceBtn = tinyLib.bs.button('outline-danger').setText('Purge dice history');
+    $purgeDiceBtn.on('click', () => {
+      this.onClose?.();
+      openPurgeUserData({
+        id: 'purge-user-dice',
+        title: 'Delete user dice history',
+        description:
+          'Choose how much of the dice history of this user must be deleted. This cannot be undone.',
+        confirmLabel: 'Delete dice history',
+        onConfirm: (userId, mode, amount) => this.#client.purgeUserDice(userId, mode, amount),
+      });
+    });
+
+    // A regular user only gets the search box.
+    if (this.canModerate()) {
+      this.$header.append(
+        this.$kickAll,
+        $readonlyBtn,
+        $roomStatus,
+        $bannedBtn,
+        $purgeMessagesBtn,
+        $purgeDiceBtn,
+        $searchWrapper,
+      );
+    } else {
+      this.$header.append($searchWrapper);
+    }
+
+    this.$root.append(this.$header, this.$moderatorList, this.$memberList, this.$userList);
 
     this.updateRoomStatusButton();
     this.updateReadonlyButton();
+  }
+
+  /**
+   * Remembers the nickname of the given users.
+   *
+   * The member list must survive the user going offline, so the names are
+   * kept around instead of being read from the live user list.
+   *
+   * @param {Record<string, { nickname?: string|null }|undefined>} users - Users keyed by id.
+   * @returns {void}
+   */
+  #cacheNicknames(users) {
+    if (!users || typeof users !== 'object') return;
+
+    for (const userId in users) {
+      const nickname = users[userId]?.nickname;
+      if (typeof nickname === 'string' && nickname.length > 0) {
+        this.#nicknames[userId] = nickname;
+      }
+    }
+  }
+
+  /**
+   * Builds the display label of an user.
+   *
+   * The nickname is only shown when it is known and different from the id,
+   * so the list never renders `name (name)`.
+   *
+   * @param {string} userId - User id.
+   * @returns {string}
+   */
+  #getUserLabel(userId) {
+    const nickname = this.#nicknames[userId];
+    return nickname && nickname !== userId ? `${nickname} (${userId})` : userId;
+  }
+
+  /**
+   * Renders a comma separated list of clickable users.
+   *
+   * Clicking an user fills the given input with its id, so the owner does
+   * not need to type the whole id by hand.
+   *
+   * @param {TinyHtmlAny} $target - Container of the list.
+   * @param {string} title - Label rendered before the list.
+   * @param {string[]} userIds - Users to render.
+   * @param {() => (TinyHtmlAny|null)} getInput - Resolves the input filled on click.
+   * @returns {void}
+   */
+  #renderUserChips($target, title, userIds, getInput) {
+    $target.empty();
+
+    const $wrapper = TinyHtml.createFrom('div').addClass('small');
+    $wrapper.append(TinyHtml.createFrom('strong').setText(`${title}: `));
+
+    // Duplicated ids would render the same user twice.
+    const users = userIds.filter(
+      (userId, index, list) =>
+        typeof userId === 'string' && userId.length > 0 && list.indexOf(userId) === index,
+    );
+
+    if (users.length < 1) {
+      $wrapper.append(TinyHtml.createFrom('span').addClass('text-muted').setText('None'));
+      $target.append($wrapper);
+      return;
+    }
+
+    users.forEach((userId, index) => {
+      if (index > 0) $wrapper.append(TinyHtml.createFrom('span').setText(', '));
+
+      const $user = TinyHtml.createFrom('span')
+        .addClass('text-muted')
+        .setText(this.#getUserLabel(userId))
+        .setStyle('cursor', 'pointer')
+        .setAttr('title', 'Fill the user ID')
+        .on('click', () => {
+          const $input = getInput();
+          if ($input) $input.setVal(userId).trigger('focus');
+        });
+
+      $wrapper.append($user);
+    });
+
+    $target.append($wrapper);
+  }
+
+  /**
+   * Renders the list of room moderators.
+   *
+   * The owner uses it to know who can moderate the room without opening the
+   * user list. Clicking a moderator fills the "Remove Mod" input.
+   *
+   * @returns {void}
+   */
+  renderModerators() {
+    if (!this.$moderatorList) return;
+
+    const moderators = Array.isArray(this.moderators)
+      ? this.moderators.map((mod) => mod.userId)
+      : [];
+
+    this.#renderUserChips(this.$moderatorList, 'Moderators', moderators, () => this.$remveModInput);
+  }
+
+  /**
+   * Renders the list of users that are not guests anymore.
+   *
+   * Every user joins the room as a read-only guest. This list shows who
+   * already received the permission to talk, so the owner can revoke it
+   * without opening the whole user list.
+   *
+   * @returns {void}
+   */
+  renderMembers() {
+    if (!this.$memberList) return;
+    if (!this.canModerate()) {
+      this.$memberList.empty();
+      return;
+    }
+
+    // The permission list is the source of truth here: it contains every
+    // user that is not a guest anymore, online or not.
+    this.#renderUserChips(this.$memberList, 'Members', this.#permissions, () => this.$guestInput);
+  }
+
+  /**
+   * Opens the list of users banned from the room.
+   *
+   * @returns {void}
+   */
+  openBannedUsers() {
+    const $root = TinyHtml.createFrom('div');
+    const $list = TinyHtml.createFrom('div').addClass('mt-3');
+    const $pagination = TinyHtml.createFrom('div').addClass(
+      'd-flex justify-content-between align-items-center mt-3',
+    );
+    $root.append($list, $pagination);
+
+    let page = 1;
+    let totalPages = 1;
+
+    /** Loads the ban list from the server. */
+    const load = () => {
+      $list.empty();
+      $pagination.empty();
+      $list.append(TinyHtml.createFrom('div').addClass('text-muted').setText('Loading...'));
+
+      this.#client
+        .listRoomBanned(page, 10)
+        .then((result) => {
+          $list.empty();
+
+          if (result.error) {
+            $list.append(
+              TinyHtml.createFrom('div')
+                .addClass('text-danger')
+                .setText(result.msg ?? 'Error'),
+            );
+            return;
+          }
+
+          totalPages = typeof result.totalPages === 'number' ? result.totalPages : 1;
+
+          const users = Array.isArray(result.users) ? result.users : [];
+          if (users.length < 1) {
+            $list.append(
+              TinyHtml.createFrom('div').addClass('text-muted').setText('No banned users.'),
+            );
+            return;
+          }
+
+          for (const user of users) {
+            const $row = TinyHtml.createFrom('div').addClass(
+              'd-flex align-items-center gap-2 border-bottom py-2',
+            );
+
+            const $info = TinyHtml.createFrom('div').addClass('flex-grow-1');
+            $info.append(
+              TinyHtml.createFrom('strong').setText(user.userId),
+              TinyHtml.createFrom('div')
+                .addClass('small text-muted')
+                .setText(user.reason || 'No reason given'),
+            );
+
+            const $unban = tinyLib.bs
+              .button('success btn-sm')
+              .addClass('unban-button')
+              .setText('Unban');
+            /** @type {NodeJS.Timeout|null} */
+            let confirmTimer = null;
+            let isConfirming = false;
+
+            $unban.on('click', async (event) => {
+              // Holding shift skips the confirmation.
+              const mouseEvent = /** @type {MouseEvent} */ (event);
+              const skipConfirm = Boolean(mouseEvent?.shiftKey);
+
+              // First click arms the button, the second one really unbans.
+              if (!skipConfirm && !isConfirming) {
+                isConfirming = true;
+                $unban.removeClass('btn-success').addClass('btn-danger').setText('Confirm?');
+
+                confirmTimer = setTimeout(() => {
+                  isConfirming = false;
+                  $unban.removeClass('btn-danger').addClass('btn-success').setText('Unban');
+                }, 5000);
+                return;
+              }
+
+              if (confirmTimer) clearTimeout(confirmTimer);
+              $unban.addClass('disabled').addProp('disabled');
+              await this.#client.unbanUser(user.userId);
+              load();
+            });
+
+            $row.append($info, $unban);
+            $list.append($row);
+          }
+
+          // Pagination
+          const $prev = tinyLib.bs.button('secondary btn-sm').setText('Previous');
+          $prev.toggleProp('disabled', page <= 1);
+          $prev.on('click', () => {
+            if (page <= 1) return;
+            page--;
+            load();
+          });
+
+          const $next = tinyLib.bs.button('secondary btn-sm').setText('Next');
+          $next.toggleProp('disabled', page >= totalPages);
+          $next.on('click', () => {
+            if (page >= totalPages) return;
+            page++;
+            load();
+          });
+
+          $pagination.append(
+            $prev,
+            TinyHtml.createFrom('span')
+              .addClass('small text-muted')
+              .setText(`Page ${page} / ${totalPages}`),
+            $next,
+          );
+        })
+        .catch((err) => {
+          $list.empty();
+          $list.append(
+            TinyHtml.createFrom('div')
+              .addClass('text-danger')
+              .setText(err instanceof Error ? err.message : String(err)),
+          );
+        });
+    };
+
+    const { html } = tinyLib.modal({
+      title: 'Banned users',
+      dialog: 'modal-lg',
+      id: 'room-banned-users',
+      body: $root,
+    });
+
+    // Highlights the unban buttons while shift is held, warning that the click
+    // skips the confirmation.
+    /** @param {boolean} active */
+    const setShiftDanger = (active) => html.toggleClass('shift-danger', active);
+    const onKeyDown = (/** @type {KeyboardEvent} */ e) => {
+      if (e.key === 'Shift') setShiftDanger(true);
+    };
+    const onKeyUp = (/** @type {KeyboardEvent} */ e) => {
+      if (e.key === 'Shift') setShiftDanger(false);
+    };
+    const onBlur = () => setShiftDanger(false);
+
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('keyup', onKeyUp);
+    window.addEventListener('blur', onBlur);
+
+    html.on('hidden.bs.modal', () => {
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('keyup', onKeyUp);
+      window.removeEventListener('blur', onBlur);
+    });
+
+    load();
   }
 
   /**
@@ -281,6 +715,11 @@ class UserRoomManager {
    */
   renderFooter() {
     this.$footer = TinyHtml.createFrom('div');
+    if (!this.canModerate()) {
+      this.$root.append(this.$footer);
+      return;
+    }
+
     const $unbanWrapper = TinyHtml.createFrom('div').addClass(
       'd-flex mt-4 gap-2 align-items-center',
     );
@@ -289,12 +728,18 @@ class UserRoomManager {
       'd-flex mt-4 gap-2 align-items-center',
     );
 
+    const $banWrapper = TinyHtml.createFrom('div').addClass('d-flex mt-4 gap-2 align-items-center');
+
+    const $guestWrapper = TinyHtml.createFrom('div').addClass(
+      'd-flex mt-4 gap-2 align-items-center',
+    );
+
     this.$unbanInput = TinyHtml.createFrom('input')
       .addClass('form-control')
       .setAttr('type', 'text')
       .setAttr('placeholder', 'Enter user ID to unban')
       .on('keydown', (e) => {
-        if (e.key === 'Enter') {
+        if (/** @type {KeyboardEvent} */ (e).key === 'Enter') {
           e.preventDefault();
           $unbanButton.trigger('click');
         }
@@ -305,16 +750,38 @@ class UserRoomManager {
       .setAttr('type', 'text')
       .setAttr('placeholder', 'Enter user ID to remove mod')
       .on('keydown', (e) => {
-        if (e.key === 'Enter') {
+        if (/** @type {KeyboardEvent} */ (e).key === 'Enter') {
           e.preventDefault();
           $removeModButton.trigger('click');
         }
       });
 
+    this.$banInput = TinyHtml.createFrom('input')
+      .addClass('form-control')
+      .setAttr('type', 'text')
+      .setAttr('placeholder', 'Enter user ID to ban')
+      .on('keydown', (e) => {
+        if (/** @type {KeyboardEvent} */ (e).key === 'Enter') {
+          e.preventDefault();
+          $banButton.trigger('click');
+        }
+      });
+
+    this.$guestInput = TinyHtml.createFrom('input')
+      .addClass('form-control')
+      .setAttr('type', 'text')
+      .setAttr('placeholder', 'Enter user ID to set as guest')
+      .on('keydown', (e) => {
+        if (/** @type {KeyboardEvent} */ (e).key === 'Enter') {
+          e.preventDefault();
+          $guestButton.trigger('click');
+        }
+      });
+
     const $unbanButton = tinyLib.bs.button('success').setText('Unban');
     $unbanButton.on('click', () => {
-      if (!this.$unbanInput.hasProp('disabled')) {
-        const userId = this.$unbanInput.val().trim();
+      if (this.$unbanInput && !this.$unbanInput.hasProp('disabled')) {
+        const userId = String(this.$unbanInput?.val() ?? '').trim();
         if (userId) {
           this.$unbanInput.setVal('');
           this.unbanUser(userId);
@@ -324,8 +791,8 @@ class UserRoomManager {
 
     const $removeModButton = tinyLib.bs.button('danger').setText('Remove Mod');
     $removeModButton.on('click', () => {
-      if (!this.$remveModInput.hasProp('disabled')) {
-        const userId = this.$remveModInput.val().trim();
+      if (this.$remveModInput && !this.$remveModInput.hasProp('disabled')) {
+        const userId = String(this.$remveModInput?.val() ?? '').trim();
         if (userId) {
           this.$remveModInput.setVal('');
           this.reqDemoteModerator(userId).catch((err) => alert(err.message));
@@ -333,9 +800,33 @@ class UserRoomManager {
       }
     });
 
+    const $banButton = tinyLib.bs.button('danger').setText('Ban');
+    $banButton.on('click', () => {
+      if (this.$banInput && !this.$banInput.hasProp('disabled')) {
+        const userId = String(this.$banInput?.val() ?? '').trim();
+        if (userId) {
+          this.$banInput.setVal('');
+          this.banUser(userId);
+        }
+      }
+    });
+
+    const $guestButton = tinyLib.bs.button('warning').setText('Set as Guest');
+    $guestButton.on('click', () => {
+      if (this.$guestInput && !this.$guestInput.hasProp('disabled')) {
+        const userId = String(this.$guestInput?.val() ?? '').trim();
+        if (userId) {
+          this.$guestInput.setVal('');
+          this.revokePermission(userId).catch((err) => alert(err.message));
+        }
+      }
+    });
+
     $unbanWrapper.append(this.$unbanInput, $unbanButton);
     $removeModWrapper.append(this.$remveModInput, $removeModButton);
-    this.$footer.append($unbanWrapper, $removeModWrapper);
+    $banWrapper.append(this.$banInput, $banButton);
+    $guestWrapper.append(this.$guestInput, $guestButton);
+    this.$footer.append($unbanWrapper, $removeModWrapper, $banWrapper, $guestWrapper);
     this.$root.append(this.$footer);
   }
 
@@ -388,16 +879,22 @@ class UserRoomManager {
    * @param {string} [filter=''] - Optional filter string to match against nickname or userId.
    */
   renderUserList(filter = '') {
-    for (const item of this.#usersHtml) item.tooltips.map((item) => item.hide());
+    this.renderModerators();
+    this.renderMembers();
+
+    for (const item of this.#usersHtml) item.tooltips.forEach((tooltip) => tooltip.hide());
     this.$userList.empty();
     this.#usersHtml = [];
 
-    const isMod = (userId) =>
+    const isMod = (/** @type {string} */ userId) =>
       this.moderators.some((mod) => {
         const modStatus = mod.userId === userId;
         if (this.currentUserId === userId) this.isModerator = modStatus;
         return modStatus;
       });
+
+    const room = this.#client.getRoom() || {};
+    const canModerate = this.canModerate();
 
     const sortedUsers = Object.entries(this.users)
       .map(([userId, data]) => ({
@@ -406,6 +903,8 @@ class UserRoomManager {
         ping: moment(data.ping),
         isSelf: userId === this.currentUserId,
         isModerator: isMod(userId),
+        isRoomOwner: userId === room.ownerId,
+        isServerStaff: data.isStaff === true,
       }))
       .sort((a, b) => {
         if (a.isSelf) return -1;
@@ -439,12 +938,41 @@ class UserRoomManager {
         .setText(`(${user.userId})`);
       $info.append($nickname, $userIdText);
 
+      // Role badges
+      if (user.isRoomOwner)
+        $info.append(
+          TinyHtml.createFrom('i')
+            .addClass('fas fa-crown text-warning')
+            .setAttr('title', 'Room owner'),
+        );
+
+      if (user.isModerator)
+        $info.append(
+          TinyHtml.createFrom('i')
+            .addClass('fas fa-shield-halved text-info')
+            .setAttr('title', 'Room moderator'),
+        );
+
+      if (user.isServerStaff)
+        $info.append(
+          TinyHtml.createFrom('i')
+            .addClass('fas fa-user-shield text-danger')
+            .setAttr('title', 'Server staff'),
+        );
+
       const $ping = TinyHtml.createFrom('div')
         .addClass('text-muted small text-nowrap')
         .setText(user.ping.fromNow());
       const $actions = TinyHtml.createFrom('div').addClass('d-flex flex-wrap gap-2');
       const tooltips = [];
       const actions = {};
+
+      // A regular user only sees the list, never the moderation actions.
+      if (!canModerate) {
+        $row.append($info.addClass('col-8'), $ping.addClass('col-4 text-end'));
+        this.$userList.append($row);
+        return;
+      }
 
       const $kickBtn = tinyLib.bs
         .button('warning')
@@ -485,6 +1013,24 @@ class UserRoomManager {
       actions.mod = $modBtn;
       tooltips.push(Tooltip($modBtn));
 
+      // Allow / revoke the permission to speak in the room.
+      const canSpeak = this.canSpeak(user.userId);
+      const $permBtn = tinyLib.bs
+        .button(canSpeak ? 'secondary' : 'success')
+        .append(
+          TinyHtml.createFrom('i').addClass(canSpeak ? 'fas fa-comment-slash' : 'fas fa-comment'),
+        )
+        .setAttr('title', canSpeak ? 'Revoke permission to speak' : 'Allow to speak')
+        .toggleProp('disabled', !this.isOwner);
+      $permBtn.on('click', () => {
+        if (canSpeak) this.revokePermission(user.userId);
+        else this.grantPermission(user.userId);
+      });
+
+      $actions.append($permBtn);
+      actions.permission = $permBtn;
+      tooltips.push(Tooltip($permBtn));
+
       if (user.isSelf)
         $info.append(
           TinyHtml.createFrom('span').addClass('badge bg-secondary ms-2').setText('You'),
@@ -508,13 +1054,15 @@ class UserRoomManager {
    * it triggers a re-render of the user list and re-checks permissions.
    *
    * @param {string} userId - Unique identifier of the user.
-   * @param {{nickname?: string, ping: number|string|Date}} data - User data, including nickname and ping timestamp.
+   * @param {{nickname?: string, ping: number|string|Date, isStaff?: boolean}} data - User data, including nickname, ping timestamp and server staff flag.
    */
   addUser(userId, data) {
+    this.#cacheNicknames({ [userId]: data });
     const oldHash = this.users[userId] ? objHash(this.users[userId]) : null;
     this.users[userId] = {
       nickname: data.nickname || userId,
       ping: moment(data.ping),
+      isStaff: data.isStaff === true,
     };
     const newHash = objHash(this.users[userId]);
     if (newHash !== oldHash) {
@@ -553,6 +1101,20 @@ class UserRoomManager {
   }
 
   /**
+   * Updates the server staff badge of an user in place.
+   *
+   * @param {string} userId - Account that changed.
+   * @param {boolean} isStaff - New staff state.
+   * @returns {void}
+   */
+  setUserStaff(userId, isStaff) {
+    const user = this.users[userId];
+    if (!user) return;
+    user.isStaff = isStaff === true;
+    this.renderUserList(this.#getSearch());
+  }
+
+  /**
    * Removes a user from the list of moderators.
    * Triggers a re-render of the user list and permission checks.
    *
@@ -575,6 +1137,69 @@ class UserRoomManager {
     this.moderators = Array.isArray(moderatorList) ? moderatorList : [];
     this.renderUserList(this.#getSearch());
     this.checkPerms();
+  }
+
+  /**
+   * Replaces the list of users allowed to speak in the room.
+   *
+   * @param {RoomPermissionEntry[]|undefined} permissions - Permission list sent by the server.
+   * @returns {void}
+   */
+  setPermissions(permissions) {
+    // A malformed payload must never wipe the list, so anything that is not
+    // an array is simply ignored.
+    if (!Array.isArray(permissions)) return;
+
+    this.#permissions = permissions
+      .filter((item) => item && typeof item.userId === 'string')
+      .map((item) => item.userId);
+    this.renderMembers();
+  }
+
+  /**
+   * Tells whether an user is allowed to speak in the room.
+   *
+   * @param {string} userId - User id.
+   * @returns {boolean}
+   */
+  canSpeak(userId) {
+    return this.#permissions.indexOf(userId) > -1;
+  }
+
+  /**
+   * Sends a request to allow an user to speak in the room.
+   *
+   * @param {string} userId - User id.
+   * @returns {Promise<void>}
+   */
+  async grantPermission(userId) {
+    const html = this.#usersHtml.find((item) => item.userId === userId);
+    if (html) html.actions.permission.addProp('disabled');
+    const result = await this.#client.grantPermission([userId]);
+    if (html) html.actions.permission.removeProp('disabled').removeClass('disabled');
+    if (!result.error) {
+      if (this.#permissions.indexOf(userId) < 0) this.#permissions.push(userId);
+      this.renderUserList(this.#getSearch());
+      this.checkPerms();
+    }
+  }
+
+  /**
+   * Sends a request to remove the permission to speak of an user.
+   *
+   * @param {string} userId - User id.
+   * @returns {Promise<void>}
+   */
+  async revokePermission(userId) {
+    const html = this.#usersHtml.find((item) => item.userId === userId);
+    if (html) html.actions.permission.addProp('disabled');
+    const result = await this.#client.revokePermission([userId]);
+    if (html) html.actions.permission.removeProp('disabled').removeClass('disabled');
+    if (!result.error) {
+      this.#permissions = this.#permissions.filter((id) => id !== userId);
+      this.renderUserList(this.#getSearch());
+      this.checkPerms();
+    }
   }
 
   /**
@@ -633,14 +1258,17 @@ class UserRoomManager {
    * @param {string} userId - The user ID to unban.
    */
   unbanUser(userId) {
-    this.$unbanInput.addProp('disabled');
+    const $input = this.$unbanInput;
+    if (!$input) return;
+
+    $input.addProp('disabled');
     this.#client
       .unbanUser(userId)
       .then((result) => {
-        this.$unbanInput.removeProp('disabled').removeClass('disabled');
+        $input.removeProp('disabled').removeClass('disabled');
         if (result.error)
-          this.$unbanInput.setVal(typeof result.msg === 'string' ? result.msg : 'Unknown error');
-        this.$unbanInput.trigger('focus').trigger('select');
+          $input.setVal(typeof result.msg === 'string' ? result.msg : 'Unknown error');
+        $input.trigger('focus').trigger('select');
       })
       .catch((err) => alert(err.message));
   }
@@ -650,14 +1278,22 @@ class UserRoomManager {
    * Disables the kick button during the request.
    * On success, removes the user from the user list.
    *
-   * @param {string} userId - The user ID to kick.
+   * @param {string|string[]} userId - The user ID to kick.
    */
   kickUser(userId) {
     const html = this.#usersHtml.find((item) => item.userId === userId);
     if (html) html.actions.kick.addProp('disabled');
     this.#client.kickUser(userId).then((result) => {
       if (html) html.actions.kick.removeProp('disabled').removeClass('disabled');
-      if (!result.error) this.removeUser(userId);
+      if (!result.error) {
+        if (Array.isArray(result.data)) {
+          for (const data of result.data) {
+            if (isJsonObject(data) && typeof data.userId === 'string') {
+              this.removeUser(data.userId);
+            }
+          }
+        }
+      }
     });
   }
 

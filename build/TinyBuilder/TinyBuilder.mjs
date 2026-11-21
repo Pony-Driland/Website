@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events';
-import { basename, join } from 'path';
+import { join } from 'path';
 import chokidar from 'chokidar';
 import { build, context } from 'esbuild';
 
@@ -216,24 +216,45 @@ class TinyBuilder extends EventEmitter {
   }
 
   /**
+   * Entry points exactly as they were given by the user, relative to the
+   * source directory. They are kept untouched so `src` can be reassigned
+   * without nesting the paths (`src/src/...`).
+   * @type {import('esbuild').BuildOptions['entryPoints']|undefined}
+   */
+  #entryPoints;
+
+  /**
    * Sets the source directory and rewrites entryPoints
    * accordingly, ensuring they point to the new src path.
+   *
+   * Entry points keep their relative folder (`pwa/service-worker.mjs`), so
+   * files inside subfolders of `src` can be used as entry points too.
+   *
    * @param {string} value
    * @throws {TypeError} If value is not a string.
    */
   set src(value) {
     if (typeof value !== 'string') throw new TypeError('Expected string for src.');
     this.#src = value;
-    if (Array.isArray(this.#config.entryPoints))
-      this.#config.entryPoints.forEach((entry, index) => {
-        if (typeof entry === 'string')
-          // @ts-ignore
-          this.#config.entryPoints[index] = join(this.#src ?? '', basename(entry));
-        else {
-          // @ts-ignore
-          this.#config.entryPoints[index].in = join(this.#src ?? '', basename(entry.in));
-        }
+
+    // Keep a pristine copy of the original (relative) entry points, otherwise a
+    // second assignment would resolve the already resolved paths again.
+    if (!this.#entryPoints) this.#entryPoints = this.#config.entryPoints;
+    if (!this.#entryPoints) return;
+
+    if (Array.isArray(this.#entryPoints)) {
+      this.#config.entryPoints = this.#entryPoints.map((entry) => {
+        if (typeof entry === 'string') return join(this.#src ?? '', entry);
+        return { ...entry, in: join(this.#src ?? '', entry.in) };
       });
+    } else {
+      /** @type {Record<string, string>} */
+      const entries = {};
+      Object.entries(this.#entryPoints).forEach(([name, entry]) => {
+        entries[name] = join(this.#src ?? '', entry);
+      });
+      this.#config.entryPoints = entries;
+    }
   }
 
   ////////////////////////////////////////////

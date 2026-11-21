@@ -3,6 +3,9 @@ import { marked } from 'marked';
 export const userStatus = {
   isMod: false,
   isAdmin: false,
+  /** @type {'owner'|'moderator'|'member'|'guest'} */
+  role: 'guest',
+  isGuest: true,
   room: {
     isAdmin: false,
     isMod: false,
@@ -15,6 +18,7 @@ export const userStatus = {
 
 /**
  * @param {string} msg
+ * @returns {string}
  */
 export const makeMsgRenderer = (msg) => {
   const renderer = new marked.Renderer();
@@ -22,7 +26,7 @@ export const makeMsgRenderer = (msg) => {
   // | █ ▌▐ _
 
   // Remove links and html
-  renderer.link = (href, title, text) => `<span>${text}</span>`;
+  renderer.link = ({ text }) => `<span>${text}</span>`;
   renderer.image = () => ``;
   renderer.html = (data) => {
     if (data.raw !== final || data.text !== final) return ``;
@@ -47,8 +51,10 @@ export const makeMsgRenderer = (msg) => {
     newMsg = newMsg.slice(1);
   }
 
-  return marked.parse(`${newMsg}${final}`.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ''), {
-    renderer: renderer,
-    breaks: true,
-  });
+  return String(
+    marked.parse(`${newMsg}${final}`.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ''), {
+      renderer: renderer,
+      breaks: true,
+    }),
+  );
 };

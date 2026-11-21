@@ -18,6 +18,17 @@ import { tinyLs } from '../important.mjs';
  */
 
 /**
+ * Raw birthday entry as returned by the Google People API.
+ *
+ * Every field is untrusted and must be validated before use, so the values are
+ * intentionally typed as `unknown` instead of the final `UserBirthday` shape.
+ *
+ * @typedef {Object} RawUserBirthday
+ * @property {unknown} [date] - Untrusted date object.
+ * @property {unknown} [metadata] - Untrusted metadata object.
+ */
+
+/**
  * Callback function triggered when the Firebase authentication state changes.
  *
  * Use this type when subscribing to auth state changes, e.g., with `onAuthStateChanged`.
@@ -189,7 +200,7 @@ class FirebaseAccount extends EventEmitter {
    * Invalid entries are discarded, and only the validated fields are returned.
    *
    * @private
-   * @param {any} birthdays - Raw `birthdays` array from Google People API.
+   * @param {RawUserBirthday[]|unknown} birthdays - Raw `birthdays` array from Google People API.
    * @returns {UserBirthday[]} An array of validated and normalized UserBirthday objects.
    */
   _birthdayValidator(birthdays) {
@@ -268,12 +279,10 @@ class FirebaseAccount extends EventEmitter {
    * scope during Google login. The method will refresh the OAuth token by prompting a popup login
    * if necessary.
    *
-   * The returned object typically contains an array of `birthdays`, where each entry can have a
-   * `date` object with `year`, `month`, and `day`.
-   * ```
+   * The returned array contains one entry per birthday record, where each entry has a `date`
+   * object with `year`, `month` and `day`, plus the `metadata` describing the source.
    *
-   * @returns {Promise<UserBirthday[]>}
-   * Birthday data object from Google People API.
+   * @returns {Promise<UserBirthday[]>} Birthday data from the Google People API.
    * @throws {Error} If the user is not logged in or the request fails.
    */
   async getBirthday() {

@@ -1,3 +1,53 @@
+/**
+ * Static story configuration: title, author, theme, social links and the list
+ * of languages and content warnings.
+ *
+ * @module chapters/config
+ */
+
+/**
+ * A single soundtrack entry.
+ *
+ * @typedef {Object} StoryTrack
+ * @property {string} id - YouTube video id or audio file URL.
+ * @property {string} type - Track provider (`youtube` or `audio`).
+ * @property {string} [title] - Optional track title.
+ * @property {string} [artist] - Optional track artist.
+ */
+
+/**
+ * A single sound effect entry.
+ *
+ * @typedef {Object} StorySfx
+ * @property {string} type - Source type (`file`).
+ * @property {string} module - Audio module that owns the sound.
+ * @property {string} value - Public path of the audio file.
+ * @property {boolean} [loop] - Whether the sound loops.
+ */
+
+/**
+ * A single character entry.
+ *
+ * @typedef {Object} StoryCharacter
+ * @property {string} path - Markdown file with the character page.
+ * @property {string} url - Public URL of the character page.
+ * @property {string} [title] - Display title.
+ * @property {string} [description] - Short description.
+ */
+
+/**
+ * A custom URL entry used by the router.
+ *
+ * @typedef {Object} StoryCustomUrl
+ * @property {string} url - Public URL path.
+ * @property {string} [title] - Page title.
+ */
+
+/**
+ * Static story configuration.
+ *
+ * @type {StoryConfig}
+ */
 const storyCfg = {
   // Twitter
   twitter: {

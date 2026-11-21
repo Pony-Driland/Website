@@ -110,6 +110,14 @@ body.is-using-ai {
     overflow: hidden !important;
   }
 
+  /* Delete button turns red while the shift key is held (skip confirmation) */
+  .shift-danger .delete-button,
+  .shift-danger .unban-button {
+    background-color: var(--bs-danger) !important;
+    border-color: var(--bs-danger) !important;
+    color: #fff !important;
+  }
+
   /* AI Chatbox */
   #chat-history-search {
     .modal-dialog {
@@ -172,6 +180,36 @@ body.is-using-ai {
 
   // Online
   #ai-element-root {
+    /* Delete button turns red while the shift key is held (skip confirmation) */
+    &.shift-danger #ai-chatbox .delete-button {
+      background-color: var(--bs-danger) !important;
+      border-color: var(--bs-danger) !important;
+      color: #fff !important;
+    }
+
+    /* Right sidebar (AI run settings) */
+    #ai-run-settings {
+      transition:
+        width 0.2s ease-in-out,
+        min-width 0.2s ease-in-out;
+      flex-shrink: 0;
+
+      .sidebar-right-toggle {
+        flex-shrink: 0;
+        line-height: 1;
+      }
+
+      &.sidebar-collapsed {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        overflow-x: hidden;
+
+        > div:first-child {
+          justify-content: center !important;
+        }
+      }
+    }
+
     &:not(.is-admin):not(.is-mod):not(.is-room-admin):not(.is-room-mod) {
       #ai-chatbox.is-online {
         .delete-button,

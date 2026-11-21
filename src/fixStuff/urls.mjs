@@ -4,10 +4,14 @@ import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { tinyLs } from '../important.mjs';
 
 /**
+ * @import { TinyHtmlAny } from 'tiny-essentials/libs/html/TinyHtml';
+ */
+
+/**
  * Fix file urls
  *
  * @param {(file: string|null) => void} callback
- * @returns {(item: TinyHtml<any>) => void}
+ * @returns {(item: TinyHtmlAny) => void}
  */
 export const fixFileUrl = (callback) => (item) => {
   item.removeAttr('target').on('click', () => callback(item.attr('file')));
@@ -16,7 +20,7 @@ export const fixFileUrl = (callback) => (item) => {
 /**
  * Fix external page urls
  *
- * @param {TinyHtml<any>} item
+ * @param {TinyHtmlAny} item
  */
 export const fixHref = (item) => {
   const href = item.attrString('href');
@@ -31,7 +35,7 @@ export const fixHref = (item) => {
 /**
  * Image content fix
  *
- * @param {TinyHtml<any>} item
+ * @param {TinyHtmlAny} item
  */
 export const fixImageSrc = (item) => {
   if (item.parents('a').length > 0) {
@@ -40,8 +44,8 @@ export const fixImageSrc = (item) => {
     const originalHeight = item.attrNumber('height');
     const originalWidth = item.attrNumber('width');
     const newImage = TinyHtml.createFrom('img', { class: 'img-fluid' })
-      .setStyle('height', originalHeight)
-      .setStyle('width', originalWidth);
+      .setStyle('height', String(originalHeight ?? ''))
+      .setStyle('width', String(originalWidth ?? ''));
     item.replaceWith(newImage);
 
     // Load Image File
@@ -71,13 +75,14 @@ export const fixImageSrc = (item) => {
             height: newImg.height,
           });
 
-        newImg.src = newImage.attr('src');
+        newImg.src = String(newImage.attr('src') ?? '');
       })
       .on('click', (e) => {
         e.preventDefault();
         const imgSize = newImage.data('image-size');
-        const imgData = { src: newImage.attr('src') };
-        const imgAlt = newImage.add('alt');
+        /** @type {{ src: string, h?: number, w?: number, alt?: string }} */
+        const imgData = { src: String(newImage.attr('src') ?? '') };
+        const imgAlt = newImage.attr('alt');
         if (imgSize) {
           imgData.h = imgSize?.height;
           imgData.w = imgSize?.width;
@@ -88,11 +93,9 @@ export const fixImageSrc = (item) => {
           dataSource: [imgData],
           close: true,
           zoom: true,
-          fullscreen: true,
           counter: false,
           arrowPrev: false,
           arrowNext: false,
-          share: false,
           padding: { top: 40, bottom: 40, left: 100, right: 100 },
         });
 
@@ -125,7 +128,7 @@ export const fixImageSrc = (item) => {
 /**
  * Create spoiler items
  *
- * @param {TinyHtml<any>} item
+ * @param {TinyHtmlAny} item
  */
 export const fixSpoilers = (item) => {
   const chapter = item.attrNumber('data-chapter');
@@ -144,5 +147,6 @@ export const fixSpoilers = (item) => {
     item.replaceWith(...item.children());
   });
 
-  if (storageLine >= line || tinyLs.getBool(`bookmarkCanSpoiler${chapter}`)) item.trigger('click');
+  if ((storageLine ?? 0) >= (line ?? 0) || tinyLs.getBool(`bookmarkCanSpoiler${chapter}`))
+    item.trigger('click');
 };

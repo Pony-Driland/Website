@@ -3,12 +3,44 @@ import objHash from 'object-hash';
 import { isJsonObject } from 'tiny-essentials/basics/objChecker';
 import { fetchJson, fetchText } from 'tiny-essentials/basics/html';
 import { toTitleCase } from 'tiny-essentials/basics/text';
+import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
-import tinyLib, { alert } from './tinyLib.mjs';
+import tinyLib from './tinyLib.mjs';
 import storyCfg from '../chapters/config.mjs';
-import { connStore, ficCache, loaderScreen, tinyLs } from '../important.mjs';
+import { connStore, ficCache, loaderScreen, tinyLs, fileVersion } from '../important.mjs';
 
-// Prepare Data
+/**
+ * Loads and caches the chapter list, the readme and the per-chapter progress.
+ *
+ * Every getter is memoized; call `start()` once the DOM is ready to bootstrap
+ * the whole structure.
+ *
+ * @module files/chapters
+ */
+
+/**
+ * A single character entry collected while loading the chapters.
+ *
+ * @typedef {Object} StoryCharacterEntry
+ * @property {string} value - Display name.
+ * @property {string} id - Slug used in the DOM.
+ * @property {number} count - Total number of lines.
+ * @property {Record<string | number, number>} chapter - Lines per chapter.
+ */
+
+/**
+ * A single word entry collected while loading the chapters.
+ *
+ * @typedef {Object} StoryWordEntry
+ * @property {string} value - The word.
+ * @property {number} count - Number of occurrences.
+ */
+
+/**
+ * Loaded story data and bootstrap helper.
+ *
+ * @type {StoryData}
+ */
 export const storyData = {
   // Info
   title: storyCfg.title,
@@ -27,9 +59,12 @@ export const storyData = {
   // Chapters
   readFic: false,
   chapter: {
-    amount: storyCfg.chapters,
-    selected: null,
+    amount: storyCfg.chapters ?? 0,
+    selected: 0,
     bookmark: {},
+    html: {},
+    ficPageData: [],
+    nav: {},
   },
 
   // Chapter Data
@@ -38,8 +73,20 @@ export const storyData = {
   wordsCount: { total: 0 },
   characters: { data: [], total: 0 },
   words: [],
+  isNew: {},
+  globalIsNew: 0,
+  nc: /** @type {StoryNavbar} */ ({ base: {}, item: {} }),
+  tts: { enabled: false },
+  sfx: {},
 
-  // Start Load
+  /**
+   * Boots the whole story: loads every chapter, builds the caches and then
+   * invokes `startApp`.
+   *
+   * @param {(done: () => void, readme: string) => void} startApp - UI bootstrap callback.
+   * @param {(err: Error) => void} [failApp] - Error handler.
+   * @returns {Promise<void>} Resolves once the bootstrap finishes.
+   */
   start: async (
     startApp,
     failApp = (err) => {
@@ -56,9 +103,8 @@ export const storyData = {
     loaderScreen.start('Loading readme...');
 
     // Read Data Base
-    const readme = await fetch('/readme.html' + window.fileVersion, {
+    const readme = await fetch('/readme.html' + fileVersion, {
       method: 'GET',
-      dataType: 'text',
     })
       .then((res) => res.text())
       .catch((err) => {
@@ -75,12 +121,10 @@ export const storyData = {
       const chapter = i + 1;
       loaderScreen.update(`Loading chapter ${chapter}...`);
       console.log(`Loading Chapter ${chapter}...`);
-      console.log(
-        './chapters/' + storyData.lang.active + '/' + chapter + '.json' + window.fileVersion,
-      );
-      const data = await fetchJson(
-        './chapters/' + storyData.lang.active + '/' + chapter + '.json' + window.fileVersion,
-      ).catch((err) => {
+      const chapterUrl =
+        '/chapters/' + storyData.lang.active + '/' + chapter + '.json' + fileVersion;
+      console.log(chapterUrl);
+      const data = await fetchJson(chapterUrl).catch((err) => {
         console.log(`Chapter ${chapter} failed during the load!`);
         loaderScreen.stop();
         failApp(err);
@@ -161,7 +205,7 @@ export const storyData = {
       });
 
       // Insert Data
-      storyData.data[chapter] = data;
+      storyData.data[chapter] = /** @type {StoryChapterData} */ (data);
       storyData.lettersCount[chapter] = letters;
       storyData.lettersCount.total += letters;
       storyData.wordsCount[chapter] = words;
@@ -192,14 +236,17 @@ export const storyData = {
       console.log(`Chapter ${chapter} loaded!`);
 
       // Complete
-      storyData.count++;
+      storyData.count = (storyData.count ?? 0) + 1;
     }
 
     loaderScreen.update(`Loading character content...`);
-    ficCache.charListPrompts = await fetchJson('/prompts/prompts.json');
+    ficCache.charListPrompts = /** @type {Record<string, string>[]} */ (
+      await fetchJson('/prompts/prompts.json')
+    );
     ficCache.charPrompts = await fetchText('/prompts/prompts.txt');
 
     // Ai page database
+    /** @type {{ room: Record<string, import('jsstore').IColumnOption>, hash: Record<string, import('jsstore').IColumnOption>, tokens: Record<string, import('jsstore').IColumnOption>, data: Record<string, import('jsstore').IColumnOption>, customList?: Record<string, import('jsstore').IColumnOption> }} */
     const aiPage = { room: {}, hash: {}, tokens: {}, data: {} };
     aiPage.room = {
       prompt: { dataType: 'string' },
@@ -290,7 +337,7 @@ export const storyData = {
       const userCountry = await fetch('https://api.country.is/')
         .then((res) => res.json())
         .catch(console.error);
-      if (isJsonObject(userCountry)) tinyLs.setString('user-country', userCountry.country);
+      if (isJsonObject(userCountry)) tinyLs.setString('user-country', String(userCountry.country));
     }
 
     // Start app now

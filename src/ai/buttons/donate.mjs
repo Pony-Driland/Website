@@ -1,6 +1,12 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import tinyLib from '../../files/tinyLib.mjs';
 
+/**
+ * Opens the donation modal with the project pitch and the available
+ * crypto/fiat donation options.
+ *
+ * @returns {void}
+ */
 export const openDonatePage = () => {
   const $container = TinyHtml.createFrom('div').addClass('text-center');
   $container.append(
