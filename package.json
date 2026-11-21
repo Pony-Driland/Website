@@ -29,7 +29,7 @@
         "exifreader": "^4.54.0",
         "express": "^5.3.0",
         "file-saver": "^2.0.5",
-        "firebase": "^12.17.1",
+        "firebase": "^13.4.0",
         "for-promise": "^2.0.5",
         "glob": "^14.0.6",
         "jsstore": "^4.9.0",
