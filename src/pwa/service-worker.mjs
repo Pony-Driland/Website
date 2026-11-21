@@ -26,7 +26,9 @@ const CACHE_NAME = 'pony-driland-v1';
  * requests, so caching them made `cache.put()` reject on every seek and kept
  * the whole file in memory for nothing.
  */
-const CACHE_PATTERNS = ['**/*.{js,css,woff,woff2,ttf,eot,png,jpg,jpeg,gif,svg,webp,avif,mp3,mp4,wav,ogg,opus}'];
+const CACHE_PATTERNS = [
+  '**/*.{js,css,woff,woff2,ttf,eot,png,jpg,jpeg,gif,svg,webp,avif,mp3,mp4,wav,ogg,opus}',
+];
 
 /**
  * Paths that must always be answered by the network.
