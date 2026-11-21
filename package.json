@@ -23,7 +23,7 @@
         "@fortawesome/fontawesome-free": "^7.3.1",
         "@json-editor/json-editor": "^2.17.3",
         "@popperjs/core": "^2.11.8",
-        "bootstrap": "^5.3.7",
+        "bootstrap": "^5.3.9",
         "buffer": "^6.0.3",
         "events": "^3.3.0",
         "exifreader": "^4.42.0",
