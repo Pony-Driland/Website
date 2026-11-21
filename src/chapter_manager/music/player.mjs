@@ -55,13 +55,6 @@ player.fadeVolumeSpeed = 400;
 /**
  * Serializes every call that touches the player.
  *
- * `TinyMediaPlayer` is not re-entrant. `YoutubeMediaAdapter.play()` assigns the
- * `YT.Player` instance to its internal field *before* awaiting `onReady`, so a
- * second call made while the first one is still booting sees a truthy (but not
- * yet functional) player and runs `this.#player.loadVideoById(...)` on the
- * iframe stub. That is what throws
- * `TypeError: this.#player?.loadVideoById is not a function`.
- *
  * The reader asks for a track on every scroll event, so overlapping calls are
  * the norm, not the exception.
  */
