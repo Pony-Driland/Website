@@ -155,6 +155,7 @@ const ensurePlayer = async (videoId) => {
       hidden: true,
       autoplay: false,
       controls: false,
+      disableKb: true,
     });
 
     youtube = new YoutubeMediaAdapter();
@@ -162,7 +163,7 @@ const ensurePlayer = async (videoId) => {
     await waitForTrue(() => youtubeApiReady === true);
   }
 
-  if(!audioPlayer) {
+  if (!audioPlayer) {
     audioPlayer = new HtmlAudioAdapter();
     player.registerAdapter(audioPlayer);
   }
