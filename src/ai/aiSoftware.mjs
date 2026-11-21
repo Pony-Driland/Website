@@ -185,7 +185,7 @@ export const AiScriptStart = async () => {
   let isFirstTime = true;
   if (!tinyAiScript.isEnabled()) {
     alert(
-      'AI mode is currently disabled for your session. Please click the robot icon to activate it, then come back here.',
+      'Roleplay room is currently disabled for your session. Please click the robot icon to activate it, then come back here.',
       { title: 'Roleplay Page' },
     );
     return;

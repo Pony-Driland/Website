@@ -852,7 +852,7 @@ export const openChapterMenu = (params = {}) => {
             .setText(
               !cantNsfw
                 ? 'Choose Optional Mature Content'
-                : 'Unavailable in your region (Login with an 18+ account)',
+                : 'Login with an 18+ account',
             )
             .toggleProp('disabled', cantNsfw)
             .on('click', () => openNsfwSettings(getFicNsfwFilters())),
