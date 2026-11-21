@@ -26,10 +26,7 @@ const CACHE_NAME = 'pony-driland-v1';
  * requests, so caching them made `cache.put()` reject on every seek and kept
  * the whole file in memory for nothing.
  */
-const CACHE_PATTERNS = ['**/*.{js,css,woff,woff2,ttf,eot,png,jpg,jpeg,gif,svg,webp,avif}'];
-
-/** Matches the extensions above, used to decide if a request is worth owning. */
-const CACHEABLE_ASSET = /\.(?:js|css|woff2?|ttf|eot|png|jpe?g|gif|svg|webp|avif)$/i;
+const CACHE_PATTERNS = ['**/*.{js,css,woff,woff2,ttf,eot,png,jpg,jpeg,gif,svg,webp,avif,mp3,mp4,wav,ogg,opus}'];
 
 /**
  * Paths that must always be answered by the network.
@@ -85,7 +82,6 @@ engine.on('fetchRequested', ({ request, url, result }) => {
   }
 
   if (TinyServiceWorkerEngine.isNavigate(request)) return;
-  if (CACHEABLE_ASSET.test(url.pathname)) return;
 
   result.canStart = false;
 });
