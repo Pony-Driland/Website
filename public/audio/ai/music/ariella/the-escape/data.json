@@ -1,0 +1,20 @@
+{
+    "format": ["mp3"],
+    "file": "the-escape",
+    "generators_used": ["suno"],
+    "bpm": [130, 131, 132, 133, 127],
+    "beta": true,
+    "suno_start": "00:00.355",
+    "creation_date": 1794953202000,
+    "production_steps": [
+        {
+            "id": "suno_v6",
+            "weirdness": 0.35,
+            "style_influence": 0,
+            "audio_influence": 0.25,
+            "max_mode": true,
+            "instrument_prompt": "Cinematic orchestral, solo music box, melancholic piano intro, slow emotional build-up, tragic, dramatic strings, epic orchestral climax, heavy brass, sorrowful, dynamic tempo, theatrical"
+        }
+    ],
+    "reference_songs": ["dragon-prepare"]
+}

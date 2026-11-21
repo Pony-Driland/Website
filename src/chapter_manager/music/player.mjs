@@ -52,7 +52,6 @@ const player = new TinyMediaPlayer({
 });
 
 player.fadeVolumeSpeed = 400;
-player.registerAdapter(new HtmlAudioAdapter());
 
 /**
  * Serializes every call that touches the player.
@@ -72,8 +71,18 @@ const queue = new TinyPromiseQueue();
 /** @type {YoutubeMediaAdapter|null} */
 let youtube = null;
 
+/** @type {HtmlAudioAdapter|null} */
+let audioPlayer = null;
+
 /** @type {string|null} */
 let currentId = null;
+
+/** @type {boolean} */
+let youtubeApiReady = false;
+
+window.onYouTubeIframeAPIReady = function () {
+  youtubeApiReady = true;
+};
 
 /**
  * Runs a playback task, giving up when it takes too long.
@@ -131,24 +140,32 @@ if (window.localStorage.getItem(VOLUME_STORAGE_KEY) === null) {
 }
 
 /**
- * Creates the YouTube adapter on demand: it binds itself to a single iframe, so
+ * Creates the player adapter on demand: it binds itself to a single iframe, so
  * the container can only be created once the first video id is known.
  *
  * @param {string} videoId - First video that will be played.
- * @returns {void}
+ * @returns {Promise<void>}
  */
-const ensureYoutube = (videoId) => {
-  if (youtube) return;
+const ensurePlayer = async (videoId) => {
+  if (youtube && audioPlayer) return;
 
-  YoutubeMediaAdapter.defaultContainer = YoutubeMediaAdapter.createIframeContainer({
-    videoId,
-    hidden: true,
-    autoplay: false,
-    controls: false,
-  });
+  if (!youtube) {
+    YoutubeMediaAdapter.defaultContainer = YoutubeMediaAdapter.createIframeContainer({
+      videoId,
+      hidden: true,
+      autoplay: false,
+      controls: false,
+    });
 
-  youtube = new YoutubeMediaAdapter();
-  player.registerAdapter(youtube);
+    youtube = new YoutubeMediaAdapter();
+    player.registerAdapter(youtube);
+    await waitForTrue(() => youtubeApiReady === true);
+  }
+
+  if(!audioPlayer) {
+    audioPlayer = new HtmlAudioAdapter();
+    player.registerAdapter(audioPlayer);
+  }
 };
 
 /**
@@ -167,9 +184,8 @@ const playTrack = (track) => {
     const isYoutube = track.type === 'youtube';
     const id = `${track.type}:${track.id}`;
 
-    if (isYoutube) ensureYoutube(track.id);
-
     enqueue(async () => {
+      await ensurePlayer(track.id);
       if (currentId === id) {
         await player.play();
         return;
@@ -204,10 +220,8 @@ const playTrack = (track) => {
 const musicPlayer = {
   /**
    * The underlying player, for the events and the volume.
-   *
-   * @type {TinyMediaPlayer & { on: (event: string, cb: (...a: any[]) => void) => void }}
    */
-  player: /** @type {any} */ (player),
+  player,
   playTrack,
 
   /** @param {number} value - Volume between 0 and 100. */
