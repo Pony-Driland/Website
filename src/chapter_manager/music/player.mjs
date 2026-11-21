@@ -154,13 +154,15 @@ const ensurePlayer = async (videoId) => {
   if (youtube && audioPlayer) return;
 
   if (!youtube) {
-    YoutubeMediaAdapter.defaultContainer = YoutubeMediaAdapter.createIframeContainer({
-      videoId,
+    YoutubeMediaAdapter.defaultContainer = YoutubeMediaAdapter.createContainer({
       hidden: true,
-      autoplay: false,
-      controls: false,
-      disableKb: true,
     });
+
+    YoutubeMediaAdapter.playerOptions = {
+      height: 'auto',
+      width: 'auto',
+      playerVars: { controls: 0 },
+    };
 
     youtube = new YoutubeMediaAdapter();
     player.registerAdapter(youtube);
