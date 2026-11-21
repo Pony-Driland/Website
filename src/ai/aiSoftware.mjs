@@ -28,7 +28,7 @@ import { makeMsgRenderer, userStatus } from './msgRender.mjs';
 
 import './values/jsonTemplate.mjs';
 
-import { canSandBox, getClient, tinyAi, tinyIo } from './software/base.mjs';
+import { canSandBox, getClient, tinyAi, tinyIo, tinyStorage } from './software/base.mjs';
 import { tinyAiScript } from './software/tinyAiScript.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
@@ -1098,6 +1098,40 @@ export const AiScriptStart = async () => {
     // Navigation
     addGroup('Navigation');
     leftMenu.push(createButtonSidebar('fas fa-door-open', 'Browse rooms', () => openRoomBrowser()));
+
+    // Leaving the room locks the page on the loading screen. The refresh
+    // script (killIo) is the only way out, so the screen is never dismissed
+    // here: if the reload never happens the loading stays up on purpose.
+    leftMenu.push(
+      createButtonSidebar('fas fa-right-from-bracket', 'Leave room', () => {
+        const client = tinyIo.client;
+        if (!client) return;
+
+        const message = 'Leaving the room...';
+        loaderScreen.start(message);
+
+        // The room is forgotten before the reload, otherwise the page would
+        // join it again as soon as it loads.
+        const leave = () => {
+          tinyStorage.clearRoom();
+          // `killIo()` is the refresh script: it drops the socket and reloads
+          // the page. It only does that while a client exists, so the reload
+          // is repeated here when there is nothing left to destroy.
+          if (!tinyAiScript.killIo(message)) window.location.reload();
+        };
+
+        // The server may never answer (offline, room already gone, ...), so
+        // the reload can not depend on the acknowledgement.
+        const timeout = setTimeout(leave, 3000);
+        client
+          .leaveRoom()
+          .catch((err) => console.error(err))
+          .finally(() => {
+            clearTimeout(timeout);
+            leave();
+          });
+      }),
+    );
 
     // Server staff only: every online user of the server.
     onlineUsersButton = createButtonSidebar('fas fa-globe', 'Online users', openOnlineUsers);

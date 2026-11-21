@@ -11,7 +11,7 @@ import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 
 import tinyLib from '../../files/tinyLib.mjs';
-import { appData } from '../../important.mjs';
+import { appData, lockLoaderScreen } from '../../important.mjs';
 import { tinyAi, tinyIo, tinyStorage } from './base.mjs';
 import { body } from '../../html/query.mjs';
 
@@ -41,8 +41,21 @@ export const tinyAiScript = {
   },
 
   // Destroys the socket client and reloads the page.
-  killIo: () => {
+  //
+  // The reload is what actually leaves the room, so the loading screen is put
+  // up here: every caller (the "Leave room" button, the router changing page,
+  // ...) gets the same feedback while the browser tears the session down.
+  /**
+   * @param {string} [message] - Message shown while the page reloads. The
+   *   loading screen is only shown when it is provided, so the callers that
+   *   already own the screen are left alone.
+   * @returns {boolean} `true` when a reload was scheduled.
+   */
+  killIo: (message) => {
     if (tinyIo.client) {
+      // The screen is locked, not only started: the page being torn down may
+      // call `loaderScreen.stop()` on its way out.
+      if (typeof message === 'string' && message.length > 0) lockLoaderScreen(message);
       tinyIo.client.destroy();
       tinyIo.client = null;
       console.log('[socket-io] Connection destroyed!');

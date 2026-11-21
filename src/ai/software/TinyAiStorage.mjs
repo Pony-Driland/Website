@@ -214,6 +214,23 @@ class TinyAiStorage extends EventEmitter {
     if (!isJsonObject(stored) || stored.roomId !== roomId)
       throw new Error('Could not save the selected room.');
   }
+
+  /**
+   * Forgets the room the client is pointing at.
+   *
+   * The credentials are kept, so the next page load opens the roleplay page
+   * without joining any room and the reader can pick another one.
+   *
+   * @param {string} [name] - Provider name. Defaults to the active one.
+   * @returns {void}
+   */
+  clearRoom(name = this.getRoomProvider()) {
+    const current = this.getApiKey(name);
+    if (!isJsonObject(current)) return;
+
+    const next = { ...current, roomId: '', roomPassword: '' };
+    this.setApiKey(name, next);
+  }
 }
 
 export default TinyAiStorage;

@@ -32,14 +32,18 @@ const { Icon } = TinyHtmlElems;
 
 /**
  * Remove Fic Data
+ *
+ * @param {string} [refreshMessage] - When set, the page is about to be
+ *   reloaded to leave the room and the loading screen says so until then.
+ * @returns {void}
  */
-export const clearFicData = () => {
+export const clearFicData = (refreshMessage) => {
   if (appData.ai.interval) {
     clearInterval(appData.ai.interval);
     appData.ai.interval = null;
     appData.ai.secondsUsed = 0;
   }
-  tinyAiScript.killIo();
+  tinyAiScript.killIo(refreshMessage);
 
   // The soundtrack belongs to the chapter, so it must not survive it.
   musicManager.resetPlaylist();
@@ -450,8 +454,9 @@ export const openMDFile = async (url, isMain = false) => {
     // Normalize the path so `pages/x.md` and `/pages/x.md` are the same page.
     const filePath = url.startsWith('/') ? url : `/${url}`;
 
-    // Remove Fic Data
-    clearFicData();
+    // Remove Fic Data. Leaving the roleplay room reloads the page, so the reader is
+    // told that the refresh is in progress instead of seeing the old page.
+    clearFicData('Loading page...');
 
     // New page
     if (url !== 'MAIN') {
@@ -563,7 +568,7 @@ export const openMDFile = async (url, isMain = false) => {
  * @returns {void}
  */
 export const openHomePage = () => {
-  clearFicData();
+  clearFicData('Loading page...');
   insertMarkdownFile(storyData.readme ?? '', null, true, true);
   urlUpdate({ name: 'home' });
 };

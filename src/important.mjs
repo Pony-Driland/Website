@@ -14,6 +14,24 @@ import FirebaseAccount from './account/firebase.mjs';
 export const loaderScreen = new TinyLoadingScreen();
 loaderScreen.defaultMessage = 'Loading...';
 
+/**
+ * Locks the loading screen until the page is reloaded.
+ *
+ * Used by the refresh script: once the page is about to be reloaded, the
+ * overlay must survive the `loaderScreen.stop()` calls of the page being torn
+ * down, otherwise the reader sees the old page flash before the reload.
+ *
+ * @param {string} [message] - Message shown while the page is locked.
+ * @returns {void}
+ */
+export const lockLoaderScreen = (message = 'Loading page...') => {
+  // The overlay is re-created on every `start()`, so `stop()` is the only
+  // method that has to be neutralized. The page is going away, so the original
+  // method is never restored.
+  loaderScreen.stop = () => false;
+  loaderScreen.start(message);
+};
+
 // Debug mode
 TinyHtml.classCanWhitespace = true;
 TinyHtml.elemDebug = true;
