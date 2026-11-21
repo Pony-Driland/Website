@@ -150,9 +150,6 @@ export const initAnalytics = () => {
 /**
  * Reports a navigation.
  *
- * The event name and its parameters are the ones the property already uses, so
- * the historical data is not split in two after an update.
- *
  * @param {import('./router/pages.mjs').RouterPage} [page] - Page that is being
  *   rendered. When omitted the current URL is reported.
  * @returns {void}
@@ -164,10 +161,10 @@ export const trackPageView = (page) => {
   if (path === lastPagePath) return;
   lastPagePath = path;
 
-  gtag('event', 'url', {
-    event_title: page?.title || document.title,
-    event_category: 'open_url',
-    url: page?.path ?? page?.name,
+  gtag('event', 'page_view', {
+    page_path: path,
+    page_location: new URL(path, location.origin).href,
+    page_title: page?.title || document.title,
   });
 };
 
