@@ -53,8 +53,6 @@ const engine = new TinyServiceWorkerEngine({
   messaging: { enabled: true },
 });
 
-// const console = engine.toConsole();
-
 if (isDev) {
   // A previous (cached) run may have left files behind. They are dropped so the
   // browser can not answer a request with a build that no longer exists.
@@ -74,16 +72,6 @@ engine.installPlugin(GlobBypassPlugin, {
   patterns: [...BYPASS, ...CACHE_PATTERNS],
 });
 
-/**
- * Decides which requests this worker is allowed to answer.
- * Only the two cases this worker can actually answer are accepted:
- *
- * - **navigations**, answered with the SPA shell;
- * - **static assets**, answered by `RegisterGlobCachePlugin`.
- *
- * Everything else (chapter JSON, the API, cross-origin requests, media) is left
- * completely untouched and handled natively by the browser.
- */
 engine.on('fetchRequested', ({ request, url, result }) => {
   if (!TinyServiceWorkerEngine.isSameOrigin(request)) {
     result.canStart = false;
