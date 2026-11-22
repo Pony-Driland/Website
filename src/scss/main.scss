@@ -15,12 +15,14 @@ body:not(.browser-with-web3) .web3-element {
   transition: color 1s;
 }
 
-.web3-connected #login {
-  color: #3ad63a !important;
-}
+.web3-connected {
+  #login {
+    color: #3ad63a !important;
+  }
 
-.web3-connected.ficMode #login {
-  color: #40cce6 !important;
+  &.ficMode #login {
+    color: #40cce6 !important;
+  }
 }
 
 /* Navbar Top - offcanvas */
@@ -30,93 +32,93 @@ body:not(.browser-with-web3) .web3-element {
   max-width: 360px;
   width: 100%;
   overflow-y: auto;
-}
 
-#offcanvasNavbar .offcanvas-body {
-  padding-top: 0px;
-}
+  .offcanvas-body {
+    padding-top: 0px;
+  }
 
-#offcanvasNavbar .offcanvas-title {
-  padding-top: 16px;
-  padding-bottom: 7px;
-}
+  .offcanvas-title {
+    padding-top: 16px;
+    padding-bottom: 7px;
+  }
 
-#offcanvasNavbar .offcanvas-header {
-  padding: 0px;
-  display: block;
-  text-align: center;
-}
+  .offcanvas-header {
+    padding: 0px;
+    display: block;
+    text-align: center;
+  }
 
-#offcanvasNavbar .offcanvas-header > .btn-close {
-  position: fixed;
-  top: 8px;
-  font-size: 10px;
-  right: 15px;
-}
+  .offcanvas-header > .btn-close {
+    position: fixed;
+    top: 8px;
+    font-size: 10px;
+    right: 15px;
+  }
 
-#offcanvasNavbar .nav-item {
-  padding-top: 7px;
-  padding-bottom: 7px;
-  list-style: none;
-}
+  .nav-item {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    list-style: none;
+  }
 
-#offcanvasNavbar .nav-item .nav-link,
-#offcanvasNavbar .nav-item {
-  text-align: center;
-  align-self: center;
-  width: 100%;
-  border-radius: 10px;
-}
+  .nav-item .nav-link,
+  .nav-item {
+    text-align: center;
+    align-self: center;
+    width: 100%;
+    border-radius: 10px;
+  }
 
-#offcanvasNavbar .nav-item .nav-link,
-#offcanvasNavbar .nav-item {
-  background-color: #1e1e1e;
-}
+  .nav-item .nav-link,
+  .nav-item {
+    background-color: #1e1e1e;
+  }
 
-#offcanvasNavbar .nav-item:hover .nav-link,
-#offcanvasNavbar .nav-item:hover {
-  background-color: #2c2c2c;
-}
+  .nav-item:hover .nav-link,
+  .nav-item:hover {
+    background-color: #2c2c2c;
+  }
 
-#offcanvasNavbar .nav-item:active .nav-link,
-#offcanvasNavbar .nav-item:active {
-  background-color: #333333;
-}
+  .nav-item:active .nav-link,
+  .nav-item:active {
+    background-color: #333333;
+  }
 
-#offcanvasNavbar .nav-item .nav-link {
-  margin: 0px !important;
-}
+  .nav-item .nav-link {
+    margin: 0px !important;
+  }
 
-#offcanvasNavbar .nav-item:not(:first-child) .nav-link,
-#offcanvasNavbar .nav-item:not(:first-child):not(.empty) {
-  margin-top: 8px;
-}
+  .nav-item:not(:first-child) .nav-link,
+  .nav-item:not(:first-child):not(.empty) {
+    margin-top: 8px;
+  }
 
-/* #offcanvasNavbar .nav-item + li,
-#offcanvasNavbar #status >*:not(:empty) {
+  /* .nav-item + li,
+#status >*:not(:empty) {
   border-top: 1px solid;
 } */
 
-#offcanvasNavbar #status:not(:empty) {
-  margin-top: 8px;
-}
+  #status:not(:empty) {
+    margin-top: 8px;
+  }
 
-#offcanvasNavbar #status:empty {
-  margin-top: -20px;
-}
+  #status:empty {
+    margin-top: -20px;
+  }
 
-#offcanvasNavbar #status > *:empty {
-  margin-top: -13px;
-}
+  #status > *:empty {
+    margin-top: -13px;
+  }
 
-#offcanvasNavbar .nav-item #music-player,
-#offcanvasNavbar .nav-item #tts-player {
-  margin: 0px !important;
-  border: 0px !important;
+  .nav-item #music-player,
+  .nav-item #tts-player {
+    margin: 0px !important;
+    border: 0px !important;
+  }
 }
 
 @property --has-scroll {
-  syntax: "<number>";
+  syntax: '<number>';
   initial-value: 0;
   inherits: false;
 }
@@ -132,71 +134,67 @@ body:not(.browser-with-web3) .web3-element {
 .tiny-navabar-style {
   --navbar-scrollbar-size: 8px;
   --navbar-scrollbar-opacity: 0.35;
-}
-
-.tiny-navabar-style .navbar-nav-left,
-.tiny-navabar-style .navbar-nav-right {
   white-space: nowrap;
-  flex-grow: 1;
-  min-width: 0;
-  overflow-y: hidden;
-  overscroll-behavior-x: contain;
 
-  overflow-x: scroll;
-  margin-bottom: calc(var(--navbar-scrollbar-size) * -1);
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
-  transition: scrollbar-color 0.2s ease-in-out;
+  .navbar-nav-left,
+  .navbar-nav-right {
+    white-space: nowrap;
+    flex-grow: 1;
+    min-width: 0;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
 
-  animation: enable-x-scroll linear both;
-  animation-timeline: scroll(self x);
-}
+    overflow-x: scroll;
+    margin-bottom: calc(var(--navbar-scrollbar-size) * -1);
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.2s ease-in-out;
 
-/* Only shows the scrollbar color on hover when scroll is available (--has-scroll = 1) */
-.tiny-navabar-style .navbar-nav-left:hover,
-.tiny-navabar-style .navbar-nav-right:hover {
-  scrollbar-color: rgba(255 255 255 / calc(var(--has-scroll) * var(--navbar-scrollbar-opacity))) transparent;
-}
+    animation: enable-x-scroll linear both;
+    animation-timeline: scroll(self x);
 
-.tiny-navabar-style .navbar-nav-left::-webkit-scrollbar,
-.tiny-navabar-style .navbar-nav-right::-webkit-scrollbar {
-  height: var(--navbar-scrollbar-size);
-}
+    /* Only shows the scrollbar color on hover when scroll is available (--has-scroll = 1) */
+    &:hover {
+      scrollbar-color: rgba(255 255 255 / calc(var(--has-scroll) * var(--navbar-scrollbar-opacity)))
+        transparent;
+    }
 
-.tiny-navabar-style .navbar-nav-left::-webkit-scrollbar-track,
-.tiny-navabar-style .navbar-nav-right::-webkit-scrollbar-track {
-  background: transparent;
-}
+    &::-webkit-scrollbar {
+      height: var(--navbar-scrollbar-size);
+    }
 
-.tiny-navabar-style .navbar-nav-left::-webkit-scrollbar-thumb,
-.tiny-navabar-style .navbar-nav-right::-webkit-scrollbar-thumb {
-  background-color: transparent;
-  border-radius: 999px;
-  transition: background-color 0.2s ease-in-out;
-}
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
 
-.tiny-navabar-style .navbar-nav-left:hover::-webkit-scrollbar-thumb,
-.tiny-navabar-style .navbar-nav-right:hover::-webkit-scrollbar-thumb {
-  background-color: rgba(255 255 255 / calc(var(--has-scroll) * var(--navbar-scrollbar-opacity)));
-}
+    &::-webkit-scrollbar-thumb {
+      background-color: transparent;
+      border-radius: 999px;
+      transition: background-color 0.2s ease-in-out;
+    }
 
-.tiny-navabar-style .navbar-nav-left::-webkit-scrollbar-thumb:hover,
-.tiny-navabar-style .navbar-nav-right::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255 255 255 / calc(var(--has-scroll) * var(--navbar-scrollbar-opacity)));
-}
+    &:hover::-webkit-scrollbar-thumb {
+      background-color: rgba(
+        255 255 255 / calc(var(--has-scroll) * var(--navbar-scrollbar-opacity))
+      );
+    }
 
-.tiny-navabar-style {
-  white-space: nowrap;
-}
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: rgba(
+        255 255 255 / calc(var(--has-scroll) * var(--navbar-scrollbar-opacity))
+      );
+    }
+  }
 
-.tiny-navabar-style .navbar-collapse {
-  padding-top: 9px;
-  padding-bottom: 10px;
-}
+  .navbar-collapse {
+    padding-top: 9px;
+    padding-bottom: 10px;
+  }
 
-.tiny-navabar-style .navbar-toggler {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  .navbar-toggler {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
 }
 
 .mastodon-tag-copy {
@@ -251,27 +249,29 @@ body:not(.browser-with-web3) .web3-element {
 
 /* Fic Mod */
 
-.ficMode .mdMenu #donations-menu,
-.ficMode .mdMenu #discord-server,
-.ficMode .mdMenu #license,
-.ficMode .mdMenu #derpibooru-page,
-.ficMode .mdMenu #blog-url {
-  display: none !important;
+.ficMode .mdMenu {
+  #donations-menu,
+  #discord-server,
+  #license,
+  #derpibooru-page,
+  #blog-url {
+    display: none !important;
+  }
 }
 
 /* Status Icons */
 #fic-nav #status {
   display: flex;
   align-items: center;
-}
 
-#fic-nav #status #weather,
-#fic-nav #status #bookmark,
-#fic-nav #status #dayNightCycle {
-  font-size: 13pt;
-  margin-top: -5px;
-  position: relative;
-  top: 3px;
+  #weather,
+  #bookmark,
+  #dayNightCycle {
+    font-size: 13pt;
+    margin-top: -5px;
+    position: relative;
+    top: 3px;
+  }
 }
 
 #music-player > a,
@@ -331,11 +331,11 @@ body:not(.browser-with-web3) .web3-element {
 /* BTN */
 .btn-bg {
   text-decoration: none !important;
-}
 
-.btn-bg:hover {
-  background-color: #1d1d1d;
-  color: #f0f0f0;
+  &:hover {
+    background-color: #1d1d1d;
+    color: #f0f0f0;
+  }
 }
 
 @import './ai-chatbot.scss';
