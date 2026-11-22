@@ -7,7 +7,8 @@ import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/Bootstrap
 
 import tinyLib from './tinyLib.mjs';
 import storyCfg from '../chapters/config.mjs';
-import { connStore, ficCache, loaderScreen, tinyLs, fileVersion } from '../important.mjs';
+import { connStore, ficCache, loaderScreen, tinyLs } from '../important.mjs';
+import { fileVersion } from '../version.mjs';
 
 /**
  * Loads and caches the chapter list, the readme and the per-chapter progress.

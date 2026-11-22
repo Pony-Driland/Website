@@ -5,7 +5,8 @@ import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/Bootstrap
 import tinyLib from '../files/tinyLib.mjs';
 
 import { storyData } from '../files/chapters.mjs';
-import { appData, loaderScreen, fileVersion } from '../important.mjs';
+import { appData, loaderScreen } from '../important.mjs';
+import { fileVersion } from '../version.mjs';
 import { tinyAiScript } from '../ai/software/tinyAiScript.mjs';
 import storyCfg from '../chapters/config.mjs';
 import { trackPageView } from '../analytics.mjs';

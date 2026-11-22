@@ -15,9 +15,10 @@ import RegisterGlobCachePlugin from 'tiny-essentials/libs/sw/service/plugins/Glo
 import GlobBypassPlugin from 'tiny-essentials/libs/sw/service/plugins/GlobBypassPlugin';
 
 import isDev from '../dev.mjs';
+import { cacheName } from '../version.mjs';
 
 /** Cache bucket used by the runtime cache plugin. */
-const CACHE_NAME = 'pony-driland-v1';
+const CACHE_NAME = cacheName;
 
 /**
  * Static assets.

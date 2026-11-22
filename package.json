@@ -11,7 +11,9 @@
         "build:files": "node ./build/builder.mjs",
         "build:files:debug": "node ./build/builder.mjs debug",
         "update-characters": "node ./build/characters",
-        "update-sitemap": "node ./build/sitemap"
+        "update-sitemap": "node ./build/sitemap",
+        "update-version": "node ./build/version",
+        "bump-version": "node ./build/version --bump"
     },
     "author": {
         "name": "JasminDreasond (Yasmin Seidel)",

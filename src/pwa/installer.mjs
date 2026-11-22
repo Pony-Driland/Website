@@ -11,7 +11,8 @@
 import TinyServiceWorker from 'tiny-essentials/libs/sw/browser/TinyServiceWorker';
 import TinyDomReadyManager from 'tiny-essentials/libs/html/TinyDomReadyManager';
 import { body } from '../html/query.mjs';
-import { fileVersion } from '../important.mjs';
+import { version } from '../version.mjs';
+import { syncCacheVersion } from './cache-version.mjs';
 import isDev from '../dev.mjs';
 
 /**
@@ -23,27 +24,36 @@ import isDev from '../dev.mjs';
 export const worker = new TinyServiceWorker({
   id: 'pony-driland',
   swUrl: '/service-worker.js',
-  version: String(fileVersion ?? '1').replace(/^\?v=/, ''),
+  version: String(version),
 });
 
 /**
  * Registers the service worker and wires the PWA state into the UI.
  *
- * @returns {void}
+ * The cache of a previous build is dropped before the worker is registered, so
+ * the new worker never reads a stale bucket.
+ *
+ * @returns {Promise<void>}
  */
-export function installPWA() {
-  worker
+export async function installPWA() {
+  await syncCacheVersion();
+
+  try {
     // The service worker is bundled as an ES module (it imports the
     // `TinyServiceWorkerEngine`), so the browser has to load it as one.
     //
     // `updateViaCache: 'none'` keeps the development build honest: the worker
     // and its imports are always revalidated instead of being read from the
     // HTTP cache, which would keep an old build alive after a reload.
-    .register({ scope: '/', type: 'module', updateViaCache: isDev ? 'none' : 'imports' })
-    .catch((err) => {
-      console.log('[PWA] Service Worker Failed to Register.');
-      console.error(err);
+    await worker.register({
+      scope: '/',
+      type: 'module',
+      updateViaCache: isDev ? 'none' : 'imports',
     });
+  } catch (err) {
+    console.log('[PWA] Service Worker Failed to Register.');
+    console.error(err);
+  }
 }
 
 const initDom = new TinyDomReadyManager();

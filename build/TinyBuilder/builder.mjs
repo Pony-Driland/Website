@@ -152,9 +152,13 @@ export const prettierSrc = async () => {
 
 /**
  * Step 2b: Copy/install extra JS files and run update scripts.
+ *
+ * The version goes first: `src/version.mjs` is imported by the bundle, so it
+ * must exist (and be up to date) before esbuild starts.
  */
 export const installMoreJsFiles = async () => {
   await run('node -r @babel/register build/bundle/files');
+  await run('npm run update-version');
   await run('npm run update-chapter');
   await run('npm run update-characters');
   await run('npm run update-sitemap');

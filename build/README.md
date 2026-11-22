@@ -51,6 +51,19 @@ AUDIO_SMALL_WAV_LIMIT=10 npm run build
 
 <hr/>
 
+## Version (`build/version`)
+
+[`version.json`](./version/version.json) is the single source of truth of the website
+version. `npm run update-version` distributes it to `src/version.mjs` (imported by the
+bundle) and to every `?v=` query string inside `public/*.html`.
+
+`npm run build` and `npm run dev` run it automatically, and `npm run bump-version`
+increments the version before distributing it. When the version changes, the
+`pony-driland-v1` cache bucket is dropped on the next visit, so the service worker
+never serves a file from a previous build. See [version/README.md](./version/README.md).
+
+<hr/>
+
 ## Folders and files that can be modified
 
 /build/characters/data

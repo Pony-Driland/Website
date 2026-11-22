@@ -38,9 +38,6 @@ TinyHtml.classCanWhitespace = true;
 TinyHtml.elemDebug = true;
 TinyHtml.defaultDisplay = '';
 
-/** Cache-busting query string appended to static asset requests. */
-export const fileVersion = '?v=501';
-
 // Start jsStore
 export const connStore = new JsStore.Connection(new Worker('/jsstore.worker.min.js'));
 

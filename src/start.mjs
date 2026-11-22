@@ -273,7 +273,7 @@ rootApp.onReady(() => {
   if (typeof (/** @type {WindowWithEthereum} */ (window).ethereum) !== 'undefined')
     document.body.classList.add('browser-with-web3');
   installWindowHiddenScript();
-  installPWA();
+  installPWA().catch((err) => console.error('[PWA] Failed to start the service worker.', err));
   installAnalyticsListeners();
 
   const startApp = () => {
