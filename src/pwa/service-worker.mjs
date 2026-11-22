@@ -96,13 +96,13 @@ engine.on('fetchRequested', ({ request, url, result }) => {
 });
 
 /**
-* The engine starts every request with `code: 404` and expects a plugin to
-* promote it. A navigation must be promoted to `200`, otherwise the shell is
-* served with a 404 status and the browser refuses to render it.
-*
-* Every other request that reaches this point is a static asset, which must skip
-* the router completely, otherwise the app would receive the HTML shell where it
-* expects a script, a stylesheet or an image.
+ * The engine starts every request with `code: 404` and expects a plugin to
+ * promote it. A navigation must be promoted to `200`, otherwise the shell is
+ * served with a 404 status and the browser refuses to render it.
+ *
+ * Every other request that reaches this point is a static asset, which must skip
+ * the router completely, otherwise the app would receive the HTML shell where it
+ * expects a script, a stylesheet or an image.
  */
 engine.addFetchGlobalListener('spa-navigation-only', (fetchObj, result) => {
   if (TinyServiceWorkerEngine.isNavigate(fetchObj.request)) {
