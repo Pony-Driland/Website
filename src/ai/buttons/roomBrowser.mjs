@@ -2,6 +2,7 @@ import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
 import { tinyIo, tinyStorage } from '../software/base.mjs';
+import { createLanguageSelect, getRoomLanguage } from '../values/languages.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 
 /**
@@ -17,6 +18,7 @@ import tinyLib from '../../files/tinyLib.mjs';
  * @property {boolean} readOnly - Whether the room is read-only.
  * @property {boolean} hasPassword - Whether the room requires a password.
  * @property {boolean} public - Whether the room is listed publicly.
+ * @property {string|null} language - ISO 639-1 code of the room language.
  * @property {number|null} visitedAt - When the account last joined the room.
  * @property {boolean} isOwner - Whether the signed-in account owns the room.
  * @property {boolean} isModerator - Whether the signed-in account moderates the room.
@@ -346,6 +348,7 @@ export const openRoomBrowser = () => {
   let totalPages = 1;
   let openOnly = false;
   let ownedOnly = false;
+  let language = '';
 
   const $root = TinyHtml.createFrom('div');
   const $errorBox = tinyLib.bs.alert('danger', '', false).addClass('d-none');
@@ -434,6 +437,16 @@ export const openRoomBrowser = () => {
 
       // Password
       if (room.hasPassword) $badges.append(makeBadge('fas fa-key', 'Password', 'secondary'));
+
+      // Language spoken in the room.
+      const roomLanguage = getRoomLanguage(room.language);
+      if (roomLanguage)
+        $badges.append(
+          TinyHtml.createFrom('span')
+            .addClass('badge bg-secondary me-1')
+            .setAttr('title', `Language: ${roomLanguage.label}`)
+            .setText(`${roomLanguage.flag} ${roomLanguage.code.toUpperCase()}`),
+        );
 
       // Public / private room list visibility.
       $badges.append(
@@ -542,6 +555,7 @@ export const openRoomBrowser = () => {
         scope,
         openOnly,
         ownedOnly,
+        language: language.length > 0 ? language : null,
         page,
         perPage: 20,
       });
@@ -644,6 +658,22 @@ export const openRoomBrowser = () => {
           .setText('Mine only'),
       ),
   );
+
+  // Language filter. The empty option lists the rooms of every language.
+  const $language = createLanguageSelect({
+    id: 'room-browser-language',
+    value: language,
+    allLabel: '🌐 Any language',
+    className: 'form-select form-select-sm w-auto',
+  });
+
+  $language.on('change', () => {
+    language = String($language.val() ?? '');
+    page = 1;
+    load();
+  });
+
+  $header.append($language);
 
   $header.append(TinyHtml.createFrom('div').addClass('flex-grow-1').append($search));
 

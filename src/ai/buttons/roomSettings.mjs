@@ -3,6 +3,7 @@ import TinyHtmlNumberInput from 'tiny-essentials/libs/html/TinyHtmlElems/Input/N
 import { alert, confirm } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
 import { tinyIo } from '../software/base.mjs';
+import { createLanguageSelect } from '../values/languages.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 
 /**
@@ -35,6 +36,7 @@ export const roomSettingsMenu = () => {
       if (typeof data.title === 'string') $roomTitle.setVal(data.title);
       if (typeof data.maxUsers === 'number') $maxUsers.setVal(data.maxUsers);
       if (typeof data.chapter === 'number') $chapter.setVal(data.chapter);
+      if (typeof data.language === 'string') $language.setVal(data.language);
     };
 
     tinyIo.client.on('roomUpdates', roomEditDetector);
@@ -126,6 +128,29 @@ export const roomSettingsMenu = () => {
                 .addClass('form-label')
                 .setText('Chapter'),
               $chapter,
+            ),
+        ),
+    );
+
+    // Language spoken in the room. It is only a hint for the room browser.
+    const $language = createLanguageSelect({
+      id: 'roomLanguage',
+      value: typeof room.language === 'string' ? room.language : '',
+    }).toggleProp('disabled', cantEdit);
+
+    $editForm.append(
+      TinyHtml.createFrom('div')
+        .addClass('mb-3')
+        .append(
+          TinyHtml.createFrom('label')
+            .setAttr('for', 'roomLanguage')
+            .addClass('form-label')
+            .setText('Room language'),
+          $language,
+          TinyHtml.createFrom('div')
+            .addClass('form-text')
+            .setText(
+              'Used to filter the rooms by language. Keep it empty to be listed on every language.',
             ),
         ),
     );
@@ -266,7 +291,13 @@ export const roomSettingsMenu = () => {
         }
 
         /** @type {Record<string, unknown>} */
-        const newSettings = { title, maxUsers, chapter, public: Boolean($public.prop('checked')) };
+        const newSettings = {
+          title,
+          maxUsers,
+          chapter,
+          public: Boolean($public.prop('checked')),
+          language: String($language.val() ?? ''),
+        };
         if (typeof password === 'string' && password.length > 0) newSettings.password = password;
 
         modal.hide();

@@ -506,6 +506,13 @@ class TinyClientIo extends EventEmitter {
             : typeof result.public === 'boolean'
               ? result.public
               : false,
+
+        // ISO 639-1 code of the language spoken in the room. `null` means the
+        // owner did not pick one, so the room is not filtered by language.
+        language:
+          typeof result.language === 'string' && result.language.length > 0
+            ? result.language
+            : null,
       };
       return this.room;
     }
@@ -1299,6 +1306,7 @@ class TinyClientIo extends EventEmitter {
     scope = null,
     openOnly = false,
     ownedOnly = false,
+    language = null,
     page = 1,
     perPage = 20,
   } = {}) {
@@ -1307,6 +1315,7 @@ class TinyClientIo extends EventEmitter {
       scope,
       openOnly,
       ownedOnly,
+      language,
       page,
       perPage,
     });

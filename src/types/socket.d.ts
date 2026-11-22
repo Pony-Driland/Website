@@ -164,6 +164,8 @@ interface RoomState {
   frequencyPenalty?: number | null;
   disabled?: boolean;
   readOnly?: boolean;
+  /** ISO 639-1 code of the language spoken in the room. */
+  language?: string | null;
   /** Any other room field. */
   [key: string]: unknown;
 }
