@@ -12,6 +12,7 @@
 
 import TinyServiceWorkerEngine from 'tiny-essentials/libs/sw/service/TinyServiceWorkerEngine';
 import RegisterGlobCachePlugin from 'tiny-essentials/libs/sw/service/plugins/GlobCachePlugin';
+import GlobBypassPlugin from 'tiny-essentials/libs/sw/service/plugins/GlobBypassPlugin';
 
 import isDev from '../dev.mjs';
 
@@ -37,7 +38,7 @@ const CACHE_PATTERNS = [
  * the SPA fallback fetches. Letting the router answer them would either loop or
  * replace the shell with the 404 page.
  */
-const BYPASS = new Set(['/service-worker.js', '/index.html']);
+const BYPASS = ['/service-worker.js', '/index.html'];
 
 const engine = new TinyServiceWorkerEngine({
   // Every navigation is answered with the SPA shell. The router resolves the
@@ -65,9 +66,13 @@ if (isDev) {
   engine.installPlugin(RegisterGlobCachePlugin, {
     cacheName: CACHE_NAME,
     patterns: CACHE_PATTERNS,
-    exclude: Array.from(BYPASS),
+    exclude: [...BYPASS, '**/node_modules/**'],
   });
 }
+
+engine.installPlugin(GlobBypassPlugin, {
+  patterns: [...BYPASS, ...CACHE_PATTERNS],
+});
 
 /**
  * Decides which requests this worker is allowed to answer.
@@ -89,11 +94,6 @@ if (isDev) {
  */
 engine.on('fetchRequested', ({ request, url, result }) => {
   if (!TinyServiceWorkerEngine.isSameOrigin(request)) {
-    result.canStart = false;
-    return;
-  }
-
-  if (BYPASS.has(url.pathname)) {
     result.canStart = false;
     return;
   }
