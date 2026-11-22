@@ -20,7 +20,7 @@ import isDev from '../dev.mjs';
 const CACHE_NAME = 'pony-driland-v1';
 
 /**
- * Static assets handled by `RegisterGlobCachePlugin`.
+ * Static assets.
  *
  * Media files are intentionally **not** listed. The Cache API refuses to store
  * a `206 Partial Content` response, and `<audio>`/`<video>` rely on range
@@ -76,14 +76,6 @@ engine.installPlugin(GlobBypassPlugin, {
 
 /**
  * Decides which requests this worker is allowed to answer.
- *
- * `TinyServiceWorkerEngine` calls `event.respondWith()` for every request it
- * accepts and finishes with a bare `fetch(event.request)` when no plugin claims
- * it. That promise has no `catch`, so a single network failure (offline, an
- * aborted navigation, a worker being replaced mid-flight, a `Range` request for
- * a video) rejects the whole `FetchEvent` and the browser reports
- * `TypeError: Failed to fetch` for the navigation.
- *
  * Only the two cases this worker can actually answer are accepted:
  *
  * - **navigations**, answered with the SPA shell;
@@ -103,13 +95,15 @@ engine.on('fetchRequested', ({ request, url, result }) => {
   result.canStart = false;
 });
 
-// The engine starts every request with `code: 404` and expects a plugin to
-// promote it. A navigation must be promoted to `200`, otherwise the shell is
-// served with a 404 status and the browser refuses to render it.
-//
-// Every other request that reaches this point is a static asset, which must skip
-// the router completely, otherwise the app would receive the HTML shell where it
-// expects a script, a stylesheet or an image.
+/**
+* The engine starts every request with `code: 404` and expects a plugin to
+* promote it. A navigation must be promoted to `200`, otherwise the shell is
+* served with a 404 status and the browser refuses to render it.
+*
+* Every other request that reaches this point is a static asset, which must skip
+* the router completely, otherwise the app would receive the HTML shell where it
+* expects a script, a stylesheet or an image.
+ */
 engine.addFetchGlobalListener('spa-navigation-only', (fetchObj, result) => {
   if (TinyServiceWorkerEngine.isNavigate(fetchObj.request)) {
     result.code = 200;
