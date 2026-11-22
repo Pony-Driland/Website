@@ -69,17 +69,6 @@ if (isDev) {
   });
 }
 
-// Serve the static 404 page for every request the router can not answer.
-// `spaMode` already answers navigations with `/index.html`, so this only kicks
-// in for the requests that fall through (for example a missing asset).
-engine.updateGlobalMsgCode({
-  404: {
-    path: '/404.html',
-    msg: 'Not Found',
-    logMsg: 'Route not found',
-  },
-});
-
 /**
  * Decides which requests this worker is allowed to answer.
  *
