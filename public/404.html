@@ -5,30 +5,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ERROR 404 - not found</title>
         <link href="/img/icon/icon.png" rel="icon" type="image/x-icon"/>
-        <link rel="preload" href="./bundle.css?v=7" as="style">
-        <link rel="stylesheet" href="./bundle.css?v=7">
-
-        <link rel="stylesheet" href="./css/dark.css?v=455">
-        <link rel="stylesheet" href="./css/main.css?v=455">
-        <link rel="stylesheet" href="./css/carousel.css?v=455"./>
-        <link rel="stylesheet" href="./css/rpg.css?v=455">
+        <link rel="preload" href="/vendor/start.css?v=501" as="style">
+        <link rel="stylesheet" href="/vendor/start.css?v=501">
 
     </head>
-    <body>
-        <div class="row h-100 m-0">
-            <div class="col-sm-12 my-auto">
-                <center>
-                    <img src="./img/error/404.png" style="" class="img-fluid" alt="error"/>
-                    <div class="flex-center position-ref">
-                        <div class="code">
-                            <strong>ERROR 404</strong>
-                        </div>
-                        <div class="message mb-3 text-danger" style="padding: 10px;">
-                            This page does not exist. You can go back to the <a href="/">homepage</a> or you can report this issue to the official <a href="https://github.com/Pony-Driland/Website/issues" target="_blank">Github Repository</a>.
-                        </div>
-                    </div>
-                </center>
-            </div>
+    <body class="min-vh-100 d-flex align-items-center justify-content-center">
+        <div class="container text-center">
+            <img
+                src="./img/error/404.png"
+                class="img-fluid"
+                alt="Error 404: page not found"
+            />
+            <h1 class="h3 fw-bold mt-4">ERROR 404</h1>
+            <p class="text-danger mb-3">
+                This page does not exist. You can go back to the
+                <a href="/">homepage</a> or you can report this issue to the official
+                <a
+                    href="https://github.com/Pony-Driland/Website/issues"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Github Repository</a
+                >.
+            </p>
         </div>
     </body>
 </html>
