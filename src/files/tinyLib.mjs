@@ -441,6 +441,126 @@ tinyLib.bs.navbar.collapse = (dir, className, id, content) =>
   );
 
 /**
+ * Enables mouse wheel / trackpad scrolling on a horizontally scrollable element.
+ *
+ * The wheel delta is converted into horizontal scrolling while the element still has
+ * room to scroll. Once an edge is reached the event is not prevented, so the page
+ * keeps scrolling naturally.
+ *
+ * @param {TinyHtmlAny|HTMLElement|string} target
+ * @param {Object} [options]
+ * @param {number} [options.speed=1] - Multiplier applied to the wheel delta.
+ * @param {number} [options.easing=0.22] - Easing factor, from 0 (instant) to 1 (slowest).
+ * @returns {(() => void)|null} A function that removes the listeners, if they were attached.
+ */
+tinyLib.bs.navbar.horizontalWheel = (target, options = {}) => {
+  const speed = typeof options.speed === 'number' ? options.speed : 1;
+  const easing = typeof options.easing === 'number' ? options.easing : 0.22;
+  const el =
+    target instanceof HTMLElement
+      ? target
+      : target instanceof TinyHtml
+        ? target.get(0)
+        : typeof target === 'string'
+          ? document.querySelector(target)
+          : null;
+
+  if (!(el instanceof HTMLElement)) return null;
+
+  const motionQuery = window.matchMedia?.('(prefers-reduced-motion: reduce)') || null;
+  const isSmooth = () => !motionQuery?.matches;
+
+  /** @type {number} */
+  let rafId = 0;
+  /** @type {number|null} */
+  let targetLeft = null;
+
+  const stop = () => {
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = 0;
+    targetLeft = null;
+  };
+
+  const step = () => {
+    rafId = 0;
+    if (targetLeft === null) return;
+
+    // The content may have been resized while the animation was running.
+    const maxScroll = Math.max(0, el.scrollWidth - el.clientWidth);
+    const goal = Math.max(0, Math.min(maxScroll, targetLeft));
+
+    const current = el.scrollLeft;
+    const distance = goal - current;
+
+    // Close enough: land exactly on the target so the last pixels are never lost.
+    if (Math.abs(distance) < 1) {
+      el.scrollLeft = goal;
+      targetLeft = null;
+      return;
+    }
+
+    // Ease towards the target, but never move less than one pixel per frame.
+    // Without the minimum the browser rounding of `scrollLeft` can swallow the step
+    // and the animation freezes a few pixels before the end, leaving the scroll
+    // incomplete. The minimum guarantees the whole distance is always covered.
+    const stepSize = Math.max(Math.abs(distance) * easing, 1) * Math.sign(distance);
+    const next = Math.abs(stepSize) >= Math.abs(distance) ? goal : current + stepSize;
+
+    el.scrollLeft = next;
+
+    if (next === goal) {
+      targetLeft = null;
+      return;
+    }
+
+    rafId = requestAnimationFrame(step);
+  };
+
+  /** @param {WheelEvent} event */
+  const onWheel = (event) => {
+    // Ctrl + wheel is the browser zoom gesture.
+    if (event.ctrlKey) return;
+
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    if (maxScroll <= 1) return;
+
+    // Prefer the dominant axis so both mouse wheels and trackpads feel right.
+    const rawDelta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+    if (!rawDelta) return;
+
+    // Normalize line/page deltas (Firefox) to pixels.
+    const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? el.clientWidth : 1;
+    const delta = rawDelta * unit * speed;
+
+    // Accumulate over the pending target so fast wheel bursts are not lost.
+    const base = targetLeft === null ? el.scrollLeft : targetLeft;
+    const next = Math.max(0, Math.min(maxScroll, base + delta));
+    if (next === base) return;
+
+    event.preventDefault();
+
+    if (!isSmooth()) {
+      stop();
+      el.scrollLeft = next;
+      return;
+    }
+
+    targetLeft = next;
+    if (!rafId) rafId = requestAnimationFrame(step);
+  };
+
+  // A manual drag on the scrollbar must win over the running animation.
+  el.addEventListener('pointerdown', stop);
+  el.addEventListener('wheel', onWheel, { passive: false });
+
+  return () => {
+    stop();
+    el.removeEventListener('pointerdown', stop);
+    el.removeEventListener('wheel', onWheel);
+  };
+};
+
+/**
  * Offcanvas
  *
  * @param {string} [where='start']

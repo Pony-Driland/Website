@@ -115,12 +115,74 @@ body:not(.browser-with-web3) .web3-element {
   border: 0px !important;
 }
 
+@property --has-scroll {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+
+@keyframes enable-x-scroll {
+  from,
+  to {
+    --has-scroll: 1;
+  }
+}
+
 /* Navbar Top */
+.tiny-navabar-style {
+  --navbar-scrollbar-size: 8px;
+  --navbar-scrollbar-opacity: 0.35;
+}
+
 .tiny-navabar-style .navbar-nav-left,
 .tiny-navabar-style .navbar-nav-right {
   white-space: nowrap;
-  overflow-x: auto;
   flex-grow: 1;
+  min-width: 0;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+
+  overflow-x: scroll;
+  margin-bottom: calc(var(--navbar-scrollbar-size) * -1);
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.2s ease-in-out;
+
+  animation: enable-x-scroll linear both;
+  animation-timeline: scroll(self x);
+}
+
+/* Only shows the scrollbar color on hover when scroll is available (--has-scroll = 1) */
+.tiny-navabar-style .navbar-nav-left:hover,
+.tiny-navabar-style .navbar-nav-right:hover {
+  scrollbar-color: rgba(255 255 255 / calc(var(--has-scroll) * var(--navbar-scrollbar-opacity))) transparent;
+}
+
+.tiny-navabar-style .navbar-nav-left::-webkit-scrollbar,
+.tiny-navabar-style .navbar-nav-right::-webkit-scrollbar {
+  height: var(--navbar-scrollbar-size);
+}
+
+.tiny-navabar-style .navbar-nav-left::-webkit-scrollbar-track,
+.tiny-navabar-style .navbar-nav-right::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tiny-navabar-style .navbar-nav-left::-webkit-scrollbar-thumb,
+.tiny-navabar-style .navbar-nav-right::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 999px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.tiny-navabar-style .navbar-nav-left:hover::-webkit-scrollbar-thumb,
+.tiny-navabar-style .navbar-nav-right:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255 255 255 / calc(var(--has-scroll) * var(--navbar-scrollbar-opacity)));
+}
+
+.tiny-navabar-style .navbar-nav-left::-webkit-scrollbar-thumb:hover,
+.tiny-navabar-style .navbar-nav-right::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255 255 255 / calc(var(--has-scroll) * var(--navbar-scrollbar-opacity)));
 }
 
 .tiny-navabar-style {

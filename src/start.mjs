@@ -936,6 +936,10 @@ rootApp.onReady(() => {
         const tinyCollapse1 = tinyLib.bs.navbar.collapse('left', 'small mdMenu', '', null);
         const tinyCollapse2 = tinyLib.bs.navbar.collapse('right', 'small mdMenu', 'fic-nav', null);
 
+        // Allow the mouse wheel to scroll the navbar horizontally.
+        tinyLib.bs.navbar.horizontalWheel(tinyCollapse1);
+        tinyLib.bs.navbar.horizontalWheel(tinyCollapse2);
+
         // Insert Navbar
         body.prepend(
           // Navbar
