@@ -27,6 +27,8 @@ import {
  * @property {[number, number, number]} bottom - Bottom color in the 0..1 range.
  * @property {number} stars - Star intensity.
  * @property {number} moon - Moon visibility.
+ * @property {number} sun - Sun visibility.
+ * @property {[number, number]} sunPos - Sun position in shader space.
  */
 
 /**
@@ -49,6 +51,8 @@ import {
  * @property {number} lightning
  * @property {number} stars
  * @property {number} moon
+ * @property {number} sun
+ * @property {[number, number]} sunPos
  * @property {number} wind
  * @property {number} rainSpeed
  * @property {number} snowSpeed
@@ -84,6 +88,8 @@ export const SKY_PALETTES = Object.fromEntries(
       bottom: hex(palette.bottom),
       stars: palette.stars,
       moon: palette.moon,
+      sun: palette.sun,
+      sunPos: palette.sunPos,
     },
   ]),
 );
@@ -144,7 +150,7 @@ export const resolveSkyState = (weather, dayCycle, overrides = {}) => {
   const wind = clamp(overrides.wind, WEATHER_LIMITS.wind, preset.wind);
   const speed = clamp(overrides.speed, WEATHER_LIMITS.speed, 1);
 
-  // Overcast weather hides the stars and the moon.
+  // Overcast weather hides the stars, the moon and the sun.
   const overcast = Math.max(preset.rain, preset.snow) * 0.8;
 
   return {
@@ -154,6 +160,9 @@ export const resolveSkyState = (weather, dayCycle, overrides = {}) => {
     lightning: preset.lightning ? 1 : 0,
     stars: palette.stars * (1 - overcast),
     moon: palette.moon * (1 - overcast),
+    sun: palette.sun * (1 - overcast),
+    // Copied because the renderer interpolates into this array in place.
+    sunPos: [palette.sunPos[0], palette.sunPos[1]],
     wind,
     rainSpeed: preset.rainSpeed * speed,
     snowSpeed: preset.snowSpeed * speed,

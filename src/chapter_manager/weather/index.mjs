@@ -67,6 +67,8 @@ const LIGHTNING_PULSES = [
  * @property {WebGLUniformLocation|null} moonPos
  * @property {WebGLUniformLocation|null} moonPhase
  * @property {WebGLUniformLocation|null} moonVisible
+ * @property {WebGLUniformLocation|null} sunPos
+ * @property {WebGLUniformLocation|null} sunVisible
  * @property {WebGLUniformLocation|null} cloudTexture
  * @property {WebGLUniformLocation|null} cloudOffset
  * @property {WebGLUniformLocation|null} cloudReady
@@ -190,6 +192,8 @@ export const createSky = (canvas) => {
     moonPos: gl.getUniformLocation(program, 'u_moonPos'),
     moonPhase: gl.getUniformLocation(program, 'u_moonPhase'),
     moonVisible: gl.getUniformLocation(program, 'u_moonVisible'),
+    sunPos: gl.getUniformLocation(program, 'u_sunPos'),
+    sunVisible: gl.getUniformLocation(program, 'u_sunVisible'),
     cloudTexture: gl.getUniformLocation(program, 'u_cloudTexture'),
     cloudOffset: gl.getUniformLocation(program, 'u_cloudOffset'),
     cloudReady: gl.getUniformLocation(program, 'u_cloudReady'),
@@ -364,6 +368,7 @@ export const createSky = (canvas) => {
     current.clouds = from.clouds + (target.clouds - from.clouds) * eased;
     current.stars = from.stars + (target.stars - from.stars) * eased;
     current.moon = from.moon + (target.moon - from.moon) * eased;
+    current.sun = from.sun + (target.sun - from.sun) * eased;
     current.wind = from.wind + (target.wind - from.wind) * eased;
     current.storm = from.storm + (target.storm - from.storm) * eased;
     current.rainSpeed = from.rainSpeed + (target.rainSpeed - from.rainSpeed) * eased;
@@ -377,6 +382,13 @@ export const createSky = (canvas) => {
       from.bottom[0] + (target.bottom[0] - from.bottom[0]) * eased,
       from.bottom[1] + (target.bottom[1] - from.bottom[1]) * eased,
       from.bottom[2] + (target.bottom[2] - from.bottom[2]) * eased,
+    ];
+
+    // The sun travels between the two cycles instead of jumping, so an
+    // `evening` to `morning` change reads as the sun crossing the sky.
+    current.sunPos = [
+      from.sunPos[0] + (target.sunPos[0] - from.sunPos[0]) * eased,
+      from.sunPos[1] + (target.sunPos[1] - from.sunPos[1]) * eased,
     ];
 
     // Lightning only exists while the weather asks for it.
@@ -423,6 +435,11 @@ export const createSky = (canvas) => {
     gl.uniform2f(uniforms.moonPos, 0.36, 0.34);
     gl.uniform1f(uniforms.moonPhase, getMoonPhase(api.moonPhase));
     gl.uniform1f(uniforms.moonVisible, current.moon);
+
+    // Sun. Its position comes from the palette, so a cycle can put it
+    // anywhere in the sky.
+    gl.uniform2f(uniforms.sunPos, current.sunPos[0], current.sunPos[1]);
+    gl.uniform1f(uniforms.sunVisible, current.sun);
 
     // Clouds.
     gl.activeTexture(gl.TEXTURE0);
@@ -472,6 +489,8 @@ export const createSky = (canvas) => {
     from.clouds = current.clouds;
     from.stars = current.stars;
     from.moon = current.moon;
+    from.sun = current.sun;
+    from.sunPos = [...current.sunPos];
     from.wind = current.wind;
     from.storm = current.storm;
     from.rainSpeed = current.rainSpeed;
@@ -484,6 +503,8 @@ export const createSky = (canvas) => {
     target.clouds = next.clouds;
     target.stars = next.stars;
     target.moon = next.moon;
+    target.sun = next.sun;
+    target.sunPos = next.sunPos;
     target.wind = next.wind;
     target.storm = next.storm;
     target.rainSpeed = next.rainSpeed;

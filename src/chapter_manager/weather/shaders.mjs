@@ -1,9 +1,9 @@
 /*
  * GLSL sources used by the WebGL sky.
  *
- * Everything (gradient, stars, moon, clouds, rain, snow and lightning) is drawn
- * by a single full screen fragment shader, so the whole weather costs one draw
- * call and zero layout work.
+ * Everything (gradient, stars, sun, moon, clouds, rain, snow and lightning) is
+ * drawn by a single full screen fragment shader, so the whole weather costs one
+ * draw call and zero layout work.
  *
  * The precipitation lives in its own module (`./shaders/rain` and
  * `./shaders/snow`) so the two never have to share a uniform or a helper.
@@ -70,6 +70,10 @@ uniform vec3 u_skyBottom;
 uniform vec2 u_moonPos;
 uniform float u_moonPhase;
 uniform float u_moonVisible;
+
+// Sun. It has no phase, so it only needs a position and an intensity.
+uniform vec2 u_sunPos;
+uniform float u_sunVisible;
 
 // Clouds.
 uniform sampler2D u_cloudTexture;
@@ -203,6 +207,20 @@ ${SNOW_GLSL}
 
 ${SNOWSTORM_GLSL}
 
+/**
+ * Sun disc.
+ *
+ * The moon is a phase mask over a hard disc, but the sun is a light source: it
+ * is a hot core that falls off towards the edge, which is what makes it read as
+ * blinding instead of as a white circle. The falloff is squared so the centre
+ * stays saturated while the rim fades.
+ */
+float sunShape(vec2 p) {
+  float d = length(p);
+  float core = 1.0 - smoothstep(0.34, 0.5, d);
+  return core * core;
+}
+
 /** Moon disc with its phase. */
 float moonShape(vec2 p, float phase) {
   float radius = 0.5;
@@ -234,6 +252,26 @@ void main() {
     stars += starLayer(uv, 90.0, 17.0, t) * 0.7;
     stars += starLayer(uv, 140.0, 41.0, t) * 0.45;
     color += vec3(0.88, 0.92, 1.0) * stars * u_stars;
+  }
+
+  // Sun.
+  //
+  // It is drawn before the moon so a cycle that fades one into the other (a
+  // sunset that turns into a moonlit night) never shows the moon behind the
+  // sun's glow.
+  if (u_sunVisible > 0.001) {
+    vec2 sunUv = (centered - u_sunPos) * 5.2;
+    float sun = sunShape(sunUv);
+
+    // Two halos: a tight one that hugs the disc and a wide one that warms the
+    // whole corner of the sky. The wide halo is what makes the sun feel like
+    // it is lighting the scene instead of being pasted on top of it.
+    float tight = 1.0 - smoothstep(0.0, 0.85, length(sunUv));
+    float wide = 1.0 - smoothstep(0.0, 2.6, length(sunUv));
+
+    color += vec3(1.0, 0.86, 0.62) * tight * tight * 0.55 * u_sunVisible;
+    color += vec3(1.0, 0.72, 0.42) * wide * wide * 0.16 * u_sunVisible;
+    color = mix(color, vec3(1.0, 0.98, 0.90), sun * u_sunVisible);
   }
 
   // Moon. The 5.2 factor keeps it a small detail in the corner instead of a
@@ -282,6 +320,14 @@ void main() {
       float moonDistance = length(centered - u_moonPos);
       float rim = 1.0 - smoothstep(0.0, 1.4, moonDistance);
       cloudColor += vec3(0.18, 0.22, 0.32) * rim * (1.0 - daylight);
+    }
+
+    // Sunlight rim: the same idea, but warm and much stronger, so the clouds
+    // near the sun blow out towards white instead of staying flat.
+    if (u_sunVisible > 0.001) {
+      float sunDistance = length(centered - u_sunPos);
+      float rim = 1.0 - smoothstep(0.0, 1.8, sunDistance);
+      cloudColor += vec3(0.55, 0.42, 0.24) * rim * rim * u_sunVisible;
     }
 
     // Lightning lights the clouds from the inside.

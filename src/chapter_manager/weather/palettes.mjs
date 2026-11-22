@@ -29,14 +29,59 @@ export const hex = (hex) => {
  * - `stars` - star intensity (0 hides the stars entirely).
  * - `moon` - moon visibility. When this is `0` the moon is considered hidden,
  *   which is also the only moment the automatic phase is allowed to change.
+ * - `sun` - sun visibility. Unlike the moon the sun has no phase, so it can
+ *   fade in and out on any cycle.
+ * - `sunPos` - where the sun sits in the sky, in the aspect corrected space
+ *   the shader uses for the moon. The sun is not a sprite that gets moved by
+ *   the renderer: the position is interpolated, so going from `evening` to
+ *   `morning` makes the sun travel across the sky instead of teleporting.
  *
- * @type {Record<string, { top: string, bottom: string, stars: number, moon: number }>}
+ * @type {Record<string, {
+ *   top: string,
+ *   bottom: string,
+ *   stars: number,
+ *   moon: number,
+ *   sun: number,
+ *   sunPos: [number, number],
+ * }>}
  */
 export const SKY_PALETTE_COLORS = {
-  morning: { top: '#3d5f96', bottom: '#b9cde3', stars: 0, moon: 0 },
-  evening: { top: '#2b2340', bottom: '#c4814f', stars: 0.12, moon: 0.35 },
-  night: { top: '#03050c', bottom: '#0d1526', stars: 1, moon: 1 },
-  lateAtNight: { top: '#010206', bottom: '#060a14', stars: 1, moon: 1 },
+  morning: {
+    top: '#3d5f96',
+    bottom: '#b9cde3',
+    stars: 0,
+    moon: 0,
+    sun: 1,
+    // Rising in the east: high enough to light the scene, low enough to stay
+    // warm.
+    sunPos: [0.3, 0.26],
+  },
+  evening: {
+    top: '#2b2340',
+    bottom: '#c4814f',
+    stars: 0.12,
+    moon: 0.35,
+    sun: 0.85,
+    // Setting on the opposite side of the sky, which is what sells the two
+    // cycles as the same sun at different hours.
+    sunPos: [-0.32, 0.2],
+  },
+  night: {
+    top: '#03050c',
+    bottom: '#0d1526',
+    stars: 1,
+    moon: 1,
+    sun: 0,
+    sunPos: [0.36, 0.34],
+  },
+  lateAtNight: {
+    top: '#010206',
+    bottom: '#060a14',
+    stars: 1,
+    moon: 1,
+    sun: 0,
+    sunPos: [-0.3, 0.3],
+  },
 };
 
 /**

@@ -1,9 +1,9 @@
 /* ==============================================================================================
 WebGL sky
 
-Every weather effect (stars, moon, clouds, rain, snow and lightning) is rendered by a single
-full screen shader. See `src/chapter_manager/weather`. This file only positions the canvas
-and fades it in and out with the reader.
+Every weather effect (stars, sun, moon, clouds, rain, snow and lightning) is rendered by a
+single full screen shader. See `src/chapter_manager/weather`. This file only positions the
+canvas and fades it in and out with the reader.
 
 Stacking: the canvas uses `z-index: -1`, so the page background must live on `html` (not on
 `body`). If `body` had a background it would paint on top of the canvas and hide the sky.

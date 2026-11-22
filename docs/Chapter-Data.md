@@ -87,18 +87,26 @@ Out-of-range values are clamped, so a typo can never freeze the sky.
 
 ## `dayNightCycle`
 
-Changes the sky gradient, the star intensity and the moon visibility.
+Changes the sky gradient, the star intensity, the sun and the moon.
 
 ```json
 { "set": { "dayNightCycle": "night" } }
 ```
 
-| Value | Sky | Stars | Moon |
-| --- | --- | --- | --- |
-| `morning` | Blue, bright | no | no |
-| `evening` | Orange, warm | faint | low |
-| `night` | Deep blue | yes | yes |
-| `lateAtNight` | Near black | yes | yes |
+| Value | Sky | Stars | Sun | Moon |
+| --- | --- | --- | --- | --- |
+| `morning` | Blue, bright | no | high, east | no |
+| `evening` | Orange, warm | faint | low, west | low |
+| `night` | Deep blue | yes | no | yes |
+| `lateAtNight` | Near black | yes | no | yes |
+
+### The sun
+
+The sun has no phase: it is a warm disc with a halo, and its **position is part of the cycle**. `morning` places it high on one side of the sky and `evening` low on the other, so the sun visibly crosses the sky as the story moves through the day.
+
+Because the position is interpolated like any other value, changing the cycle makes the sun travel instead of teleport, and the clouds near it pick up a warm rim.
+
+Like the moon, the sun is hidden by heavy weather: `rain`, `heavyrain`, `bolt`, `snow` and `snowstorm` all fade it out through the same overcast factor.
 
 ---
 
