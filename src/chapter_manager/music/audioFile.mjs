@@ -21,6 +21,7 @@
  */
 
 import { fetchYouTubeOEmbed } from 'tiny-essentials/basics/media/youtube';
+import musicMetadata from './musicMetadata.mjs';
 
 /** Track type of a file shipped with the website. */
 export const AUDIO_FILE_TYPE = 'audio-file';
@@ -183,12 +184,86 @@ const toStringArray = (value) => {
 };
 
 /**
+ * Describes the value of a schema entry.
+ *
+ * The schema uses a small DSL: a bare type name (`"string"`), a union
+ * (`"string|string[]"`) or an array with a single example (`["string"]`).
+ *
+ * @param {unknown} spec - Schema entry.
+ * @returns {string} A human readable description of the expected value.
+ */
+const describeSpec = (spec) => {
+  if (Array.isArray(spec)) {
+    return spec.length > 0 ? `array of ${describeSpec(spec[0])}` : 'array';
+  }
+
+  if (spec !== null && typeof spec === 'object') return 'object';
+  return String(spec);
+};
+
+/**
+ * Reads a field of the schema, ignoring the optional marker.
+ *
+ * The schema writes the optional fields as `"title?"`, so the key has to be
+ * normalized before the lookup.
+ *
+ * @param {string} name - Field name, without the optional marker.
+ * @returns {unknown} The schema entry, or `undefined` when it does not exist.
+ */
+const getSchemaEntry = (name) => {
+  const schema = /** @type {Record<string, unknown>} */ (musicMetadata);
+  if (name in schema) return schema[name];
+  return schema[`${name}?`];
+};
+
+/**
+ * Checks a value against a schema entry.
+ *
+ * @param {unknown} value - Value to check.
+ * @param {unknown} spec - Schema entry that describes it.
+ * @returns {boolean} `true` when the value matches the schema entry.
+ */
+const matchesSpec = (value, spec) => {
+  if (Array.isArray(spec)) {
+    return (
+      Array.isArray(value) &&
+      (spec.length === 0 || value.every((item) => matchesSpec(item, spec[0])))
+    );
+  }
+
+  if (spec !== null && typeof spec === 'object') {
+    return typeof value === 'object' && value !== null && !Array.isArray(value);
+  }
+
+  // `"string|string[]"` accepts both shapes.
+  return String(spec)
+    .split('|')
+    .some((type) => {
+      if (type === 'string') return typeof value === 'string';
+      if (type === 'number') return typeof value === 'number' && Number.isFinite(value);
+      if (type === 'boolean') return typeof value === 'boolean';
+      if (type === 'string[]') {
+        return Array.isArray(value) && value.every((item) => typeof item === 'string');
+      }
+      if (type === 'number[]') {
+        return (
+          Array.isArray(value) &&
+          value.every((item) => typeof item === 'number' && Number.isFinite(item))
+        );
+      }
+      return false;
+    });
+};
+
+/**
  * Validates the `data.json` of a music folder.
  *
- * The shape is the one documented in `public/audio/music_metadata.mjs`.
+ * The shape is the one declared by `music_metadata.mjs`, so a typo in a hand
+ * written file is reported instead of silently producing a track without a
+ * title.
  *
  * @param {unknown} data - Parsed `data.json`.
- * @returns {{ files: string[], formats: string[] }} The file names and formats.
+ * @returns {{ title: string, files: string[], formats: string[] }} The metadata.
  * @throws {TypeError} When the metadata is not usable.
  */
 export const parseMusicMetadata = (data) => {
@@ -197,17 +272,45 @@ export const parseMusicMetadata = (data) => {
   }
 
   const metadata = /** @type {Record<string, unknown>} */ (data);
+  const context = 'Music metadata';
 
+  for (const [name, value] of Object.entries(metadata)) {
+    const spec = getSchemaEntry(name);
+
+    // An unknown key is almost always a typo (`files`, `tittle`), and the
+    // player would silently ignore it.
+    if (spec === undefined) {
+      console.warn(`${context}: unknown field "${name}".`);
+      continue;
+    }
+
+    if (!matchesSpec(value, spec)) {
+      console.warn(
+        `${context}: "${name}" must be ${describeSpec(spec)}, received ${JSON.stringify(value)}.`,
+      );
+    }
+  }
+
+  // Only `file` is required to play the song, so a problem in any other field
+  // is reported without silencing the soundtrack.
   const files = toStringArray(metadata.file);
   if (files.length === 0) {
-    throw new TypeError('Music metadata is missing the "file" field.');
+    throw new TypeError(`${context} is missing the "file" field.`);
   }
 
   const formats = toStringArray(metadata.format).map((format) =>
     format.replace(/^\./, '').toLowerCase(),
   );
 
-  return { files, formats: formats.length > 0 ? formats : [DEFAULT_FORMAT] };
+  // `title` is optional: when it is absent the file name is the best name the
+  // repository can offer.
+  const title = typeof metadata.title === 'string' ? metadata.title.trim() : '';
+
+  return {
+    title: title.length > 0 ? title : files[0],
+    files,
+    formats: formats.length > 0 ? formats : [DEFAULT_FORMAT],
+  };
 };
 
 /**
@@ -296,15 +399,15 @@ export const loadAudioFile = (id, fetchImpl = globalThis.fetch) => {
       }
 
       // The metadata of a local song is the `data.json` of its folder. The
-      // first file name is the best title available, and the folder name is
-      // the only artist information the repository keeps.
-      const { files } = parseMusicMetadata(data);
+      // `title` field wins when present, so the file name never leaks into the
+      // interface; the folder name is the only artist information available.
+      const { title } = parseMusicMetadata(data);
 
       return {
         key,
         type: AUDIO_FILE_TYPE,
         id: folder,
-        title: files[0],
+        title,
         artist: folder.split('/')[0],
         urls,
       };

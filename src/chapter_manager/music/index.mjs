@@ -208,8 +208,9 @@ const musicManager = {
     musicButtons.forEach((button) => button.toggleClass('disabled', locked));
 
     // A song of the website has no page to link to, so the button explains
-    // where it comes from instead of opening a tab.
-    updateSourceButton();
+    // where it comes from instead of opening a tab. The tooltip is rebuilt
+    // from scratch, otherwise Bootstrap keeps the previous title on screen.
+    updateSourceButton(true);
 
     // Playing
     if (musicApp.playing) {

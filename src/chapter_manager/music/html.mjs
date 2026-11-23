@@ -1,3 +1,5 @@
+import { Tooltip as BsTooltip } from 'bootstrap';
+
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import { storyData } from '../../files/chapters.mjs';
@@ -141,12 +143,31 @@ const sourceButton = TinyHtml.createFrom('a', {
   .append(musicApp.nav.info);
 
 /**
- * Keeps the source button in sync with the current track.
+ * Hides the tooltip of the source button.
+ *
+ * Bootstrap keeps the tooltip of a hovered element open until the pointer
+ * leaves it, so a track change would keep the old title on screen. Fading the
+ * button out and back in forces the tooltip to be rebuilt with the new text.
  *
  * @returns {void}
  */
-export const updateSourceButton = () => {
-  sourceButton.setAttr('title', buildSourceTitle());
+const refreshSourceTooltip = () => {
+  const tooltip = sourceButton.data('BootstrapToolTip');
+  if (tooltip instanceof BsTooltip) tooltip.hide();
+};
+
+/**
+ * Keeps the source button in sync with the current track.
+ *
+ * @param {boolean} [animate] - Whether the tooltip should fade out first.
+ * @returns {void}
+ */
+export const updateSourceButton = (animate = false) => {
+  const title = buildSourceTitle();
+  if (sourceButton.attr('title') === title) return;
+
+  sourceButton.setAttr('title', title);
+  if (animate) refreshSourceTooltip();
 };
 
 musicBaseItems.push(
