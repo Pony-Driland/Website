@@ -2,6 +2,7 @@ import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import TinyAfterScrollWatcher from 'tiny-essentials/libs/html/scroll/TinyAfterScrollWatcher';
 
+import { console } from '../dev.mjs';
 import { tinyLs } from '../important.mjs';
 import { trackChapterProgress } from '../analytics.mjs';
 import tinyLib from '../files/tinyLib.mjs';

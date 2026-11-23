@@ -10,10 +10,10 @@
 
 import TinyServiceWorker from 'tiny-essentials/libs/sw/browser/TinyServiceWorker';
 import TinyDomReadyManager from 'tiny-essentials/libs/html/TinyDomReadyManager';
+import { isDev, console } from '../dev.mjs';
 import { body } from '../html/query.mjs';
 import { version } from '../version.mjs';
 import { syncCacheVersion } from './cache-version.mjs';
-import isDev from '../dev.mjs';
 
 /**
  * The service worker manager.

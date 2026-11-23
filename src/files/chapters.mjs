@@ -5,6 +5,7 @@ import { fetchJson, fetchText } from 'tiny-essentials/basics/html';
 import { toTitleCase } from 'tiny-essentials/basics/text';
 import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
+import { console } from '../dev.mjs';
 import tinyLib from './tinyLib.mjs';
 import storyCfg from '../chapters/config.mjs';
 import { connStore, ficCache, loaderScreen, tinyLs } from '../important.mjs';

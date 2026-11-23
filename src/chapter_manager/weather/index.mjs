@@ -1,3 +1,4 @@
+import { console } from '../../dev.mjs';
 import { SKY_FRAGMENT_SHADER, SKY_VERTEX_SHADER } from './shaders.mjs';
 import { getMoonPhase, resolveSkyState } from './presets.mjs';
 import { createMoon } from './moon.mjs';

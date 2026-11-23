@@ -16,7 +16,7 @@
  */
 
 import storyCfg from './chapters/config.mjs';
-import isDev from './dev.mjs';
+import { isDev } from './dev.mjs';
 import { buildUrl } from './router/pages.mjs';
 
 /** Measurement id of the property. */

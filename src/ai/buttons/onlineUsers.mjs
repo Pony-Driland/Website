@@ -1,6 +1,7 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import { prompt } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
+import { console } from '../../dev.mjs';
 import { tinyIo } from '../software/base.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 

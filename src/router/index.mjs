@@ -11,6 +11,7 @@
  */
 
 import TinyRouter from 'tiny-essentials/libs/router/TinyRouter';
+import { console } from '../dev.mjs';
 import {
   AI_PATH,
   CHAPTER_BASE,

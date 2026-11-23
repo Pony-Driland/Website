@@ -2,6 +2,7 @@ import EventEmitter from 'events';
 import { isJsonObject } from 'tiny-essentials/basics/objChecker';
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import { Offcanvas } from 'bootstrap';
+import { console } from '../../dev.mjs';
 import JSONEditor from '../../../build/bundle/JSONEditor.mjs';
 
 import tinyLib from '../../files/tinyLib.mjs';

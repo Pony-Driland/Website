@@ -2,6 +2,7 @@ import Pizzicato from 'pizzicato';
 import objHash from 'object-hash';
 import { ruleOfThree } from 'tiny-essentials/basics/simpleMath';
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
+import { console } from '../../dev.mjs';
 
 import SeamlessLoop from '../../../build/bundle/SeamlessLoop.mjs';
 import BuffAudio from '../../../build/bundle/buffaudio.mjs';

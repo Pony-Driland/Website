@@ -6,6 +6,7 @@ import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/Bootstrap
 import TinyDices from 'tiny-dices';
 import { saveAs } from 'file-saver';
 
+import { console } from '../../dev.mjs';
 import { getClient, tinyIo } from '../software/base.mjs';
 import { isOnline } from '../software/enablerContent.mjs';
 import { tinyLs } from '../../important.mjs';

@@ -38,6 +38,7 @@ import './scss/dark.scss';
 import './scss/main.scss';
 import './scss/carousel.scss';
 import './scss/rpg.scss';
+import { console } from './dev.mjs';
 import { openMDFile, openHomePage, clearFicData } from './fixStuff/markdown.mjs';
 import { nsfwSettingsNavItem } from './nsfw-settings.mjs';
 import { startRouter } from './router/index.mjs';

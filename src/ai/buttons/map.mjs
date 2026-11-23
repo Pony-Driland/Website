@@ -1,5 +1,6 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
+import { console } from '../../dev.mjs';
 import TinyMap from '../TinyMap.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import { contentEnabler } from '../software/enablerContent.mjs';

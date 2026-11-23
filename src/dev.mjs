@@ -10,6 +10,8 @@
  * @module dev
  */
 
+import TinyDebugger from 'tiny-essentials/libs/tools/TinyDebugger';
+
 /** Hostnames that only exist on a development machine. */
 const DEV_HOSTNAMES = ['localhost', '127.0.0.1', '[::1]', '0.0.0.0'];
 
@@ -18,13 +20,14 @@ const DEV_HOSTNAMES = ['localhost', '127.0.0.1', '[::1]', '0.0.0.0'];
  *
  * @type {boolean}
  */
-const isDev = (() => {
+export const isDev = (() => {
   if (typeof location === 'undefined') return false;
   return DEV_HOSTNAMES.includes(location.hostname) || location.port !== '';
 })();
 
+const d = new TinyDebugger({ logger: {}, id: '[app]', debugMode: isDev, useLogColors: true });
+export const console = d.toConsole();
+
 if (isDev) {
   console.log('[DEV MODE] Enabled!');
 }
-
-export default isDev;

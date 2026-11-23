@@ -12,6 +12,7 @@
  * @module pwa/cache-version
  */
 
+import { console } from '../dev.mjs';
 import { cacheName, version } from '../version.mjs';
 import { tinyLs } from '../important.mjs';
 

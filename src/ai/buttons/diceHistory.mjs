@@ -2,6 +2,7 @@ import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
+import { console } from '../../dev.mjs';
 import { getClient, tinyIo } from '../software/base.mjs';
 import { isOnline } from '../software/enablerContent.mjs';
 import tinyLib from '../../files/tinyLib.mjs';

@@ -6,6 +6,7 @@ import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import TinyArrayPaginator from 'tiny-essentials/libs/array/TinyArrayPaginator';
 import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
+import { console } from '../dev.mjs';
 import { isNoNsfw, loaderScreen, tinyLs } from '../important.mjs';
 import tinyLib from '../files/tinyLib.mjs';
 import { storyData } from '../files/chapters.mjs';

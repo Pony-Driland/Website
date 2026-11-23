@@ -1,6 +1,7 @@
 import { EventEmitter } from 'events';
 import { io as Io } from 'socket.io-client';
 import { countObj, isJsonObject } from 'tiny-essentials/basics/objChecker';
+import { console } from '../dev.mjs';
 
 /** @typedef {{ error: boolean; msg: string; code: number; }} SocketError */
 

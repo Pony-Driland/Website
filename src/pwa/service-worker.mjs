@@ -14,7 +14,7 @@ import TinyServiceWorkerEngine from 'tiny-essentials/libs/sw/service/TinyService
 import RegisterGlobCachePlugin from 'tiny-essentials/libs/sw/service/plugins/GlobCachePlugin';
 import GlobBypassPlugin from 'tiny-essentials/libs/sw/service/plugins/GlobBypassPlugin';
 
-import isDev from '../dev.mjs';
+import { isDev } from '../dev.mjs';
 import { cacheName } from '../version.mjs';
 
 /** Cache bucket used by the runtime cache plugin. */

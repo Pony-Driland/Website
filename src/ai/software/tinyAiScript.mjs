@@ -10,6 +10,7 @@ import { formatDayTimer } from 'tiny-essentials/basics/clock';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 
+import { console } from '../../dev.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import { appData, lockLoaderScreen } from '../../important.mjs';
 import { tinyAi, tinyIo, tinyStorage } from './base.mjs';

@@ -21,6 +21,7 @@
  */
 
 import { fetchYouTubeOEmbed } from 'tiny-essentials/basics/media/youtube';
+import { console } from '../../dev.mjs';
 import musicMetadata from './musicMetadata.mjs';
 
 /** Track type of a file shipped with the website. */

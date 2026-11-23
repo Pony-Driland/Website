@@ -3,6 +3,7 @@ import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import { isJsonObject } from 'tiny-essentials/basics/objChecker';
 import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
+import { console } from '../../dev.mjs';
 import { tinyAi, tinyIo } from '../software/base.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import { loaderScreen } from '../../important.mjs';

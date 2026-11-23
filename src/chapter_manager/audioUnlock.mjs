@@ -10,6 +10,8 @@
  * @module chapter_manager/audioUnlock
  */
 
+import { console } from '../dev.mjs';
+
 /** Events that count as a user gesture. */
 const gestureEvents = ['pointerdown', 'mousedown', 'touchstart', 'keydown', 'click'];
 
