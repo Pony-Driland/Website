@@ -1,4 +1,5 @@
 {
+    "title": "My past stories",
     "format": ["mp3"],
     "file": "my-past-stories",
     "generators_used": ["suno"],

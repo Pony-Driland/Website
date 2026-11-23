@@ -1,4 +1,5 @@
 {
+    "title": "The Escape",
     "format": ["mp3"],
     "file": "the-escape",
     "generators_used": ["suno"],

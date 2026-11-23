@@ -1,4 +1,5 @@
 {
+    "title": "The Rainbow is here",
     "format": ["mp3"],
     "file": "the-rainbow-is-here",
     "generators_used": ["suno"],

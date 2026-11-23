@@ -1,4 +1,5 @@
 {
+    "title": "Driland Dramas",
     "format": ["mp3"],
     "file": "driland-dramas",
     "generators_used": ["suno"],

@@ -1,4 +1,5 @@
 {
+    "title": "The Hard Battle",
     "format": ["mp3"],
     "file": "the-hard-battle",
     "generators_used": ["suno", "google_flow_music"],

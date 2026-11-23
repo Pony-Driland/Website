@@ -1,4 +1,5 @@
 {
+    "title": "Driland Mysteries",
     "format": ["mp3"],
     "file": ["driland-mysteries", "driland-mysteries(1)"],
     "generators_used": ["suno"],

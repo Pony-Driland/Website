@@ -1,4 +1,5 @@
 const music_metadata = {
+    "title?": "string",
     "file": "string|string[]",
     "format?": ["string"],
     "category?": "string|string[]",
