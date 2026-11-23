@@ -1,31 +1,31 @@
 const music_metadata = {
-    "title?": "string",
-    "file": "string|string[]",
-    "format?": ["string"],
-    "category?": "string|string[]",
-    "generators_used?": ["string"],
-    "bpm?": ["number"],
-    "suno_start?": "string",
-    "alternative_files?": [
-        {
-            "category?": "string|string[]",
-            "generators_used?": ["string"],
-            "file":["string"]
-        }
-    ],
-    "production_steps?": [
-        {
-            "id": "string",
-            "weirdness?": 0.5,
-            "style_influence?": 0.5,
-            "audio_influence?": 0.25,
-            "max_mode": false,
-            "instrument_prompt": "string",
-            "instrument_negative_prompt?": "string"
-        }
-    ],
-    "creation_date": "number",
-    "reference_songs?": ["string"]
+  'title?': 'string',
+  file: 'string|string[]',
+  'format?': ['string'],
+  'category?': 'string|string[]',
+  'generators_used?': ['string'],
+  'bpm?': ['number'],
+  'suno_start?': 'string',
+  'alternative_files?': [
+    {
+      'category?': 'string|string[]',
+      'generators_used?': ['string'],
+      file: ['string'],
+    },
+  ],
+  'production_steps?': [
+    {
+      id: 'string',
+      'weirdness?': 0.5,
+      'style_influence?': 0.5,
+      'audio_influence?': 0.25,
+      max_mode: false,
+      instrument_prompt: 'string',
+      'instrument_negative_prompt?': 'string',
+    },
+  ],
+  creation_date: 'number',
+  'reference_songs?': ['string'],
 };
 
 export default music_metadata;

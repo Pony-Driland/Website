@@ -2,6 +2,17 @@
  * Soundtrack playlist keyed by scene name. Each entry lists the tracks that
  * may be played while the scene is on screen.
  *
+ * Two providers are supported:
+ *
+ * - `youtube`: `id` is the video id.
+ * - `audio-file`: `id` is the folder of the song, relative to `public/audio`.
+ *   The folder must contain a `data.json` with the song metadata (see
+ *   `public/audio/music_metadata.mjs`), which is where the file name lives.
+ *
+ * @example
+ * { id: 'dQw4w9WgXcQ', type: 'youtube' }
+ * { id: 'jasmindreasond/music/play-again', type: 'audio-file' }
+ *
  * @module chapters/sound
  */
 
@@ -167,7 +178,15 @@ storyCfg.playlist = {
     { id: 'vz35kFJErW4', type: 'youtube' },
   ],
 
-  'rainbow-queen-moment': [{ id: 's2bGUY97o6E', type: 'youtube' }],
+  'rainbow-queen-moment': [
+    { id: 's2bGUY97o6E', type: 'youtube' },
+    { id: 'ai/music/rainbow-queen/the-rainbow-is-here', type: 'audio-file' },
+    { id: 'ai/music/rainbow-queen/the-rainbow-presence', type: 'audio-file' },
+  ],
+
+  'rainbow-queen-battle': [
+    { id: 'ai/music/rainbow-queen/rainbow-queen-battle-1', type: 'audio-file' },
+  ],
 
   'bad-mystery': [
     { id: 'eeoEQZH-iwg', type: 'youtube' },
@@ -183,6 +202,7 @@ storyCfg.playlist = {
   ],
 
   sad: [
+    { id: 'ai/music/ambient/rooms-we-left', type: 'audio-file' },
     { id: 'cU96ZIGKars', type: 'youtube' },
     { id: 'lIjHZy3aYDA', type: 'youtube' },
     { id: 'eqV2_PDDVr4', type: 'youtube' },
@@ -225,6 +245,10 @@ storyCfg.playlist = {
   'nuclear-winter': [{ id: 'cRzQuPvLjdU', type: 'youtube' }],
 
   'bad-think': [
+    { id: 'ai/music/ambient/driland-mysteries', file: 0, type: 'audio-file' },
+    { id: 'ai/music/ambient/driland-mysteries', file: 1, type: 'audio-file' },
+    { id: 'ai/music/ambient/driland-dramas', type: 'audio-file' },
+    { id: 'ai/music/ambient/lingering-shadows', type: 'audio-file' },
     { id: '0ZD3SfS9x8E', type: 'youtube' },
     { id: 'AfkEAnazGMo', type: 'youtube' },
     { id: 'QD5OGfAJIus', type: 'youtube' },
