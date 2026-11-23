@@ -1,4 +1,4 @@
-{
+const music_metadata = {
     "file": "string|string[]",
     "format?": ["string"],
     "category?": "string|string[]",
@@ -25,4 +25,6 @@
     ],
     "creation_date": "number",
     "reference_songs?": ["string"]
-}
+};
+
+export default music_metadata;

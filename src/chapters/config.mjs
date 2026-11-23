@@ -9,8 +9,8 @@
  * A single soundtrack entry.
  *
  * @typedef {Object} StoryTrack
- * @property {string} id - YouTube video id or audio file URL.
- * @property {string} type - Track provider (`youtube` or `audio`).
+ * @property {string} id - YouTube video id, or the path of a file shipped with the website.
+ * @property {'youtube'|'audio-file'} type - Track provider.
  * @property {string} [title] - Optional track title.
  * @property {string} [artist] - Optional track artist.
  */

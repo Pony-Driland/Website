@@ -8,6 +8,7 @@ import TinyPromiseQueue from 'tiny-essentials/libs/utils/TinyPromiseQueue';
 
 import storyCfg from '../../chapters/config.mjs';
 import audioUnlock from '../audioUnlock.mjs';
+import { AUDIO_FILE_TYPE, loadAudioFile } from './audioFile.mjs';
 
 /**
  * Soundtrack engine of the reader.
@@ -24,8 +25,8 @@ import audioUnlock from '../audioUnlock.mjs';
  * A single soundtrack entry of the story.
  *
  * @typedef {Object} MusicTrack
- * @property {string} type - Track provider (`youtube` or `audio`).
- * @property {string} id - YouTube video id or audio file URL.
+ * @property {string} type - Track provider (`youtube` or `audio-file`).
+ * @property {string} id - YouTube video id or audio file path.
  * @property {string} [title] - Optional track title.
  * @property {string} [artist] - Optional track artist.
  */
@@ -68,6 +69,44 @@ let audioPlayer = null;
 
 /** @type {string|null} */
 let currentId = null;
+
+/**
+ * Provider of the track that is loaded in the player.
+ *
+ * `null` when nothing was played yet.
+ *
+ * @type {'youtube' | 'audio-file' | null}
+ */
+let currentType = null;
+
+/**
+ * How many times in a row a track may fail before the player gives up on it.
+ *
+ * The reader asks for a track on every scroll event, so a broken file would be
+ * retried forever: each scroll would fail, the queue would keep the player busy
+ * and the visitor would never hear anything again. Two failures are enough to
+ * tell a transient error from a broken file.
+ */
+const MAX_TRACK_FAILURES = 2;
+
+/**
+ * Consecutive failures of each track, keyed by `<type>:<id>`.
+ *
+ * @type {Map<string, number>}
+ */
+const trackFailures = new Map();
+
+/**
+ * Registers a failure and tells whether the player should stop trying.
+ *
+ * @param {string} id - Story id of the track.
+ * @returns {boolean} `true` when the track reached the failure limit.
+ */
+const reachedFailureLimit = (id) => {
+  const failures = (trackFailures.get(id) ?? 0) + 1;
+  trackFailures.set(id, failures);
+  return failures >= MAX_TRACK_FAILURES;
+};
 
 /**
  * Runs a playback task to completion, warning when it takes too long.
@@ -140,13 +179,14 @@ const waitForYoutubeApi = () => {
  * Creates the player adapter on demand: it binds itself to a single iframe, so
  * the container can only be created once the first video id is known.
  *
- * @param {string} videoId - First video that will be played.
+ * The YouTube adapter is only created for a YouTube track. A story that only
+ * uses files shipped with the website must not download the IFrame API.
+ *
+ * @param {boolean} withYoutube - Whether the YouTube adapter is required.
  * @returns {Promise<void>}
  */
-const ensurePlayer = async (videoId) => {
-  if (youtube && audioPlayer) return;
-
-  if (!youtube) {
+const ensurePlayer = async (withYoutube) => {
+  if (withYoutube && !youtube) {
     YoutubeMediaAdapter.defaultContainer = YoutubeMediaAdapter.createContainer({
       hidden: true,
     });
@@ -169,6 +209,65 @@ const ensurePlayer = async (videoId) => {
 };
 
 /**
+ * Resolves the media the player has to load for a story track.
+ *
+ * Only the providers of the story are accepted. Anything else is refused
+ * instead of being forwarded to the player, so a typo in a chapter file can
+ * never turn into a request to an arbitrary host.
+ *
+ * A song folder may declare more than one file (a `file` array in the
+ * `data.json`), so the caller receives every candidate in the order it should
+ * be tried.
+ *
+ * @param {MusicTrack} track - Track to resolve.
+ * @returns {Promise<{ urls: string[], mediaType: 'audio' | 'video' }|null>} The media to load.
+ */
+const resolveTrackMedia = async (track) => {
+  if (track.type === 'youtube') {
+    return { urls: [`https://www.youtube.com/watch?v=${track.id}`], mediaType: 'video' };
+  }
+
+  if (track.type === AUDIO_FILE_TYPE) {
+    // The file name is not part of the story: it lives in the `data.json` of
+    // the song folder, together with the rest of its metadata.
+    const { urls } = await loadAudioFile(track.id);
+    return { urls, mediaType: 'audio' };
+  }
+
+  console.warn(`[music] Unsupported track type: ${track.type}`);
+  return null;
+};
+
+/**
+ * Points the player at a single URL and starts it.
+ *
+ * @param {string} id - Story id of the track.
+ * @param {string} url - URL to play.
+ * @param {'audio' | 'video'} mediaType - Kind of media behind the URL.
+ * @returns {Promise<void>}
+ */
+const playUrl = async (id, url, mediaType) => {
+  currentId = id;
+  currentType = mediaType === 'video' ? 'youtube' : 'audio-file';
+  player.playlist = [
+    {
+      id,
+      title: '',
+      artist: '',
+      duration: 0,
+      // `HtmlAudioAdapter.canHandle()` accepts every `http(s)` URL whose
+      // `mediaType` is `audio` (or undefined). A YouTube track must never be
+      // flagged as audio, otherwise it is routed to a plain `<audio>` element
+      // that can never play it.
+      mediaType,
+      url,
+    },
+  ];
+
+  await player.play();
+};
+
+/**
  * Plays a story track.
  *
  * The playback is held until the browser allows audio to start, because the
@@ -181,11 +280,13 @@ const playTrack = (track) => {
   if (!track || typeof track.id !== 'string' || track.id.length === 0) return;
 
   audioUnlock.whenReady(() => {
-    const isYoutube = track.type === 'youtube';
     const id = `${track.type}:${track.id}`;
 
     enqueue(async () => {
-      await ensurePlayer(track.id);
+      const media = await resolveTrackMedia(track);
+      if (!media || media.urls.length === 0) return;
+
+      await ensurePlayer(track.type === 'youtube');
       if (currentId === id) {
         await player.play();
         return;
@@ -196,24 +297,35 @@ const playTrack = (track) => {
       // at the same time. Stopping first keeps a single, awaited transition.
       await player.stop();
 
-      currentId = id;
-      player.playlist = [
-        {
-          id,
-          title: track.title ?? '',
-          artist: track.artist ?? '',
-          duration: 0,
-          // `HtmlAudioAdapter.canHandle()` accepts every `http(s)` URL whose
-          // `mediaType` is `audio` (or undefined). A YouTube track must never be
-          // flagged as audio, otherwise it is routed to a plain `<audio>`
-          // element that can never play it.
-          mediaType: isYoutube ? 'video' : 'audio',
-          url: isYoutube ? `https://www.youtube.com/watch?v=${track.id}` : String(track.id),
-        },
-      ];
+      // A folder may list more than one file, and the metadata can go stale
+      // (a renamed file, for example), so every candidate is tried in order
+      // instead of failing the whole scene on the first 404.
+      let lastError = null;
+      for (const url of media.urls) {
+        try {
+          await playUrl(id, url, media.mediaType);
+          // The track played, so the next failure starts counting again.
+          trackFailures.delete(id);
+          return;
+        } catch (err) {
+          lastError = err;
+          console.warn(`[music] Could not play ${url}, trying the next one.`, err);
+        }
+      }
 
-      await player.play();
-    }).catch((err) => console.error(err));
+      currentId = null;
+      throw lastError ?? new Error(`No playable file for ${id}.`);
+    }).catch(async (err) => {
+      console.error(err);
+
+      // The reader retries on every scroll, so a broken track would be retried
+      // forever. After a couple of failures the player stops instead of
+      // spinning on a file that is clearly not going to play.
+      if (!reachedFailureLimit(id)) return;
+
+      console.error(`[music] Giving up on ${id} after ${MAX_TRACK_FAILURES} failures.`);
+      await player.stop().catch(() => {});
+    });
   }, 'music');
 };
 
@@ -244,6 +356,16 @@ const musicPlayer = {
 
   /** @returns {string|null} Public URL of the current track. */
   getSourceUrl: () => (currentId ? (player.playlist[0]?.url ?? null) : null),
+
+  /**
+   * Tells whether the current track is a file of this website.
+   *
+   * Those tracks have no external page to link to, so the toolbar must not try
+   * to open one.
+   *
+   * @returns {boolean} `true` when the current track ships with the website.
+   */
+  isLocalSource: () => currentType === 'audio-file',
 };
 
 export default musicPlayer;

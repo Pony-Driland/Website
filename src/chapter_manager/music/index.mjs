@@ -13,7 +13,7 @@ import { tinyLs } from '../../important.mjs';
 import ttsManager from '../tts/tts.mjs';
 import { Tooltip } from '../../modules/TinyBootstrap.mjs';
 import musicPlayer from './player.mjs';
-import { musicApp, musicBase, musicButtons } from './html.mjs';
+import { musicApp, musicBase, musicButtons, updateSourceButton } from './html.mjs';
 
 /**
  * Music manager: resolves the soundtrack of each scene, cross-fades between
@@ -206,6 +206,10 @@ const musicManager = {
     // Every other button is locked while the player is off or still loading.
     const locked = musicApp.disabled || !musicApp.usingSystem;
     musicButtons.forEach((button) => button.toggleClass('disabled', locked));
+
+    // A song of the website has no page to link to, so the button explains
+    // where it comes from instead of opening a tab.
+    updateSourceButton();
 
     // Playing
     if (musicApp.playing) {
