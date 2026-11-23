@@ -71,6 +71,15 @@ let audioPlayer = null;
 let currentId = null;
 
 /**
+ * Metadata of the track that is loaded in the player.
+ *
+ * `null` when nothing was played yet.
+ *
+ * @type {import('./audioFile.mjs').TrackMetadata|null}
+ */
+let currentMetadata = null;
+
+/**
  * Provider of the track that is loaded in the player.
  *
  * `null` when nothing was played yet.
@@ -237,12 +246,13 @@ const resolveTrackMedia = async (track) => {
  * @param {string} id - Story id of the track.
  * @param {string} url - URL to play.
  * @param {'audio' | 'video'} mediaType - Kind of media behind the URL.
- * @param {{ title?: string, artist?: string }} [metadata] - Track metadata.
+ * @param {import('./audioFile.mjs').TrackMetadata} metadata - Track metadata.
  * @returns {Promise<void>}
  */
-const playUrl = async (id, url, mediaType, metadata = {}) => {
+const playUrl = async (id, url, mediaType, metadata) => {
   currentId = id;
   currentType = mediaType === 'video' ? 'youtube' : 'audio-file';
+  currentMetadata = metadata;
   player.playlist = [
     {
       id,
@@ -347,6 +357,7 @@ const musicPlayer = {
   /** Stops the playback and forgets the track, so the next chapter starts clean. */
   reset: async () => {
     currentId = null;
+    currentMetadata = null;
     await enqueue(() => player.stop()).catch((err) => console.error(err));
   },
 
@@ -362,6 +373,13 @@ const musicPlayer = {
    * @returns {boolean} `true` when the current track ships with the website.
    */
   isLocalSource: () => currentType === 'audio-file',
+
+  /**
+   * Metadata of the track that is playing, if any.
+   *
+   * @returns {import('./audioFile.mjs').TrackMetadata|null} The current track.
+   */
+  getMetadata: () => currentMetadata,
 };
 
 export default musicPlayer;

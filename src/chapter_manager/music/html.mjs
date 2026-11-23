@@ -94,18 +94,37 @@ const disableButton = TinyHtml.createFrom('a', {
 
 const alwaysEnabled = [volumeButton, disableButton];
 
-/**
- * Tooltip of the source button while a track of the website is playing.
- *
- * Those files have no page to link to, so the button explains where the song
- * comes from instead of opening a tab. The button stays enabled on purpose: a
- * disabled element never shows its tooltip, which would hide the explanation
- * from the visitor.
- */
-export const LOCAL_SOURCE_TITLE = 'This song is part of the website';
-
-/** Tooltip of the source button while an external track is playing. */
+/** Tooltip of the source button while nothing is playing. */
 export const DEFAULT_SOURCE_TITLE = 'Source';
+
+/**
+ * Human readable name of each provider.
+ *
+ * @type {Record<string, string>}
+ */
+const PROVIDER_NAMES = {
+  'audio-file': 'Pony Driland',
+  youtube: 'YouTube',
+};
+
+/**
+ * Builds the tooltip of the source button.
+ *
+ * The button stays enabled while a local song plays on purpose: a disabled
+ * element never shows its tooltip, which would hide the only place where the
+ * visitor can read where the song comes from.
+ *
+ * @returns {string} The tooltip text.
+ */
+const buildSourceTitle = () => {
+  const metadata = musicPlayer.getMetadata();
+  if (!metadata) return DEFAULT_SOURCE_TITLE;
+
+  const provider = PROVIDER_NAMES[metadata.type] ?? metadata.type;
+  const title = metadata.title || DEFAULT_SOURCE_TITLE;
+
+  return `${title} (${provider})`;
+};
 
 const sourceButton = TinyHtml.createFrom('a', {
   href: 'javascript:void(0)',
@@ -127,8 +146,7 @@ const sourceButton = TinyHtml.createFrom('a', {
  * @returns {void}
  */
 export const updateSourceButton = () => {
-  const local = musicPlayer.isLocalSource();
-  sourceButton.setAttr('title', local ? LOCAL_SOURCE_TITLE : DEFAULT_SOURCE_TITLE);
+  sourceButton.setAttr('title', buildSourceTitle());
 };
 
 musicBaseItems.push(
