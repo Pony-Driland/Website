@@ -23,8 +23,8 @@ const { Icon } = TinyHtmlElems;
  * @property {boolean} disabled
  * @property {boolean} playing
  * @property {number} volume
- * @property {StoryTrack[]} playlist
- * @property {StoryTrack[]} playlistPlaying
+ * @property {StoryPlaylist} playlist
+ * @property {StoryPlaylist} playlistPlaying
  * @property {boolean} playingUsed
  * @property {Record<string, TinyHtmlAny>} nav
  * @property {() => void} songVolumeUpdate

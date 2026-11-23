@@ -13,6 +13,43 @@
  * { id: 'dQw4w9WgXcQ', type: 'youtube' }
  * { id: 'jasmindreasond/music/play-again', type: 'audio-file' }
  *
+ * A playlist is either a plain track list or an object that describes how its
+ * tracks should be drawn. Every option is optional, so the plain list keeps
+ * working exactly as before.
+ *
+ * @example
+ * // Plain list: every track has the same chance, no repeat before the end.
+ * storyCfg.playlist = {
+ *   battle: [
+ *     { id: 'VMziMXYkVS0', type: 'youtube' },
+ *     { id: 'rjRn9lYguV0', type: 'youtube' },
+ *   ],
+ * };
+ *
+ * @example
+ * // Full configuration.
+ * storyCfg.playlist = {
+ *   battle: {
+ *     // The battle always opens with the theme, then the raffle takes over.
+ *     first: 'VMziMXYkVS0',
+ *     // A seeded playlist always plays in the same order (useful to debug).
+ *     seed: 1234,
+ *     // A track may not repeat before the whole playlist plays.
+ *     unique: true,
+ *     // A played track stays out of the next 3 draws.
+ *     cooldown: 3,
+ *     // Only the tracks of these groups are played.
+ *     groups: ['battle'],
+ *     // ...and these are never played.
+ *     excludeGroups: ['calm'],
+ *     tracks: [
+ *       { id: 'VMziMXYkVS0', type: 'youtube', weight: 3, groups: ['battle'] },
+ *       { id: 'rjRn9YguV0', type: 'youtube', groups: ['battle'] },
+ *       { id: 'calm-song', type: 'youtube', groups: ['calm'] },
+ *     ],
+ *   },
+ * };
+ *
  * @module chapters/sound
  */
 

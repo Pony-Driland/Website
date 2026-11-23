@@ -14,6 +14,7 @@ import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { body, tinyWin } from '../html/query.mjs';
 import { markdownBase } from '../html/base.mjs';
 import { musicApp } from './music/html.mjs';
+import { hasPlaylist } from './music/raffle.mjs';
 import { sky } from './weather/index.mjs';
 
 const { Icon } = TinyHtmlElems;
@@ -148,13 +149,13 @@ tinyWin.on(['resize', 'scroll'], () => {
 
 cacheChapterUpdater.scrollData = () => {
   // Set Playlist
-  if (!Array.isArray(musicApp.playlist)) {
+  if (!musicApp.playlist) {
     musicApp.playlist = [];
   }
 
   // Exist Playlist. `musicApp.disabled` is the visitor's own switch, so it is
   // the only thing that can keep the soundtrack off here.
-  if (!storyData.chapter.blockLineSave && !musicApp.disabled && musicApp.playlist.length > 0) {
+  if (!storyData.chapter.blockLineSave && !musicApp.disabled && hasPlaylist(musicApp.playlist)) {
     musicManager.startPlaylist();
   }
 
@@ -489,9 +490,11 @@ const chapterSet = {
    */
   playlistPlay: (value, actionFromNow = false) => {
     if (actionFromNow) {
-      // Set Playlist
-      const playlist = storyCfg.playlist?.[value];
-      if (Array.isArray(playlist)) {
+      // Set Playlist. A playlist is either a plain track list or an object
+      // describing how its tracks should be drawn (see `music/raffle.mjs`).
+      const playlist = storyCfg.playlist?.[value] ?? [];
+
+      if (hasPlaylist(playlist)) {
         musicApp.value = value;
         musicApp.playlist = playlist;
       } else {

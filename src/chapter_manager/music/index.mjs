@@ -1,7 +1,6 @@
 import Pizzicato from 'pizzicato';
 import objHash from 'object-hash';
 import { ruleOfThree } from 'tiny-essentials/basics/simpleMath';
-import { shuffleArray } from 'tiny-essentials/basics/array';
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 
 import SeamlessLoop from '../../../build/bundle/SeamlessLoop.mjs';
@@ -13,6 +12,7 @@ import { tinyLs } from '../../important.mjs';
 import ttsManager from '../tts/tts.mjs';
 import { Tooltip } from '../../modules/TinyBootstrap.mjs';
 import musicPlayer from './player.mjs';
+import { createPlaylistRaffle, hasPlaylist, normalizePlaylist } from './raffle.mjs';
 import { musicApp, musicBase, musicButtons, updateSourceButton } from './html.mjs';
 
 /**
@@ -129,15 +129,10 @@ const musicManager = {
 
   // Next Song
   nextMusic: () => {
-    if (!Array.isArray(musicApp.playlist) || musicApp.playlist.length < 1) return;
+    if (!hasPlaylist(musicApp.playlist)) return;
     if (!storyData.readFic) return;
 
-    musicApp.now.index++;
-    if (!musicApp.playlist[musicApp.now.index]) {
-      musicApp.now.index = 0;
-    }
-
-    playCurrent();
+    playNext();
   },
 
   /**
@@ -371,12 +366,14 @@ const musicManager = {
     musicApp.now.playlist = null;
     musicApp.value = null;
 
+    destroyRaffle();
+
     await musicPlayer.reset();
   },
 
   startPlaylist: () => {
     if (!storyData.readFic || musicApp.disabled) return;
-    if (!Array.isArray(musicApp.playlist) || musicApp.playlist.length < 1) return;
+    if (!hasPlaylist(musicApp.playlist)) return;
 
     // Same playlist: just resume where it stopped.
     if (objHash(musicApp.playlist) === objHash(musicApp.playlistPlaying)) {
@@ -385,27 +382,66 @@ const musicManager = {
       return;
     }
 
-    // New playlist: start from the beginning.
-    shuffleArray(musicApp.playlist);
+    // New playlist: a fresh draw session takes over from the old one.
     musicApp.playlistPlaying = musicApp.playlist;
-    musicApp.now.index = 0;
+    musicApp.now.index = -1;
     musicApp.now.playlist = musicApp.value;
     musicApp.usingSystem = true;
 
-    playCurrent();
+    buildRaffle();
+    playNext();
   },
 };
 
 /**
- * Plays the track selected by {@link musicApp}.`now.index`.
+ * Draw session of the current playlist.
+ *
+ * `null` while no playlist was started yet.
+ *
+ * @type {import('./raffle.mjs').PlaylistRaffle|null}
+ */
+let playlistRaffle = null;
+
+/**
+ * Releases the draw session of the previous playlist, if any.
  *
  * @returns {void}
  */
-function playCurrent() {
-  const song = musicApp.playlist[musicApp.now.index];
+function destroyRaffle() {
+  if (!playlistRaffle) return;
+
+  playlistRaffle.destroy();
+  playlistRaffle = null;
+}
+
+/**
+ * Creates the draw session of {@link musicApp}.`playlist`.
+ *
+ * The playlist may be a plain track list or an object describing how its
+ * tracks should be drawn (weights, groups, pity, opening track...).
+ *
+ * @returns {void}
+ */
+function buildRaffle() {
+  destroyRaffle();
+
+  const { tracks, options } = normalizePlaylist(musicApp.playlist);
+  playlistRaffle = createPlaylistRaffle(tracks, options);
+}
+
+/**
+ * Draws the next track of the playlist and plays it.
+ *
+ * @returns {void}
+ */
+function playNext() {
+  if (!playlistRaffle) return;
+
+  const song = playlistRaffle.next();
   if (!song || typeof song.id !== 'string' || song.id.length === 0) return;
   if (typeof song.type !== 'string' || song.type.length === 0) return;
 
+  musicApp.now.index++;
   musicApp.usingSystem = true;
   musicPlayer.playTrack(song);
 }

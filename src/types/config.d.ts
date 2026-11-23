@@ -3,6 +3,16 @@
 /** Keys of {@link StoryConfig} that hold a cryptocurrency wallet. */
 type CryptoWalletKey = 'dogecoin' | 'bitcoin' | 'ethereum' | 'bnb' | 'polygon';
 
+/** Pity configuration of a single soundtrack entry. */
+interface StoryTrackPity {
+  /** Draws without the track before the boost starts. */
+  threshold: number;
+  /** Weight added on every draw after the threshold. */
+  increment?: number;
+  /** Maximum weight added by the pity system. */
+  cap?: number;
+}
+
 /** A single soundtrack entry. */
 interface StoryTrack {
   /** YouTube video id or audio file URL. */
@@ -15,7 +25,44 @@ interface StoryTrack {
   title?: string;
   /** Optional track artist. */
   artist?: string;
+  /** Relative chance of this track being drawn. Defaults to the playlist weight. */
+  weight?: number;
+  /** Groups this track belongs to, used by the playlist filters. */
+  groups?: string[];
+  /** Pity system of this track. `false` disables the playlist default. */
+  pity?: StoryTrackPity | false;
+  /** Skips the track without removing it from the playlist. */
+  exclude?: boolean;
 }
+
+/** How the tracks of a playlist are drawn. */
+interface StoryPlaylistOptions {
+  /** Tracks of the playlist. */
+  tracks: StoryTrack[];
+  /** Seed of the RNG. A seeded playlist always plays in the same order. */
+  seed?: number | null;
+  /** How the weights become probabilities. */
+  normalization?: 'relative' | 'softmax';
+  /** Track (or tracks) that must open the playlist. */
+  first?: string | number | (string | number)[] | null;
+  /** Whether a track may repeat before the whole playlist plays. */
+  unique?: boolean;
+  /** How many draws a track stays out after being played. */
+  cooldown?: number;
+  /** Default weight of a track. */
+  weight?: number;
+  /** Only the tracks of these groups are played. */
+  groups?: string[] | null;
+  /** The tracks of these groups are never played. */
+  excludeGroups?: string[] | null;
+  /** Tracks that must never be played. */
+  exclude?: (string | number)[] | null;
+  /** Pity system applied to every track. */
+  pity?: StoryTrackPity | false | null;
+}
+
+/** A playlist is either a plain track list or a full draw configuration. */
+type StoryPlaylist = StoryTrack[] | StoryPlaylistOptions;
 
 /** A single sound effect entry. */
 interface StorySfx {
@@ -189,7 +236,7 @@ interface StoryConfig {
   /** Amount of chapters. */
   chapters?: number;
   /** Soundtracks per module. */
-  playlist?: Record<string, StoryTrack[]>;
+  playlist?: Record<string, StoryPlaylist>;
   /** Sound effects. */
   sfx?: Record<string, StorySfx>;
   /** Characters. */
