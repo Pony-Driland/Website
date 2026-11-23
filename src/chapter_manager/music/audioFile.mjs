@@ -323,23 +323,35 @@ export const parseMusicMetadata = (data) => {
  * @param {unknown} id - Music folder id.
  * @param {unknown} data - Parsed `data.json`.
  * @param {string} [baseUrl] - URL used to make the paths absolute.
+ * @param {number} [fileIndex] - Which entry of `file` to use, when it is an array.
  * @returns {string[]} The candidate URLs, in the order of the metadata.
  */
-export const buildAudioFileUrls = (id, data, baseUrl) => {
+export const buildAudioFileUrls = (id, data, baseUrl, fileIndex = 0) => {
   const folder = getMusicFolderUrl(id);
   if (!folder) return [];
 
   const { files, formats } = parseMusicMetadata(data);
+
+  // A folder may hold more than one song. The story picks one of them with the
+  // `file` index, so only that entry is used; an out of range index falls back
+  // to the first file instead of silencing the scene.
+  const selected = files[fileIndex];
+  if (selected === undefined) {
+    if (fileIndex !== 0) {
+      console.warn(
+        `[music] ${id}: file index ${fileIndex} is out of range (${files.length} file(s)).`,
+      );
+    }
+  }
+
+  const file = selected ?? files[0];
   /** @type {string[]} */
   const paths = [];
 
-  for (const file of files) {
-    // Some folders already carry the extension (`distant-dream-v1.1.mp3`).
-    if (EXTENSION_PATTERN.test(file)) {
-      paths.push(`${folder}${file}`);
-      continue;
-    }
-
+  // Some folders already carry the extension (`distant-dream-v1.1.mp3`).
+  if (EXTENSION_PATTERN.test(file)) {
+    paths.push(`${folder}${file}`);
+  } else {
     for (const format of formats) paths.push(`${folder}${file}.${format}`);
   }
 
@@ -370,15 +382,19 @@ const toAbsoluteUrl = (path, baseUrl) => {
  * The result is cached, so a folder is only downloaded once per session.
  *
  * @param {unknown} id - Music folder id.
+ * @param {number} [fileIndex] - Which entry of `file` to play.
  * @param {typeof fetch} [fetchImpl] - Fetch implementation, for the tests.
  * @returns {Promise<TrackMetadata>} The track metadata.
  */
-export const loadAudioFile = (id, fetchImpl = globalThis.fetch) => {
+export const loadAudioFile = (id, fileIndex = 0, fetchImpl = globalThis.fetch) => {
   const dataUrl = getMusicDataUrl(id);
   if (!dataUrl) return Promise.reject(new TypeError(`Invalid music folder: ${String(id)}`));
 
   const folder = /** @type {string} */ (id).trim();
-  const key = getTrackKey(AUDIO_FILE_TYPE, folder);
+  const index = Number.isInteger(fileIndex) && fileIndex > 0 ? fileIndex : 0;
+
+  // Each file of the folder is its own track, so the index is part of the key.
+  const key = getTrackKey(AUDIO_FILE_TYPE, index > 0 ? `${folder}#${index}` : folder);
   const cached = cache.get(key);
   if (cached) return cached;
 
@@ -393,7 +409,7 @@ export const loadAudioFile = (id, fetchImpl = globalThis.fetch) => {
       }
 
       const data = await response.json();
-      const urls = buildAudioFileUrls(folder, data);
+      const urls = buildAudioFileUrls(folder, data, undefined, index);
       if (urls.length === 0) {
         throw new Error(`No audio file declared in ${dataUrl}.`);
       }
@@ -407,7 +423,7 @@ export const loadAudioFile = (id, fetchImpl = globalThis.fetch) => {
         key,
         type: AUDIO_FILE_TYPE,
         id: folder,
-        title,
+        title: index > 0 ? `${title} (${index + 1})` : title,
         artist: folder.split('/')[0],
         urls,
       };
@@ -457,13 +473,13 @@ export const loadYoutubeFile = (id, fetchImpl = globalThis.fetch) => {
 /**
  * Loads the metadata of a track, whichever provider it belongs to.
  *
- * @param {{ type: string, id: string }} track - Track to load.
+ * @param {{ type: string, id: string, file?: number }} track - Track to load.
  * @param {typeof fetch} [fetchImpl] - Fetch implementation, for the tests.
  * @returns {Promise<TrackMetadata>} The track metadata.
  */
 export const loadTrackMetadata = (track, fetchImpl) => {
   if (track.type === 'youtube') return loadYoutubeFile(track.id, fetchImpl);
-  if (track.type === AUDIO_FILE_TYPE) return loadAudioFile(track.id, fetchImpl);
+  if (track.type === AUDIO_FILE_TYPE) return loadAudioFile(track.id, track.file ?? 0, fetchImpl);
   return Promise.reject(new TypeError(`Unsupported track type: ${track.type}`));
 };
 

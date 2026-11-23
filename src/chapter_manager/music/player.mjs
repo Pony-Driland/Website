@@ -26,7 +26,8 @@ import { AUDIO_FILE_TYPE, loadTrackMetadata } from './audioFile.mjs';
  *
  * @typedef {Object} MusicTrack
  * @property {string} type - Track provider (`youtube` or `audio-file`).
- * @property {string} id - YouTube video id or audio file path.
+ * @property {string} id - YouTube video id or audio file folder.
+ * @property {number} [file] - Which entry of the `file` array of the folder to play.
  * @property {string} [title] - Optional track title.
  * @property {string} [artist] - Optional track artist.
  */
