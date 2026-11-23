@@ -180,8 +180,8 @@ storyCfg.playlist = {
 
   'rainbow-queen-moment': [
     { id: 's2bGUY97o6E', type: 'youtube' },
-    { id: 'ai/music/rainbow-queen/the-rainbow-is-here', type: 'audio-file' },
     { id: 'ai/music/rainbow-queen/the-rainbow-presence', type: 'audio-file' },
+    { id: 'ai/music/rainbow-queen/the-rainbow-presence-2', type: 'audio-file' },
   ],
 
   'rainbow-queen-battle': [
