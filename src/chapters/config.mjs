@@ -11,6 +11,7 @@
  * @typedef {Object} StoryTrack
  * @property {string} id - YouTube video id, or the path of a file shipped with the website.
  * @property {'youtube'|'audio-file'} type - Track provider.
+ * @property {number} [file] - Which entry of the folder `file` array to play.
  * @property {string} [title] - Optional track title.
  * @property {string} [artist] - Optional track artist.
  */

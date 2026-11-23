@@ -9,6 +9,8 @@ interface StoryTrack {
   id: string;
   /** Track provider (`youtube` or `audio`). */
   type: string;
+  /** Which entry of the folder `file` array to play. */
+  file?: number;
   /** Optional track title. */
   title?: string;
   /** Optional track artist. */
