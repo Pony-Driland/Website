@@ -45,6 +45,8 @@ import {
 
 import { userButtonActions } from './buttons/users.mjs';
 import { roomSettingsMenu } from './buttons/roomSettings.mjs';
+import { openRoomPlayer } from './buttons/roomPlayer.mjs';
+import { applyState, setServerTime } from './roomPlayer.mjs';
 import { openClassicMap } from './buttons/map.mjs';
 import { openDiceSpecialModal, openTinyDices } from './buttons/dice.mjs';
 import { openDonatePage } from './buttons/donate.mjs';
@@ -1091,6 +1093,7 @@ export const AiScriptStart = async () => {
     // Room
     addGroup('Room');
     leftMenu.push(createButtonSidebar('fas fa-users', 'Room settings', roomSettingsMenu));
+    leftMenu.push(createButtonSidebar('fas fa-music', 'Music player', openRoomPlayer));
     leftMenu.push(createButtonSidebar('fas fa-users', 'User manager', userButtonActions));
     leftMenu.push(
       createButtonSidebar('fa-solid fa-book', 'Rpg Schema settings', rpgSchemaSettingsMenu),
@@ -4242,9 +4245,33 @@ export const AiScriptStart = async () => {
           }
         });
 
+        // The room player is the single source of truth of the music, so every
+        // interaction (including the ones of the DJ) arrives through the same
+        // event.
+        client.on('playerUpdated', (player, serverTime) => {
+          setServerTime(serverTime);
+          applyState(player);
+        });
+
         // Enter room
         client.on('roomEntered', (success) => {
-          if (!success) makeTempMessage(`Invalid room data detected!`, String(rpgCfg.ip ?? ''));
+          if (!success) {
+            makeTempMessage(`Invalid room data detected!`, String(rpgCfg.ip ?? ''));
+            return;
+          }
+
+          // The music is a background system of the room: it starts as soon as
+          // the visitor is inside, at the position the room is listening to.
+          client
+            .getPlayer()
+            .then((result) => {
+              // The offset has to be known before the position is derived.
+              setServerTime(result.serverTime);
+              if (result.error) return;
+
+              applyState(result.player);
+            })
+            .catch((err) => console.error('[room-player]', err));
         });
 
         /**

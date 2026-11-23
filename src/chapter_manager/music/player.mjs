@@ -249,9 +249,10 @@ const resolveTrackMedia = async (track) => {
  * @param {string} url - URL to play.
  * @param {'audio' | 'video'} mediaType - Kind of media behind the URL.
  * @param {import('./audioFile.mjs').TrackMetadata} metadata - Track metadata.
+ * @param {number} [position] - Position to start from, in seconds.
  * @returns {Promise<void>}
  */
-const playUrl = async (id, url, mediaType, metadata) => {
+const playUrl = async (id, url, mediaType, metadata, position = 0) => {
   currentId = id;
   currentType = mediaType === 'video' ? 'youtube' : 'audio-file';
   currentMetadata = metadata;
@@ -271,6 +272,10 @@ const playUrl = async (id, url, mediaType, metadata) => {
   ];
 
   await player.play();
+
+  // The seek has to happen after `play()`, because the adapter only points the
+  // media element at the new URL (and resets `currentTime`) inside it.
+  if (position > 0) await player.seek(Math.floor(position * 1000));
 };
 
 /**
@@ -343,6 +348,120 @@ const musicPlayer = {
    */
   player,
   playTrack,
+
+  /**
+   * Plays a track and resolves once it is loaded.
+   *
+   * The room player needs to know when the media is ready, so it can seek to
+   * the position the rest of the room is listening to. `playTrack()` is fire
+   * and forget by design (the reader calls it on every scroll), so the promise
+   * lives here instead of changing its signature.
+   *
+   * @param {MusicTrack} track - Track to play.
+   * @param {Object} [options] - Playback options.
+   * @param {number} [options.position] - Position to start from, in seconds.
+   * @returns {Promise<void>}
+   */
+  playTrackAsync: (track, { position = 0 } = {}) =>
+    new Promise((resolve, reject) => {
+      if (!track || typeof track.id !== 'string' || track.id.length === 0) {
+        reject(new TypeError('A track is required.'));
+        return;
+      }
+
+      audioUnlock.whenReady(() => {
+        const id = `${track.type}:${track.id}`;
+        const startAt = Number.isFinite(position) && position > 0 ? position : 0;
+
+        enqueue(async () => {
+          const resolved = await resolveTrackMedia(track);
+          if (!resolved || resolved.media.urls.length === 0)
+            throw new Error(`No playable media for ${id}.`);
+
+          const { media, mediaType } = resolved;
+
+          await ensurePlayer(track.type === 'youtube');
+
+          // The very same track is already loaded: seeking is enough. Loading
+          // it again would restart the media from the beginning, which is what
+          // made the room player jump back to 0:00 on every update.
+          if (currentId === id) {
+            await player.play();
+            if (startAt > 0) await player.seek(Math.floor(startAt * 1000));
+            return;
+          }
+
+          await player.stop();
+
+          let lastError = null;
+          for (const url of media.urls) {
+            try {
+              await playUrl(id, url, mediaType, media, startAt);
+              trackFailures.delete(id);
+              return;
+            } catch (err) {
+              lastError = err;
+              console.warn(`[music] Could not play ${url}, trying the next one.`, err);
+            }
+          }
+
+          currentId = null;
+          throw lastError ?? new Error(`No playable file for ${id}.`);
+        })
+          .then(() => resolve())
+          .catch(reject);
+      }, 'music');
+    }),
+
+  /**
+   * Jumps to a position of the current track.
+   *
+   * @param {number} seconds - Position, in seconds.
+   * @returns {Promise<void>}
+   */
+  seek: (seconds) => {
+    const position = Number(seconds);
+    if (!Number.isFinite(position) || position < 0) return Promise.resolve();
+
+    return enqueue(() => player.seek(Math.floor(position * 1000))).catch((err) =>
+      console.error(err),
+    );
+  },
+
+  /**
+   * Current position of the audio engine.
+   *
+   * @returns {number} Position, in seconds, or `0` when nothing is loaded.
+   */
+  getCurrentTime: () => {
+    try {
+      const time = player.getCurrentTime();
+      return Number.isFinite(time) && time > 0 ? time / 1000 : 0;
+    } catch {
+      return 0;
+    }
+  },
+
+  /**
+   * Duration of the track that is loaded, in seconds.
+   *
+   * @returns {number} Duration in seconds, or `0` while it is unknown.
+   */
+  getDuration: () => {
+    try {
+      const duration = player.getTotalDuration();
+      return Number.isFinite(duration) && duration > 0 ? duration / 1000 : 0;
+    } catch {
+      return 0;
+    }
+  },
+
+  /**
+   * Tells whether a track is loaded in the audio engine.
+   *
+   * @returns {boolean}
+   */
+  isLoaded: () => currentId !== null,
 
   /** @param {number} value - Volume between 0 and 100. */
   setVolume: (value) => {

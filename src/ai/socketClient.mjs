@@ -928,6 +928,22 @@ class TinyClientIo extends EventEmitter {
   }
 
   /**
+   * Music player of the room changed.
+   *
+   * @param {SocketListener} callback
+   */
+  onPlayerUpdated(callback) {
+    this.#socketOn('player-updated', callback);
+  }
+
+  /**
+   * @param {SocketListener} callback
+   */
+  offPlayerUpdated(callback) {
+    this.#socketOff('player-updated', callback);
+  }
+
+  /**
    * On room data
    * @param {SocketListener} callback
    */
@@ -1360,6 +1376,86 @@ class TinyClientIo extends EventEmitter {
     return this.#socketEmitApi('update-room', {
       roomId: this.#cfg.roomId,
       newSettings: settings,
+    });
+  }
+
+  /**
+   * Lists the playlists available on a room.
+   *
+   * @param {Object} [options] - Filters.
+   * @param {string} [options.roomId] - Room id, defaults to the current one.
+   * @param {'all'|'room'|null} [options.filter] - Only the playlists of a scope.
+   * @returns {Promise<SocketAck>}
+   */
+  listPlaylists({ roomId = this.#cfg.roomId, filter = null } = {}) {
+    return this.#socketEmitApi('list-playlists', { roomId, filter });
+  }
+
+  /**
+   * Creates or updates a playlist of the room owner.
+   *
+   * @param {Object} data - Playlist data.
+   * @param {string|null} [data.playlistId] - Playlist to update, if any.
+   * @param {string} data.name - Playlist name.
+   * @param {Array<object>} data.tracks - Tracks of the playlist.
+   * @param {'all'|'rooms'} [data.scope] - Where the playlist is available.
+   * @param {string[]} [data.rooms] - Rooms of a `rooms` playlist.
+   * @returns {Promise<SocketAck>}
+   */
+  savePlaylist({ playlistId = null, name = '', tracks = [], scope = 'all', rooms = [] } = {}) {
+    return this.#socketEmitApi('save-playlist', {
+      playlistId,
+      name,
+      tracks,
+      scope,
+      rooms,
+    });
+  }
+
+  /**
+   * Deletes a playlist of the room owner.
+   *
+   * @param {string} playlistId - Playlist id.
+   * @returns {Promise<SocketAck>}
+   */
+  deletePlaylist(playlistId) {
+    return this.#socketEmitApi('delete-playlist', { playlistId });
+  }
+
+  /**
+   * Reads the music player of a room.
+   *
+   * @param {string} [roomId] - Room id, defaults to the current one.
+   * @returns {Promise<SocketAck>}
+   */
+  getPlayer(roomId = this.#cfg.roomId) {
+    return this.#socketEmitApi('get-player', { roomId });
+  }
+
+  /**
+   * Applies an interaction to the music player of a room.
+   *
+   * @param {Object} data - Interaction.
+   * @param {'play'|'pause'|'seek'|'track'|'volume'|'playlist'} data.action - Interaction.
+   * @param {string} [data.playlistId] - Playlist of a `playlist` action.
+   * @param {number} [data.trackIndex] - Track of a `track` action.
+   * @param {number} [data.position] - Position, in seconds.
+   * @param {number} [data.volume] - Volume between 0 and 1.
+   * @param {number} [data.expectedRevision] - Only apply when the room did not move.
+   * @param {string} [data.roomId] - Room id, defaults to the current one.
+   * @returns {Promise<SocketAck>}
+   */
+  setPlayer(data) {
+    return this.#socketEmitApi('set-player', {
+      roomId: data.roomId ?? this.#cfg.roomId,
+      action: data.action,
+      playlistId: data.playlistId,
+      trackIndex: data.trackIndex,
+      position: data.position,
+      duration: data.duration,
+      volume: data.volume,
+      loop: data.loop,
+      expectedRevision: data.expectedRevision,
     });
   }
 
@@ -1878,6 +1974,14 @@ class TinyClientIo extends EventEmitter {
         const data = this.setRoomData(result);
         if (data) this.emit('roomDataUpdates', data);
         console.log('[socket-io] [room-json-data]', data);
+      }
+    });
+
+    // Music player of the room
+    this.onPlayerUpdated((result) => {
+      if (this.checkRoomId(result) && isJsonObject(result.player)) {
+        this.emit('playerUpdated', result.player, result.serverTime);
+        console.log('[socket-io] [room-player]', result.player);
       }
     });
 
