@@ -8,7 +8,7 @@ import TinyPromiseQueue from 'tiny-essentials/libs/utils/TinyPromiseQueue';
 
 import storyCfg from '../../chapters/config.mjs';
 import audioUnlock from '../audioUnlock.mjs';
-import { AUDIO_FILE_TYPE, loadAudioFile } from './audioFile.mjs';
+import { AUDIO_FILE_TYPE, loadTrackMetadata } from './audioFile.mjs';
 
 /**
  * Soundtrack engine of the reader.
@@ -215,27 +215,20 @@ const ensurePlayer = async (withYoutube) => {
  * instead of being forwarded to the player, so a typo in a chapter file can
  * never turn into a request to an arbitrary host.
  *
- * A song folder may declare more than one file (a `file` array in the
- * `data.json`), so the caller receives every candidate in the order it should
- * be tried.
+ * The metadata of both providers is cached by the same module, so a local song
+ * and a YouTube video are described by the same object.
  *
  * @param {MusicTrack} track - Track to resolve.
- * @returns {Promise<{ urls: string[], mediaType: 'audio' | 'video' }|null>} The media to load.
+ * @returns {Promise<{ media: import('./audioFile.mjs').TrackMetadata, mediaType: 'audio' | 'video' }|null>} The media to load.
  */
 const resolveTrackMedia = async (track) => {
-  if (track.type === 'youtube') {
-    return { urls: [`https://www.youtube.com/watch?v=${track.id}`], mediaType: 'video' };
+  if (track.type !== 'youtube' && track.type !== AUDIO_FILE_TYPE) {
+    console.warn(`[music] Unsupported track type: ${track.type}`);
+    return null;
   }
 
-  if (track.type === AUDIO_FILE_TYPE) {
-    // The file name is not part of the story: it lives in the `data.json` of
-    // the song folder, together with the rest of its metadata.
-    const { urls } = await loadAudioFile(track.id);
-    return { urls, mediaType: 'audio' };
-  }
-
-  console.warn(`[music] Unsupported track type: ${track.type}`);
-  return null;
+  const media = await loadTrackMetadata(track);
+  return { media, mediaType: track.type === 'youtube' ? 'video' : 'audio' };
 };
 
 /**
@@ -244,16 +237,17 @@ const resolveTrackMedia = async (track) => {
  * @param {string} id - Story id of the track.
  * @param {string} url - URL to play.
  * @param {'audio' | 'video'} mediaType - Kind of media behind the URL.
+ * @param {{ title?: string, artist?: string }} [metadata] - Track metadata.
  * @returns {Promise<void>}
  */
-const playUrl = async (id, url, mediaType) => {
+const playUrl = async (id, url, mediaType, metadata = {}) => {
   currentId = id;
   currentType = mediaType === 'video' ? 'youtube' : 'audio-file';
   player.playlist = [
     {
       id,
-      title: '',
-      artist: '',
+      title: metadata.title ?? '',
+      artist: metadata.artist ?? '',
       duration: 0,
       // `HtmlAudioAdapter.canHandle()` accepts every `http(s)` URL whose
       // `mediaType` is `audio` (or undefined). A YouTube track must never be
@@ -283,8 +277,10 @@ const playTrack = (track) => {
     const id = `${track.type}:${track.id}`;
 
     enqueue(async () => {
-      const media = await resolveTrackMedia(track);
-      if (!media || media.urls.length === 0) return;
+      const resolved = await resolveTrackMedia(track);
+      if (!resolved || resolved.media.urls.length === 0) return;
+
+      const { media, mediaType } = resolved;
 
       await ensurePlayer(track.type === 'youtube');
       if (currentId === id) {
@@ -303,7 +299,7 @@ const playTrack = (track) => {
       let lastError = null;
       for (const url of media.urls) {
         try {
-          await playUrl(id, url, media.mediaType);
+          await playUrl(id, url, mediaType, media);
           // The track played, so the next failure starts counting again.
           trackFailures.delete(id);
           return;

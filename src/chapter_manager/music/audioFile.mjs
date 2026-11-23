@@ -20,6 +20,8 @@
  * @module chapter_manager/music/audioFile
  */
 
+import { fetchYouTubeOEmbed } from 'tiny-essentials/basics/media/youtube';
+
 /** Track type of a file shipped with the website. */
 export const AUDIO_FILE_TYPE = 'audio-file';
 
@@ -52,12 +54,55 @@ const SEGMENT_PATTERN = /^[A-Za-z0-9][A-Za-z0-9 ._()'’&+-]*$/;
 const EXTENSION_PATTERN = /\.[a-z0-9]{2,5}$/i;
 
 /**
- * Cache of the resolved folders, so scrolling back and forth does not hit the
+ * Everything the player needs to know about a track, no matter where it comes
+ * from.
+ *
+ * @typedef {Object} TrackMetadata
+ * @property {string} key - Cache key (`<type>:<id>`).
+ * @property {'audio-file'|'youtube'} type - Provider of the track.
+ * @property {string} id - Track id inside the provider.
+ * @property {string} title - Display title.
+ * @property {string} artist - Display artist.
+ * @property {string} [thumbnail] - Cover image URL.
+ * @property {string[]} urls - Playable URLs, in the order they should be tried.
+ */
+
+/**
+ * Cache of the track metadata, so scrolling back and forth does not hit the
  * network again.
  *
- * @type {Map<string, Promise<{ id: string, dataUrl: string, urls: string[] }>>}
+ * Both providers share it: a local song is described by the `data.json` of its
+ * folder and a YouTube video by its oEmbed payload, but the player only ever
+ * sees a {@link TrackMetadata}.
+ *
+ * @type {Map<string, Promise<TrackMetadata>>}
  */
 const cache = new Map();
+
+/**
+ * Builds the cache key of a track.
+ *
+ * @param {string} type - Provider of the track.
+ * @param {string} id - Track id inside the provider.
+ * @returns {string} The cache key.
+ */
+export const getTrackKey = (type, id) => `${type}:${id}`;
+
+/**
+ * Stores a pending metadata load, dropping it again when it fails.
+ *
+ * A failed load must not be cached, otherwise a single network hiccup would
+ * silence the track until the visitor reloads the page.
+ *
+ * @param {string} key - Cache key of the track.
+ * @param {Promise<TrackMetadata>} task - Pending metadata.
+ * @returns {Promise<TrackMetadata>} The same promise, for chaining.
+ */
+const remember = (key, task) => {
+  cache.set(key, task);
+  task.catch(() => cache.delete(key));
+  return task;
+};
 
 /**
  * Checks whether a value is a track of the `audio-file` provider.
@@ -223,39 +268,101 @@ const toAbsoluteUrl = (path, baseUrl) => {
  *
  * @param {unknown} id - Music folder id.
  * @param {typeof fetch} [fetchImpl] - Fetch implementation, for the tests.
- * @returns {Promise<{ id: string, dataUrl: string, urls: string[] }>} The folder.
+ * @returns {Promise<TrackMetadata>} The track metadata.
  */
 export const loadAudioFile = (id, fetchImpl = globalThis.fetch) => {
   const dataUrl = getMusicDataUrl(id);
   if (!dataUrl) return Promise.reject(new TypeError(`Invalid music folder: ${String(id)}`));
 
-  const key = /** @type {string} */ (id).trim();
+  const folder = /** @type {string} */ (id).trim();
+  const key = getTrackKey(AUDIO_FILE_TYPE, folder);
   const cached = cache.get(key);
   if (cached) return cached;
 
-  const task = (async () => {
-    if (typeof fetchImpl !== 'function') throw new TypeError('fetch is not available.');
+  return remember(
+    key,
+    (async () => {
+      if (typeof fetchImpl !== 'function') throw new TypeError('fetch is not available.');
 
-    const response = await fetchImpl(dataUrl, { cache: 'no-cache' });
-    if (!response.ok) {
-      throw new Error(`Could not load ${dataUrl} (${response.status}).`);
-    }
+      const response = await fetchImpl(dataUrl, { cache: 'no-cache' });
+      if (!response.ok) {
+        throw new Error(`Could not load ${dataUrl} (${response.status}).`);
+      }
 
-    const urls = buildAudioFileUrls(key, await response.json());
-    if (urls.length === 0) {
-      throw new Error(`No audio file declared in ${dataUrl}.`);
-    }
+      const data = await response.json();
+      const urls = buildAudioFileUrls(folder, data);
+      if (urls.length === 0) {
+        throw new Error(`No audio file declared in ${dataUrl}.`);
+      }
 
-    return { id: key, dataUrl, urls };
-  })();
+      // The metadata of a local song is the `data.json` of its folder. The
+      // first file name is the best title available, and the folder name is
+      // the only artist information the repository keeps.
+      const { files } = parseMusicMetadata(data);
 
-  // A failed load must not be cached, otherwise a single network hiccup would
-  // silence the folder until the visitor reloads the page.
-  task.catch(() => cache.delete(key));
-  cache.set(key, task);
-
-  return task;
+      return {
+        key,
+        type: AUDIO_FILE_TYPE,
+        id: folder,
+        title: files[0],
+        artist: folder.split('/')[0],
+        urls,
+      };
+    })(),
+  );
 };
 
-/** Forgets every cached folder. */
+/**
+ * Loads the metadata of a YouTube video.
+ *
+ * The oEmbed endpoint is the only public API that returns the title and the
+ * channel of a video without an API key, so it is the one used to fill the
+ * same cache the local songs use.
+ *
+ * @param {string} id - YouTube video id.
+ * @param {typeof fetch} [fetchImpl] - Fetch implementation, for the tests.
+ * @returns {Promise<TrackMetadata>} The track metadata.
+ */
+export const loadYoutubeFile = (id, fetchImpl = globalThis.fetch) => {
+  const videoId = String(id).trim();
+  if (videoId.length === 0) {
+    return Promise.reject(new TypeError('A YouTube video id is required.'));
+  }
+
+  const key = getTrackKey('youtube', videoId);
+  const cached = cache.get(key);
+  if (cached) return cached;
+
+  return remember(
+    key,
+    (async () => {
+      const data = await fetchYouTubeOEmbed(videoId, { fetchImpl });
+
+      return {
+        key,
+        type: /** @type {const} */ ('youtube'),
+        id: videoId,
+        title: data.title,
+        artist: data.author_name,
+        thumbnail: data.thumbnail_url,
+        urls: [`https://www.youtube.com/watch?v=${videoId}`],
+      };
+    })(),
+  );
+};
+
+/**
+ * Loads the metadata of a track, whichever provider it belongs to.
+ *
+ * @param {{ type: string, id: string }} track - Track to load.
+ * @param {typeof fetch} [fetchImpl] - Fetch implementation, for the tests.
+ * @returns {Promise<TrackMetadata>} The track metadata.
+ */
+export const loadTrackMetadata = (track, fetchImpl) => {
+  if (track.type === 'youtube') return loadYoutubeFile(track.id, fetchImpl);
+  if (track.type === AUDIO_FILE_TYPE) return loadAudioFile(track.id, fetchImpl);
+  return Promise.reject(new TypeError(`Unsupported track type: ${track.type}`));
+};
+
+/** Forgets every cached track. */
 export const clearAudioFileCache = () => cache.clear();
