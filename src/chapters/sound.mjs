@@ -246,7 +246,6 @@ storyCfg.playlist = {
 
   'bad-think': [
     { id: 'ai/music/ambient/driland-mysteries', file: 0, type: 'audio-file' },
-    { id: 'ai/music/ambient/driland-mysteries', file: 1, type: 'audio-file' },
     { id: 'ai/music/ambient/driland-dramas', type: 'audio-file' },
     { id: 'ai/music/ambient/lingering-shadows', type: 'audio-file' },
     { id: '0ZD3SfS9x8E', type: 'youtube' },
