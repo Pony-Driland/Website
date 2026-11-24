@@ -1418,10 +1418,11 @@ class TinyClientIo extends EventEmitter {
    * @param {Object} [options] - Filters.
    * @param {string|null} [options.roomId] - Room id, defaults to the current one.
    * @param {'all'|'room'|null} [options.filter] - Only the playlists of a scope.
+   * @param {string|null} [options.search] - The search input.
    * @returns {Promise<SocketAck>}
    */
-  listPlaylists({ roomId = this.#cfg.roomId, filter = null } = {}) {
-    return this.#socketEmitApi('list-playlists', { roomId, filter });
+  listPlaylists({ roomId = this.#cfg.roomId, filter = null, search = null } = {}) {
+    return this.#socketEmitApi('list-playlists', { roomId, filter, search });
   }
 
   /**

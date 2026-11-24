@@ -563,6 +563,8 @@ export const openRoomPlayer = () => {
 
   /** @type {PlaylistFilter} */
   let filter = 'all';
+  /** @type {string} */
+  let search = '';
   /** @type {Array<Record<string, any>>} */
   let playlists = [];
   let loading = true;
@@ -1039,7 +1041,11 @@ export const openRoomPlayer = () => {
 
     if (playlists.length < 1) {
       $list.append(
-        TinyHtml.createFrom('div').addClass('text-muted').setText('No playlists found.'),
+        TinyHtml.createFrom('div')
+          .addClass('text-muted')
+          .setText(
+            search.trim().length ? 'No playlist matches your search.' : 'No playlists found.',
+          ),
       );
       return;
     }
@@ -1144,7 +1150,7 @@ export const openRoomPlayer = () => {
     clearError();
     render();
 
-    const result = await client.listPlaylists({ roomId, filter });
+    const result = await client.listPlaylists({ roomId, filter, search: search.trim() || null });
     loading = false;
 
     if (result.error) showError(result.msg ?? 'Unknown error');
@@ -1174,7 +1180,26 @@ export const openRoomPlayer = () => {
     });
   });
 
-  const $toolbar = TinyHtml.createFrom('div').addClass('d-flex gap-2').append($filter);
+  // The term is resolved by the database, so a keystroke does not become a
+  // request: the field waits for a pause before asking again.
+  /** @type {ReturnType<typeof setTimeout>|null} */
+  let searchTimer = null;
+
+  const $search = TinyHtml.createFrom('input')
+    .addClass('form-control')
+    .setAttr({ type: 'search', placeholder: 'Search by name', 'aria-label': 'Search by name' });
+
+  $search.on('input', () => {
+    search = String($search.val() ?? '');
+
+    if (searchTimer) clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      searchTimer = null;
+      load();
+    }, 300);
+  });
+
+  const $toolbar = TinyHtml.createFrom('div').addClass('d-flex gap-2').append($filter, $search);
 
   // A listener cannot create a playlist, so the button is not even rendered.
   if (canEdit) $toolbar.append($new);
