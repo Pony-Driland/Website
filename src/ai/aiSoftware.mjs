@@ -46,7 +46,7 @@ import {
 import { userButtonActions } from './buttons/users.mjs';
 import { roomSettingsMenu } from './buttons/roomSettings.mjs';
 import { openRoomPlayer } from './buttons/roomPlayer.mjs';
-import { applyState, setServerTime } from './roomPlayer.mjs';
+import { applyState, getState, invalidatePlaylist, setServerTime } from './roomPlayer.mjs';
 import { openClassicMap } from './buttons/map.mjs';
 import { openDiceSpecialModal, openTinyDices } from './buttons/dice.mjs';
 import { openDonatePage } from './buttons/donate.mjs';
@@ -4251,6 +4251,22 @@ export const AiScriptStart = async () => {
         client.on('playerUpdated', (player, serverTime) => {
           setServerTime(serverTime);
           applyState(player);
+        });
+
+        // The DJ saved a new version of a playlist. The tracks are what turn a
+        // `trackIndex` into something playable, so every listener has to drop
+        // the cached copy and load the new one.
+        client.on('playlistUpdated', () => {
+          const current = getState();
+          if (!current?.playlistId) return;
+
+          invalidatePlaylist(current.playlistId);
+          applyState(current);
+        });
+
+        // A playlist was deleted: the room player cannot resolve it anymore.
+        client.on('playlistDeleted', (playlistId) => {
+          invalidatePlaylist(playlistId);
         });
 
         // Enter room

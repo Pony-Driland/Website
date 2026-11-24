@@ -6,6 +6,7 @@ import {
   formatTime,
   getLivePosition,
   getState,
+  isPlaylistEmpty,
   onPlayerChange,
   sendPlayerAction,
 } from '../roomPlayer.mjs';
@@ -211,59 +212,105 @@ export const openRoomPlayer = () => {
   const $list = TinyHtml.createFrom('div').addClass('mt-3');
   const $nowPlaying = TinyHtml.createFrom('div').addClass('mb-3');
 
+  /** @type {ReturnType<typeof setInterval>|null} */
+  let ticker = null;
+
+  /** @type {TinyHtmlAny|null} */
+  let $time = null;
+
   const showError = (/** @type {string} */ msg) => $error.removeClass('d-none').setText(msg);
   const clearError = () => $error.addClass('d-none');
+
+  /**
+   * Updates only the clock of the now playing bar.
+   *
+   * Rebuilding the bar on every tick would steal the focus of the buttons (and
+   * cancel a click that is still being dispatched), so the ticker touches the
+   * text node and nothing else.
+   *
+   * @returns {void}
+   */
+  const renderTime = () => {
+    if (!$time) return;
+
+    const state = getState();
+    if (!state) {
+      $time.setText('');
+      return;
+    }
+
+    const live = formatTime(getLivePosition(state));
+    const total = Number(state.duration) > 0 ? ` / ${formatTime(state.duration)}` : '';
+    $time.setText(`${live}${total}`);
+  };
+
+  /** Starts the clock of the now playing bar. */
+  const startTicker = () => {
+    if (ticker) return;
+    ticker = setInterval(renderTime, 500);
+  };
+
+  /** Stops the clock of the now playing bar. */
+  const stopTicker = () => {
+    if (!ticker) return;
+    clearInterval(ticker);
+    ticker = null;
+  };
 
   /** Read-only summary of what the room is playing right now. */
   const renderNowPlaying = () => {
     $nowPlaying.empty();
+    $time = null;
 
     const state = getState();
-    if (!state?.playlistId) return;
+    if (!state?.playlistId) {
+      stopTicker();
+      return;
+    }
 
     const playlist = playlists.find((item) => item.playlistId === state.playlistId);
     const track = playlist?.tracks?.[state.trackIndex];
 
+    // An empty playlist has nothing to play, so the clock is meaningless: the
+    // room says why it is silent instead of freezing on 0:00.
+    if (isPlaylistEmpty()) {
+      stopTicker();
+
+      $nowPlaying.append(
+        TinyHtml.createFrom('div')
+          .addClass('alert alert-warning mb-0 d-flex align-items-center gap-2')
+          .append(
+            TinyHtml.createFrom('i').addClass('fas fa-triangle-exclamation'),
+            TinyHtml.createFrom('span')
+              .addClass('flex-grow-1')
+              .setText('This playlist has no tracks yet.'),
+          ),
+      );
+
+      return;
+    }
+
     const $toggle = tinyLib.bs
       .button(state.playing ? 'warning' : 'success')
       .addClass('btn-sm')
-      .setAttr('title', state.playing ? 'Pause' : 'Play')
+      .setAttr({ 'data-player-action': 'toggle', title: state.playing ? 'Pause' : 'Play' })
       .append(TinyHtml.createFrom('i').addClass(state.playing ? 'fas fa-pause' : 'fas fa-play'));
-
-    $toggle.on('click', async () => {
-      // The position is sent along, so the room pauses exactly where it is
-      // instead of rewinding to the last interaction.
-      await sendPlayerAction({
-        action: state.playing ? 'pause' : 'play',
-        position: getLivePosition(state),
-      });
-
-      renderNowPlaying();
-    });
 
     const $next = tinyLib.bs
       .button('outline-secondary')
       .addClass('btn-sm')
-      .setAttr('title', 'Next track')
+      .setAttr({ 'data-player-action': 'next', title: 'Next track' })
       .append(TinyHtml.createFrom('i').addClass('fas fa-forward'));
-
-    $next.on('click', async () => {
-      await sendPlayerAction({ action: 'track', trackIndex: state.trackIndex + 1 });
-      renderNowPlaying();
-    });
 
     // The room owner decides whether the playlist restarts or stops when the
     // last track ends.
     const $loop = tinyLib.bs
       .button(state.loop ? 'info' : 'outline-secondary')
       .addClass('btn-sm')
-      .setAttr('title', state.loop ? 'Repeat: on' : 'Repeat: off')
+      .setAttr({ 'data-player-action': 'loop', title: state.loop ? 'Repeat: on' : 'Repeat: off' })
       .append(TinyHtml.createFrom('i').addClass('fas fa-repeat'));
 
-    $loop.on('click', async () => {
-      await sendPlayerAction({ action: 'loop', loop: !state.loop });
-      renderNowPlaying();
-    });
+    $time = TinyHtml.createFrom('span').addClass('font-monospace small');
 
     $nowPlaying.append(
       TinyHtml.createFrom('div')
@@ -272,15 +319,62 @@ export const openRoomPlayer = () => {
           TinyHtml.createFrom('i').addClass(state.playing ? 'fas fa-volume-high' : 'fas fa-pause'),
           TinyHtml.createFrom('div')
             .addClass('flex-grow-1 text-truncate')
-            .setText(
-              `${playlist?.name ?? state.playlistId} - ${track?.title || track?.id || ''} (${formatTime(getLivePosition(state))})`,
+            .append(
+              TinyHtml.createFrom('div')
+                .addClass('text-truncate')
+                .setText(
+                  `${playlist?.name ?? state.playlistId} - ${track?.title || track?.id || ''}`,
+                ),
+              $time,
             ),
           $toggle,
           $next,
           $loop,
         ),
     );
+
+    renderTime();
+    if (state.playing) startTicker();
+    else stopTicker();
   };
+
+  /**
+   * Handles the transport buttons of the now playing bar.
+   *
+   * The bar is rebuilt on every `player-updated`, so a listener bound to the
+   * button itself is destroyed before the click is dispatched. Listening on
+   * the container that outlives the render keeps the buttons working.
+   */
+  $nowPlaying.on('click', async (event) => {
+    const target = event.target;
+    const button = target?.closest ? target.closest('[data-player-action]') : null;
+    if (!button) return;
+
+    const action = button.getAttribute('data-player-action');
+    const current = getState();
+    if (!current) return;
+
+    // The button is disabled while the room acknowledges the interaction, so a
+    // double click cannot toggle twice.
+    if (button.disabled) return;
+    button.disabled = true;
+
+    try {
+      if (action === 'toggle') {
+        await sendPlayerAction({
+          action: current.playing ? 'pause' : 'play',
+          position: getLivePosition(current),
+        });
+      } else if (action === 'next') {
+        await sendPlayerAction({ action: 'track', trackIndex: current.trackIndex + 1 });
+      } else if (action === 'loop') {
+        await sendPlayerAction({ action: 'loop', loop: !current.loop });
+      }
+    } finally {
+      button.disabled = false;
+      renderNowPlaying();
+    }
+  });
 
   const render = () => {
     $list.empty();
@@ -313,7 +407,9 @@ export const openRoomPlayer = () => {
           playlistId: playlist.playlistId,
         });
 
-        if (result) render();
+        if (!result) return;
+        renderNowPlaying();
+        render();
       });
 
       const $actions = TinyHtml.createFrom('div').addClass('d-flex gap-1').append($play);
@@ -425,8 +521,16 @@ export const openRoomPlayer = () => {
 
   load();
 
-  // The modal is rebuilt on every open, so the listener must not outlive it.
-  document.addEventListener('hidden.bs.modal', () => unsubscribe(), { once: true });
+  // The modal is rebuilt on every open, so neither the listener nor the clock
+  // may outlive it.
+  document.addEventListener(
+    'hidden.bs.modal',
+    () => {
+      unsubscribe();
+      stopTicker();
+    },
+    { once: true },
+  );
 };
 
 export default openRoomPlayer;

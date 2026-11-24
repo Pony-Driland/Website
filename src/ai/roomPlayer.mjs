@@ -178,6 +178,16 @@ export const getLivePosition = (player = state) => {
 export const isPlaying = () => Boolean(state?.playing);
 
 /**
+ * Tells whether the loaded playlist has no track at all.
+ *
+ * An empty playlist is not an error: the DJ simply did not add anything yet,
+ * and the room has to say so instead of showing a frozen clock.
+ *
+ * @returns {boolean}
+ */
+export const isPlaylistEmpty = () => Boolean(state?.playlistId) && tracks.length < 1;
+
+/**
  * Current state of the room player.
  *
  * @returns {RoomPlayerState|null}
@@ -571,6 +581,26 @@ export const setTracks = (list) => {
 };
 
 /**
+ * Forgets a cached playlist, so the next sync fetches it again.
+ *
+ * Called when the DJ saves a new version of a playlist: the tracks are what
+turn a `trackIndex` into something playable, so a stale copy keeps playing
+the old song forever.
+ *
+ * @param {string} playlistId - Playlist that changed.
+ * @returns {void}
+ */
+export const invalidatePlaylist = (playlistId) => {
+  if (typeof playlistId !== 'string') return;
+
+  playlistCache.delete(playlistId);
+  if (tracksPlaylistId !== playlistId) return;
+
+  tracksPlaylistId = null;
+  tracks = [];
+};
+
+/**
  * Stops the local audio and forgets the room state.
  *
  * Called when the user leaves the room, so the music does not keep playing on
@@ -585,7 +615,8 @@ export const resetRoomPlayer = async () => {
 };
 
 /**
- * Formats a duration in seconds as `m:ss`.
+ * Formats a duration in seconds as `m:ss`, or `h:mm:ss` when it is long
+ * enough to need it.
  *
  * @param {number} seconds - Duration in seconds.
  * @returns {string}
@@ -593,7 +624,11 @@ export const resetRoomPlayer = async () => {
 export const formatTime = (seconds) => {
   const total = Math.max(0, Math.floor(Number(seconds) || 0));
   const minutes = Math.floor(total / 60);
-  return `${minutes}:${String(total % 60).padStart(2, '0')}`;
+  const rest = String(total % 60).padStart(2, '0');
+
+  if (minutes < 60) return `${minutes}:${rest}`;
+
+  return `${Math.floor(minutes / 60)}:${String(minutes % 60).padStart(2, '0')}:${rest}`;
 };
 
 /**

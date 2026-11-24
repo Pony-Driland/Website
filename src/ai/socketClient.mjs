@@ -944,6 +944,38 @@ class TinyClientIo extends EventEmitter {
   }
 
   /**
+   * A playlist of the room was saved.
+   *
+   * @param {SocketListener} callback
+   */
+  onPlaylistUpdated(callback) {
+    this.#socketOn('playlist-updated', callback);
+  }
+
+  /**
+   * @param {SocketListener} callback
+   */
+  offPlaylistUpdated(callback) {
+    this.#socketOff('playlist-updated', callback);
+  }
+
+  /**
+   * A playlist of the room was deleted.
+   *
+   * @param {SocketListener} callback
+   */
+  onPlaylistDeleted(callback) {
+    this.#socketOn('playlist-deleted', callback);
+  }
+
+  /**
+   * @param {SocketListener} callback
+   */
+  offPlaylistDeleted(callback) {
+    this.#socketOff('playlist-deleted', callback);
+  }
+
+  /**
    * On room data
    * @param {SocketListener} callback
    */
@@ -1982,6 +2014,22 @@ class TinyClientIo extends EventEmitter {
       if (this.checkRoomId(result) && isJsonObject(result.player)) {
         this.emit('playerUpdated', result.player, result.serverTime);
         console.log('[socket-io] [room-player]', result.player);
+      }
+    });
+
+    // A playlist of the room was saved
+    this.onPlaylistUpdated((result) => {
+      if (this.checkRoomId(result) && isJsonObject(result.playlist)) {
+        this.emit('playlistUpdated', result.playlist);
+        console.log('[socket-io] [room-playlist]', result.playlist);
+      }
+    });
+
+    // A playlist of the room was deleted
+    this.onPlaylistDeleted((result) => {
+      if (this.checkRoomId(result) && typeof result.playlistId === 'string') {
+        this.emit('playlistDeleted', result.playlistId);
+        console.log('[socket-io] [room-playlist-deleted]', result.playlistId);
       }
     });
 
