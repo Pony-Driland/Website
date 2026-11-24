@@ -967,12 +967,22 @@ export const previousTrack = async (threshold = 3) => {
     return;
   }
 
-  if (state.trackIndex < 1) {
-    await seekTo(0);
+  // The first track wraps around to the end of the playlist, like every other
+  // player does. Only a playlist with a single track restarts instead.
+  const total = tracks.length;
+  const previous = state.trackIndex - 1;
+
+  if (previous < 0) {
+    if (total < 2) {
+      await seekTo(0);
+      return;
+    }
+
+    await sendPlayerAction({ action: 'track', trackIndex: total - 1 });
     return;
   }
 
-  await sendPlayerAction({ action: 'track', trackIndex: state.trackIndex - 1 });
+  await sendPlayerAction({ action: 'track', trackIndex: previous });
 };
 
 /**
