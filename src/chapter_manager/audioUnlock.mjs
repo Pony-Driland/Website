@@ -7,19 +7,34 @@
  * This module holds those requests until the first user gesture and then runs
  * them in order.
  *
+ * The unlock is permanent and global: the very first interaction of the visitor
+ * with the page (a click on the menu, a key press, a tap on the chapter, ...)
+ * is enough to unlock the audio for the whole session. The listeners are
+ * registered as soon as this module is imported, so an interaction that happens
+ * before the first sound is requested is not lost.
+ *
  * @module chapter_manager/audioUnlock
  */
 
 import { console } from '../dev.mjs';
 
 /** Events that count as a user gesture. */
-const gestureEvents = ['pointerdown', 'mousedown', 'touchstart', 'keydown', 'click'];
+const gestureEvents = [
+  'pointerdown',
+  'pointerup',
+  'mousedown',
+  'touchstart',
+  'touchend',
+  'keydown',
+  'click',
+];
 
 /**
  * Whether the document already received a user gesture.
  *
  * `navigator.userActivation` is the only reliable way to know if the page was
- * already activated (a back/forward navigation, for example), but it is not
+ * already activated (a back/forward navigation, a reload or a gesture that
+ * happened before this module was imported, for example), but it is not
  * available on every browser.
  *
  * @returns {boolean}
@@ -50,7 +65,7 @@ const stopListening = () => {
   listening = false;
 
   for (const event of gestureEvents) {
-    window.removeEventListener(event, onGesture, true);
+    window.removeEventListener(event, onGesture, { capture: true });
   }
 };
 
@@ -68,22 +83,32 @@ const flush = () => {
   }
 };
 
-/** Unlocks the audio and runs everything that was waiting for it. */
-const onGesture = () => {
-  if (unlocked) return;
+/**
+ * Marks the audio as unlocked and stops listening to the gestures.
+ *
+ * @returns {boolean} `true` when the state changed with this call.
+ */
+const markUnlocked = () => {
+  if (unlocked) return false;
 
   unlocked = true;
   stopListening();
+  return true;
+};
+
+/** Unlocks the audio and runs everything that was waiting for it. */
+const onGesture = () => {
+  if (!markUnlocked()) return;
   flush();
 };
 
 /** Starts listening to the first user gesture. */
 const startListening = () => {
-  if (listening || typeof window === 'undefined') return;
+  if (listening || unlocked || typeof window === 'undefined') return;
   listening = true;
 
   for (const event of gestureEvents) {
-    window.addEventListener(event, onGesture, true);
+    window.addEventListener(event, onGesture, { capture: true, passive: true });
   }
 };
 
@@ -107,6 +132,11 @@ const audioUnlock = {
   whenReady: (callback, key) => {
     if (typeof callback !== 'function') return;
 
+    // The visitor may have interacted with the page before this request (or
+    // before this module was even imported). The activation is sticky, so a
+    // single interaction is enough for the whole session.
+    if (!unlocked && hasUserActivation() && markUnlocked()) flush();
+
     if (unlocked) {
       callback();
       return;
@@ -129,5 +159,9 @@ const audioUnlock = {
   /** Marks the audio as unlocked, running every pending playback. */
   unlock: () => onGesture(),
 };
+
+// The first interaction of the visitor has to be caught even when no sound was
+// requested yet, otherwise the request would wait for a second interaction.
+startListening();
 
 export default audioUnlock;
