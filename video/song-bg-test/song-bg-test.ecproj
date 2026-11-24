@@ -1,11 +1,11 @@
 {
-  "savedBy": "0.17.0",
+  "savedBy": "0.25.1",
   "activeComp": 1,
   "openComps": [
     1
   ],
   "compTimes": {
-    "1": 1813792780800
+    "1": 389880691200
   },
   "schema": 2,
   "settings": {
@@ -38,7 +38,7 @@
           "num": 30000,
           "den": 1001
         },
-        "duration": 2542700160000,
+        "duration": 48768989068800,
         "display_start": 0,
         "background": [
           0.0,
@@ -47,7 +47,7 @@
         ],
         "work_area": [
           0,
-          2542700160000
+          48768989068800
         ],
         "layers": [
           {
@@ -60,7 +60,7 @@
             "comment": "",
             "start_time": 0,
             "in_point": 0,
-            "out_point": 2542700160000,
+            "out_point": 48768989068800,
             "stretch": 100.0,
             "switches": {
               "video": true,
@@ -131,6 +131,7 @@
                           "apply_fill": true,
                           "apply_stroke": true,
                           "stroke_over_fill": true,
+                          "line_join": "Round",
                           "tracking": 0.0,
                           "leading": null,
                           "justify": "Center",
@@ -878,13 +879,13 @@
             "comment": "",
             "start_time": 0,
             "in_point": 0,
-            "out_point": 2542700160000,
+            "out_point": 48768989068800,
             "stretch": 100.0,
             "switches": {
               "video": true,
               "audio": true,
               "solo": false,
-              "locked": true,
+              "locked": false,
               "shy": false,
               "collapse": false,
               "quality": "Best",
@@ -2552,13 +2553,13 @@
             "comment": "",
             "start_time": -440734694400,
             "in_point": 0,
-            "out_point": 2542700160000,
+            "out_point": 48768989068800,
             "stretch": 100.0,
             "switches": {
               "video": true,
               "audio": true,
               "solo": false,
-              "locked": true,
+              "locked": false,
               "shy": false,
               "collapse": false,
               "quality": "Best",
@@ -2624,7 +2625,7 @@
                           "name": "Audio Layer",
                           "value": {
                             "t": "Layer",
-                            "v": 63
+                            "v": 311
                           },
                           "ui": {
                             "kind": "Layer"
@@ -3480,13 +3481,13 @@
             "comment": "",
             "start_time": 0,
             "in_point": 0,
-            "out_point": 2542700160000,
+            "out_point": 48768989068800,
             "stretch": 100.0,
             "switches": {
               "video": true,
               "audio": true,
               "solo": false,
-              "locked": true,
+              "locked": false,
               "shy": false,
               "collapse": false,
               "quality": "Best",
@@ -4068,17 +4069,17 @@
             }
           },
           {
-            "id": 63,
-            "name": "the-hard-battle.mp3",
+            "id": 311,
+            "name": "the-rainbow-is-here.mp3",
             "source": {
               "type": "Footage",
-              "item": 62
+              "item": 310
             },
             "label": "SeaFoam",
             "comment": "",
             "start_time": 0,
             "in_point": 0,
-            "out_point": 78179554252800,
+            "out_point": 48980880748800,
             "stretch": 100.0,
             "switches": {
               "video": true,
@@ -4103,9 +4104,9 @@
             "markers": [],
             "auto_orient": "Off",
             "props": {
-              "uid": 64,
+              "uid": 312,
               "match": "layer",
-              "name": "the-hard-battle.mp3",
+              "name": "the-rainbow-is-here.mp3",
               "kind": {
                 "kind": "Plain"
               },
@@ -4113,7 +4114,7 @@
               "children": [
                 {
                   "node": "Group",
-                  "uid": 65,
+                  "uid": 313,
                   "match": "masks",
                   "name": "Masks",
                   "kind": {
@@ -4124,7 +4125,7 @@
                 },
                 {
                   "node": "Group",
-                  "uid": 66,
+                  "uid": 314,
                   "match": "effects",
                   "name": "Effects",
                   "kind": {
@@ -4135,7 +4136,7 @@
                 },
                 {
                   "node": "Group",
-                  "uid": 75,
+                  "uid": 323,
                   "match": "transform",
                   "name": "Transform",
                   "kind": {
@@ -4145,7 +4146,7 @@
                   "children": [
                     {
                       "node": "Prop",
-                      "uid": 67,
+                      "uid": 315,
                       "match": "anchor",
                       "name": "Anchor Point",
                       "value": {
@@ -4168,7 +4169,7 @@
                     },
                     {
                       "node": "Prop",
-                      "uid": 68,
+                      "uid": 316,
                       "match": "position",
                       "name": "Position",
                       "value": {
@@ -4191,7 +4192,7 @@
                     },
                     {
                       "node": "Prop",
-                      "uid": 69,
+                      "uid": 317,
                       "match": "scale",
                       "name": "Scale",
                       "value": {
@@ -4214,7 +4215,7 @@
                     },
                     {
                       "node": "Prop",
-                      "uid": 70,
+                      "uid": 318,
                       "match": "orientation",
                       "name": "Orientation",
                       "value": {
@@ -4237,7 +4238,7 @@
                     },
                     {
                       "node": "Prop",
-                      "uid": 71,
+                      "uid": 319,
                       "match": "rotationX",
                       "name": "X Rotation",
                       "value": {
@@ -4256,7 +4257,7 @@
                     },
                     {
                       "node": "Prop",
-                      "uid": 72,
+                      "uid": 320,
                       "match": "rotationY",
                       "name": "Y Rotation",
                       "value": {
@@ -4275,7 +4276,7 @@
                     },
                     {
                       "node": "Prop",
-                      "uid": 73,
+                      "uid": 321,
                       "match": "rotation",
                       "name": "Rotation",
                       "value": {
@@ -4294,7 +4295,7 @@
                     },
                     {
                       "node": "Prop",
-                      "uid": 74,
+                      "uid": 322,
                       "match": "opacity",
                       "name": "Opacity",
                       "value": {
@@ -4320,7 +4321,7 @@
                 },
                 {
                   "node": "Group",
-                  "uid": 76,
+                  "uid": 324,
                   "match": "materialOptions",
                   "name": "Material Options",
                   "kind": {
@@ -4330,7 +4331,7 @@
                   "children": [
                     {
                       "node": "Prop",
-                      "uid": 77,
+                      "uid": 325,
                       "match": "castsShadows",
                       "name": "Casts Shadows",
                       "value": {
@@ -4354,7 +4355,7 @@
                     },
                     {
                       "node": "Prop",
-                      "uid": 78,
+                      "uid": 326,
                       "match": "lightTransmission",
                       "name": "Light Transmission",
                       "value": {
@@ -4373,7 +4374,7 @@
                     },
                     {
                       "node": "Prop",
-                      "uid": 79,
+                      "uid": 327,
                       "match": "acceptsShadows",
                       "name": "Accepts Shadows",
                       "value": {
@@ -4397,7 +4398,7 @@
                     },
                     {
                       "node": "Prop",
-                      "uid": 80,
+                      "uid": 328,
                       "match": "acceptsLights",
                       "name": "Accepts Lights",
                       "value": {
@@ -4416,7 +4417,7 @@
                     },
                     {
                       "node": "Prop",
-                      "uid": 81,
+                      "uid": 329,
                       "match": "ambient",
                       "name": "Ambient",
                       "value": {
@@ -4435,7 +4436,7 @@
                     },
                     {
                       "node": "Prop",
-                      "uid": 82,
+                      "uid": 330,
                       "match": "diffuse",
                       "name": "Diffuse",
                       "value": {
@@ -4454,7 +4455,7 @@
                     },
                     {
                       "node": "Prop",
-                      "uid": 83,
+                      "uid": 331,
                       "match": "specularIntensity",
                       "name": "Specular Intensity",
                       "value": {
@@ -4473,7 +4474,7 @@
                     },
                     {
                       "node": "Prop",
-                      "uid": 84,
+                      "uid": 332,
                       "match": "specularShininess",
                       "name": "Specular Shininess",
                       "value": {
@@ -4492,7 +4493,7 @@
                     },
                     {
                       "node": "Prop",
-                      "uid": 85,
+                      "uid": 333,
                       "match": "metal",
                       "name": "Metal",
                       "value": {
@@ -4513,7 +4514,7 @@
                 },
                 {
                   "node": "Group",
-                  "uid": 86,
+                  "uid": 334,
                   "match": "audio",
                   "name": "Audio",
                   "kind": {
@@ -4523,7 +4524,7 @@
                   "children": [
                     {
                       "node": "Prop",
-                      "uid": 87,
+                      "uid": 335,
                       "match": "levels",
                       "name": "Audio Levels",
                       "value": {
@@ -4630,38 +4631,6 @@
         "pixel_aspect": 1.0
       }
     },
-    "62": {
-      "id": 62,
-      "name": "the-hard-battle.mp3",
-      "label": "SeaFoam",
-      "comment": "",
-      "parent": null,
-      "kind": {
-        "type": "Footage",
-        "path": "/run/user/1000/doc/13653acd/the-hard-battle.mp3",
-        "kind": "Audio",
-        "width": 0,
-        "height": 0,
-        "pixel_aspect": 1.0,
-        "frame_rate": {
-          "num": 30,
-          "den": 1
-        },
-        "native_rate": null,
-        "duration": 78180028416000,
-        "has_video": false,
-        "has_audio": true,
-        "alpha": "Ignore",
-        "premul_color": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "loop_count": 1,
-        "codec": "MP3",
-        "missing": false
-      }
-    },
     "130": {
       "id": 130,
       "name": "chapter1-gift.jpg",
@@ -4725,7 +4694,39 @@
         "codec": "PNG",
         "missing": false
       }
+    },
+    "310": {
+      "id": 310,
+      "name": "the-rainbow-is-here.mp3",
+      "label": "SeaFoam",
+      "comment": "",
+      "parent": null,
+      "kind": {
+        "type": "Footage",
+        "path": "/run/user/1000/doc/69b5fd58/the-rainbow-is-here.mp3",
+        "kind": "Audio",
+        "width": 0,
+        "height": 0,
+        "pixel_aspect": 1.0,
+        "frame_rate": {
+          "num": 30,
+          "den": 1
+        },
+        "native_rate": null,
+        "duration": 48982064040000,
+        "has_video": false,
+        "has_audio": true,
+        "alpha": "Ignore",
+        "premul_color": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "loop_count": 1,
+        "codec": "MP3",
+        "missing": false
+      }
     }
   },
-  "next_id": 310
+  "next_id": 336
 }
