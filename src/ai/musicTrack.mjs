@@ -96,8 +96,7 @@ export const parseYoutubeId = (value) => {
   const parts = url.pathname.split('/').filter(Boolean);
 
   if (host === 'youtu.be') return YOUTUBE_ID.test(parts[0] ?? '') ? parts[0] : '';
-  if (host !== 'youtube.com' && host !== 'm.youtube.com' && host !== 'music.youtube.com')
-    return '';
+  if (host !== 'youtube.com' && host !== 'm.youtube.com' && host !== 'music.youtube.com') return '';
 
   const query = url.searchParams.get('v');
   if (query && YOUTUBE_ID.test(query)) return query;

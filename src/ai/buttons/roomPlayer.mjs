@@ -17,7 +17,10 @@ import {
   sendPlayerAction,
 } from '../roomPlayer.mjs';
 import musicPlayer from '../../chapter_manager/music/player.mjs';
-import { loadTrackMetadata, normalizeAudioFilePath } from '../../chapter_manager/music/audioFile.mjs';
+import {
+  loadTrackMetadata,
+  normalizeAudioFilePath,
+} from '../../chapter_manager/music/audioFile.mjs';
 import { getTrackTypeName, parseYoutubeId, validateTrack } from '../musicTrack.mjs';
 import { drawPlaylistOrder } from '../playlistOrder.mjs';
 import { exportPlaylist, getPlaylistFileName, readPlaylistFile } from '../playlistFile.mjs';
@@ -211,7 +214,9 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
         $refresh.setAttr('disabled', 'disabled');
 
         try {
-          const metadata = await loadTrackMetadata(track);
+          const metadata = await loadTrackMetadata(
+            /** @type {{ type: string, id: string, file?: number }} */ (track),
+          );
           const title = String(metadata?.title ?? '').trim();
 
           if (title.length < 1) throw new Error('The provider did not return a title.');
@@ -222,7 +227,11 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
         } catch (err) {
           $error
             .removeClass('d-none')
-            .setText(`Could not refresh the title of "${track.title || track.id}": ${err.message}`);
+            .setText(
+              `Could not refresh the title of "${track.title || track.id}": ${
+                err instanceof Error ? err.message : String(err)
+              }`,
+            );
 
           icon.removeClass('fa-spinner fa-spin').addClass('fa-rotate');
           $refresh.removeProp('disabled');
@@ -254,21 +263,12 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
       const $label = TinyHtml.createFrom('span')
         .addClass('text-truncate flex-grow-1 small')
         .setAttr({ title: sourceUrl })
-        .setText(
-          `${track.type === 'youtube' ? '\u25b6' : '\u266a'} ${track.title || track.id}`,
-        );
+        .setText(`${track.type === 'youtube' ? '\u25b6' : '\u266a'} ${track.title || track.id}`);
 
       $trackList.append(
         TinyHtml.createFrom('div')
           .addClass('d-flex align-items-center gap-2 border-bottom py-1')
-          .append(
-            $label,
-            $provider,
-            $refresh,
-            $up,
-            $down,
-            $remove,
-          ),
+          .append($label, $provider, $refresh, $up, $down, $remove),
       );
     });
   };
@@ -290,7 +290,11 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
       } catch (err) {
         $error
           .removeClass('d-none')
-          .setText(`The raffle options are not valid JSON: ${err.message}`);
+          .setText(
+            `The raffle options are not valid JSON: ${
+              err instanceof Error ? err.message : String(err)
+            }`,
+          );
         return;
       }
     }
@@ -308,15 +312,17 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
     .setAttr({ type: 'file', accept: '.json,application/json' })
     .setStyle({ display: 'none' });
 
+  const $importInput = /** @type {HTMLInputElement} */ ($import.elements[0]);
+
   const $importButton = tinyLib.bs
     .button('outline-secondary')
     .addClass('w-100 mt-2')
     .setText('Import JSON');
 
-  $importButton.on('click', () => $import.elements[0].click());
+  $importButton.on('click', () => $importInput.click());
 
   $import.on('change', async () => {
-    const file = $import.elements[0].files?.[0];
+    const file = $importInput.files?.[0];
     if (!file) return;
 
     try {
@@ -328,9 +334,9 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
       $error.addClass('d-none');
       renderTracks();
     } catch (err) {
-      $error.removeClass('d-none').setText(err.message);
+      $error.removeClass('d-none').setText(err instanceof Error ? err.message : String(err));
     } finally {
-      $import.elements[0].value = '';
+      $importInput.value = '';
     }
   });
 
@@ -349,7 +355,11 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
       } catch (err) {
         $error
           .removeClass('d-none')
-          .setText(`The raffle options are not valid JSON: ${err.message}`);
+          .setText(
+            `The raffle options are not valid JSON: ${
+              err instanceof Error ? err.message : String(err)
+            }`,
+          );
         return;
       }
     }
@@ -359,7 +369,7 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
     const link = document.createElement('a');
 
     link.href = url;
-    link.download = getPlaylistFileName($name.val() || 'playlist');
+    link.download = getPlaylistFileName(String($name.val() ?? '') || 'playlist');
     link.click();
 
     URL.revokeObjectURL(url);
@@ -508,7 +518,11 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
       } catch (err) {
         $error
           .removeClass('d-none')
-          .setText(`The raffle options are not valid JSON: ${err.message}`);
+          .setText(
+            `The raffle options are not valid JSON: ${
+              err instanceof Error ? err.message : String(err)
+            }`,
+          );
         return;
       }
     }
@@ -896,7 +910,9 @@ export const openRoomPlayer = () => {
    */
   $nowPlaying.on('click', async (event) => {
     const target = /** @type {Element|null} */ (event.target);
-    const button = target?.closest ? target.closest('[data-player-action]') : null;
+    const button = /** @type {HTMLButtonElement|null} */ (
+      target?.closest ? target.closest('[data-player-action]') : null
+    );
     if (!button) return;
 
     // The server is the permission check, this is only the fast path.
@@ -954,7 +970,7 @@ export const openRoomPlayer = () => {
    * would flood the socket with one interaction per pixel.
    */
   $nowPlaying.on('input', (event) => {
-    const target = /** @type {Element|null} */ (event.target);
+    const target = /** @type {HTMLInputElement|null} */ (event.target);
     if (!target || target.getAttribute('data-player-action') !== 'seek') return;
 
     const state = getState();
@@ -986,7 +1002,7 @@ export const openRoomPlayer = () => {
   };
 
   $nowPlaying.on('input', (event) => {
-    const target = /** @type {Element|null} */ (event.target);
+    const target = /** @type {HTMLInputElement|null} */ (event.target);
     if (!target || target.getAttribute('data-player-action') !== 'volume') return;
 
     const volume = Math.max(0, Math.min(100, Number(target.value) || 0));

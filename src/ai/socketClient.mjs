@@ -1346,6 +1346,7 @@ class TinyClientIo extends EventEmitter {
    * @param {'mine'|'visited'|'all'|null} [filters.scope] - Room scope.
    * @param {boolean} [filters.openOnly] - Only rooms that are open for access.
    * @param {boolean} [filters.ownedOnly] - Only rooms owned by the account.
+   * @param {string|null} [filters.language] - Only rooms of a language.
    * @param {number} [filters.page] - Page number.
    * @param {number} [filters.perPage] - Items per page.
    * @returns {Promise<SocketAck>}
@@ -1415,7 +1416,7 @@ class TinyClientIo extends EventEmitter {
    * Lists the playlists available on a room.
    *
    * @param {Object} [options] - Filters.
-   * @param {string} [options.roomId] - Room id, defaults to the current one.
+   * @param {string|null} [options.roomId] - Room id, defaults to the current one.
    * @param {'all'|'room'|null} [options.filter] - Only the playlists of a scope.
    * @returns {Promise<SocketAck>}
    */
@@ -1428,10 +1429,12 @@ class TinyClientIo extends EventEmitter {
    *
    * @param {Object} data - Playlist data.
    * @param {string|null} [data.playlistId] - Playlist to update, if any.
-   * @param {string} data.name - Playlist name.
-   * @param {Array<object>} data.tracks - Tracks of the playlist.
+   * @param {string} [data.name] - Playlist name.
+   * @param {Array<object>} [data.tracks] - Tracks of the playlist.
    * @param {'all'|'rooms'} [data.scope] - Where the playlist is available.
    * @param {string[]} [data.rooms] - Rooms of a `rooms` playlist.
+   * @param {'ordered'|'raffle'} [data.mode] - How the track order is drawn.
+   * @param {Record<string, any>|null} [data.raffle] - Options of the raffle.
    * @returns {Promise<SocketAck>}
    */
   savePlaylist({
@@ -1467,7 +1470,7 @@ class TinyClientIo extends EventEmitter {
   /**
    * Reads the music player of a room.
    *
-   * @param {string} [roomId] - Room id, defaults to the current one.
+   * @param {string|null} [roomId] - Room id, defaults to the current one.
    * @returns {Promise<SocketAck>}
    */
   getPlayer(roomId = this.#cfg.roomId) {

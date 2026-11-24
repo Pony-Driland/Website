@@ -110,7 +110,7 @@ export const rpgSchemaSettingsMenu = () => {
         if (jsonResult) {
           loaderScreen.start();
           tinyIo.client
-            .updateRpgSchema(jsonResult)
+            ?.updateRpgSchema(jsonResult)
             .then((result) => {
               if (result.error) {
                 $editError.setText(`${result.msg}\nCode ${result.code}`);
@@ -132,7 +132,7 @@ export const rpgSchemaSettingsMenu = () => {
 
     // Close modal
     html.on('hidden.bs.modal', () => {
-      tinyIo.client.off('rpgSchemaUpdates', roomEditDetector);
+      tinyIo.client?.off('rpgSchemaUpdates', roomEditDetector);
     });
   }
 };
