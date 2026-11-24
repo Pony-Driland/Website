@@ -125,12 +125,37 @@ export const isAudioFileTrack = (track) =>
  * to it safely.
  *
  * @param {unknown} value - Value to check.
+ * @returns {string} The music folder id.
+ */
+export const normalizeAudioFilePath = (value) => {
+  if (typeof value !== 'string') return '';
+
+  let id = value.trim();
+
+  // The visitor usually pastes the public URL, so the prefix and the trailing
+  // slash are removed before the folder is validated.
+  id = id.replace(/^https?:\/\/[^/]+/i, '');
+  id = id.replace(/^\/+/, '');
+  id = id.replace(/^audio\//i, '');
+  id = id.replace(/\/+$/, '');
+
+  return id;
+};
+
+/**
+ * Checks whether a value is the id of a music folder.
+ *
+ * The id is relative to `public/audio`, must start with a known music root and
+ * must point to a folder (never to a file), so the `data.json` can be appended
+ * to it safely.
+ *
+ * @param {unknown} value - Value to check.
  * @returns {boolean} `true` when the value is a music folder id.
  */
 export const isAudioFilePath = (value) => {
   if (typeof value !== 'string') return false;
 
-  const id = value.trim();
+  const id = normalizeAudioFilePath(value);
   if (id.length === 0 || id.length > 512) return false;
 
   // A leading slash, a protocol (`https:`), a protocol relative path
@@ -156,7 +181,10 @@ export const isAudioFilePath = (value) => {
  */
 export const getMusicFolderUrl = (id) => {
   if (!isAudioFilePath(id)) return null;
-  return `${AUDIO_ROOT}${/** @type {string} */ (id).trim()}/`;
+
+  // The id may arrive as a public URL, so the normalized value is what goes
+  // into the path. Using the raw one would build `/audio//audio/<folder>//`.
+  return `${AUDIO_ROOT}${normalizeAudioFilePath(/** @type {string} */ (id))}/`;
 };
 
 /**

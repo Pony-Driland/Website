@@ -764,7 +764,6 @@ export const setTracks = (list) => {
   tracks = Array.isArray(list) ? list : [];
 };
 
-
 /**
  * Forgets a cached playlist, so the next sync fetches it again.
  *

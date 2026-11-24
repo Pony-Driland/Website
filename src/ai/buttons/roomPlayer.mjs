@@ -17,8 +17,8 @@ import {
   sendPlayerAction,
 } from '../roomPlayer.mjs';
 import musicPlayer from '../../chapter_manager/music/player.mjs';
-import { loadTrackMetadata } from '../../chapter_manager/music/audioFile.mjs';
-import { getTrackTypeName, validateTrack } from '../musicTrack.mjs';
+import { loadTrackMetadata, normalizeAudioFilePath } from '../../chapter_manager/music/audioFile.mjs';
+import { getTrackTypeName, parseYoutubeId, validateTrack } from '../musicTrack.mjs';
 import { drawPlaylistOrder } from '../playlistOrder.mjs';
 import { exportPlaylist, getPlaylistFileName, readPlaylistFile } from '../playlistFile.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
@@ -132,6 +132,25 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
     .addClass('form-control')
     .setAttr({ type: 'text', placeholder: 'Title (optional)' });
 
+  // Pasting a YouTube link is the common case, so the field keeps only the
+  // video id. The same happens for a local folder, where the public prefix and
+  // the trailing slash are dropped.
+  $trackId.on('input', () => {
+    const raw = String($trackId.val() ?? '').trim();
+    if (raw.length < 1) return;
+
+    const isYoutube = String($trackType.val() ?? 'youtube') === 'youtube';
+
+    if (isYoutube) {
+      const videoId = parseYoutubeId(raw);
+      if (videoId.length > 0 && videoId !== raw) $trackId.setVal(videoId);
+      return;
+    }
+
+    const folder = normalizeAudioFilePath(raw);
+    if (folder.length > 0 && folder !== raw) $trackId.setVal(folder);
+  });
+
   const $trackList = TinyHtml.createFrom('div').addClass('mt-2');
 
   /**
@@ -226,15 +245,24 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
         .addClass('badge text-bg-secondary text-nowrap')
         .setText(getTrackTypeName(track.type));
 
+      // The full source is the tooltip: the row only has room for the title.
+      const sourceUrl =
+        track.type === 'youtube'
+          ? `https://www.youtube.com/watch?v=${track.id}`
+          : `/audio/${track.id}/`;
+
+      const $label = TinyHtml.createFrom('span')
+        .addClass('text-truncate flex-grow-1 small')
+        .setAttr({ title: sourceUrl })
+        .setText(
+          `${track.type === 'youtube' ? '\u25b6' : '\u266a'} ${track.title || track.id}`,
+        );
+
       $trackList.append(
         TinyHtml.createFrom('div')
           .addClass('d-flex align-items-center gap-2 border-bottom py-1')
           .append(
-            TinyHtml.createFrom('span')
-              .addClass('text-truncate flex-grow-1 small')
-              .setText(
-                `${track.type === 'youtube' ? '\u25b6' : '\u266a'} ${track.title || track.id}`,
-              ),
+            $label,
             $provider,
             $refresh,
             $up,

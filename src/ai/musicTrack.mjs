@@ -66,6 +66,50 @@ const YOUTUBE_ID = /^[A-Za-z0-9_-]{11}$/;
 export const isYoutubeId = (id) => typeof id === 'string' && YOUTUBE_ID.test(id.trim());
 
 /**
+ * Extracts the video id from anything the visitor may paste.
+ *
+ * Accepts a bare id, a `youtu.be` link, a `watch?v=` link and the `embed`,
+ * `shorts` and `live` variants, so the field accepts whatever the address bar
+ * of the browser has.
+ *
+ * @param {unknown} value - Value to read.
+ * @returns {string} The video id, or an empty string when there is none.
+ */
+export const parseYoutubeId = (value) => {
+  if (typeof value !== 'string') return '';
+
+  const text = value.trim();
+  if (text.length < 1) return '';
+
+  // A bare id is the common case and needs no parsing.
+  if (YOUTUBE_ID.test(text)) return text;
+
+  let url;
+
+  try {
+    url = new URL(text.startsWith('http') ? text : `https://${text}`);
+  } catch {
+    return '';
+  }
+
+  const host = url.hostname.replace(/^www\./, '');
+  const parts = url.pathname.split('/').filter(Boolean);
+
+  if (host === 'youtu.be') return YOUTUBE_ID.test(parts[0] ?? '') ? parts[0] : '';
+  if (host !== 'youtube.com' && host !== 'm.youtube.com' && host !== 'music.youtube.com')
+    return '';
+
+  const query = url.searchParams.get('v');
+  if (query && YOUTUBE_ID.test(query)) return query;
+
+  // `/embed/<id>`, `/shorts/<id>` and `/live/<id>`.
+  if (['embed', 'shorts', 'live'].includes(parts[0]) && YOUTUBE_ID.test(parts[1] ?? ''))
+    return parts[1];
+
+  return '';
+};
+
+/**
  * Checks the source of a track.
  *
  * @param {unknown} track - Track to check.
