@@ -178,6 +178,38 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
       if (index >= tracks.length - 1) $down.setAttr('disabled', 'disabled');
       $down.on('click', () => moveTrack(index, index + 1));
 
+      // Pulls the title straight from the provider, using the same resolver
+      // the player uses. Useful when the song was renamed or was added by id.
+      const $refresh = tinyLib.bs
+        .button('outline-secondary')
+        .addClass('btn-sm')
+        .setAttr({ type: 'button', title: 'Refresh title from the provider' })
+        .append(TinyHtml.createFrom('i').addClass('fas fa-rotate'));
+
+      $refresh.on('click', async () => {
+        const icon = new TinyHtml($refresh.find('i'));
+        icon.removeClass('fa-rotate').addClass('fa-spinner fa-spin');
+        $refresh.setAttr('disabled', 'disabled');
+
+        try {
+          const metadata = await loadTrackMetadata(track);
+          const title = String(metadata?.title ?? '').trim();
+
+          if (title.length < 1) throw new Error('The provider did not return a title.');
+
+          tracks[index] = { ...tracks[index], title };
+          $error.addClass('d-none');
+          renderTracks();
+        } catch (err) {
+          $error
+            .removeClass('d-none')
+            .setText(`Could not refresh the title of "${track.title || track.id}": ${err.message}`);
+
+          icon.removeClass('fa-spinner fa-spin').addClass('fa-rotate');
+          $refresh.removeProp('disabled');
+        }
+      });
+
       const $remove = TinyHtml.createFrom('button')
         .addClass('btn btn-sm btn-outline-danger')
         .setAttr({ type: 'button', title: 'Remove track' })
@@ -204,6 +236,7 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
                 `${track.type === 'youtube' ? '\u25b6' : '\u266a'} ${track.title || track.id}`,
               ),
             $provider,
+            $refresh,
             $up,
             $down,
             $remove,
