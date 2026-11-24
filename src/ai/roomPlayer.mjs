@@ -47,7 +47,7 @@ import musicPlayer from '../chapter_manager/music/player.mjs';
 const MAX_DRIFT = 1.2;
 
 /** How often the local audio is compared with the room, in milliseconds. */
-const DRIFT_INTERVAL = 4000;
+const DRIFT_INTERVAL = 100;
 
 /**
  * How long a track may take to load before the player tries again.
