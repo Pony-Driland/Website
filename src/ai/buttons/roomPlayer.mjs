@@ -5,6 +5,7 @@ import { tinyIo } from '../software/base.mjs';
 import {
   formatTime,
   getLivePosition,
+  getLocalDuration,
   getState,
   getTracks,
   onPlayerChange,
@@ -285,11 +286,41 @@ export const openRoomPlayer = () => {
   /** @type {TinyHtmlAny|null} */
   let $time = null;
 
-  /** @type {TinyHtmlAny|null} */
+  /** @type {HTMLInputElement|null} */
   let $seek = null;
+
+  /**
+   * Track the pending scrub belongs to.
+   *
+   * The bar is rebuilt on every `player-updated`, so a drag interrupted by a
+   * render never fires `change`. Without this the flag would survive the track
+   * change and freeze the handle on a position that does not exist anymore.
+   *
+   * @type {string|null}
+   */
+  let scrubKey = null;
 
   const showError = (/** @type {string} */ msg) => $error.removeClass('d-none').setText(msg);
   const clearError = () => $error.addClass('d-none');
+
+  /**
+   * Duration of the track that is loaded, in seconds.
+   *
+   * The room only learns the duration after a round trip, and the report is
+   * rate limited, so the local media wins while it is the one playing. Every
+   * consumer has to agree on the value, otherwise the bar is enabled by one
+   * and ignored by the other.
+   *
+   * @param {Record<string, any>|null} state - Current room state.
+   * @returns {number}
+   */
+  const resolveDuration = (state) => {
+    const local = getLocalDuration();
+    if (local > 0) return local;
+
+    const remote = Number(state?.duration);
+    return Number.isFinite(remote) && remote > 0 ? remote : 0;
+  };
 
   /**
    * Updates only the clock of the now playing bar.
@@ -310,10 +341,19 @@ export const openRoomPlayer = () => {
     }
 
     const live = scrubbing ?? getLivePosition(state);
-    const total = Number(state.duration) > 0 ? ` / ${formatTime(state.duration)}` : '';
+    const duration = resolveDuration(state);
+    const total = duration > 0 ? ` / ${formatTime(duration)}` : '';
+
     $time.setText(`${formatTime(live)}${total}`);
 
-    if ($seek) $seek.val(String(Math.min(1, state.duration > 0 ? live / state.duration : 0)));
+    // The bar is rebuilt on every render, so the reference may already be
+    // detached. Writing to it would be harmless but useless.
+    if (!$seek || !$seek.isConnected) return;
+
+    // The native property is used on purpose: the wrapper does not move the
+    // handle of a range input, which left the bar stuck on 0:00.
+    $seek.disabled = duration <= 0;
+    $seek.value = String(duration > 0 ? Math.min(1, Math.max(0, live / duration)) : 0);
   };
 
   /** Starts the clock of the now playing bar. */
@@ -362,20 +402,30 @@ export const openRoomPlayer = () => {
   const renderNowPlaying = () => {
     $nowPlaying.empty();
     $time = null;
+    $seek = null;
 
     const state = getState();
     if (!state?.playlistId) {
       stopTicker();
+      scrubbing = null;
       return;
     }
 
     const roomTracks = currentTracks(state);
     const track = roomTracks[state.trackIndex];
 
+    // A scrub belongs to the track it started on.
+    const trackKey = `${state.playlistId}:${state.trackIndex}`;
+    if (scrubKey !== null && scrubKey !== trackKey) {
+      scrubbing = null;
+      scrubKey = null;
+    }
+
     // An empty playlist has nothing to play, so the clock is meaningless: the
     // room says why it is silent instead of freezing on 0:00.
     if (roomTracks.length < 1) {
       stopTicker();
+      scrubbing = null;
 
       $nowPlaying.append(
         TinyHtml.createFrom('div')
@@ -464,9 +514,10 @@ export const openRoomPlayer = () => {
 
     $nowPlaying.append($bar);
 
-    // The seek bar is only useful when the media knows its own duration.
-    if (canEdit && Number(state.duration) > 0) {
-      $seek = TinyHtml.createFrom('input')
+    // The bar is always rendered for the DJ: hiding it until the media knows
+    // its own duration made it look like the control did not exist.
+    if (canEdit) {
+      const $range = TinyHtml.createFrom('input')
         .addClass('form-range mt-2')
         .setAttr({
           type: 'range',
@@ -477,14 +528,17 @@ export const openRoomPlayer = () => {
           title: 'Seek',
         });
 
-      $nowPlaying.append($seek);
+      $seek = /** @type {HTMLInputElement} */ ($range.elements[0]);
+      $nowPlaying.append($range);
     } else {
       $seek = null;
     }
 
     renderTime();
-    if (state.playing) startTicker();
-    else stopTicker();
+
+    // The clock also runs while the room is paused: the DJ still has to see
+    // where the playhead is before resuming.
+    startTicker();
   };
 
   /**
@@ -557,10 +611,12 @@ export const openRoomPlayer = () => {
     const target = /** @type {Element|null} */ (event.target);
     if (!target || target.getAttribute('data-player-action') !== 'seek') return;
 
-    const state = getState();    
-    if (!state || !(Number(state.duration) > 0)) return;
+    const state = getState();
+    const duration = resolveDuration(state);
+    if (!state || duration <= 0) return;
 
-    scrubbing = Number(target.value) * Number(state.duration);
+    scrubbing = Number(target.value) * duration;
+    scrubKey = `${state.playlistId}:${state.trackIndex}`;
     renderTime();
   });
 
@@ -572,9 +628,11 @@ export const openRoomPlayer = () => {
     const position = scrubbing;
 
     scrubbing = null;
+    scrubKey = null;
     if (!state || position === null) return;
 
-    await seekTo(Math.max(0, Math.min(position, Number(state.duration) || position)));
+    const duration = resolveDuration(state);
+    await seekTo(Math.max(0, duration > 0 ? Math.min(position, duration) : position));
   });
 
   const render = () => {
@@ -596,6 +654,7 @@ export const openRoomPlayer = () => {
 
     for (const playlist of playlists) {
       const isCurrent = state?.playlistId === playlist.playlistId;
+      const total = Array.isArray(playlist.tracks) ? playlist.tracks.length : 0;
 
       const $actions = TinyHtml.createFrom('div').addClass('d-flex gap-1');
 
@@ -660,7 +719,7 @@ export const openRoomPlayer = () => {
                 TinyHtml.createFrom('div')
                   .addClass('small text-muted')
                   .setText(
-                    `${playlist.tracks.length} track(s) - ${
+                    `${total} track(s) - ${
                       playlist.scope === 'all' ? 'all rooms' : 'selected rooms'
                     }`,
                   ),

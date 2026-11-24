@@ -180,7 +180,16 @@ export const getLivePosition = (player = state) => {
   const elapsed = (serverNow() - updatedAt) / 1000;
   if (!Number.isFinite(elapsed) || elapsed <= 0) return base;
 
-  return base + elapsed;
+  const live = base + elapsed;
+  const duration = Number(player.duration);
+
+  // The room is the only one that knows the playlist ended, and it only finds
+  // out when a client reports it. Without this cap the clock would keep
+  // counting forever (10:00, 20:00, 3:00:00) and the seek bar would be stuck
+  // on a position that does not exist.
+  if (Number.isFinite(duration) && duration > 0) return Math.min(live, duration);
+
+  return live;
 };
 
 /**
@@ -206,6 +215,26 @@ export const isPlaylistEmpty = () => Boolean(state?.playlistId) && tracks.length
  * @returns {RoomPlayerState|null}
  */
 export const getState = () => state;
+
+/**
+ * Duration of the media loaded in the audio engine, in seconds.
+ *
+ * The room only learns the duration after a full round trip, and the report is
+ * rate limited, so the local media is the fastest and most reliable source
+ * while it is the one playing. Returns `0` when nothing is loaded.
+ *
+ * @returns {number}
+ */
+export const getLocalDuration = () => {
+  if (!loadedKey) return 0;
+
+  try {
+    const duration = musicPlayer.getDuration();
+    return Number.isFinite(duration) && duration > 0 ? duration : 0;
+  } catch {
+    return 0;
+  }
+};
 
 /**
  * Tracks of the playlist that is loaded.
@@ -862,7 +891,16 @@ export const requestNextTrack = async () => {
 export const previousTrack = async (threshold = 3) => {
   if (!state) return;
 
-  if (getLivePosition() > threshold || state.trackIndex < 1) {
+  // A paused room has no playhead to rewind: the DJ wants the previous track.
+  // Without this check the end of a playlist (where the position is the whole
+  // duration) always looked like "restart the track" and the button did
+  // nothing but seek a paused player to 0:00.
+  if (state.playing && getLivePosition() > threshold) {
+    await seekTo(0);
+    return;
+  }
+
+  if (state.trackIndex < 1) {
     await seekTo(0);
     return;
   }
@@ -916,6 +954,14 @@ export const isPlaylistOver = () => {
 // while a playlist of the room is loaded.
 musicPlayer.player.on('ended', () => {
   if (!state?.playing || !loadedKey) return;
+
+  // The last track of a playlist that does not repeat has nowhere to go. The
+  // room is paused instead, and asking again on every `ended` would keep the
+  // whole UI re-rendering on a loop.
+  if (isPlaylistOver() || (tracks.length > 0 && state.trackIndex >= tracks.length - 1)) {
+    if (!state.loop) return;
+  }
+
   requestNextTrack().catch((err) => console.error('[room-player]', err));
 });
 
