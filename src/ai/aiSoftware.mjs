@@ -46,7 +46,13 @@ import {
 import { userButtonActions } from './buttons/users.mjs';
 import { roomSettingsMenu } from './buttons/roomSettings.mjs';
 import { openRoomPlayer } from './buttons/roomPlayer.mjs';
-import { applyState, getState, invalidatePlaylist, setServerTime } from './roomPlayer.mjs';
+import {
+  applyState,
+  getState,
+  invalidatePlaylist,
+  setServerTime,
+  setTracks,
+} from './roomPlayer.mjs';
 import { openClassicMap } from './buttons/map.mjs';
 import { openDiceSpecialModal, openTinyDices } from './buttons/dice.mjs';
 import { openDonatePage } from './buttons/donate.mjs';
@@ -4253,14 +4259,19 @@ export const AiScriptStart = async () => {
           applyState(player);
         });
 
-        // The DJ saved a new version of a playlist. The tracks are what turn a
-        // `trackIndex` into something playable, so every listener has to drop
-        // the cached copy and load the new one.
-        client.on('playlistUpdated', () => {
+        // The DJ saved a new version of a playlist. The tracks are what turn
+        // a `trackIndex` into something playable, so every listener has to
+        // drop the cached copy and load the new one.
+        client.on('playlistUpdated', (playlist) => {
           const current = getState();
           if (!current?.playlistId) return;
+          if (playlist?.playlistId !== current.playlistId) return;
 
           invalidatePlaylist(current.playlistId);
+
+          // The event already carries the new track list, so the room does not
+          // have to fetch it again just to notice the change.
+          if (Array.isArray(playlist.tracks)) setTracks(playlist.tracks);
           applyState(current);
         });
 

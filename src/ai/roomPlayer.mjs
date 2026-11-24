@@ -102,6 +102,19 @@ let paused = true;
 /** @type {ReturnType<typeof setInterval>|null} */
 let driftTimer = null;
 
+/**
+ * Revision that already asked the room for the next track.
+ *
+ * Every listener reaches the end of the track at the same time, so they all
+ * ask for the next one. Without this guard the answer of the server re-enters
+ * `correctDrift()`, which asks again, which answers again: an endless request
+ * storm that also made the pause and the repeat buttons look broken, because
+ * the room kept jumping back to the same track.
+ *
+ * @type {number|null}
+ */
+let nextRequestedFor = null;
+
 /** @type {Promise<void>} */
 let queue = Promise.resolve();
 
@@ -288,6 +301,9 @@ const stopDriftWatch = () => {
 const correctDrift = async () => {
   if (paused || !loadedKey) return;
 
+  // The room is paused, so there is no position to be in sync with.
+  if (!state?.playing) return;
+
   const current = musicPlayer.getCurrentTime();
 
   // The media is still loading: there is nothing to compare yet.
@@ -297,9 +313,27 @@ const correctDrift = async () => {
   const duration = musicPlayer.getDuration();
 
   // The song is over but the `ended` event was lost (a seek, a suspended tab
-  // or a stream that never fires it). The room has to move on by itself.
+  // or a stream that never fires it). The room has to move on by itself, but
+  // only once per revision: every client watches the same track, so a single
+  // request is enough and the others would only duplicate the interaction.
   if (duration > 0 && expected >= duration - 1) {
-    requestNextTrack().catch((err) => console.error('[room-player]', err));
+    if (nextRequestedFor === state?.revision) return;
+
+    const revision = state?.revision ?? null;
+    nextRequestedFor = revision;
+
+    // A rate limited or refused request must not silence the room until the
+    // next interaction, so the guard is released after a moment.
+    const release = () => {
+      if (nextRequestedFor === revision) nextRequestedFor = null;
+    };
+
+    requestNextTrack()
+      .then(release, (err) => {
+        console.error('[room-player]', err);
+        release();
+      });
+
     return;
   }
 
@@ -344,9 +378,21 @@ const stopLocal = async () => {
   loadedKey = null;
   loadingKey = null;
   paused = true;
+  nextRequestedFor = null;
 
   if (wasLoaded) await musicPlayer.stop();
 };
+
+/**
+ * Last duration reported to the room, keyed by track.
+ *
+ * The media engine reports `0` until the metadata arrives, so a single report
+ * right after `play()` is not enough: the duration would stay unknown for the
+ * whole track and the room would never learn where the playlist ends.
+ *
+ * @type {Map<string, number>}
+ */
+const reportedDurations = new Map();
 
 /**
  * Publishes the duration of the loaded media to the room.
@@ -357,9 +403,21 @@ const stopLocal = async () => {
  * @returns {void}
  */
 const reportDuration = () => {
+  if (!loadedKey) return;
+
   const duration = Math.round(musicPlayer.getDuration());
   if (!Number.isFinite(duration) || duration <= 0) return;
-  if (duration === Math.round(Number(state?.duration))) return;
+  if (reportedDurations.get(loadedKey) === duration) return;
+
+  // Every listener watches the same track, so the room already knows the
+  // duration as soon as the first one reports it. Without this check a room
+  // with 50 listeners would bump the revision 50 times per track.
+  if (duration === Math.round(Number(state?.duration))) {
+    reportedDurations.set(loadedKey, duration);
+    return;
+  }
+
+  reportedDurations.set(loadedKey, duration);
 
   // The answer of the server re-enters `applyState()`, so this must never run
   // inside the sync loop: it would await its own queue and deadlock.
@@ -395,7 +453,16 @@ const loadTrack = async (track, key) => {
     loadedKey = key;
     paused = false;
     startDriftWatch();
+
+    // The engine only knows the duration after the metadata arrives, so the
+    // first report is usually empty and the room would never learn where the
+    // playlist ends.
     reportDuration();
+    if (!reportedDurations.has(key)) {
+      setTimeout(() => {
+        if (loadedKey === key) reportDuration();
+      }, 1500);
+    }
   } catch (err) {
     console.error('[room-player]', err);
     if (loadedKey === key) loadedKey = null;
@@ -506,6 +573,27 @@ const syncAudio = async () => {
 };
 
 /**
+ * Moves the local audio to the position of the room.
+ *
+ * `correctDrift()` is skipped while the player is paused, so a seek issued by
+ * the DJ would only be heard after the next play. This keeps the paused media
+ * on the same second the room is pointing at.
+ *
+ * @returns {Promise<void>}
+ */
+const syncPausedPosition = async () => {
+  if (!paused || !loadedKey || !state?.playlistId) return;
+
+  const expected = Math.max(0, Number(state.position) || 0);
+  const current = musicPlayer.getCurrentTime();
+
+  if (!Number.isFinite(current)) return;
+  if (Math.abs(expected - current) <= MAX_DRIFT) return;
+
+  await musicPlayer.seek(expected);
+};
+
+/**
  * Runs the sync loop, coalescing every update that arrives while it is busy.
  *
  * @returns {Promise<void>}
@@ -566,8 +654,14 @@ export const applyState = (player, playlist) => {
   // A packet that arrived out of order must never rewind the room.
   if (isStale(next)) return;
 
+  // The room moved on, so the previous "next track" request is over.
+  if (nextRequestedFor !== null && next.revision !== nextRequestedFor) nextRequestedFor = null;
+
   commit(next);
   schedule();
+
+  // A paused room still has to follow a seek.
+  syncPausedPosition().catch((err) => console.error('[room-player]', err));
 };
 
 /**
@@ -635,17 +729,25 @@ export const formatTime = (seconds) => {
  * Sends an interaction to the server.
  *
  * @param {Object} data - Interaction.
- * @param {'play'|'pause'|'seek'|'track'|'volume'|'playlist'} data.action - Interaction.
+ * @param {'play'|'pause'|'seek'|'track'|'volume'|'loop'|'duration'|'playlist'} data.action - Interaction.
  * @param {string} [data.playlistId] - Playlist of a `playlist` action.
  * @param {number} [data.trackIndex] - Track of a `track` action.
  * @param {number} [data.position] - Position, in seconds.
+ * @param {number} [data.duration] - Duration of the current track, in seconds.
  * @param {number} [data.volume] - Volume between 0 and 1.
+ * @param {boolean} [data.loop] - Whether the playlist restarts when it ends.
  * @param {number} [data.expectedRevision] - Only apply when the room did not move.
  * @returns {Promise<RoomPlayerState|null>}
  */
 export const sendPlayerAction = async (data) => {
   const client = tinyIo.client;
   if (!client) return null;
+
+  // The server is the source of truth, but waiting for the round trip made
+  // every button feel broken: the DJ clicked pause and the song kept playing
+  // until the answer arrived. The local state is applied first and replaced by
+  // the server answer as soon as it lands.
+  applyOptimistic(data);
 
   const result = await client.setPlayer(data);
   if (result?.error) {
@@ -656,6 +758,55 @@ export const sendPlayerAction = async (data) => {
   const player = /** @type {RoomPlayerState|undefined} */ (result?.player);
   if (player) applyState(player);
   return player ?? null;
+};
+
+/**
+ * Applies an interaction locally, before the server answers.
+ *
+ * Only the fields the interaction really changes are touched, and the revision
+ * is left alone: the answer of the server is what moves it forward, so a
+ * packet that arrives out of order is still detected by `isStale()`.
+ *
+ * @param {Record<string, any>} data - Interaction sent to the server.
+ * @returns {void}
+ */
+const applyOptimistic = (data) => {
+  if (!state) return;
+
+  const next = { ...state };
+  const position = Number(data.position);
+
+  switch (data.action) {
+    case 'play':
+    case 'pause':
+      next.playing = data.action === 'play';
+      if (Number.isFinite(position) && position >= 0) next.position = position;
+      next.updatedAt = serverNow();
+      break;
+
+    case 'seek':
+      if (!Number.isFinite(position) || position < 0) return;
+      next.position = position;
+      next.updatedAt = serverNow();
+      break;
+
+    case 'track':
+      if (Number.isFinite(Number(data.trackIndex))) next.trackIndex = Number(data.trackIndex);
+      next.position = 0;
+      next.duration = 0;
+      next.playing = true;
+      next.updatedAt = serverNow();
+      break;
+
+    case 'loop':
+      next.loop = Boolean(data.loop);
+      break;
+
+    default:
+      return;
+  }
+
+  commit(next);
 };
 
 /**
@@ -697,6 +848,46 @@ export const requestNextTrack = async () => {
     position: 0,
     expectedRevision: state.revision,
   });
+};
+
+/**
+ * Jumps to the previous track, or back to the start of the current one.
+ *
+ * This is what every music player does: pressing "previous" after a few
+ * seconds restarts the song, and pressing it again goes one track back.
+ *
+ * @param {number} [threshold] - Seconds after which the track restarts.
+ * @returns {Promise<void>}
+ */
+export const previousTrack = async (threshold = 3) => {
+  if (!state) return;
+
+  if (getLivePosition() > threshold || state.trackIndex < 1) {
+    await seekTo(0);
+    return;
+  }
+
+  await sendPlayerAction({ action: 'track', trackIndex: state.trackIndex - 1 });
+};
+
+/**
+ * Restarts the current track from the beginning.
+ *
+ * @returns {Promise<void>}
+ */
+export const restartTrack = () => seekTo(0);
+
+/**
+ * Moves the playhead of the room.
+ *
+ * @param {number} seconds - Position, in seconds.
+ * @returns {Promise<void>}
+ */
+export const seekTo = async (seconds) => {
+  const position = Number(seconds);
+  if (!Number.isFinite(position) || position < 0) return;
+
+  await sendPlayerAction({ action: 'seek', position });
 };
 
 /**
@@ -743,4 +934,7 @@ export default {
   formatTime,
   sendPlayerAction,
   requestNextTrack,
+  previousTrack,
+  restartTrack,
+  seekTo,
 };

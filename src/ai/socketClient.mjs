@@ -1468,11 +1468,13 @@ class TinyClientIo extends EventEmitter {
    * Applies an interaction to the music player of a room.
    *
    * @param {Object} data - Interaction.
-   * @param {'play'|'pause'|'seek'|'track'|'volume'|'playlist'} data.action - Interaction.
+   * @param {'play'|'pause'|'seek'|'track'|'volume'|'loop'|'duration'|'playlist'} data.action - Interaction.
    * @param {string} [data.playlistId] - Playlist of a `playlist` action.
    * @param {number} [data.trackIndex] - Track of a `track` action.
    * @param {number} [data.position] - Position, in seconds.
+   * @param {number} [data.duration] - Duration of the current track, in seconds.
    * @param {number} [data.volume] - Volume between 0 and 1.
+   * @param {boolean} [data.loop] - Whether the playlist restarts when it ends.
    * @param {number} [data.expectedRevision] - Only apply when the room did not move.
    * @param {string} [data.roomId] - Room id, defaults to the current one.
    * @returns {Promise<SocketAck>}

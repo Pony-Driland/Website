@@ -73,6 +73,18 @@ let audioPlayer = null;
 let currentId = null;
 
 /**
+ * Bumped by every transport command that must preempt a pending load.
+ *
+ * `playTrackAsync()` can take a long time (the YouTube iframe has to boot) and
+ * the queue is serialized, so a pause issued while the next track is loading
+ * would wait for the whole load to finish. That is exactly the delay between
+ * the click of the DJ and the silence of the room.
+ *
+ * @type {number}
+ */
+let transportToken = 0;
+
+/**
  * Metadata of the track that is loaded in the player.
  *
  * `null` when nothing was played yet.
@@ -373,7 +385,12 @@ const musicPlayer = {
         const id = `${track.type}:${track.id}`;
         const startAt = Number.isFinite(position) && position > 0 ? position : 0;
 
+        const token = ++transportToken;
+
         enqueue(async () => {
+          // Another command won the race while this one was queued.
+          if (token !== transportToken) return;
+
           const resolved = await resolveTrackMedia(track);
           if (!resolved || resolved.media.urls.length === 0)
             throw new Error(`No playable media for ${id}.`);
@@ -398,6 +415,13 @@ const musicPlayer = {
             try {
               await playUrl(id, url, mediaType, media, startAt);
               trackFailures.delete(id);
+
+              // The DJ paused (or skipped) while the media was loading.
+              if (token !== transportToken) {
+                await player.pause();
+                return;
+              }
+
               return;
             } catch (err) {
               lastError = err;
@@ -469,11 +493,27 @@ const musicPlayer = {
     if (Number.isFinite(volume)) player.volume = Math.min(100, Math.max(0, volume)) / 100;
   },
 
-  pause: () => enqueue(() => player.pause()).catch((err) => console.error(err)),
+  /**
+   * Pauses the audio immediately.
+   *
+   * The queue is bypassed on purpose: `TinyMediaPlayer` accepts a pause at any
+   * moment, and waiting for a pending `playTrackAsync()` would keep the room
+   * listening to a track the DJ already paused.
+   *
+   * @returns {Promise<void>}
+   */
+  pause: async () => {
+    transportToken++;
+    return player.pause().catch((err) => console.error(err));
+  },
 
   resume: () => enqueue(() => player.play()).catch((err) => console.error(err)),
 
-  stop: () => enqueue(() => player.stop()).catch((err) => console.error(err)),
+  /** @returns {Promise<void>} */
+  stop: async () => {
+    transportToken++;
+    return player.stop().catch((err) => console.error(err));
+  },
 
   /** Stops the playback and forgets the track, so the next chapter starts clean. */
   reset: async () => {

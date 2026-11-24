@@ -6,8 +6,11 @@ import {
   formatTime,
   getLivePosition,
   getState,
-  isPlaylistEmpty,
+  getTracks,
   onPlayerChange,
+  previousTrack,
+  restartTrack,
+  seekTo,
   sendPlayerAction,
 } from '../roomPlayer.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
@@ -19,10 +22,31 @@ import tinyLib from '../../files/tinyLib.mjs';
  * system of the room: it starts as soon as the visitor enters and is driven by
  * the room state, never by this modal.
  *
+ * Only the DJ of the room (owner, server owner and moderators) may change the
+ * player. Everybody else gets a read-only view of what is playing, which is
+ * also enforced by the server: hiding the buttons is a courtesy, not the
+ * permission check.
+ *
  * @module ai/buttons/roomPlayer
  */
 
 /** @typedef {'all'|'room'} PlaylistFilter */
+
+/**
+ * Tells whether the signed-in account may control the player of the room.
+ *
+ * Mirrors `canControl()` of the server: the room owner, the server owner and
+ * the room moderators are the DJs.
+ *
+ * @param {Record<string, any>} client - Socket client.
+ * @returns {boolean}
+ */
+const canControlPlayer = (client) => {
+  const user = client.getUser() || {};
+  if (user.isAdmin) return true;
+  if (typeof client.isRoomMod === 'function') return client.isRoomMod();
+  return false;
+};
 
 /**
  * Opens the playlist editor.
@@ -71,6 +95,20 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
 
   const $trackList = TinyHtml.createFrom('div').addClass('mt-2');
 
+  /**
+   * Moves a track inside the playlist.
+   *
+   * @param {number} from - Current index.
+   * @param {number} to - New index.
+   * @returns {void}
+   */
+  const moveTrack = (from, to) => {
+    if (to < 0 || to >= tracks.length) return;
+    const [track] = tracks.splice(from, 1);
+    tracks.splice(to, 0, track);
+    renderTracks();
+  };
+
   const renderTracks = () => {
     $trackList.empty();
 
@@ -82,9 +120,28 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
     }
 
     tracks.forEach((track, index) => {
+      const $up = tinyLib.bs
+        .button('outline-secondary')
+        .addClass('btn-sm')
+        .setAttr({ type: 'button', title: 'Move up' })
+        .append(TinyHtml.createFrom('i').addClass('fas fa-arrow-up'));
+
+      // The first track cannot go up, and the last one cannot go down.
+      if (index < 1) $up.setAttr('disabled', 'disabled');
+      $up.on('click', () => moveTrack(index, index - 1));
+
+      const $down = tinyLib.bs
+        .button('outline-secondary')
+        .addClass('btn-sm')
+        .setAttr({ type: 'button', title: 'Move down' })
+        .append(TinyHtml.createFrom('i').addClass('fas fa-arrow-down'));
+
+      if (index >= tracks.length - 1) $down.setAttr('disabled', 'disabled');
+      $down.on('click', () => moveTrack(index, index + 1));
+
       const $remove = TinyHtml.createFrom('button')
         .addClass('btn btn-sm btn-outline-danger')
-        .setAttr('type', 'button')
+        .setAttr({ type: 'button', title: 'Remove track' })
         .append(TinyHtml.createFrom('i').addClass('fas fa-trash'));
 
       $remove.on('click', () => {
@@ -101,6 +158,8 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
               .setText(
                 `${track.type === 'youtube' ? '\u25b6' : '\u266a'} ${track.title || track.id}`,
               ),
+            $up,
+            $down,
             $remove,
           ),
       );
@@ -197,9 +256,7 @@ export const openRoomPlayer = () => {
   if (!client) return;
 
   const roomId = String(client.getRoomId() ?? '');
-  const room = client.getRoom() || {};
-  const user = client.getUser() || {};
-  const canEdit = room.ownerId === client.getUserId() || Boolean(user.isOwner);
+  const canEdit = canControlPlayer(client);
 
   /** @type {PlaylistFilter} */
   let filter = 'all';
@@ -215,8 +272,21 @@ export const openRoomPlayer = () => {
   /** @type {ReturnType<typeof setInterval>|null} */
   let ticker = null;
 
+  /**
+   * Position the DJ is scrubbing to, in seconds.
+   *
+   * While it is a number the bar follows the pointer instead of the room, so
+   * the handle does not jump back on every `player-updated`.
+   *
+   * @type {number|null}
+   */
+  let scrubbing = null;
+
   /** @type {TinyHtmlAny|null} */
   let $time = null;
+
+  /** @type {TinyHtmlAny|null} */
+  let $seek = null;
 
   const showError = (/** @type {string} */ msg) => $error.removeClass('d-none').setText(msg);
   const clearError = () => $error.addClass('d-none');
@@ -239,9 +309,11 @@ export const openRoomPlayer = () => {
       return;
     }
 
-    const live = formatTime(getLivePosition(state));
+    const live = scrubbing ?? getLivePosition(state);
     const total = Number(state.duration) > 0 ? ` / ${formatTime(state.duration)}` : '';
-    $time.setText(`${live}${total}`);
+    $time.setText(`${formatTime(live)}${total}`);
+
+    if ($seek) $seek.val(String(Math.min(1, state.duration > 0 ? live / state.duration : 0)));
   };
 
   /** Starts the clock of the now playing bar. */
@@ -257,6 +329,35 @@ export const openRoomPlayer = () => {
     ticker = null;
   };
 
+  /**
+   * Playlist that is loaded in the room, if the modal knows about it.
+   *
+   * The list is filtered by the select, so the playlist may not be there even
+   * when the room is playing it.
+   *
+   * @param {Record<string, any>} state - Current room state.
+   * @returns {Record<string, any>|null}
+   */
+  const currentPlaylist = (state) =>
+    playlists.find((item) => item.playlistId === state.playlistId) ?? null;
+
+  /**
+   * Tracks of the playlist that is loaded in the room.
+   *
+   * The modal already downloaded the playlist, so it is the best source while
+   * the room is paused: the audio engine only fetches the tracks when it has
+   * something to play, and waiting for it would leave the bar empty (and the
+   * whole panel locked behind the "no tracks" warning) until the DJ hits play.
+   *
+   * @param {Record<string, any>} state - Current room state.
+   * @returns {Array<Record<string, any>>}
+   */
+  const currentTracks = (state) => {
+    const playlist = currentPlaylist(state);
+    if (Array.isArray(playlist?.tracks)) return playlist.tracks;
+    return getTracks();
+  };
+
   /** Read-only summary of what the room is playing right now. */
   const renderNowPlaying = () => {
     $nowPlaying.empty();
@@ -268,12 +369,12 @@ export const openRoomPlayer = () => {
       return;
     }
 
-    const playlist = playlists.find((item) => item.playlistId === state.playlistId);
-    const track = playlist?.tracks?.[state.trackIndex];
+    const roomTracks = currentTracks(state);
+    const track = roomTracks[state.trackIndex];
 
     // An empty playlist has nothing to play, so the clock is meaningless: the
     // room says why it is silent instead of freezing on 0:00.
-    if (isPlaylistEmpty()) {
+    if (roomTracks.length < 1) {
       stopTicker();
 
       $nowPlaying.append(
@@ -290,48 +391,96 @@ export const openRoomPlayer = () => {
       return;
     }
 
-    const $toggle = tinyLib.bs
-      .button(state.playing ? 'warning' : 'success')
-      .addClass('btn-sm')
-      .setAttr({ 'data-player-action': 'toggle', title: state.playing ? 'Pause' : 'Play' })
-      .append(TinyHtml.createFrom('i').addClass(state.playing ? 'fas fa-pause' : 'fas fa-play'));
-
-    const $next = tinyLib.bs
-      .button('outline-secondary')
-      .addClass('btn-sm')
-      .setAttr({ 'data-player-action': 'next', title: 'Next track' })
-      .append(TinyHtml.createFrom('i').addClass('fas fa-forward'));
-
-    // The room owner decides whether the playlist restarts or stops when the
-    // last track ends.
-    const $loop = tinyLib.bs
-      .button(state.loop ? 'info' : 'outline-secondary')
-      .addClass('btn-sm')
-      .setAttr({ 'data-player-action': 'loop', title: state.loop ? 'Repeat: on' : 'Repeat: off' })
-      .append(TinyHtml.createFrom('i').addClass('fas fa-repeat'));
-
     $time = TinyHtml.createFrom('span').addClass('font-monospace small');
 
-    $nowPlaying.append(
+    const $bar = TinyHtml.createFrom('div').addClass(
+      'alert alert-secondary mb-0 d-flex align-items-center gap-2',
+    );
+
+    $bar.append(
+      TinyHtml.createFrom('i').addClass(state.playing ? 'fas fa-volume-high' : 'fas fa-pause'),
       TinyHtml.createFrom('div')
-        .addClass('alert alert-secondary mb-0 d-flex align-items-center gap-2')
+        .addClass('flex-grow-1 text-truncate')
         .append(
-          TinyHtml.createFrom('i').addClass(state.playing ? 'fas fa-volume-high' : 'fas fa-pause'),
           TinyHtml.createFrom('div')
-            .addClass('flex-grow-1 text-truncate')
-            .append(
-              TinyHtml.createFrom('div')
-                .addClass('text-truncate')
-                .setText(
-                  `${playlist?.name ?? state.playlistId} - ${track?.title || track?.id || ''}`,
-                ),
-              $time,
+            .addClass('text-truncate')
+            .setText(
+              `${currentPlaylist(state)?.name || state.playlistId} - ${
+                track?.title || track?.id || ''
+              }`.trim(),
             ),
-          $toggle,
-          $next,
-          $loop,
+          $time,
         ),
     );
+
+    // The transport is the DJ's tool. A regular listener only reads the bar.
+    if (canEdit) {
+      const isLast = state.trackIndex >= roomTracks.length - 1;
+
+      const $restart = tinyLib.bs
+        .button('outline-secondary')
+        .addClass('btn-sm')
+        .setAttr({ 'data-player-action': 'restart', title: 'Restart track' })
+        .append(TinyHtml.createFrom('i').addClass('fas fa-rotate-left'));
+
+      const $prev = tinyLib.bs
+        .button('outline-secondary')
+        .addClass('btn-sm')
+        .setAttr({ 'data-player-action': 'prev', title: 'Previous track' })
+        .append(TinyHtml.createFrom('i').addClass('fas fa-backward'));
+
+      const $toggle = tinyLib.bs
+        .button(state.playing ? 'warning' : 'success')
+        .addClass('btn-sm')
+        .setAttr({ 'data-player-action': 'toggle', title: state.playing ? 'Pause' : 'Play' })
+        .append(TinyHtml.createFrom('i').addClass(state.playing ? 'fas fa-pause' : 'fas fa-play'));
+
+      const $stop = tinyLib.bs
+        .button('outline-secondary')
+        .addClass('btn-sm')
+        .setAttr({ 'data-player-action': 'stop', title: 'Stop' })
+        .append(TinyHtml.createFrom('i').addClass('fas fa-stop'));
+
+      const $next = tinyLib.bs
+        .button('outline-secondary')
+        .addClass('btn-sm')
+        .setAttr({ 'data-player-action': 'next', title: 'Next track' })
+        .append(TinyHtml.createFrom('i').addClass('fas fa-forward'));
+
+      // There is nowhere to go after the last track of a playlist that does
+      // not repeat, so the button would only restart the same song.
+      if (isLast && !state.loop) $next.setAttr('disabled', 'disabled');
+
+      // The room owner decides whether the playlist restarts or stops when the
+      // last track ends.
+      const $loop = tinyLib.bs
+        .button(state.loop ? 'info' : 'outline-secondary')
+        .addClass('btn-sm')
+        .setAttr({ 'data-player-action': 'loop', title: state.loop ? 'Repeat: on' : 'Repeat: off' })
+        .append(TinyHtml.createFrom('i').addClass('fas fa-repeat'));
+
+      $bar.append($restart, $prev, $toggle, $stop, $next, $loop);
+    }
+
+    $nowPlaying.append($bar);
+
+    // The seek bar is only useful when the media knows its own duration.
+    if (canEdit && Number(state.duration) > 0) {
+      $seek = TinyHtml.createFrom('input')
+        .addClass('form-range mt-2')
+        .setAttr({
+          type: 'range',
+          min: '0',
+          max: '1',
+          step: 'any',
+          'data-player-action': 'seek',
+          title: 'Seek',
+        });
+
+      $nowPlaying.append($seek);
+    } else {
+      $seek = null;
+    }
 
     renderTime();
     if (state.playing) startTicker();
@@ -346,13 +495,19 @@ export const openRoomPlayer = () => {
    * the container that outlives the render keeps the buttons working.
    */
   $nowPlaying.on('click', async (event) => {
-    const target = event.target;
+    const target = /** @type {Element|null} */ (event.target);
     const button = target?.closest ? target.closest('[data-player-action]') : null;
     if (!button) return;
+
+    // The server is the permission check, this is only the fast path.
+    if (!canEdit) return;
 
     const action = button.getAttribute('data-player-action');
     const current = getState();
     if (!current) return;
+
+    // The slider is not a button and must not be disabled while dragging.
+    if (action === 'seek') return;
 
     // The button is disabled while the room acknowledges the interaction, so a
     // double click cannot toggle twice.
@@ -366,14 +521,60 @@ export const openRoomPlayer = () => {
           position: getLivePosition(current),
         });
       } else if (action === 'next') {
-        await sendPlayerAction({ action: 'track', trackIndex: current.trackIndex + 1 });
+        // The last track of a repeating playlist goes back to the first one.
+        const total = getTracks().length;
+        const nextIndex = current.trackIndex + 1;
+
+        await sendPlayerAction({
+          action: 'track',
+          trackIndex: total > 0 && nextIndex >= total ? 0 : nextIndex,
+        });
+      } else if (action === 'prev') {
+        await previousTrack();
+      } else if (action === 'restart') {
+        await restartTrack();
+      } else if (action === 'stop') {
+        await sendPlayerAction({ action: 'pause', position: 0 });
       } else if (action === 'loop') {
         await sendPlayerAction({ action: 'loop', loop: !current.loop });
       }
     } finally {
+      // The bar is rebuilt by `onPlayerChange`, so the button may already be
+      // detached. Re-rendering keeps the state right when the server refused
+      // the interaction.
       button.disabled = false;
       renderNowPlaying();
     }
+  });
+
+  /**
+   * Follows the seek handle while the DJ drags it.
+   *
+   * The room is only told when the pointer is released, otherwise a single drag
+   * would flood the socket with one interaction per pixel.
+   */
+  $nowPlaying.on('input', (event) => {
+    const target = /** @type {Element|null} */ (event.target);
+    if (!target || target.getAttribute('data-player-action') !== 'seek') return;
+
+    const state = getState();    
+    if (!state || !(Number(state.duration) > 0)) return;
+
+    scrubbing = Number(target.value) * Number(state.duration);
+    renderTime();
+  });
+
+  $nowPlaying.on('change', async (event) => {
+    const target = /** @type {Element|null} */ (event.target);
+    if (!target || target.getAttribute('data-player-action') !== 'seek') return;
+
+    const state = getState();
+    const position = scrubbing;
+
+    scrubbing = null;
+    if (!state || position === null) return;
+
+    await seekTo(Math.max(0, Math.min(position, Number(state.duration) || position)));
   });
 
   const render = () => {
@@ -396,25 +597,30 @@ export const openRoomPlayer = () => {
     for (const playlist of playlists) {
       const isCurrent = state?.playlistId === playlist.playlistId;
 
-      const $play = tinyLib.bs
-        .button(isCurrent ? 'success' : 'primary')
-        .addClass('btn-sm')
-        .setText(isCurrent ? 'Playing' : 'Play');
+      const $actions = TinyHtml.createFrom('div').addClass('d-flex gap-1');
 
-      $play.on('click', async () => {
-        const result = await sendPlayerAction({
-          action: 'playlist',
-          playlistId: playlist.playlistId,
+      // Starting a playlist is a player interaction, so it belongs to the DJ.
+      if (canEdit) {
+        const $play = tinyLib.bs
+          .button(isCurrent ? 'success' : 'primary')
+          .addClass('btn-sm')
+          .setText(isCurrent ? 'Playing' : 'Play');
+
+        if (isCurrent) $play.setAttr('disabled', 'disabled');
+
+        $play.on('click', async () => {
+          const result = await sendPlayerAction({
+            action: 'playlist',
+            playlistId: playlist.playlistId,
+          });
+
+          if (!result) return;
+          renderNowPlaying();
+          render();
         });
 
-        if (!result) return;
-        renderNowPlaying();
-        render();
-      });
+        $actions.append($play);
 
-      const $actions = TinyHtml.createFrom('div').addClass('d-flex gap-1').append($play);
-
-      if (canEdit) {
         const $edit = tinyLib.bs
           .button('outline-secondary btn-sm')
           .setAttr('title', 'Edit playlist')
@@ -500,18 +706,24 @@ export const openRoomPlayer = () => {
     });
   });
 
-  $root.append(
-    $error,
-    $nowPlaying,
-    TinyHtml.createFrom('div').addClass('d-flex gap-2').append($filter, $new),
-    $list,
-  );
+  const $toolbar = TinyHtml.createFrom('div').addClass('d-flex gap-2').append($filter);
+
+  // A listener cannot create a playlist, so the button is not even rendered.
+  if (canEdit) $toolbar.append($new);
+
+  $root.append($error, $nowPlaying, $toolbar, $list);
 
   const { modal } = tinyLib.modal({
     title: 'Room playlists',
     dialog: 'modal-lg',
     id: 'room-player',
     body: $root,
+    // The modal is rebuilt on every open, so neither the listener nor the
+    // clock may outlive it.
+    hidden: () => {
+      unsubscribe();
+      stopTicker();
+    },
   });
 
   const unsubscribe = onPlayerChange(() => {
@@ -520,17 +732,6 @@ export const openRoomPlayer = () => {
   });
 
   load();
-
-  // The modal is rebuilt on every open, so neither the listener nor the clock
-  // may outlive it.
-  document.addEventListener(
-    'hidden.bs.modal',
-    () => {
-      unsubscribe();
-      stopTicker();
-    },
-    { once: true },
-  );
 };
 
 export default openRoomPlayer;
