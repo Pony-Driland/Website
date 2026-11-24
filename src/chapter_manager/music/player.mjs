@@ -494,6 +494,31 @@ const musicPlayer = {
   },
 
   /**
+   * Volume of the audio engine, between 0 and 100.
+   *
+   * @returns {number}
+   */
+  getVolume: () => {
+    const volume = Number(player.volume);
+    return Number.isFinite(volume) ? Math.round(volume * 100) : 0;
+  },
+
+  /**
+   * Listens to the volume of the audio engine.
+   *
+   * The engine is shared with the reader, so the room player has to follow a
+   * change it did not make itself (the toolbar of the reader, for example).
+   *
+   * @param {(volume: number) => void} callback - Receives the volume from 0 to 100.
+   * @returns {() => void} Unsubscribe function.
+   */
+  onVolumeChange: (callback) => {
+    const handler = () => callback(musicPlayer.getVolume());
+    player.on('volumeChange', handler);
+    return () => player.off('volumeChange', handler);
+  },
+
+  /**
    * Pauses the audio immediately.
    *
    * The queue is bypassed on purpose: `TinyMediaPlayer` accepts a pause at any

@@ -217,6 +217,19 @@ export const isPlaylistEmpty = () => Boolean(state?.playlistId) && tracks.length
 export const getState = () => state;
 
 /**
+ * Volume the room should start with, between 0 and 1.
+ *
+ * The DJ owns the room volume, so a visitor that never touched the slider has
+ * to follow whatever the room is using instead of the local default.
+ *
+ * @returns {number|null}
+ */
+export const getRoomVolume = () => {
+  const volume = Number(state?.volume);
+  return Number.isFinite(volume) && volume >= 0 ? volume : null;
+};
+
+/**
  * Duration of the media loaded in the audio engine, in seconds.
  *
  * The room only learns the duration after a full round trip, and the report is
@@ -830,6 +843,12 @@ const applyOptimistic = (data) => {
     case 'loop':
       next.loop = Boolean(data.loop);
       break;
+
+    case 'volume': {
+      const volume = Number(data.volume);
+      if (Number.isFinite(volume)) next.volume = Math.min(1, Math.max(0, volume));
+      break;
+    }
 
     default:
       return;

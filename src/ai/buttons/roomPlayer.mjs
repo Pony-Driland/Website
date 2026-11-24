@@ -6,6 +6,7 @@ import {
   formatTime,
   getLivePosition,
   getLocalDuration,
+  getRoomVolume,
   getState,
   getTracks,
   onPlayerChange,
@@ -14,6 +15,7 @@ import {
   seekTo,
   sendPlayerAction,
 } from '../roomPlayer.mjs';
+import musicPlayer from '../../chapter_manager/music/player.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 
 /**
@@ -289,6 +291,20 @@ export const openRoomPlayer = () => {
   /** @type {HTMLInputElement|null} */
   let $seek = null;
 
+  /** @type {HTMLInputElement|null} */
+  let $volume = null;
+
+  /**
+   * Whether the visitor already picked a volume in this session.
+   *
+   * The room volume is only a starting point: as soon as the visitor moves the
+   * slider their choice wins, otherwise the room would keep overwriting it on
+   * every update.
+   *
+   * @type {boolean}
+   */
+  let volumeTouched = false;
+
   /**
    * Track the pending scrub belongs to.
    *
@@ -514,6 +530,28 @@ export const openRoomPlayer = () => {
 
     $nowPlaying.append($bar);
 
+    // The volume is personal: it is applied locally and, for the DJ, also
+    // stored in the room so a visitor starts on the same level.
+    const $volumeRow = TinyHtml.createFrom('div').addClass('d-flex align-items-center gap-2 mt-2');
+    const $volumeIcon = TinyHtml.createFrom('i').addClass('fas fa-volume-high');
+
+    const $volumeInput = TinyHtml.createFrom('input')
+      .addClass('form-range')
+      .setAttr({
+        type: 'range',
+        min: '0',
+        max: '100',
+        step: '1',
+        'data-player-action': 'volume',
+        title: 'Volume',
+      });
+
+    $volume = /** @type {HTMLInputElement} */ ($volumeInput.elements[0]);
+    $volume.value = String(musicPlayer.getVolume());
+
+    $volumeRow.append($volumeIcon, $volumeInput);
+    $nowPlaying.append($volumeRow);
+
     // The bar is always rendered for the DJ: hiding it until the media knows
     // its own duration made it look like the control did not exist.
     if (canEdit) {
@@ -535,6 +573,7 @@ export const openRoomPlayer = () => {
     }
 
     renderTime();
+    applyRoomVolume();
 
     // The clock also runs while the room is paused: the DJ still has to see
     // where the playhead is before resuming.
@@ -618,6 +657,38 @@ export const openRoomPlayer = () => {
     scrubbing = Number(target.value) * duration;
     scrubKey = `${state.playlistId}:${state.trackIndex}`;
     renderTime();
+  });
+
+  /**
+   * Applies the volume of the room to the local audio.
+   *
+   * The DJ is the only one that writes it, so the value is only read here.
+   * A visitor that already picked a volume keeps it: the room is a starting
+   * point, not a remote control for somebody else's speakers.
+   *
+   * @returns {void}
+   */
+  const applyRoomVolume = () => {
+    if (volumeTouched) return;
+
+    const volume = getRoomVolume();
+    if (volume === null) return;
+
+    musicPlayer.setVolume(Math.round(volume * 100));
+    if ($volume) $volume.value = String(Math.round(volume * 100));
+  };
+
+  $nowPlaying.on('input', (event) => {
+    const target = /** @type {Element|null} */ (event.target);
+    if (!target || target.getAttribute('data-player-action') !== 'volume') return;
+
+    const volume = Math.max(0, Math.min(100, Number(target.value) || 0));
+    volumeTouched = true;
+    musicPlayer.setVolume(volume);
+
+    // The DJ owns the room volume, so the change is also stored for the next
+    // visitor. Everybody else only changes the local output.
+    if (canEdit) sendPlayerAction({ action: 'volume', volume: volume / 100 }).catch(() => {});
   });
 
   $nowPlaying.on('change', async (event) => {
