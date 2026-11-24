@@ -1434,13 +1434,23 @@ class TinyClientIo extends EventEmitter {
    * @param {string[]} [data.rooms] - Rooms of a `rooms` playlist.
    * @returns {Promise<SocketAck>}
    */
-  savePlaylist({ playlistId = null, name = '', tracks = [], scope = 'all', rooms = [] } = {}) {
+  savePlaylist({
+    playlistId = null,
+    name = '',
+    tracks = [],
+    scope = 'all',
+    rooms = [],
+    mode = 'ordered',
+    raffle = null,
+  } = {}) {
     return this.#socketEmitApi('save-playlist', {
       playlistId,
       name,
       tracks,
       scope,
       rooms,
+      mode,
+      raffle,
     });
   }
 

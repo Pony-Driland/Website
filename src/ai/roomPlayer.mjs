@@ -295,6 +295,23 @@ export const getLocalDuration = () => {
 export const getTracks = () => tracks;
 
 /**
+ * Tracks of the loaded playlist, in the order they are played.
+ *
+ * A `raffle` playlist is drawn once and the result is cached, so the order is
+ * stable while the playlist does not change.
+ *
+ * @returns {Array<Record<string, any>>}
+ */
+export const getPlayOrder = () => {
+  const order = buildPlayOrder(tracks.length, {
+    mode: playlistMode,
+    raffle: playlistRaffle,
+  });
+
+  return order.map((index) => tracks[index]).filter(Boolean);
+};
+
+/**
  * Track that should be playing right now, if any.
  *
  * @returns {Record<string, any>|null}
@@ -408,11 +425,10 @@ const correctDrift = async () => {
       if (nextRequestedFor === revision) nextRequestedFor = null;
     };
 
-    requestNextTrack()
-      .then(release, (err) => {
-        console.error('[room-player]', err);
-        release();
-      });
+    requestNextTrack().then(release, (err) => {
+      console.error('[room-player]', err);
+      release();
+    });
 
     return;
   }
@@ -763,6 +779,18 @@ export const applyState = (player, playlist) => {
  */
 export const setTracks = (list) => {
   tracks = Array.isArray(list) ? list : [];
+};
+
+/**
+ * Replaces the playback order of the loaded playlist.
+ *
+ * @param {string} mode - `ordered` or `raffle`.
+ * @param {Record<string, any>|null} raffle - Draw configuration.
+ * @returns {void}
+ */
+export const setPlaylistOrder = (mode, raffle) => {
+  playlistMode = mode === 'raffle' ? 'raffle' : 'ordered';
+  playlistRaffle = raffle && typeof raffle === 'object' ? raffle : null;
 };
 
 /**

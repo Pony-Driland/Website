@@ -22,6 +22,27 @@ export const AUDIO_FILE_TYPE = 'audio-file';
 export const TRACK_TYPES = [YOUTUBE_TYPE, AUDIO_FILE_TYPE];
 
 /**
+ * Human readable name of each provider.
+ *
+ * Mirrors the map of the reader toolbar, so the room and the reader name the
+ * same source the same way.
+ *
+ * @type {Record<string, string>}
+ */
+export const TRACK_TYPE_NAMES = {
+  [AUDIO_FILE_TYPE]: 'Pony Driland',
+  [YOUTUBE_TYPE]: 'YouTube',
+};
+
+/**
+ * Name of the provider of a track.
+ *
+ * @param {unknown} type - Track provider.
+ * @returns {string}
+ */
+export const getTrackTypeName = (type) => TRACK_TYPE_NAMES[String(type)] ?? String(type ?? '');
+
+/**
  * A YouTube id is 11 characters of the URL safe alphabet.
  *
  * The player builds `youtube.com/watch?v=<id>` from it, so anything else is

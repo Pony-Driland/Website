@@ -18,7 +18,8 @@ import {
 } from '../roomPlayer.mjs';
 import musicPlayer from '../../chapter_manager/music/player.mjs';
 import { loadTrackMetadata } from '../../chapter_manager/music/audioFile.mjs';
-import { validateTrack } from '../musicTrack.mjs';
+import { getTrackTypeName, validateTrack } from '../musicTrack.mjs';
+import { drawPlaylistOrder } from '../playlistOrder.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 
 /**
@@ -84,6 +85,37 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
     TinyHtml.createFrom('option', { value: 'rooms' }).setText('Only this room'),
   );
   $scope.setVal(playlist?.scope === 'rooms' ? 'rooms' : 'all');
+
+  const $mode = TinyHtml.createFrom('select').addClass('form-select');
+  $mode.append(
+    TinyHtml.createFrom('option', { value: 'ordered' }).setText('In order'),
+    TinyHtml.createFrom('option', { value: 'raffle' }).setText('Shuffle (TinyAdvancedRaffle)'),
+  );
+  $mode.setVal(playlist?.mode === 'raffle' ? 'raffle' : 'ordered');
+
+  // The raffle is configured with the same JSON the reader accepts, so the
+  // advanced options (seed, weights, pity, cooldown) are not reimplemented.
+  const $raffle = TinyHtml.createFrom('textarea')
+    .addClass('form-control font-monospace')
+    .setAttr({ rows: 6, spellcheck: 'false', placeholder: '{ "seed": 1, "unique": true }' });
+
+  $raffle.setVal(playlist?.raffle ? JSON.stringify(playlist.raffle, null, 2) : '');
+
+  const $raffleGroup = TinyHtml.createFrom('div')
+    .addClass('d-none mt-2')
+    .append(
+      TinyHtml.createFrom('label')
+        .addClass('form-label')
+        .setText('Raffle options (JSON, optional)'),
+      $raffle,
+    );
+
+  const syncRaffle = () => {
+    $raffleGroup.toggleClass('d-none', String($mode.val() ?? 'ordered') !== 'raffle');
+  };
+
+  $mode.on('change', syncRaffle);
+  syncRaffle();
 
   const $trackType = TinyHtml.createFrom('select').addClass('form-select');
   $trackType.append(
@@ -155,6 +187,12 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
         renderTracks();
       });
 
+      // The provider is part of the row: the same song may exist on both
+      // sources, and the DJ has to know which one is about to play.
+      const $provider = TinyHtml.createFrom('span')
+        .addClass('badge text-bg-secondary text-nowrap')
+        .setText(getTrackTypeName(track.type));
+
       $trackList.append(
         TinyHtml.createFrom('div')
           .addClass('d-flex align-items-center gap-2 border-bottom py-1')
@@ -164,6 +202,7 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
               .setText(
                 `${track.type === 'youtube' ? '\u25b6' : '\u266a'} ${track.title || track.id}`,
               ),
+            $provider,
             $up,
             $down,
             $remove,
@@ -171,6 +210,35 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
       );
     });
   };
+
+  // Draws a new order with the raffle and writes it over the list. The result
+  // is what gets saved, so every listener follows the same sequence through
+  // the regular sync.
+  const $shuffle = tinyLib.bs.button('outline-info').addClass('w-100 mt-2').setText('Shuffle now');
+
+  $shuffle.on('click', () => {
+    if (tracks.length < 2) return;
+
+    let raffle = null;
+    const raw = String($raffle.val() ?? '').trim();
+
+    if (raw.length > 0) {
+      try {
+        raffle = JSON.parse(raw);
+      } catch (err) {
+        $error
+          .removeClass('d-none')
+          .setText(`The raffle options are not valid JSON: ${err.message}`);
+        return;
+      }
+    }
+
+    $error.addClass('d-none');
+
+    const drawn = drawPlaylistOrder(tracks, raffle);
+    tracks.splice(0, tracks.length, ...drawn);
+    renderTracks();
+  });
 
   const $addTrack = tinyLib.bs.button('secondary').addClass('w-100 mt-2').setText('Add track');
 
@@ -230,6 +298,9 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
     $name,
     TinyHtml.createFrom('label').addClass('form-label mt-3').setText('Available on'),
     $scope,
+    TinyHtml.createFrom('label').addClass('form-label mt-3').setText('Playback order'),
+    $mode,
+    $raffleGroup,
     TinyHtml.createFrom('hr').addClass('my-4'),
     TinyHtml.createFrom('h6').setText('Tracks'),
     $trackList,
@@ -241,15 +312,47 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
       ),
     TinyHtml.createFrom('div').addClass('mt-2').append($trackTitle),
     $addTrack,
+    $shuffle,
     $save,
   );
+
+  // Live position of the room, so the DJ can see which track is playing while
+  // the playlist is being edited.
+  const $live = TinyHtml.createFrom('div').addClass('mb-3');
+  $root.prepend($live);
+
+  const renderLive = () => {
+    $live.empty();
+
+    const state = getState();
+    if (!state?.playlistId || state.playlistId !== playlist?.playlistId) return;
+
+    const list = getTracks();
+    const track = list[state.trackIndex];
+    if (!track) return;
+
+    $live.append(
+      TinyHtml.createFrom('div')
+        .addClass('alert alert-info mb-0 d-flex align-items-center gap-2')
+        .append(
+          TinyHtml.createFrom('i').addClass(state.playing ? 'fas fa-volume-high' : 'fas fa-pause'),
+          TinyHtml.createFrom('span')
+            .addClass('text-truncate')
+            .setText(`Playing ${state.trackIndex + 1}/${list.length}: ${track.title || track.id}`),
+        ),
+    );
+  };
 
   const { modal } = tinyLib.modal({
     title: isNew ? 'New playlist' : 'Edit playlist',
     dialog: 'modal-lg',
     id: 'room-player-editor',
     body: $root,
+    hidden: () => unsubscribeLive(),
   });
+
+  const unsubscribeLive = onPlayerChange(renderLive);
+  renderLive();
 
   renderTracks();
 
@@ -264,12 +367,32 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
     $error.addClass('d-none');
 
     const scope = String($scope.val() ?? 'all') === 'rooms' ? 'rooms' : 'all';
+    const mode = String($mode.val() ?? 'ordered') === 'raffle' ? 'raffle' : 'ordered';
+
+    // The JSON is parsed here so a typo is reported before the playlist is
+    // saved, instead of silently falling back to the list order.
+    let raffle = null;
+    const rawRaffle = String($raffle.val() ?? '').trim();
+
+    if (mode === 'raffle' && rawRaffle.length > 0) {
+      try {
+        raffle = JSON.parse(rawRaffle);
+      } catch (err) {
+        $error
+          .removeClass('d-none')
+          .setText(`The raffle options are not valid JSON: ${err.message}`);
+        return;
+      }
+    }
+
     const result = await client.savePlaylist({
       playlistId: playlist?.playlistId ?? null,
       name,
       tracks,
       scope,
       rooms: scope === 'rooms' ? [roomId] : [],
+      mode,
+      raffle,
     });
 
     $save.removeProp('disabled');
@@ -498,6 +621,26 @@ export const openRoomPlayer = () => {
       'alert alert-secondary mb-0 d-flex align-items-center gap-2',
     );
 
+    // Same behaviour as the reader toolbar: the icon tells where the song
+    // comes from and only becomes a link when the source has a page.
+    const sourceUrl = musicPlayer.getSourceUrl();
+    const canOpenSource = Boolean(sourceUrl) && !musicPlayer.isLocalSource();
+
+    const $source = TinyHtml.createFrom(canOpenSource ? 'a' : 'span')
+      .addClass('btn btn-outline-info btn-sm')
+      .setAttr({
+        title: `Source: ${getTrackTypeName(track?.type)}`,
+        'aria-label': `Source: ${getTrackTypeName(track?.type)}`,
+      });
+
+    if (canOpenSource) {
+      $source.setAttr({ href: sourceUrl, target: '_blank', rel: 'noopener noreferrer' });
+    } else {
+      $source.setStyle({ cursor: 'default' });
+    }
+
+    $source.append(TinyHtml.createFrom('i').addClass('fas fa-info-circle'));
+
     $bar.append(
       TinyHtml.createFrom('i').addClass(state.playing ? 'fas fa-volume-high' : 'fas fa-pause'),
       TinyHtml.createFrom('div')
@@ -512,6 +655,7 @@ export const openRoomPlayer = () => {
             ),
           $time,
         ),
+      $source,
     );
 
     // The transport is the DJ's tool. A regular listener only reads the bar.
@@ -570,16 +714,14 @@ export const openRoomPlayer = () => {
     const $volumeRow = TinyHtml.createFrom('div').addClass('d-flex align-items-center gap-2 mt-2');
     const $volumeIcon = TinyHtml.createFrom('i').addClass('fas fa-volume-high');
 
-    const $volumeInput = TinyHtml.createFrom('input')
-      .addClass('form-range')
-      .setAttr({
-        type: 'range',
-        min: '0',
-        max: '100',
-        step: '1',
-        'data-player-action': 'volume',
-        title: 'Volume',
-      });
+    const $volumeInput = TinyHtml.createFrom('input').addClass('form-range').setAttr({
+      type: 'range',
+      min: '0',
+      max: '100',
+      step: '1',
+      'data-player-action': 'volume',
+      title: 'Volume',
+    });
 
     $volume = /** @type {HTMLInputElement} */ ($volumeInput.elements[0]);
     $volume.value = String(musicPlayer.getVolume());
@@ -590,16 +732,14 @@ export const openRoomPlayer = () => {
     // The bar is always rendered for the DJ: hiding it until the media knows
     // its own duration made it look like the control did not exist.
     if (canEdit) {
-      const $range = TinyHtml.createFrom('input')
-        .addClass('form-range mt-2')
-        .setAttr({
-          type: 'range',
-          min: '0',
-          max: '1',
-          step: 'any',
-          'data-player-action': 'seek',
-          title: 'Seek',
-        });
+      const $range = TinyHtml.createFrom('input').addClass('form-range mt-2').setAttr({
+        type: 'range',
+        min: '0',
+        max: '1',
+        step: 'any',
+        'data-player-action': 'seek',
+        title: 'Seek',
+      });
 
       $seek = /** @type {HTMLInputElement} */ ($range.elements[0]);
       $nowPlaying.append($range);
@@ -764,6 +904,16 @@ export const openRoomPlayer = () => {
 
       const $actions = TinyHtml.createFrom('div').addClass('d-flex gap-1');
 
+      // Which providers the playlist uses, so the DJ knows what to expect
+      // without opening it.
+      const providers = [
+        ...new Set(
+          (Array.isArray(playlist.tracks) ? playlist.tracks : []).map((item) =>
+            getTrackTypeName(item?.type),
+          ),
+        ),
+      ].filter((name) => name.length > 0);
+
       // Starting a playlist is a player interaction, so it belongs to the DJ.
       if (canEdit) {
         const $play = tinyLib.bs
@@ -827,8 +977,13 @@ export const openRoomPlayer = () => {
                   .setText(
                     `${total} track(s) - ${
                       playlist.scope === 'all' ? 'all rooms' : 'selected rooms'
-                    }`,
+                    } - ${playlist.mode === 'raffle' ? 'shuffle' : 'in order'}`,
                   ),
+                providers.length > 0
+                  ? TinyHtml.createFrom('div')
+                      .addClass('small text-muted')
+                      .setText(providers.join(', '))
+                  : null,
               ),
             $actions,
           ),
