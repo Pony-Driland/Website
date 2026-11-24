@@ -10,12 +10,15 @@ import {
   getState,
   getTracks,
   onPlayerChange,
+  onTrackBlocked,
   previousTrack,
   restartTrack,
   seekTo,
   sendPlayerAction,
 } from '../roomPlayer.mjs';
 import musicPlayer from '../../chapter_manager/music/player.mjs';
+import { loadTrackMetadata } from '../../chapter_manager/music/audioFile.mjs';
+import { validateTrack } from '../musicTrack.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 
 /**
@@ -171,15 +174,47 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
 
   const $addTrack = tinyLib.bs.button('secondary').addClass('w-100 mt-2').setText('Add track');
 
-  $addTrack.on('click', () => {
+  $addTrack.on('click', async () => {
     const id = String($trackId.val() ?? '').trim();
     if (id.length < 1) return;
 
+    const type = String($trackType.val() ?? 'youtube');
+    const candidate = { type, id, file: 0 };
+
+    // The source is checked before it ever reaches the playlist: a track that
+    // the player would refuse has no business being saved.
+    const checked = validateTrack(candidate);
+    if (!checked.ok) {
+      $error.removeClass('d-none').setText(checked.reason);
+      return;
+    }
+
+    $error.addClass('d-none');
+    $addTrack.addProp('disabled');
+
+    let title = String($trackTitle.val() ?? '').trim();
+
+    // No title typed: the metadata of the source is the best name available,
+    // exactly like the reader does.
+    if (title.length < 1) {
+      $addTrack.setText('Loading...');
+
+      try {
+        const metadata = await loadTrackMetadata(candidate);
+        title = String(metadata.title ?? '').trim();
+      } catch (err) {
+        console.warn('[room-player] Could not load the track metadata.', err);
+      } finally {
+        $addTrack.setText('Add track');
+        $addTrack.removeProp('disabled');
+      }
+    }
+
     tracks.push({
-      type: String($trackType.val() ?? 'youtube'),
-      id,
+      type: checked.type,
+      id: checked.id,
       file: 0,
-      title: String($trackTitle.val() ?? '').trim() || null,
+      title: title.length > 0 ? title : null,
     });
 
     $trackId.setVal('');
@@ -852,6 +887,7 @@ export const openRoomPlayer = () => {
     // clock may outlive it.
     hidden: () => {
       unsubscribe();
+      unsubscribeBlocked();
       stopTicker();
     },
   });
@@ -859,6 +895,12 @@ export const openRoomPlayer = () => {
   const unsubscribe = onPlayerChange(() => {
     renderNowPlaying();
     render();
+  });
+
+  // A refused track never reaches the audio engine, so the reason has to be
+  // shown here or the room would look silent for no reason.
+  const unsubscribeBlocked = onTrackBlocked((reason) => {
+    showError(`This track was blocked for security reasons. ${reason}`);
   });
 
   load();

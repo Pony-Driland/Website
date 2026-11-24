@@ -1,5 +1,6 @@
 import { tinyIo } from './software/base.mjs';
 import musicPlayer from '../chapter_manager/music/player.mjs';
+import { validateTrack } from './musicTrack.mjs';
 
 /**
  * Music player of the roleplay room.
@@ -215,6 +216,43 @@ export const isPlaylistEmpty = () => Boolean(state?.playlistId) && tracks.length
  * @returns {RoomPlayerState|null}
  */
 export const getState = () => state;
+
+/**
+ * Listener of the tracks that were refused by the player.
+ *
+ * The room player is a background system, so there is no interface of its own
+ * to show the reason: the modal subscribes to it and renders the warning.
+ *
+ * @type {Set<(reason: string) => void>}
+ */
+const blockedListeners = new Set();
+
+/**
+ * Tells the interface that a track was refused.
+ *
+ * @param {string} reason - Why the track was refused.
+ * @returns {void}
+ */
+const notifyBlocked = (reason) => {
+  for (const listener of blockedListeners) {
+    try {
+      listener(reason);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+};
+
+/**
+ * Subscribes to the tracks that were refused by the player.
+ *
+ * @param {(reason: string) => void} callback - Listener.
+ * @returns {() => void} Unsubscribe function.
+ */
+export const onTrackBlocked = (callback) => {
+  blockedListeners.add(callback);
+  return () => blockedListeners.delete(callback);
+};
 
 /**
  * Volume the room should start with, between 0 and 1.
@@ -477,6 +515,17 @@ const reportDuration = () => {
  */
 const loadTrack = async (track, key) => {
   if (loadingKey === key) return;
+
+  // A playlist is shared, so the source is untrusted input: a track that is
+  // not a YouTube video or a file of this website is never handed to the
+  // audio engine.
+  const checked = validateTrack(track);
+  if (!checked.ok) {
+    console.error(`[room-player] ${checked.reason}`);
+    notifyBlocked(checked.reason);
+    return;
+  }
+
   loadingKey = key;
 
   const position = getLivePosition();
