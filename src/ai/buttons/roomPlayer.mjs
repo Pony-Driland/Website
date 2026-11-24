@@ -749,10 +749,14 @@ export const openRoomPlayer = () => {
       'alert alert-secondary mb-0 d-flex align-items-center gap-2',
     );
 
-    // Same behaviour as the reader toolbar: the icon tells where the song
-    // comes from and only becomes a link when the source has a page.
-    const sourceUrl = musicPlayer.getSourceUrl();
-    const canOpenSource = Boolean(sourceUrl) && !musicPlayer.isLocalSource();
+    const sourceUrl =
+      track?.type === 'youtube'
+        ? `https://www.youtube.com/watch?v=${track.id}`
+        : track?.id
+          ? `/audio/${track.id}/`
+          : null;
+
+    const canOpenSource = Boolean(sourceUrl) && track?.type === 'youtube';
 
     const $source = TinyHtml.createFrom(canOpenSource ? 'a' : 'span')
       .addClass('btn btn-outline-info btn-sm')
