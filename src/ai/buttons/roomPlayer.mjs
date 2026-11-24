@@ -20,6 +20,7 @@ import musicPlayer from '../../chapter_manager/music/player.mjs';
 import { loadTrackMetadata } from '../../chapter_manager/music/audioFile.mjs';
 import { getTrackTypeName, validateTrack } from '../musicTrack.mjs';
 import { drawPlaylistOrder } from '../playlistOrder.mjs';
+import { exportPlaylist, getPlaylistFileName, readPlaylistFile } from '../playlistFile.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 
 /**
@@ -240,6 +241,69 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
     renderTracks();
   });
 
+  // Import and export use the same file the reader understands, so a playlist
+  // can be moved between the two without a conversion step.
+  const $import = TinyHtml.createFrom('input')
+    .setAttr({ type: 'file', accept: '.json,application/json' })
+    .setStyle({ display: 'none' });
+
+  const $importButton = tinyLib.bs
+    .button('outline-secondary')
+    .addClass('w-100 mt-2')
+    .setText('Import JSON');
+
+  $importButton.on('click', () => $import.elements[0].click());
+
+  $import.on('change', async () => {
+    const file = $import.elements[0].files?.[0];
+    if (!file) return;
+
+    try {
+      const parsed = readPlaylistFile(await file.text());
+
+      tracks.splice(0, tracks.length, ...parsed.tracks);
+      if (parsed.raffle) $raffle.setVal(JSON.stringify(parsed.raffle, null, 2));
+
+      $error.addClass('d-none');
+      renderTracks();
+    } catch (err) {
+      $error.removeClass('d-none').setText(err.message);
+    } finally {
+      $import.elements[0].value = '';
+    }
+  });
+
+  const $export = tinyLib.bs
+    .button('outline-secondary')
+    .addClass('w-100 mt-2')
+    .setText('Export JSON');
+
+  $export.on('click', () => {
+    let raffle = null;
+    const raw = String($raffle.val() ?? '').trim();
+
+    if (raw.length > 0) {
+      try {
+        raffle = JSON.parse(raw);
+      } catch (err) {
+        $error
+          .removeClass('d-none')
+          .setText(`The raffle options are not valid JSON: ${err.message}`);
+        return;
+      }
+    }
+
+    const blob = new Blob([exportPlaylist({ tracks, raffle })], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+
+    link.href = url;
+    link.download = getPlaylistFileName($name.val() || 'playlist');
+    link.click();
+
+    URL.revokeObjectURL(url);
+  });
+
   const $addTrack = tinyLib.bs.button('secondary').addClass('w-100 mt-2').setText('Add track');
 
   $addTrack.on('click', async () => {
@@ -313,6 +377,9 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
     TinyHtml.createFrom('div').addClass('mt-2').append($trackTitle),
     $addTrack,
     $shuffle,
+    $importButton,
+    $export,
+    $import,
     $save,
   );
 
