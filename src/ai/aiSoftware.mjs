@@ -1009,6 +1009,9 @@ export const AiScriptStart = async () => {
   /** @type {TinyHtmlAny|null} */
   let onlineUsersButton = null;
 
+  /** @type {TinyHtmlAny|null} */
+  let leaveRoomButton = null;
+
   /**
    * Tells whether the signed-in account may edit the RPG data of the room.
    *
@@ -1112,13 +1115,23 @@ export const AiScriptStart = async () => {
     // Leaving the room locks the page on the loading screen. The refresh
     // script (killIo) is the only way out, so the screen is never dismissed
     // here: if the reload never happens the loading stays up on purpose.
-    leftMenu.push(
-      createButtonSidebar('fas fa-right-from-bracket', 'Leave room', () => {
+    leaveRoomButton = createButtonSidebar(
+      'fas fa-right-from-bracket',
+      'Leave room',
+      () => {
         if (!tinyIo.client) return;
         loaderScreen.start('Leaving the room...');
         tinyAiScript.leaveRoom();
-      }),
+      },
+      false,
+      null,
     );
+
+    // There is nothing to leave while no room is selected.
+    if (typeof rpgCfg.roomId !== 'string' || rpgCfg.roomId.length < 1)
+      leaveRoomButton.addClass('d-none');
+
+    leftMenu.push(leaveRoomButton);
 
     // Server staff only: every online user of the server.
     onlineUsersButton = createButtonSidebar('fas fa-globe', 'Online users', openOnlineUsers);
@@ -4131,6 +4144,7 @@ export const AiScriptStart = async () => {
           clearIsLoadingMsgs();
           noRoomNotice.removeClass('d-none');
           textInputWrapper.addClass('d-none');
+          leaveRoomButton?.addClass('d-none');
           makeTempMessage(
             'The room was not found. Check the room id and try again.',
             String(rpgCfg.ip ?? ''),
@@ -4144,6 +4158,7 @@ export const AiScriptStart = async () => {
           clearIsLoadingMsgs();
           noRoomNotice.removeClass('d-none');
           textInputWrapper.addClass('d-none');
+          leaveRoomButton?.addClass('d-none');
           makeTempMessage(
             'You are not in any room yet. Open the room browser in the sidebar to pick one.',
             String(rpgCfg.ip ?? ''),
@@ -4155,6 +4170,7 @@ export const AiScriptStart = async () => {
         client.on('roomJoinned', (result) => {
           const client = getClient();
           clearIsLoadingMsgs();
+          leaveRoomButton?.removeClass('d-none');
           // Update Fic Cache
           if (isFirstFicCache)
             contentEnabler.once('ficCacheLoaded', (isFirstFicCache) => {
