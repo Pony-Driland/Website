@@ -3526,6 +3526,13 @@ export const AiScriptStart = async () => {
           const { roomSaveData } = getSessionData();
           const client = getClient();
 
+          // Without a room there is nowhere to save the settings: the reader
+          // is free to browse the page until a room is picked.
+          if (!client.hasRoom()) {
+            saveSessionTimeout[timeoutId] = null;
+            return;
+          }
+
           // Prepare data
           /** @type {Record<string, unknown>} */
           const newSettings = {};
@@ -3966,6 +3973,10 @@ export const AiScriptStart = async () => {
         rpgData.on('save', (result) => {
           const resultHash = objHash(result.data);
           const client = getClient();
+
+          // The RPG data belongs to a room: without one there is nothing to
+          // update and the server would answer with a "room not found" error.
+          if (!client.hasRoom()) return;
 
           if (
             (result.type === 'public' && resultHash !== objHash(client.getRoomData())) ||
