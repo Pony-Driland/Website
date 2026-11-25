@@ -72,6 +72,45 @@
   }
 }
 
+/* Room player sliders
+ *
+ * The volume and the seek bar are stacked on top of each other, so they use
+ * different colors: a green bar for the volume and a blue one for the seek
+ * keeps it obvious which handle is being dragged.
+ */
+.room-player-volume,
+.room-player-seek {
+  --room-player-slider: var(--bs-secondary);
+
+  &::-webkit-slider-runnable-track {
+    background-color: var(--room-player-slider);
+    border-radius: 999px;
+    height: 0.5rem;
+  }
+
+  &::-moz-range-track {
+    background-color: var(--room-player-slider);
+    border-radius: 999px;
+    height: 0.5rem;
+  }
+
+  &::-webkit-slider-thumb {
+    background-color: var(--room-player-slider);
+  }
+
+  &::-moz-range-thumb {
+    background-color: var(--room-player-slider);
+  }
+}
+
+.room-player-volume {
+  --room-player-slider: var(--bs-success);
+}
+
+.room-player-seek {
+  --room-player-slider: var(--bs-info);
+}
+
 /* AI Tab */
 body:not(.can-ai) {
   .nav-ai {

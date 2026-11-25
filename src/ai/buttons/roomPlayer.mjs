@@ -789,20 +789,29 @@ export const openRoomPlayer = () => {
 
     $source.append(TinyHtml.createFrom('i').addClass('fas fa-info-circle'));
 
+    // The provider is part of the title: the same song may exist on both
+    // sources, and the listener has to know which one is playing.
+    const $title = TinyHtml.createFrom('div').addClass('text-truncate');
+
+    if (track?.type) {
+      $title.append(
+        TinyHtml.createFrom('span')
+          .addClass('badge text-bg-secondary me-2 text-nowrap')
+          .setText(getTrackTypeName(track.type)),
+      );
+    }
+
+    $title.append(
+      TinyHtml.createFrom('span').setText(
+        `${currentPlaylist(state)?.name || state.playlistId} - ${
+          track?.title || track?.id || ''
+        }`.trim(),
+      ),
+    );
+
     $bar.append(
       TinyHtml.createFrom('i').addClass(state.playing ? 'fas fa-volume-high' : 'fas fa-pause'),
-      TinyHtml.createFrom('div')
-        .addClass('flex-grow-1 text-truncate')
-        .append(
-          TinyHtml.createFrom('div')
-            .addClass('text-truncate')
-            .setText(
-              `${currentPlaylist(state)?.name || state.playlistId} - ${
-                track?.title || track?.id || ''
-              }`.trim(),
-            ),
-          $time,
-        ),
+      TinyHtml.createFrom('div').addClass('flex-grow-1 text-truncate').append($title, $time),
       $source,
     );
 
@@ -862,14 +871,16 @@ export const openRoomPlayer = () => {
     const $volumeRow = TinyHtml.createFrom('div').addClass('d-flex align-items-center gap-2 mt-2');
     const $volumeIcon = TinyHtml.createFrom('i').addClass('fas fa-volume-high');
 
-    const $volumeInput = TinyHtml.createFrom('input').addClass('form-range').setAttr({
-      type: 'range',
-      min: '0',
-      max: '100',
-      step: '1',
-      'data-player-action': 'volume',
-      title: 'Volume',
-    });
+    const $volumeInput = TinyHtml.createFrom('input')
+      .addClass('form-range room-player-volume')
+      .setAttr({
+        type: 'range',
+        min: '0',
+        max: '100',
+        step: '1',
+        'data-player-action': 'volume',
+        title: 'Volume',
+      });
 
     $volume = /** @type {HTMLInputElement} */ ($volumeInput.elements[0]);
     $volume.value = String(musicPlayer.getVolume());
@@ -880,14 +891,16 @@ export const openRoomPlayer = () => {
     // The bar is always rendered for the DJ: hiding it until the media knows
     // its own duration made it look like the control did not exist.
     if (canEdit) {
-      const $range = TinyHtml.createFrom('input').addClass('form-range mt-2').setAttr({
-        type: 'range',
-        min: '0',
-        max: '1',
-        step: 'any',
-        'data-player-action': 'seek',
-        title: 'Seek',
-      });
+      const $range = TinyHtml.createFrom('input')
+        .addClass('form-range room-player-seek mt-2')
+        .setAttr({
+          type: 'range',
+          min: '0',
+          max: '1',
+          step: 'any',
+          'data-player-action': 'seek',
+          title: 'Seek',
+        });
 
       $seek = /** @type {HTMLInputElement} */ ($range.elements[0]);
       $nowPlaying.append($range);
