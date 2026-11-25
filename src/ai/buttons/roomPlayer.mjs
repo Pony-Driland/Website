@@ -331,6 +331,17 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
       tracks.splice(0, tracks.length, ...parsed.tracks);
       if (parsed.raffle) $raffle.setVal(JSON.stringify(parsed.raffle, null, 2));
 
+      // The playlist metadata travels with the file, so a playlist keeps its
+      // name and its scope after a round trip. A field the file does not have
+      // is left untouched instead of being wiped.
+      if (parsed.name) $name.setVal(parsed.name);
+      if (parsed.scope) $scope.setVal(parsed.scope);
+
+      if (parsed.mode) {
+        $mode.setVal(parsed.mode);
+        syncRaffle();
+      }
+
       $error.addClass('d-none');
       renderTracks();
     } catch (err) {
@@ -364,12 +375,18 @@ const openPlaylistEditor = (playlist, roomId, onSaved) => {
       }
     }
 
-    const blob = new Blob([exportPlaylist({ tracks, raffle })], { type: 'application/json' });
+    const name = String($name.val() ?? '').trim();
+    const scope = String($scope.val() ?? 'all') === 'rooms' ? 'rooms' : 'all';
+    const mode = String($mode.val() ?? 'ordered') === 'raffle' ? 'raffle' : 'ordered';
+
+    const blob = new Blob([exportPlaylist({ name, tracks, raffle, scope, mode })], {
+      type: 'application/json',
+    });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
 
     link.href = url;
-    link.download = getPlaylistFileName(String($name.val() ?? '') || 'playlist');
+    link.download = getPlaylistFileName(name || 'playlist');
     link.click();
 
     URL.revokeObjectURL(url);
