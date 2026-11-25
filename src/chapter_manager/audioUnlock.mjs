@@ -15,81 +15,115 @@
  * @module chapter_manager/audioUnlock
  */
 
-import { console } from '../dev.mjs';
-
-/** How often the user activation is checked, in milliseconds. */
-const POLL_INTERVAL = 100;
+import TinyDebugger from 'tiny-essentials/libs/tools/TinyDebugger';
+import { isDev } from '../dev.mjs';
 
 /**
- * Whether the document already received a user gesture.
- *
- * `navigator.userActivation` is the only reliable way to know if the page was
- * already activated (a back/forward navigation, a reload or a gesture that
- * happened before this module was imported, for example).
- *
- * @returns {boolean}
+ * Configuration options for initializing the TinyUserActivationDetector instance.
+ * @typedef {Object} ActivationOptions
+ * @property {boolean} [debugMode=false] - Whether to enable internal debug logging.
+ * @property {boolean} [useLogColors=false] - Whether to enable log color support.
+ * @property {Partial<Console>} [logger=console] - A custom logger object (must implement console methods).
  */
-const hasUserActivation = () =>
-  typeof navigator !== 'undefined' && navigator.userActivation?.hasBeenActive === true;
 
-/** @type {boolean} */
-let unlocked = typeof navigator === 'undefined' || hasUserActivation();
+class TinyUserActivationDetector extends TinyDebugger {
+  /** How often the user activation is checked, in milliseconds. */
+  static #POLL_INTERVAL = 100;
 
-/** @type {Map<string, () => void>} */
-let queue = new Map();
+  /**
+   * Whether the document already received a user gesture.
+   *
+   * `navigator.userActivation` is the only reliable way to know if the page was
+   * already activated (a back/forward navigation, a reload or a gesture that
+   * happened before this module was imported, for example).
+   *
+   * @returns {boolean}
+   */
+  static hasUserActivation() {
+    return typeof navigator !== 'undefined' && navigator.userActivation?.hasBeenActive === true;
+  }
 
-/** @type {number} */
-let autoKey = 0;
+  /**
+   * @param {ActivationOptions} [options={}] - Configuration options for the user activation.
+   * @throws {TypeError} If options is not an object or if the logger lacks required methods.
+   */
+  constructor(options = {}) {
+    super({
+      id: '[_main_class_TinyUserActivationDetector_reset_]',
+      logger: options.logger ?? console,
+      debugMode: options.debugMode ?? false,
+      useLogColors: options.useLogColors ?? false,
+    });
+  }
 
-/** @type {ReturnType<typeof setTimeout>|undefined} */
-let timer;
+  /** @type {boolean} */
+  #unlocked = typeof navigator === 'undefined' || TinyUserActivationDetector.hasUserActivation();
 
-/** Stops watching the user activation. */
-const stopWatching = () => {
-  if (timer === undefined) return;
-  clearTimeout(timer);
-  timer = undefined;
-};
+  /** @type {Map<string, () => void>} */
+  #queue = new Map();
 
-/** Runs every pending callback. */
-const flush = () => {
-  const pending = queue;
-  queue = new Map();
+  /** @type {number} */
+  #autoKey = 0;
 
-  for (const callback of pending.values()) {
-    try {
-      callback();
-    } catch (err) {
-      console.error(err);
+  /** @type {ReturnType<typeof setTimeout>|undefined} */
+  #timer;
+
+  get size() {
+    return this.#queue.size;
+  }
+
+  get autoKey() {
+    return this.#autoKey;
+  }
+
+  get unlocked() {
+    return this.#unlocked;
+  }
+
+  get existsTime() {
+    return !!this.#timer;
+  }
+
+  /** Stops watching the user activation. */
+  #stopWatching() {
+    if (this.#timer === undefined) return;
+    clearTimeout(this.#timer);
+    this.#timer = undefined;
+  }
+
+  /** Runs every pending callback. */
+  flush() {
+    const pending = this.#queue;
+    this.#queue = new Map();
+
+    for (const callback of pending.values()) {
+      try {
+        callback();
+      } catch (err) {
+        this.log('error', 'Flush Error', err);
+      }
     }
   }
-};
 
-/** Unlocks the audio and runs everything that was waiting for it. */
-const unlock = () => {
-  if (unlocked) return;
+  /** Unlocks the audio and runs everything that was waiting for it. */
+  unlock() {
+    if (this.#unlocked) return;
 
-  unlocked = true;
-  stopWatching();
-  flush();
-};
+    this.#unlocked = true;
+    this.#stopWatching();
+    this.flush();
+  }
 
-/** Checks the activation again on the next tick. */
-const watch = () => {
-  if (timer !== undefined || unlocked) return;
+  /** Checks the activation again on the next tick. */
+  #watch() {
+    if (this.#timer !== undefined || this.#unlocked) return;
 
-  timer = setTimeout(() => {
-    timer = undefined;
-    if (hasUserActivation()) unlock();
-    else watch();
-  }, POLL_INTERVAL);
-};
-
-const audioUnlock = {
-  /** @returns {boolean} Whether the audio can already be played. */
-  get unlocked() {
-    return unlocked;
-  },
+    this.#timer = setTimeout(() => {
+      this.#timer = undefined;
+      if (TinyUserActivationDetector.hasUserActivation()) this.unlock();
+      else this.#watch();
+    }, TinyUserActivationDetector.#POLL_INTERVAL);
+  }
 
   /**
    * Runs the callback as soon as the audio is allowed to play.
@@ -100,24 +134,26 @@ const audioUnlock = {
    *
    * @param {() => void} callback - Playback to start.
    * @param {string} [key] - Unique key of the request.
-   * @returns {void}
+   * @returns {string}
    */
-  whenReady: (callback, key) => {
-    if (typeof callback !== 'function') return;
+  whenReady(callback, key) {
+    if (typeof callback !== 'function') return '';
 
     // The visitor may have interacted with the page before this request (or
     // before this module was even imported). The activation is sticky, so a
     // single interaction is enough for the whole session.
-    if (!unlocked && hasUserActivation()) unlock();
+    if (!this.#unlocked && TinyUserActivationDetector.hasUserActivation()) this.unlock();
 
-    if (unlocked) {
+    if (this.#unlocked) {
       callback();
-      return;
+      return '';
     }
 
-    queue.set(key ?? `auto-${autoKey++}`, callback);
-    watch();
-  },
+    const keyResult = key ?? `auto-${this.#autoKey++}`;
+    this.#queue.set(keyResult, callback);
+    this.#watch();
+    return keyResult;
+  }
 
   /**
    * Discards a pending request.
@@ -125,12 +161,9 @@ const audioUnlock = {
    * @param {string} key - Key of the request.
    * @returns {void}
    */
-  cancel: (key) => {
-    queue.delete(key);
-  },
+  cancel(key) {
+    this.#queue.delete(key);
+  }
+}
 
-  /** Marks the audio as unlocked, running every pending playback. */
-  unlock: () => unlock(),
-};
-
-export default audioUnlock;
+export default new TinyUserActivationDetector({ debugMode: isDev });
