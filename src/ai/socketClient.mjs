@@ -6,6 +6,17 @@ import { console } from '../dev.mjs';
 /** @typedef {{ error: boolean; msg: string; code: number; }} SocketError */
 
 /**
+ * How many times the client tries to reach the server before giving up.
+ *
+ * The page already spends one attempt while it boots, so three reconnections
+ * are enough to survive a flaky network without keeping the reader waiting
+ * forever in front of an empty room.
+ *
+ * @type {number}
+ */
+export const MAX_CONNECT_ATTEMPTS = 3;
+
+/**
  * @typedef {Object} TinyClientIoConfig
  * @property {string} [ip] - Socket.IO server URL.
  * @property {string|null} [roomId] - Current room id.
@@ -71,6 +82,9 @@ class TinyClientIo extends EventEmitter {
   connected = false;
   active = false;
 
+  /** How many connection attempts failed in a row. */
+  connectAttempts = 0;
+
   /** @type {RpgSchemaValues} */
   rpgSchema = {};
 
@@ -97,7 +111,10 @@ class TinyClientIo extends EventEmitter {
     super();
     this.#cfg = cfg;
 
-    this.socket = typeof cfg.ip === 'string' && cfg.ip.length > 0 ? Io(cfg.ip) : null;
+    this.socket =
+      typeof cfg.ip === 'string' && cfg.ip.length > 0
+        ? Io(cfg.ip, { reconnectionAttempts: MAX_CONNECT_ATTEMPTS })
+        : null;
 
     this.resetData();
 
@@ -116,24 +133,31 @@ class TinyClientIo extends EventEmitter {
         );
       });
 
-      socket.on('connect_error', () => {
+      socket.on('connect_error', (error) => {
         this.active = socket.active;
-        if (!socket.active) {
-          // the connection was denied by the server
-          // in that case, `socket.connect()` must be manually called in order to reconnect
-        }
+        this.connected = socket.connected;
+        this.connectAttempts++;
+
+        const message = error instanceof Error ? error.message : String(error);
+        console.log(`[socket-io] [connect-error] ${message}`);
+
+        // The page has to know that the attempt failed, otherwise the reader is
+        // left with an empty room and no idea of what happened.
+        this.emit('connectError', error, this.connectAttempts);
       });
 
       socket.on('connect', () => {
         this.active = socket.active;
+        this.connectAttempts = 0;
         console.log(`[socket.io] Connected! Id: ${socket.id}`);
         this.id = socket.id ?? null;
         this.connected = socket.connected;
       });
 
-      socket.io.on('reconnect_attempt', () => {
+      socket.io.on('reconnect_attempt', (attempt) => {
         this.active = socket.active;
         console.log('[socket.io] Trying to reconnect...');
+        this.emit('reconnectAttempt', attempt);
       });
 
       socket.io.on('reconnect', () => {

@@ -21,7 +21,7 @@ import {
 } from '../important.mjs';
 import tinyLib from '../files/tinyLib.mjs';
 import aiTemplates from './values/templates.mjs';
-import TinyClientIo from './socketClient.mjs';
+import TinyClientIo, { MAX_CONNECT_ATTEMPTS } from './socketClient.mjs';
 import RpgData from './software/rpgData.mjs';
 import { noOnlineMode, contentEnabler, isOnline } from './software/enablerContent.mjs';
 import ficConfigs from './values/ficConfigs.mjs';
@@ -3271,6 +3271,46 @@ export const AiScriptStart = async () => {
     ),
   );
 
+  // The chat itself is the connection log: every attempt is written there and
+  // the whole log is thrown away as soon as the room is joined. While the
+  // client is still trying, the chat stays read-only behind this notice.
+  const connectionNotice = {};
+  connectionNotice.icon = TinyHtml.createFrom('i', { class: 'fa-solid fa-plug me-2' });
+  connectionNotice.text = TinyHtml.createFrom('span');
+  connectionNotice.retry = tinyLib.bs
+    .button('light btn-sm ms-2')
+    .setText('Try again')
+    .addClass('d-none');
+  connectionNotice.base = TinyHtml.createFrom('div', {
+    class: 'alert alert-info mx-3 mb-0 d-none',
+    role: 'alert',
+  }).append(connectionNotice.icon, connectionNotice.text, connectionNotice.retry);
+
+  /**
+   * Renders the connection notice.
+   *
+   * @param {'connecting'|'error'|'hide'} state - Notice state.
+   * @param {string} [message] - Message shown to the reader.
+   * @returns {void}
+   */
+  const setConnectionNotice = (state, message) => {
+    const isError = state === 'error';
+
+    connectionNotice.base
+      .removeClass('alert-info', 'alert-danger')
+      .toggleClass('d-none', state === 'hide');
+
+    if (state === 'hide') return;
+
+    connectionNotice.base.addClass(isError ? 'alert-danger' : 'alert-info');
+    connectionNotice.icon.setAttr(
+      'class',
+      isError ? 'fa-solid fa-plug-circle-xmark me-2' : 'fa-solid fa-plug me-2',
+    );
+    connectionNotice.text.setText(message ?? (isError ? 'Connection failed.' : 'Connecting...'));
+    connectionNotice.retry.toggleClass('d-none', !isError);
+  };
+
   const textInputWrapper = TinyHtml.createFrom('div', {
     class: 'px-3 d-inline-block w-100',
   }).append(textInputContainer);
@@ -3286,6 +3326,9 @@ export const AiScriptStart = async () => {
       TinyHtml.createFrom('div', { class: 'justify-content-center h-100' }).append(
         // Chat Messages Area
         chatContainer.append(msgList),
+
+        // Connection status (connecting / failed)
+        connectionNotice.base,
 
         // Read-only notice (guests)
         guestNotice,
@@ -3763,13 +3806,16 @@ export const AiScriptStart = async () => {
   // TITLE: Rpg mode
   if (!isOfflineMode) {
     if (autoSelectChatMode) autoSelectChatMode.trigger('click');
+
     tinyIo.client = new TinyClientIo(rpgCfg);
     const socket = tinyIo.client.getSocket();
-    if (socket)
+    if (socket) {
+      setConnectionNotice('connecting', 'Connecting to the server...');
       makeTempMessage(
         `A server has been detected in your config and we will try to connect to it now!`,
         String(rpgCfg.ip ?? ''),
       );
+    }
 
     // Start rpg mode
     //////////////////////////////
@@ -3832,6 +3878,23 @@ export const AiScriptStart = async () => {
 
         // Install scripts
         client.install(tinyAiScript);
+
+        // The client gave up: the only way out is a new round of attempts.
+        connectionNotice.retry.on('click', () => {
+          client.connectAttempts = 0;
+          setConnectionNotice('connecting', 'Connecting to the server...');
+          makeTempMessage('Trying to connect to the server again...', String(rpgCfg.ip ?? ''));
+          client.connect();
+        });
+
+        // Socket.IO retries on its own, but the reader has to know that the
+        // page did not freeze while it happens.
+        client.on('reconnectAttempt', (attempt) => {
+          setConnectionNotice(
+            'connecting',
+            `Reconnecting to the server... (${attempt}/${MAX_CONNECT_ATTEMPTS})`,
+          );
+        });
 
         let isLoadingMsgs = false;
         const clearIsLoadingMsgs = () => {
@@ -4091,6 +4154,7 @@ export const AiScriptStart = async () => {
         // Connection
         client.on('connect', (connectionId) => {
           clearIsLoadingMsgs();
+          setConnectionNotice('hide');
           msgChecker = setInterval(() => {
             const msgs = new TinyHtml(chatContainer.find('.ai-chat-data'));
             msgs.forEach((elem) => elem.data('tiny-ai-cache')?.update());
@@ -4113,6 +4177,40 @@ export const AiScriptStart = async () => {
             `You are connected! Your connection id is **${connectionId}**. Signing into your account...`,
             String(rpgCfg.ip ?? ''),
           );
+        });
+
+        // The very first attempt is the one made while the page loads. It has no
+        // user interaction behind it, so a failure would leave the reader
+        // staring at an empty room. The notice is the only feedback.
+        client.on('connectError', (error, attempt) => {
+          clearIsLoadingMsgs();
+
+          const reason =
+            error instanceof Error && typeof error.message === 'string' && error.message.length > 0
+              ? error.message
+              : 'unknown error';
+
+          // The chat is the connection log: it is wiped as soon as the room is
+          // joined, so every line here is disposable.
+          makeTempMessage(
+            `Connection attempt ${attempt}/${MAX_CONNECT_ATTEMPTS} failed: ${reason}`,
+            String(rpgCfg.ip ?? ''),
+          );
+
+          // Socket.IO keeps retrying on its own until the limit is reached.
+          if (attempt < MAX_CONNECT_ATTEMPTS) {
+            setConnectionNotice(
+              'connecting',
+              `Reconnecting to the server... (${attempt}/${MAX_CONNECT_ATTEMPTS})`,
+            );
+            return;
+          }
+
+          setConnectionNotice(
+            'error',
+            `Could not connect to the server after ${MAX_CONNECT_ATTEMPTS} attempts.`,
+          );
+          loaderScreen.stop();
         });
 
         // Login progress
@@ -4142,6 +4240,7 @@ export const AiScriptStart = async () => {
         // Not found
         client.on('roomNotFound', () => {
           clearIsLoadingMsgs();
+          setConnectionNotice('hide');
           noRoomNotice.removeClass('d-none');
           textInputWrapper.addClass('d-none');
           leaveRoomButton?.addClass('d-none');
@@ -4156,6 +4255,7 @@ export const AiScriptStart = async () => {
         // picks a room from the room browser whenever they want.
         client.on('roomNotSelected', () => {
           clearIsLoadingMsgs();
+          setConnectionNotice('hide');
           noRoomNotice.removeClass('d-none');
           textInputWrapper.addClass('d-none');
           leaveRoomButton?.addClass('d-none');
@@ -4170,6 +4270,7 @@ export const AiScriptStart = async () => {
         client.on('roomJoinned', (result) => {
           const client = getClient();
           clearIsLoadingMsgs();
+          setConnectionNotice('hide');
           leaveRoomButton?.removeClass('d-none');
           // Update Fic Cache
           if (isFirstFicCache)
