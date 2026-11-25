@@ -91,6 +91,17 @@ class TinyUserActivationDetector extends TinyDebugger {
     this.#timer = undefined;
   }
 
+  /** Checks the activation again on the next tick. */
+  #watch() {
+    if (this.#timer !== undefined || this.#unlocked) return;
+
+    this.#timer = setTimeout(() => {
+      this.#timer = undefined;
+      if (TinyUserActivationDetector.hasUserActivation()) this.unlock();
+      else this.#watch();
+    }, TinyUserActivationDetector.#POLL_INTERVAL);
+  }
+
   /** Runs every pending callback. */
   flush() {
     const pending = this.#queue;
@@ -112,17 +123,6 @@ class TinyUserActivationDetector extends TinyDebugger {
     this.#unlocked = true;
     this.#stopWatching();
     this.flush();
-  }
-
-  /** Checks the activation again on the next tick. */
-  #watch() {
-    if (this.#timer !== undefined || this.#unlocked) return;
-
-    this.#timer = setTimeout(() => {
-      this.#timer = undefined;
-      if (TinyUserActivationDetector.hasUserActivation()) this.unlock();
-      else this.#watch();
-    }, TinyUserActivationDetector.#POLL_INTERVAL);
   }
 
   /**
@@ -163,6 +163,16 @@ class TinyUserActivationDetector extends TinyDebugger {
    */
   cancel(key) {
     this.#queue.delete(key);
+  }
+
+  clear() {
+    this.#queue.clear();
+    this.#stopWatching();
+  }
+
+  reset() {
+    this.clear();
+    this.#autoKey = 0;
   }
 }
 
