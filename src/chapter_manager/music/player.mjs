@@ -7,8 +7,8 @@ import { HtmlAudioAdapter } from 'tiny-essentials/libs/media/TinyMediaPlayer/Htm
 import TinyPromiseQueue from 'tiny-essentials/libs/utils/TinyPromiseQueue';
 
 import { console } from '../../dev.mjs';
+import { audioUnlock } from '../../important.mjs';
 import storyCfg from '../../chapters/config.mjs';
-import audioUnlock from '../audioUnlock.mjs';
 import { AUDIO_FILE_TYPE, loadTrackMetadata } from './audioFile.mjs';
 
 /**

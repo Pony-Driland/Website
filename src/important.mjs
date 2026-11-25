@@ -5,11 +5,29 @@ import TinyLoadingScreen from 'tiny-essentials/libs/html/templates/TinyLoadingSc
 import TinyLocalStorage from 'tiny-essentials/libs/storage/TinyLocalStorage';
 import TinyNotifications from 'tiny-essentials/libs/html/notification/TinyNotifications';
 import TinyToastNotify from 'tiny-essentials/libs/html/notification/TinyToastNotify';
+import TinyUserActivationDetector from 'tiny-essentials/libs/utils/TinyUserActivationDetector';
 
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
+import { isDev } from './dev.mjs';
 import storyCfg from './chapters/config.mjs';
 import FirebaseAccount from './account/firebase.mjs';
 import { initAnalytics } from './analytics.mjs';
+
+/**
+ * Browsers only allow audio to start after the visitor interacts with the page
+ * (autoplay policy). Every sound of the reader is requested by the scroll
+ * position, not by the visitor, so the very first playback would be silently
+ * dropped by the browser.
+ *
+ * This module holds those requests until the browser reports a user activation
+ * and then runs them in order.
+ *
+ * Instead of listening to the gesture events, the activation is read from
+ * `navigator.userActivation.hasBeenActive`. It is sticky, so a single
+ * interaction is enough for the whole session and an interaction that happens
+ * before the first sound is requested is not lost.
+ */
+export const audioUnlock = new TinyUserActivationDetector({ debugMode: isDev });
 
 // Loading
 export const loaderScreen = new TinyLoadingScreen();

@@ -3,14 +3,13 @@ import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import TinyAfterScrollWatcher from 'tiny-essentials/libs/html/scroll/TinyAfterScrollWatcher';
 
 import { console } from '../dev.mjs';
-import { tinyLs } from '../important.mjs';
+import { tinyLs, audioUnlock } from '../important.mjs';
 import { trackChapterProgress } from '../analytics.mjs';
 import tinyLib from '../files/tinyLib.mjs';
 import { storyData } from '../files/chapters.mjs';
 import storyCfg from '../chapters/config.mjs';
 import ttsManager from './tts/tts.mjs';
 import musicManager from './music/index.mjs';
-import audioUnlock from './audioUnlock.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { body, tinyWin } from '../html/query.mjs';
 import { markdownBase } from '../html/base.mjs';

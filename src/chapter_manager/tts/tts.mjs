@@ -1,9 +1,9 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlElems from 'tiny-essentials/libs/html/TinyHtmlElems';
 import { console } from '../../dev.mjs';
+import { audioUnlock } from '../../important.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import { storyData } from '../../files/chapters.mjs';
-import audioUnlock from '../audioUnlock.mjs';
 import cacheChapterUpdater from '../updater.mjs';
 
 const { Icon } = TinyHtmlElems;
