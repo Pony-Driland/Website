@@ -1,6 +1,7 @@
 import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import { alert } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
+import { lockLoaderScreen } from '../../important.mjs';
 import { tinyIo, tinyStorage } from '../software/base.mjs';
 import { createLanguageSelect, getRoomLanguage } from '../values/languages.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
@@ -197,12 +198,14 @@ const openCreateRoom = (onCreated) => {
       const result = await client.createRoom(roomId, roomId, password);
       if (result.error) return showError(result.msg ?? 'Unknown error');
 
-      const credential = tinyStorage.getApiKey('tiny-chat');
-      tinyStorage.setApiKey('tiny-chat', { ...credential, roomId, roomPassword: password });
+      const name = tinyStorage.getRoomProvider();
+      const credential = tinyStorage.getApiKey(name);
+      tinyStorage.setApiKey(name, { ...credential, roomId, roomPassword: password });
 
       modal.hide();
 
       // Let Bootstrap finish hiding the modal before the page goes away.
+      lockLoaderScreen('Creating room...');
       setTimeout(onCreated, 0);
     } catch (err) {
       showError(err instanceof Error ? err.message : String(err));
@@ -295,8 +298,9 @@ const openJoinRoom = (onJoined) => {
       if (exists.error) return showError(exists.msg ?? 'Unknown error');
       if (!exists.exists) return showError(`The room "${roomId}" does not exist.`);
 
-      const credential = tinyStorage.getApiKey('tiny-chat');
-      tinyStorage.setApiKey('tiny-chat', { ...credential, roomId, roomPassword: password });
+      const name = tinyStorage.getRoomProvider();
+      const credential = tinyStorage.getApiKey(name);
+      tinyStorage.setApiKey(name, { ...credential, roomId, roomPassword: password });
 
       modal.hide();
 

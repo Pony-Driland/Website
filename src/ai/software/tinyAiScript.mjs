@@ -65,6 +65,48 @@ export const tinyAiScript = {
     } else return false;
   },
 
+  /**
+   * Leaves the current room and reloads the page.
+   *
+   * The room is forgotten before the reload, otherwise the page would join it
+   * again as soon as it loads. The loading screen is locked while the socket is
+   * torn down, so the page never shows the room it is leaving.
+   *
+   * @param {string} [message] - Message shown while the page reloads.
+   * @returns {void}
+   */
+  leaveRoom: (message = 'Leaving the room...') => {
+    // The room is forgotten before the reload, otherwise the page would join
+    // it again as soon as it loads.
+    const leave = () => {
+      tinyStorage.clearRoom();
+      // `killIo()` is the refresh script: it drops the socket and reloads the
+      // page. It only does that while a client exists, so the reload is
+      // repeated here when there is nothing left to destroy.
+      if (!tinyAiScript.killIo(message)) window.location.reload();
+    };
+
+    // Nothing to leave: the room only lives in the page, so forgetting it and
+    // reloading is enough.
+    if (!tinyIo.client) {
+      leave();
+      return;
+    }
+
+    if (typeof message === 'string' && message.length > 0) lockLoaderScreen(message);
+
+    // The server may never answer (offline, room already gone, ...), so the
+    // reload can not depend on the acknowledgement.
+    const timeout = setTimeout(leave, 3000);
+    tinyIo.client
+      .leaveRoom()
+      .catch((err) => console.error(err))
+      .finally(() => {
+        clearTimeout(timeout);
+        leave();
+      });
+  },
+
   // Re-reads the selected provider and refreshes the login button and the
   // `can-ai` body class accordingly.
   // Checker

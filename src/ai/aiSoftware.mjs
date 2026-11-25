@@ -29,7 +29,7 @@ import { makeMsgRenderer, userStatus } from './msgRender.mjs';
 
 import './values/jsonTemplate.mjs';
 
-import { canSandBox, getClient, tinyAi, tinyIo, tinyStorage } from './software/base.mjs';
+import { canSandBox, getClient, tinyAi, tinyIo } from './software/base.mjs';
 import { tinyAiScript } from './software/tinyAiScript.mjs';
 import { Tooltip } from '../modules/TinyBootstrap.mjs';
 import { clearFicData, urlUpdate } from '../fixStuff/markdown.mjs';
@@ -1114,32 +1114,9 @@ export const AiScriptStart = async () => {
     // here: if the reload never happens the loading stays up on purpose.
     leftMenu.push(
       createButtonSidebar('fas fa-right-from-bracket', 'Leave room', () => {
-        const client = tinyIo.client;
-        if (!client) return;
-
-        const message = 'Leaving the room...';
-        loaderScreen.start(message);
-
-        // The room is forgotten before the reload, otherwise the page would
-        // join it again as soon as it loads.
-        const leave = () => {
-          tinyStorage.clearRoom();
-          // `killIo()` is the refresh script: it drops the socket and reloads
-          // the page. It only does that while a client exists, so the reload
-          // is repeated here when there is nothing left to destroy.
-          if (!tinyAiScript.killIo(message)) window.location.reload();
-        };
-
-        // The server may never answer (offline, room already gone, ...), so
-        // the reload can not depend on the acknowledgement.
-        const timeout = setTimeout(leave, 3000);
-        client
-          .leaveRoom()
-          .catch((err) => console.error(err))
-          .finally(() => {
-            clearTimeout(timeout);
-            leave();
-          });
+        if (!tinyIo.client) return;
+        loaderScreen.start('Leaving the room...');
+        tinyAiScript.leaveRoom();
       }),
     );
 
@@ -3269,6 +3246,18 @@ export const AiScriptStart = async () => {
     ),
   );
 
+  // Notice shown when the page is opened without a room. It is not an error:
+  // the reader is free to browse the page and pick a room when they want to.
+  const noRoomNotice = TinyHtml.createFrom('div', {
+    class: 'alert alert-info mx-3 mb-0 d-none',
+    role: 'alert',
+  }).append(
+    TinyHtml.createFrom('i', { class: 'fa-solid fa-door-open me-2' }),
+    TinyHtml.createFrom('span').setText(
+      'You are not in any room. Open the room browser in the sidebar to join or create one.',
+    ),
+  );
+
   const textInputWrapper = TinyHtml.createFrom('div', {
     class: 'px-3 d-inline-block w-100',
   }).append(textInputContainer);
@@ -3287,6 +3276,9 @@ export const AiScriptStart = async () => {
 
         // Read-only notice (guests)
         guestNotice,
+
+        // No room selected
+        noRoomNotice,
 
         // Input Area
         textInputWrapper,
@@ -4126,8 +4118,23 @@ export const AiScriptStart = async () => {
         // Not found
         client.on('roomNotFound', () => {
           clearIsLoadingMsgs();
+          noRoomNotice.removeClass('d-none');
+          textInputWrapper.addClass('d-none');
           makeTempMessage(
             'The room was not found. Check the room id and try again.',
+            String(rpgCfg.ip ?? ''),
+          );
+          loaderScreen.stop();
+        });
+
+        // No room selected: the page is not an error state, the reader just
+        // picks a room from the room browser whenever they want.
+        client.on('roomNotSelected', () => {
+          clearIsLoadingMsgs();
+          noRoomNotice.removeClass('d-none');
+          textInputWrapper.addClass('d-none');
+          makeTempMessage(
+            'You are not in any room yet. Open the room browser in the sidebar to pick one.',
             String(rpgCfg.ip ?? ''),
           );
           loaderScreen.stop();

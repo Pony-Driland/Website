@@ -188,6 +188,18 @@ class TinyClientIo extends EventEmitter {
     return this.#cfg.roomId ?? null;
   }
 
+  /**
+   * Tells whether a room id was configured for this session.
+   *
+   * The roleplay page can be opened without a room: the reader picks one from
+   * the room browser instead of being kicked out of the page.
+   *
+   * @returns {boolean}
+   */
+  hasRoom() {
+    return typeof this.#cfg.roomId === 'string' && this.#cfg.roomId.length > 0;
+  }
+
   // Reset data
   resetData() {
     this.ratelimit = { limit: {}, size: {} };
@@ -2177,6 +2189,13 @@ class TinyClientIo extends EventEmitter {
           console.log('[socket-io] [user-data]', this.getUser());
           console.log('[socket-io] [dice]', this.getDice());
           console.log('[socket-io] [ratelimit]', this.getRateLimit());
+
+          // No room selected: the page stays usable so the reader can pick one
+          // from the room browser.
+          if (!this.hasRoom()) {
+            this.emit('roomNotSelected');
+            return;
+          }
 
           this.existsRoom().then((result2) => {
             // Join room

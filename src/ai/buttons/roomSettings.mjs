@@ -2,7 +2,8 @@ import TinyHtml from 'tiny-essentials/libs/html/TinyHtml';
 import TinyHtmlNumberInput from 'tiny-essentials/libs/html/TinyHtmlElems/Input/Number';
 import { alert, confirm } from 'tiny-essentials/webTemplates/bootstrap/5.3/html/BootstrapDialogs';
 
-import { tinyIo } from '../software/base.mjs';
+import { lockLoaderScreen } from '../../important.mjs';
+import { tinyIo, tinyStorage } from '../software/base.mjs';
 import { createLanguageSelect } from '../values/languages.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 
@@ -323,10 +324,15 @@ export const roomSettingsMenu = () => {
         if (!(await confirm('Are you absolutely sure? This cannot be undone.'))) return;
 
         modal.hide();
-        tinyIo.client.deleteRoom(password).then((result) => {
-          if (result.error) alert(`${result.msg}\nCode ${result.code}`);
-          else alert('Your room has been deleted successfully!');
-        });
+        const result = await tinyIo.client.deleteRoom(password);
+        if (!result.error) {
+          lockLoaderScreen('Your room has been deleted. Leaving...');
+          tinyStorage.clearRoom();
+          window.location.reload();
+          return;
+        }
+
+        alert(`${result.msg}\nCode ${result.code}`);
       }
     });
 
