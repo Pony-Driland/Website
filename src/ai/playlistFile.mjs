@@ -94,6 +94,7 @@ const readPity = (value) => {
  * @returns {Record<string, any>}
  */
 const exportTrack = (track) => {
+  /** @type {Record<string, any>} */
   const item = { id: track.id, type: track.type };
 
   // `file` is only meaningful for a folder with more than one song.
