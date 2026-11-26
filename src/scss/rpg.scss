@@ -20,41 +20,7 @@
       height: 320px;
     }
 
-    .json-editor-btn-collapse {
-      margin-right: 10px !important;
-    }
-
-    .je-object__container {
-      .card {
-        background-color: transparent !important;
-        border-left: 0px;
-        border-right: 0px;
-        border-radius: 0;
-      }
-
-      &,
-      .card {
-        padding: 10px 0px !important;
-        padding-left: 3px !important;
-      }
-
-      .h3 {
-        font-size: 21px !important;
-        margin: 0px;
-        display: inline-flex !important;
-        align-items: center;
-      }
-
-      .btn {
-        margin: 3px;
-        border-radius: 4px;
-      }
-
-      .je-modal {
-        padding: 9px !important;
-        background-color: #242424;
-      }
-    }
+    /* The JSON editor theme lives in `json-editor.scss`. */
   }
 
   .offcanvas-header,

@@ -1,0 +1,443 @@
+/* =============================================================================
+ * JSON Editor
+ *
+ * Theme for the `@json-editor/json-editor` forms rendered inside the RPG data
+ * offcanvas (see `src/ai/software/rpgData.mjs`).
+ *
+ * The library renders a flat tree of divs and leaves the theming to Bootstrap
+ * classes. Four of its defaults shape everything below:
+ *
+ *   1. `getIndentedPanel()` returns `.card.card-body` and is used both for an
+ *      object's children and for an array's rows.
+ *   2. `getHeader()` sets `display: inline-block` **inline**, so titles can only
+ *      become flex boxes with `!important`.
+ *   3. Objects and arrays build their header differently: objects get
+ *      `.je-object__title` + `.je-object__controls`, arrays get a bare
+ *      `.card-title` and append their buttons straight into the panel.
+ *   4. Every button group is a Bootstrap `.btn-group`, which joins its children
+ *      with negative margins. We want separated buttons, so the margins are
+ *      reset and replaced by `gap`.
+ *
+ * The white `bg-light` surface is removed at the source, in
+ * `build/bundle/JSONEditor.mjs` (`object_background`), instead of being fought
+ * with `!important` here.
+ * ========================================================================== */
+
+#ai-element-root .offcanvas {
+  /* ---------------------------------------------------------------------
+   * Tokens
+   * ------------------------------------------------------------------ */
+  --je-bg: #121212;
+  --je-card: #1a1a1a;
+  --je-card-hover: #232323;
+  --je-input-bg: #0c0c0c;
+  --je-border: rgba(255, 255, 255, 0.09);
+  --je-border-strong: rgba(255, 255, 255, 0.18);
+  --je-text: #e4e4e4;
+  --je-label: #c3cad1;
+  --je-muted: #8d959d;
+  --je-accent: #ff550b;
+  --je-accent-soft: rgba(255, 85, 11, 0.16);
+  --je-danger: #ff304f;
+  --je-radius: 10px;
+  --je-radius-sm: 6px;
+  --je-rail: 16px;
+
+  color: var(--je-text);
+  background-color: var(--je-bg);
+
+  /* =====================================================================
+   * Scroll container
+   * ================================================================== */
+  .offcanvas-body {
+    padding: 0;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--je-border-strong) transparent;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--je-border);
+      background-clip: content-box;
+      border: 3px solid transparent;
+      border-radius: 999px;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+      background-color: var(--je-border-strong);
+    }
+  }
+
+  /* Both editors are mounted here (see `RpgData#base`). */
+  #info_box,
+  #privateInfo {
+    padding: 12px 18px 140px;
+  }
+
+  /* =====================================================================
+   * Panels
+   *
+   * `getIndentedPanel()` is used for object children *and* array rows, so
+   * this is the element that draws the nesting rail.
+   * ================================================================== */
+  .card {
+    margin: 0;
+    padding: 0 0 0 var(--je-rail);
+    background-color: transparent !important;
+    border: 0;
+    border-left: 1px solid var(--je-border);
+    border-radius: 0;
+    transition: border-color 0.15s ease;
+  }
+
+  /* The outermost panel is the page itself: no rail, no indent. */
+  #info_box > div > .card,
+  #privateInfo > div > .card {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  /* Highlights the branch that owns the focused field. */
+  .card:focus-within {
+    border-left-color: var(--je-accent);
+  }
+
+  /* =====================================================================
+   * Objects
+   *
+   * Every object is a card, so a module is always a visible box. The root
+   * object is the page itself and opts out below.
+   * ================================================================== */
+  .je-object__container {
+    position: relative; /* anchors the floating .je-modal */
+    min-width: 0;
+    padding: 10px 12px;
+    background-color: var(--je-card);
+    border: 1px solid var(--je-border);
+    border-radius: var(--je-radius);
+  }
+
+  /* Cards are separated from each other, never glued together. */
+  .je-object__container + .je-object__container,
+  .card > div > .je-object__container + .je-object__container {
+    margin-top: 10px;
+  }
+
+  #info_box > div > .je-object__container,
+  #privateInfo > div > .je-object__container {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+  }
+
+  /* =====================================================================
+   * Headers
+   *
+   * Objects use `.je-object__title`, arrays use `.card-title`. Both come from
+   * `getHeader()`, so they share every visual rule.
+   * ================================================================== */
+  .je-object__title,
+  .card-title {
+    /* `display` is set inline by the library, hence `!important`. */
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    max-width: 100%;
+    margin: 0 8px 0 0;
+    padding: 2px 8px 2px 2px;
+    color: #f2f2f2;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.6;
+    border-radius: var(--je-radius-sm);
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: var(--je-card-hover);
+    }
+  }
+
+  /* The root object is the panel heading. */
+  .je-object__title.level-0,
+  .card-title.level-0 {
+    color: #fff;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ---- Object actions (JSON / Properties) --------------------------- */
+  .je-object__controls {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    vertical-align: middle;
+    opacity: 0.45;
+    transition: opacity 0.15s ease;
+  }
+
+  .je-object__container:hover > .je-object__controls,
+  .je-object__container:focus-within > .je-object__controls {
+    opacity: 1;
+  }
+
+  /* Touch devices never hover: keep the actions reachable. */
+  @media (hover: none) {
+    .je-object__controls {
+      opacity: 1;
+    }
+  }
+
+  /* ---- Descriptions ------------------------------------------------ */
+  .je-object__container > p,
+  .card > p {
+    margin: 4px 0 0;
+    color: var(--je-muted);
+    font-size: 0.8125rem;
+    line-height: 1.45;
+  }
+
+  /* =====================================================================
+   * Fields
+   * ================================================================== */
+  .form-group {
+    margin-bottom: 0.85rem;
+  }
+
+  .form-label {
+    margin-bottom: 0.25rem;
+    color: var(--je-label);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .form-control,
+  .form-select {
+    color: var(--je-text);
+    background-color: var(--je-input-bg);
+    border: 1px solid var(--je-border);
+    border-radius: var(--je-radius-sm);
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+
+    &::placeholder {
+      color: #5f666d;
+    }
+
+    &:focus {
+      color: var(--je-text);
+      background-color: var(--je-input-bg);
+      border-color: var(--je-accent);
+      box-shadow: 0 0 0 3px var(--je-accent-soft);
+    }
+
+    &:disabled,
+    &[readonly] {
+      color: var(--je-muted);
+      background-color: #0a0a0a;
+    }
+  }
+
+  /* Bootstrap ships a dark arrow that disappears on a dark surface. */
+  select.form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2398a0a8' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  }
+
+  /* `rpg.scss` stretches every textarea to 320px; keep the form compact. */
+  textarea.form-control {
+    height: auto;
+    min-height: 90px;
+  }
+
+  .form-check-input {
+    background-color: var(--je-input-bg);
+    border-color: var(--je-border-strong);
+
+    &:checked {
+      background-color: var(--je-accent);
+      border-color: var(--je-accent);
+    }
+
+    &:focus {
+      border-color: var(--je-accent);
+      box-shadow: 0 0 0 3px var(--je-accent-soft);
+    }
+  }
+
+  .form-text {
+    margin-top: 0.25rem;
+    color: var(--je-muted);
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  /* =====================================================================
+   * Buttons
+   * ================================================================== */
+  .btn {
+    border-radius: var(--je-radius-sm);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    box-shadow: none !important;
+  }
+
+  /*
+   * Bootstrap joins the children of a `.btn-group` with negative margins and
+   * squared corners. These are independent actions, so they are laid out as
+   * separate pills instead.
+   */
+  .btn-group {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: auto;
+    vertical-align: middle;
+  }
+
+  .btn-group .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 !important;
+    padding: 0.2rem 0.6rem;
+    color: var(--je-label);
+    background-color: var(--je-card-hover);
+    border: 1px solid var(--je-border);
+    border-radius: var(--je-radius-sm) !important;
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      color 0.15s ease;
+
+    &:hover {
+      color: #fff;
+      background-color: #2e2e2e;
+      border-color: var(--je-border-strong);
+    }
+  }
+
+  /* The row controls sit under the row they belong to. */
+  .je-object__container > .btn-group,
+  .card > .btn-group {
+    margin-top: 8px;
+  }
+
+  /* Collapse caret: a quiet icon button, not a filled button. */
+  .json-editor-btntype-toggle {
+    padding: 0 4px !important;
+    color: var(--je-muted) !important;
+    background: none !important;
+    border: 0 !important;
+
+    &:hover {
+      color: #fff !important;
+    }
+  }
+
+  .json-editor-btn-collapse {
+    margin-right: 10px !important;
+  }
+
+  /* Destructive actions */
+  .json-editor-btntype-delete,
+  .json-editor-btntype-deletelast,
+  .json-editor-btntype-deleteall {
+    color: #ff8a9b;
+
+    &:hover {
+      color: #fff;
+      background-color: var(--je-danger);
+      border-color: var(--je-danger);
+    }
+  }
+
+  /* Additive actions */
+  .json-editor-btntype-add {
+    color: #ffb08a;
+
+    &:hover {
+      color: #fff;
+      background-color: var(--je-accent);
+      border-color: var(--je-accent);
+    }
+  }
+
+  /* =====================================================================
+   * Floating panels ("Edit JSON" / "Properties")
+   *
+   * The library toggles `display` inline, so it must stay untouched here.
+   * ================================================================== */
+  .je-modal {
+    z-index: 1055;
+    min-width: min(560px, 90vw);
+    max-width: min(760px, 92vw);
+    max-height: 70vh;
+    padding: 14px !important;
+    overflow: auto;
+    background-color: #1f1f1f !important;
+    border: 1px solid var(--je-border-strong) !important;
+    border-radius: var(--je-radius) !important;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65) !important;
+
+    .btn {
+      margin: 0 6px 0 0;
+    }
+  }
+
+  .je-edit-json--textarea {
+    width: 100%;
+    height: 320px !important;
+    margin-bottom: 10px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    resize: vertical;
+  }
+
+  .property-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    max-height: 40vh;
+    margin-bottom: 10px;
+    overflow: auto;
+  }
+
+  .property-selector-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  /* =====================================================================
+   * Validation
+   * ================================================================== */
+  .alert-danger {
+    padding: 0.5rem 0.75rem;
+    margin: 0.5rem 0;
+    font-size: 0.8rem;
+    color: #ffb3bf;
+    background-color: rgba(255, 48, 79, 0.12);
+    border: 1px solid rgba(255, 48, 79, 0.35);
+    border-radius: var(--je-radius-sm);
+  }
+
+  .is-invalid > .form-control,
+  .form-control.is-invalid {
+    border-color: var(--je-danger);
+  }
+
+  .invalid-feedback {
+    color: #ff8a9b;
+  }
+}
