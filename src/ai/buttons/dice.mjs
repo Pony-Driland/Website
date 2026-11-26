@@ -414,17 +414,50 @@ export const openTinyDices = () => {
   const dice = diceViewer.dice;
   /** @type {ReturnType<typeof setTimeout>|null} */
   let updateTotalBase = null;
+
+  /**
+   * Renders a roll error exactly like the dice history does.
+   *
+   * The expression is typed by hand, so a parse error is expected and must be
+   * shown to the visitor instead of escaping as an uncaught exception.
+   *
+   * @param {unknown} err - Error thrown while parsing or applying the roll.
+   * @returns {void}
+   */
+  const showDiceError = (err) => {
+    if (updateTotalBase) {
+      clearTimeout(updateTotalBase);
+      updateTotalBase = null;
+    }
+
+    diceViewer.clear();
+    $idBase.setText('');
+    $totalBaseNumber
+      .removeClass('text-success')
+      .addClass('text-danger')
+      .setText(err instanceof Error ? err.message : String(err));
+  };
+
   $rollButton.on('click', async () => {
     // Get values
     const perDieRaw = String(configs.perDieValues.val() ?? '').trim();
-    const parsedPerDie = TinySimpleDice.parseString(perDieRaw);
 
-    // Get sides amount
+    /** @type {ReturnType<typeof TinySimpleDice.parseString>} */
+    let parsedPerDie;
+
     /** @type {number[]} */
     const sidesAmount = [];
-    parsedPerDie.sides.forEach((item) => {
-      for (let i = 0; i < item.count; i++) sidesAmount.push(item.sides);
-    });
+
+    try {
+      parsedPerDie = TinySimpleDice.parseString(perDieRaw);
+      parsedPerDie.sides.forEach((item) => {
+        for (let i = 0; i < item.count; i++) sidesAmount.push(item.sides);
+      });
+    } catch (err) {
+      showDiceError(err);
+      return;
+    }
+
     const perDieRaw2 = sidesAmount.join(', ');
     const perDie = perDieRaw2.length > 0 ? perDieRaw2 : null;
 
@@ -434,17 +467,17 @@ export const openTinyDices = () => {
     // Refuse absurd rolls before touching the DOM: every die is a 3D cube
     // made of six animated faces.
     if (sidesAmount.length > DICE_ROLL_LIMIT) {
-      $totalBaseNumber
-        .addClass('text-danger')
-        .setText(
+      showDiceError(
+        new Error(
           `This roll has ${diceCountLabel(sidesAmount.length)} but the limit is ` +
             `${diceCountLabel(DICE_ROLL_LIMIT)} per roll.`,
-        );
+        ),
+      );
       return;
     }
 
     // Prepare total base and reset timeout
-    $totalBaseNumber.setText(0);
+    $totalBaseNumber.removeClass('text-danger').setText(0);
     if (updateTotalBase) {
       clearTimeout(updateTotalBase);
       updateTotalBase = null;
@@ -456,18 +489,23 @@ export const openTinyDices = () => {
       // amount of 3D cubes never depends on the expression typed.
       /** @type {number[]} */
       const diceResults = sidesAmount.map((sides) => dice.rollNumber(sides, canZero));
+
+      /** @type {import('tiny-essentials/libs/math/TinySimpleDice').ApplyDiceModifiersResult} */
+      let diceResult;
+      try {
+        diceResult = TinySimpleDice.applyModifiers(diceResults, parsedPerDie.modifiers);
+      } catch (err) {
+        showDiceError(err);
+        return;
+      }
+
       diceViewer.setDice(
         diceResults.map((value, index) => ({ value, sides: sidesAmount[index] })),
         canZero,
       );
-      updateTotalBase = createDiceResults(
-        $totalBaseNumber,
-        TinySimpleDice.applyModifiers(diceResults, parsedPerDie.modifiers),
-        pageGroup,
-        () => {
-          updateTotalBase = null;
-        },
-      );
+      updateTotalBase = createDiceResults($totalBaseNumber, diceResult, pageGroup, () => {
+        updateTotalBase = null;
+      });
     }
     // Online
     else {
@@ -485,7 +523,6 @@ export const openTinyDices = () => {
 
       // Proccess Results
       if (!result.error) {
-        $totalBaseNumber.removeClass('text-danger');
         if (
           Array.isArray(result.results) &&
           result.results.every(
@@ -493,18 +530,22 @@ export const openTinyDices = () => {
               typeof item.value === 'number' && typeof item.sides === 'number',
           )
         ) {
-          diceViewer.setDice(result.results, canZero);
+          /** @type {import('tiny-essentials/libs/math/TinySimpleDice').ApplyDiceModifiersResult} */
+          let diceResult;
+          try {
+            diceResult = TinySimpleDice.applyModifiers(result.results, parsedPerDie.modifiers);
+          } catch (err) {
+            showDiceError(err);
+            return;
+          }
 
-          updateTotalBase = createDiceResults(
-            $totalBaseNumber,
-            TinySimpleDice.applyModifiers(result.results, parsedPerDie.modifiers),
-            pageGroup,
-            () => {
-              updateTotalBase = null;
-            },
-          );
+          $totalBaseNumber.removeClass('text-danger');
+          diceViewer.setDice(result.results, canZero);
+          updateTotalBase = createDiceResults($totalBaseNumber, diceResult, pageGroup, () => {
+            updateTotalBase = null;
+          });
         }
-      } else $totalBaseNumber.addClass('text-danger').setText(result.msg);
+      } else showDiceError(result.msg);
     }
   });
 
