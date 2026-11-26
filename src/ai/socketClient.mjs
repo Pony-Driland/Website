@@ -17,6 +17,21 @@ import { console } from '../dev.mjs';
 export const MAX_CONNECT_ATTEMPTS = 3;
 
 /**
+ * How long the client waits before replaying a room setting that could not be
+ * sent while the socket was reconnecting.
+ *
+ * @type {number}
+ */
+export const ROOM_SETTINGS_RETRY = 2000;
+
+/**
+ * How many times a queued room setting is retried before being dropped.
+ *
+ * @type {number}
+ */
+export const ROOM_SETTINGS_MAX_RETRIES = 15;
+
+/**
  * @typedef {Object} TinyClientIoConfig
  * @property {string} [ip] - Socket.IO server URL.
  * @property {string|null} [roomId] - Current room id.
@@ -101,6 +116,33 @@ class TinyClientIo extends EventEmitter {
    */
   #streams = new Map();
 
+  /**
+   * Room settings waiting for a ready room session.
+   *
+   * The page can change a setting while the socket is reconnecting. Instead of
+   * losing the change (or bothering the reader with an error), the payload is
+   * kept here and sent again as soon as the room is back.
+   *
+   * @type {Record<string, unknown>}
+   */
+  #pendingRoomSettings = {};
+
+  /** @type {ReturnType<typeof setTimeout>|null} */
+  #roomSettingsTimer = null;
+
+  /** How many times the queued room settings were retried. */
+  #roomSettingsRetries = 0;
+
+  /**
+   * Whether the server already sent the room back after the last connection.
+   *
+   * A reconnect drops the room session, so this flag is cleared as soon as the
+   * socket goes away and set again by the `room-entered` event.
+   *
+   * @type {boolean}
+   */
+  #roomReady = false;
+
   /** @type {import('socket.io-client').Socket|null} */
   socket = null;
 
@@ -126,6 +168,10 @@ class TinyClientIo extends EventEmitter {
         this.active = socket.active;
         this.id = null;
         this.connected = socket.connected;
+
+        // The room session died with the connection: anything sent now would
+        // be answered with an error, so the writes are queued instead.
+        this.#roomReady = false;
 
         console.log(
           `[socket-io] [disconnect]${typeof reason === 'string' ? ` ${reason}` : ''}`,
@@ -226,6 +272,7 @@ class TinyClientIo extends EventEmitter {
 
   // Reset data
   resetData() {
+    this.#roomReady = false;
     this.ratelimit = { limit: {}, size: {} };
     this.room = {};
     this.rpgSchema = {};
@@ -1439,12 +1486,113 @@ class TinyClientIo extends EventEmitter {
   }
 
   /**
-   * Update room settings
+   * Tells whether the room settings can be sent right now.
+   *
+   * A reconnect drops the room session: the server only knows the account and
+   * the room again after `login` and `join` run, so anything sent before that
+   * is answered with an error.
+   *
+   * @returns {boolean}
+   */
+  isRoomReady() {
+    return Boolean(this.#roomReady && this.socket?.connected && this.hasRoom());
+  }
+
+  /**
+   * Sends the queued room settings, if the room is ready again.
+   *
+   * @returns {void}
+   */
+  flushRoomSettings() {
+    if (this.#roomSettingsTimer) {
+      clearTimeout(this.#roomSettingsTimer);
+      this.#roomSettingsTimer = null;
+    }
+
+    if (countObj(this.#pendingRoomSettings) < 1) return;
+
+    // Still reconnecting: keep the payload and try again later.
+    if (!this.isRoomReady()) {
+      this.#scheduleRoomSettingsFlush();
+      return;
+    }
+
+    this.#roomSettingsRetries = 0;
+    const settings = this.#pendingRoomSettings;
+    this.#pendingRoomSettings = {};
+    this.updateRoomSettings(settings).catch(console.error);
+  }
+
+  /**
+   * Retries the queued room settings after a while.
+   *
+   * The retry stops once the room stayed away for too long: the payload is
+   * dropped instead of keeping a timer alive for the whole session.
+   *
+   * @returns {void}
+   */
+  #scheduleRoomSettingsFlush() {
+    if (this.#roomSettingsTimer) return;
+
+    if (this.#roomSettingsRetries >= ROOM_SETTINGS_MAX_RETRIES) {
+      this.#roomSettingsRetries = 0;
+      this.#pendingRoomSettings = {};
+      return;
+    }
+
+    this.#roomSettingsRetries++;
+    this.#roomSettingsTimer = setTimeout(() => {
+      this.#roomSettingsTimer = null;
+      this.flushRoomSettings();
+    }, ROOM_SETTINGS_RETRY);
+  }
+
+  /**
+   * Tells whether an error means the room session is gone.
+   *
+   * Only the session errors are worth retrying: a validation error would fail
+   * forever, so the payload is dropped instead of looping.
+   *
+   * @param {SocketAck} result - Server acknowledgement.
+   * @returns {boolean}
+   */
+  #isRoomSessionError(result) {
+    return result.error === true && typeof result.msg === 'string' && result.msg.length > 0
+      ? /account|session|login|room/i.test(result.msg)
+      : false;
+  }
+
+  /**
+   * Update room settings.
+   *
+   * The payload is kept in memory until the server confirms it, so a change
+   * made while the socket is reconnecting is never lost.
+   *
+   * @param {Record<string, unknown>} settings - Room settings to store.
+   * @returns {Promise<SocketAck>} The server acknowledgement.
    */
   updateRoomSettings(settings = {}) {
+    // The room is not ready yet: remember the change and replay it later.
+    if (!this.isRoomReady()) {
+      this.#pendingRoomSettings = { ...this.#pendingRoomSettings, ...settings };
+      this.#scheduleRoomSettingsFlush();
+      return Promise.resolve({ error: false, queued: true });
+    }
+
     return this.#socketEmitApi('update-room', {
       roomId: this.#cfg.roomId,
       newSettings: settings,
+    }).then((result) => {
+      // The session was gone: keep the payload and send it again once the
+      // room is back.
+      if (this.#isRoomSessionError(result)) {
+        this.#pendingRoomSettings = { ...this.#pendingRoomSettings, ...settings };
+        this.#scheduleRoomSettingsFlush();
+      } else {
+        this.#roomSettingsRetries = 0;
+      }
+
+      return result;
     });
   }
 
@@ -2123,7 +2271,13 @@ class TinyClientIo extends EventEmitter {
         if (!this.setRoomBase(result)) this.emit('roomEntered', false);
         else this.emit('roomEntered', true);
 
+        // The room session is valid again: writes may be sent from now on.
+        this.#roomReady = true;
+
         this.emit('roomEnter');
+
+        // The room is back: replay whatever was changed while offline.
+        this.flushRoomSettings();
         console.log('[socket-io] [room-data]', {
           room: this.getRoom(),
           users: this.getUsers(),

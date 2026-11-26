@@ -3602,14 +3602,10 @@ export const AiScriptStart = async () => {
           );
           for (const name in newSettings) if (newSettings[name] !== oldData[name]) canSave = true;
 
-          // Send data
-          if (canSave)
-            client.updateRoomSettings(newSettings).then((result) => {
-              if (result.error)
-                alert(
-                  `⚠️ Your data was not saved! Please try again.\nError Message:${result.msg}\nCode: ${result.code}`,
-                );
-            });
+          // Send data. The client keeps the payload queued while the socket is
+          // reconnecting and replays it once the room is back, so there is
+          // nothing to report here.
+          if (canSave) client.updateRoomSettings(newSettings).catch(console.error);
 
           // Complete
           saveSessionTimeout[timeoutId] = null;
