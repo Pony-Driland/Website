@@ -466,7 +466,7 @@ export const openTinyDices = () => {
 
     // Refuse absurd rolls before touching the DOM: every die is a 3D cube
     // made of six animated faces.
-    if (sidesAmount.length > DICE_ROLL_LIMIT) {
+    if (Number.isFinite(DICE_ROLL_LIMIT) && sidesAmount.length > DICE_ROLL_LIMIT) {
       showDiceError(
         new Error(
           `This roll has ${diceCountLabel(sidesAmount.length)} but the limit is ` +

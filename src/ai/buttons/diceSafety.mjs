@@ -30,7 +30,7 @@ export const DICE_PAGE_SIZE = 40;
  * Maximum amount of dice accepted in a single roll.
  * @type {number}
  */
-export const DICE_ROLL_LIMIT = 500;
+export const DICE_ROLL_LIMIT = 1000;
 
 /**
  * Amount of modifier steps rendered per page of the result table.
