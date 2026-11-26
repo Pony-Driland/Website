@@ -231,7 +231,6 @@ export const openDiceSpecialModal = (data) => {
 };
 
 export const openTinyDices = () => {
-  const client = getClient();
   // Root
   const $root = TinyHtml.createFrom('div');
   const $formRow = TinyHtml.createFrom('div').addClass('row g-3');
@@ -252,6 +251,7 @@ export const openTinyDices = () => {
   };
 
   if (tinyCfg.isOnline) {
+    const client = getClient();
     tinyCfg.data = client.getDice() || {};
     const ratelimit = client.getRateLimit() || { dice: {}, size: {} };
     if (isJsonObject(ratelimit.dice)) tinyCfg.rateLimit = ratelimit.dice;
@@ -387,6 +387,7 @@ export const openTinyDices = () => {
     }
     // Online
     else {
+      const client = getClient();
       // Prepare data
       const diceParse = dice.parseRollConfig(perDie ?? '');
       const sides = [];
@@ -631,6 +632,7 @@ export const openTinyDices = () => {
     else {
       $applyBtn.setText('Edit Skin Data');
       if (tinyCfg.isOnline) {
+        const client = getClient();
         updateAllSkins();
 
         // Disable buttons
