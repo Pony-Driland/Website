@@ -148,7 +148,7 @@ export const createPager = (onChange, options = {}) => {
     if (totalPages <= 1) return;
 
     new BootstrapPaginator($element, {
-      listContainerClass: 'justify-content-center flex-wrap mb-0',
+      listContainerClass: 'justify-content-center flex-wrap mt-3 mb-0',
       currentPage: current,
       totalPages,
       numberOfPages,
