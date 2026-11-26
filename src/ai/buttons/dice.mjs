@@ -12,13 +12,93 @@ import { isOnline } from '../software/enablerContent.mjs';
 import { tinyLs } from '../../important.mjs';
 import tinyLib from '../../files/tinyLib.mjs';
 import { Tooltip } from '../../modules/TinyBootstrap.mjs';
+import {
+  DICE_ROLL_LIMIT,
+  DICE_STEP_PAGE_SIZE,
+  DICE_TOKEN_LIMIT,
+  createDiceViewer,
+  createPageGroup,
+  createPager,
+  diceCountLabel,
+} from './diceSafety.mjs';
+
+/**
+ * Builds one row of the expression table.
+ *
+ * @param {import('tiny-essentials/libs/math/TinySimpleDice').ApplyDiceModifiersStep} step - Step to render.
+ * @returns {TinyHtml<HTMLElement>} Table row.
+ */
+const createDiceResultRow = (step) => {
+  const tr = TinyHtml.createFrom('tr');
+  tr.addClass('text-center');
+
+  // Tokens Base
+  const tdTokens = TinyHtml.createFrom('td');
+  tdTokens.addClass('text-center dice-exp');
+
+  /** @type {TinyHtml<HTMLElement>[]} */
+  const result = [];
+  /** @type {TinyHtml<HTMLElement>[]} */
+  const rawResult = [];
+  let rawMode = true;
+
+  // Tokens
+  step.tokens.slice(0, DICE_TOKEN_LIMIT).forEach((t, index) => {
+    const item = TinyHtml.createFrom('span', {
+      class: `badge bg-${step.diceTokenSlots.indexOf(index) < 0 ? 'secondary' : 'primary'} mx-1`,
+    }).setText(t);
+    result.push(item);
+  });
+
+  // Raw Tokens
+  step.rawTokens.slice(0, DICE_TOKEN_LIMIT).forEach((t, index) => {
+    const item = TinyHtml.createFrom('span', {
+      class: `badge bg-${step.rawDiceTokenSlots.indexOf(index) < 0 ? 'secondary' : 'primary'} mx-1`,
+    })
+      .setText(t)
+      .setAttr('title', step.rawTokensP[index]);
+    Tooltip(item);
+    rawResult.push(item);
+  });
+
+  tdTokens.append(...rawResult);
+
+  // Token change viewer
+  tdTokens.on('click', () => {
+    tdTokens.empty();
+    if (rawMode) {
+      rawMode = false;
+      rawResult.forEach((item) => item.data('BootstrapToolTip')?.hide());
+      tdTokens.append(...result);
+    } else {
+      rawMode = true;
+      result.forEach((item) => item.data('BootstrapToolTip')?.hide());
+      tdTokens.append(...rawResult);
+    }
+  });
+
+  // Total
+  const tdResult = TinyHtml.createFrom('td');
+  tdResult.setHtml(`<span class="fw-bold">${step.total}</span>`);
+
+  // Add tds
+  tr.append(tdTokens);
+  tr.append(tdResult);
+  return tr;
+};
 
 /**
  * @param {import('tiny-essentials/libs/html/TinyHtml').TinyHtmlAny} $totalBaseNumber
  * @param {import('tiny-essentials/libs/math/TinySimpleDice').ApplyDiceModifiersResult} data
+ * @param {import('./diceSafety.mjs').PageGroup} [group] - Page group shared with the 3D preview.
  * @returns {NodeJS.Timeout}
  */
-export const createDiceResults = ($totalBaseNumber, data, callback = () => undefined) => {
+export const createDiceResults = (
+  $totalBaseNumber,
+  data,
+  group = createPageGroup(),
+  callback = () => undefined,
+) => {
   /**
    * Insert Total Value (Bootstrap 5 styled display)
    */
@@ -60,68 +140,45 @@ export const createDiceResults = ($totalBaseNumber, data, callback = () => undef
     const tbody = TinyHtml.createFrom('tbody');
     table.append(tbody);
 
-    // Read steps
-    steps.forEach((step) => {
-      const tr = TinyHtml.createFrom('tr');
-      tr.addClass('text-center');
-
-      // Tokens Base
-      const tdTokens = TinyHtml.createFrom('td');
-      tdTokens.addClass('text-center dice-exp');
-
-      /** @type {TinyHtml<HTMLElement>[]} */
-      const result = [];
-      /** @type {TinyHtml<HTMLElement>[]} */
-      const rawResult = [];
-      let rawMode = true;
-
-      // Tokens
-      step.tokens.forEach((t, index) => {
-        const item = TinyHtml.createFrom('span', {
-          class: `badge bg-${step.diceTokenSlots.indexOf(index) < 0 ? 'secondary' : 'primary'} mx-1`,
-        }).setText(t);
-        result.push(item);
-      });
-
-      // Raw Tokens
-      step.rawTokens.forEach((t, index) => {
-        const item = TinyHtml.createFrom('span', {
-          class: `badge bg-${step.rawDiceTokenSlots.indexOf(index) < 0 ? 'secondary' : 'primary'} mx-1`,
-        })
-          .setText(t)
-          .setAttr('title', step.rawTokensP[index]);
-        Tooltip(item);
-        rawResult.push(item);
-      });
-
-      tdTokens.append(...rawResult);
-
-      // Token change viewer
-      tdTokens.on('click', () => {
-        tdTokens.empty();
-        if (rawMode) {
-          rawMode = false;
-          rawResult.forEach((item) => item.data('BootstrapToolTip')?.hide());
-          tdTokens.append(...result);
-        } else {
-          rawMode = true;
-          result.forEach((item) => item.data('BootstrapToolTip')?.hide());
-          tdTokens.append(...rawResult);
-        }
-      });
-
-      // Total
-      const tdResult = TinyHtml.createFrom('td');
-      tdResult.setHtml(`<span class="fw-bold">${step.total}</span>`);
-
-      // Add tds
-      tr.append(tdTokens);
-      tr.append(tdResult);
-      tbody.append(tr);
+    // A roll may have thousands of steps (one per die). Rendering them all at
+    // once would lock the tab, so the table is paged just like the dice.
+    const $status = TinyHtml.createFrom('div', {
+      class: 'small text-body-secondary text-center mt-2',
     });
 
+    /**
+     * Renders one page of the expression table.
+     *
+     * @param {number} [page=1] - Page to render (1 based).
+     * @returns {void}
+     */
+    const renderSteps = (page = 1) => {
+      tbody.empty();
+
+      const start = (page - 1) * DICE_STEP_PAGE_SIZE;
+      const slice = steps.slice(start, start + DICE_STEP_PAGE_SIZE);
+
+      for (const step of slice) tbody.append(createDiceResultRow(step));
+
+      if (steps.length === 0) {
+        $status.setText('');
+        return;
+      }
+
+      const first = start + 1;
+      const last = Math.min(steps.length, start + slice.length);
+      $status.setText(`Showing ${first}-${last} of ${steps.length} steps.`);
+    };
+
+    const pager = createPager((page) => renderSteps(page), { className: 'mt-2', group });
+
     // Insert into page
+    body.append(pager.element, $status);
     $totalBaseNumber.append(container);
+
+    group.reset();
+    pager.render(Math.ceil(steps.length / DICE_STEP_PAGE_SIZE), 1);
+    renderSteps(1);
   };
 
   return setTimeout(() => {
@@ -150,18 +207,29 @@ function generateRandomId(length = 8) {
 export const createDiceSpecialHtml = (data) => {
   const client = getClient();
   const $root = TinyHtml.createFrom('div');
-  const $diceContainer = TinyHtml.createFrom('div');
-  const dice = new TinyDices(/** @type {HTMLElement} */ ($diceContainer.get(0)));
 
-  const skin = data.skin;
-  if (isJsonObject(skin)) {
-    if (skin.img) dice.bgImg = skin.img;
-    if (skin.bg) dice.bgSkin = skin.bg;
-    if (skin.selectionBg) dice.selectionBgSkin = skin.selectionBg;
-    if (skin.selectionText) dice.selectionTextSkin = skin.selectionText;
-    if (skin.border) dice.borderSkin = skin.border;
-    if (skin.text) dice.textSkin = skin.text;
-  }
+  // Never trust the amount of dice stored in the history: a single entry may
+  // hold thousands of them and each one is six 3D faces. The viewer keeps a
+  // single page of cubes in the DOM and pages through the rest.
+  const group = createPageGroup();
+  const viewer = createDiceViewer(
+    (area) => {
+      const instance = new TinyDices(area);
+
+      const skin = data.skin;
+      if (isJsonObject(skin)) {
+        if (skin.img) instance.bgImg = skin.img;
+        if (skin.bg) instance.bgSkin = skin.bg;
+        if (skin.selectionBg) instance.selectionBgSkin = skin.selectionBg;
+        if (skin.selectionText) instance.selectionTextSkin = skin.selectionText;
+        if (skin.border) instance.borderSkin = skin.border;
+        if (skin.text) instance.textSkin = skin.text;
+      }
+
+      return instance;
+    },
+    { group },
+  );
 
   const $totalBaseNumber = TinyHtml.createFrom('div').setText(0);
   const $idBase = TinyHtml.createFrom('small');
@@ -172,9 +240,7 @@ export const createDiceSpecialHtml = (data) => {
     $idBase,
   );
 
-  for (const item of data.results) {
-    dice.insertDiceElement(item.value, item.sides, data.canZero);
-  }
+  viewer.setDice(data.results, data.canZero);
 
   const user = client.getUsers()[data.userId] ?? null;
   const date = data.date instanceof Date ? data.date : data.date ? new Date(data.date) : null;
@@ -197,7 +263,7 @@ export const createDiceSpecialHtml = (data) => {
       TinyHtml.createFrom('h3').setText(user?.nickname ?? data.userId),
       date ? TinyHtml.createFrom('h5').setText(formatDate24h(date)) : null,
     ),
-    $diceContainer,
+    viewer.element,
     $totalBase,
   );
 
@@ -211,7 +277,7 @@ export const createDiceSpecialHtml = (data) => {
     diceResult = null;
   }
 
-  if (diceResult) createDiceResults($totalBaseNumber, diceResult);
+  if (diceResult) createDiceResults($totalBaseNumber, diceResult, group);
   else $totalBaseNumber.setText(errorMsg).addClass('text-danger');
 
   return $root;
@@ -331,7 +397,6 @@ export const openTinyDices = () => {
   const $rollButton = tinyLib.bs.button('primary w-100 mb-4 mt-2').setText('Roll Dice');
 
   // Add container
-  const $diceContainer = TinyHtml.createFrom('div');
   const $diceError = TinyHtml.createFrom('div');
   /** @type {Array<[string, string]>} */
   const readSkinValues = [
@@ -344,7 +409,9 @@ export const openTinyDices = () => {
   ];
 
   // TinyDices logic
-  const dice = new TinyDices(/** @type {HTMLElement} */ ($diceContainer.get(0)));
+  const pageGroup = createPageGroup();
+  const diceViewer = createDiceViewer((area) => new TinyDices(area), { group: pageGroup });
+  const dice = diceViewer.dice;
   /** @type {ReturnType<typeof setTimeout>|null} */
   let updateTotalBase = null;
   $rollButton.on('click', async () => {
@@ -364,6 +431,18 @@ export const openTinyDices = () => {
     // Can Zero
     const canZero = $allow0input.is(':checked');
 
+    // Refuse absurd rolls before touching the DOM: every die is a 3D cube
+    // made of six animated faces.
+    if (sidesAmount.length > DICE_ROLL_LIMIT) {
+      $totalBaseNumber
+        .addClass('text-danger')
+        .setText(
+          `This roll has ${diceCountLabel(sidesAmount.length)} but the limit is ` +
+            `${diceCountLabel(DICE_ROLL_LIMIT)} per roll.`,
+        );
+      return;
+    }
+
     // Prepare total base and reset timeout
     $totalBaseNumber.setText(0);
     if (updateTotalBase) {
@@ -373,13 +452,18 @@ export const openTinyDices = () => {
 
     // Offline
     if (!tinyCfg.isOnline) {
-      const result = dice.roll(perDie ?? '', canZero);
+      // Roll the values first and only then render the preview, so the
+      // amount of 3D cubes never depends on the expression typed.
       /** @type {number[]} */
-      const diceResults = [];
-      for (const item of result) diceResults.push(item.result);
+      const diceResults = sidesAmount.map((sides) => dice.rollNumber(sides, canZero));
+      diceViewer.setDice(
+        diceResults.map((value, index) => ({ value, sides: sidesAmount[index] })),
+        canZero,
+      );
       updateTotalBase = createDiceResults(
         $totalBaseNumber,
         TinySimpleDice.applyModifiers(diceResults, parsedPerDie.modifiers),
+        pageGroup,
         () => {
           updateTotalBase = null;
         },
@@ -401,7 +485,6 @@ export const openTinyDices = () => {
 
       // Proccess Results
       if (!result.error) {
-        dice.clearDiceArea();
         $totalBaseNumber.removeClass('text-danger');
         if (
           Array.isArray(result.results) &&
@@ -410,17 +493,12 @@ export const openTinyDices = () => {
               typeof item.value === 'number' && typeof item.sides === 'number',
           )
         ) {
-          for (const index in result.results) {
-            dice.insertDiceElement(
-              result.results[index].value,
-              result.results[index].sides,
-              canZero,
-            );
-          }
+          diceViewer.setDice(result.results, canZero);
 
           updateTotalBase = createDiceResults(
             $totalBaseNumber,
             TinySimpleDice.applyModifiers(result.results, parsedPerDie.modifiers),
+            pageGroup,
             () => {
               updateTotalBase = null;
             },
@@ -667,7 +745,7 @@ export const openTinyDices = () => {
     $formRow2.toggleClass('d-none');
   });
 
-  $root.append($applyBtn, $rollButton, $diceError, $diceContainer, $totalBase);
+  $root.append($applyBtn, $rollButton, $diceError, diceViewer.element, $totalBase);
   updateAllSkins();
   dice.roll([0, 0, 0]);
 
