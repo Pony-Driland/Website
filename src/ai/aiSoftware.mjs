@@ -3603,8 +3603,7 @@ export const AiScriptStart = async () => {
           for (const name in newSettings) if (newSettings[name] !== oldData[name]) canSave = true;
 
           // Send data. The client keeps the payload queued while the socket is
-          // reconnecting and replays it once the room is back, so there is
-          // nothing to report here.
+          // reconnecting and replays it once the room is back.
           if (canSave) client.updateRoomSettings(newSettings).catch(console.error);
 
           // Complete
@@ -4056,6 +4055,17 @@ export const AiScriptStart = async () => {
           ) {
             client.updateRoomData(result.data, result.type === 'private');
           }
+        });
+
+        // The room settings are stored on the server, so a change made while
+        // the connection is down has to wait. The reader must know that the
+        // change was not lost, otherwise it looks like a silent failure.
+        client.on('roomSettingsQueued', () => {
+          tinyToast.show('Offline: your changes will be saved as soon as the connection is back.');
+        });
+
+        client.on('roomSettingsSaved', () => {
+          tinyToast.show('Your room settings have been saved.');
         });
 
         client.on('roomUpdates', (roomData) => onlineRoomUpdates(true, roomData));

@@ -1524,6 +1524,15 @@ class TinyClientIo extends EventEmitter {
   }
 
   /**
+   * Tells whether there are room settings waiting for the connection.
+   *
+   * @returns {boolean}
+   */
+  hasPendingRoomSettings() {
+    return countObj(this.#pendingRoomSettings) > 0;
+  }
+
+  /**
    * Retries the queued room settings after a while.
    *
    * The retry stops once the room stayed away for too long: the payload is
@@ -1576,6 +1585,7 @@ class TinyClientIo extends EventEmitter {
     if (!this.isRoomReady()) {
       this.#pendingRoomSettings = { ...this.#pendingRoomSettings, ...settings };
       this.#scheduleRoomSettingsFlush();
+      this.emit('roomSettingsQueued', settings);
       return Promise.resolve({ error: false, queued: true });
     }
 
@@ -1588,8 +1598,10 @@ class TinyClientIo extends EventEmitter {
       if (this.#isRoomSessionError(result)) {
         this.#pendingRoomSettings = { ...this.#pendingRoomSettings, ...settings };
         this.#scheduleRoomSettingsFlush();
+        this.emit('roomSettingsQueued', settings);
       } else {
         this.#roomSettingsRetries = 0;
+        if (!result.error) this.emit('roomSettingsSaved', settings);
       }
 
       return result;
