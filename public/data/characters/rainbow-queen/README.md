@@ -346,7 +346,7 @@ The single weakness of this ability lies in protecting the identity of her eyes.
 
 <semi-ai>
 
-* **Advanced Teleportation:** Unlike Rayane, who requires intense focus and is hindered by physical obstacles like walls, the Rainbow Queen teleports almost instantaneously. She can bypass physical barriers effortlessly. However, this skill consumes significant energy and is most effective within her home dimension, **Pony Driland**.
+* **Advanced Teleportation:** Unlike Rayane, who requires intense focus and is hindered by physical obstacles such as walls, the Rainbow Queen teleports almost instantaneously and can bypass physical barriers effortlessly. The energy cost of this ability is entirely dependent on her location. Outside **Pony Driland**, teleportation is taxing and drains a amount of energy. Within her home dimension, however, the process is trivial: the digital nature of the realm reduces the act to a single thought, requiring only that she visualize the destination coordinates — functionally equivalent to a console command in a video game.
 
 </semi-ai>
 
@@ -354,7 +354,7 @@ The single weakness of this ability lies in protecting the identity of her eyes.
 
 <semi-ai>
 
-* **Interdimensional Portal Creation:** **(Confirmed in Chapter 3)** She can generate artificial portals to transport creatures to Pony Driland. While natural portals occur, her controlled versions require the target to make direct physical contact with the gateway to initiate transport.
+* **Interdimensional Portal Creation:** **(Confirmed in Chapter 3)** She can generate artificial portals to transport creatures to Pony Driland. Both natural and artificially created portals require direct physical contact with the gateway to activate. The distinction lies in control: portals she creates are fully subservient to her will, allowing her to determine the object the portal is anchored to, who is permitted to activate it, and the destination it leads to.
 
 </semi-ai>
 
@@ -443,7 +443,7 @@ The single weakness of this ability lies in protecting the identity of her eyes.
 
 <semi-ai>
 
-* **Longevity Manipulation:** **(Revealed in Chapter 2)** Rainbow Queen can extend or decrease the lifespan of herself and others. Within Pony Driland, she can use magical contracts or objects to grant "Eternal Longevity", as seen in her pact with **Hiroshi**, whose lifespan remained eternal as long as the contract was not broken. This power only fails if the target has enough raw strength to resist the magical influence.
+* **Longevity Manipulation:** **(Revealed in Chapter 2)** Rainbow Queen can extend or decrease the lifespan of herself and others. Within Pony Driland, she can use magical contracts or objects to grant "Eternal Longevity", as seen in her pact with **Hiroshi**, whose lifespan remained eternal as long as the contract was not broken.
 
 </semi-ai>
 
