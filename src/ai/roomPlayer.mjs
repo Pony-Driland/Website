@@ -47,6 +47,28 @@ import { validateTrack } from './musicTrack.mjs';
  */
 const MAX_DRIFT = 1.2;
 
+/**
+ * How long the local audio has to stay out of sync before it is pulled back,
+ * in milliseconds.
+ *
+ * A seek flushes the buffer, so a single bad reading (a garbage collection
+ * pause, a slow frame, the media still buffering) would be heard as a stutter
+ * in the middle of the song. The drift has to survive a few checks before it
+ * is worth a seek.
+ */
+const DRIFT_CONFIRMATION = 500;
+
+/**
+ * How long the drift correction stays muted after the media is moved, in
+ * milliseconds.
+ *
+ * The media element keeps reporting the old position for a moment after a
+ * `seek()`, and a track transition starts a brand new stream from scratch.
+ * Correcting during that window seeks the song again and again, which is heard
+ * as a stutter right when the next track is loaded.
+ */
+const DRIFT_SETTLE = 2000;
+
 /** How often the local audio is compared with the room, in milliseconds. */
 const DRIFT_INTERVAL = 100;
 
@@ -102,6 +124,22 @@ let paused = true;
 
 /** @type {ReturnType<typeof setInterval>|null} */
 let driftTimer = null;
+
+/**
+ * When the local audio started to be out of sync, in milliseconds.
+ *
+ * `0` while the local audio is in sync with the room.
+ *
+ * @type {number}
+ */
+let driftSince = 0;
+
+/**
+ * Timestamp until the drift correction stays muted, in milliseconds.
+ *
+ * @type {number}
+ */
+let settleUntil = 0;
 
 /**
  * Revision that already asked the room for the next track.
@@ -362,8 +400,23 @@ const withTimeout = (promise, ms) =>
     );
   });
 
+/**
+ * Mutes the drift correction for a moment.
+ *
+ * Called whenever the media is moved on purpose, so the correction never
+ * fights the seek (or the load) that just happened.
+ *
+ * @returns {void}
+ */
+const holdDrift = () => {
+  driftSince = 0;
+  settleUntil = Date.now() + DRIFT_SETTLE;
+};
+
 /** Stops the drift watcher. */
 const stopDriftWatch = () => {
+  driftSince = 0;
+
   if (!driftTimer) return;
   clearInterval(driftTimer);
   driftTimer = null;
@@ -383,6 +436,11 @@ const correctDrift = async () => {
 
   // The room is paused, so there is no position to be in sync with.
   if (!state?.playing) return;
+
+  // The media was just moved (or the track was just loaded), so the position
+  // it reports still belongs to the previous state. Correcting now would seek
+  // the song for no reason, which is heard as a stutter.
+  if (Date.now() < settleUntil) return;
 
   const current = musicPlayer.getCurrentTime();
 
@@ -416,13 +474,28 @@ const correctDrift = async () => {
     return;
   }
 
-  if (Math.abs(expected - current) <= MAX_DRIFT) return;
+  // A single bad reading is not a drift: the media may be buffering, the tab
+  // may have been throttled or the clock may have been corrected. The audio
+  // is only pulled back when the drift survives a few checks.
+  if (Math.abs(expected - current) <= MAX_DRIFT) {
+    driftSince = 0;
+    return;
+  }
+
+  if (driftSince === 0) {
+    driftSince = Date.now();
+    return;
+  }
+
+  if (Date.now() - driftSince < DRIFT_CONFIRMATION) return;
 
   // Seeking past the end would stop the media and fire `ended` on some
   // browsers, which would skip a track for no reason.
   if (duration > 0 && expected >= duration) return;
 
+  driftSince = 0;
   await musicPlayer.seek(expected);
+  holdDrift();
 };
 
 /** Starts the drift watcher. */
@@ -527,6 +600,10 @@ const loadTrack = async (track, key) => {
 
   loadingKey = key;
 
+  // The old media is still the loaded one while the new track boots, so any
+  // correction now would be applied to a song that is already leaving.
+  holdDrift();
+
   const position = getLivePosition();
 
   try {
@@ -542,6 +619,10 @@ const loadTrack = async (track, key) => {
 
     loadedKey = key;
     paused = false;
+
+    // The stream just started, so the position it reports is not reliable
+    // yet.
+    holdDrift();
     startDriftWatch();
 
     // The engine only knows the duration after the metadata arrives, so the
@@ -674,6 +755,9 @@ const syncAudio = async () => {
 const syncPausedPosition = async () => {
   if (!paused || !loadedKey || !state?.playlistId) return;
 
+  // The media was just moved, so the position it reports is still the old one.
+  if (Date.now() < settleUntil) return;
+
   const expected = Math.max(0, Number(state.position) || 0);
   const current = musicPlayer.getCurrentTime();
 
@@ -681,6 +765,7 @@ const syncPausedPosition = async () => {
   if (Math.abs(expected - current) <= MAX_DRIFT) return;
 
   await musicPlayer.seek(expected);
+  holdDrift();
 };
 
 /**
