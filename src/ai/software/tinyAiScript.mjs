@@ -163,6 +163,33 @@ export const tinyAiScript = {
   // local providers and the multiplayer server.
   // Login button
   login: () => {
+    /** @type {Record<string, AiProviderEntry>} */
+    const tinyAiHtml = {};
+
+    /**
+     * Commits the provider picked in the modal.
+     *
+     * Inside the roleplay page the socket is already connected, so the page is
+     * reloaded to join the room again with the new settings. Outside of it the
+     * reload is only needed by the providers that ask for it.
+     *
+     * @param {boolean} [reload=false] - Reload the page even outside a room.
+     * @returns {void}
+     */
+    const applyProvider = (reload = false) => {
+      tinyAiScript.checkTitle();
+      TinyHtml.query('#ai_connection')?.data('BootstrapModal').hide();
+
+      if (!reload && !appData.ai.using) return;
+      lockLoaderScreen('Applying the new AI/RP settings...');
+      setTimeout(() => window.location.reload(), 500);
+    };
+
+    // The selector is filled and triggered once before the modal is shown. That
+    // first pass must not be taken as a provider change, otherwise opening the
+    // modal inside a room would reload the page in a loop.
+    let ready = false;
+
     // Selector
     const selector = TinyHtml.createFrom('select', { class: 'form-select text-center' });
     selector.append(TinyHtml.createFrom('option', { value: 'NONE' }).setText('None'));
@@ -177,13 +204,18 @@ export const tinyAiScript = {
       // Picking a provider only previews its form. The selection is committed
       // by the form submit, otherwise closing the modal without saving would
       // leave the page pointing at a provider that has no credential yet.
-      if (!html) tinyStorage.setSelectedAi(value);
+      if (!html) {
+        tinyStorage.setSelectedAi(value);
+
+        // "None" has no form to confirm, so the room is left right away.
+        if (ready) {
+          applyProvider();
+          return;
+        }
+      }
+
       tinyAiScript.checkTitle();
     });
-
-    selector.toggleProp('disabled', appData.ai.using);
-    /** @type {Record<string, AiProviderEntry>} */
-    const tinyAiHtml = {};
 
     // Server login inputs
     /** @param {TinyHtmlAny[]} tinyInput @param {AiCredential} values */
@@ -234,13 +266,13 @@ export const tinyAiScript = {
       );
       indexs.push(tinyInput.length - 1);
 
-      tinyInput[indexs[0]].setVal(values.ip ?? null).toggleProp('disabled', appData.ai.using);
-      tinyInput[indexs[1]].setVal(values.username ?? null).toggleProp('disabled', appData.ai.using);
-      tinyInput[indexs[2]].setVal(values.password ?? null).toggleProp('disabled', appData.ai.using);
-      tinyInput[indexs[3]].setVal(values.roomId ?? null).toggleProp('disabled', appData.ai.using);
-      tinyInput[indexs[4]]
-        .setVal(values.roomPassword ?? null)
-        .toggleProp('disabled', appData.ai.using);
+      // The fields stay editable inside a room: switching the provider is what
+      // the reload at the end of `applyProvider()` is for.
+      tinyInput[indexs[0]].setVal(values.ip ?? null);
+      tinyInput[indexs[1]].setVal(values.username ?? null);
+      tinyInput[indexs[2]].setVal(values.password ?? null);
+      tinyInput[indexs[3]].setVal(values.roomId ?? null);
+      tinyInput[indexs[4]].setVal(values.roomPassword ?? null);
 
       return indexs;
     };
@@ -314,10 +346,8 @@ export const tinyAiScript = {
           const result = insertSaveServerLogin(data.input, ids);
           tinyStorage.setApiKey('no-ai', result);
           tinyStorage.setSelectedAi('no-ai');
-          tinyAiScript.checkTitle();
-          TinyHtml.query('#ai_connection')?.data('BootstrapModal').hide();
-        })
-        .toggleProp('disabled', appData.ai.using);
+          applyProvider();
+        });
 
       return data;
     };
@@ -348,7 +378,7 @@ export const tinyAiScript = {
       data.input.push(insertServerAbout());
       /** @type {AiCredential} */
       const values = /** @type {AiCredential} */ (tinyStorage.getApiKey('google-generative') || {});
-      data.input[0].setVal(values.key ?? null).toggleProp('disabled', appData.ai.using);
+      data.input[0].setVal(values.key ?? null);
       const ids = insertServerLogin(data.input, values);
       new TinyHtml(data.input[1].find(':scope > button')).trigger('click');
 
@@ -370,11 +400,8 @@ export const tinyAiScript = {
           result.key = String(data.input[0].val() ?? '');
           tinyStorage.setApiKey('google-generative', result);
           tinyStorage.setSelectedAi('google-generative');
-          tinyAiScript.checkTitle();
-          TinyHtml.query('#ai_connection')?.data('BootstrapModal').hide();
-          window.location.reload();
-        })
-        .toggleProp('disabled', appData.ai.using);
+          applyProvider(true);
+        });
 
       return data;
     };
@@ -401,10 +428,8 @@ export const tinyAiScript = {
         .on('click', () => {
           tinyStorage.setApiKey('tiny-chat', insertSaveServerLogin(data.input, ids));
           tinyStorage.setSelectedAi('tiny-chat');
-          tinyAiScript.checkTitle();
-          TinyHtml.query('#ai_connection')?.data('BootstrapModal').hide();
-        })
-        .toggleProp('disabled', appData.ai.using);
+          applyProvider();
+        });
 
       return data;
     };
@@ -412,6 +437,7 @@ export const tinyAiScript = {
     // Modal
     selector.setVal(tinyStorage.selectedAi() || 'NONE');
     selector.trigger('change');
+    ready = true;
 
     tinyLib.modal({
       id: 'ai_connection',
@@ -419,14 +445,24 @@ export const tinyAiScript = {
       dialog: 'modal-lg',
       body: TinyHtml.createFrom('center').append(
         TinyHtml.createFrom('p').setText(
-          `You are in an optional setting. You do not need AI to use the website!`,
+          `Everything here is optional: the website works without any AI service, and you can switch it off again at any moment.`,
         ),
         TinyHtml.createFrom('p').setText(
-          `This website does not belong to any AI company, and all API input is stored locally inside your machine. This website is just a client to run prompts in artificial intelligence, there is no native artificial intelligence installed here.`,
+          `This website is not owned by any AI company. Every key, token and server address you type is stored only in your own browser, and it is sent straight to the service you picked. There is no artificial intelligence running on this website: this page is just a client.`,
         ),
         TinyHtml.createFrom('p').setText(
-          `By activating an artificial intelligence service in your session, you agree to the terms of use and privacy policies of the third party services you are using on this website. You will always be warned when any artificial intelligence service needs to be run on this website.`,
+          `By enabling a service you agree with the terms of use and the privacy policy of the provider you selected. You are always told before any content leaves your browser.`,
         ),
+        TinyHtml.createFrom('p')
+          .addClass('mb-1')
+          .setHtml(
+            '<strong>Clients</strong> are for joining a roleplay room that already exists, as a player or as a moderator of that room.',
+          ),
+        TinyHtml.createFrom('p')
+          .addClass('mb-3')
+          .setHtml(
+            '<strong>AI Models</strong> are for the room owner, who picks the model and the server that everybody in the room will use.',
+          ),
         selector,
         apiPlace,
       ),
