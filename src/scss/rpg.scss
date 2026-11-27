@@ -40,6 +40,16 @@
     display: none;
   }
 
+  #rpg_ai_base_1,
+  #rpg_ai_base_2 {
+    /* The offcanvas is drawn over the page background, so the default dark
+       close icon disappears. The filter is the same one Bootstrap uses for
+       `.btn-close-white`, inlined to keep the icon readable on both themes. */
+    .btn-close {
+      filter: var(--bs-btn-close-white-filter, invert(1) grayscale(100%) brightness(200%));
+    }
+  }
+
   #rpg_ai_base_1 {
     .btn-close {
       right: 10px;
