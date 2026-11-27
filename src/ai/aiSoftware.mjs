@@ -3315,6 +3315,37 @@ export const AiScriptStart = async () => {
     class: 'px-3 d-inline-block w-100',
   }).append(textInputContainer);
 
+  // The room notice, the composer and the "leave room" button are three views of
+  // the same state, so they are always rendered from a single place. Updating
+  // them one by one is what made the "not in any room" notice survive a
+  // successful reconnection: `roomJoinned` never hid it again.
+  /** @type {'idle'|'joined'|'no-room'} */
+  let roomState = 'idle';
+  let roomReadOnly = false;
+
+  /** Renders the room state on the page. */
+  const renderRoomState = () => {
+    // Nothing is known yet: the connection is still being negotiated and the
+    // page must not be locked before the server says something.
+    if (roomState === 'idle') return;
+
+    const joined = roomState === 'joined';
+    noRoomNotice.toggleClass('d-none', roomState !== 'no-room');
+    textInputWrapper.toggleClass('d-none', !joined || roomReadOnly);
+    leaveRoomButton?.toggleClass('d-none', !joined);
+  };
+
+  /**
+   * Sets the room state of the page.
+   *
+   * @param {'idle'|'joined'|'no-room'} state - New state.
+   * @returns {void}
+   */
+  const setRoomState = (state) => {
+    roomState = state;
+    renderRoomState();
+  };
+
   const container = TinyHtml.createFrom('div', {
     class: 'd-flex h-100 y-100',
     id: 'ai-element-root',
@@ -3910,7 +3941,9 @@ export const AiScriptStart = async () => {
 
           container.toggleClass('read-only', isReadOnly);
           container.toggleClass('is-guest', isGuest);
-          textInputWrapper.blur().toggleClass('d-none', isReadOnly);
+          roomReadOnly = isReadOnly;
+          textInputWrapper.blur();
+          renderRoomState();
           guestNotice.toggleClass('d-none', !isGuest);
 
           // The room history is not available for read-only guests.
@@ -4161,6 +4194,11 @@ export const AiScriptStart = async () => {
         client.on('connect', (connectionId) => {
           clearIsLoadingMsgs();
           setConnectionNotice('hide');
+
+          // Every reconnection fires `connect` again: without clearing the
+          // previous timer the old intervals would pile up and refresh the
+          // whole chat once per second each.
+          if (msgChecker) clearInterval(msgChecker);
           msgChecker = setInterval(() => {
             const msgs = new TinyHtml(chatContainer.find('.ai-chat-data'));
             msgs.forEach((elem) => elem.data('tiny-ai-cache')?.update());
@@ -4239,6 +4277,11 @@ export const AiScriptStart = async () => {
         // Error
         client.on('roomError', (result) => {
           clearIsLoadingMsgs();
+          setConnectionNotice('hide');
+          // The room was refused (wrong password, full, disabled, banned...).
+          // The page must fall back to the room picker, otherwise the reader
+          // is left with a composer that can not send anything.
+          setRoomState('no-room');
           sendSocketError(result, roomErrorMessages);
           loaderScreen.stop();
         });
@@ -4247,9 +4290,7 @@ export const AiScriptStart = async () => {
         client.on('roomNotFound', () => {
           clearIsLoadingMsgs();
           setConnectionNotice('hide');
-          noRoomNotice.removeClass('d-none');
-          textInputWrapper.addClass('d-none');
-          leaveRoomButton?.addClass('d-none');
+          setRoomState('no-room');
           makeTempMessage(
             'The room was not found. Check the room id and try again.',
             String(rpgCfg.ip ?? ''),
@@ -4262,9 +4303,7 @@ export const AiScriptStart = async () => {
         client.on('roomNotSelected', () => {
           clearIsLoadingMsgs();
           setConnectionNotice('hide');
-          noRoomNotice.removeClass('d-none');
-          textInputWrapper.addClass('d-none');
-          leaveRoomButton?.addClass('d-none');
+          setRoomState('no-room');
           makeTempMessage(
             'You are not in any room yet. Open the room browser in the sidebar to pick one.',
             String(rpgCfg.ip ?? ''),
@@ -4277,7 +4316,10 @@ export const AiScriptStart = async () => {
           const client = getClient();
           clearIsLoadingMsgs();
           setConnectionNotice('hide');
-          leaveRoomButton?.removeClass('d-none');
+          // Joining a room is the only thing that clears the "not in any room"
+          // notice: it used to be shown by `roomNotSelected` and never hidden
+          // again, so a reconnect into a valid room kept the page locked.
+          setRoomState('joined');
           // Update Fic Cache
           if (isFirstFicCache)
             contentEnabler.once('ficCacheLoaded', (isFirstFicCache) => {
@@ -4424,6 +4466,10 @@ export const AiScriptStart = async () => {
         // Enter room
         client.on('roomEntered', (success) => {
           if (!success) {
+            // The room data never arrived, so the page is not inside the room
+            // even though the socket is connected. Falling back to the room
+            // picker is the only way out of a half joined room.
+            setRoomState('no-room');
             makeTempMessage(`Invalid room data detected!`, String(rpgCfg.ip ?? ''));
             return;
           }
