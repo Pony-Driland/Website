@@ -49,8 +49,8 @@ const PLAYBACK_TIMEOUT = 20000;
 const player = new TinyMediaPlayer({
   persistVolume: true,
   volumeStorageKey: VOLUME_STORAGE_KEY,
-  smoothPlayPauseVolume: true,
-  smoothStopVolume: true,
+  smoothPlayPauseVolume: false,
+  smoothStopVolume: false,
 });
 
 player.fadeVolumeSpeed = 400;

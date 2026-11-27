@@ -6,7 +6,7 @@ import { console } from '../dev.mjs';
 import tinyLib from '../files/tinyLib.mjs';
 
 import { storyData } from '../files/chapters.mjs';
-import { appData, loaderScreen } from '../important.mjs';
+import { appData, globalEmitter, loaderScreen } from '../important.mjs';
 import { fileVersion } from '../version.mjs';
 import { tinyAiScript } from '../ai/software/tinyAiScript.mjs';
 import storyCfg from '../chapters/config.mjs';
@@ -101,12 +101,12 @@ export const urlUpdate = (page, isPopState = false) => {
   if (page.name === 'roleplay') {
     if (!appData.ai.using) {
       appData.ai.using = true;
-      appData.emitter.emit('isUsingAI', true);
+      globalEmitter.emit('isUsingAI', true);
     }
   } else {
     if (appData.ai.using) {
       appData.ai.using = false;
-      appData.emitter.emit('isUsingAI', false);
+      globalEmitter.emit('isUsingAI', false);
     }
   }
 

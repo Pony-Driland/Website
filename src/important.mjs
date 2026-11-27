@@ -67,8 +67,9 @@ export const appData = {
   youtube: {},
   /** @type {{ using: boolean, interval: ReturnType<typeof setInterval>|null, secondsUsed: number }} */
   ai: { using: false, interval: null, secondsUsed: 0 },
-  emitter: new EventEmitter(),
 };
+
+export const globalEmitter = new EventEmitter();
 
 // Google Analytics
 initAnalytics();

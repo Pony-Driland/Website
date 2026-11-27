@@ -17,7 +17,14 @@ import tinyLib from './files/tinyLib.mjs';
 import { storyData } from './files/chapters.mjs';
 import storyCfg from './chapters/config.mjs';
 import { openChapterMenu } from './chapter_manager/index.mjs';
-import { tinyLs, fa, needsAgeVerification, loaderScreen, tinyNotification } from './important.mjs';
+import {
+  tinyLs,
+  fa,
+  needsAgeVerification,
+  loaderScreen,
+  tinyNotification,
+  globalEmitter,
+} from './important.mjs';
 
 import { Tooltip } from './modules/TinyBootstrap.mjs';
 import { AiScriptStart } from './ai/aiSoftware.mjs';
@@ -274,7 +281,12 @@ export const rootApp = new TinyDomReadyManager();
 rootApp.onReady(() => {
   if (typeof (/** @type {WindowWithEthereum} */ (window).ethereum) !== 'undefined')
     document.body.classList.add('browser-with-web3');
-  installWindowHiddenScript();
+
+  installWindowHiddenScript({
+    onVisible: (data) => globalEmitter.emit('onPageVisible', data),
+    onHidden: (data) => globalEmitter.emit('onPageHidden', data),
+  });
+
   installPWA().catch((err) => console.error('[PWA] Failed to start the service worker.', err));
   installAnalyticsListeners();
 

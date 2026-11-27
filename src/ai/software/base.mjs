@@ -1,6 +1,6 @@
 import { TinyAiInstance } from 'tiny-ai-api';
 import TinyAiStorage from './TinyAiStorage.mjs';
-import { appData } from '../../important.mjs';
+import { globalEmitter } from '../../important.mjs';
 import { body } from '../../html/query.mjs';
 import TinyClientIo from '../socketClient.mjs';
 
@@ -29,7 +29,7 @@ export const tinyAi = new TinyAiInstance();
 /** Persists the provider credentials and the selected provider. */
 export const tinyStorage = new TinyAiStorage();
 
-appData.emitter.on('isUsingAI', (usingAI) => {
+globalEmitter.on('isUsingAI', (usingAI) => {
   if (usingAI) {
     body.addClass('is-using-ai');
   } else {
