@@ -133,6 +133,12 @@ body.is-using-ai {
     width: 100%;
   }
 
+  /* A real AI model needs a slightly taller offset to line up with the navbar
+   * border. "No AI" and "Multiplayer" keep the default navbar offset. */
+  &.is-ai-model #root {
+    top: var(--navbar-ai-offset);
+  }
+
   #markdown-read {
     padding: 0px;
     margin: 0px;

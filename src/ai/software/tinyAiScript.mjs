@@ -155,6 +155,13 @@ export const tinyAiScript = {
       tinyAiScript.enabled = false;
     }
 
+    // The AI page uses a slightly taller offset when a real model is running.
+    // "No AI", "Multiplayer" and the disabled state keep the default offset.
+    body.toggleClass(
+      'is-ai-model',
+      tinyAiScript.enabled && !tinyAiScript.noai && !tinyAiScript.mpClient,
+    );
+
     // Update login button
     tinyAiScript.aiLogin.updateTitle();
   },

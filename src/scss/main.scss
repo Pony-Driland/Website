@@ -1,5 +1,15 @@
+:root {
+  /* Height of the fixed top navbar. */
+  --navbar-offset: 56px;
+
+  /* Offset used by the AI/RP page, which is a full screen app that starts
+   * right below the navbar. It is kept apart from `--navbar-offset` because the
+   * AI page needs a slightly taller value to line up with the navbar border. */
+  --navbar-ai-offset: 58px;
+}
+
 #root {
-  padding-top: 56px;
+  padding-top: var(--navbar-offset);
 }
 
 .pswp--open {
