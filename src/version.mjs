@@ -9,10 +9,10 @@
  */
 
 /** Numeric build version. */
-export const version = 508;
+export const version = 509;
 
 /** Cache-busting query string appended to static asset requests. */
-export const fileVersion = '?v=508';
+export const fileVersion = '?v=509';
 
 /** Name of the Cache Storage bucket used by the service worker. */
 export const cacheName = 'pony-driland-v1';
